@@ -141,7 +141,32 @@
     </div><!-- end panel-dashboard -->
 
     <!-- Team Management Tab -->
-    <div id="panel-team" class="tab-panel fac space-y-8">
+    <div id="panel-team" class="tab-panel hidden space-y-8">
+
+        <!-- Section Visibility Toggles -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h2 class="text-lg font-semibold text-gray-800 mb-2">Section Visibility on Public Website</h2>
+            <p class="text-xs text-gray-400 mb-4">Toggle which sections are visible on the People page</p>
+            <div class="flex flex-wrap gap-6" id="visibilityToggles">
+                <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="checkbox" id="vis_current" onchange="updateVisibility()" class="w-5 h-5 rounded text-teal-600 focus:ring-teal-500">
+                    <span class="text-sm font-medium text-gray-700">Current Members</span>
+                </label>
+                <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="checkbox" id="vis_alumni" onchange="updateVisibility()" class="w-5 h-5 rounded text-teal-600 focus:ring-teal-500">
+                    <span class="text-sm font-medium text-gray-700">Alumni</span>
+                </label>
+                <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="checkbox" id="vis_fac" onchange="updateVisibility()" class="w-5 h-5 rounded text-teal-600 focus:ring-teal-500">
+                    <span class="text-sm font-medium text-gray-700">FAC (Current)</span>
+                </label>
+                <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="checkbox" id="vis_fac_alumni" onchange="updateVisibility()" class="w-5 h-5 rounded text-teal-600 focus:ring-teal-500">
+                    <span class="text-sm font-medium text-gray-700">FAC (Previous)</span>
+                </label>
+            </div>
+            <div id="visResult" class="hidden mt-3 p-3 rounded-lg text-sm"></div>
+        </div>
 
         <!-- PI Section -->
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
@@ -516,8 +541,41 @@
                 renderMembers('alumni');
                 renderMembers('fac');
                 renderMembers('fac_alumni');
+                renderVisibility();
             } catch (e) {
                 console.error('Team fetch error:', e);
+            }
+        }
+
+        function renderVisibility() {
+            const vis = (teamData && teamData.visibility) || {};
+            document.getElementById('vis_current').checked = vis.current !== false;
+            document.getElementById('vis_alumni').checked = vis.alumni !== false;
+            document.getElementById('vis_fac').checked = vis.fac === true;
+            document.getElementById('vis_fac_alumni').checked = vis.fac_alumni === true;
+        }
+
+        async function updateVisibility() {
+            const vis = {
+                current: document.getElementById('vis_current').checked,
+                alumni: document.getElementById('vis_alumni').checked,
+                fac: document.getElementById('vis_fac').checked,
+                fac_alumni: document.getElementById('vis_fac_alumni').checked
+            };
+            try {
+                const res = await fetch('/api/team/visibility', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(vis)
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    showTeamMsg('visResult', 'Visibility updated.', true);
+                } else {
+                    showTeamMsg('visResult', data.error || 'Failed.', false);
+                }
+            } catch (e) {
+                showTeamMsg('visResult', 'Error: ' + e.message, false);
             }
         }
 

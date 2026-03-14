@@ -94,14 +94,14 @@
       "institution": "UND"
     },
     {
-      "name": "Sarah Hong",
-      "role": "Undergraduate Researcher (Remote)",
-      "category": "other",
-      "description": "Remote research mentee, Columbia University",
+      "name": "Christianah Jemiyo",
+      "role": "Former Visiting Scholar / Ph.D. Student",
+      "category": "student",
+      "description": "NABRO, Nigeria; was visiting scholar, then became Ph.D. student",
       "photo": null,
-      "period": "Jun 2023 \u2013",
-      "advisingRole": "mentor",
-      "institution": "Columbia University"
+      "period": "Sep 2022 \u2013 Dec 2025",
+      "advisingRole": null,
+      "institution": "UND"
     }
   ],
   "alumni": [
@@ -174,16 +174,6 @@
       "period": "Sep 2022 \u2013 Dec 2022",
       "advisingRole": null,
       "institution": "University of Dhaka"
-    },
-    {
-      "name": "Christianah Jemiyo",
-      "role": "Former Visiting Scholar / Ph.D. Student",
-      "category": "student",
-      "description": "NABRO, Nigeria; was visiting scholar, then became Ph.D. student",
-      "photo": null,
-      "period": "Sep 2022 \u2013 Dec 2025",
-      "advisingRole": null,
-      "institution": "UND"
     },
     {
       "name": "Fang Huang",
@@ -266,14 +256,21 @@
       "institution": "UND"
     },
     {
-      "name": "Jame Kim",
+      "name": "Jane Kim",
       "role": "Former Remote Research Intern",
       "category": "student",
       "description": "Research mentee, Chadwick International High School, Korea",
+      "photo": null
+    },
+    {
+      "name": "Sarah Hong",
+      "role": "Undergraduate Researcher (Remote)",
+      "category": "other",
+      "description": "Remote research mentee, Columbia University",
       "photo": null,
-      "period": "May 2024 \u2013 Dec 2025",
+      "period": "Jun 2023 \u2013",
       "advisingRole": "mentor",
-      "institution": "Chadwick International High School"
+      "institution": "Columbia University"
     }
   ],
   "fac": [
@@ -469,5 +466,11 @@
       "advisingRole": "member of FAC",
       "institution": "UND"
     }
-  ]
+  ],
+  "visibility": {
+    "current": true,
+    "alumni": true,
+    "fac": false,
+    "fac_alumni": false
+  }
 }

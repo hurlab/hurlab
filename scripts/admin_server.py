@@ -338,6 +338,8 @@ class AdminHandler(BaseHTTPRequestHandler):
             self._handle_team_pi()
         elif self.path == "/api/team/photo":
             self._handle_team_photo()
+        elif self.path == "/api/team/visibility":
+            self._handle_team_visibility()
         else:
             self.send_error(404, "Not Found")
 
@@ -690,6 +692,27 @@ class AdminHandler(BaseHTTPRequestHandler):
         try:
             save_team_data(team)
             self._send_json(team["pi"])
+        except Exception as e:
+            self._send_json({"error": str(e)}, status=500)
+
+    def _handle_team_visibility(self):
+        if not self._require_auth():
+            return
+        try:
+            body = self._read_json_body()
+        except (json.JSONDecodeError, ValueError) as e:
+            self._send_json({"error": f"Invalid JSON: {e}"}, status=400)
+            return
+        team = load_team_data()
+        allowed = {"current", "alumni", "fac", "fac_alumni"}
+        vis = team.get("visibility", {})
+        for key, value in body.items():
+            if key in allowed and isinstance(value, bool):
+                vis[key] = value
+        team["visibility"] = vis
+        try:
+            save_team_data(team)
+            self._send_json(vis)
         except Exception as e:
             self._send_json({"error": str(e)}, status=500)
 
