@@ -100,12 +100,12 @@ def purge_expired_sessions():
 def load_team_data() -> dict:
     """Load team.json, returning empty structure if missing."""
     if not TEAM_FILE.exists():
-        return {"pi": {}, "current": [], "alumni": [], "hidden": []}
+        return {"pi": {}, "current": [], "alumni": [], "fac": []}
     with open(TEAM_FILE, "r") as f:
         data = json.load(f)
-    # Ensure "hidden" key exists for older team.json files
-    if "hidden" not in data:
-        data["hidden"] = []
+    # Ensure "fac" key exists; migrate from "hidden" if needed
+    if "fac" not in data:
+        data["fac"] = data.pop("hidden", [])
     return data
 
 
@@ -608,7 +608,7 @@ class AdminHandler(BaseHTTPRequestHandler):
         try:
             if action == "add":
                 section = body.get("section")
-                if section not in ("current", "alumni", "hidden"):
+                if section not in ("current", "alumni", "fac"):
                     self._send_json({"error": "Invalid section"}, status=400)
                     return
                 if section not in team:
@@ -622,7 +622,7 @@ class AdminHandler(BaseHTTPRequestHandler):
             elif action == "edit":
                 section = body.get("section")
                 index = body.get("index")
-                if section not in ("current", "alumni", "hidden"):
+                if section not in ("current", "alumni", "fac"):
                     self._send_json({"error": "Invalid section"}, status=400)
                     return
                 if not isinstance(index, int) or index < 0 or index >= len(team[section]):
@@ -637,7 +637,7 @@ class AdminHandler(BaseHTTPRequestHandler):
             elif action == "delete":
                 section = body.get("section")
                 index = body.get("index")
-                if section not in ("current", "alumni", "hidden"):
+                if section not in ("current", "alumni", "fac"):
                     self._send_json({"error": "Invalid section"}, status=400)
                     return
                 if not isinstance(index, int) or index < 0 or index >= len(team[section]):
@@ -649,7 +649,7 @@ class AdminHandler(BaseHTTPRequestHandler):
                 from_section = body.get("from")
                 to_section = body.get("to")
                 index = body.get("index")
-                if from_section not in ("current", "alumni", "hidden") or to_section not in ("current", "alumni", "hidden"):
+                if from_section not in ("current", "alumni", "fac") or to_section not in ("current", "alumni", "fac"):
                     self._send_json({"error": "Invalid section"}, status=400)
                     return
                 if from_section == to_section:
@@ -787,7 +787,7 @@ class AdminHandler(BaseHTTPRequestHandler):
             team = load_team_data()
             updated = False
 
-            for section in ("current", "alumni", "hidden"):
+            for section in ("current", "alumni", "fac"):
                 for member in team.get(section, []):
                     if member.get("name", "").strip().lower() == member_name.strip().lower():
                         member["photo"] = photo_rel_path
