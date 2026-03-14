@@ -1,0 +1,47 @@
+{
+  "isHiring": false,
+  "headline": "Future Openings",
+  "description": "There are currently no open positions. However, the Hur Lab periodically welcomes motivated postdoctoral fellows, graduate students, and visiting scholars interested in bioinformatics, AI/ML, and multi-omics systems biology. Please check back or reach out to express your interest for future opportunities.",
+  "positionTypes": [
+    {
+      "title": "Post-doctoral Fellow",
+      "icon": "academic-cap",
+      "color": "teal",
+      "requirements": [
+        "Bioinformatics, AI/ML, or related computational field",
+        "Ph.D. in a relevant discipline",
+        "Strong programming and analytical skills",
+        "Publication record in peer-reviewed journals"
+      ]
+    },
+    {
+      "title": "Graduate Student",
+      "icon": "book",
+      "color": "indigo",
+      "requirements": [
+        "Ph.D. programs in Computer Science, Biomedical Sciences, or Biomedical Engineering",
+        "Interest in computational biology or data science",
+        "Background in biology, computer science, or related field",
+        "Competitive stipend and tuition support available"
+      ]
+    },
+    {
+      "title": "Visiting Scholar",
+      "icon": "globe",
+      "color": "purple",
+      "requirements": [
+        "International researchers welcome for collaborative visits",
+        "Flexible duration from 3 months to 1 year",
+        "Access to computational resources and mentoring",
+        "Collaborative research opportunities across disciplines"
+      ]
+    }
+  ],
+  "researchAreas": [
+    "Multi-omics analysis of diabetic neuropathy and metabolic syndrome",
+    "Ontology and AI-based biomedical data integration (OLAS, MILAM, LAM-AI)",
+    "Development of computational tools for biological data visualization and enrichment analysis"
+  ],
+  "contactEmail": "junguk.hur@med.UND.edu",
+  "lastUpdated": "2026-03-14"
+}

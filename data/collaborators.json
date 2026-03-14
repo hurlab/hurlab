@@ -1,0 +1,48 @@
+{
+  "categories": [
+    {
+      "title": "Diabetes / Diabetic Complications / Epidemiology",
+      "color": "teal",
+      "icon": "dna",
+      "members": [
+        { "name": "Eva L. Feldman, M.D., Ph.D.", "institution": "University of Michigan", "url": "http://www.pnrdfeldman.org/" },
+        { "name": "Matthias Kretzler, M.D.", "institution": "University of Michigan", "url": null },
+        { "name": "Frank Chip Brosius III, M.D.", "institution": "University of Michigan", "url": null },
+        { "name": "Eun-Hee Cho, M.D.", "institution": "Kangwon National University, South Korea", "url": null },
+        { "name": "Kyung Ju Lee, M.D., Ph.D.", "institution": "Korea University, South Korea", "url": null }
+      ]
+    },
+    {
+      "title": "Literature Mining / Ontology",
+      "color": "indigo",
+      "icon": "database",
+      "members": [
+        { "name": "Oliver Yongqun He, Ph.D.", "institution": "University of Michigan", "url": "http://www.hegroup.org/" },
+        { "name": "Arzucan Ozgur, Ph.D.", "institution": "Bogazici University, Turkey", "url": null }
+      ]
+    },
+    {
+      "title": "Epigenetics in NeuroSciences",
+      "color": "purple",
+      "icon": "chip",
+      "members": [
+        { "name": "Joyce Ohm, Ph.D.", "institution": "Roswell Park Cancer Research", "url": null },
+        { "name": "Jonathan Geiger, Ph.D.", "institution": "University of North Dakota", "url": null },
+        { "name": "Detlev Boison, Ph.D.", "institution": "Legacy Health", "url": null },
+        { "name": "Susan Masino, Ph.D.", "institution": "Trinity College", "url": null },
+        { "name": "Archana Dhasarathy, Ph.D.", "institution": "University of North Dakota", "url": null }
+      ]
+    },
+    {
+      "title": "Systems Pharmacology",
+      "color": "green",
+      "icon": "flask",
+      "members": [
+        { "name": "Jane P.F. Bai, Ph.D.", "institution": "US Food and Drug Administration", "url": null },
+        { "name": "Aravind Subramanian, Ph.D.", "institution": "Broad Institute", "url": null },
+        { "name": "James Porter, Ph.D.", "institution": "University of North Dakota", "url": null }
+      ]
+    }
+  ],
+  "lastUpdated": "2026-03-14"
+}

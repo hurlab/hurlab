@@ -2,15 +2,25 @@
 Files/
 Temp/
 BACKUPS/
+Projects/
+Supplemental/
+Indiana/
+Michigan/
+miRNA/
+Admissions/
+Jumgim/
+Study/
+Publications/
+cgi-bin/
 
 # Legacy site backup
 v1/
 
-# Personal data (PDFs tracked via symlinks only)
+# Personal data (exclude all PDFs except the CV symlink)
 Personal/*.pdf
-!Personal/JungukHur-CV.pdf
+Personal/*.doc
+Personal/*.gif
 !Personal/JungukHur_CV.pdf
-!Personal/JungukHur.pdf
 
 # Admin credentials and runtime
 scripts/.admin_credentials
@@ -20,6 +30,9 @@ scripts/__pycache__/
 
 # SSL
 ssl_fullchain.crt
+
+# Misc
+1
 
 # OS files
 .DS_Store

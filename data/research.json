@@ -1,0 +1,36 @@
+{
+  "intro": "My research focuses on developing and applying computational methods to understand complex biological systems and human diseases.",
+  "areas": [
+    {
+      "title": "Bioinformatics and Systems Biology",
+      "description": "Integration and analysis of multi-omics data (transcriptomics, epigenomics, metabolomics, lipidomics, proteomics) to identify molecular mechanisms underlying human diseases.",
+      "icon": "dna",
+      "color": "teal"
+    },
+    {
+      "title": "Ontology-Based Knowledge Systems",
+      "description": "Development of interoperable ontologies and AI-driven frameworks for data standardization, integration, and literature mining (e.g., VIOLIN, OLAS, MILAM).",
+      "icon": "database",
+      "color": "indigo"
+    },
+    {
+      "title": "Artificial Intelligence and Machine Learning",
+      "description": "Application of deep learning and natural language processing to biomedical data, focusing on biological age prediction, disease modeling, and knowledge extraction.",
+      "icon": "chip",
+      "color": "teal"
+    },
+    {
+      "title": "Neurological Disorders",
+      "description": "Focus on diabetic peripheral neuropathy (DPN), metabolic syndrome-associated cognitive impairment, and amyotrophic lateral sclerosis (ALS), in collaboration with Drs. Eva Feldman and Stephen Goutman (University of Michigan).",
+      "icon": "brain",
+      "color": "indigo"
+    },
+    {
+      "title": "Host-Pathogen Interactions",
+      "description": "Ontology-based modeling of infectious diseases and immune responses, in collaboration with Dr. Yongqun He (University of Michigan).",
+      "icon": "shield",
+      "color": "teal"
+    }
+  ],
+  "lastUpdated": "2026-03-14"
+}
