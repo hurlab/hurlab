@@ -763,5 +763,33 @@ def main():
           f"{len(grants['previous'])} previous")
 
 
+def git_auto_commit():
+    """Auto-commit data/ changes if inside a git repo."""
+    repo_dir = os.path.normpath(os.path.join(SCRIPT_DIR, ".."))
+    git_dir = os.path.join(repo_dir, ".git")
+    if not os.path.isdir(git_dir):
+        return
+    try:
+        subprocess.run(
+            ["git", "add", "data/publications.json", "data/grants.json"],
+            cwd=repo_dir, capture_output=True, timeout=10
+        )
+        result = subprocess.run(
+            ["git", "diff", "--cached", "--quiet"],
+            cwd=repo_dir, capture_output=True, timeout=10
+        )
+        if result.returncode != 0:  # there are staged changes
+            subprocess.run(
+                ["git", "commit", "-m", f"Auto-update publications and grants from CV ({TODAY})"],
+                cwd=repo_dir, capture_output=True, timeout=10
+            )
+            print(f"  Git: auto-committed data changes ({TODAY})")
+        else:
+            print("  Git: no changes to commit")
+    except Exception as e:
+        print(f"  Git: auto-commit skipped ({e})")
+
+
 if __name__ == "__main__":
     main()
+    git_auto_commit()
