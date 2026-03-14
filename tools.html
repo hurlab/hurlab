@@ -48,7 +48,7 @@
            x-data="{
              activeFilter: 'All',
              tools: [],
-             categories: ['All', 'R Package', 'Web Tool', 'Python', 'Desktop'],
+             categories: ['All', 'R Package', 'R Shiny', 'Web Tool', 'Python', 'Desktop'],
              get filteredTools() {
                if (this.activeFilter === 'All') return this.tools;
                return this.tools.filter(t => t.category === this.activeFilter);
