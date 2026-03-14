@@ -428,51 +428,41 @@
     </section>
 
     <!-- ==================== FUNDING ==================== -->
-    <section class="py-16 bg-white border-t border-b border-gray-100">
+    <section class="py-16 bg-white border-t border-b border-gray-100"
+             x-data="{ grants: [], totalFunding: '...' }"
+             x-init="
+               fetch('data/grants.json').then(r=>r.json()).then(d => {
+                 grants = d.current || [];
+                 let total = 0;
+                 for (const s of [d.current || [], d.previous || []]) {
+                   for (const g of s) {
+                     const m = (g.total || '').match(/\$([\d,]+)/);
+                     if (m) total += parseInt(m[1].replace(/,/g, ''));
+                   }
+                 }
+                 totalFunding = '$' + (total / 1e6).toFixed(1) + 'M';
+               })
+             ">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             <div class="text-center mb-10" data-aos="fade-up">
                 <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Funding &amp; Support</h2>
                 <p class="text-gray-500">
-                    Approximately <span class="font-bold text-teal-700">$37.9M</span> in total research funding
+                    Approximately <span class="font-bold text-teal-700" x-text="totalFunding"></span> in total research funding (current + completed)
                 </p>
             </div>
 
             <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="inline-flex items-center px-5 py-3 bg-gray-50 rounded-lg border border-gray-200">
-                    <div class="w-2 h-2 rounded-full bg-teal-500 mr-3 flex-shrink-0"></div>
-                    <div>
-                        <div class="text-sm font-semibold text-gray-900">NIH/NIAID U24</div>
-                        <div class="text-xs text-gray-500">Cooperative Agreement</div>
-                    </div>
-                </div>
-                <div class="inline-flex items-center px-5 py-3 bg-gray-50 rounded-lg border border-gray-200">
-                    <div class="w-2 h-2 rounded-full bg-indigo-500 mr-3 flex-shrink-0"></div>
-                    <div>
-                        <div class="text-sm font-semibold text-gray-900">NIH/NIDDK R01</div>
-                        <div class="text-xs text-gray-500">Research Project</div>
-                    </div>
-                </div>
-                <div class="inline-flex items-center px-5 py-3 bg-gray-50 rounded-lg border border-gray-200">
-                    <div class="w-2 h-2 rounded-full bg-purple-500 mr-3 flex-shrink-0"></div>
-                    <div>
-                        <div class="text-sm font-semibold text-gray-900">NIH/NIGMS P20</div>
-                        <div class="text-xs text-gray-500">COBRE Center Grant</div>
-                    </div>
-                </div>
-                <div class="inline-flex items-center px-5 py-3 bg-gray-50 rounded-lg border border-gray-200">
-                    <div class="w-2 h-2 rounded-full bg-rose-500 mr-3 flex-shrink-0"></div>
-                    <div>
-                        <div class="text-sm font-semibold text-gray-900">NIH/NIGMS P20</div>
-                        <div class="text-xs text-gray-500">IDeA Program</div>
-                    </div>
-                </div>
-                <div class="inline-flex items-center px-5 py-3 bg-gray-50 rounded-lg border border-gray-200">
-                    <div class="w-2 h-2 rounded-full bg-amber-500 mr-3 flex-shrink-0"></div>
-                    <div>
-                        <div class="text-sm font-semibold text-gray-900">ARPA-H</div>
-                        <div class="text-xs text-gray-500">Advanced Research</div>
-                    </div>
-                </div>
+                <template x-for="(grant, i) in grants" :key="i">
+                    <a :href="grant.url || '#'" :target="grant.url ? '_blank' : ''" rel="noopener"
+                       class="inline-flex items-center px-5 py-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 hover:border-gray-300 transition-colors">
+                        <div class="w-2 h-2 rounded-full mr-3 flex-shrink-0"
+                             :class="['bg-teal-500','bg-indigo-500','bg-purple-500','bg-rose-500','bg-amber-500'][i % 5]"></div>
+                        <div>
+                            <div class="text-sm font-semibold text-gray-900" x-text="grant.funder.split(' ').slice(0,2).join(' ')"></div>
+                            <div class="text-xs text-gray-500" x-text="grant.role"></div>
+                        </div>
+                    </a>
+                </template>
             </div>
         </div>
     </section>
