@@ -243,8 +243,8 @@
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
             <div class="flex items-center justify-between mb-4">
                 <div>
-                    <h2 class="text-lg font-semibold text-gray-800">Faculty Advisory Committee</h2>
-                    <p class="text-xs text-gray-400 mt-1">Dissertation committee members where Dr. Hur serves as a FAC member</p>
+                    <h2 class="text-lg font-semibold text-gray-800">Faculty Advisory Committee (Current)</h2>
+                    <p class="text-xs text-gray-400 mt-1">Current dissertation committee members where Dr. Hur serves as a FAC member</p>
                 </div>
                 <button onclick="showMemberForm('fac')" class="bg-teal-600 hover:bg-teal-700 text-white text-sm px-4 py-2 rounded-lg transition">Add Member</button>
             </div>
@@ -262,6 +262,32 @@
                         </tr>
                     </thead>
                     <tbody id="facMembersBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Previous FAC -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h2 class="text-lg font-semibold text-gray-800">Faculty Advisory Committee (Previous)</h2>
+                    <p class="text-xs text-gray-400 mt-1">Former dissertation committee members</p>
+                </div>
+                <button onclick="showMemberForm('fac_alumni')" class="bg-teal-600 hover:bg-teal-700 text-white text-sm px-4 py-2 rounded-lg transition">Add Member</button>
+            </div>
+            <div id="addFacAlumniForm" class="hidden mb-4 p-4 bg-gray-50 rounded-lg"></div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">#</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Name</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Role</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Period</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="facAlumniMembersBody"></tbody>
                 </table>
             </div>
         </div>
@@ -489,6 +515,7 @@
                 renderMembers('current');
                 renderMembers('alumni');
                 renderMembers('fac');
+                renderMembers('fac_alumni');
             } catch (e) {
                 console.error('Team fetch error:', e);
             }
@@ -561,7 +588,8 @@
         }
 
         function renderMembers(section) {
-            const tbodyId = section === 'current' ? 'currentMembersBody' : (section === 'alumni' ? 'alumniMembersBody' : 'facMembersBody');
+            const tbodyMap = { current: 'currentMembersBody', alumni: 'alumniMembersBody', fac: 'facMembersBody', fac_alumni: 'facAlumniMembersBody' };
+            const tbodyId = tbodyMap[section] || 'facMembersBody';
             const tbody = document.getElementById(tbodyId);
             const members = teamData[section] || [];
             if (members.length === 0) {
@@ -579,7 +607,10 @@
                     btns += `<button onclick="moveMember('alumni', 'fac', ${i})" class="text-gray-500 hover:text-gray-700 text-xs font-medium">To FAC</button>`;
                 } else if (section === 'fac') {
                     btns += `<button onclick="moveMember('fac', 'current', ${i})" class="text-indigo-600 hover:text-indigo-800 text-xs font-medium mr-2">To Current</button>`;
-                    btns += `<button onclick="moveMember('fac', 'alumni', ${i})" class="text-indigo-600 hover:text-indigo-800 text-xs font-medium">To Alumni</button>`;
+                    btns += `<button onclick="moveMember('fac', 'fac_alumni', ${i})" class="text-gray-500 hover:text-gray-700 text-xs font-medium">To Previous FAC</button>`;
+                } else if (section === 'fac_alumni') {
+                    btns += `<button onclick="moveMember('fac_alumni', 'fac', ${i})" class="text-indigo-600 hover:text-indigo-800 text-xs font-medium mr-2">To Current FAC</button>`;
+                    btns += `<button onclick="moveMember('fac_alumni', 'alumni', ${i})" class="text-gray-500 hover:text-gray-700 text-xs font-medium">To Alumni</button>`;
                 }
                 return btns;
             }
@@ -677,7 +708,8 @@
         }
 
         function showMemberForm(section) {
-            const formId = section === 'current' ? 'addCurrentForm' : (section === 'alumni' ? 'addAlumniForm' : 'addHiddenForm');
+            const formMap = { current: 'addCurrentForm', alumni: 'addAlumniForm', fac: 'addHiddenForm', fac_alumni: 'addFacAlumniForm' };
+            const formId = formMap[section] || 'addHiddenForm';
             const el = document.getElementById(formId);
             if (!el.classList.contains('hidden')) {
                 el.classList.add('hidden');
@@ -731,7 +763,8 @@
                 photo: document.getElementById('addPhoto_' + section).value || null
             };
             await teamMemberAction({ action: 'add', section, member });
-            const formId = section === 'current' ? 'addCurrentForm' : (section === 'alumni' ? 'addAlumniForm' : 'addHiddenForm');
+            const formMap = { current: 'addCurrentForm', alumni: 'addAlumniForm', fac: 'addHiddenForm', fac_alumni: 'addFacAlumniForm' };
+            const formId = formMap[section] || 'addHiddenForm';
             document.getElementById(formId).classList.add('hidden');
         }
 

@@ -256,16 +256,6 @@
       "institution": "UND"
     },
     {
-      "name": "Mostafa Elhennawy",
-      "role": "Former Ph.D. Student, Biomedical Sciences",
-      "category": "student",
-      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
-      "photo": null,
-      "period": "Aug 2023 \u2013 Spring 2025",
-      "advisingRole": "member of FAC",
-      "institution": "UND"
-    },
-    {
       "name": "Benu Bansal",
       "role": "Former Ph.D. Student, Biomedical Engineering",
       "category": "student",
@@ -284,96 +274,6 @@
       "period": "May 2024 \u2013 Dec 2025",
       "advisingRole": "mentor",
       "institution": "Chadwick International High School"
-    },
-    {
-      "name": "Peter Halcrow",
-      "role": "Former Ph.D. Student, Biomedical Sciences",
-      "category": "student",
-      "description": "Member of Ph.D. FAC, UND Biomedical Sciences Ph.D.",
-      "photo": null,
-      "period": "Nov 2015 \u2013 Jul 2019",
-      "advisingRole": "member of FAC",
-      "institution": "UND"
-    },
-    {
-      "name": "Derick Thompson",
-      "role": "Former Ph.D. Student, Biomedical Sciences",
-      "category": "student",
-      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
-      "photo": null,
-      "period": "Jun 2016 \u2013 Jul 2020",
-      "advisingRole": "member of FAC",
-      "institution": "UND"
-    },
-    {
-      "name": "Leo Lakpa",
-      "role": "Former Ph.D. Student, Biomedical Sciences",
-      "category": "student",
-      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
-      "photo": null,
-      "period": "Jun 2017 \u2013 May 2021",
-      "advisingRole": "member of FAC",
-      "institution": "UND"
-    },
-    {
-      "name": "Smruthi Rudraraju",
-      "role": "Former Ph.D. Student, Biomedical Sciences",
-      "category": "student",
-      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
-      "photo": null,
-      "period": "Oct 2017 \u2013 Jul 2021",
-      "advisingRole": "member of FAC",
-      "institution": "UND"
-    },
-    {
-      "name": "Sayem Bhuiyan",
-      "role": "Former Ph.D. Student, Biomedical Sciences",
-      "category": "student",
-      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
-      "photo": null,
-      "period": "Nov 2018 \u2013 May 2022",
-      "advisingRole": "member of FAC",
-      "institution": "UND"
-    },
-    {
-      "name": "Joanna Handzlik",
-      "role": "Former Ph.D. Student, Biology",
-      "category": "student",
-      "description": "Member of FAC, UND Biology Ph.D.",
-      "photo": null,
-      "period": "Apr 2019 \u2013 May 2022",
-      "advisingRole": "member of FAC",
-      "institution": "UND"
-    },
-    {
-      "name": "Malak Alzidaneen",
-      "role": "Former M.S. Student, Biomedical Sciences",
-      "category": "student",
-      "description": "Member of FAC, UND Biomedical Sciences M.S.",
-      "photo": null,
-      "period": "Aug 2020 \u2013 Dec 2021",
-      "advisingRole": "member of FAC",
-      "institution": "UND"
-    },
-    {
-      "name": "Abiodun Ebenezer Odufuwa",
-      "role": "Former Ph.D. Student, Biomedical Sciences",
-      "category": "student",
-      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
-      "photo": null,
-      "period": "Mar 2021 \u2013 Jul 2024",
-      "advisingRole": "member of FAC",
-      "institution": "UND"
-    },
-    {
-      "name": "Dehui Kong",
-      "role": "Former Ph.D. Student, Biology",
-      "category": "student",
-      "description": "Member of FAC, UND Biology Ph.D.",
-      "photo": null,
-      "period": "Jan 2022 \u2013 Aug 2023",
-      "advisingRole": "member of FAC",
-      "institution": "UND"
     }
   ],
   "fac": [
@@ -464,6 +364,108 @@
       "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
       "photo": null,
       "period": "Oct 2025 \u2013",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    }
+  ],
+  "fac_alumni": [
+    {
+      "name": "Mostafa Elhennawy",
+      "role": "Former Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
+      "photo": null,
+      "period": "Aug 2023 \u2013 Spring 2025",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Peter Halcrow",
+      "role": "Former Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Member of Ph.D. FAC, UND Biomedical Sciences Ph.D.",
+      "photo": null,
+      "period": "Nov 2015 \u2013 Jul 2019",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Derick Thompson",
+      "role": "Former Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
+      "photo": null,
+      "period": "Jun 2016 \u2013 Jul 2020",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Leo Lakpa",
+      "role": "Former Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
+      "photo": null,
+      "period": "Jun 2017 \u2013 May 2021",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Smruthi Rudraraju",
+      "role": "Former Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
+      "photo": null,
+      "period": "Oct 2017 \u2013 Jul 2021",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Sayem Bhuiyan",
+      "role": "Former Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
+      "photo": null,
+      "period": "Nov 2018 \u2013 May 2022",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Joanna Handzlik",
+      "role": "Former Ph.D. Student, Biology",
+      "category": "student",
+      "description": "Member of FAC, UND Biology Ph.D.",
+      "photo": null,
+      "period": "Apr 2019 \u2013 May 2022",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Malak Alzidaneen",
+      "role": "Former M.S. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Member of FAC, UND Biomedical Sciences M.S.",
+      "photo": null,
+      "period": "Aug 2020 \u2013 Dec 2021",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Abiodun Ebenezer Odufuwa",
+      "role": "Former Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
+      "photo": null,
+      "period": "Mar 2021 \u2013 Jul 2024",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Dehui Kong",
+      "role": "Former Ph.D. Student, Biology",
+      "category": "student",
+      "description": "Member of FAC, UND Biology Ph.D.",
+      "photo": null,
+      "period": "Jan 2022 \u2013 Aug 2023",
       "advisingRole": "member of FAC",
       "institution": "UND"
     }
