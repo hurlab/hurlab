@@ -1,0 +1,34 @@
+#Alignment (Global) Succesfully Completed
+#Seq1 Length: 5 ACCTG
+#Seq2 Length: 5 TGATG
+#Match Score: 1
+#Mismatch Score: -2
+#GapOpening Penalty: 1
+#GapExtension Penalty: 1
+#Number of Alignments Found: 252
+#Number of Alignments Displayed: 4
+
+>>Rank.1 Global Alignment   Score:10.0  Sum:55.0  Identity:0%
+seq1: 1 -A--C-CT-G
+                  
+seq2: 1 T-GA-T--G-
+
+
+>>Rank.2 Global Alignment   Score:10.0  Sum:55.0  Identity:0%
+seq1: 1 A-CCT----G
+                  
+seq2: 1 -T---GATG-
+
+
+>>Rank.3 Global Alignment   Score:10.0  Sum:55.0  Identity:0%
+seq1: 1 A-CC--T-G-
+                  
+seq2: 1 -T--GA-T-G
+
+
+>>Rank.4 Global Alignment   Score:10.0  Sum:55.0  Identity:0%
+seq1: 1 --A-C-C-TG
+                  
+seq2: 1 TG-A-T-G--
+
+

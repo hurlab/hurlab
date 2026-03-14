@@ -1,0 +1,49 @@
+1	ath	ATH	Arabidopsis thaliana	Viridiplantae;	REFSEQ	
+2	cbr	CBR	Caenorhabditis briggsae	Metazoa;Nematoda;	CB25.AGP8	
+3	cel	CEL	Caenorhabditis elegans	Metazoa;Nematoda;	WS150	caenorhabditis_elegans_core_40_150a
+4	dme	DME	Drosophila melanogaster	Metazoa;Arthropoda;	BDGP4.3	drosophila_melanogaster_core_40_43
+5	hsa	HSA	Homo sapiens	Metazoa;Vertebrata;Mammalia;Primates;Hominidae;	NCBI36	homo_sapiens_core_40_36b
+6	mmu	MMU	Mus musculus	Metazoa;Vertebrata;Mammalia;Rodentia;	NCBIM36	mus_musculus_core_40_36a
+7	osa	OSA	Oryza sativa	Viridiplantae;	TIGR4.0	
+8	rno	RNO	Rattus norvegicus	Metazoa;Vertebrata;Mammalia;Rodentia;	RGSC3.4	rattus_norvegicus_core_40_34j
+9	ebv	VRL	Epstein Barr virus	Viruses;	EMBL:AJ507799.2	
+10	gga	GGA	Gallus gallus	Metazoa;Vertebrata;Aves;	WASHUC1	gallus_gallus_core_40_1o
+11	dps	DPS	Drosophila pseudoobscura	Metazoa;Arthropoda;	DPSE2.0	
+12	dre	DRE	Danio rerio	Metazoa;Vertebrata;Pisces;	ZV6	danio_rerio_core_40_6a
+13	xla	XLA	Xenopus laevis	Metazoa;Vertebrata;Amphibia;		
+14	zma	ZMA	Zea mays	Viridiplantae;	AZM5	
+15	sbi	SBI	Sorghum bicolor	Viridiplantae;		
+16	kshv	VRL	Kaposi sarcoma-associated herpesvirus	Viruses;	EMBL:U75698.1	
+17	oar	OAR	Ovis aries	Metazoa;Vertebrata;Mammalia;Ruminantia;		
+18	ame	AME	Apis mellifera	Metazoa;Arthropoda;	AMEL4.0	apis_mellifera_core_38_2d
+19	aga	AGA	Anopheles gambiae	Metazoa;Arthropoda;	AGAMP3	anopheles_gambiae_core_40_3c
+20	cfa	CFA	Canis familiaris	Metazoa;Vertebrata;Mammalia;Carnivora;	CANFAM1.0	canis_familiaris_core_40_1i
+21	mghv	VRL	Mouse gammaherpesvirus 68	Viruses;	EMBL:U97553.1	
+22	hcmv	VRL	Human cytomegalovirus	Viruses;	EMBL:X17403.1	
+23	mtr	MTR	Medicago truncatula	Viridiplantae;		
+24	sof	SOF	Saccharum officinarum	Viridiplantae;		
+25	gma	GMA	Glycine max	Viridiplantae;		
+26	ptc	PTC	Populus trichocarpa	Viridiplantae;		
+27	ssc	SSC	Sus scrofa	Metazoa;Vertebrata;Mammalia;Suina;		
+28	age	AGE	Ateles geoffroyi	Metazoa;Vertebrata;Mammalia;Primates;Atelidae;		
+29	ggo	GGO	Gorilla gorilla	Metazoa;Vertebrata;Mammalia;Primates;Hominidae;		
+30	lla	LLA	Lagothrix lagotricha	Metazoa;Vertebrata;Mammalia;Primates;Atelidae;		
+31	lca	LCA	Lemur catta	Metazoa;Vertebrata;Mammalia;Primates;Lemuridae;		
+32	mml	MML	Macaca mulatta	Metazoa;Vertebrata;Mammalia;Primates;Cercopithecidae;	MMUL1.0	macaca_mulatta_core_40_10
+33	mne	MNE	Macaca nemestrina	Metazoa;Vertebrata;Mammalia;Primates;Cercopithecidae;		
+34	ppa	PPA	Pan paniscus	Metazoa;Vertebrata;Mammalia;Primates;Hominidae;		
+35	ppy	PPY	Pongo pygmaeus	Metazoa;Vertebrata;Mammalia;Primates;Hominidae;		
+36	sla	SLA	Saguinus labiatus	Metazoa;Vertebrata;Mammalia;Primates;Cebidae;		
+37	ptr	PTR	Pan troglodytes	Metazoa;Vertebrata;Mammalia;Primates;Hominidae;	PANTRO1.0	pan_troglodytes_core_40_3c
+38	fru	FRU	Fugu rubripes	Metazoa;Vertebrata;Pisces;	FUGU4	fugu_rubripes_core_38_4a
+39	tni	TNI	Tetraodon nigroviridis	Metazoa;Vertebrata;Pisces;	TETRAODON7	tetraodon_nigroviridis_core_40_1f
+40	ppt	PPT	Physcomitrella patens	Viridiplantae;		
+41	sv40	VRL	Simian virus 40	Viruses;		
+42	rlcv	VRL	Rhesus lymphocryptovirus	Viruses;		
+43	xtr	XTR	Xenopus tropicalis	Metazoa;Vertebrata;Amphibia;	JGI4.1	xenopus_tropicalis_core_40_41a
+44	bta	BTA	Bos taurus	Metazoa;Vertebrata;Mammalia;Ruminantia;	BTAU2.0	bos_taurus_core_40_2c
+45	hsv1	VRL	Herpes Simplex Virus 1	Viruses;		
+47	bmo	BMO	Bombyx mori	Metazoa;Arthropoda;	SILKDB200604	
+58	sme	SME	Schmidtea mediterranea	Metazoa;Platyhelminthes;	WUSTL2.0	
+59	mdv	VRL	Mareks disease virus	Viruses;	EMBL:AF243438.1	
+60	mdo	MDO	Monodelphis domestica	Metazoa;Vertebrata;Mammalia;Metatheria;	MONDOM4	monodelphis_domestica_core_40_3

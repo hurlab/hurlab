@@ -1,0 +1,113 @@
+openat(AT_FDCWD, "/proc/loadavg", O_RDONLY) = 7
+read(7, "0.21 0.18 0.18 2/1106 1048962\n", 64) = 30
+close(7)                                = 0
+epoll_wait(6, [], 1025, 1000)           = 0
+epoll_wait(6, [], 1025, 1000)           = 0
+epoll_wait(6, [], 1025, 1000)           = 0
+epoll_wait(6, [{EPOLLIN, {u32=2770679024, u64=94006719886576}}], 1025, 1000) = 1
+accept4(4, {sa_family=AF_INET, sin_port=htons(20442), sin_addr=inet_addr("46.229.168.136")}, [112->16], SOCK_CLOEXEC|SOCK_NONBLOCK) = 7
+getsockopt(7, SOL_TCP, TCP_NODELAY, [1], [4]) = 0
+brk(0x557fa5297000)                     = 0x557fa5297000
+brk(0x557fa52b8000)                     = 0x557fa52b8000
+ioctl(7, FIONREAD, [0])                 = 0
+read(7, 0x557fa52a6110, 4095)           = -1 EAGAIN (Resource temporarily unavailable)
+epoll_ctl(6, EPOLL_CTL_ADD, 7, {EPOLLIN|EPOLLERR|EPOLLHUP|EPOLLRDHUP, {u32=2771017664, u64=94006720225216}}) = 0
+accept4(4, 0x7ffc18f0ca60, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(6, [{EPOLLIN, {u32=2771017664, u64=94006720225216}}], 1025, 1000) = 1
+ioctl(7, FIONREAD, [330])               = 0
+read(7, "GET /ROSDiabetes/Explorer/ROSDia"..., 4095) = 330
+stat("/var/www/ROSDiabetes/Explorer/ROSDiabetes53/pmid2ContDir/16814095.html", {st_mode=S_IFREG|0644, st_size=110490, ...}) = 0
+openat(AT_FDCWD, "/var/www/ROSDiabetes/Explorer/ROSDiabetes53/pmid2ContDir/16814095.html", O_RDONLY|O_NOCTTY|O_NONBLOCK|O_CLOEXEC) = 8
+stat("/var/cache/lighttpd/compress//ROSDiabetes/Explorer/ROSDiabetes53/pmid2ContDir/16814095.html-gzip-38936180-110490-13243227640", 0x7ffc18f0c930) = -1 ENOENT (No such file or directory)
+mkdir("/var", 0700)                     = -1 EEXIST (File exists)
+mkdir("/var/cache", 0700)               = -1 EEXIST (File exists)
+mkdir("/var/cache/lighttpd", 0700)      = -1 EEXIST (File exists)
+mkdir("/var/cache/lighttpd/compress", 0700) = -1 EEXIST (File exists)
+mkdir("/var/cache/lighttpd/compress//ROSDiabetes", 0700) = -1 EEXIST (File exists)
+mkdir("/var/cache/lighttpd/compress//ROSDiabetes/Explorer", 0700) = -1 EEXIST (File exists)
+mkdir("/var/cache/lighttpd/compress//ROSDiabetes/Explorer/ROSDiabetes53", 0700) = -1 EEXIST (File exists)
+mkdir("/var/cache/lighttpd/compress//ROSDiabetes/Explorer/ROSDiabetes53/pmid2ContDir", 0700) = -1 EEXIST (File exists)
+openat(AT_FDCWD, "/var/cache/lighttpd/compress//ROSDiabetes/Explorer/ROSDiabetes53/pmid2ContDir/16814095.html-gzip-38936180-110490-13243227640", O_WRONLY|O_CREAT|O_EXCL|O_NOCTTY|O_NONBLOCK|O_CLOEXEC, 0600) = 9
+brk(0x557fa52e4000)                     = 0x557fa52e4000
+read(8, "<head>\n                         "..., 110490) = 110490
+brk(0x557fa5305000)                     = 0x557fa5305000
+brk(0x557fa5343000)                     = 0x557fa5343000
+write(9, "\37\213\10\0\314\217\357N\0\3\355]ms\3338\222\376<\363+P\236\252\231\244*\226-\311\262\255"..., 8934) = 8934
+close(9)                                = 0
+close(8)                                = 0
+stat("/var/cache/lighttpd/compress//ROSDiabetes/Explorer/ROSDiabetes53/pmid2ContDir/16814095.html-gzip-38936180-110490-13243227640", {st_mode=S_IFREG|0600, st_size=8934, ...}) = 0
+openat(AT_FDCWD, "/var/cache/lighttpd/compress//ROSDiabetes/Explorer/ROSDiabetes53/pmid2ContDir/16814095.html-gzip-38936180-110490-13243227640", O_RDONLY|O_NOCTTY|O_NONBLOCK|O_CLOEXEC) = 8
+read(8, "\37\213\10\0\314\217\357N\0\3\355]ms\3338\222\376<\363+P\236\252\231\244*\226-\311\262\255"..., 8934) = 8934
+close(8)                                = 0
+writev(7, [{iov_base="HTTP/1.1 200 OK\r\nVary: Accept-En"..., iov_len=282}, {iov_base="\37\213\10\0\314\217\357N\0\3\355]ms\3338\222\376<\363+P\236\252\231\244*\226-\311\262\255"..., iov_len=8934}], 2) = 9216
+shutdown(7, SHUT_WR)                    = 0
+recvfrom(7, 0x7ffc18f08b00, 16384, MSG_TRUNC|MSG_DONTWAIT|MSG_NOSIGNAL, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(6, [{EPOLLIN|EPOLLHUP|EPOLLRDHUP, {u32=2771017664, u64=94006720225216}}], 1025, 1000) = 1
+recvfrom(7, "", 16384, MSG_TRUNC|MSG_DONTWAIT|MSG_NOSIGNAL, NULL, NULL) = 0
+recvfrom(7, "", 16384, MSG_TRUNC|MSG_DONTWAIT|MSG_NOSIGNAL, NULL, NULL) = 0
+epoll_ctl(6, EPOLL_CTL_DEL, 7, NULL)    = 0
+close(7)                                = 0
+epoll_wait(6, [], 1025, 1000)           = 0
+epoll_wait(6, [{EPOLLIN, {u32=2770679024, u64=94006719886576}}], 1025, 1000) = 1
+accept4(4, {sa_family=AF_INET, sin_port=htons(59917), sin_addr=inet_addr("140.186.122.175")}, [112->16], SOCK_CLOEXEC|SOCK_NONBLOCK) = 7
+ioctl(7, FIONREAD, [0])                 = 0
+read(7, 0x557fa52a6110, 4095)           = -1 EAGAIN (Resource temporarily unavailable)
+epoll_ctl(6, EPOLL_CTL_ADD, 7, {EPOLLIN|EPOLLERR|EPOLLHUP|EPOLLRDHUP, {u32=2771046448, u64=94006720254000}}) = 0
+accept4(4, 0x7ffc18f0ca60, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(6, [{EPOLLIN, {u32=2771046448, u64=94006720254000}}], 1025, 1000) = 1
+ioctl(7, FIONREAD, [874])               = 0
+read(7, "GET /hurlab/cgi-bin/WebTools/LOD"..., 4095) = 874
+stat("/var/www/hurlab/cgi-bin/WebTools/LODCalc/Model.cgi", {st_mode=S_IFREG|0664, st_size=10991, ...}) = 0
+stat("/usr/bin/perl", {st_mode=S_IFREG|0755, st_size=3474368, ...}) = 0
+pipe2([8, 9], O_CLOEXEC)                = 0
+pipe2([10, 11], O_CLOEXEC)              = 0
+fcntl(9, F_SETFD, FD_CLOEXEC)           = 0
+fcntl(10, F_SETFD, FD_CLOEXEC)          = 0
+getsockname(7, {sa_family=AF_INET, sin_port=htons(80), sin_addr=inet_addr("134.129.167.14")}, [112->16]) = 0
+openat(AT_FDCWD, "/var/www/hurlab/cgi-bin/WebTools/LODCalc", O_RDONLY|O_NOCTTY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 12
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7f067ecb1a10) = 1048985
+close(12)                               = 0
+close(11)                               = 0
+close(8)                                = 0
+close(9)                                = 0
+fcntl(10, F_SETFL, O_RDWR|O_NONBLOCK)   = 0
+epoll_ctl(6, EPOLL_CTL_ADD, 10, {EPOLLIN|EPOLLERR|EPOLLHUP|EPOLLRDHUP, {u32=2771056992, u64=94006720264544}}) = 0
+epoll_ctl(6, EPOLL_CTL_MOD, 7, {EPOLLERR|EPOLLHUP|EPOLLRDHUP, {u32=2771046448, u64=94006720254000}}) = 0
+epoll_wait(6, [{EPOLLIN, {u32=2770679024, u64=94006719886576}}], 1025, 1000) = 1
+accept4(4, {sa_family=AF_INET, sin_port=htons(59918), sin_addr=inet_addr("140.186.122.175")}, [112->16], SOCK_CLOEXEC|SOCK_NONBLOCK) = 8
+ioctl(8, FIONREAD, [0])                 = 0
+read(8, 0x557fa52afae0, 4095)           = -1 EAGAIN (Resource temporarily unavailable)
+epoll_ctl(6, EPOLL_CTL_ADD, 8, {EPOLLIN|EPOLLERR|EPOLLHUP|EPOLLRDHUP, {u32=2771057040, u64=94006720264592}}) = 0
+accept4(4, 0x7ffc18f0ca60, [112], SOCK_CLOEXEC|SOCK_NONBLOCK) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(6, [{EPOLLHUP, {u32=2771056992, u64=94006720264544}}], 1025, 1000) = 1
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=1048985, si_uid=1001, si_status=2, si_utime=2, si_stime=0} ---
+rt_sigreturn({mask=[]})                 = 1
+epoll_ctl(6, EPOLL_CTL_DEL, 10, NULL)   = 0
+kill(1048985, SIGTERM)                  = 0
+close(10)                               = 0
+writev(7, [{iov_base="HTTP/1.1 500 Internal Server Err"..., iov_len=146}, {iov_base="<?xml version=\"1.0\" encoding=\"is"..., iov_len=365}], 2) = 511
+ioctl(7, FIONREAD, [0])                 = 0
+read(7, 0x557fa52a6110, 4095)           = -1 EAGAIN (Resource temporarily unavailable)
+epoll_ctl(6, EPOLL_CTL_MOD, 7, {EPOLLIN|EPOLLERR|EPOLLHUP|EPOLLRDHUP, {u32=2771046448, u64=94006720254000}}) = 0
+wait4(-1, [{WIFEXITED(s) && WEXITSTATUS(s) == 2}], WNOHANG, NULL) = 1048985
+wait4(-1, 0x7ffc18f0cb74, WNOHANG, NULL) = -1 ECHILD (No child processes)
+epoll_wait(6, [], 1025, 1000)           = 0
+epoll_wait(6, [], 1025, 1000)           = 0
+epoll_wait(6, [], 1025, 1000)           = 0
+epoll_wait(6, [], 1025, 1000)           = 0
+epoll_wait(6, [], 1025, 1000)           = 0
+epoll_wait(6, [], 1025, 1000)           = 0
+shutdown(7, SHUT_WR)                    = 0
+recvfrom(7, 0x7ffc18f08ab0, 16384, MSG_TRUNC|MSG_DONTWAIT|MSG_NOSIGNAL, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_wait(6, [], 1025, 1000)           = 0
+epoll_wait(6, [], 1025, 1000)           = 0
+epoll_wait(6, [], 1025, 1000)           = 0
+epoll_wait(6, [], 1025, 1000)           = 0
+epoll_wait(6, [], 1025, 1000)           = 0
+epoll_wait(6, [], 1025, 1000)           = 0
+recvfrom(7, 0x7ffc18f08ab0, 16384, MSG_TRUNC|MSG_DONTWAIT|MSG_NOSIGNAL, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+epoll_ctl(6, EPOLL_CTL_DEL, 7, NULL)    = 0
+close(7)                                = 0
+epoll_wait(6, [], 1025, 1000)           = 0
+epoll_wait(6, [], 1025, 1000)           = 0
+epoll_wait(6,  <detached ...>

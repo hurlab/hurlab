@@ -1,0 +1,296 @@
+################################################################################
+   			      Assignment #3
+   
+                      Junguk Hur (juhur@indiana.edu)
+                      Jason Lee (jhl2@indiana.edu)
+                      James Thurmond (jrthurmo@indiana.edu)
+                         
+################################################################################                         
+
+
+
+
+(A)*Name of Gene	: shaggy (sgg)
+   
+   *Synonym     	: zest white 3 (zw3)
+   		  	  glycogen synthase kinase 3 (gsk-3)
+   
+   *Symbols		: sgg
+   
+   *Alternate   	: zw3, CG2621, Sgg, ZW3, Zw3, zw3, GSK3, ZW-3, Zw-3,
+   			  zw-3, GSK-3, sgg10, sgg39, sgg46, zw[3], CT8875, 
+   			  DMSGG3, Zw3-sh, GSKbeta, l(1)3Ba, l(1)zw3, sgg-zw3, 
+   			  sgg/zw3, zw3/sgg, DMZ3K25Z, GSK3beta, Zw3/GSK3, 
+   			  Zw3[sgg], zw3(sgg), zw3[sgg], GSK-3beta, SGG/GSK3b, 
+   			  EG:155E2.3
+    
+    
+(B) Protein	 	: Protein kinase shaggy    		   
+    		   
+    Product	 	: CG2621-PE (CG2621-PE)
+    		   	  CG2621-PF (CG2621-PF)
+    		   	  sgg-P1 (CG2621-PA)
+    		   	  sgg-P2 (CG2621-PB)
+    		   	  sgg-P2 (CG2621-PC)
+    		   	  sgg-P3 (CG2621-PD)
+    		   
+    Alias        	: Zw3 kinase, zest-white 3, zeste-white3,
+    			  EG:BACR7C10.8, Zeste white-3, Zeste-white 3, 
+    			  zeste white 3, zeste white-3, zeste-white 3, 
+    			  shaggy-zeste white 3
+    		   
+
+(C) Organism 	 	: Drosophila melanogaster
+                          (Fruitfly)
+
+
+
+(D) Domain   : Serine/Threonine protein kinases, catalytic domain. 
+
+   -Phosphotransferases of the serine or threonine-specific kinase subfamily. 
+    The enzymatic activity of these protein kinases is controlled by 
+    phosphorylation of specific residues in the activation segment of 
+    the catalytic domain, sometimes combined with reversible conformational 
+    changes in the C-terminal autoregulatory tail.
+        
+    
+
+(E) Functions : 
+    - Basic molecular function of shaggy is kinase activity which 
+      phosphorylates its target proteins.
+         ATP + a protein = ADP + a phosphoprotein
+
+    - It works at glycogen synthesis pathway via insulin-mediated inhibition.
+
+    - It is required for several developmental events such as synctial 
+      blastoderm formation and embryonic segmentation. 
+
+    - Depending on its presence in the cells, it regulates 
+      * Dorsal-ventral axes in vertebrates
+      * anterior-posterior segment polarity in Drosophila
+      * animal-vegetal patterns in sea urchin
+      * endoderm/mesoderm cell fates in C. elegans
+
+    - Targets various substrates. For example, beta-catenin is phosphorylated
+      by shaggy protein and then it is degraded by ubiqutous proteases. 
+
+    - It is involved in transcriptional regulation and it's know to be 
+      required for Arm phosphorylation. 
+
+    - Wg signals operates by inactivating the Sgg repression of autoactivation
+
+    - More details are provided in a separate report, Renaissance_of_GSK3.txt
+
+    
+
+(F) Curation / Annotation 
+    (1) DOMAIN    607   891   Protein kinase (285 aa)
+        (Serine/Threonine protein kinase, catalytic domain)
+   	      YTDT KVIGNGSFGV VFQAKLCDTG ELVAIKKVLQ DRRFKNRELQ IMRKLEHCNI   
+  	VKLLYFFYSS GEKRDEVFLN LVLEYIPETV YKVARQYAKT KQTIPINFIR LYMYQLFRSL
+  	AYIHSLGICH RDIKPQNLLL DPETAVLKLC DFGSAKQLLH GEPNVSYICS RYYRAPELIF
+  	GAINYTTKID VWSAGCVLAE LLLGQPIFPG DSGVDQLVEV IKVLGTPTRE QIREMNPNYT
+  	EFKFPQIKSH PWQKVFRIRT PTEAINLVSL LLEYTPSARI TPLKACAHPF F
+  	
+    (2) Phenotype : 
+        Loss-of-function (LOF) mutation in the shaggy protein (GSK3) has been
+        reported. The phenotype for this mutation in Drosophila is a failure 
+        to properly differentiate segment polarity during embryogenesis.  
+        Normal segment polarity establishes alternating bands of naked cuticle
+        and bristly denticle belts.  In shaggy mutants, the denticle belts 
+        are eliminated.  
+
+	Protein kinase GSK3 participates in a number of morphogenic and 
+	regulatory metabolic pathways, and well-conserved homologs 
+	have been characterized in Xenopus, mouse, C. elegans, Dictyostelium,
+	and human systems, among others.  Mutations in this gene generally 
+	result in abnormal embryogenesis due to its pivotal role 
+	in mediating cell fate.
+
+	GKS3 is also involved in the Drosophila circadian locomotor activity 
+	cycle, with overexpression leading to a shortening of this period.  
+	Inhibition of GSK3 activity has been shown to retard apoptosis 
+	in neuronal cell cultures.  GSK3¡¯s role as a deactivator of 
+	glycogen synthase has led to investigations of its relationship 
+	to diabetes, as well.  Diabetic and obese strains of mice have been 
+	shown to have elevated levels of GSK3, and cell-permeant GSK3 
+	inhibitors are expected to mimic some of the activity of insulin.
+
+    
+     * Simplified signal pathway. 
+     
+                                          Ventral/denticle
+                                               fates
+                                                 ^
+                               |------|          |
+                               | APC  |          |
+     wg ---> dishevelled  ---| | GSK3 | ---| beta-catenin   ---> Dorsal/naked
+                               | Axin |                             fates
+                               |------|           
+                                                  
+                                               
+(G) Other information
+    *Swiss-Prot Accession : P18431
+    *Flybase Reference ID : FBgn0003371
+    *UniGene Cluster ID   : DM.7795
+    *LocusLink ID         : 31248
+    *GO Terminology : BP (BP), MF(MF)
+     GO:0004674	MF  protein serine/threonine kinase activity
+     GO:0004696	MF  glycogen synthase kinase 3 activity
+     GO:0004702	MF  receptor signaling protein serine/threonine kinase activity
+     GO:0007219	BP  Notch signaling pathway
+     GO:0006355	BP  regulation of transcription, DNA-dependent
+     GO:0006468	BP  protein amino acid phosphorylation
+     GO:0007067	BP  mitosis
+     GO:0007242	BP  intracellular signaling cascade
+     GO:0007350	BP  blastoderm segmentation
+     GO:0007367	BP  segment polarity determination
+     GO:0007476	BP  wing morphogenesis
+     GO:0007507	BP  heart development
+     GO:0007622	BP  rhythmic behavior
+     GO:0007623	BP  circadian rhythm
+     GO:0008104	BP  protein localization
+     GO:0008407	BP  bristle morphogenesis
+     GO:0008589	BP  regulation of smoothened receptor signaling pathway
+     GO:0009993	BP  oogenesis (sensu Insecta)
+     GO:0016055	BP  Wnt receptor signaling pathway
+     GO:0030162	BP  regulation of proteolysis and peptidolysis
+     GO:0030178	BP  negative regulation of Wnt receptor signaling pathway
+     GO:0042306	BP  regulation of protein-nucleus import
+     GO:0045475	BP  locomotor rhythm
+
+    *Map Information : Chromosome : X, Cytogenetic: 3A8-3B2
+      
+              
+    * Structure : Currently only the structure of human GSK3 has been determined
+                  by X-ray diffraction. 
+
+		  Protein Data Bank(PDB)
+		  1H8F  - Glycogen Synthase Kinase 3
+                  http://www.rcsb.org/pdb/cgi/explore.cgi?pdbId=1H8F
+
+    * Protein Structural Family Information (SCOP)
+      Class       : Alpha and Beta (a+b)
+      Fold        : Protein kinase-like (PK-like)
+      Superfamily : Protein kinase catalytic subunit
+      Domain      : Glycogen synthase kinase-3 (GSK3B) 
+
+
+
+(H) Orthologue/Homologue Information
+The following possible orthologue proteins are from literature and 
+NCBI HomoloGene. Protein sequences that could be extracted from Swiss-Prot 
+and TrEMBL were used in alignment. Domains are extracted from the most 
+recent release of Pfam database. 
+
+-------------------------------------------------------------------------------
+Species		GeneName	Description                Swiss-Prot/TrEMBL
+-------------------------------------------------------------------------------
+[a] Confirmed by both literatures and HomoloGene
+-------------------------------------------------------------------------------
+H.sapiens	GSK3B		glycogen synthase kinase 3 beta	     KG3B_HUMAN
+M.musculus	Gsk3b		glycogen synthase kinase 3 beta	     KG3B_MOUSE
+R.norvegicus	Gsk3b		glycogen synthase kinase 3 beta	     KG3B_RAT
+D.melanogaster	sgg		shaggy				     SGG_DROME
+C.elegans	sgg-1		drosophila ShaGGy homolog,	         Q9Y0C2
+S.cerevisiae	RIM11		Saccharomyces cerevisiae RIM11 gene  MDS1_YEAST
+S.pombe		skp1+		Schizosaccharomyces pombe skp1+ gene GSK3_SCHPO
+-------------------------------------------------------------------------------
+[b] Confirmed by HomoloGene
+-------------------------------------------------------------------------------
+A.gambiae	1274587		Anopheles gambiae str.                   Q7QA46
+M.grisea	MG03972.4	Magnaporthe grisea 70-15 MG03972.4 gene 
+N.crassa	NCU04185.1	Neurospora crassa NCU04185.1 gene        Q9HE92
+A.thaliana	At4g00720	Arabidopsis thaliana At4g00720 gene  KSG3_ARATH
+P.falciparum	MAL3P4.8	Plasmodium falciparum 3D7 MAL3P4.8 gene  O77344
+-------------------------------------------------------------------------------
+[c] Confirmed by literatures
+-------------------------------------------------------------------------------
+P.lividus	GSK3b		GSK beta protein   			 O46150
+-------------------------------------------------------------------------------
+
+
+
+(I) Sequences and Alignments    
+
+(1) shaggy protein sequences (Drosophila)
+    This protein sequence is derived from Swiss-Prot and it represents 
+    the longest shaggy protein protein isomer. Unlike other isomers in fruitfly
+    and other species, this longest protein sequence has about 500 additional 
+    amino acids in the N-terminal. This additional portion doesn't have any 
+    known protein domains. 
+
+* Filename : shaggy.fas
+>gi|13124808|sp|P18431|SGG_DROME Protein kinase shaggy (Protein zeste-white 3)
+MATTTTTQRAGAAPALNLLPASNNNINNTLINNNNNNNNTSNSNNNNNNVISQPIKIPLTERFSSQTSTG
+SADSGVIVSSASQQQLQLPPPRSSSGSLSLPQAPPGGKWRQKQQRQQLLLSQDSGIENGVTTRPSKAKDN
+QGAGKASHNATSSKESGAQSNSSSESLGSNCSEAQEQQRVRASSALELSSVDTPVIVGGVVSGGNSILRS
+RIKYKSTNSTGTQGFDVEDRIDEVDICDDDDVDCDDRGSEIEEEEEEEEDDGVNVDDDVEEADNQSDNQS
+GIIINLKSQTEQEEEVDEVDAKPKNRLLPPDQAELTVAAAMARRRDAKSLATDGHIYFPLLKISEDPHID
+SKLINRKDGLQDTMYYLDEFGSPKLREKFARKQKQLLAKQQKQLMKRERRSEEQRKKRNTTVASNLAASG
+AVVDDTKDDYKQQPHCDTSSRSKNNSVPNPPSSHLHQNHNHLVVDVQEDVDDVNVVATSDVDSGVVKMRR
+HSHDNHYDRIPRSNAATITTRPQIDQQSSHHQNTEDVEQGAEPQIDGEADLDADADADSDGSGENVKTAK
+LARTQSCVSWTKVVQKFKNILGRDGSKITTVVATPGQGTDRVQEVSYTDTKVIGNGSFGVVFQAKLCDTG
+ELVAIKKVLQDRRFKNRELQIMRKLEHCNIVKLLYFFYSSGEKRDEVFLNLVLEYIPETVYKVARQYAKT
+KQTIPINFIRLYMYQLFRSLAYIHSLGICHRDIKPQNLLLDPETAVLKLCDFGSAKQLLHGEPNVSYICS
+RYYRAPELIFGAINYTTKIDVWSAGCVLAELLLGQPIFPGDSGVDQLVEVIKVLGTPTREQIREMNPNYT
+EFKFPQIKSHPWQKVFRIRTPTEAINLVSLLLEYTPSARITPLKACAHPFFDELRMEGNHTLPNGRDMPP
+LFNFTEHELSIQPSLVPQLLPKHLQNASGPGGNRPSAGGAASIAASGSTSVSSTGSGASVEGSAQPQSQG
+TAAAAGSGSGGATAGTGGASAGGPGSGNNSSSGGASGAPSAVAAGGANAAVAGGAGGGGGAGAATAAATA
+TGAIGATNAGGANVTDS
+
+
+(2) Selected Members of Protein Kinase Family.
+
+ From the Pfam flatfile (Pfam-A.full.gz), we extracted the 'PF00069' record,
+ which has 10,011 protein members. Instead of just taking out a certain
+ number of proteins, we selected only the proteins that showed 
+ a high sequence similarity to the Fruitfly shaggy protein. 
+ The similarities are based on a BLAST search against UniProt Database.
+ We succesfully selected 435 protein sequences (kinase domains) and 
+ aligned them by using ClustalW. Result files are as follows
+ 
+  KinaseFamily.aln : Alignment of Domain sequences by ClustalW
+  KinaseFamily.fas : Alignment of Domain sequences in the FASTA format
+ 
+(3) Selected Possible Orthologous Proteins
+ Possible orthologous protein sequences have been aligned and saved
+ into both aln and FASTA files. To illustrate differences and 
+ similarities within shaggy protein isoforms, all isoform sequences
+ from Swiss-prot were included. Result files are as follows
+ 
+  OrthologFull.aln : Alignment of FULL protein sequences by ClustalW
+  OrthologFull.fas : Alignment of FULL protein sequences in the FASTA format
+  OrthologDomain.aln : Alignment of domain sequences by ClustalW
+  OrthologDomain.fas : Alignment of domain sequences in the FASTA format
+ 
+  *For better sequence comparison, three of the other isoforms of shaggy
+   proteins were included into full protein sequence alignments. 
+  (P18431-2; P18431-3; P18431-4)
+
+
+(J) Image file 
+    Could not find relevant image file. 
+    
+
+(G) References:
+    Major papers : [1,2]
+    Supplemental papers: [3]
+    Additional WebSources : [4-10]
+
+    [1] Leung Kim and Alan R Kimmel, GSK3, a master switch regulating
+        cell-fate specification and tumorigenesis, Current Opinion in
+        Genetics and Development, 2000, 10:508-514 
+    [2] Philip Cohen and Sheelagh Frame, Nature reviews-molecular cell biology
+	Vol 2. Oct 2001. 769-775
+    [3] Deppie Papadopoulou et al., Functional Studies of Shaggy/Glycogen 
+        Synthase Kinase 3 Phosphorylation Sites in Drosophila melanogaster, 
+        Molecular Cell Biology, 2004, 24: 4909-4919
+    [4] SwissProt : http://us.expasy.org/cgi-bin/niceprot.pl?P18431
+    [5] LocusLink : http://www.ncbi.nlm.nih.gov/LocusLink/LocRpt.cgi?l=31248
+    [6] Pfam : http://www.sanger.ac.uk/cgi-bin/Pfam/getacc?PF00069
+    [7] CCD : http://www.ncbi.nlm.nih.gov/Structure/cdd/cddsrv.cgi?uid=cd00180
+    [8] FlyBase : http://sdb.bio.purdue.edu/fly/segment/shaggy.htm
+    [9] UniGene : http://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?ORG=Dm&CID=7795
+    [10] HomoloGene : http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?
+         cmd=Retrieve&db=homologene&dopt=HomoloGene&list_uids=37564

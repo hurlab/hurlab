@@ -1,0 +1,71 @@
+</table>
+<table class="resultTable" id="summaryTable"border='3'>
+
+<thead>
+<tr class="titleRow">
+<td align='center'>ID</td>
+<td align='center'>Accession</td>
+<td align='center' class="chrCol">Chromosome</td>
+<td align='center' class="chrCol">Start</td>
+<td align='center' class="chrCol">End</td>
+<td align='center' class="chrCol">Strand</td>
+<td align='center'>Genome</td>
+<td align='center'>MIRANDA1</td>
+<td align='center'>TARGETSCAN1</td>
+<td align='center'>MIRANDA2</td>
+<td align='center'>TARGETSCAN2</td>
+<td align='center'>Structure</td>
+</tr>
+</thead>
+<tbody>
+<tr class="even">
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0003193">hsa-mir-506</a></td>
+
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0003193">MI0003193</a></td>
+
+<td align='center' class="chrCol">X<br></td>
+<td align='center' class="num chrCol">146119930<br></td>
+<td align='center' class="num chrCol">146120053<br></td>
+<td align='center' class="chrCol">-<br></td>
+<td align='center'><a href='http://www.ensembl.org/Homo_sapiens/contigview?l=X:146117930-146122053'>Coordinate</a></td>
+<td align='center'><a href='http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-506'>hsa-miR-506</a></td>
+<td align='center'><a href='http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-124a/506+HMRDC&amp;species=Human'>hsa-miR-506</a></td>
+<td align='center'>&nbsp;</td>
+<td align='center'>&nbsp;</td>
+<td align='center'><a href=http://127.0.0.1/cgi-bin/miRNA/miRNAsingle.cgi?ID=hsa-mir-506>hsa-mir-506</a></td>
+</tr>
+<tr class="odd">
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0003194">hsa-mir-507</a></td>
+
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0003194">MI0003194</a></td>
+
+<td align='center' class="chrCol">X<br></td>
+<td align='center' class="num chrCol">146120194<br></td>
+<td align='center' class="num chrCol">146120287<br></td>
+<td align='center' class="chrCol">-<br></td>
+<td align='center'><a href='http://www.ensembl.org/Homo_sapiens/contigview?l=X:146118194-146122287'>Coordinate</a></td>
+<td align='center'><a href='http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-507'>hsa-miR-507</a></td>
+<td align='center'><a href='http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-507+H&amp;species=Human'>hsa-miR-507</a></td>
+<td align='center'>&nbsp;</td>
+<td align='center'>&nbsp;</td>
+<td align='center'><a href=http://127.0.0.1/cgi-bin/miRNA/miRNAsingle.cgi?ID=hsa-mir-507>hsa-mir-507</a></td>
+</tr>
+<tr class="even">
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0003195">hsa-mir-508</a></td>
+
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0003195">MI0003195</a></td>
+
+<td align='center' class="chrCol">X<br></td>
+<td align='center' class="num chrCol">146126123<br></td>
+<td align='center' class="num chrCol">146126237<br></td>
+<td align='center' class="chrCol">-<br></td>
+<td align='center'><a href='http://www.ensembl.org/Homo_sapiens/contigview?l=X:146124123-146128237'>Coordinate</a></td>
+<td align='center'><a href='http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-508'>hsa-miR-508</a></td>
+<td align='center'><a href='http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-508+H&amp;species=Human'>hsa-miR-508</a></td>
+<td align='center'>&nbsp;</td>
+<td align='center'>&nbsp;</td>
+<td align='center'><a href=http://127.0.0.1/cgi-bin/miRNA/miRNAsingle.cgi?ID=hsa-mir-508>hsa-mir-508</a></td>
+</tr>
+</tbody>
+</table>
+</table>

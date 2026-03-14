@@ -1,0 +1,12 @@
+There followings are modifications that were applied to the original data files by Junguk.
+
+1. FlyGrid : Evidence ID (PubMed ID) column was added
+
+2. DIP : Assay type was added
+
+3. NCBI Gene : Essential fields were extracted
+
+4. FlyBase XML : Essential fields were extracted
+
+5. FlyBase CG_FBgn : Information lines were removed
+

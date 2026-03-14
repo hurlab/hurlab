@@ -1,0 +1,77 @@
+***************************************************************************
+
+ 			README for LOD2.pl
+			   
+			                      Oct. 21, 2004
+			                      Written by Junguk HUR
+			                      juhur@indiana.edu
+
+***************************************************************************
+
+			                                          
+1. Introduction
+   A Perl script that, when supplied three sequences s1, s2, and d 
+   in FASTA format, will calculate the LOD for d treating s1 and s2 
+   as models like we did in class. The calculation is based upon 
+   
+     exp( L(Ms1 |d) - L(Ms2 |d))
+     
+   This script uses find_percent.pl for the probability calulation of
+   given model sequences (S1, S2)
+   
+
+2. Running Environment
+   Tested on windows XP and UNIX with Perl 5.8.0
+
+
+3. Features
+   A. Input File
+       a. Each sequence file should be FASTA format and contain
+          only one sequence (either DNA or Protein).
+          If multiple sequences are found in a single file, 
+          only the first sequence will be used for calculation
+          
+   B. Sequence Check
+       a. This script distinguish the input sequence is 
+          DNA, protein, or errorneous sequences. This is done by
+          checking non DNA character and non amino acid character.           
+       b. All the three sequence file (S1, S2, Data) should be 
+          either all protein or all DNA. Otherwise, this script 
+          will show an error message. 
+   
+   C. Result File
+       a. It will contain a table of probabilities and LOD scores.
+
+   D. Laplace Correction
+      To prevent a probability of character to be Zero(o), the laplace
+      correction algorithm has been implemented. Depending on the 
+      sequence type, one count will be added to all the characters
+      including missing ones.       
+
+4. Options
+   * Options are case-insensitive and double dash can be used as well
+   -s1      :     The first sequence model file (Model1)
+   -s2	    :     The second sequence model file (Model2)
+   -d       :     The data sequence file to be calculated
+   -o       :     To specify the output file. 
+                  (This is optional). If not specified, the output file
+                  will be DataFileName.LODResult
+
+                  
+5. Sample Usages
+     >./LOD2.pl -s1 seq1 -s2 seq2 -d seq3
+       - Output file is 'seq3.LODResult'
+
+     >./LOD2.pl -s1 seq1 -s2 seq2 -d seq3 -o /tmp/juhur/LODResult.txt
+       - Output file will be located at '/tmp/juhur/' with the name 
+         as LODResult.txt
+         
+6. Exception(Error)
+   A. when no input sequence file specified
+   B. when the specified input file does not exist in the same directory
+      (or in the specified directory )
+   C. when the specified input file contains errornous sequences
+   D. when the three sequences are different types
+
+      
+   

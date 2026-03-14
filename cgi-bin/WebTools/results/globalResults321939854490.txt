@@ -1,0 +1,18 @@
+#Alignment (Global) Succesfully Completed
+#Combined Scoring Matrix Created Using The Following
+# Matrix1 : PAM250  Weight: 100.0%
+# Matrix2 : PAM250  Weight: 0.0%
+# Matrix3 : PAM250  Weight: 0.0%
+#Seq1 Length: 8 LIMWSLSL
+#Seq2 Length: 8 LISLSLMW
+#GapOpening Penalty: -3
+#GapExtension Penalty: -1
+#Number of Alignments Found: 1
+#Number of Alignments Displayed: 1
+
+>>Rank.1 Global Alignment   Score:22.0  Sum:176.0  Identity:100.0%
+seq1: 1 LI----MWSLSL
+        ||    ||    
+seq2: 1 LISLSLMW----
+
+

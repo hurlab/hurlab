@@ -1,0 +1,101 @@
+[
+  {
+    "name": "SciMiner",
+    "description": "Web-based literature mining tool for gene/protein extraction and functional enrichment analysis.",
+    "version": "System migration",
+    "updated": "2016-04-19",
+    "category": "Web Tool",
+    "status": "active",
+    "url": "http://hurlab.med.und.edu/SciMiner/",
+    "github": null,
+    "language": "Web"
+  },
+  {
+    "name": "PubChemSR",
+    "description": "Stand-alone program for data retrieval from NCBI PubChem databases.",
+    "version": "v3.6.4",
+    "updated": "2019-12-18",
+    "category": "Desktop",
+    "status": "active",
+    "url": "https://sourceforge.net/projects/pubchemsr/",
+    "github": null,
+    "language": "Java"
+  },
+  {
+    "name": "DNMKB2",
+    "description": "Repository and analysis portal for diabetic neuropathy transcriptomics data with 140 DEG sets.",
+    "version": "v2.1",
+    "updated": "2018-10-21",
+    "category": "Web Tool",
+    "status": "active",
+    "url": "http://hurlab.med.und.edu/DNMKB2/",
+    "github": null,
+    "language": "Web"
+  },
+  {
+    "name": "VennDetail",
+    "description": "Bioconductor R package for Venn-Pie plots and subset extraction supporting up to 8 sets.",
+    "version": "v1.10.0",
+    "updated": "2022-02-10",
+    "category": "R Package",
+    "status": "active",
+    "url": "http://hurlab.med.und.edu/VennDetail",
+    "github": "https://github.com/hurlab/VennDetail",
+    "language": "R"
+  },
+  {
+    "name": "richR",
+    "description": "Functional enrichment and visualization R package for comprehensive pathway analysis.",
+    "version": "Latest",
+    "updated": "2025-01-20",
+    "category": "R Package",
+    "status": "active",
+    "url": "http://hurlab.med.und.edu/richR",
+    "github": "https://github.com/hurlab/richR",
+    "language": "R"
+  },
+  {
+    "name": "Tox21 Enricher",
+    "description": "Online enrichment tool for Tox21 chemical screening data with R version available.",
+    "version": "v2.4.0",
+    "updated": "2023-04-25",
+    "category": "Web Tool",
+    "status": "active",
+    "url": "http://hurlab.med.und.edu/Tox21Enricher",
+    "github": "https://github.com/hurlab/tox21enricher",
+    "language": "R/Web"
+  },
+  {
+    "name": "richStudio",
+    "description": "R Shiny application for interactive enrichment and clustering analyses.",
+    "version": "v0.0.5",
+    "updated": "2024-01-07",
+    "category": "R Shiny",
+    "status": "development",
+    "url": "http://hurlab.med.und.edu:3838/richStudio/",
+    "github": "https://github.com/hurlab/richStudio",
+    "language": "R"
+  },
+  {
+    "name": "richCluster",
+    "description": "C++-based hierarchical clustering algorithm wrapped in R for high-performance cluster analysis.",
+    "version": "v1.0.0",
+    "updated": "2025-10-04",
+    "category": "R Package",
+    "status": "active",
+    "url": null,
+    "github": "https://github.com/hurlab/richCluster",
+    "language": "R/C++"
+  },
+  {
+    "name": "scGEN",
+    "description": "Gene-aware embedding network for single-cell RNA-seq clustering using deep learning.",
+    "version": "Ongoing",
+    "updated": "2025-10-05",
+    "category": "Python",
+    "status": "development",
+    "url": null,
+    "github": "https://github.com/hurlab/scGEN",
+    "language": "Python"
+  }
+]

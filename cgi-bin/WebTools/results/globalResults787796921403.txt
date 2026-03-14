@@ -1,0 +1,24 @@
+#Alignment (Global) Succesfully Completed
+#Combined Scoring Matrix Created Using The Following
+# Matrix1 : BLOSUM62  Weight: 100.0%
+# Matrix2 : HYDROPHOBICITY  Weight: 0.0%
+# Matrix3 : SIZE  Weight: 0.0%
+#Seq1 Length: 10 ATGCGATTAA
+#Seq2 Length: 14 TTATCGTTAGCATA
+#GapOpening Penalty: -10
+#GapExtension Penalty: -1
+#Number of Alignments Found: 2
+#Number of Alignments Displayed: 2
+
+>>Rank.1 Global Alignment   Score:7.0  Sum:69.0  Identity:50.0%
+seq1:  1 ATG-CGAT---TAA
+         *|* ||*|   **|
+seq2:  1 TTATCGTTAGCATA
+
+
+>>Rank.2 Global Alignment   Score:7.0  Sum:69.0  Identity:50.0%
+seq1:  1 ATG-CGAT---TAA
+         *|* ||*|   **|
+seq2:  1 TTATCGTTAGCATA
+
+

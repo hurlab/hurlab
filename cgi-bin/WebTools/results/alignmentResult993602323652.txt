@@ -1,0 +1,38 @@
+#Alignment (Global) Succesfully Completed
+#Seq1 Length: 6 GCCCAT
+#Seq2 Length: 6 GCATGA
+#Match Score: 1
+#Mismatch Score: -1
+#GapOpening Penalty: -2
+#GapExtension Penalty: -2
+#Number of Alignments Found: 1
+#Number of Alignments Displayed: 1
+
+>>Rank.1 Global Alignment   Score:-2.0  Sum:1.0  Identity:33.3%
+seq1: 1 GCCCAT
+        ||****
+seq2: 1 GCATGA
+
+
+
+
+
+Table initialization completed
+Aligning sequences
+Track back started
+#Alignment (Local) Succesfully Completed
+#Seq1 Length: 6 GCCCAT
+#Seq2 Length: 6 GCATGA
+#Match Score: 1
+#Mismatch Score: -1
+#GapOpening Penalty: -2
+#GapExtension Penalty: -2
+#Number of Alignments Found: 1
+#Number of Alignments Displayed: 1
+
+>>Rank.1 Local Alignment   Score:3.0  Sum:6.0  Identity:100.0%
+seq1: 4 CAT
+        |||
+seq2: 2 CAT
+
+

@@ -1,0 +1,19 @@
+#Alignment (Local) Succesfully Completed
+#Combined Scoring Matrix Created Using The Following
+# Matrix1 : PAM250  Weight: 100.0%
+# Matrix2 : HYDROPHOBICITY  Weight: 0.0%
+# Matrix3 : SIZE  Weight: 0.0%
+#Seq1 Length: 8 FPCKEECA
+#Seq2 Length: 10 YICSFADCCF
+#GapOpening Penalty: -2
+#GapExtension Penalty: -2
+Sorted by score 0
+#Number of Alignments Found: 1
+#Number of Alignments Displayed: 1
+
+>>Rank.1 Local Alignment   Score:30.0  Sum:124.0  Identity:28.6%
+seq1: 1 FPCK-EEC
+        **|* **|
+seq2: 1 YICSFADC
+
+

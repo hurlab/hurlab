@@ -1,0 +1,151 @@
+</table>
+<table class="resultTable" id="summaryTable"border='3'>
+
+<thead>
+<tr class="titleRow">
+<td align='center'>ID</td>
+<td align='center'>Accession</td>
+<td align='center' class="chrCol">Chromosome</td>
+<td align='center' class="chrCol">Start</td>
+<td align='center' class="chrCol">End</td>
+<td align='center' class="chrCol">Strand</td>
+<td align='center'>Genome</td>
+<td align='center'>MIRANDA1</td>
+<td align='center'>TARGETSCAN1</td>
+<td align='center'>MIRANDA2</td>
+<td align='center'>TARGETSCAN2</td>
+<td align='center'>Structure</td>
+</tr>
+</thead>
+<tbody>
+<tr class="even">
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0002072">dre-mir-375-1</a></td>
+
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0002072">MI0002072</a></td>
+
+<td align='center' class="chrCol">6<br></td>
+<td align='center' class="num chrCol">13423599<br></td>
+<td align='center' class="num chrCol">13423678<br></td>
+<td align='center' class="chrCol">-<br></td>
+<td align='center'><a href='http://www.ensembl.org/Danio_rerio/contigview?l=6:13421599-13425678'>Coordinate</a></td>
+<td align='center'><a href='http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-375'>dre-miR-375</a></td>
+<td align='center'>&nbsp;</td>
+<td align='center'>&nbsp;</td>
+<td align='center'>&nbsp;</td>
+<td align='center'><a href=http://127.0.0.1/cgi-bin/miRNA/miRNAsingle.cgi?ID=dre-mir-375-1>dre-mir-375-1</a></td>
+</tr>
+<tr class="odd">
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0002073">dre-mir-375-2</a></td>
+
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0002073">MI0002073</a></td>
+
+<td align='center' class="chrCol">9<br></td>
+<td align='center' class="num chrCol">10232524<br></td>
+<td align='center' class="num chrCol">10232606<br></td>
+<td align='center' class="chrCol">-<br></td>
+<td align='center'><a href='http://www.ensembl.org/Danio_rerio/contigview?l=9:10230524-10234606'>Coordinate</a></td>
+<td align='center'><a href='http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-375'>dre-miR-375</a></td>
+<td align='center'>&nbsp;</td>
+<td align='center'>&nbsp;</td>
+<td align='center'>&nbsp;</td>
+<td align='center'><a href=http://127.0.0.1/cgi-bin/miRNA/miRNAsingle.cgi?ID=dre-mir-375-2>dre-mir-375-2</a></td>
+</tr>
+<tr class="even">
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0003419">fru-mir-375</a></td>
+
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0003419">MI0003419</a></td>
+
+<td align='center' class="chrCol">scaffold_3113<br>scaffold_83<br></td>
+<td align='center' class="num chrCol">9349<br>92347<br></td>
+<td align='center' class="num chrCol">9425<br>92423<br></td>
+<td align='center' class="chrCol">+<br>+<br></td>
+<td align='center'><a href='http://www.ensembl.org/Fugu_rubripes/contigview?l=scaffold_83:90347-94423'>Coordinate</a></td>
+<td align='center'><a href='http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=fru-miR-375'>fru-miR-375</a></td>
+<td align='center'>&nbsp;</td>
+<td align='center'>&nbsp;</td>
+<td align='center'>&nbsp;</td>
+<td align='center'><a href=http://127.0.0.1/cgi-bin/miRNA/miRNAsingle.cgi?ID=fru-mir-375>fru-mir-375</a></td>
+</tr>
+<tr class="odd">
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0003705">gga-mir-375</a></td>
+
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0003705">MI0003705</a></td>
+
+<td align='center' class="chrCol">7<br></td>
+<td align='center' class="num chrCol">23117692<br></td>
+<td align='center' class="num chrCol">23117756<br></td>
+<td align='center' class="chrCol">+<br></td>
+<td align='center'><a href='http://www.ensembl.org/Gallus_gallus/contigview?l=7:23115692-23119756'>Coordinate</a></td>
+<td align='center'><a href='http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-375'>gga-miR-375</a></td>
+<td align='center'><a href='http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-375+HMRDC&amp;species=Chicken'>gga-miR-375</a></td>
+<td align='center'>&nbsp;</td>
+<td align='center'>&nbsp;</td>
+<td align='center'><a href=http://127.0.0.1/cgi-bin/miRNA/miRNAsingle.cgi?ID=gga-mir-375>gga-mir-375</a></td>
+</tr>
+<tr class="even">
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0000783">hsa-mir-375</a></td>
+
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0000783">MI0000783</a></td>
+
+<td align='center' class="chrCol">2<br></td>
+<td align='center' class="num chrCol">219574611<br></td>
+<td align='center' class="num chrCol">219574674<br></td>
+<td align='center' class="chrCol">-<br></td>
+<td align='center'><a href='http://www.ensembl.org/Homo_sapiens/contigview?l=2:219572611-219576674'>Coordinate</a></td>
+<td align='center'><a href='http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-375'>hsa-miR-375</a></td>
+<td align='center'><a href='http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-375+HMRDC&amp;species=Human'>hsa-miR-375</a></td>
+<td align='center'>&nbsp;</td>
+<td align='center'>&nbsp;</td>
+<td align='center'><a href=http://127.0.0.1/cgi-bin/miRNA/miRNAsingle.cgi?ID=hsa-mir-375>hsa-mir-375</a></td>
+</tr>
+<tr class="odd">
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0005327">mdo-mir-375</a></td>
+
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0005327">MI0005327</a></td>
+
+<td align='center' class="chrCol">7<br></td>
+<td align='center' class="num chrCol">175492651<br></td>
+<td align='center' class="num chrCol">175492713<br></td>
+<td align='center' class="chrCol">+<br></td>
+<td align='center'><a href='http://www.ensembl.org/Monodelphis_domestica/contigview?l=7:175490651-175494713'>Coordinate</a></td>
+<td align='center'><a href='http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mdo-miR-375'>mdo-miR-375</a></td>
+<td align='center'>&nbsp;</td>
+<td align='center'>&nbsp;</td>
+<td align='center'>&nbsp;</td>
+<td align='center'><a href=http://127.0.0.1/cgi-bin/miRNA/miRNAsingle.cgi?ID=mdo-mir-375>mdo-mir-375</a></td>
+</tr>
+<tr class="even">
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0000792">mmu-mir-375</a></td>
+
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0000792">MI0000792</a></td>
+
+<td align='center' class="chrCol">1<br></td>
+<td align='center' class="num chrCol">74833865<br></td>
+<td align='center' class="num chrCol">74833928<br></td>
+<td align='center' class="chrCol">-<br></td>
+<td align='center'><a href='http://www.ensembl.org/Mus_musculus/contigview?l=1:74831865-74835928'>Coordinate</a></td>
+<td align='center'><a href='http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-375'>mmu-miR-375</a></td>
+<td align='center'><a href='http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-375+HMRDC&amp;species=Mouse'>mmu-miR-375</a></td>
+<td align='center'>&nbsp;</td>
+<td align='center'>&nbsp;</td>
+<td align='center'><a href=http://127.0.0.1/cgi-bin/miRNA/miRNAsingle.cgi?ID=mmu-mir-375>mmu-mir-375</a></td>
+</tr>
+<tr class="odd">
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0003420">tni-mir-375</a></td>
+
+<td align='center'><a href="http://microrna.sanger.ac.uk/cgi-bin/sequences/mirna_entry.pl?acc=MI0003420">MI0003420</a></td>
+
+<td align='center' class="chrCol">2<br></td>
+<td align='center' class="num chrCol">15358681<br></td>
+<td align='center' class="num chrCol">15358757<br></td>
+<td align='center' class="chrCol">-<br></td>
+<td align='center'><a href='http://www.ensembl.org/Tetraodon_nigroviridis/contigview?l=2:15356681-15360757'>Coordinate</a></td>
+<td align='center'><a href='http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=tni-miR-375'>tni-miR-375</a></td>
+<td align='center'>&nbsp;</td>
+<td align='center'>&nbsp;</td>
+<td align='center'>&nbsp;</td>
+<td align='center'><a href=http://127.0.0.1/cgi-bin/miRNA/miRNAsingle.cgi?ID=tni-mir-375>tni-mir-375</a></td>
+</tr>
+</tbody>
+</table>
+</table>

@@ -1,0 +1,69 @@
+***************************************************************************
+
+ 			README for find_percent.pl
+			   
+			                      Oct. 20, 2004
+			                      Written by Junguk HUR
+			                      juhur@indiana.edu
+
+***************************************************************************
+
+			                                          
+1. Introduction
+   A Perl script that takes a sequence s1 (may be multiple sequences)
+   in FASTA format with and outputs a file with an extension of 'pcount'
+   that produces percentages of occurrences of the residues of the sequence
+   in the following form:
+   
+   >sequence identifier
+   A: 0.245
+   T: 0.245
+   G: 0.255
+   C: 0.255
+   
+
+2. Running Environment
+   Tested on windows XP and UNIX with Perl 5.8.0
+
+
+3. Features
+   A. Input File
+       a. File name must be provided as an commandline argument
+       b. File should be in a FASTA format with proper preamble 
+          (description or ID) lines.
+       c. More than one sequences are allowed in a file, 
+          and each sequence will produce its own 
+          probabilities of its characters separately.
+   B. Sequence Check
+       a. This script distinguish the input sequence is 
+          DNA, protein, or errorneous sequences. This is done by
+          checking non DNA character and non amino acid character.           
+
+4. Options
+   * Options are case-insensitive and double dash can be used as well
+   -d      :      Silent option. If this is used, this script will not
+                  print out any message on the screen. But a result file
+                  is still going to be produced.
+                  (This may be useful when this script is used by cgi program)
+   * Note : File name should be provided as a command line argument
+                  
+5. Sample Usages
+     >./find_percent.pl seq1
+       - Output file is 'seq1.pcount'
+
+     >./find_percent.pl /tmp/juhur/seq1
+       - input file is located at '/tmp/juhur/' directory
+       - Output file is still 'seq1.pcount' but will be created
+         into '/tmp/juhur' directory
+       
+     >./find_percent.pl seq1 -d
+       - Output file is 'seq1.pcount'
+       - No screen display
+
+6. Exception(Error)
+   A. when no input sequence file specified
+   B. when the specified input file does not exist in the same directory
+      ( or in the specified directory )
+   C. when the specified input file contains errornous sequences
+      
+   

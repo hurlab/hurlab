@@ -1,0 +1,16 @@
+#Alignment (Fitting) Succesfully Completed
+#Seq1 Length: 14 ATGCAGCATGCAGC
+#Seq2 Length: 26 ATGCAGTCAGCTTGTAGTCATGCAGC
+#Match Score: 1
+#Mismatch Score: -1
+#GapOpening Penalty: -2
+#GapExtension Penalty: -2
+#Number of Alignments Found: 1
+#Number of Alignments Displayed: 1
+
+>>Rank.1 Local Alignment   Score:8.0  Sum:39.0  Identity:85.7%
+seq1:  1 ATGCAG-CATGCAGC
+         *||*|| ||||||||
+seq2: 12 TTGTAGTCATGCAGC
+
+

@@ -1,0 +1,46 @@
+#Alignment (Global) Succesfully Completed
+#Combined Scoring Matrix Created Using The Following
+# Matrix1 : BLOSUM45  Weight: 100.0%
+# Matrix2 : HYDROPHOBICITY  Weight: 0.0%
+# Matrix3 : SIZE  Weight: 0.0%
+#Seq1 Length: 10 HEAGAWGHEE
+#Seq2 Length: 7 PAWHEAE
+#GapOpening Penalty: -8
+#GapExtension Penalty: -8
+#Number of Alignments Found: 2
+#Number of Alignments Displayed: 2
+
+>>Rank.1 Global Alignment   Score:2.0  Sum:-91.0  Identity:83.3%
+seq1:  1 HEAGAWGHE-E
+          *  || || |
+seq2:  1 -P--AW-HEAE
+
+
+>>Rank.2 Global Alignment   Score:2.0  Sum:-91.0  Identity:83.3%
+seq1:  1 HEAGAWGHE-E
+          *  || || |
+seq2:  1 -P--AW-HEAE
+
+
+
+
+
+#Alignment (Local) Succesfully Completed
+#Combined Scoring Matrix Created Using The Following
+# Matrix1 : BLOSUM45  Weight: 100.0%
+# Matrix2 : HYDROPHOBICITY  Weight: 0.0%
+# Matrix3 : SIZE  Weight: 0.0%
+#Seq1 Length: 10 HEAGAWGHEE
+#Seq2 Length: 7 PAWHEAE
+#GapOpening Penalty: -8
+#GapExtension Penalty: -8
+Sorted by score 0
+#Number of Alignments Found: 1
+#Number of Alignments Displayed: 1
+
+>>Rank.1 Local Alignment   Score:28.0  Sum:87.0  Identity:100.0%
+seq1: 5 AWGHE
+        || ||
+seq2: 2 AW-HE
+
+

@@ -1,0 +1,18 @@
+#Alignment (Global) Succesfully Completed
+#Combined Scoring Matrix Created Using The Following
+# Matrix1 : BLOSUM62  Weight: 100.0%
+# Matrix2 : HYDROPHOBICITY  Weight: 0.0%
+# Matrix3 : SIZE  Weight: 0.0%
+#Seq1 Length: 7 EATGHAG
+#Seq2 Length: 8 EEAWHEAE
+#GapOpening Penalty: -5
+#GapExtension Penalty: -5
+#Number of Alignments Found: 1
+#Number of Alignments Displayed: 1
+
+>>Rank.1 Global Alignment   Score:7.0  Sum:46.0  Identity:42.9%
+seq1: 1 EATGH-AG
+        |***| |*
+seq2: 1 EEAWHEAE
+
+

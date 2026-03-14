@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hur Lab Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        .drop-zone { transition: all 0.2s ease; }
+        .drop-zone.drag-over { border-color: #0d9488; background-color: #f0fdfa; }
+        .log-output { max-height: 400px; overflow-y: auto; }
+        .spinner { animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-teal-700 to-indigo-800 shadow-lg">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <h1 class="text-xl font-bold text-white tracking-tight">Hur Lab Admin</h1>
+            <div class="flex items-center gap-4">
+                <span id="currentUser" class="text-teal-100 text-sm">{{USERNAME}}</span>
+                <button onclick="logout()" class="bg-white/10 hover:bg-white/20 text-white text-sm px-4 py-1.5 rounded-md transition">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <div class="max-w-6xl mx-auto px-6 pt-6">
+        <div class="border-b border-gray-200">
+            <nav class="flex gap-0" aria-label="Tabs">
+                <button onclick="switchTab('dashboard')" id="tab-dashboard"
+                    class="tab-btn px-6 py-3 text-sm font-medium border-b-2 border-teal-600 text-teal-700 bg-white rounded-t-lg">
+                    Dashboard
+                </button>
+                <button onclick="switchTab('team')" id="tab-team"
+                    class="tab-btn px-6 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 bg-white rounded-t-lg">
+                    Team Management
+                </button>
+            </nav>
+        </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto px-6 py-8 space-y-8">
+
+    <!-- Dashboard Tab -->
+    <div id="panel-dashboard" class="tab-panel space-y-8">
+
+        <!-- Dashboard Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Current CV Card -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Current CV</h3>
+                <p id="cvFilename" class="text-lg font-semibold text-gray-800 truncate">--</p>
+                <div class="mt-2 space-y-1 text-sm text-gray-500">
+                    <p>Size: <span id="cvSize">--</span></p>
+                    <p>Modified: <span id="cvModified">--</span></p>
+                </div>
+            </div>
+
+            <!-- Publications Card -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Publications</h3>
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-600">Peer-reviewed</span>
+                        <span id="pubPeerReviewed" class="text-lg font-semibold text-teal-700">--</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-600">Under review</span>
+                        <span id="pubUnderReview" class="text-lg font-semibold text-indigo-700">--</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-600">In preparation</span>
+                        <span id="pubInPrep" class="text-lg font-semibold text-gray-600">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Last Updated Card -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Last Updated</h3>
+                <p id="lastUpdated" class="text-2xl font-semibold text-gray-800">--</p>
+                <p class="mt-2 text-sm text-gray-500">Website data last refreshed</p>
+            </div>
+        </div>
+
+        <!-- Upload Section -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <h2 class="text-lg font-semibold text-gray-800 mb-4">Upload New CV</h2>
+            <div id="dropZone" class="drop-zone border-2 border-dashed border-gray-300 rounded-lg p-10 text-center cursor-pointer hover:border-teal-500">
+                <svg class="mx-auto h-12 w-12 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                          d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                </svg>
+                <p class="text-gray-600 mb-1">Drag and drop a PDF here, or click to browse</p>
+                <p class="text-sm text-gray-400">PDF files only</p>
+                <input type="file" id="fileInput" accept=".pdf,application/pdf" class="hidden">
+            </div>
+            <!-- Progress -->
+            <div id="uploadProgress" class="hidden mt-4">
+                <div class="flex items-center gap-3">
+                    <div class="flex-1 bg-gray-200 rounded-full h-2">
+                        <div id="progressBar" class="bg-teal-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                    </div>
+                    <span id="progressText" class="text-sm text-gray-500 w-12 text-right">0%</span>
+                </div>
+            </div>
+            <!-- Upload Result -->
+            <div id="uploadResult" class="hidden mt-4 p-4 rounded-lg"></div>
+        </div>
+
+        <!-- Parse Section -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <div class="flex items-center justify-between mb-2">
+                <h2 class="text-lg font-semibold text-gray-800">Update Website</h2>
+                <button id="parseBtn" onclick="runParse()" class="bg-teal-600 hover:bg-teal-700 text-white font-medium px-6 py-2.5 rounded-lg transition flex items-center gap-2">
+                    <span id="parseBtnText">Update Website</span>
+                    <svg id="parseSpinner" class="hidden spinner h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                    </svg>
+                </button>
+            </div>
+            <p class="text-sm text-gray-500 mb-4">This will parse the CV PDF and update all website data files.</p>
+            <!-- Parse Result -->
+            <div id="parseResult" class="hidden mt-2 p-3 rounded-lg text-sm"></div>
+        </div>
+
+        <!-- Status Log -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <h2 class="text-lg font-semibold text-gray-800 mb-4">Parser Output</h2>
+            <div class="log-output bg-gray-900 rounded-lg p-4">
+                <pre id="logOutput" class="text-sm text-gray-300 whitespace-pre-wrap font-mono">No output yet.</pre>
+            </div>
+        </div>
+
+    </div><!-- end panel-dashboard -->
+
+    <!-- Team Management Tab -->
+    <div id="panel-team" class="tab-panel hidden space-y-8">
+
+        <!-- PI Section -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-semibold text-gray-800">Principal Investigator</h2>
+                <button onclick="togglePiEdit()" id="piEditBtn" class="bg-teal-600 hover:bg-teal-700 text-white text-sm px-4 py-2 rounded-lg transition">Edit PI</button>
+            </div>
+            <div id="piDisplay">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div><span class="font-medium text-gray-500">Name:</span> <span id="piName" class="text-gray-800">--</span></div>
+                    <div><span class="font-medium text-gray-500">Title:</span> <span id="piTitle" class="text-gray-800">--</span></div>
+                    <div><span class="font-medium text-gray-500">Email:</span> <span id="piEmail" class="text-gray-800">--</span></div>
+                    <div><span class="font-medium text-gray-500">Email 2:</span> <span id="piEmail2" class="text-gray-800">--</span></div>
+                    <div><span class="font-medium text-gray-500">Phone:</span> <span id="piPhone" class="text-gray-800">--</span></div>
+                    <div><span class="font-medium text-gray-500">GitHub:</span> <span id="piGithub" class="text-gray-800">--</span></div>
+                    <div class="md:col-span-2"><span class="font-medium text-gray-500">Interests:</span> <span id="piInterests" class="text-gray-800">--</span></div>
+                </div>
+            </div>
+            <div id="piEditForm" class="hidden mt-4 space-y-3">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-1">Email</label>
+                        <input type="text" id="piEditEmail" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-1">Email 2</label>
+                        <input type="text" id="piEditEmail2" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-1">Phone</label>
+                        <input type="text" id="piEditPhone" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-1">GitHub</label>
+                        <input type="text" id="piEditGithub" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-600 mb-1">Interests (comma-separated)</label>
+                        <input type="text" id="piEditInterests" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="savePi()" class="bg-teal-600 hover:bg-teal-700 text-white text-sm px-4 py-2 rounded-lg transition">Save</button>
+                    <button onclick="togglePiEdit()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 text-sm px-4 py-2 rounded-lg transition">Cancel</button>
+                </div>
+            </div>
+            <div id="piResult" class="hidden mt-3 p-3 rounded-lg text-sm"></div>
+        </div>
+
+        <!-- Current Members -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-semibold text-gray-800">Current Members</h2>
+                <button onclick="showMemberForm('current')" class="bg-teal-600 hover:bg-teal-700 text-white text-sm px-4 py-2 rounded-lg transition">Add Member</button>
+            </div>
+            <div id="addCurrentForm" class="hidden mb-4 p-4 bg-gray-50 rounded-lg"></div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">#</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Name</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Role</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Category</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Description</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="currentMembersBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Alumni -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-semibold text-gray-800">Alumni</h2>
+                <button onclick="showMemberForm('alumni')" class="bg-teal-600 hover:bg-teal-700 text-white text-sm px-4 py-2 rounded-lg transition">Add Member</button>
+            </div>
+            <div id="addAlumniForm" class="hidden mb-4 p-4 bg-gray-50 rounded-lg"></div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">#</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Name</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Role</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Category</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Description</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="alumniMembersBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Team operation result -->
+        <div id="teamOpResult" class="hidden p-4 rounded-lg text-sm"></div>
+
+    </div><!-- end panel-team -->
+
+    </main>
+
+    <script>
+        // --- Status ---
+        async function fetchStatus() {
+            try {
+                const res = await fetch('/status');
+                if (!res.ok) throw new Error('Failed to fetch status');
+                const data = await res.json();
+
+                document.getElementById('currentUser').textContent = data.user || '';
+
+                // CV info
+                if (data.cv) {
+                    document.getElementById('cvFilename').textContent = data.cv.filename || '--';
+                    document.getElementById('cvSize').textContent = data.cv.size || '--';
+                    document.getElementById('cvModified').textContent = data.cv.modified || '--';
+                }
+
+                // Publications
+                if (data.publications) {
+                    document.getElementById('pubPeerReviewed').textContent = data.publications.peer_reviewed ?? '--';
+                    document.getElementById('pubUnderReview').textContent = data.publications.under_review ?? '--';
+                    document.getElementById('pubInPrep').textContent = data.publications.in_preparation ?? '--';
+                }
+
+                // Last updated
+                if (data.last_updated) {
+                    document.getElementById('lastUpdated').textContent = data.last_updated;
+                }
+
+                // Last parse output
+                if (data.last_parse_output) {
+                    document.getElementById('logOutput').textContent = data.last_parse_output;
+                }
+            } catch (e) {
+                console.error('Status fetch error:', e);
+            }
+        }
+
+        // --- Upload ---
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('drag-over');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) uploadFile(files[0]);
+        });
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) uploadFile(fileInput.files[0]);
+        });
+
+        async function uploadFile(file) {
+            if (file.type !== 'application/pdf' && !file.name.endsWith('.pdf')) {
+                showUploadResult('Please select a PDF file.', false);
+                return;
+            }
+
+            const progressDiv = document.getElementById('uploadProgress');
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            progressDiv.classList.remove('hidden');
+            progressBar.style.width = '0%';
+            progressText.textContent = '0%';
+            hideUploadResult();
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/upload');
+
+            xhr.upload.addEventListener('progress', (e) => {
+                if (e.lengthComputable) {
+                    const pct = Math.round((e.loaded / e.total) * 100);
+                    progressBar.style.width = pct + '%';
+                    progressText.textContent = pct + '%';
+                }
+            });
+
+            xhr.addEventListener('load', () => {
+                if (xhr.status === 200) {
+                    let msg = 'Upload successful';
+                    try {
+                        const data = JSON.parse(xhr.responseText);
+                        msg = 'Uploaded: ' + (data.filename || file.name);
+                    } catch (_) {}
+                    showUploadResult(msg, true);
+                    fetchStatus();
+                } else {
+                    let msg = 'Upload failed';
+                    try {
+                        const data = JSON.parse(xhr.responseText);
+                        msg = data.error || msg;
+                    } catch (_) {}
+                    showUploadResult(msg, false);
+                }
+            });
+
+            xhr.addEventListener('error', () => {
+                showUploadResult('Upload failed: network error.', false);
+            });
+
+            xhr.send(formData);
+        }
+
+        function showUploadResult(msg, success) {
+            const el = document.getElementById('uploadResult');
+            el.classList.remove('hidden', 'bg-green-50', 'text-green-800', 'bg-red-50', 'text-red-800');
+            if (success) {
+                el.classList.add('bg-green-50', 'text-green-800');
+            } else {
+                el.classList.add('bg-red-50', 'text-red-800');
+            }
+            el.textContent = msg;
+        }
+
+        function hideUploadResult() {
+            document.getElementById('uploadResult').classList.add('hidden');
+        }
+
+        // --- Parse ---
+        async function runParse() {
+            const btn = document.getElementById('parseBtn');
+            const btnText = document.getElementById('parseBtnText');
+            const spinner = document.getElementById('parseSpinner');
+            const resultDiv = document.getElementById('parseResult');
+            const logOutput = document.getElementById('logOutput');
+
+            btn.disabled = true;
+            btn.classList.add('opacity-75', 'cursor-not-allowed');
+            btnText.textContent = 'Parsing...';
+            spinner.classList.remove('hidden');
+            resultDiv.classList.add('hidden');
+
+            try {
+                const res = await fetch('/parse', { method: 'POST' });
+                const data = await res.json();
+
+                resultDiv.classList.remove('hidden', 'bg-green-50', 'text-green-800', 'bg-red-50', 'text-red-800');
+
+                if (res.ok && data.success) {
+                    resultDiv.classList.add('bg-green-50', 'text-green-800');
+                    resultDiv.textContent = 'Website data updated successfully.';
+                } else {
+                    resultDiv.classList.add('bg-red-50', 'text-red-800');
+                    resultDiv.textContent = data.error || 'Parse failed.';
+                }
+
+                if (data.output) {
+                    logOutput.textContent = data.output;
+                }
+
+                fetchStatus();
+            } catch (e) {
+                resultDiv.classList.remove('hidden', 'bg-green-50', 'text-green-800', 'bg-red-50', 'text-red-800');
+                resultDiv.classList.add('bg-red-50', 'text-red-800');
+                resultDiv.textContent = 'Error: ' + e.message;
+            } finally {
+                btn.disabled = false;
+                btn.classList.remove('opacity-75', 'cursor-not-allowed');
+                btnText.textContent = 'Update Website';
+                spinner.classList.add('hidden');
+            }
+        }
+
+        // --- Logout ---
+        async function logout() {
+            await fetch('/logout', { method: 'POST' });
+            window.location.href = '/login';
+        }
+
+        // --- Tabs ---
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('border-teal-600', 'text-teal-700');
+                b.classList.add('border-transparent', 'text-gray-500');
+            });
+            document.getElementById('panel-' + tabName).classList.remove('hidden');
+            const btn = document.getElementById('tab-' + tabName);
+            btn.classList.add('border-teal-600', 'text-teal-700');
+            btn.classList.remove('border-transparent', 'text-gray-500');
+
+            if (tabName === 'team') fetchTeamData();
+        }
+
+        // --- Team Management ---
+        let teamData = null;
+        let editingRow = null; // { section, index }
+
+        async function fetchTeamData() {
+            try {
+                const res = await fetch('/api/team');
+                if (!res.ok) throw new Error('Failed to fetch team data');
+                teamData = await res.json();
+                renderPi();
+                renderMembers('current');
+                renderMembers('alumni');
+            } catch (e) {
+                console.error('Team fetch error:', e);
+            }
+        }
+
+        function renderPi() {
+            if (!teamData || !teamData.pi) return;
+            const pi = teamData.pi;
+            document.getElementById('piName').textContent = pi.name || '--';
+            document.getElementById('piTitle').textContent = pi.title || '--';
+            document.getElementById('piEmail').textContent = pi.email || '--';
+            document.getElementById('piEmail2').textContent = pi.email2 || '--';
+            document.getElementById('piPhone').textContent = pi.phone || '--';
+            document.getElementById('piGithub').textContent = pi.github || '--';
+            document.getElementById('piInterests').textContent = (pi.interests || []).join(', ') || '--';
+        }
+
+        function togglePiEdit() {
+            const form = document.getElementById('piEditForm');
+            const display = document.getElementById('piDisplay');
+            if (form.classList.contains('hidden')) {
+                const pi = teamData.pi || {};
+                document.getElementById('piEditEmail').value = pi.email || '';
+                document.getElementById('piEditEmail2').value = pi.email2 || '';
+                document.getElementById('piEditPhone').value = pi.phone || '';
+                document.getElementById('piEditGithub').value = pi.github || '';
+                document.getElementById('piEditInterests').value = (pi.interests || []).join(', ');
+                form.classList.remove('hidden');
+            } else {
+                form.classList.add('hidden');
+            }
+            document.getElementById('piResult').classList.add('hidden');
+        }
+
+        async function savePi() {
+            const interests = document.getElementById('piEditInterests').value
+                .split(',').map(s => s.trim()).filter(s => s.length > 0);
+            const body = {
+                email: document.getElementById('piEditEmail').value,
+                email2: document.getElementById('piEditEmail2').value,
+                phone: document.getElementById('piEditPhone').value,
+                github: document.getElementById('piEditGithub').value,
+                interests: interests
+            };
+            try {
+                const res = await fetch('/api/team/pi', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    teamData.pi = data;
+                    renderPi();
+                    document.getElementById('piEditForm').classList.add('hidden');
+                    showTeamMsg('piResult', 'PI info updated successfully.', true);
+                } else {
+                    showTeamMsg('piResult', data.error || 'Failed to update PI.', false);
+                }
+            } catch (e) {
+                showTeamMsg('piResult', 'Error: ' + e.message, false);
+            }
+        }
+
+        function showTeamMsg(elId, msg, success) {
+            const el = document.getElementById(elId);
+            el.classList.remove('hidden', 'bg-green-50', 'text-green-800', 'bg-red-50', 'text-red-800');
+            el.classList.add(success ? 'bg-green-50' : 'bg-red-50', success ? 'text-green-800' : 'text-red-800');
+            el.textContent = msg;
+        }
+
+        function renderMembers(section) {
+            const tbody = document.getElementById(section === 'current' ? 'currentMembersBody' : 'alumniMembersBody');
+            const members = teamData[section] || [];
+            if (members.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="py-4 text-center text-gray-400">No members</td></tr>';
+                return;
+            }
+            const moveLabel = section === 'current' ? 'Move to Alumni' : 'Move to Current';
+            const moveTo = section === 'current' ? 'alumni' : 'current';
+            let html = '';
+            members.forEach((m, i) => {
+                if (editingRow && editingRow.section === section && editingRow.index === i) {
+                    html += buildEditRow(section, i, m);
+                } else {
+                    html += `<tr class="border-b border-gray-100 hover:bg-gray-50">
+                        <td class="py-3 px-2 text-gray-400">${i + 1}</td>
+                        <td class="py-3 px-2 font-medium text-gray-800">${esc(m.name || '')}</td>
+                        <td class="py-3 px-2 text-gray-600">${esc(m.role || '')}</td>
+                        <td class="py-3 px-2"><span class="inline-block px-2 py-0.5 rounded-full text-xs font-medium ${categoryColor(m.category)}">${esc(m.category || '--')}</span></td>
+                        <td class="py-3 px-2 text-gray-600 max-w-xs truncate">${esc(m.description || '')}</td>
+                        <td class="py-3 px-2 whitespace-nowrap">
+                            <button onclick="startEdit('${section}', ${i})" class="text-teal-600 hover:text-teal-800 text-xs font-medium mr-2">Edit</button>
+                            <button onclick="deleteMember('${section}', ${i})" class="text-red-600 hover:text-red-800 text-xs font-medium mr-2">Delete</button>
+                            <button onclick="moveMember('${section}', '${moveTo}', ${i})" class="text-indigo-600 hover:text-indigo-800 text-xs font-medium">${moveLabel}</button>
+                        </td>
+                    </tr>`;
+                }
+            });
+            tbody.innerHTML = html;
+        }
+
+        function categoryColor(cat) {
+            switch (cat) {
+                case 'staff': return 'bg-blue-100 text-blue-700';
+                case 'student': return 'bg-green-100 text-green-700';
+                case 'visiting': return 'bg-yellow-100 text-yellow-700';
+                default: return 'bg-gray-100 text-gray-700';
+            }
+        }
+
+        function esc(s) {
+            const d = document.createElement('div');
+            d.appendChild(document.createTextNode(s));
+            return d.innerHTML;
+        }
+
+        function buildEditRow(section, index, member) {
+            return `<tr class="border-b border-gray-100 bg-teal-50">
+                <td class="py-3 px-2 text-gray-400">${index + 1}</td>
+                <td class="py-3 px-2"><input id="editName" value="${esc(member.name || '')}" class="w-full border rounded px-2 py-1 text-sm"></td>
+                <td class="py-3 px-2"><input id="editRole" value="${esc(member.role || '')}" class="w-full border rounded px-2 py-1 text-sm"></td>
+                <td class="py-3 px-2">
+                    <select id="editCategory" class="border rounded px-2 py-1 text-sm">
+                        <option value="staff" ${member.category === 'staff' ? 'selected' : ''}>staff</option>
+                        <option value="student" ${member.category === 'student' ? 'selected' : ''}>student</option>
+                        <option value="visiting" ${member.category === 'visiting' ? 'selected' : ''}>visiting</option>
+                        <option value="other" ${member.category === 'other' ? 'selected' : ''}>other</option>
+                    </select>
+                </td>
+                <td class="py-3 px-2"><input id="editDesc" value="${esc(member.description || '')}" class="w-full border rounded px-2 py-1 text-sm"></td>
+                <td class="py-3 px-2 whitespace-nowrap">
+                    <button onclick="saveEdit('${section}', ${index})" class="bg-teal-600 text-white text-xs px-3 py-1 rounded mr-1">Save</button>
+                    <button onclick="cancelEdit()" class="bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded">Cancel</button>
+                </td>
+            </tr>`;
+        }
+
+        function startEdit(section, index) {
+            editingRow = { section, index };
+            renderMembers(section);
+        }
+
+        function cancelEdit() {
+            const prev = editingRow;
+            editingRow = null;
+            if (prev) renderMembers(prev.section);
+        }
+
+        async function saveEdit(section, index) {
+            const member = {
+                name: document.getElementById('editName').value,
+                role: document.getElementById('editRole').value,
+                category: document.getElementById('editCategory').value,
+                description: document.getElementById('editDesc').value,
+                photo: (teamData[section][index] || {}).photo || null
+            };
+            await teamMemberAction({ action: 'edit', section, index, member });
+            editingRow = null;
+        }
+
+        async function deleteMember(section, index) {
+            const name = teamData[section][index].name;
+            if (!confirm('Delete ' + name + '?')) return;
+            await teamMemberAction({ action: 'delete', section, index });
+        }
+
+        async function moveMember(from, to, index) {
+            const name = teamData[from][index].name;
+            if (!confirm('Move ' + name + ' to ' + to + '?')) return;
+            await teamMemberAction({ action: 'move', from, to, index });
+        }
+
+        function showMemberForm(section) {
+            const formId = section === 'current' ? 'addCurrentForm' : 'addAlumniForm';
+            const el = document.getElementById(formId);
+            if (!el.classList.contains('hidden')) {
+                el.classList.add('hidden');
+                return;
+            }
+            el.innerHTML = `
+                <h3 class="text-sm font-semibold text-gray-700 mb-3">Add New Member</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-medium text-gray-500 mb-1">Name *</label>
+                        <input id="addName_${section}" class="w-full border rounded-lg px-3 py-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-gray-500 mb-1">Role</label>
+                        <input id="addRole_${section}" class="w-full border rounded-lg px-3 py-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-gray-500 mb-1">Category</label>
+                        <select id="addCat_${section}" class="w-full border rounded-lg px-3 py-2 text-sm">
+                            <option value="staff">staff</option>
+                            <option value="student" selected>student</option>
+                            <option value="visiting">visiting</option>
+                            <option value="other">other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-gray-500 mb-1">Photo URL</label>
+                        <input id="addPhoto_${section}" class="w-full border rounded-lg px-3 py-2 text-sm" placeholder="e.g. Images/name.jpg">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-medium text-gray-500 mb-1">Description</label>
+                        <input id="addDesc_${section}" class="w-full border rounded-lg px-3 py-2 text-sm">
+                    </div>
+                </div>
+                <div class="flex gap-2 mt-3">
+                    <button onclick="addMember('${section}')" class="bg-teal-600 hover:bg-teal-700 text-white text-sm px-4 py-2 rounded-lg transition">Save</button>
+                    <button onclick="document.getElementById('${formId}').classList.add('hidden')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 text-sm px-4 py-2 rounded-lg transition">Cancel</button>
+                </div>
+            `;
+            el.classList.remove('hidden');
+        }
+
+        async function addMember(section) {
+            const name = document.getElementById('addName_' + section).value.trim();
+            if (!name) { alert('Name is required'); return; }
+            const member = {
+                name: name,
+                role: document.getElementById('addRole_' + section).value,
+                category: document.getElementById('addCat_' + section).value,
+                description: document.getElementById('addDesc_' + section).value,
+                photo: document.getElementById('addPhoto_' + section).value || null
+            };
+            await teamMemberAction({ action: 'add', section, member });
+            const formId = section === 'current' ? 'addCurrentForm' : 'addAlumniForm';
+            document.getElementById(formId).classList.add('hidden');
+        }
+
+        async function teamMemberAction(body) {
+            try {
+                const res = await fetch('/api/team/member', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    teamData = data;
+                    renderMembers('current');
+                    renderMembers('alumni');
+                    showTeamMsg('teamOpResult', 'Operation completed successfully.', true);
+                } else {
+                    showTeamMsg('teamOpResult', data.error || 'Operation failed.', false);
+                }
+            } catch (e) {
+                showTeamMsg('teamOpResult', 'Error: ' + e.message, false);
+            }
+        }
+
+        // --- Init ---
+        fetchStatus();
+    </script>
+</body>
+</html>

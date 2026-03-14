@@ -1,0 +1,471 @@
+-------------------------------------------------------------
+#Date	Fri Oct 28 16:33:15 EST 2005
+#Evaluator	Sharat
+#Presenter	Group_1
+#OveralQuality	9
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 16:33:34 EST 2005
+#Evaluator	Sharat
+#Presenter	Group_2
+#OveralQuality	9
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 16:33:58 EST 2005
+#Evaluator	Sharat
+#Presenter	Group_3
+#OveralQuality	9
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 16:34:12 EST 2005
+#Evaluator	Sharat
+#Presenter	Group_4
+#OveralQuality	9
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 16:34:24 EST 2005
+#Evaluator	Sharat
+#Presenter	Group_5
+#OveralQuality	9
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 16:34:41 EST 2005
+#Evaluator	Sharat
+#Presenter	Group_6
+#OveralQuality	9
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:00:47 EST 2005
+#Evaluator	Sang-gook
+#Presenter	Group_1
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:01:16 EST 2005
+#Evaluator	Roy
+#Presenter	Group_1
+#OveralQuality	8
+#YouLikeMost	Detailed Report
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:04:16 EST 2005
+#Evaluator	Huijun
+#Presenter	Group_1
+#OveralQuality	8
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:04:27 EST 2005
+#Evaluator	Jade
+#Presenter	Group_1
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:04:33 EST 2005
+#Evaluator	Pavan
+#Presenter	Group_1
+#OveralQuality	9
+#YouLikeMost	Good! Details covered!
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:04:42 EST 2005
+#Evaluator	Baizil
+#Presenter	Group_1
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:05:06 EST 2005
+#Evaluator	Harini
+#Presenter	Group_1
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:05:34 EST 2005
+#Evaluator	Roy
+#Presenter	Group_2
+#OveralQuality	7
+#YouLikeMost	Detailed Report
+#Suggestion	Gene Symbols are referred to as gene names
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:06:50 EST 2005
+#Evaluator	Sang-gook
+#Presenter	Group_2
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:08:41 EST 2005
+#Evaluator	Pavan
+#Presenter	Group_2
+#OveralQuality	8
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:09:50 EST 2005
+#Evaluator	Huijun
+#Presenter	Group_2
+#OveralQuality	8
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:09:54 EST 2005
+#Evaluator	Pedro
+#Presenter	Group_2
+#OveralQuality	8
+#YouLikeMost	Neatly organized
+#Suggestion	More info on main page.
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:10:03 EST 2005
+#Evaluator	Baizil
+#Presenter	Group_2
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:10:06 EST 2005
+#Evaluator	Jade
+#Presenter	Group_2
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:10:25 EST 2005
+#Evaluator	Jade
+#Presenter	Group_3
+#OveralQuality	10
+#YouLikeMost	Nice Fly
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:11:40 EST 2005
+#Evaluator	Aaron
+#Presenter	Group_3
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:11:52 EST 2005
+#Evaluator	Pavan
+#Presenter	Group_3
+#OveralQuality	10
+#YouLikeMost	Brilliant Stuff!
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:11:53 EST 2005
+#Evaluator	Aaron
+#Presenter	Group_1
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:12:05 EST 2005
+#Evaluator	Aaron
+#Presenter	Group_2
+#OveralQuality	9
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:13:33 EST 2005
+#Evaluator	Harini
+#Presenter	Group_2
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:14:07 EST 2005
+#Evaluator	Roy
+#Presenter	Group_3
+#OveralQuality	7
+#YouLikeMost	Detailed Report
+#Suggestion	Gives only mRNAs
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:14:25 EST 2005
+#Evaluator	Harini
+#Presenter	Group_3
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:14:38 EST 2005
+#Evaluator	Pedro
+#Presenter	Group_3
+#OveralQuality	9
+#YouLikeMost	Great interface.
+#Suggestion	Missing ligases.
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:14:47 EST 2005
+#Evaluator	Baizil
+#Presenter	Group_3
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:14:52 EST 2005
+#Evaluator	Huijun
+#Presenter	Group_3
+#OveralQuality	9
+#YouLikeMost	the web design is great
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:15:10 EST 2005
+#Evaluator	Sang-gook
+#Presenter	Group_4
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:15:40 EST 2005
+#Evaluator	Jade
+#Presenter	Group_4
+#OveralQuality	10
+#YouLikeMost	Nice homepage
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:15:47 EST 2005
+#Evaluator	Harini
+#Presenter	Group_4
+#OveralQuality	10
+#YouLikeMost	Nice background
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:16:10 EST 2005
+#Evaluator	Baizil
+#Presenter	Group_4
+#OveralQuality	10
+#YouLikeMost	good description
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:16:24 EST 2005
+#Evaluator	Pedro
+#Presenter	Group_4
+#OveralQuality	8
+#YouLikeMost	Good links.
+#Suggestion	Missing hydrolases, missing more info on main page.
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:16:29 EST 2005
+#Evaluator	Roy
+#Presenter	Group_4
+#OveralQuality	8
+#YouLikeMost	The page
+#Suggestion	Not full family
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:16:48 EST 2005
+#Evaluator	Pavan
+#Presenter	Group_4
+#OveralQuality	8
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:16:51 EST 2005
+#Evaluator	Sang-gook
+#Presenter	Group_5
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:16:55 EST 2005
+#Evaluator	Huijun
+#Presenter	Group_4
+#OveralQuality	9
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:18:03 EST 2005
+#Evaluator	Roy
+#Presenter	Group_5
+#OveralQuality	7
+#YouLikeMost	Detailed Report
+#Suggestion	Gene coordinates not there
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:18:06 EST 2005
+#Evaluator	Huijun
+#Presenter	Group_5
+#OveralQuality	8
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:18:24 EST 2005
+#Evaluator	Pavan
+#Presenter	Group_5
+#OveralQuality	7
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:18:25 EST 2005
+#Evaluator	Pedro
+#Presenter	Group_5
+#OveralQuality	8
+#YouLikeMost	lots of links, more than one family.
+#Suggestion	A little confusing interface, missing info.
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:18:41 EST 2005
+#Evaluator	Baizil
+#Presenter	Group_5
+#OveralQuality	10
+#YouLikeMost	nice
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:18:59 EST 2005
+#Evaluator	Sang-gook
+#Presenter	Group_6
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:19:58 EST 2005
+#Evaluator	Aaron
+#Presenter	Group_5
+#OveralQuality	9
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:20:00 EST 2005
+#Evaluator	Pedro
+#Presenter	Group_6
+#OveralQuality	9
+#YouLikeMost	Good table, good info.
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:20:08 EST 2005
+#Evaluator	Aaron
+#Presenter	Group_6
+#OveralQuality	9
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:20:53 EST 2005
+#Evaluator	Baizil
+#Presenter	Group_6
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:21:18 EST 2005
+#Evaluator	Jade
+#Presenter	Group_5
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:21:28 EST 2005
+#Evaluator	Jade
+#Presenter	Group_6
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:21:44 EST 2005
+#Evaluator	Harini
+#Presenter	Group_5
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Fri Oct 28 17:21:57 EST 2005
+#Evaluator	Harini
+#Presenter	Group_6
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Mon Oct 31 16:20:40 EST 2005
+#Evaluator	Andrian
+#Presenter	Group_1
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Mon Oct 31 16:21:19 EST 2005
+#Evaluator	Andrian
+#Presenter	Group_2
+#OveralQuality	10
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Mon Oct 31 16:22:53 EST 2005
+#Evaluator	Andrian
+#Presenter	Group_3
+#OveralQuality	9
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Mon Oct 31 16:23:32 EST 2005
+#Evaluator	Andrian
+#Presenter	Group_3
+#OveralQuality	9
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Mon Oct 31 16:24:21 EST 2005
+#Evaluator	Andrian
+#Presenter	Group_3
+#OveralQuality	9
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Mon Oct 31 16:24:40 EST 2005
+#Evaluator	Andrian
+#Presenter	Group_5
+#OveralQuality	9
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Mon Oct 31 16:25:28 EST 2005
+#Evaluator	Andrian
+#Presenter	Group_6
+#OveralQuality	9
+#YouLikeMost	
+#Suggestion	
+-------------------------------------------------------------
+#Date	Thu Nov  3 17:20:26 EST 2005
+#Evaluator	Purvi
+#Presenter	Group_1
+#OveralQuality	10
+#YouLikeMost	Lots of data collected and stored.
+#Suggestion	Website should be more comprehensive.
+-------------------------------------------------------------
+#Date	Thu Nov  3 17:21:55 EST 2005
+#Evaluator	Purvi
+#Presenter	Group_2
+#OveralQuality	10
+#YouLikeMost	Lots of data collected and stored.Website looks too good. A new family is selected which is different from other families.
+#Suggestion	
+-------------------------------------------------------------
+#Date	Thu Nov  3 17:23:47 EST 2005
+#Evaluator	Purvi
+#Presenter	Group_3
+#OveralQuality	10
+#YouLikeMost	Good use of HTML. Lotz of data is collected.Many options to choose from.
+#Suggestion	Making website more presentable.
+-------------------------------------------------------------
+#Date	Thu Nov  3 17:25:08 EST 2005
+#Evaluator	Purvi
+#Presenter	Group_4
+#OveralQuality	5
+#YouLikeMost	The background of page. 
+#Suggestion	Very less data and not that presentable also
+-------------------------------------------------------------
+#Date	Thu Nov  3 17:27:02 EST 2005
+#Evaluator	Purvi
+#Presenter	Group_5
+#OveralQuality	6
+#YouLikeMost	Many protein families to choose from. but no specific family name given.
+#Suggestion	The website is not that good.
+
+-------------------------------------------------------------
+#Date	Thu Nov  3 17:28:36 EST 2005
+#Evaluator	Purvi
+#Presenter	Group_6
+#OveralQuality	10
+#YouLikeMost	Less amount of data shown. This family has many more genes in it. But all genes are not included.
+
+#Suggestion	Should have included some more gene names.

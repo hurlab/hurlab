@@ -1,0 +1,25 @@
+Table initialization completed
+Aligning sequences
+Track back started
+#Alignment (Local) Succesfully Completed
+#Seq1 Length: 23 KGTWFSVPSMLHVLDACISFPLG
+#Seq2 Length: 15 SVPSKLHVFSVPSMM
+#Match Score: 1
+#Mismatch Score: -1
+#GapOpening Penalty: -2
+#GapExtension Penalty: -2
+#Number of Alignments Found: 2
+#Number of Alignments Displayed: 2
+
+>>Rank.1 Local Alignment   Score:6.0  Sum:28.0  Identity:87.5%
+seq1: 6 SVPSMLHV
+        ||||*|||
+seq2: 1 SVPSKLHV
+
+
+>>Rank.2 Local Alignment   Score:6.0  Sum:21.0  Identity:100.0%
+seq1: 5 FSVPSM
+        ||||||
+seq2: 9 FSVPSM
+
+

@@ -1,0 +1,663 @@
+MI0000167	RETRIEVED	MI0000167	http://www.ensembl.org/Mus_musculus/contigview?l=11:87571059-87575122	MIMAT0000154	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-142-5p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-142-5p+HMRDC&amp;species=Mouse	MIMAT0000155	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-142-3p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-142-3p+HMRDC&amp;species=Mouse
+MI0000458	RETRIEVED	MI0000458	http://www.ensembl.org/Homo_sapiens/contigview?l=17:53761592-53765678	MIMAT0000433	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-142-5p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-142-5p+HMRDC&amp;species=Human	MIMAT0000434	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-142-3p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-142-3p+HMRDC&amp;species=Human
+MI0000915	RETRIEVED	MI0000915	http://www.ensembl.org/Rattus_norvegicus/contigview?l=10:76047280-76051366	MIMAT0000847	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-142-5p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-142-5p+HMRDC&amp;species=Rat	MIMAT0000848	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-142-3p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-142-3p+HMRDC&amp;species=Rat
+MI0001281	RETRIEVED	MI0001281	http://www.ensembl.org/Gallus_gallus/contigview?l=Un:130067949-130072036	MIMAT0001193	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-142-5p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-142-5p+HMRDC&amp;species=Chicken	MIMAT0001194	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-142-3p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-142-3p+HMRDC&amp;species=Chicken
+MI0002005	RETRIEVED	MI0002005	http://www.ensembl.org/Danio_rerio/contigview?l=Zv6_NA2000:119449-123539	MIMAT0001838	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-142a-5p		MIMAT0003160	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-142a-3p	
+MI0002006	RETRIEVED	MI0002006	http://www.ensembl.org/Danio_rerio/contigview?l=9:40843673-40847758	MIMAT0001839	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-142b-5p				
+MI0003223	RETRIEVED	MI0003223	http://www.ensembl.org/Fugu_rubripes/contigview?l=scaffold_29:254624-258709	MIMAT0002908	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=fru-miR-142a				
+MI0003224	RETRIEVED	MI0003224	http://www.ensembl.org/Tetraodon_nigroviridis/contigview?l=7:1831781-1835870	MIMAT0002909	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=tni-miR-142a				
+MI0003261	RETRIEVED	MI0003261	http://www.ensembl.org/Fugu_rubripes/contigview?l=scaffold_271:306495-310580	MIMAT0002945	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=fru-miR-142b				
+MI0003262	RETRIEVED	MI0003262	http://www.ensembl.org/Tetraodon_nigroviridis/contigview?l=16:3998209-4002294	MIMAT0002946	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=tni-miR-142b				
+MI0004842	RETRIEVED	MI0004842	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_135:978086-982171	MIMAT0003602	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-142-5p		MIMAT0003603	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-142-3p	
+MI0004843	RETRIEVED	MI0004843	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_135:979268-983353	MIMAT0003602	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-142-5p		MIMAT0003603	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-142-3p	
+MI0005011	RETRIEVED	MI0005011	http://www.ensembl.org/Bos_taurus/contigview?l=Un.577:17020-21106	MIMAT0003790	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-142		MIMAT0003791	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-142*	
+MI0005301	RETRIEVED	MI0005301	http://www.ensembl.org/Monodelphis_domestica/contigview?l=2:174131935-174136008	MIMAT0004112	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mdo-miR-142				
+MI0000165	RETRIEVED	MI0000165	http://www.ensembl.org/Mus_musculus/contigview?l=8:110438373-110442442	MIMAT0000151	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-140	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-140+HMRDC&amp;species=Mouse	MIMAT0000152	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-140*	
+MI0000456	RETRIEVED	MI0000456	http://www.ensembl.org/Homo_sapiens/contigview?l=16:68522485-68526584	MIMAT0000431	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-140	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-140+HMRDC&amp;species=Human			
+MI0000611	RETRIEVED	MI0000611	http://www.ensembl.org/Rattus_norvegicus/contigview?l=19:37420704-37424802	MIMAT0000573	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-140	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-140+HMRDC&amp;species=Rat	MIMAT0000574	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-140*	
+MI0001229	RETRIEVED	MI0001229	http://www.ensembl.org/Gallus_gallus/contigview?l=11_random:248924-253018	MIMAT0001159	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-140	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-140+HMRDC&amp;species=Chicken	MIMAT0003722	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-140*	
+MI0002003	RETRIEVED	MI0002003	http://www.ensembl.org/Danio_rerio/contigview?l=25:33848660-33852764	MIMAT0001836	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-140		MIMAT0003159	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-140*	
+MI0002437	RETRIEVED	MI0002437		MIMAT0002143					
+MI0002547	RETRIEVED	MI0002547	http://www.ensembl.org/Pan_troglodytes/contigview?l=18:62873786-62877885	MIMAT0002255	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ptr-miR-140				
+MI0002548	RETRIEVED	MI0002548		MIMAT0002256					
+MI0003352	RETRIEVED	MI0003352	http://www.ensembl.org/Fugu_rubripes/contigview?l=scaffold_30:59331-63397	MIMAT0003024	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=fru-miR-140				
+MI0003353	RETRIEVED	MI0003353	http://www.ensembl.org/Tetraodon_nigroviridis/contigview?l=13:711546-715612	MIMAT0003025	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=tni-miR-140				
+MI0004841	RETRIEVED	MI0004841	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_303:220731-224824	MIMAT0003601	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-140				
+MI0005010	RETRIEVED	MI0005010	http://www.ensembl.org/Bos_taurus/contigview?l=18:30535161-30539254	MIMAT0003789	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-140				
+MI0000286	RETRIEVED	MI0000286	http://www.ensembl.org/Homo_sapiens/contigview?l=11:556089-560198	MIMAT0000267	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-210	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-210+HMRD&amp;species=Human			
+MI0000376	RETRIEVED	MI0000376	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=X:17960156-17964255	MIMAT0000355	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-210				
+MI0000695	RETRIEVED	MI0000695	http://www.ensembl.org/Mus_musculus/contigview?l=7:141070704-141074813	MIMAT0000658	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-210	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-210+HMRD&amp;species=Mouse			
+MI0000950	RETRIEVED	MI0000950	http://www.ensembl.org/Rattus_norvegicus/contigview?l=1:201413656-201417765	MIMAT0000881	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-210	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-210+HMRD&amp;species=Rat			
+MI0001327	RETRIEVED	MI0001327		MIMAT0001233					
+MI0001379	RETRIEVED	MI0001379	http://www.ensembl.org/Danio_rerio/contigview?l=25:25772647-25776719	MIMAT0003392	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-210*		MIMAT0001281	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-210	
+MI0001581	RETRIEVED	MI0001581	http://www.ensembl.org/Apis_mellifera/contigview?l=Group2.38:685279-689363	MIMAT0001477	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ame-miR-210				
+MI0001610	RETRIEVED	MI0001610	http://www.ensembl.org/Anopheles_gambiae/contigview?l=X:21448335-21452414	MIMAT0001505	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=aga-miR-210				
+MI0003459	RETRIEVED	MI0003459	http://www.ensembl.org/Fugu_rubripes/contigview?l=scaffold_119:782663-786760	MIMAT0003095	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=fru-miR-210				
+MI0003460	RETRIEVED	MI0003460	http://www.ensembl.org/Tetraodon_nigroviridis/contigview?l=13:5640573-5644654	MIMAT0003096	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=tni-miR-210				
+MI0004864	RETRIEVED	MI0004864	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_398:266957-271047	MIMAT0003624	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-210				
+MI0005039	RETRIEVED	MI0005039	http://www.ensembl.org/Bos_taurus/contigview?l=29:45755716-45759813	MIMAT0003824	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-210				
+MI0000017	RETRIEVED	MI0000017	http://www.ensembl.org/Caenorhabditis_elegans/contigview?l=III:13658031-13662127	MIMAT0000017	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cel-miR-46				
+MI0000018	RETRIEVED	MI0000018	http://www.ensembl.org/Caenorhabditis_elegans/contigview?l=X:13919172-13923268	MIMAT0000018	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cel-miR-47				
+MI0000366	RETRIEVED	MI0000366	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=2R:7684280-7688369	MIMAT0000344	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-281-1*		MIMAT0000345	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-281	
+MI0000370	RETRIEVED	MI0000370	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=2R:7684060-7688151	MIMAT0000349	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-281-2*		MIMAT0000345	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-281	
+MI0000500	RETRIEVED	MI0000500		MIMAT0000471					
+MI0000501	RETRIEVED	MI0000501		MIMAT0000472					
+MI0001339	RETRIEVED	MI0001339		MIMAT0001245					
+MI0001340	RETRIEVED	MI0001340		MIMAT0001245					
+MI0001587	RETRIEVED	MI0001587	http://www.ensembl.org/Apis_mellifera/contigview?l=Group1.65:141828-145930	MIMAT0001483	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ame-miR-281				
+MI0001618	RETRIEVED	MI0001618	http://www.ensembl.org/Anopheles_gambiae/contigview?l=2L:17360421-17364522	MIMAT0001513	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=aga-miR-281				
+MI0000301	RETRIEVED	MI0000301	http://www.ensembl.org/Homo_sapiens/contigview?l=X:150875706-150879786	MIMAT0000281	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-224	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-224+HMRD&amp;species=Human			
+MI0000711	RETRIEVED	MI0000711	http://www.ensembl.org/Mus_musculus/contigview?l=X:68511751-68515832	MIMAT0000671	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-224	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-224+HMRD&amp;species=Mouse			
+MI0002426	RETRIEVED	MI0002426		MIMAT0002132					
+MI0002903	RETRIEVED	MI0002903	http://www.ensembl.org/Macaca_mulatta/contigview?l=X:150049126-150053206	MIMAT0002594	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mml-miR-224				
+MI0002904	RETRIEVED	MI0002904	http://www.ensembl.org/Pan_troglodytes/contigview?l=X:156078678-156082758	MIMAT0002595	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ptr-miR-224				
+MI0002905	RETRIEVED	MI0002905		MIMAT0002596					
+MI0002906	RETRIEVED	MI0002906		MIMAT0002597					
+MI0002907	RETRIEVED	MI0002907		MIMAT0002598					
+MI0002908	RETRIEVED	MI0002908		MIMAT0002599					
+MI0003483	RETRIEVED	MI0003483	http://www.ensembl.org/Rattus_norvegicus/contigview?l=X:158346507-158350588	MIMAT0003119	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-224	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-224+HMRD&amp;species=Rat			
+MI0001707	RETRIEVED	MI0001707		MIMAT0001605					
+MI0001709	RETRIEVED	MI0001709		MIMAT0001607					
+MI0001710	RETRIEVED	MI0001710		MIMAT0001608					
+MI0001711	RETRIEVED	MI0001711		MIMAT0001609					
+MI0001712	RETRIEVED	MI0001712		MIMAT0001610					
+MI0001713	RETRIEVED	MI0001713		MIMAT0001611					
+MI0001714	RETRIEVED	MI0001714		MIMAT0001612					
+MI0001715	RETRIEVED	MI0001715		MIMAT0001613					
+MI0001716	RETRIEVED	MI0001716		MIMAT0001614					
+MI0001717	RETRIEVED	MI0001717		MIMAT0001615					
+MI0005238	RETRIEVED	MI0005238		MIMAT0004054					
+MI0000240	RETRIEVED	MI0000240	http://www.ensembl.org/Homo_sapiens/contigview?l=3:121595205-121599266	MIMAT0000228	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-198	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-198+H&amp;species=Human			
+MI0002914	RETRIEVED	MI0002914		MIMAT0002605					
+MI0002915	RETRIEVED	MI0002915		MIMAT0002606					
+MI0002916	RETRIEVED	MI0002916		MIMAT0002607					
+MI0002917	RETRIEVED	MI0002917		MIMAT0002608					
+MI0002918	RETRIEVED	MI0002918	http://www.ensembl.org/Pan_troglodytes/contigview?l=2:123340662-123344723	MIMAT0002609	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ptr-miR-198				
+MI0002919	RETRIEVED	MI0002919	http://www.ensembl.org/Macaca_mulatta/contigview?l=2:40442972-40447033	MIMAT0002610	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mml-miR-198				
+MI0002920	RETRIEVED	MI0002920		MIMAT0002611					
+MI0002921	RETRIEVED	MI0002921		MIMAT0002612					
+MI0002922	RETRIEVED	MI0002922		MIMAT0002613					
+MI0000776	RETRIEVED	MI0000776	http://www.ensembl.org/Homo_sapiens/contigview?l=14:100573780-100577845	MIMAT0000720	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-368	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-368+HD&amp;species=Human			
+MI0000784	RETRIEVED	MI0000784	http://www.ensembl.org/Homo_sapiens/contigview?l=14:100574872-100578939	MIMAT0003386	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-376a*		MIMAT0000729	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-376a	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-376+HMRD&amp;species=Human
+MI0000793	RETRIEVED	MI0000793	http://www.ensembl.org/Mus_musculus/contigview?l=12:110169588-110173655	MIMAT0003387	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-376a*		MIMAT0000740	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-376a	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-376a+MR&amp;species=Mouse
+MI0001162	RETRIEVED	MI0001162	http://www.ensembl.org/Mus_musculus/contigview?l=12:110169265-110173346	MIMAT0003388	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-376b*		MIMAT0001092	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-376b	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-376+HMRD&amp;species=Mouse
+MI0002466	RETRIEVED	MI0002466	http://www.ensembl.org/Homo_sapiens/contigview?l=14:100574526-100578625	MIMAT0002172	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-376b	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-376+HMRD&amp;species=Human			
+MI0003529	RETRIEVED	MI0003529	http://www.ensembl.org/Homo_sapiens/contigview?l=14:100574159-100578238	MIMAT0000729	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-376a	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-376+HMRD&amp;species=Human			
+MI0003533	RETRIEVED	MI0003533	http://www.ensembl.org/Mus_musculus/contigview?l=12:110168525-110172610	MIMAT0003183	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-376c	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-376c+HMRD&amp;species=Mouse			
+MI0003543	RETRIEVED	MI0003543	http://www.ensembl.org/Rattus_norvegicus/contigview?l=6:134401524-134405607	MIMAT0003194	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-376c	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-376c+HMRD&amp;species=Rat			
+MI0003544	RETRIEVED	MI0003544	http://www.ensembl.org/Rattus_norvegicus/contigview?l=6:134402180-134406265	MIMAT0003195	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-376b*		MIMAT0003196	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-376b	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-376+HMRD&amp;species=Rat
+MI0003545	RETRIEVED	MI0003545	http://www.ensembl.org/Rattus_norvegicus/contigview?l=6:134402690-134406771	MIMAT0003197	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-376a*		MIMAT0003198	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-376a	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-376a+MR&amp;species=Rat
+MI0001691	RETRIEVED	MI0001691		MIMAT0001589					
+MI0001692	RETRIEVED	MI0001692		MIMAT0001590					
+MI0001693	RETRIEVED	MI0001693		MIMAT0001591					
+MI0001694	RETRIEVED	MI0001694		MIMAT0001592					
+MI0001695	RETRIEVED	MI0001695		MIMAT0001593					
+MI0001696	RETRIEVED	MI0001696		MIMAT0001594					
+MI0001697	RETRIEVED	MI0001697		MIMAT0001595					
+MI0001698	RETRIEVED	MI0001698		MIMAT0001596					
+MI0001699	RETRIEVED	MI0001699		MIMAT0001597					
+MI0001700	RETRIEVED	MI0001700		MIMAT0001598					
+MI0000168	RETRIEVED	MI0000168	http://www.ensembl.org/Mus_musculus/contigview?l=11:77887200-77891265	MIMAT0000156	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-144	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-144+HMRD&amp;species=Mouse			
+MI0000460	RETRIEVED	MI0000460	http://www.ensembl.org/Homo_sapiens/contigview?l=17:24210677-24214762	MIMAT0000436	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-144	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-144+HMRD&amp;species=Human			
+MI0000917	RETRIEVED	MI0000917	http://www.ensembl.org/Rattus_norvegicus/contigview?l=10:64127346-64131428	MIMAT0000850	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-144	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-144+HMRD&amp;species=Rat			
+MI0002009	RETRIEVED	MI0002009	http://www.ensembl.org/Danio_rerio/contigview?l=5:51569801-51573889	MIMAT0001841	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-144				
+MI0002554	RETRIEVED	MI0002554	http://www.ensembl.org/Pan_troglodytes/contigview?l=19:27555385-27559470	MIMAT0002262	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ptr-miR-144				
+MI0002555	RETRIEVED	MI0002555		MIMAT0002263					
+MI0002556	RETRIEVED	MI0002556		MIMAT0002264					
+MI0002557	RETRIEVED	MI0002557		MIMAT0002265					
+MI0003348	RETRIEVED	MI0003348	http://www.ensembl.org/Fugu_rubripes/contigview?l=scaffold_511:33509-37581	MIMAT0003020	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=fru-miR-144				
+MI0003349	RETRIEVED	MI0003349	http://www.ensembl.org/Tetraodon_nigroviridis/contigview?l=7:2200112-2204185	MIMAT0003021	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=tni-miR-144				
+MI0004938	RETRIEVED	MI0004938	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_305:953120-957181	MIMAT0003687	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-144				
+MI0004996	RETRIEVED	MI0004996	http://www.ensembl.org/Gallus_gallus/contigview?l=19:5482210-5486294	MIMAT0003776	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-144				
+MI0005303	RETRIEVED	MI0005303	http://www.ensembl.org/Monodelphis_domestica/contigview?l=2:506775490-506779574	MIMAT0004114	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mdo-miR-144				
+MI0000257	RETRIEVED	MI0000257	http://www.ensembl.org/Mus_musculus/contigview?l=18:61772565-61776627	MIMAT0000247	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-143	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-143+HMRD&amp;species=Mouse			
+MI0000459	RETRIEVED	MI0000459	http://www.ensembl.org/Homo_sapiens/contigview?l=5:148786674-148790779	MIMAT0000435	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-143	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-143+HMRD&amp;species=Human			
+MI0000916	RETRIEVED	MI0000916	http://www.ensembl.org/Rattus_norvegicus/contigview?l=18:57623113-57627217	MIMAT0000849	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-143	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-143+HMRD&amp;species=Rat			
+MI0002007	RETRIEVED	MI0002007	http://www.ensembl.org/Danio_rerio/contigview?l=14:76960184-76964282	MIMAT0001840	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-143				
+MI0002008	RETRIEVED	MI0002008	http://www.ensembl.org/Danio_rerio/contigview?l=14:77008412-77012510	MIMAT0001840	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-143				
+MI0002549	RETRIEVED	MI0002549		MIMAT0002257	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ptr-miR-143				
+MI0002550	RETRIEVED	MI0002550		MIMAT0002258					
+MI0002551	RETRIEVED	MI0002551		MIMAT0002259					
+MI0002552	RETRIEVED	MI0002552		MIMAT0002260					
+MI0002553	RETRIEVED	MI0002553		MIMAT0002261					
+MI0004937	RETRIEVED	MI0004937	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_447:663585-667667	MIMAT0003686	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-143				
+MI0005302	RETRIEVED	MI0005302	http://www.ensembl.org/Monodelphis_domestica/contigview?l=1:377174751-377178813	MIMAT0004113	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mdo-miR-143				
+MI0000256	RETRIEVED	MI0000256	http://www.ensembl.org/Mus_musculus/contigview?l=18:65372230-65376295	MIMAT0000246	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-122a	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-122+HMRDC&amp;species=Mouse			
+MI0000442	RETRIEVED	MI0000442	http://www.ensembl.org/Homo_sapiens/contigview?l=18:54267286-54271370	MIMAT0000421	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-122a	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-122+HMRDC&amp;species=Human			
+MI0000891	RETRIEVED	MI0000891	http://www.ensembl.org/Rattus_norvegicus/contigview?l=18:61510747-61514831	MIMAT0000827	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-122a	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-122+HMRDC&amp;species=Rat			
+MI0001277	RETRIEVED	MI0001277	http://www.ensembl.org/Gallus_gallus/contigview?l=Un:4801901-4805977	MIMAT0001190	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-122a	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-122+HMRDC&amp;species=Chicken			
+MI0001280	RETRIEVED	MI0001280	http://www.ensembl.org/Gallus_gallus/contigview?l=Un:94044450-94048526	MIMAT0001190	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-122a	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-122+HMRDC&amp;species=Chicken			
+MI0001965	RETRIEVED	MI0001965	http://www.ensembl.org/Danio_rerio/contigview?l=21:56079652-56083727	MIMAT0001818	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-122				
+MI0002413	RETRIEVED	MI0002413		MIMAT0002119					
+MI0003315	RETRIEVED	MI0003315	http://www.ensembl.org/Fugu_rubripes/contigview?l=scaffold_44:1153538-1157603	MIMAT0002991	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=fru-miR-122				
+MI0003316	RETRIEVED	MI0003316	http://www.ensembl.org/Tetraodon_nigroviridis/contigview?l=4:3379808-3383873	MIMAT0002992	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=tni-miR-122				
+MI0004824	RETRIEVED	MI0004824	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_228:285748-289816	MIMAT0003585	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-122				
+MI0005063	RETRIEVED	MI0005063	http://www.ensembl.org/Bos_taurus/contigview?l=Un.274:226883-230967	MIMAT0003849	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-122a				
+MI0005287	RETRIEVED	MI0005287	http://www.ensembl.org/Monodelphis_domestica/contigview?l=3:247366064-247370137	MIMAT0004101	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mdo-miR-122a				
+MI0000007	RETRIEVED	MI0000007	http://www.ensembl.org/Caenorhabditis_elegans/contigview?l=II:11535620-11539716	MIMAT0000007	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cel-miR-36				
+MI0000008	RETRIEVED	MI0000008	http://www.ensembl.org/Caenorhabditis_elegans/contigview?l=II:11535740-11539837	MIMAT0000008	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cel-miR-37				
+MI0000009	RETRIEVED	MI0000009	http://www.ensembl.org/Caenorhabditis_elegans/contigview?l=II:11535837-11539934	MIMAT0000009	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cel-miR-38				
+MI0000011	RETRIEVED	MI0000011	http://www.ensembl.org/Caenorhabditis_elegans/contigview?l=II:11536091-11540182	MIMAT0000011	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cel-miR-40				
+MI0000012	RETRIEVED	MI0000012	http://www.ensembl.org/Caenorhabditis_elegans/contigview?l=II:11536215-11540311	MIMAT0000012	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cel-miR-41				
+MI0001416	RETRIEVED	MI0001416		MIMAT0001314					
+MI0001418	RETRIEVED	MI0001418		MIMAT0001315					
+MI0001420	RETRIEVED	MI0001420		MIMAT0001317					
+MI0001421	RETRIEVED	MI0001421		MIMAT0001318					
+MI0000618	RETRIEVED	MI0000618	http://www.ensembl.org/Rattus_norvegicus/contigview?l=10:109424992-109429057	MIMAT0000581	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-338	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-338+HMRD&amp;species=Rat			
+MI0000619	RETRIEVED	MI0000619	http://www.ensembl.org/Mus_musculus/contigview?l=11:119828855-119832952	MIMAT0000582	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-338	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-338+HMRD&amp;species=Mouse			
+MI0000814	RETRIEVED	MI0000814	http://www.ensembl.org/Homo_sapiens/contigview?l=17:76712278-76716344	MIMAT0000763	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-338	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-338+HMRD&amp;species=Human			
+MI0002063	RETRIEVED	MI0002063	http://www.ensembl.org/Danio_rerio/contigview?l=12:42869312-42873396	MIMAT0001873	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-338				
+MI0002064	RETRIEVED	MI0002064	http://www.ensembl.org/Danio_rerio/contigview?l=12:43125553-43129637	MIMAT0001873	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-338				
+MI0002065	RETRIEVED	MI0002065	http://www.ensembl.org/Danio_rerio/contigview?l=12:15749785-15753908	MIMAT0001873	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-338				
+MI0002066	RETRIEVED	MI0002066	http://www.ensembl.org/Danio_rerio/contigview?l=12:16451493-16455616	MIMAT0001873	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-338				
+MI0003335	RETRIEVED	MI0003335	http://www.ensembl.org/Fugu_rubripes/contigview?l=scaffold_139:8886-12965	MIMAT0003007	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=fru-miR-338				
+MI0003336	RETRIEVED	MI0003336	http://www.ensembl.org/Tetraodon_nigroviridis/contigview?l=3:10518378-10522457	MIMAT0003008	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=tni-miR-338				
+MI0004906	RETRIEVED	MI0004906	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_282:151858-155935	MIMAT0003665	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-338				
+MI0004954	RETRIEVED	MI0004954	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_14:2102713-2106772	MIMAT0003665	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-338				
+MI0005325	RETRIEVED	MI0005325	http://www.ensembl.org/Monodelphis_domestica/contigview?l=2:233881739-233885827	MIMAT0004136	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mdo-miR-338				
+MI0000097	RETRIEVED	MI0000097	http://www.ensembl.org/Homo_sapiens/contigview?l=4:8055928-8060008	MIMAT0000094	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-95	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-95+HD&amp;species=Human			
+MI0001423	RETRIEVED	MI0001423	http://www.ensembl.org/Rattus_norvegicus/contigview?l=X:91561416-91565494	MIMAT0001320	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-421	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-421+HMRD&amp;species=Rat			
+MI0002436	RETRIEVED	MI0002436		MIMAT0002142					
+MI0002690	RETRIEVED	MI0002690		MIMAT0002398	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ptr-miR-95				
+MI0002691	RETRIEVED	MI0002691		MIMAT0002399					
+MI0002692	RETRIEVED	MI0002692		MIMAT0002400					
+MI0002693	RETRIEVED	MI0002693		MIMAT0002401					
+MI0002694	RETRIEVED	MI0002694		MIMAT0002402					
+MI0002695	RETRIEVED	MI0002695		MIMAT0002403					
+MI0003516	RETRIEVED	MI0003516	http://www.ensembl.org/Homo_sapiens/contigview?l=X:73421664-73425769	MIMAT0003165	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-545	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-545+H&amp;species=Human			
+MI0003685	RETRIEVED	MI0003685	http://www.ensembl.org/Homo_sapiens/contigview?l=X:73352937-73357021	MIMAT0003339	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-421	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-421+HMRD&amp;species=Human			
+MI0005023	RETRIEVED	MI0005023	http://www.ensembl.org/Bos_taurus/contigview?l=24:5967316-5971421	MIMAT0003806	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-545*		MIMAT0003807	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-545-3p	
+MI0000162	RETRIEVED	MI0000162	http://www.ensembl.org/Mus_musculus/contigview?l=12:110041134-110045195	MIMAT0000148	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-136	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-136+HMRD&amp;species=Mouse			
+MI0000475	RETRIEVED	MI0000475	http://www.ensembl.org/Homo_sapiens/contigview?l=14:100418792-100422873	MIMAT0000448	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-136	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-136+HMRD&amp;species=Human			
+MI0000909	RETRIEVED	MI0000909	http://www.ensembl.org/Rattus_norvegicus/contigview?l=6:134184977-134189058	MIMAT0000842	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-136	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-136+HMRD&amp;species=Rat			
+MI0001523	RETRIEVED	MI0001523		MIMAT0001417					
+MI0002452	RETRIEVED	MI0002452		MIMAT0002158					
+MI0002593	RETRIEVED	MI0002593	http://www.ensembl.org/Pan_troglodytes/contigview?l=15:100977561-100981642	MIMAT0002292	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ptr-miR-136				
+MI0002594	RETRIEVED	MI0002594		MIMAT0002293					
+MI0002595	RETRIEVED	MI0002595		MIMAT0002294					
+MI0002596	RETRIEVED	MI0002596		MIMAT0002295					
+MI0001005	RETRIEVED	MI0001005		MIMAT0000936					
+MI0001006	RETRIEVED	MI0001006		MIMAT0000937					
+MI0001027	RETRIEVED	MI0001027		MIMAT0000958					
+MI0001531	RETRIEVED	MI0001531		MIMAT0001427					
+MI0001532	RETRIEVED	MI0001532		MIMAT0001428					
+MI0001794	RETRIEVED	MI0001794		MIMAT0001696					
+MI0001795	RETRIEVED	MI0001795		MIMAT0001697					
+MI0002313	RETRIEVED	MI0002313		MIMAT0002019					
+MI0002314	RETRIEVED	MI0002314		MIMAT0002020					
+MI0001000	RETRIEVED	MI0001000		MIMAT0000931					
+MI0001001	RETRIEVED	MI0001001		MIMAT0000932					
+MI0001690	RETRIEVED	MI0001690		MIMAT0001588					
+MI0002305	RETRIEVED	MI0002305		MIMAT0002011					
+MI0002306	RETRIEVED	MI0002306		MIMAT0002012					
+MI0002307	RETRIEVED	MI0002307		MIMAT0002013					
+MI0002308	RETRIEVED	MI0002308		MIMAT0002014					
+MI0003494	RETRIEVED	MI0003494		MIMAT0003131					
+MI0003495	RETRIEVED	MI0003495		MIMAT0003132					
+MI0004729	RETRIEVED	MI0004729		MIMAT0003919					
+MI0001080	RETRIEVED	MI0001080		MIMAT0001011					
+MI0001149	RETRIEVED	MI0001149		MIMAT0001079					
+MI0001765	RETRIEVED	MI0001765		MIMAT0001667					
+MI0001766	RETRIEVED	MI0001766		MIMAT0001668					
+MI0001767	RETRIEVED	MI0001767		MIMAT0001669					
+MI0001768	RETRIEVED	MI0001768		MIMAT0001670					
+MI0001769	RETRIEVED	MI0001769		MIMAT0001671					
+MI0001846	RETRIEVED	MI0001846		MIMAT0001748					
+MI0002352	RETRIEVED	MI0002352		MIMAT0002058					
+MI0000170	RETRIEVED	MI0000170	http://www.ensembl.org/Mus_musculus/contigview?l=11:43215820-43219884	MIMAT0000158	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-146	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-146+HMRDC&amp;species=Mouse			
+MI0000477	RETRIEVED	MI0000477	http://www.ensembl.org/Homo_sapiens/contigview?l=5:159842937-159847035	MIMAT0000449	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-146a	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-146+HMRDC&amp;species=Human			
+MI0000919	RETRIEVED	MI0000919	http://www.ensembl.org/Rattus_norvegicus/contigview?l=10:28474368-28478462	MIMAT0000852	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-146	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-146+HMRDC&amp;species=Rat			
+MI0001235	RETRIEVED	MI0001235	http://www.ensembl.org/Gallus_gallus/contigview?l=13:1781971-1786069	MIMAT0001163	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-146a	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-146+HMRDC&amp;species=Chicken			
+MI0002012	RETRIEVED	MI0002012	http://www.ensembl.org/Danio_rerio/contigview?l=13:21254930-21259043	MIMAT0001843	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-146a				
+MI0002013	RETRIEVED	MI0002013	http://www.ensembl.org/Danio_rerio/contigview?l=21:45935960-45940039	MIMAT0001844	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-146b				
+MI0002014	RETRIEVED	MI0002014	http://www.ensembl.org/Danio_rerio/contigview?l=Zv6_NA1492:2920-6999	MIMAT0001844	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-146b				
+MI0003129	RETRIEVED	MI0003129	http://www.ensembl.org/Homo_sapiens/contigview?l=10:104184259-104188331	MIMAT0002809	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-146b	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-146+HMRDC&amp;species=Human			
+MI0003695	RETRIEVED	MI0003695	http://www.ensembl.org/Gallus_gallus/contigview?l=6:22210586-22214690	MIMAT0003351	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-146b	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-146+HMRDC&amp;species=Chicken	MIMAT0003724	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-146b*	
+MI0004665	RETRIEVED	MI0004665	http://www.ensembl.org/Mus_musculus/contigview?l=19:46394073-46398181	MIMAT0003475	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-146b				
+MI0004844	RETRIEVED	MI0004844	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_3978:2737-6826	MIMAT0003604	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-146				
+MI0001138	RETRIEVED	MI0001138		MIMAT0001068					
+MI0001147	RETRIEVED	MI0001147		MIMAT0001077					
+MI0001567	RETRIEVED	MI0001567		MIMAT0001463					
+MI0001570	RETRIEVED	MI0001570		MIMAT0001466					
+MI0001839	RETRIEVED	MI0001839		MIMAT0001741					
+MI0001843	RETRIEVED	MI0001843		MIMAT0001745					
+MI0001844	RETRIEVED	MI0001844		MIMAT0001746					
+MI0001854	RETRIEVED	MI0001854		MIMAT0001756					
+MI0000262	RETRIEVED	MI0000262	http://www.ensembl.org/Homo_sapiens/contigview?l=9:122045078-122049149	MIMAT0000251	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-147	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-147b+H&amp;species=Human			
+MI0002770	RETRIEVED	MI0002770		MIMAT0002474	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ptr-miR-147				
+MI0002771	RETRIEVED	MI0002771		MIMAT0002475					
+MI0002772	RETRIEVED	MI0002772		MIMAT0002476					
+MI0002773	RETRIEVED	MI0002773		MIMAT0002477					
+MI0002774	RETRIEVED	MI0002774		MIMAT0002478					
+MI0003696	RETRIEVED	MI0003696	http://www.ensembl.org/Gallus_gallus/contigview?l=10:11224564-11228633	MIMAT0003352	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-147	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-147+HMRDC&amp;species=Chicken			
+MI0003697	RETRIEVED	MI0003697	http://www.ensembl.org/Gallus_gallus/contigview?l=10:11277123-11281192	MIMAT0003352	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-147	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-147+HMRDC&amp;species=Chicken			
+MI0000163	RETRIEVED	MI0000163	http://www.ensembl.org/Mus_musculus/contigview?l=3:118423861-118427933	MIMAT0000149	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-137	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-137+HMRDC&amp;species=Mouse			
+MI0000454	RETRIEVED	MI0000454	http://www.ensembl.org/Homo_sapiens/contigview?l=1:98282214-98286315	MIMAT0000429	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-137	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-137+HMRDC&amp;species=Human			
+MI0000910	RETRIEVED	MI0000910	http://www.ensembl.org/Rattus_norvegicus/contigview?l=2:214800296-214804397	MIMAT0000843	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-137	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-137+HMRDC&amp;species=Rat			
+MI0001221	RETRIEVED	MI0001221	http://www.ensembl.org/Gallus_gallus/contigview?l=8:12871563-12875658	MIMAT0001153	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-137	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-137+HMRDC&amp;species=Chicken			
+MI0002000	RETRIEVED	MI0002000	http://www.ensembl.org/Danio_rerio/contigview?l=2:17631309-17635393	MIMAT0001834	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-137				
+MI0002001	RETRIEVED	MI0002001	http://www.ensembl.org/Danio_rerio/contigview?l=24:35688379-35692506	MIMAT0001834	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-137				
+MI0003248	RETRIEVED	MI0003248	http://www.ensembl.org/Fugu_rubripes/contigview?l=scaffold_9069:216-4288	MIMAT0002932	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=fru-miR-137				
+MI0003249	RETRIEVED	MI0003249	http://www.ensembl.org/Tetraodon_nigroviridis/contigview?l=18:3882712-3886781	MIMAT0002933	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=tni-miR-137				
+MI0004934	RETRIEVED	MI0004934	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_1960:-1608-2492	MIMAT0003685	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-137				
+MI0004935	RETRIEVED	MI0004935	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_70:1249043-1253143	MIMAT0003685	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-137				
+MI0004936	RETRIEVED	MI0004936	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_70:1265002-1269102	MIMAT0003685	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-137				
+MI0005299	RETRIEVED	MI0005299	http://www.ensembl.org/Monodelphis_domestica/contigview?l=2:463980402-463984457	MIMAT0004110	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mdo-miR-137				
+MI0001017	RETRIEVED	MI0001017		MIMAT0000948					
+MI0001018	RETRIEVED	MI0001018		MIMAT0000949					
+MI0001019	RETRIEVED	MI0001019		MIMAT0000950					
+MI0001051	RETRIEVED	MI0001051		MIMAT0000982					
+MI0001052	RETRIEVED	MI0001052		MIMAT0000983					
+MI0001787	RETRIEVED	MI0001787		MIMAT0001689					
+MI0001788	RETRIEVED	MI0001788		MIMAT0001690					
+MI0002335	RETRIEVED	MI0002335		MIMAT0002041					
+MI0002336	RETRIEVED	MI0002336		MIMAT0002042					
+MI0002337	RETRIEVED	MI0002337		MIMAT0002043					
+MI0000246	RETRIEVED	MI0000246	http://www.ensembl.org/Mus_musculus/contigview?l=12:112576688-112580763	MIMAT0000236	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-203	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-203+HMRDC&amp;species=Mouse			
+MI0000283	RETRIEVED	MI0000283	http://www.ensembl.org/Homo_sapiens/contigview?l=14:103651495-103655604	MIMAT0000264	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-203	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-203+HMRDC&amp;species=Human			
+MI0000945	RETRIEVED	MI0000945	http://www.ensembl.org/Rattus_norvegicus/contigview?l=6:136930089-136934185	MIMAT0000876	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-203	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-203+HMRDC&amp;species=Rat			
+MI0001214	RETRIEVED	MI0001214	http://www.ensembl.org/Gallus_gallus/contigview?l=5:47479277-47483374	MIMAT0001146	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-203	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-203+HMRDC&amp;species=Chicken			
+MI0001376	RETRIEVED	MI0001376	http://www.ensembl.org/Danio_rerio/contigview?l=17:62525197-62529292	MIMAT0001278	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-203a				
+MI0002041	RETRIEVED	MI0002041	http://www.ensembl.org/Danio_rerio/contigview?l=20:30995893-30999977	MIMAT0003407	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-203b*		MIMAT0001865	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-203b	
+MI0003427	RETRIEVED	MI0003427	http://www.ensembl.org/Fugu_rubripes/contigview?l=scaffold_88:9861-13934	MIMAT0003075	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=fru-miR-203				
+MI0003428	RETRIEVED	MI0003428	http://www.ensembl.org/Tetraodon_nigroviridis/contigview?l=Un_random:165086547-165090620	MIMAT0003076	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=tni-miR-203				
+MI0004947	RETRIEVED	MI0004947	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_525:567287-571360	MIMAT0003695	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-203				
+MI0005315	RETRIEVED	MI0005315	http://www.ensembl.org/Monodelphis_domestica/contigview?l=1:311185371-311189451	MIMAT0004126	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mdo-miR-203				
+MI0000228	RETRIEVED	MI0000228	http://www.ensembl.org/Mus_musculus/contigview?l=3:157477572-157481642	MIMAT0000215	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-186	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-186+HMRD&amp;species=Mouse			
+MI0000483	RETRIEVED	MI0000483	http://www.ensembl.org/Homo_sapiens/contigview?l=1:71303902-71307987	MIMAT0000456	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-186	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-186+HMRD&amp;species=Human			
+MI0000931	RETRIEVED	MI0000931	http://www.ensembl.org/Rattus_norvegicus/contigview?l=2:255653015-255657100	MIMAT0000863	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-186	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-186+HMRD&amp;species=Rat			
+MI0002456	RETRIEVED	MI0002456		MIMAT0002162					
+MI0002605	RETRIEVED	MI0002605	http://www.ensembl.org/Pan_troglodytes/contigview?l=1:69803265-69807350	MIMAT0002304	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ptr-miR-186				
+MI0002606	RETRIEVED	MI0002606		MIMAT0002305					
+MI0002607	RETRIEVED	MI0002607		MIMAT0002306					
+MI0005033	RETRIEVED	MI0005033	http://www.ensembl.org/Bos_taurus/contigview?l=Un.30:149338-153423	MIMAT0003818	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-186				
+MI0005311	RETRIEVED	MI0005311	http://www.ensembl.org/Monodelphis_domestica/contigview?l=2:20446567-20450634	MIMAT0004122	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mdo-miR-186				
+MI0000604	RETRIEVED	MI0000604	http://www.ensembl.org/Rattus_norvegicus/contigview?l=6:134390666-134394762	MIMAT0000566	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-329	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-329+HMRD&amp;species=Rat			
+MI0000605	RETRIEVED	MI0000605	http://www.ensembl.org/Mus_musculus/contigview?l=12:110159288-110163384	MIMAT0000567	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-329	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-329+HMRD&amp;species=Mouse			
+MI0001725	RETRIEVED	MI0001725	http://www.ensembl.org/Homo_sapiens/contigview?l=14:100560875-100564954	MIMAT0001629	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-329	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-329+HMRD&amp;species=Human			
+MI0001726	RETRIEVED	MI0001726	http://www.ensembl.org/Homo_sapiens/contigview?l=14:100561190-100565273	MIMAT0001629	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-329	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-329+HMRD&amp;species=Human			
+MI0003135	RETRIEVED	MI0003135	http://www.ensembl.org/Homo_sapiens/contigview?l=14:100567845-100571926	MIMAT0002817	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-495	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-495+HMRD&amp;species=Human			
+MI0003519	RETRIEVED	MI0003519	http://www.ensembl.org/Mus_musculus/contigview?l=12:110163065-110167140	MIMAT0003168	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-543	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-543+HMRD&amp;species=Mouse			
+MI0003525	RETRIEVED	MI0003525	http://www.ensembl.org/Rattus_norvegicus/contigview?l=6:134395158-134399237	MIMAT0003175	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-543	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-543+HMRD&amp;species=Rat			
+MI0004639	RETRIEVED	MI0004639	http://www.ensembl.org/Mus_musculus/contigview?l=12:110164561-110168623	MIMAT0003456	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-495	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-495+HMRD&amp;species=Mouse			
+MI0003124	RETRIEVED	MI0003124	http://www.ensembl.org/Homo_sapiens/contigview?l=7:92949184-92953267	MIMAT0002805	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-489	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-489+HDC&amp;species=Human			
+MI0003254	RETRIEVED	MI0003254	http://www.ensembl.org/Fugu_rubripes/contigview?l=scaffold_37:1518143-1522244	MIMAT0002938	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=fru-miR-489				
+MI0003255	RETRIEVED	MI0003255	http://www.ensembl.org/Tetraodon_nigroviridis/contigview?l=21_random:1339609-1343700	MIMAT0002939	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=tni-miR-489				
+MI0003256	RETRIEVED	MI0003256	http://www.ensembl.org/Danio_rerio/contigview?l=19:40672631-40676734	MIMAT0002940	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-489				
+MI0003476	RETRIEVED	MI0003476	http://www.ensembl.org/Mus_musculus/contigview?l=6:3669897-3674003	MIMAT0003112	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-489	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-489c+M&amp;species=Mouse			
+MI0003477	RETRIEVED	MI0003477	http://www.ensembl.org/Rattus_norvegicus/contigview?l=4:28516260-28520365	MIMAT0003113	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-489	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-489u+R&amp;species=Rat			
+MI0003708	RETRIEVED	MI0003708	http://www.ensembl.org/Gallus_gallus/contigview?l=2:22425830-22429913	MIMAT0003365	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-489	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-489+HDC&amp;species=Chicken			
+MI0004884	RETRIEVED	MI0004884	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_104:2375569-2379652	MIMAT0003642	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-489				
+MI0000160	RETRIEVED	MI0000160	http://www.ensembl.org/Mus_musculus/contigview?l=12:110179946-110184016	MIMAT0000146	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-134	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-134+HMRD&amp;species=Mouse			
+MI0000474	RETRIEVED	MI0000474	http://www.ensembl.org/Homo_sapiens/contigview?l=14:100588777-100592849	MIMAT0000447	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-134	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-134+HMRD&amp;species=Human			
+MI0000907	RETRIEVED	MI0000907	http://www.ensembl.org/Rattus_norvegicus/contigview?l=6:134413632-134417704	MIMAT0000840	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-134	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-134+HMRD&amp;species=Rat			
+MI0002589	RETRIEVED	MI0002589		MIMAT0002288					
+MI0002590	RETRIEVED	MI0002590		MIMAT0002289					
+MI0002591	RETRIEVED	MI0002591		MIMAT0002290					
+MI0002592	RETRIEVED	MI0002592		MIMAT0002291					
+MI0000230	RETRIEVED	MI0000230	http://www.ensembl.org/Mus_musculus/contigview?l=X:6402948-6407015	MIMAT0000217	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-188	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-188+HMRD&amp;species=Mouse			
+MI0000484	RETRIEVED	MI0000484	http://www.ensembl.org/Homo_sapiens/contigview?l=X:49652849-49656934	MIMAT0000457	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-188	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-188+HMRD&amp;species=Human			
+MI0002608	RETRIEVED	MI0002608	http://www.ensembl.org/Macaca_mulatta/contigview?l=X:47636603-47640688	MIMAT0002307	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mml-miR-188				
+MI0002609	RETRIEVED	MI0002609	http://www.ensembl.org/Pan_troglodytes/contigview?l=X:50700052-50704137	MIMAT0002308	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ptr-miR-188				
+MI0002610	RETRIEVED	MI0002610		MIMAT0002309					
+MI0002611	RETRIEVED	MI0002611		MIMAT0002310					
+MI0002612	RETRIEVED	MI0002612		MIMAT0002311					
+MI0003205	RETRIEVED	MI0003205	http://www.ensembl.org/Homo_sapiens/contigview?l=X:49652494-49656584	MIMAT0002888	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-532				
+MI0003206	RETRIEVED	MI0003206	http://www.ensembl.org/Mus_musculus/contigview?l=X:6403361-6407456	MIMAT0002889	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-532				
+MI0003684	RETRIEVED	MI0003684	http://www.ensembl.org/Homo_sapiens/contigview?l=X:49662589-49666685	MIMAT0003338	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-660				
+MI0005061	RETRIEVED	MI0005061	http://www.ensembl.org/Bos_taurus/contigview?l=Un.2076:45097-49182	MIMAT0003848	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-532				
+MI0000783	RETRIEVED	MI0000783	http://www.ensembl.org/Homo_sapiens/contigview?l=2:219572611-219576674	MIMAT0000728	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-375	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-375+HMRDC&amp;species=Human			
+MI0000792	RETRIEVED	MI0000792	http://www.ensembl.org/Mus_musculus/contigview?l=1:74831865-74835928	MIMAT0000739	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-375	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-375+HMRDC&amp;species=Mouse			
+MI0002072	RETRIEVED	MI0002072	http://www.ensembl.org/Danio_rerio/contigview?l=6:13421599-13425678	MIMAT0001876	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-375				
+MI0002073	RETRIEVED	MI0002073	http://www.ensembl.org/Danio_rerio/contigview?l=9:10230524-10234606	MIMAT0001876	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-375				
+MI0003419	RETRIEVED	MI0003419	http://www.ensembl.org/Fugu_rubripes/contigview?l=scaffold_83:90347-94423	MIMAT0003069	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=fru-miR-375				
+MI0003420	RETRIEVED	MI0003420	http://www.ensembl.org/Tetraodon_nigroviridis/contigview?l=2:15356681-15360757	MIMAT0003070	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=tni-miR-375				
+MI0003705	RETRIEVED	MI0003705	http://www.ensembl.org/Gallus_gallus/contigview?l=7:23115692-23119756	MIMAT0003362	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-375	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-375+HMRDC&amp;species=Chicken			
+MI0005327	RETRIEVED	MI0005327	http://www.ensembl.org/Monodelphis_domestica/contigview?l=7:175490651-175494713	MIMAT0004138	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mdo-miR-375				
+MI0000153	RETRIEVED	MI0000153	http://www.ensembl.org/Mus_musculus/contigview?l=2:26411366-26415438	MIMAT0000137	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-126-5p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-126-5p+MDC&amp;species=Mouse	MIMAT0000138	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-126-3p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-126/126-3p+HMRDC&amp;species=Mouse
+MI0000471	RETRIEVED	MI0000471	http://www.ensembl.org/Homo_sapiens/contigview?l=9:138682875-138686959	MIMAT0000444	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-126*		MIMAT0000445	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-126	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-126/126-3p+HMRDC&amp;species=Human
+MI0000898	RETRIEVED	MI0000898	http://www.ensembl.org/Rattus_norvegicus/contigview?l=3:4766117-4770189	MIMAT0000831	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-126*		MIMAT0000832	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-126	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-126/126-3p+HMRDC&amp;species=Rat
+MI0001244	RETRIEVED	MI0001244	http://www.ensembl.org/Gallus_gallus/contigview?l=17:2679042-2683125	MIMAT0003723	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-126*	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-126-5p+MDC&amp;species=Chicken	MIMAT0001169	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-126	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-126/126-3p+HMRDC&amp;species=Chicken
+MI0001979	RETRIEVED	MI0001979	http://www.ensembl.org/Danio_rerio/contigview?l=8:6142805-6146905	MIMAT0003157	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-126*		MIMAT0001823	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-126	
+MI0003273	RETRIEVED	MI0003273	http://www.ensembl.org/Fugu_rubripes/contigview?l=scaffold_49:986579-990641	MIMAT0002957	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=fru-miR-126				
+MI0003274	RETRIEVED	MI0003274	http://www.ensembl.org/Tetraodon_nigroviridis/contigview?l=Un_random:2699408-2703470	MIMAT0002958	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=tni-miR-126				
+MI0004754	RETRIEVED	MI0004754	http://www.ensembl.org/Bos_taurus/contigview?l=Un.80514:-1409-2663	MIMAT0003540	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-126				
+MI0004827	RETRIEVED	MI0004827	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_137:1682934-1687002	MIMAT0003587	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-126*		MIMAT0003588	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-126	
+MI0000224	RETRIEVED	MI0000224	http://www.ensembl.org/Mus_musculus/contigview?l=6:30113928-30118002	MIMAT0000211	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-182	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-182+HMRD&amp;species=Mouse			
+MI0000272	RETRIEVED	MI0000272	http://www.ensembl.org/Homo_sapiens/contigview?l=7:129195459-129199568	MIMAT0000259	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-182	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-182+HMRD&amp;species=Human	MIMAT0000260	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-182*	
+MI0001368	RETRIEVED	MI0001368	http://www.ensembl.org/Danio_rerio/contigview?l=4:16520670-16524737	MIMAT0001271	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-182		MIMAT0001272	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-182*	
+MI0002815	RETRIEVED	MI0002815	http://www.ensembl.org/Macaca_mulatta/contigview?l=3:167126479-167130590	MIMAT0002513	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mml-miR-182				
+MI0002816	RETRIEVED	MI0002816		MIMAT0002514					
+MI0003457	RETRIEVED	MI0003457	http://www.ensembl.org/Fugu_rubripes/contigview?l=scaffold_8:1588290-1592361	MIMAT0003093	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=fru-miR-182				
+MI0003458	RETRIEVED	MI0003458	http://www.ensembl.org/Tetraodon_nigroviridis/contigview?l=19:2976605-2980671	MIMAT0003094	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=tni-miR-182				
+MI0004851	RETRIEVED	MI0004851	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_11:1010293-1014397	MIMAT0003610	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-182		MIMAT0003611	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-182*	
+MI0005307	RETRIEVED	MI0005307	http://www.ensembl.org/Monodelphis_domestica/contigview?l=8:185583411-185587481	MIMAT0004118	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mdo-miR-182				
+MI0000261	RETRIEVED	MI0000261	http://www.ensembl.org/Homo_sapiens/contigview?l=11:72001755-72005822	MIMAT0000250	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-139	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-139+HMRD&amp;species=Human			
+MI0000693	RETRIEVED	MI0000693	http://www.ensembl.org/Mus_musculus/contigview?l=7:101347197-101351264	MIMAT0000656	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-139	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-139+HMRD&amp;species=Mouse			
+MI0000913	RETRIEVED	MI0000913	http://www.ensembl.org/Rattus_norvegicus/contigview?l=1:158974576-158978643	MIMAT0000845	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-139	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-139+HMRD&amp;species=Rat			
+MI0002453	RETRIEVED	MI0002453		MIMAT0002159					
+MI0002768	RETRIEVED	MI0002768		MIMAT0002472					
+MI0002769	RETRIEVED	MI0002769		MIMAT0002473					
+MI0003693	RETRIEVED	MI0003693		MIMAT0003349	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-139				
+MI0004840	RETRIEVED	MI0004840	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_995:131967-136033	MIMAT0003600	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-139				
+MI0005009	RETRIEVED	MI0005009	http://www.ensembl.org/Bos_taurus/contigview?l=15:29454185-29458252	MIMAT0003788	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-139				
+MI0000297	RETRIEVED	MI0000297	http://www.ensembl.org/Homo_sapiens/contigview?l=X:122521627-122525736	MIMAT0000277	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-220	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-220+H&amp;species=Human			
+MI0001386	RETRIEVED	MI0001386	http://www.ensembl.org/Danio_rerio/contigview?l=1:65178784-65182894	MIMAT0001287	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-220				
+MI0002887	RETRIEVED	MI0002887	http://www.ensembl.org/Macaca_mulatta/contigview?l=X:121785204-121789314	MIMAT0002578	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mml-miR-220				
+MI0002888	RETRIEVED	MI0002888	http://www.ensembl.org/Pan_troglodytes/contigview?l=X:126527822-126531931	MIMAT0002579	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ptr-miR-220				
+MI0002889	RETRIEVED	MI0002889		MIMAT0002580					
+MI0002890	RETRIEVED	MI0002890		MIMAT0002581					
+MI0002891	RETRIEVED	MI0002891		MIMAT0002582					
+MI0000124	RETRIEVED	MI0000124	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=2R:15173866-15177947	MIMAT0000111	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-6				
+MI0000125	RETRIEVED	MI0000125	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=2R:15173732-15177805	MIMAT0000111	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-6				
+MI0000126	RETRIEVED	MI0000126	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=2R:15173579-15177658	MIMAT0000111	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-6				
+MI0001299	RETRIEVED	MI0001299		MIMAT0001208					
+MI0001300	RETRIEVED	MI0001300		MIMAT0001208					
+MI0001301	RETRIEVED	MI0001301		MIMAT0001208					
+MI0001015	RETRIEVED	MI0001015		MIMAT0000946					
+MI0001016	RETRIEVED	MI0001016		MIMAT0000947					
+MI0001049	RETRIEVED	MI0001049		MIMAT0000980					
+MI0001050	RETRIEVED	MI0001050		MIMAT0000981					
+MI0002332	RETRIEVED	MI0002332		MIMAT0002038					
+MI0002333	RETRIEVED	MI0002333		MIMAT0002039					
+MI0000245	RETRIEVED	MI0000245	http://www.ensembl.org/Mus_musculus/contigview?l=7:139807009-139811080	MIMAT0000235	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-202	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-202+HMRC&amp;species=Mouse			
+MI0002040	RETRIEVED	MI0002040	http://www.ensembl.org/Danio_rerio/contigview?l=13:57562736-57566811	MIMAT0003406	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-202*		MIMAT0001864	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-202	
+MI0003130	RETRIEVED	MI0003130	http://www.ensembl.org/Homo_sapiens/contigview?l=10:134909006-134913115	MIMAT0002810	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-202*		MIMAT0002811	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-202	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-202+HMRC&amp;species=Human
+MI0003425	RETRIEVED	MI0003425	http://www.ensembl.org/Fugu_rubripes/contigview?l=scaffold_52:1211142-1215210	MIMAT0003073	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=fru-miR-202				
+MI0003426	RETRIEVED	MI0003426	http://www.ensembl.org/Tetraodon_nigroviridis/contigview?l=Un_random:138300778-138304846	MIMAT0003074	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=tni-miR-202				
+MI0003699	RETRIEVED	MI0003699	http://www.ensembl.org/Gallus_gallus/contigview?l=6:20617693-20621781	MIMAT0003354	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-202*		MIMAT0003355	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-202	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-202+HMRC&amp;species=Chicken
+MI0004860	RETRIEVED	MI0004860	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_266:961484-965570	MIMAT0003620	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-202*		MIMAT0003621	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-202	
+MI0004861	RETRIEVED	MI0004861	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_266:969211-973297	MIMAT0003620	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-202*		MIMAT0003621	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-202	
+MI0000343	RETRIEVED	MI0000343	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=2L:11951410-11955503	MIMAT0000319	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-263a				
+MI0000383	RETRIEVED	MI0000383	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=3L:15806665-15810754	MIMAT0000362	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-263b				
+MI0001329	RETRIEVED	MI0001329		MIMAT0001235					
+MI0001330	RETRIEVED	MI0001330		MIMAT0001236					
+MI0001583	RETRIEVED	MI0001583	http://www.ensembl.org/Apis_mellifera/contigview?l=Group10.29:366549-370639	MIMAT0001479	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ame-miR-263				
+MI0001612	RETRIEVED	MI0001612	http://www.ensembl.org/Anopheles_gambiae/contigview?l=3R:12393476-12397561	MIMAT0001507	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=aga-miR-263				
+MI0004978	RETRIEVED	MI0004978		MIMAT0004200					
+MI0000239	RETRIEVED	MI0000239	http://www.ensembl.org/Homo_sapiens/contigview?l=1:109941038-109945112	MIMAT0000227	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-197	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-197+HD&amp;species=Human			
+MI0002909	RETRIEVED	MI0002909	http://www.ensembl.org/Pan_troglodytes/contigview?l=1:108782219-108786293	MIMAT0002600	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ptr-miR-197				
+MI0002910	RETRIEVED	MI0002910		MIMAT0002601					
+MI0002911	RETRIEVED	MI0002911		MIMAT0002602					
+MI0002912	RETRIEVED	MI0002912		MIMAT0002603					
+MI0002913	RETRIEVED	MI0002913		MIMAT0002604					
+MI0000359	RETRIEVED	MI0000359	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=3L:10337175-10341272	MIMAT0000336	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-276*		MIMAT0000337	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-276a	
+MI0000375	RETRIEVED	MI0000375	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=3L:10291732-10295830	MIMAT0000336	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-276*		MIMAT0000354	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-276b	
+MI0001333	RETRIEVED	MI0001333		MIMAT0001239					
+MI0001334	RETRIEVED	MI0001334		MIMAT0001240					
+MI0001584	RETRIEVED	MI0001584	http://www.ensembl.org/Apis_mellifera/contigview?l=Group7.35:691906-695989	MIMAT0001480	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ame-miR-276				
+MI0001614	RETRIEVED	MI0001614	http://www.ensembl.org/Anopheles_gambiae/contigview?l=2L:18989754-18993845	MIMAT0001509	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=aga-miR-276				
+MI0004980	RETRIEVED	MI0004980		MIMAT0004202					
+MI0001088	RETRIEVED	MI0001088		MIMAT0001018					
+MI0001552	RETRIEVED	MI0001552		MIMAT0001448					
+MI0001554	RETRIEVED	MI0001554		MIMAT0001450					
+MI0001761	RETRIEVED	MI0001761		MIMAT0001663					
+MI0001762	RETRIEVED	MI0001762		MIMAT0001664					
+MI0001821	RETRIEVED	MI0001821		MIMAT0001723					
+MI0000787	RETRIEVED	MI0000787	http://www.ensembl.org/Homo_sapiens/contigview?l=14:100556156-100560222	MIMAT0000733	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-379	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-379+HMRD&amp;species=Human			
+MI0000788	RETRIEVED	MI0000788	http://www.ensembl.org/Homo_sapiens/contigview?l=14:100559107-100563167	MIMAT0000734	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-380-5p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-380-5p+HMRD&amp;species=Human	MIMAT0000735	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-380-3p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-380-3p.hd+HD&amp;species=Human
+MI0000796	RETRIEVED	MI0000796	http://www.ensembl.org/Mus_musculus/contigview?l=12:110154867-110158932	MIMAT0000743	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-379	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-379+HMRD&amp;species=Mouse			
+MI0000797	RETRIEVED	MI0000797	http://www.ensembl.org/Mus_musculus/contigview?l=12:110157610-110161670	MIMAT0000744	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-380-5p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-380-5p+HMRD&amp;species=Mouse	MIMAT0000745	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-380-3p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-380-3p.mr+MR&amp;species=Mouse
+MI0001163	RETRIEVED	MI0001163	http://www.ensembl.org/Mus_musculus/contigview?l=12:110155982-110160063	MIMAT0001093	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-411	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-411+HMRD&amp;species=Mouse			
+MI0003541	RETRIEVED	MI0003541	http://www.ensembl.org/Rattus_norvegicus/contigview?l=6:134386198-134390282	MIMAT0003192	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-379	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-379+HMRD&amp;species=Rat			
+MI0003675	RETRIEVED	MI0003675	http://www.ensembl.org/Homo_sapiens/contigview?l=14:100557415-100561510	MIMAT0003329	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-411	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-411+HMRD&amp;species=Human			
+MI0003757	RETRIEVED	MI0003757	http://www.ensembl.org/Homo_sapiens/contigview?l=14:100560110-100564197	MIMAT0003879	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-758				
+MI0004129	RETRIEVED	MI0004129	http://www.ensembl.org/Mus_musculus/contigview?l=12:110158617-110162697	MIMAT0003889	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-758				
+MI0005021	RETRIEVED	MI0005021	http://www.ensembl.org/Bos_taurus/contigview?l=21:45722959-45727019	MIMAT0003803	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-380-5p		MIMAT0003804	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-380-3p	
+MI0000194	RETRIEVED	MI0000194		MIMAT0000182					
+MI0000195	RETRIEVED	MI0000195		MIMAT0000183					
+MI0001738	RETRIEVED	MI0001738		MIMAT0001640					
+MI0002209	RETRIEVED	MI0002209		MIMAT0001915					
+MI0002210	RETRIEVED	MI0002210		MIMAT0001916					
+MI0002211	RETRIEVED	MI0002211		MIMAT0001917					
+MI0001652	RETRIEVED	MI0001652	http://www.ensembl.org/Homo_sapiens/contigview?l=X:133500037-133504127	MIMAT0001545	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-450	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-450+HMRD&amp;species=Human			
+MI0001653	RETRIEVED	MI0001653	http://www.ensembl.org/Mus_musculus/contigview?l=X:49290781-49294871	MIMAT0001546	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-450	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-450+HMRD&amp;species=Mouse			
+MI0001654	RETRIEVED	MI0001654	http://www.ensembl.org/Rattus_norvegicus/contigview?l=X:139992947-139997037	MIMAT0001547	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-450	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-450+HMRD&amp;species=Rat			
+MI0001655	RETRIEVED	MI0001655	http://www.ensembl.org/Canis_familiaris/contigview?l=X:108239753-108243843	MIMAT0001548	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cfa-miR-450	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-450+HMRD&amp;species=Dog			
+MI0003187	RETRIEVED	MI0003187	http://www.ensembl.org/Homo_sapiens/contigview?l=X:133500204-133504303	MIMAT0001545	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-450	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-450+HMRD&amp;species=Human			
+MI0003537	RETRIEVED	MI0003537	http://www.ensembl.org/Mus_musculus/contigview?l=X:49290926-49294994	MIMAT0001546	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-450	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-450+HMRD&amp;species=Mouse			
+MI0004705	RETRIEVED	MI0004705	http://www.ensembl.org/Mus_musculus/contigview?l=X:49290624-49294705	MIMAT0003511	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-450b		MIMAT0003512	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-450b*	
+MI0005048	RETRIEVED	MI0005048	http://www.ensembl.org/Bos_taurus/contigview?l=Un.1609:173509-177600	MIMAT0003834	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-450				
+MI0002077	RETRIEVED	MI0002077	http://www.ensembl.org/Danio_rerio/contigview?l=5:72009800-72013895	MIMAT0001879	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-455				
+MI0003360	RETRIEVED	MI0003360	http://www.ensembl.org/Fugu_rubripes/contigview?l=scaffold_49:276273-280356	MIMAT0003028	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=fru-miR-455				
+MI0003361	RETRIEVED	MI0003361	http://www.ensembl.org/Tetraodon_nigroviridis/contigview?l=12:4867103-4871186	MIMAT0003029	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=tni-miR-455				
+MI0003513	RETRIEVED	MI0003513	http://www.ensembl.org/Homo_sapiens/contigview?l=9:116009535-116013630	MIMAT0003150	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-455	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-455+HMRDC&amp;species=Human			
+MI0003707	RETRIEVED	MI0003707	http://www.ensembl.org/Gallus_gallus/contigview?l=17:6019890-6023975	MIMAT0003364	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-455	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-455+HMRDC&amp;species=Chicken			
+MI0004679	RETRIEVED	MI0004679	http://www.ensembl.org/Mus_musculus/contigview?l=4:62741212-62745293	MIMAT0003485	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-455-5p		MIMAT0003742	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-455-3p	
+MI0004883	RETRIEVED	MI0004883	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_154:1787046-1791132	MIMAT0003641	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-455				
+MI0005049	RETRIEVED	MI0005049	http://www.ensembl.org/Bos_taurus/contigview?l=8:56116864-56120952	MIMAT0003835	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-455		MIMAT0003836	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-455*	
+MI0003196	RETRIEVED	MI0003196	http://www.ensembl.org/Homo_sapiens/contigview?l=X:146147742-146151835	MIMAT0002881	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-509	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-509+H&amp;species=Human			
+MI0003197	RETRIEVED	MI0003197	http://www.ensembl.org/Homo_sapiens/contigview?l=X:146159545-146163618	MIMAT0002882	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-510	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-510+H&amp;species=Human			
+MI0003198	RETRIEVED	MI0003198	http://www.ensembl.org/Homo_sapiens/contigview?l=X:146166457-146170554	MIMAT0002883	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-514	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-514+H&amp;species=Human			
+MI0003199	RETRIEVED	MI0003199	http://www.ensembl.org/Homo_sapiens/contigview?l=X:146169153-146173240	MIMAT0002883	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-514	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-514+H&amp;species=Human			
+MI0003200	RETRIEVED	MI0003200	http://www.ensembl.org/Homo_sapiens/contigview?l=X:146171851-146175938	MIMAT0002883	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-514	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-514+H&amp;species=Human			
+MI0002392	RETRIEVED	MI0002392		MIMAT0002098					
+MI0002393	RETRIEVED	MI0002393		MIMAT0002099					
+MI0002394	RETRIEVED	MI0002394		MIMAT0002100					
+MI0002395	RETRIEVED	MI0002395		MIMAT0002101					
+MI0002396	RETRIEVED	MI0002396		MIMAT0002102					
+MI0000015	RETRIEVED	MI0000015	http://www.ensembl.org/Caenorhabditis_elegans/contigview?l=II:11887929-11892024	MIMAT0000015	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cel-miR-44				
+MI0000016	RETRIEVED	MI0000016	http://www.ensembl.org/Caenorhabditis_elegans/contigview?l=II:11878850-11882945	MIMAT0000016	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cel-miR-45				
+MI0000497	RETRIEVED	MI0000497		MIMAT0000469					
+MI0000498	RETRIEVED	MI0000498		MIMAT0000470					
+MI0000499	RETRIEVED	MI0000499		MIMAT0000470					
+MI0001648	RETRIEVED	MI0001648	http://www.ensembl.org/Homo_sapiens/contigview?l=5:54500117-54504207	MIMAT0001541	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-449	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-34/449+HMRDC&amp;species=Human			
+MI0001649	RETRIEVED	MI0001649	http://www.ensembl.org/Mus_musculus/contigview?l=13:114156412-114160502	MIMAT0001542	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-449	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-34/449+HMRDC&amp;species=Mouse			
+MI0001650	RETRIEVED	MI0001650	http://www.ensembl.org/Rattus_norvegicus/contigview?l=2:44416273-44420363	MIMAT0001543	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-449	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-34/449+HMRDC&amp;species=Rat			
+MI0001651	RETRIEVED	MI0001651	http://www.ensembl.org/Canis_familiaris/contigview?l=2:43134834-43138924	MIMAT0001544	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cfa-miR-449	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-34/449+HMRDC&amp;species=Dog			
+MI0003715	RETRIEVED	MI0003715	http://www.ensembl.org/Gallus_gallus/contigview?l=Un:133604288-133608373	MIMAT0003372	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-449	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-34/449+HMRDC&amp;species=Chicken			
+MI0004957	RETRIEVED	MI0004957	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_715:162904-166990	MIMAT0003704	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-449				
+MI0005329	RETRIEVED	MI0005329	http://www.ensembl.org/Monodelphis_domestica/contigview?l=3:17543606-17547684	MIMAT0004140	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mdo-miR-449				
+MI0002181	RETRIEVED	MI0002181	http://www.ensembl.org/Danio_rerio/contigview?l=2:1604387-1608463	MIMAT0001887	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-460-5p		MIMAT0001888	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-460-3p	
+MI0003323	RETRIEVED	MI0003323	http://www.ensembl.org/Fugu_rubripes/contigview?l=scaffold_68:1041549-1045617	MIMAT0002997	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=fru-miR-460				
+MI0003324	RETRIEVED	MI0003324	http://www.ensembl.org/Tetraodon_nigroviridis/contigview?l=15_random:1194502-1198570	MIMAT0002998	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=tni-miR-460				
+MI0004998	RETRIEVED	MI0004998	http://www.ensembl.org/Gallus_gallus/contigview?l=2:3179595-3183684	MIMAT0003778	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-460				
+MI0000314	RETRIEVED	MI0000314	http://www.ensembl.org/Caenorhabditis_elegans/contigview?l=X:11790367-11794464	MIMAT0000294	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cel-miR-239a				
+MI0000315	RETRIEVED	MI0000315	http://www.ensembl.org/Caenorhabditis_elegans/contigview?l=X:11789224-11793321	MIMAT0000295	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cel-miR-239b				
+MI0001406	RETRIEVED	MI0001406		MIMAT0001304					
+MI0001410	RETRIEVED	MI0001410		MIMAT0001308					
+MI0003502	RETRIEVED	MI0003502		MIMAT0003139					
+MI0003503	RETRIEVED	MI0003503		MIMAT0003140					
+MI0003504	RETRIEVED	MI0003504		MIMAT0003141					
+MI0003505	RETRIEVED	MI0003505		MIMAT0003142					
+MI0004725	RETRIEVED	MI0004725		MIMAT0003915					
+MI0000791	RETRIEVED	MI0000791	http://www.ensembl.org/Homo_sapiens/contigview?l=8:14753318-14757390	MIMAT0000738	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-383	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-383+HMRDC&amp;species=Human			
+MI0000800	RETRIEVED	MI0000800	http://www.ensembl.org/Mus_musculus/contigview?l=8:39718650-39722719	MIMAT0000748	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-383	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-383+HMRDC&amp;species=Mouse			
+MI0003478	RETRIEVED	MI0003478	http://www.ensembl.org/Rattus_norvegicus/contigview?l=16:57661841-57665914	MIMAT0003114	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-383	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-383+HMRDC&amp;species=Rat			
+MI0003706	RETRIEVED	MI0003706	http://www.ensembl.org/Gallus_gallus/contigview?l=4:64482474-64486546	MIMAT0003363	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-383	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-383+HMRDC&amp;species=Chicken			
+MI0004881	RETRIEVED	MI0004881	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_107:2299657-2303729	MIMAT0003639	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-383				
+MI0005328	RETRIEVED	MI0005328	http://www.ensembl.org/Monodelphis_domestica/contigview?l=5:17425574-17429643	MIMAT0004139	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mdo-miR-383				
+MI0000764	RETRIEVED	MI0000764	http://www.ensembl.org/Homo_sapiens/contigview?l=X:133129074-133133148	MIMAT0003385	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-363*		MIMAT0000707	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-363	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-363+HMRD&amp;species=Human
+MI0000765	RETRIEVED	MI0000765	http://www.ensembl.org/Mus_musculus/contigview?l=X:48984320-48988394	MIMAT0000708	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-363	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-363+HMRD&amp;species=Mouse			
+MI0002067	RETRIEVED	MI0002067	http://www.ensembl.org/Danio_rerio/contigview?l=14:64025276-64029402	MIMAT0001874	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-363				
+MI0003553	RETRIEVED	MI0003553	http://www.ensembl.org/Rattus_norvegicus/contigview?l=X:139738651-139742737	MIMAT0003209	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-363-5p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-363-5p+RD&amp;species=Rat	MIMAT0003210	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-363-3p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-25/32/92/363/367+HMRDC&amp;species=Rat
+MI0004955	RETRIEVED	MI0004955	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_31:1056610-1060696	MIMAT0003701	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-363-5p		MIMAT0003702	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-363-3p	
+MI0005069	RETRIEVED	MI0005069	http://www.ensembl.org/Bos_taurus/contigview?l=Un.8225:24007-28080	MIMAT0003855	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-363				
+MI0003184	RETRIEVED	MI0003184	http://www.ensembl.org/Homo_sapiens/contigview?l=X:49657779-49661862	MIMAT0002871	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-500	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-500+HMRD&amp;species=Human			
+MI0003185	RETRIEVED	MI0003185	http://www.ensembl.org/Homo_sapiens/contigview?l=X:49659070-49663153	MIMAT0002872	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-501	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-501+HMR&amp;species=Human			
+MI0003186	RETRIEVED	MI0003186	http://www.ensembl.org/Homo_sapiens/contigview?l=X:49663946-49668031	MIMAT0002873	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-502	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-502+HD&amp;species=Human			
+MI0003480	RETRIEVED	MI0003480	http://www.ensembl.org/Rattus_norvegicus/contigview?l=X:27329151-27333234	MIMAT0003116	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-501	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-501+HMR&amp;species=Rat			
+MI0004702	RETRIEVED	MI0004702	http://www.ensembl.org/Mus_musculus/contigview?l=X:6392642-6396733	MIMAT0003507	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-500	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-500+HMRD&amp;species=Mouse			
+MI0004703	RETRIEVED	MI0004703	http://www.ensembl.org/Mus_musculus/contigview?l=X:6396202-6400310	MIMAT0003508	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-501	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-501+HMR&amp;species=Mouse	MIMAT0003509	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-501*	
+MI0000121	RETRIEVED	MI0000121	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=2R:15174458-15178526	MIMAT0000108	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-3				
+MI0000421	RETRIEVED	MI0000421	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=2R:15174569-15178637	MIMAT0000401	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-309				
+MI0001295	RETRIEVED	MI0001295		MIMAT0001203					
+MI0001354	RETRIEVED	MI0001354		MIMAT0001259					
+MI0000427	RETRIEVED	MI0000427	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=3L:18824230-18828313	MIMAT0000407	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-315				
+MI0001356	RETRIEVED	MI0001356		MIMAT0001261					
+MI0001592	RETRIEVED	MI0001592	http://www.ensembl.org/Apis_mellifera/contigview?l=Group2.33:179912-183993	MIMAT0001487	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ame-miR-315				
+MI0001626	RETRIEVED	MI0001626	http://www.ensembl.org/Anopheles_gambiae/contigview?l=2R:33701164-33705239	MIMAT0001521	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=aga-miR-315				
+MI0001520	RETRIEVED	MI0001520		MIMAT0001414					
+MI0001524	RETRIEVED	MI0001524	http://www.ensembl.org/Mus_musculus/contigview?l=12:110036254-110040344	MIMAT0001418	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-431	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-431+HMRD&amp;species=Mouse			
+MI0001721	RETRIEVED	MI0001721	http://www.ensembl.org/Homo_sapiens/contigview?l=14:100415097-100419210	MIMAT0001625	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-431	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-431+HMRD&amp;species=Human			
+MI0001722	RETRIEVED	MI0001722	http://www.ensembl.org/Rattus_norvegicus/contigview?l=6:134180307-134184420	MIMAT0001626	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-431	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-431+HMRD&amp;species=Rat			
+MI0000598	RETRIEVED	MI0000598	http://www.ensembl.org/Mus_musculus/contigview?l=7:99424352-99428446	MIMAT0000559	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-326	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-326+HMRD&amp;species=Mouse			
+MI0000599	RETRIEVED	MI0000599	http://www.ensembl.org/Rattus_norvegicus/contigview?l=1:156885513-156889607	MIMAT0000560	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-326	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-326+HMRD&amp;species=Rat			
+MI0000808	RETRIEVED	MI0000808	http://www.ensembl.org/Homo_sapiens/contigview?l=11:74721784-74725878	MIMAT0000756	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-326	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-326+HMRD&amp;species=Human			
+MI0002434	RETRIEVED	MI0002434		MIMAT0002140					
+MI0000429	RETRIEVED	MI0000429	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=3R:5914848-5918939	MIMAT0000409	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-317				
+MI0001358	RETRIEVED	MI0001358		MIMAT0001263					
+MI0001593	RETRIEVED	MI0001593	http://www.ensembl.org/Apis_mellifera/contigview?l=Group5.13:298664-302753	MIMAT0001488	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ame-miR-317				
+MI0001627	RETRIEVED	MI0001627	http://www.ensembl.org/Anopheles_gambiae/contigview?l=2R:28249997-28254086	MIMAT0001522	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=aga-miR-317				
+MI0002361	RETRIEVED	MI0002361		MIMAT0002067					
+MI0002362	RETRIEVED	MI0002362		MIMAT0002068					
+MI0002363	RETRIEVED	MI0002363		MIMAT0002069					
+MI0002364	RETRIEVED	MI0002364		MIMAT0002070					
+MI0001704	RETRIEVED	MI0001704		MIMAT0001602					
+MI0001705	RETRIEVED	MI0001705		MIMAT0001603					
+MI0001706	RETRIEVED	MI0001706		MIMAT0001604					
+MI0001718	RETRIEVED	MI0001718		MIMAT0001616					
+MI0005220	RETRIEVED	MI0005220		MIMAT0004036					
+MI0005221	RETRIEVED	MI0005221		MIMAT0004037					
+MI0005222	RETRIEVED	MI0005222		MIMAT0004038					
+MI0005223	RETRIEVED	MI0005223		MIMAT0004039					
+MI0005224	RETRIEVED	MI0005224		MIMAT0004040					
+MI0005225	RETRIEVED	MI0005225		MIMAT0004041					
+MI0005226	RETRIEVED	MI0005226		MIMAT0004042					
+MI0005227	RETRIEVED	MI0005227		MIMAT0004043					
+MI0005228	RETRIEVED	MI0005228		MIMAT0004044					
+MI0005252	RETRIEVED	MI0005252		MIMAT0004068					
+MI0005253	RETRIEVED	MI0005253		MIMAT0004069					
+MI0005254	RETRIEVED	MI0005254		MIMAT0004070					
+MI0005255	RETRIEVED	MI0005255		MIMAT0004071					
+MI0005256	RETRIEVED	MI0005256		MIMAT0004072					
+MI0005257	RETRIEVED	MI0005257		MIMAT0004073					
+MI0005258	RETRIEVED	MI0005258		MIMAT0004074					
+MI0005259	RETRIEVED	MI0005259		MIMAT0004075					
+MI0005260	RETRIEVED	MI0005260		MIMAT0004076					
+MI0005261	RETRIEVED	MI0005261		MIMAT0004077					
+MI0005262	RETRIEVED	MI0005262		MIMAT0004078					
+MI0000596	RETRIEVED	MI0000596	http://www.ensembl.org/Rattus_norvegicus/contigview?l=X:93478419-93482516	MIMAT0000557	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-325	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-325+HMRD&amp;species=Rat			
+MI0000597	RETRIEVED	MI0000597	http://www.ensembl.org/Mus_musculus/contigview?l=X:101579801-101583898	MIMAT0000558	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-325	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-325+HMRD&amp;species=Mouse			
+MI0000824	RETRIEVED	MI0000824	http://www.ensembl.org/Homo_sapiens/contigview?l=X:76140220-76144317	MIMAT0000771	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-325	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-325+HMRD&amp;species=Human			
+MI0002444	RETRIEVED	MI0002444		MIMAT0002150					
+MI0001729	RETRIEVED	MI0001729	http://www.ensembl.org/Homo_sapiens/contigview?l=17:24210513-24214584	MIMAT0001631	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-451	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-451+HMRDC&amp;species=Human			
+MI0001730	RETRIEVED	MI0001730	http://www.ensembl.org/Mus_musculus/contigview?l=11:77887365-77891436	MIMAT0001632	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-451	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-451+HMRDC&amp;species=Mouse			
+MI0001731	RETRIEVED	MI0001731	http://www.ensembl.org/Rattus_norvegicus/contigview?l=10:64127518-64131589	MIMAT0001633	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-451	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-451+HMRDC&amp;species=Rat			
+MI0001732	RETRIEVED	MI0001732	http://www.ensembl.org/Danio_rerio/contigview?l=5:51569933-51573992	MIMAT0001634	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-451				
+MI0004958	RETRIEVED	MI0004958	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_305:953828-957889	MIMAT0003705	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-451				
+MI0004995	RETRIEVED	MI0004995	http://www.ensembl.org/Gallus_gallus/contigview?l=19:5482055-5486123	MIMAT0003775	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-451	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-451+HMRDC&amp;species=Chicken			
+MI0005304	RETRIEVED	MI0005304	http://www.ensembl.org/Monodelphis_domestica/contigview?l=2:506775375-506779436	MIMAT0004115	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mdo-miR-451				
+MI0001637	RETRIEVED	MI0001637	http://www.ensembl.org/Homo_sapiens/contigview?l=X:113962273-113966383	MIMAT0001532	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-448	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-448+HMRD&amp;species=Human			
+MI0001638	RETRIEVED	MI0001638	http://www.ensembl.org/Mus_musculus/contigview?l=X:142402578-142406689	MIMAT0001533	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-448	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-448+HMRD&amp;species=Mouse			
+MI0001639	RETRIEVED	MI0001639	http://www.ensembl.org/Rattus_norvegicus/contigview?l=X:31051516-31055627	MIMAT0001534	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-448	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-448+HMRD&amp;species=Rat			
+MI0001640	RETRIEVED	MI0001640	http://www.ensembl.org/Canis_familiaris/contigview?l=X:90616060-90620169	MIMAT0001535	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cfa-miR-448	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-448+HMRD&amp;species=Dog			
+MI0000367	RETRIEVED	MI0000367	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=3L:3232554-3236650	MIMAT0000346	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-282				
+MI0001341	RETRIEVED	MI0001341		MIMAT0001246					
+MI0001588	RETRIEVED	MI0001588	http://www.ensembl.org/Apis_mellifera/contigview?l=Group14.23:28948-33039	MIMAT0001484	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ame-miR-282				
+MI0001619	RETRIEVED	MI0001619	http://www.ensembl.org/Anopheles_gambiae/contigview?l=2L:17494155-17498247	MIMAT0001514	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=aga-miR-282				
+MI0004983	RETRIEVED	MI0004983		MIMAT0004205					
+MI0000432	RETRIEVED	MI0000432	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=3R:12679997-12684064	MIMAT0000412	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-iab-4-5p		MIMAT0000413	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-iab-4-3p	
+MI0001297	RETRIEVED	MI0001297		MIMAT0001205			MIMAT0001206		
+MI0001598	RETRIEVED	MI0001598	http://www.ensembl.org/Apis_mellifera/contigview?l=Group16.9:876073-880157	MIMAT0001493	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ame-miR-iab-4				
+MI0001636	RETRIEVED	MI0001636	http://www.ensembl.org/Anopheles_gambiae/contigview?l=2R:60295556-60299639	MIMAT0001531	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=aga-miR-iab-4				
+MI0000058	RETRIEVED	MI0000058	http://www.ensembl.org/Caenorhabditis_elegans/contigview?l=V:12039277-12043370	MIMAT0000060	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cel-miR-87				
+MI0000382	RETRIEVED	MI0000382	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=2L:9948418-9952516	MIMAT0000361	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-87				
+MI0000523	RETRIEVED	MI0000523		MIMAT0000492					
+MI0001319	RETRIEVED	MI0001319		MIMAT0001225					
+MI0000387	RETRIEVED	MI0000387	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=3L:623740-627820	MIMAT0000365	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-bantam				
+MI0001287	RETRIEVED	MI0001287		MIMAT0001197					
+MI0001574	RETRIEVED	MI0001574	http://www.ensembl.org/Apis_mellifera/contigview?l=Group14.24:1300336-1304422	MIMAT0001470	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ame-bantam				
+MI0001599	RETRIEVED	MI0001599	http://www.ensembl.org/Anopheles_gambiae/contigview?l=2R:33272498-33276608	MIMAT0001494	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=aga-bantam				
+MI0000052	RETRIEVED	MI0000052	http://www.ensembl.org/Caenorhabditis_elegans/contigview?l=X:2429066-2433173	MIMAT0000054	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cel-miR-81				
+MI0000053	RETRIEVED	MI0000053	http://www.ensembl.org/Caenorhabditis_elegans/contigview?l=X:2433252-2437348	MIMAT0000055	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cel-miR-82				
+MI0000519	RETRIEVED	MI0000519		MIMAT0000488					
+MI0000520	RETRIEVED	MI0000520		MIMAT0000489					
+MI0000361	RETRIEVED	MI0000361	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=2R:11169929-11174026	MIMAT0000339	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-278				
+MI0001336	RETRIEVED	MI0001336		MIMAT0001242					
+MI0001586	RETRIEVED	MI0001586	http://www.ensembl.org/Apis_mellifera/contigview?l=Group8.46:126925-131016	MIMAT0001482	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ame-miR-278				
+MI0001616	RETRIEVED	MI0001616	http://www.ensembl.org/Anopheles_gambiae/contigview?l=3L:34110621-34114703	MIMAT0001511	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=aga-miR-278				
+MI0000360	RETRIEVED	MI0000360	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=3R:5923744-5927843	MIMAT0000338	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-277				
+MI0001335	RETRIEVED	MI0001335		MIMAT0001241					
+MI0001585	RETRIEVED	MI0001585	http://www.ensembl.org/Apis_mellifera/contigview?l=Group5.13:320869-324952	MIMAT0001481	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ame-miR-277				
+MI0001615	RETRIEVED	MI0001615	http://www.ensembl.org/Anopheles_gambiae/contigview?l=2R:28232523-28236612	MIMAT0001510	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=aga-miR-277				
+MI0004981	RETRIEVED	MI0004981		MIMAT0004203					
+MI0000177	RETRIEVED	MI0000177	http://www.ensembl.org/Mus_musculus/contigview?l=16:84594732-84598796	MIMAT0000165	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-155	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-155+HMRDC&amp;species=Mouse			
+MI0000681	RETRIEVED	MI0000681	http://www.ensembl.org/Homo_sapiens/contigview?l=21:25866163-25870227	MIMAT0000646	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-155	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-155+HMRDC&amp;species=Human			
+MI0001176	RETRIEVED	MI0001176	http://www.ensembl.org/Gallus_gallus/contigview?l=1:96256498-96260560	MIMAT0001106	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-155	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-155+HMRDC&amp;species=Chicken			
+MI0002023	RETRIEVED	MI0002023	http://www.ensembl.org/Danio_rerio/contigview?l=1:1072307-1076384	MIMAT0001851	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-155				
+MI0004848	RETRIEVED	MI0004848	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_164:661493-665561	MIMAT0003608	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-155				
+MI0000412	RETRIEVED	MI0000412	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=2L:7423972-7428044	MIMAT0000391	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-305				
+MI0001350	RETRIEVED	MI0001350		MIMAT0001255					
+MI0001591	RETRIEVED	MI0001591	http://www.ensembl.org/Apis_mellifera/contigview?l=Group4.22:622609-626698	MIMAT0001486	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ame-miR-305				
+MI0001623	RETRIEVED	MI0001623	http://www.ensembl.org/Anopheles_gambiae/contigview?l=3R:38384246-38388335	MIMAT0001518	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=aga-miR-305				
+MI0004985	RETRIEVED	MI0004985		MIMAT0004207					
+MI0000394	RETRIEVED	MI0000394	http://www.ensembl.org/Mus_musculus/contigview?l=2:173907986-173912064	MIMAT0000374	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-296	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-296+HMR&amp;species=Mouse			
+MI0000747	RETRIEVED	MI0000747	http://www.ensembl.org/Homo_sapiens/contigview?l=20:56824065-56828144	MIMAT0000690	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-296	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-296+HMR&amp;species=Human			
+MI0000967	RETRIEVED	MI0000967	http://www.ensembl.org/Rattus_norvegicus/contigview?l=3:165191820-165195897	MIMAT0000898	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-296	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-296+HMR&amp;species=Rat			
+MI0000023	RETRIEVED	MI0000023	http://www.ensembl.org/Caenorhabditis_elegans/contigview?l=IV:14031977-14036076	MIMAT0000023	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cel-miR-52				
+MI0000024	RETRIEVED	MI0000024	http://www.ensembl.org/Caenorhabditis_elegans/contigview?l=IV:11025563-11029661	MIMAT0000024	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=cel-miR-53				
+MI0000505	RETRIEVED	MI0000505		MIMAT0000476					
+MI0003510	RETRIEVED	MI0003510		MIMAT0003147					
+MI0003511	RETRIEVED	MI0003511		MIMAT0003148					
+MI0003512	RETRIEVED	MI0003512		MIMAT0003149					
+MI0000775	RETRIEVED	MI0000775	http://www.ensembl.org/Homo_sapiens/contigview?l=4:113786479-113790546	MIMAT0000719	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-367	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-25/32/92/363/367+HMRDC&amp;species=Human			
+MI0003531	RETRIEVED	MI0003531	http://www.ensembl.org/Mus_musculus/contigview?l=3:127535755-127539829	MIMAT0003181	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-367	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-25/32/92/363/367+HMRDC&amp;species=Mouse			
+MI0003712	RETRIEVED	MI0003712	http://www.ensembl.org/Gallus_gallus/contigview?l=4:57612479-57616551	MIMAT0003369	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-367	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-25/32/92/363/367+HMRDC&amp;species=Chicken			
+MI0005375	RETRIEVED	MI0005375	http://www.ensembl.org/Monodelphis_domestica/contigview?l=5:66072337-66076399	MIMAT0004184	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mdo-miR-367				
+MI0000542	RETRIEVED	MI0000542	http://www.ensembl.org/Homo_sapiens/contigview?l=8:22156420-22160501	MIMAT0000510	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-320	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-320+HMRD&amp;species=Human			
+MI0000704	RETRIEVED	MI0000704	http://www.ensembl.org/Mus_musculus/contigview?l=14:69176590-69180671	MIMAT0000666	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-320	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-320+HMRD&amp;species=Mouse			
+MI0000972	RETRIEVED	MI0000972	http://www.ensembl.org/Rattus_norvegicus/contigview?l=15:50840958-50845039	MIMAT0000903	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-320	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-320+HMRD&amp;species=Rat			
+MI0004748	RETRIEVED	MI0004748	http://www.ensembl.org/Bos_taurus/contigview?l=Un.662:130762-134843	MIMAT0003534	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-320				
+MI0000589	RETRIEVED	MI0000589	http://www.ensembl.org/Rattus_norvegicus/contigview?l=X:139998161-140002255	MIMAT0001619	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-424	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-15/16/195/424/497+HMRDC&amp;species=Rat	MIMAT0000547	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-322	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-322+MR&amp;species=Rat
+MI0000590	RETRIEVED	MI0000590	http://www.ensembl.org/Mus_musculus/contigview?l=X:49296882-49300976	MIMAT0000548	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-424	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-15/16/195/424/497+HMRDC&amp;species=Mouse	MIMAT0000549	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-322	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-322+MR&amp;species=Mouse
+MI0001446	RETRIEVED	MI0001446	http://www.ensembl.org/Homo_sapiens/contigview?l=X:133506310-133510407	MIMAT0001341	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-424	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-15/16/195/424/497+HMRDC&amp;species=Human			
+MI0000594	RETRIEVED	MI0000594	http://www.ensembl.org/Rattus_norvegicus/contigview?l=10:56856038-56860120	MIMAT0000553	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-324-5p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-324-5p+HMRD&amp;species=Rat	MIMAT0000554	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-324-3p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-324-3p+HMRD&amp;species=Rat
+MI0000595	RETRIEVED	MI0000595	http://www.ensembl.org/Mus_musculus/contigview?l=11:69826238-69830326	MIMAT0000555	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-324-5p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-324-5p+HMRD&amp;species=Mouse	MIMAT0000556	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-324-3p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-324-3p+HMRD&amp;species=Mouse
+MI0000813	RETRIEVED	MI0000813	http://www.ensembl.org/Homo_sapiens/contigview?l=17:7065340-7069422	MIMAT0000761	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-324-5p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-324-5p+HMRD&amp;species=Human	MIMAT0000762	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-324-3p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-324-3p+HMRD&amp;species=Human
+MI0002365	RETRIEVED	MI0002365		MIMAT0002071					
+MI0002366	RETRIEVED	MI0002366		MIMAT0002072					
+MI0002367	RETRIEVED	MI0002367		MIMAT0002073					
+MI0000778	RETRIEVED	MI0000778	http://www.ensembl.org/Homo_sapiens/contigview?l=14:100445229-100449303	MIMAT0000722	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-370	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-370+HMRD&amp;species=Human			
+MI0001165	RETRIEVED	MI0001165	http://www.ensembl.org/Mus_musculus/contigview?l=12:110064065-110068143	MIMAT0001095	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-370	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-370+HMRD&amp;species=Mouse			
+MI0003486	RETRIEVED	MI0003486	http://www.ensembl.org/Rattus_norvegicus/contigview?l=6:134208194-134212272	MIMAT0003122	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-370	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-370+HMRD&amp;species=Rat			
+MI0000786	RETRIEVED	MI0000786	http://www.ensembl.org/Homo_sapiens/contigview?l=5:149090581-149094646	MIMAT0000731	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-378	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-378+HMRD&amp;species=Human	MIMAT0000732	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-422b	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-378+HMRD&amp;species=Human
+MI0000795	RETRIEVED	MI0000795	http://www.ensembl.org/Mus_musculus/contigview?l=18:61521204-61525269	MIMAT0000742	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-378	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-378+HMRD&amp;species=Mouse	MIMAT0003151	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-422b	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-378+HMRD&amp;species=Mouse
+MI0003719	RETRIEVED	MI0003719	http://www.ensembl.org/Rattus_norvegicus/contigview?l=18:57375805-57379869	MIMAT0003378	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-378	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-378+HMRD&amp;species=Rat	MIMAT0003379	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-422b	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-378+HMRD&amp;species=Rat
+MI0000667	RETRIEVED	MI0000667		MIMAT0000632					
+MI0001102	RETRIEVED	MI0001102		MIMAT0001032					
+MI0001481	RETRIEVED	MI0001481		MIMAT0001376					
+MI0002407	RETRIEVED	MI0002407		MIMAT0002113					
+MI0002408	RETRIEVED	MI0002408		MIMAT0002114					
+MI0002409	RETRIEVED	MI0002409		MIMAT0002115					
+MI0000419	RETRIEVED	MI0000419	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=2R:9728665-9732727	MIMAT0000399	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-308				
+MI0001353	RETRIEVED	MI0001353		MIMAT0001258					
+MI0001625	RETRIEVED	MI0001625	http://www.ensembl.org/Anopheles_gambiae/contigview?l=3L:40897904-40902003	MIMAT0001520	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=aga-miR-308				
+MI0000760	RETRIEVED	MI0000760	http://www.ensembl.org/Homo_sapiens/contigview?l=X:85043297-85047368	MIMAT0000703	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-361	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-361+HMRD&amp;species=Human			
+MI0000761	RETRIEVED	MI0000761	http://www.ensembl.org/Mus_musculus/contigview?l=X:109189768-109193837	MIMAT0000704	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-361	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-361+HMRD&amp;species=Mouse			
+MI0003481	RETRIEVED	MI0003481	http://www.ensembl.org/Rattus_norvegicus/contigview?l=X:101798145-101802214	MIMAT0003117	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-361	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-361+HMRD&amp;species=Rat			
+MI0005045	RETRIEVED	MI0005045	http://www.ensembl.org/Bos_taurus/contigview?l=29:32330930-32335000	MIMAT0003830	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-361				
+MI0003183	RETRIEVED	MI0003183	http://www.ensembl.org/Homo_sapiens/contigview?l=20:33039840-33043961	MIMAT0002870	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-499	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-499+HMRDC&amp;species=Human			
+MI0003710	RETRIEVED	MI0003710	http://www.ensembl.org/Gallus_gallus/contigview?l=20:2463563-2467653	MIMAT0003367	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=gga-miR-499	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-499+HMRDC&amp;species=Chicken			
+MI0003721	RETRIEVED	MI0003721	http://www.ensembl.org/Rattus_norvegicus/contigview?l=3:146125959-146130023	MIMAT0003381	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-499	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-499+HMRDC&amp;species=Rat			
+MI0004676	RETRIEVED	MI0004676	http://www.ensembl.org/Mus_musculus/contigview?l=2:155312321-155316399	MIMAT0003482	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-499	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-499+HMRDC&amp;species=Mouse			
+MI0004750	RETRIEVED	MI0004750	http://www.ensembl.org/Bos_taurus/contigview?l=13:46556648-46560750	MIMAT0003536	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=bta-miR-499				
+MI0004766	RETRIEVED	MI0004766	http://www.ensembl.org/Danio_rerio/contigview?l=11:25946575-25950665	MIMAT0003749	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-499				
+MI0004885	RETRIEVED	MI0004885	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_38:3857186-3861272	MIMAT0003643	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-499				
+MI0002074	RETRIEVED	MI0002074	http://www.ensembl.org/Danio_rerio/contigview?l=10:33273132-33277255	MIMAT0001877	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-454a				
+MI0002076	RETRIEVED	MI0002076	http://www.ensembl.org/Danio_rerio/contigview?l=5:8259936-8264051	MIMAT0001878	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-454b				
+MI0003820	RETRIEVED	MI0003820	http://www.ensembl.org/Homo_sapiens/contigview?l=17:54567901-54572015	MIMAT0003884	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-454-5p		MIMAT0003885	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-454-3p	
+MI0000368	RETRIEVED	MI0000368	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=X:15339893-15343992	MIMAT0000347	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-283				
+MI0001342	RETRIEVED	MI0001342		MIMAT0001247					
+MI0001620	RETRIEVED	MI0001620	http://www.ensembl.org/Anopheles_gambiae/contigview?l=2R:37888034-37892125	MIMAT0001515	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=aga-miR-283				
+MI0003193	RETRIEVED	MI0003193	http://www.ensembl.org/Homo_sapiens/contigview?l=X:146117930-146122053	MIMAT0002878	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-506	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-124a/506+HMRDC&amp;species=Human			
+MI0003194	RETRIEVED	MI0003194	http://www.ensembl.org/Homo_sapiens/contigview?l=X:146118194-146122287	MIMAT0002879	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-507	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-507+H&amp;species=Human			
+MI0003195	RETRIEVED	MI0003195	http://www.ensembl.org/Homo_sapiens/contigview?l=X:146124123-146128237	MIMAT0002880	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-508	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-508+H&amp;species=Human			
+MI0001525	RETRIEVED	MI0001525	http://www.ensembl.org/Mus_musculus/contigview?l=12:110037522-110041645	MIMAT0001419	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-433-5p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-433-5p+HMRD&amp;species=Mouse	MIMAT0001420	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-433-3p	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-433-3p+HMRD&amp;species=Mouse
+MI0001723	RETRIEVED	MI0001723	http://www.ensembl.org/Homo_sapiens/contigview?l=14:100415976-100420068	MIMAT0001627	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-433	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-433-3p+HMRD&amp;species=Human			
+MI0001724	RETRIEVED	MI0001724	http://www.ensembl.org/Rattus_norvegicus/contigview?l=6:134181216-134185308	MIMAT0001628	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-433	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-433-3p+HMRD&amp;species=Rat			
+MI0000251	RETRIEVED	MI0000251	http://www.ensembl.org/Homo_sapiens/contigview?l=14:22925645-22929715	MIMAT0000241	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-208	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-208+HMRD&amp;species=Human			
+MI0000555	RETRIEVED	MI0000555	http://www.ensembl.org/Mus_musculus/contigview?l=14:53901269-53905351	MIMAT0000520	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-208	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-208+HMRD&amp;species=Mouse			
+MI0000949	RETRIEVED	MI0000949	http://www.ensembl.org/Rattus_norvegicus/contigview?l=15:33049957-33054039	MIMAT0000880	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-208	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-208+HMRD&amp;species=Rat			
+MI0004782	RETRIEVED	MI0004782	http://www.ensembl.org/Danio_rerio/contigview?l=2:21537687-21541766	MIMAT0003767	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-736				
+MI0004951	RETRIEVED	MI0004951	http://www.ensembl.org/Xenopus_tropicalis/contigview?l=scaffold_439:96648-100728	MIMAT0003698	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=xtr-miR-208				
+MI0005318	RETRIEVED	MI0005318	http://www.ensembl.org/Monodelphis_domestica/contigview?l=1:172792234-172796310	MIMAT0004129	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mdo-miR-208				
+MI0002179	RETRIEVED	MI0002179	http://www.ensembl.org/Danio_rerio/contigview?l=14:28983774-28987851	MIMAT0001885	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dre-miR-458				
+MI0003252	RETRIEVED	MI0003252	http://www.ensembl.org/Fugu_rubripes/contigview?l=scaffold_3295:5522-9596	MIMAT0002936	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=fru-miR-458				
+MI0003253	RETRIEVED	MI0003253	http://www.ensembl.org/Tetraodon_nigroviridis/contigview?l=1_random:4135422-4139498	MIMAT0002937	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=tni-miR-458				
+MI0002467	RETRIEVED	MI0002467	http://www.ensembl.org/Homo_sapiens/contigview?l=11:2109940-2114015	MIMAT0002173	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=hsa-miR-483	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-483+HMR&amp;species=Human			
+MI0003484	RETRIEVED	MI0003484	http://www.ensembl.org/Mus_musculus/contigview?l=7:142462314-142466386	MIMAT0003120	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=mmu-miR-483	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-483+HMR&amp;species=Mouse			
+MI0003485	RETRIEVED	MI0003485	http://www.ensembl.org/Rattus_norvegicus/contigview?l=1:202908609-202912681	MIMAT0003121	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=rno-miR-483	http://www.targetscan.org/cgi-bin/targetscan/targetscan.cgi?mir_nc=miR-483+HMR&amp;species=Rat			
+MI0000132	RETRIEVED	MI0000132	http://www.ensembl.org/Drosophila_melanogaster/contigview?l=X:15341410-15345483	MIMAT0000117	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=dme-miR-12				
+MI0001309	RETRIEVED	MI0001309		MIMAT0001216					
+MI0001576	RETRIEVED	MI0001576	http://www.ensembl.org/Apis_mellifera/contigview?l=Group2.17:20430-24512	MIMAT0001472	http://microrna.sanger.ac.uk/cgi-bin/targets/v4/hit_list.pl?mirna_id=ame-miR-12				

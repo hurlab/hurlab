@@ -1,0 +1,689 @@
+#!/usr/bin/env python3
+"""
+Hur Lab Admin Server
+Simple HTTP server providing an admin API for CV upload, parsing, and status.
+Runs on port 8180 to avoid conflicting with Tomcat on 8080.
+Uses only Python standard library modules.
+"""
+
+import hashlib
+import json
+import os
+import shutil
+import subprocess
+import uuid
+from datetime import datetime, timedelta
+from http.server import HTTPServer, BaseHTTPRequestHandler
+from pathlib import Path
+from urllib.parse import parse_qs
+import cgi
+import io
+import sys
+
+# ---------------------------------------------------------------------------
+# Configuration
+# ---------------------------------------------------------------------------
+PORT = 8180
+BASE_DIR = Path("/home/hurlab/apache-tomcat-9.0.37/webapps/hurlab")
+PERSONAL_DIR = BASE_DIR / "Personal"
+SCRIPTS_DIR = BASE_DIR / "scripts"
+DATA_DIR = BASE_DIR / "data"
+TEAM_FILE = DATA_DIR / "team.json"
+CREDENTIALS_FILE = SCRIPTS_DIR / ".admin_credentials"
+PYTHON_BIN = "/usr/bin/python3.12"
+COOKIE_NAME = "hurlab_admin_session"
+SESSION_LIFETIME_HOURS = 24
+
+# In-memory session store: token -> {"username": str, "expiry": datetime}
+sessions: dict = {}
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+def hash_password(password: str) -> str:
+    return hashlib.sha256(password.encode("utf-8")).hexdigest()
+
+
+def load_credentials():
+    if not CREDENTIALS_FILE.exists():
+        return None
+    with open(CREDENTIALS_FILE, "r") as f:
+        return json.load(f)
+
+
+def save_credentials(username: str, password: str):
+    data = {
+        "username": username,
+        "password_hash": hash_password(password),
+        "created": datetime.now().strftime("%Y-%m-%d"),
+    }
+    with open(CREDENTIALS_FILE, "w") as f:
+        json.dump(data, f, indent=2)
+
+
+def create_session(username: str) -> str:
+    token = uuid.uuid4().hex
+    sessions[token] = {
+        "username": username,
+        "expiry": datetime.now() + timedelta(hours=SESSION_LIFETIME_HOURS),
+    }
+    return token
+
+
+def validate_session(token: str) -> bool:
+    if token not in sessions:
+        return False
+    if datetime.now() > sessions[token]["expiry"]:
+        del sessions[token]
+        return False
+    return True
+
+
+def get_session_token(cookie_header: str) -> str | None:
+    if not cookie_header:
+        return None
+    for part in cookie_header.split(";"):
+        part = part.strip()
+        if part.startswith(f"{COOKIE_NAME}="):
+            return part[len(COOKIE_NAME) + 1:]
+    return None
+
+
+def purge_expired_sessions():
+    now = datetime.now()
+    expired = [t for t, s in sessions.items() if now > s["expiry"]]
+    for t in expired:
+        del sessions[t]
+
+
+def load_team_data() -> dict:
+    """Load team.json, returning empty structure if missing."""
+    if not TEAM_FILE.exists():
+        return {"pi": {}, "current": [], "alumni": []}
+    with open(TEAM_FILE, "r") as f:
+        return json.load(f)
+
+
+def save_team_data(data: dict):
+    """Write team.json atomically via temp file + rename."""
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    tmp_path = TEAM_FILE.with_suffix(".tmp")
+    with open(tmp_path, "w") as f:
+        json.dump(data, f, indent=2)
+    tmp_path.rename(TEAM_FILE)
+
+
+# ---------------------------------------------------------------------------
+# HTML templates
+# ---------------------------------------------------------------------------
+
+def html_page(title: str, body: str) -> str:
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title} - Hur Lab Admin</title>
+<style>
+  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+  body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         background: #f4f6f9; color: #333; padding: 2rem; }}
+  .container {{ max-width: 720px; margin: 0 auto; background: #fff;
+                padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.1); }}
+  h1 {{ margin-bottom: 1.5rem; color: #1a3a5c; }}
+  h2 {{ margin: 1.5rem 0 .75rem; color: #1a3a5c; }}
+  label {{ display: block; margin-top: .75rem; font-weight: 600; }}
+  input[type=text], input[type=password], input[type=file] {{
+    width: 100%; padding: .5rem; margin-top: .25rem; border: 1px solid #ccc; border-radius: 4px; }}
+  button, .btn {{ display: inline-block; padding: .6rem 1.4rem; margin-top: 1rem;
+    background: #2a6496; color: #fff; border: none; border-radius: 4px;
+    cursor: pointer; font-size: .95rem; text-decoration: none; }}
+  button:hover, .btn:hover {{ background: #1a4a6e; }}
+  .btn-danger {{ background: #c0392b; }}
+  .btn-danger:hover {{ background: #96281b; }}
+  .msg {{ padding: .75rem; border-radius: 4px; margin-bottom: 1rem; }}
+  .msg-ok {{ background: #d4edda; color: #155724; }}
+  .msg-err {{ background: #f8d7da; color: #721c24; }}
+  pre {{ background: #f0f0f0; padding: 1rem; border-radius: 4px; overflow-x: auto;
+         font-size: .85rem; margin-top: .5rem; white-space: pre-wrap; }}
+  table {{ width: 100%; border-collapse: collapse; margin-top: .5rem; }}
+  td, th {{ text-align: left; padding: .4rem .6rem; border-bottom: 1px solid #eee; }}
+  th {{ color: #666; font-weight: 600; }}
+</style>
+</head>
+<body>
+<div class="container">
+{body}
+</div>
+</body>
+</html>"""
+
+
+def login_page(error: str = "") -> str:
+    err_html = f'<div class="msg msg-err">{error}</div>' if error else ""
+    return html_page("Login", f"""
+<h1>Hur Lab Admin</h1>
+{err_html}
+<form method="POST" action="/login">
+  <label for="username">Username</label>
+  <input type="text" id="username" name="username" required>
+  <label for="password">Password</label>
+  <input type="password" id="password" name="password" required>
+  <button type="submit">Log In</button>
+</form>
+""")
+
+
+def setup_page(error: str = "") -> str:
+    err_html = f'<div class="msg msg-err">{error}</div>' if error else ""
+    return html_page("Initial Setup", f"""
+<h1>Hur Lab Admin - Initial Setup</h1>
+<p>No admin account exists yet. Create one to get started.</p>
+{err_html}
+<form method="POST" action="/setup">
+  <label for="username">Username</label>
+  <input type="text" id="username" name="username" required>
+  <label for="password">Password</label>
+  <input type="password" id="password" name="password" required>
+  <label for="password2">Confirm Password</label>
+  <input type="password" id="password2" name="password2" required>
+  <button type="submit">Create Account</button>
+</form>
+""")
+
+
+def dashboard_page(username: str) -> str:
+    """Load the admin dashboard from the template file."""
+    template_path = SCRIPTS_DIR / "templates" / "admin.html"
+    if template_path.exists():
+        html = template_path.read_text(encoding="utf-8")
+        # Inject the username into the page
+        html = html.replace("{{USERNAME}}", username)
+        return html
+    # Fallback if template missing
+    return html_page("Dashboard", f"<h1>Template not found</h1><p>Expected at {template_path}</p>")
+
+
+# ---------------------------------------------------------------------------
+# Request handler
+# ---------------------------------------------------------------------------
+
+class AdminHandler(BaseHTTPRequestHandler):
+
+    def log_message(self, fmt, *args):
+        ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        sys.stdout.write(f"[{ts}] {self.client_address[0]} - {fmt % args}\n")
+        sys.stdout.flush()
+
+    # -- auth helpers -------------------------------------------------------
+
+    def _is_authenticated(self) -> bool:
+        cookie = self.headers.get("Cookie", "")
+        token = get_session_token(cookie)
+        if token and validate_session(token):
+            return True
+        return False
+
+    def _get_username(self) -> str:
+        cookie = self.headers.get("Cookie", "")
+        token = get_session_token(cookie)
+        if token and token in sessions:
+            return sessions[token]["username"]
+        return ""
+
+    def _require_auth(self) -> bool:
+        """Return True if authenticated, otherwise send 401 and return False."""
+        if self._is_authenticated():
+            return True
+        self._send_json({"error": "Not authenticated"}, status=401)
+        return False
+
+    # -- response helpers ---------------------------------------------------
+
+    def _send_html(self, html: str, status: int = 200):
+        body = html.encode("utf-8")
+        self.send_response(status)
+        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _send_json(self, data: dict, status: int = 200):
+        body = json.dumps(data, indent=2).encode("utf-8")
+        self.send_response(status)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _redirect(self, location: str, clear_cookie: bool = False):
+        self.send_response(303)
+        self.send_header("Location", location)
+        if clear_cookie:
+            self.send_header(
+                "Set-Cookie",
+                f"{COOKIE_NAME}=deleted; Path=/; HttpOnly; Max-Age=0",
+            )
+        self.end_headers()
+
+    def _read_form_data(self) -> dict:
+        content_length = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(content_length).decode("utf-8")
+        parsed = parse_qs(body)
+        return {k: v[0] for k, v in parsed.items()}
+
+    # -- GET ----------------------------------------------------------------
+
+    def do_GET(self):
+        purge_expired_sessions()
+
+        if self.path == "/":
+            creds = load_credentials()
+            if creds is None:
+                self._send_html(setup_page())
+            elif self._is_authenticated():
+                self._send_html(dashboard_page(self._get_username()))
+            else:
+                self._send_html(login_page())
+            return
+
+        if self.path == "/status":
+            if not self._require_auth():
+                return
+            self._handle_status()
+            return
+
+        if self.path == "/api/team":
+            if not self._require_auth():
+                return
+            self._send_json(load_team_data())
+            return
+
+        self.send_error(404, "Not Found")
+
+    # -- POST ---------------------------------------------------------------
+
+    def do_POST(self):
+        purge_expired_sessions()
+
+        if self.path == "/setup":
+            self._handle_setup()
+        elif self.path == "/login":
+            self._handle_login()
+        elif self.path == "/upload":
+            self._handle_upload()
+        elif self.path == "/parse":
+            self._handle_parse()
+        elif self.path == "/logout":
+            self._handle_logout()
+        elif self.path == "/api/team/member":
+            self._handle_team_member()
+        elif self.path == "/api/team/pi":
+            self._handle_team_pi()
+        else:
+            self.send_error(404, "Not Found")
+
+    # -- endpoint handlers --------------------------------------------------
+
+    def _handle_setup(self):
+        if CREDENTIALS_FILE.exists():
+            self._send_html(login_page("Account already exists."), status=400)
+            return
+
+        form = self._read_form_data()
+        username = form.get("username", "").strip()
+        password = form.get("password", "")
+        password2 = form.get("password2", "")
+
+        if not username or not password:
+            self._send_html(setup_page("Username and password are required."), status=400)
+            return
+        if password != password2:
+            self._send_html(setup_page("Passwords do not match."), status=400)
+            return
+        if len(password) < 8:
+            self._send_html(setup_page("Password must be at least 8 characters."), status=400)
+            return
+
+        save_credentials(username, password)
+        token = create_session(username)
+        self.send_response(303)
+        self.send_header("Location", "/")
+        self.send_header(
+            "Set-Cookie",
+            f"{COOKIE_NAME}={token}; Path=/; HttpOnly; Max-Age={SESSION_LIFETIME_HOURS * 3600}",
+        )
+        self.end_headers()
+
+    def _handle_login(self):
+        form = self._read_form_data()
+        username = form.get("username", "").strip()
+        password = form.get("password", "")
+
+        creds = load_credentials()
+        if creds is None:
+            self._redirect("/")
+            return
+
+        if username != creds["username"] or hash_password(password) != creds["password_hash"]:
+            self._send_html(login_page("Invalid username or password."), status=401)
+            return
+
+        token = create_session(username)
+        self.send_response(303)
+        self.send_header("Location", "/")
+        self.send_header(
+            "Set-Cookie",
+            f"{COOKIE_NAME}={token}; Path=/; HttpOnly; Max-Age={SESSION_LIFETIME_HOURS * 3600}",
+        )
+        self.end_headers()
+
+    def _handle_upload(self):
+        if not self._require_auth():
+            return
+
+        content_type = self.headers.get("Content-Type", "")
+        if "multipart/form-data" not in content_type:
+            self._send_json({"success": False, "error": "Expected multipart/form-data"}, status=400)
+            return
+
+        try:
+            # Parse multipart form data
+            content_length = int(self.headers.get("Content-Length", 0))
+            environ = {
+                "REQUEST_METHOD": "POST",
+                "CONTENT_TYPE": content_type,
+                "CONTENT_LENGTH": str(content_length),
+            }
+            # Use email.parser-based approach for multipart parsing
+            body_bytes = self.rfile.read(content_length)
+
+            # Extract boundary from content type
+            boundary = None
+            for part in content_type.split(";"):
+                part = part.strip()
+                if part.startswith("boundary="):
+                    boundary = part[len("boundary="):]
+                    break
+
+            if not boundary:
+                self._send_json({"success": False, "error": "No boundary in multipart data"}, status=400)
+                return
+
+            # Manual multipart parsing
+            file_data = self._parse_multipart(body_bytes, boundary)
+            if file_data is None:
+                self._send_json({"success": False, "error": "No PDF file found in upload"}, status=400)
+                return
+
+            filename, data = file_data
+
+            if not filename.lower().endswith(".pdf"):
+                self._send_json({"success": False, "error": "Only PDF files are accepted"}, status=400)
+                return
+
+            # Save file
+            PERSONAL_DIR.mkdir(parents=True, exist_ok=True)
+            today = datetime.now().strftime("%Y-%m-%d")
+            target_name = f"{today}_JungukHur-CV.pdf"
+            target_path = PERSONAL_DIR / target_name
+
+            with open(target_path, "wb") as f:
+                f.write(data)
+
+            # Update symlinks
+            symlink_names = ["JungukHur-CV.pdf", "JungukHur_CV.pdf", "JungukHur.pdf"]
+            for sname in symlink_names:
+                link_path = PERSONAL_DIR / sname
+                if link_path.exists() or link_path.is_symlink():
+                    link_path.unlink()
+                link_path.symlink_to(target_name)
+
+            size_kb = len(data) / 1024
+            self._send_json({
+                "success": True,
+                "message": f"Uploaded {target_name} ({size_kb:.1f} KB). Symlinks updated.",
+                "filename": target_name,
+            })
+
+        except Exception as e:
+            self._send_json({"success": False, "error": str(e)}, status=500)
+
+    def _parse_multipart(self, body: bytes, boundary: str) -> tuple | None:
+        """Minimal multipart parser. Returns (filename, data) or None."""
+        boundary_bytes = boundary.encode("utf-8")
+        delimiter = b"--" + boundary_bytes
+        parts = body.split(delimiter)
+
+        for part in parts:
+            if part in (b"", b"--\r\n", b"--\n", b"--"):
+                continue
+            # Split headers from body
+            if b"\r\n\r\n" in part:
+                header_section, file_body = part.split(b"\r\n\r\n", 1)
+            elif b"\n\n" in part:
+                header_section, file_body = part.split(b"\n\n", 1)
+            else:
+                continue
+
+            header_text = header_section.decode("utf-8", errors="replace")
+
+            # Look for Content-Disposition with filename
+            if 'filename="' not in header_text:
+                continue
+
+            # Extract filename
+            fname_start = header_text.index('filename="') + len('filename="')
+            fname_end = header_text.index('"', fname_start)
+            filename = header_text[fname_start:fname_end]
+
+            if not filename:
+                continue
+
+            # Strip trailing boundary marker / CRLF
+            if file_body.endswith(b"\r\n"):
+                file_body = file_body[:-2]
+            elif file_body.endswith(b"\n"):
+                file_body = file_body[:-1]
+
+            return (filename, file_body)
+
+        return None
+
+    def _handle_parse(self):
+        if not self._require_auth():
+            return
+
+        parse_script = SCRIPTS_DIR / "parse_cv.py"
+        if not parse_script.exists():
+            self._send_json({"success": False, "error": "parse_cv.py not found"}, status=404)
+            return
+
+        try:
+            result = subprocess.run(
+                [PYTHON_BIN, str(parse_script)],
+                cwd=str(SCRIPTS_DIR),
+                capture_output=True,
+                text=True,
+                timeout=120,
+            )
+            self._send_json({
+                "success": result.returncode == 0,
+                "returncode": result.returncode,
+                "stdout": result.stdout,
+                "stderr": result.stderr,
+            })
+        except subprocess.TimeoutExpired:
+            self._send_json({"success": False, "error": "Script timed out after 120 seconds"}, status=504)
+        except Exception as e:
+            self._send_json({"success": False, "error": str(e)}, status=500)
+
+    def _handle_status(self):
+        status = {}
+
+        # Current CV file (symlink target)
+        cv_link = PERSONAL_DIR / "JungukHur-CV.pdf"
+        if cv_link.is_symlink():
+            status["current_cv"] = os.readlink(str(cv_link))
+        elif cv_link.exists():
+            status["current_cv"] = "JungukHur-CV.pdf (not a symlink)"
+        else:
+            status["current_cv"] = "Not found"
+
+        # CV file size
+        if cv_link.exists():
+            size = cv_link.stat().st_size
+            status["cv_size"] = f"{size / 1024:.1f} KB"
+        else:
+            status["cv_size"] = "N/A"
+
+        # Last parse date & publication count from publications.json
+        pub_file = BASE_DIR / "publications.json"
+        if pub_file.exists():
+            try:
+                with open(pub_file, "r") as f:
+                    pub_data = json.load(f)
+                status["last_parse_date"] = pub_data.get("lastUpdated", "Unknown")
+                pubs = pub_data.get("publications", [])
+                status["publication_count"] = len(pubs)
+                status["publications_json_size"] = f"{pub_file.stat().st_size / 1024:.1f} KB"
+            except Exception as e:
+                status["publications_json_error"] = str(e)
+        else:
+            status["last_parse_date"] = "No publications.json found"
+            status["publication_count"] = 0
+
+        self._send_json(status)
+
+    def _read_json_body(self) -> dict:
+        """Read and parse a JSON request body."""
+        content_length = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(content_length).decode("utf-8")
+        return json.loads(body)
+
+    def _handle_team_member(self):
+        if not self._require_auth():
+            return
+
+        try:
+            body = self._read_json_body()
+        except (json.JSONDecodeError, ValueError) as e:
+            self._send_json({"error": f"Invalid JSON: {e}"}, status=400)
+            return
+
+        action = body.get("action")
+        team = load_team_data()
+
+        try:
+            if action == "add":
+                section = body.get("section")
+                if section not in ("current", "alumni"):
+                    self._send_json({"error": "Invalid section"}, status=400)
+                    return
+                member = body.get("member", {})
+                if not member.get("name"):
+                    self._send_json({"error": "Member name is required"}, status=400)
+                    return
+                team[section].append(member)
+
+            elif action == "edit":
+                section = body.get("section")
+                index = body.get("index")
+                if section not in ("current", "alumni"):
+                    self._send_json({"error": "Invalid section"}, status=400)
+                    return
+                if not isinstance(index, int) or index < 0 or index >= len(team[section]):
+                    self._send_json({"error": "Invalid index"}, status=400)
+                    return
+                member = body.get("member", {})
+                if not member.get("name"):
+                    self._send_json({"error": "Member name is required"}, status=400)
+                    return
+                team[section][index] = member
+
+            elif action == "delete":
+                section = body.get("section")
+                index = body.get("index")
+                if section not in ("current", "alumni"):
+                    self._send_json({"error": "Invalid section"}, status=400)
+                    return
+                if not isinstance(index, int) or index < 0 or index >= len(team[section]):
+                    self._send_json({"error": "Invalid index"}, status=400)
+                    return
+                team[section].pop(index)
+
+            elif action == "move":
+                from_section = body.get("from")
+                to_section = body.get("to")
+                index = body.get("index")
+                if from_section not in ("current", "alumni") or to_section not in ("current", "alumni"):
+                    self._send_json({"error": "Invalid section"}, status=400)
+                    return
+                if from_section == to_section:
+                    self._send_json({"error": "Source and destination are the same"}, status=400)
+                    return
+                if not isinstance(index, int) or index < 0 or index >= len(team[from_section]):
+                    self._send_json({"error": "Invalid index"}, status=400)
+                    return
+                member = team[from_section].pop(index)
+                team[to_section].append(member)
+
+            else:
+                self._send_json({"error": f"Unknown action: {action}"}, status=400)
+                return
+
+            save_team_data(team)
+            self._send_json(team)
+
+        except Exception as e:
+            self._send_json({"error": str(e)}, status=500)
+
+    def _handle_team_pi(self):
+        if not self._require_auth():
+            return
+
+        try:
+            body = self._read_json_body()
+        except (json.JSONDecodeError, ValueError) as e:
+            self._send_json({"error": f"Invalid JSON: {e}"}, status=400)
+            return
+
+        team = load_team_data()
+        allowed_fields = {"email", "email2", "phone", "github", "interests"}
+        for key, value in body.items():
+            if key in allowed_fields:
+                team["pi"][key] = value
+
+        try:
+            save_team_data(team)
+            self._send_json(team["pi"])
+        except Exception as e:
+            self._send_json({"error": str(e)}, status=500)
+
+    def _handle_logout(self):
+        cookie = self.headers.get("Cookie", "")
+        token = get_session_token(cookie)
+        if token and token in sessions:
+            del sessions[token]
+        self._redirect("/", clear_cookie=True)
+
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+
+def main():
+    server = HTTPServer(("0.0.0.0", PORT), AdminHandler)
+    print(f"Hur Lab Admin Server running on http://0.0.0.0:{PORT}")
+    print(f"Base dir: {BASE_DIR}")
+    print(f"Press Ctrl+C to stop")
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print("\nShutting down...")
+        server.server_close()
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,16 @@
+#Alignment (Fitting) Succesfully Completed
+#Seq1 Length: 6 CTTGAC
+#Seq2 Length: 11 CAGTATCGTAC
+#Match Score: 1
+#Mismatch Score: -2
+#GapOpening Penalty: -2
+#GapExtension Penalty: -2
+#Number of Alignments Found: 1
+#Number of Alignments Displayed: 1
+
+>>Rank.1 Local Alignment   Score:0.0  Sum:-3.0  Identity:80.0%
+seq1: 1 CTTGAC
+        |*| ||
+seq2: 7 CGT-AC
+
+

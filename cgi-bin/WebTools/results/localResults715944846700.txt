@@ -1,0 +1,26 @@
+#Alignment (Local) Succesfully Completed
+#Combined Scoring Matrix Created Using The Following
+# Matrix1 : PAM250  Weight: 100.0%
+# Matrix2 : PAM250  Weight: 0.0%
+# Matrix3 : PAM250  Weight: 0.0%
+#Seq1 Length: 8 LIMWSLSL
+#Seq2 Length: 8 LISLSLMW
+#GapOpening Penalty: -3
+#GapExtension Penalty: -1
+Sorted by score 0
+Sorted by score 1
+#Number of Alignments Found: 2
+#Number of Alignments Displayed: 2
+
+>>Rank.1 Local Alignment   Score:28.0  Sum:53.0  Identity:75.0%
+seq1: 1 L-IMW
+        | *||
+seq2: 4 LSLMW
+
+
+>>Rank.2 Local Alignment   Score:28.0  Sum:53.0  Identity:75.0%
+seq1: 1 L-IMW
+        | *||
+seq2: 4 LSLMW
+
+

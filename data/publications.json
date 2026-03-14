@@ -1,0 +1,2598 @@
+{
+  "profiles": {
+    "pubmed": "https://www.ncbi.nlm.nih.gov/pubmed?term=%22Hur%2C%20Junguk%22[FAU]%20OR%20%22Hur%2C%20Jung%20Uk%22[FAU]%20OR%20(%22Hur%20J%22[AU]%20AND%20%22Lee%20KJ%22[AU]%20AND%20%22Yoo%20J%22[AU])%20OR%20(%22Hur%20J%22[AU]%20AND%20%22Feldman%20EL%22[AU])",
+    "orcid": "https://orcid.org/0000-0002-0736-2149",
+    "researchgate": "https://www.researchgate.net/profile/Junguk_Hur",
+    "myncbi": "https://www.ncbi.nlm.nih.gov/myncbi/junguk.hur.1/bibliography/40307074/public/",
+    "cv": "Personal/JungukHur-CV.pdf"
+  },
+  "peerReviewed": [
+    {
+      "number": 1,
+      "text": "Lee S, Hur J, Kim Y. A graph-theoretic modeling on GO space for biological interpretation of gene clusters. Bioinformatics. 20(3):381-388, 2004.",
+      "pmid": "14960465",
+      "doi": null,
+      "year": 2004,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 2,
+      "text": "Lee K, Hur J, Yoo J. Twin weight discordance and maternal weight gain in twin pregnancies. International Journal of Gynecology Obstetrics. 96(3):176-180, 2007.",
+      "pmid": "17291507",
+      "doi": null,
+      "year": 2007,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 3,
+      "text": "Hur J, Wild D. PubChemSR: A search and retrieval tool for PubChem. Chemistry Central Journal. 2:11, 2008.",
+      "pmid": "18482452",
+      "doi": null,
+      "year": 2008,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 4,
+      "text": "Hur J, Schuyler AD, States DJ, Feldman EL. SciMiner: Web-based literature mining tool for target identification and functional enrichment analysis. Bioinformatics. 25(6):838-40, 2009.",
+      "pmid": "19188191",
+      "doi": null,
+      "year": 2009,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 5,
+      "text": "Hur J, Sullivan KA, Schuyler AD, Hong Y, Pande M, States DJ, Jagadish HV, Feldman EL. Literature-based discovery of diabetes- and ROS-related targets. BMC Medical Genomics. 2010",
+      "pmid": "20979611",
+      "doi": null,
+      "year": 2010,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 6,
+      "text": "Pande M, Hur J, Hong Y, Backus C, Hayes JM, Oh SS, Kretzler M, and Feldman EL. Transcriptional profiling of diabetic neuropathy in the BKS db/db mouse, a model of type 2 diabetes. Diabetes. 2011",
+      "pmid": "21617178",
+      "doi": null,
+      "year": 2011,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 7,
+      "text": "Hur J, Xiang Z, Feldman EL, and He Y. Ontology-based Brucella vaccine literature indexing and systematic analysis of gene-vaccine association network. BMC Immunology. 2011",
+      "pmid": "21871085",
+      "doi": null,
+      "year": 2011,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 8,
+      "text": "Lee S, Hur J, Lee KJ. Pregnancy outcome and relationship between maternal weight gain and fetal birth weight in Korean pregnant women with hyperglycemia. Journal of Women’s Medicine, 2011;4(2):35-40, doi: 10.5468/jwm.2011.4.2.35",
+      "pmid": null,
+      "doi": null,
+      "year": 2011,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 9,
+      "text": "Kim MK, Hur J, Lee SY, Kim YL, Park KS, Park SW, and Lee KJ. Maternal obesity and associated risk of adverse pregnancy outcomes in women with hyperglycemia. Korean Journal of Obstetrics and Gynecology. 2011;54(10):591-598, doi: 10.5468/KJOG.2011.54.10.591",
+      "pmid": null,
+      "doi": null,
+      "year": 2011,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 10,
+      "text": "Hur J, Sullivan KA, Pande M, Hong Y, Sima AAF, Jagadish HV, Kretzler M, and Feldman EL. The identification of gene expression profiles predictive of human diabetic neuropathy. Brain. 2011, Nov;134(Pt 11):3222-35",
+      "pmid": "21926103",
+      "doi": null,
+      "year": 2011,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 11,
+      "text": "Hur J*, Ozgur A*, Xiang Z, and He Y. Identification of fever and vaccine-associated gene interaction networks using ontology-based literature mining. Journal of Biomedical Semantics. 2012, 3:18.",
+      "pmid": "23256563",
+      "doi": null,
+      "year": 2012,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 12,
+      "text": "Dowling JJ, Arbogast S, Hur J, Waugh T, Nelson DD, McEvoy Anna, Marty I, Monnier N, Lunardi J, Brooks Junguk Hur, Ph.D. Curriculum Vitae SV, Kuwada JY, and Ferreiro A. Oxidative Stress and Successful Antioxidant Treatment in RYR1-related Myopathies. Brain. 2012; 135, 1115-1127.",
+      "pmid": "22418739",
+      "doi": null,
+      "year": 2012,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 13,
+      "text": "Sims-Robinson C, Zhao S, Hur J, and Feldman EL. Central nervous system endoplasmic reticulum stress in a murine model of type 2 diabetes. Diabetologia. 2012, 55:2276-2284.",
+      "pmid": "22581041",
+      "doi": null,
+      "year": 2012,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 14,
+      "text": "Figueroa-Romero C*, Hur J*, Bender DE, Delaney CE, Cataldo MD, Smith AL, Yung R, Ruden DM, Callaghan BC, and Feldman EL. Identification of Epigenetically Altered Genes in Sporadic Amyotrophic Lateral Sclerosis. PLoS One. 2012, 7:e52672.",
+      "pmid": "23300739",
+      "doi": null,
+      "year": 2012,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 15,
+      "text": "Han J, Back SH, Hur J, Lin YH, Gildersleeve R, Shan J, et al. ER-stress-induced transcriptional regulation increases protein synthesis leading to cell death. Nature Cell Biology. 2013 May;15(5):481-90",
+      "pmid": "23624402",
+      "doi": null,
+      "year": 2013,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 16,
+      "text": "Sims-Robinson C, Hur J, Hayes JM, Dauch JR, Keller PJ, Brooks SV, and Feldman EL. The role of oxidative stress in nervous system aging. PLoS One. 2013 Jul 2;8(7):e68011. doi: 10.1371/journal.pone.0068011. Print 2013.",
+      "pmid": "23844146",
+      "doi": null,
+      "year": 2013,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 17,
+      "text": "Hur J, Sullivan KA, Callaghan BC, Pop-Busui R, and Feldman EL. Identification of factors associated with sural nerve regeneration and degeneration in diabetic neuropathy. Diabetes Care. 2013, 2013 Dec;36(12):4043-9.",
+      "pmid": "24101696",
+      "doi": null,
+      "year": 2013,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 18,
+      "text": "He Y, Racz R, Sayers S, Lin Y, Todd T, Hur J, Li X, Patel M, Zhao B, Chung M, Ostrow J, Sylora A, Dungarani P, Ulysse G, Kochhar K, Vidri B, Strait K, Jourdian GW, and Xiang Z. Updates on the VIOLIN Vaccine Database and Analysis System. Nucleic Acids Research. 2014 Jan 1; 42(1): D1124-32",
+      "pmid": "24259431",
+      "doi": null,
+      "year": 2014,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 19,
+      "text": "Todd PK, Ackall FY, Hur J, Sharma K, Paulson HL, Dowling JJ. Transcriptional changes and developmental abnormalities in a Zebrafish model of Myotonic Dystrophy. Disease Models & Mechanisms. 2014 Jan;7(1):143-55. doi: 10.1242/dmm.012427. Epub 2013 Oct 2.",
+      "pmid": "24092878",
+      "doi": null,
+      "year": 2013,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 20,
+      "text": "Feldman EL, Boulis NM, Hur J, Johe K, Rutkove SB, Federici T, Polak M, Bordeau J, Sakowski SA, and Glass JD. Intraspinal Neural Stem Cell Injections in ALS Patients: Phase I Trial Outcomes. Annals of Neurology. 2014",
+      "pmid": "24510776",
+      "doi": null,
+      "year": 2014,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 21,
+      "text": "Waugh TA, Horstick E, Hur J, Jackson SW, Li X, and Dowling JJ. Fluoxetine prevents dystrophic changes in a zebrafish model of Duchenne muscular dystrophy. Human Molecular Genetics. 2014 2014 Apr 23.",
+      "pmid": "24760771",
+      "doi": null,
+      "year": 2014,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 22,
+      "text": "O’Brien PD, Hur J, Hayes JM, Lindblad CN, and Feldman EL. BTBR ob/ob mice as a novel diabetic neuropathy model: Neurological characterization and gene expression analyses. Neurobiology of Disease. 2014 Oct 30;73C:348-355.",
+      "pmid": "25447227",
+      "doi": null,
+      "year": 2014,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 23,
+      "text": "Hur J, Guo A, Loh W, Feldman EL, and Bai JP. Integrated systems pharmacology analysis of clinical druginduced peripheral neuropathy. Clinical Pharmacology and Therapeutics: Pharmacometrics and Systems Pharmacology. 2014 May 14;3:e114. doi: 10.1038/psp.2014.11.",
+      "pmid": "24827872",
+      "doi": null,
+      "year": 2014,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 24,
+      "text": "Hur J*, Liu Z*, Tong W, Laaksonen R, and Bai PF. Drug-Induced Rhabdomyolysis: from systems pharmacology network analysis to biochemical flux analysis. Chemical Research in Toxicology. 2014",
+      "pmid": "24422454",
+      "doi": null,
+      "year": 2014,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 25,
+      "text": "Hur J*, Ozgur A*, Xiang Z, and He Y. Development and Application of an Interaction Network Ontology (INO) for Literature Mining of Vaccine-associated Gene-Gene Interactions. Journal of Biomedical Semantics. 2015 Jan 6;6:2.",
+      "pmid": "25785184",
+      "doi": null,
+      "year": 2015,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 26,
+      "text": "Chan WKB, Zhang H, Yang J, Brender JR, Hur J, Ozgur A, and Zhang Y. GLASS: a comprehensive database for experimentally-validated GPCR-ligand associations. Bioinformatics. 2015 May 13. Pii: btv302",
+      "pmid": "25971743",
+      "doi": null,
+      "year": 2015,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 27,
+      "text": "Hur J$, Zhao CS, and Bai JPF$. Systems Pharmacological Analysis of Drugs Inducing Stevens–Johnson Syndrome and Toxic Epidermal Necrolysis. Chemical Research in Toxicology. 2015 May 18;28(5):927-34. doi: 10.1021/tx5005248.",
+      "pmid": "25811541",
+      "doi": null,
+      "year": 2015,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 28,
+      "text": "Hur J*, Dauch JR*, Hinder ML, Hayes JM, Backus C, Sakowski SA, and Feldman EL. The Metabolic Syndrome and Microvascular Complications in a Murine Model of Type 2 Diabetes. Diabetes. 2015 Sep;64(9):3294-304. doi: 10.2337/db15-0133. Epub 2015 May 15.",
+      "pmid": "25979075",
+      "doi": null,
+      "year": 2015,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 29,
+      "text": "O’Brien PD, Hur J, Robell NJ, Hayes JM, Sakowski SA, and Feldman EL. Gender-specific differences in Junguk Hur, Ph.D. Curriculum Vitae diabetic neuropathy in BTBR ob/ob mice. Journal of Diabetic Complications. 2015 Oct 3. doi: 10.1016/j.jdiacomp.2015.09.018.",
+      "pmid": "26525588",
+      "doi": null,
+      "year": 2015,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 30,
+      "text": "Cho EH, Hur J, and Lee KJ. Early gestational weight gain and the adverse pregnancy outcomes in Korean women. PLOS One. 2015 Oct 14;10(10):e0140376. doi: 10.1371/journal.pone.0140376.",
+      "pmid": "26465322",
+      "doi": null,
+      "year": 2015,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 31,
+      "text": "Karadeniz I, Hur J$, He Y$, and Özgür A$. Literature Mining and Ontology based Analysis of Host-Brucella Gene-Gene Interaction Network. Frontiers Research Topics Microbiology. 2015 Dec 9;6:1386. doi: 10.3389",
+      "pmid": "26696993",
+      "doi": null,
+      "year": 2015,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 32,
+      "text": "Figueroa-Romero C*, Hur J*, Lunn JS, Paez-Colasante X, Bender DE, Yung R, Sakowski SA, Feldman EL. Expression of microRNAs in human post-mortem amyotrophic lateral sclerosis spinal cords provides insight into disease mechanisms. Molecular and Cellular Neuroscience. 2015 Dec 17;71:34-45. doi: 10.1016",
+      "pmid": "26704906",
+      "doi": null,
+      "year": 2015,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 33,
+      "text": "Guo A, Racz R, Hur J, Lin Y, Xiang Z, Zhao L, Rinder J, Jiang G, Zhu Q, and He Y. Ontology-based collection, representation and analysis of drug-associated neuropathy adverse events. Journal of Biomedical Semantics. 2016 May 21;7:29. doi: 10.1186/s13326-016-0069-x.",
+      "pmid": "27213033",
+      "doi": null,
+      "year": 2016,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 34,
+      "text": "Sas KM, Kayampilly P, Byun J, Nair V, Hinder LM, Hur J, Zhang H, Lin C, Qi NR, Michailidis G, Groop PH, Darshi M, Sharma K, Schelling JR, Sedor JR, Pop-Busui R, Weinberg JM, Soleimanpour SA, Abcouwer SF, Gardner TW, Burant CF, Feldman EL, Kretzler M, Brosius FC, and Pennathur S. Tissue-specific metabolic reprogramming drives nutrient flux in diabetic complications. Journal of Clinical Investigation. 2016 Sep 22;1(15):e86976",
+      "pmid": "27699244",
+      "doi": null,
+      "year": 2016,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 35,
+      "text": "Hur J$, O’Brien PD, Nair V, Hinder LM, McGregor BA, Jagadish HV, Kretzler M, Brosius FC, and Feldman EL$. Transcriptional networks of murine diabetic peripheral neuropathy and nephropathy: Common and distinct gene expression patterns. Diabetologia. 2016 Mar 21",
+      "pmid": "27000313",
+      "doi": null,
+      "year": 2016,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 36,
+      "text": "Krishanan KC, Santhosh M, Alagarsamy J, Hur J, Nookala Suba, Norrby-Teglund A, and Kotb M. Genetic Architecture of Group A Streptococcal Necrotizing Soft Tissue Infections in the mouse. PLOS Pathogens. 2016 Jul 11;12(7):e1005732. doi: 10.1371/journal.ppat.1005732.",
+      "pmid": "27399650",
+      "doi": null,
+      "year": 2016,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 37,
+      "text": "Ozgur A*, Hur J*, and He Y. The Interaction Network Ontology-supported modeling and mining of complex interactions represented with multiple keywords in biomedical literature. BioData Mining. 2016 Dec 19;9:41. doi: 10.1186/s13040-016-0118-0.",
+      "pmid": "28031747",
+      "doi": null,
+      "year": 2016,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 38,
+      "text": "Hur J, Cho EH, Baek KH, and Lee KJ. Prediction of Gestational Diabetes Mellitus by Unconjugated Estriol Levels in Maternal Serum. International Journal of Medical Sciences. 2017 Feb 7;14(2):123-127. doi: 10.7150/ijms.17321.",
+      "pmid": "28260987",
+      "doi": null,
+      "year": 2017,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 39,
+      "text": "Hur J$, Ozgur A, He Y. Ontology-based literature mining of E. coli vaccine-associated gene interaction networks. Journal of Biomedical Semantics. 2017 Mar 14;8(1):12. doi: 10.1186/s13326-017-0122-4.",
+      "pmid": "28288685",
+      "doi": null,
+      "year": 2017,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 40,
+      "text": "Hinder LM*, Park M*, Rumora AE*, Hur J, Eichinger F, Pennathur S, Kretzler M, Brosius FC, and Feldman EL. Comparative RNA-Seq Transcriptome Analyses Provide New Insights into Diabetic Neuropathy and Nephropathy. Journal of Cellular and Molecular Medicine. 2017 Mar 8. doi: 10.1111/jcmm.13136.",
+      "pmid": "28272773",
+      "doi": null,
+      "year": 2017,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 41,
+      "text": "Lee KJ, Hur J, Yang KS, Lee MK, and Lee SJ. Acute biophysical responses and the psychological effects of different types of forests in patients with metabolic syndrome. Environment and Behavior. 2017 Mar 31. Doe: 10.1177/0013916517700957",
+      "pmid": null,
+      "doi": null,
+      "year": 2017,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 42,
+      "text": "Shin DY, Hur J, Cho EH, Chung HK, Shivappa N, Wirth M, Hebert J, and Lee KW. Pre-pregnancy Body Mass Index is Positively Associated with Dietary Inflammatory Index and C-Reactive Protein Concentrations during Pregnancy. Nutrients. 2017 Apr 1;9(4). pii: E351. doi: 10.3390/nu9040351.",
+      "pmid": "28368304",
+      "doi": null,
+      "year": 2017,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 43,
+      "text": "Witt KL, Hsieh JH, Smith-Roe S, Xia M, Huang R, Auerbach SS, Hur J, Tice RR. Assessment of the DNA Damaging Potential of Environmental Chemicals Using a Quantitative High-Throughput Screening Approach to Measure p53 Activation. Environmental and Molecular Mutagenesis. 2017 Aug;58(7):494-507. doi: 10.1002/em.22112. Epub 2017 Jul 17.",
+      "pmid": "28714573",
+      "doi": null,
+      "year": 2017,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 44,
+      "text": "Cho EH, Shin DY, Cho KH, and Hur J$. Prevalences and management of diabetes and pre-diabetes among Korean teenagers and young adults: Results from the Korean National Health and Nutrition Examination Survey 2005-2014. Journal of Korean Medical Sciences. Journal of Korean Medical Sciences. 2017 Junguk Hur, Ph.D. Curriculum Vitae Dec;32(12):1984-1990. doi: 10.3346/jkms.2017.32.12.1984.",
+      "pmid": "29115080",
+      "doi": null,
+      "year": 1984,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 45,
+      "text": "Hinder LM, Murdock BJ, Park M, Bender DE, O'Brien PD, Rumora AE, Hur J, and Feldman EL. Transcriptional networks of progressive diabetic peripheral neuropathy in the db/db mouse model of type 2 diabetes: An inflammatory story. Experimental Neurology. 2018 Jul;305:33-43. doi: 10.1016/j.expneurol.2018.03.011.",
+      "pmid": "29550371",
+      "doi": null,
+      "year": 2018,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 46,
+      "text": "Hur J$, Ozgur A, He Y$. Ontology-based literature mining and class effect analysis of adverse drug reactions associated with neuropathy-inducing drugs. Journal of Biomedical Semantics. 2018 Jun 7;9(1):17. doi: 10.1186/s13326-018-0185-x.",
+      "pmid": "29880031",
+      "doi": null,
+      "year": 2018,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 47,
+      "text": "Messinis D, Melas IN, Hur J, Varshney N, Alexopoulos LG, and Bai J.P.F., Translational systems pharmacology-based predictive assessment of drug-induced cardiomyopathy. CPT: Pharmacometrics & Systems Pharmagology. 2018 Mar;7(3):166-174. doi: 10.1002/psp4.12272. Epub 2018 Jan 17.",
+      "pmid": "29341478",
+      "doi": null,
+      "year": 2018,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 48,
+      "text": "de Anda-Jáuregui G, Guo K, McGregor B, and Hur J$. Exploration of the anti-inﬂammatory drug space through network pharmacology. Frontiers in Physiology. 2018 Mar 1;9:151. doi: 10.3389/fphys.2018.00151. eCollection 2018.",
+      "pmid": "29545755",
+      "doi": null,
+      "year": 2018,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 49,
+      "text": "Hur J$, Danes L, Hsieh JH, Krout D, McGregor BA, and Auerbach SS. Tox21 Enricher: Web-based Chemical and Functional Enrichment Analysis Tool for Tox21 Toxicity Screening Platform. Molecular Informatics. 2018 May;37(5):e1700129. doi: 10.1002/minf.201700129. Epub 2018 Jan 29.",
+      "pmid": "29377626",
+      "doi": null,
+      "year": 2018,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 50,
+      "text": "Tank EM*, Figueroa-Romero C*, Hinder LM, Bedi K, Archbold HC, Li X, Weskamp K, Safren N, PaezColasante X, Pacut C, Thummas S, Paulsen MT, Guo K, Hur J, Ljungman M, Feldman EL, and Barmada SJ. Abnormal RNA stability in amyotrophic lateral sclerosis. Nature Communications. 2018 Jul 20;9(1):2845. doi: 10.1038/s41467-018-05049-z.",
+      "pmid": "30030424",
+      "doi": null,
+      "year": 2018,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 51,
+      "text": "de Anda-Jáuregui G, Espinal-Enriquez J, Hur J, Alcala-Corona SA, Ruiz-Azuara L, and Hernandez-Lemus E. Identification of Casiopeina II-gly secondary targets through a systems pharmacology approach. Computational Biology and Chemistry, 2018 Nov 23;78:127-132. doi: 10.1016/j.compbiolchem.2018.11.021.",
+      "pmid": "30504090",
+      "doi": null,
+      "year": 2018,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 52,
+      "text": "McGregor BA, Eid S, Murdock B, Guo K, de Anda-Jáuregui G, Porter J, Feldman EL, and Hur J$. Conserved Transcriptional Signatures in Human and Murine Diabetic Peripheral Neuropathy. Scientific Reports. 2018 Dec 5;8(1):17678. doi: 10.1038/s41598-018-36098-5.",
+      "pmid": "30518872",
+      "doi": null,
+      "year": 2018,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 53,
+      "text": "Cho KH, Cho EH, Hur J, and Shin D. Association of sleep duration and obesity according to sex and age in Korean Adults: Results from the Korea National Health and Nutrition Examination Survey 2007–2015. Journal of Korean Biomedical Sciences. 2018 Dec 17;33(53):e345. doi: 10.3346/jkms.2018.33.e345. eCollection 2018 Dec 31.",
+      "pmid": "30595686",
+      "doi": null,
+      "year": 2018,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 54,
+      "text": "Shin D*, Hur J*, Cho KH, and Cho E. Trends of self-reported sleep duration in Korean Adults: Results from the Korea National Health and Nutrition Examination Survey 2007–2015. Sleep Medicine. 2018 Dec; 52:103106. doi: 10.1016/j.sleep.2018.08.008",
+      "pmid": "30308449",
+      "doi": null,
+      "year": 2018,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 55,
+      "text": "de Anda-Jáuregui G, Guo K, McGregor B, Feldman EL and Hur J$. Pathway crosstalk perturbation network modeling for identification of connectivity changes induced by diabetic neuropathy and pioglitazone. BMC Systems Biology. 2019 Jan 7;13(1):1. doi: 10.1186/s12918-018-0674-7.",
+      "pmid": "30616626",
+      "doi": null,
+      "year": 2019,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 56,
+      "text": "de Anda-Jáuregui G, Guo K, and Hur J$. Network-based assessment of adverse drug reaction risk in polypharmacy using high-throughput screening data. International Journal of Molecular Sciences. Frontiers in Drug Toxicity Prediction. 2019 Jan 17;20(2). pii: E386. doi: 10.3390/ijms20020386.",
+      "pmid": "30658437",
+      "doi": null,
+      "year": 2019,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 57,
+      "text": "de Anda-Jáuregui G, McGregor B, Guo K, and Hur J$. A network pharmacology approach for the identification of common mechanisms of drug-induced peripheral neuropathy. CPT-Pharmacometrics & Systems Pharmagology. 2019 Feb 14. doi: 10.1002/psp4.12383.",
+      "pmid": "30762308",
+      "doi": null,
+      "year": 2019,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 58,
+      "text": "Guo K*, Elzinga S*, Eid S, Figueroa-Romero C, Hinder LM, Pacut C, Feldman EL, and Hur J$. Genomewide DNA methylation profiling of human diabetic peripheral neuropathy in subjects with type 2 diabetes mellitus. Epigenetics. 2019 Aug;14(8):766-779. doi: 10.1080/15592294.2019.1615352.",
+      "pmid": "31132961",
+      "doi": null,
+      "year": 2019,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 59,
+      "text": "Elzinga S, Murdock BJ, Guo K, Hayes JM, Tabbey MA, Hur J, and Feldman EL. Toll-like receptors and inflammation in metabolic neuropathy: a role in early versus late disease? Experimental Neurology. 2019 Junguk Hur, Ph.D. Curriculum Vitae May 28; 320:112967. Doi: 10.1016/j.expneurol.2019.112967.",
+      "pmid": "31145897",
+      "doi": null,
+      "year": 2019,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 60,
+      "text": "Figueroa-Romero C*, Guo K*, Murdock BJ*, Paez-Colasante X*, Bassis CM, Mikhail KA, Raue KD, Evans MC, Taubman GF, McDermott AJ, O’Brien PD, Savelieff MG, Hur J, and Feldman EL. Temporal evolution of the microbiome, immune system and epigenome with disease progression in ALS mice. Disease Models & Mechanisms. 2019 Oct 9. pii: dmm.041947. doi: 10.1242/dmm.041947.",
+      "pmid": "31597644",
+      "doi": null,
+      "year": 2019,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 61,
+      "text": "O’Brien PD*, Guo K*, Eid SA*, Rumora AE*, Hinder LM*, Hayes JM, Mendelson FE, Hur J, and Feldman EL. Integrated Lipidomic and Transcriptomic Analyses Identify Altered Nerve Triglycerides in Mouse Models of Prediabetes and Type 2 Diabetes. Diabetes, Obesity and Metabolism. 2019 Dec 10. pii: dmm.042101.",
+      "pmid": "31822493",
+      "doi": null,
+      "year": 2019,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 62,
+      "text": "Tiftikci M, Ozgur A, He Y, and Hur J$. Machine learning-based identification and rule-based normalization of adverse drug reactions in drug labels. BMC Bioinformatics. 2019 Dec 23;20(Suppl 21):707.",
+      "pmid": "31865904",
+      "doi": null,
+      "year": 2019,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 63,
+      "text": "He Y, Yu H, Ong E, Wang Y, Liu Y, Huffman A, Huang H, Beverley J, Hur J, Yang X, Chen L, Omenn G, Athey B, and Smith B. CIDO, a community-based ontology for coronavirus disease knowledge and data integration, sharing, and analysis. Scientific Data. 2020 Jun 12;7(1):181. doi: 10.1038/s41597-020-0523-6.",
+      "pmid": "32533075",
+      "doi": null,
+      "year": 2020,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 64,
+      "text": "Guo K*, Eid S*, Elzinga S*, Pacut C, Feldman EL, and Hur J$. Genome-wide profiling of DNA methylation and gene expression identifies candidate genes for human diabetic neuropathy. Clinical Epigenetics. 2020 Aug 12;12(1):123. doi: 10.1186/s13148-020-00913-6.",
+      "pmid": "32787975",
+      "doi": null,
+      "year": 2020,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 65,
+      "text": "Paez-Colasante X, Figueroa-Romero C, Rumora AE, Hur J, Mendelson FE, Hayes JM, Backus C, Taubman GF, Heinicke L, Walter NG, Barmada SJ, Sakowski SA, and Feldman EL. Cytoplasmic TDP43 Binds MicroRNAs: New Disease Targets in Amyotrophic Lateral Sclerosis. Frontiers in Cellular Neuroscience, section Cellular Neuropathology. 2020 May 12;14:117. doi: 10.3389/fncel.2020.00117. eCollection 2020.",
+      "pmid": "32477070",
+      "doi": null,
+      "year": 2020,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 66,
+      "text": "Gao P, Guo K, Pu Q, Wang Z, Lin P, Qin S, Khan N, Hur J, Liang H, and Wu M. oprC Impairs Host Defense by Increasing the Quorum-Sensing-Mediated Virulence of Pseudomonas aeruginosa. Frontiers in Immunology. 2020 Aug 4;11:1696. doi: 10.3389/fimmu.2020.01696. eCollection 2020.",
+      "pmid": "32849593",
+      "doi": null,
+      "year": 2020,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 67,
+      "text": "Won S, Cho YJ, Lee N, Kim M, Kim MK, Jung YW, Yun BS, Seong SJ, Hur J, and Kim ML. Atypical endometriosis is related to a higher recurrence rate. European Journal of Obstetrics & Gynecology and Reproductive Biology. 2020 Sep 6. doi: 10.1016/j.ejogrb.2020.08.054",
+      "pmid": "32920422",
+      "doi": null,
+      "year": 2020,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 68,
+      "text": "Shin D., Lee KJ, Adeluwa T, and Hur J$. Machine Learning-Based Predictive Modeling of Postpartum Depression. Journal of Clinical Medicine. 2020, 9(9), 2899; https://doi.org/10.3390/jcm9092899",
+      "pmid": null,
+      "doi": "https://doi.org/10.3390/jcm9092899",
+      "year": 2020,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 69,
+      "text": "Goutman SA, Boss J, Alakwaa F, Guo K, Hur J, Kim S, and Feldman EL. Untargeted metabolomics yields insight into ALS disease mechanisms. Journal of Neurology, Neurosurgery, and Psychiatry. 2020 Sep 14:jnnp-2020-323611. doi: 10.1136/jnnp-2020-323611.",
+      "pmid": "32928939",
+      "doi": null,
+      "year": 2020,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 70,
+      "text": "Liu Y, Hur J, Chan WKB, Wang Z, Xie J, Sun D, Handelman S, Sexton J, Yu H, and He Y. Ontological modeling and analysis of experimentally or clinically verified drugs against coronavirus infection. Scientific Data. 2021 Jan 13;8(1):16. doi: 10.1038/s41597-021-00799-w.",
+      "pmid": "33441564",
+      "doi": null,
+      "year": 2021,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 71,
+      "text": "Eid SA. Hinder LM, Zhang H, Eksi R, Nair V, Eddy S, Eichinger F, Park M, Saha J, Berthier CC, Jagadish HV, Guan Y, Pennathur S, Hur J, Kretzler M, Feldman EL, and Brosius FC. Gene expression profiles of diabetic kidney disease and neuropathy in eNOS knockout mice: Predictors of pathology and RAS blockade effects. FASEB journal. 2021 May;35(5):e21467. doi: 10.1096/fj.202002387R.",
+      "pmid": "33788970",
+      "doi": null,
+      "year": 2021,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 72,
+      "text": "Abbas A, Witte T, Patterson WL, Fahrmann J, Guo K, Hur J, Hardman WE, and Georgel PT. Epigenetic reprogramming mediated by maternal diet rich in omega-3 fatty acids protects from breast cancer development in F1 offspring. Frontiers in Cell Developmental Biology. 2021 Jun 10;9:682593. doi: 10.3389/fcell.2021.682593. eCollection 2021.",
+      "pmid": "34179012",
+      "doi": null,
+      "year": 2021,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 73,
+      "text": "Hur J, Yoo J, Shin D, Baek KH, Park, and Lee KJ. Predictability of Macrosomic Birth based on Maternal Junguk Hur, Ph.D. Curriculum Vitae Factors and Fetal Aneuploidy Screening Biochemical Markers in Hyperglycemic Mothers. International Journal of Medical Sciences. 2021; 18(12):2653-2660. doi:10.7150/ijms.49857.",
+      "pmid": null,
+      "doi": null,
+      "year": 2021,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 74,
+      "text": "Smith NA, Germundson DL, Gao P, Hur J, Floden AM, and Nagamoto-Combs K. Anxiety-like behavior and intestinal microbiota changes as strain-and sex-dependent sequelae of mild food allergy in mouse models of cow's milk allergy. Brain Behavioral Immunology. 2021 Mar 9;S0889-1591(21)00104-5. doi: 10.1016/j.bbi.2021.03.002.",
+      "pmid": "33705867",
+      "doi": null,
+      "year": 2021,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 75,
+      "text": "Wang Z*, Guo K*, Gao P, Pu Q, Lin P, Qin S, Xie N, Hur J, Li C, Huang C, and Wu M. Microbial and genetic-based framework identifies drug targets in inflammatory bowel disease. Theranostics. 2021; 11(15):7491-7506. doi:10.7150/thno.59196.",
+      "pmid": "34158863",
+      "doi": null,
+      "year": 2021,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 76,
+      "text": "McGregor BA, Schommer J, Guo K, MD Raihan, Ghribi O, Hur J$, and Porter JE$. Alpha-Synuclein-induced Methylation and Gene Expression Changes in Microglia. Neuroscience. 2021 Aug 1;468:186-198. doi: 10.1016/j.neuroscience.2021.05.027. Epub 2021 May 31.",
+      "pmid": "34082066",
+      "doi": null,
+      "year": 2021,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 77,
+      "text": "Adeluwa T, McGregor BA, Guo K, and Hur J$. Predicting drug-induced liver injury using Machine Learning on a Diverse Set of Predictors. Frontiers in Pharmacology Pharmacogenetics and Pharmacogenomics. 2021. Front Pharmacol. 2021 Aug 18;12:648805. doi: 10.3389/fphar.2021.648805. eCollection 2021",
+      "pmid": "34483896",
+      "doi": null,
+      "year": 2021,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 78,
+      "text": "Lo TW, Figueroa-Romero C, Hur J, Pacut C, Stoll E, Spring C, Lewis R, Nair A, Goutman SA, Sakowski SA, Nagrath S, Feldman EL. Extracellular Vesicles in Serum and Central Nervous System Tissues Contain microRNA Signatures in Sporadic Amyotrophic Lateral Sclerosis. Frontiers in Molecular Neuroscience. 2021 Oct 29;14:739016. doi: 10.3389/fnmol.2021.739016. eCollection 2021.",
+      "pmid": "34776863",
+      "doi": null,
+      "year": 2021,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 79,
+      "text": "Wang Z, Guo K, Gao P, Pu Q, Li C$, Hur J$, Wu M$. Repurposable drugs for SARS-CoV-2 and influenza sepsis with scRNA-seq data targeting post-transcription modifications. Precision Clinical Medicine. 2021. pbab022",
+      "pmid": "34993416",
+      "doi": null,
+      "year": 2021,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 80,
+      "text": "Guo K, Savelieff MG, Rumora AE, Alakwaa Fm, Callaghan BC, Hur J, Feldman EL. Plasma metabolomics and lipidomics differentiate obese individuals by peripheral neuropathy status. The Journal of Clinical Endocrinology & Metabolism. J Clin Endocrinol Metab. 2021 Nov 20:dgab844. doi: 10.1210/clinem/dgab844.",
+      "pmid": "34878536",
+      "doi": null,
+      "year": 2021,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 81,
+      "text": "Raihan MDO, McGregor BA, Velaris NA. Brishti A, Hur J$, Porter JE$. Method of Microglial DNA-RNA purification from Adult Mouse Single Brain. Methods and Protocols. Methods Protoc. 2021 Dec 2;4(4):86. doi: 10.3390/mps4040086",
+      "pmid": "34940397",
+      "doi": null,
+      "year": 2021,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 82,
+      "text": "Boison D, Masino SA, Lubin FD, Guo K, Lusardi T, Sanchez R, Ruskin DN, Ohm J, Geiger JD, and Hur J*. The impact of methodology on the reproducibility and rigor of DNA methylation data. Scientific Reports Sci Rep. 2022 Jan 10;12(1):380. doi: 10.1038/s41598-021-04346-w.",
+      "pmid": "35013473",
+      "doi": null,
+      "year": 2022,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 83,
+      "text": "Goutman S, Guo K, Savelieff M, Patterson A, Sakowski S, Habra H, Karnovsky A, Hur J, Feldman EL. Metabolomics identifies shared lipid pathways in independent amyotrophic lateral sclerosis cohorts. Brain. 2022 Jan 28;awac025. doi: 10.1093/brain/awac025.",
+      "pmid": "35088843",
+      "doi": null,
+      "year": 2022,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 84,
+      "text": "Li L, Niu M, Erickson A, Luo J, Rowbotham K, Guo K, Huang H, Li Y, Jiang Yi, Hur J, Liu C, Peng J, Wang X. SMAP: A pipeline for sample matching in proteogenomics. Nature Communiocations. 2022 Feb 8;13(1):744. doi: 10.1038/s41467-022-28411-8.",
+      "pmid": "35136070",
+      "doi": null,
+      "year": 2022,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 85,
+      "text": "Raihan MDO, Espelien B, McGregor BA, Hanson C, Brishti A, Velaris NA. Alvin TD, Bradley DS, Niles M, Glovko M, Hur J, and Porter JE. Modulation of inflammatory signaling molecules in Bordetella pertussis antigen challenged human monocytes in presence of adrenergic agonists. Vaccines (Basel). 2022 Feb 17;10(2):321. doi: 10.3390/vaccines10020321.",
+      "pmid": "35214778",
+      "doi": null,
+      "year": 2022,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 86,
+      "text": "Schmit T, Guo K, Tripathi JK, Wang Zhihan, McGregor B, Klomp M, Ambigapathy G, Mathur R, Hur J, Pichichero M, Kills J, and Khan N. Interferon (IFN)-γ promotes monocyte-mediated lung injury during influenza pathogenesis. Cell Reports. 2022 Mar 1;38(9):110456. doi: 10.1016/j.celrep.2022.110456.",
+      "pmid": "35235782",
+      "doi": null,
+      "year": 2022,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 87,
+      "text": "Larson KJ, Bundy AN, Kuntz T, Hur J, Yeater KM, Casperson S, and Roemmich JN. Effect of a maternal high fat diet with vegetable substitution on fetal brain transcriptome. The Journal of Nutritional Junguk Hur, Ph.D. Curriculum Vitae Biochemistry. 2022 Oct;108:109088. doi: 10.1016/j.jnutbio.2022.109088. Epub 2022 Jun 10.",
+      "pmid": "35691591",
+      "doi": null,
+      "year": 2022,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 88,
+      "text": "Rumora AE, Guo K, Hinder LM, Elzinga SE, O’Brien PD, Hayes JM, Tabbey MA, Hur J, and Feldman EL. A High-Fat Diet Disrupts Nerve Lipids and Mitochondrial Function in Murine Models of Neuropathy. Frontiers in Physiology Lipid and Fatty Acid Research. 2022 Aug 22;13:921942. doi: 10.3389/fphys.2022.921942. eCollection 2022.",
+      "pmid": "36072849",
+      "doi": null,
+      "year": 2022,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 89,
+      "text": "Raihan MDO, Espelien B, Hanson C, McGregor BA, Brishti A, Velaris NA. Alvin TD, Bradley DS, Niles M, Glovko M, Hur J, and Porter JE. Characterization of prostanoids response to Bordetella pertussis antigen BscF and Tdap in LPS-challenged monocytes. PLEFA (Prostaglandins, Leukotrienes & Essential Fatty Acids) 2022 Jul;182:102452. doi: 10.1016/j.plefa.2022.102452. Epub 2022 May 21.",
+      "pmid": "35690004",
+      "doi": null,
+      "year": 2022,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 90,
+      "text": "He Y, Yu H, Huffman A, Lin AY, …, Hur J, Omenn GS, Athey B, and Smith B. A comprehensive update on CIDO: the community-based coronavirus infectious disease ontology. Journal of Biomedical Semantics. 2022 Oct 21;13(1):25. doi: 10.1186/s13326-022-00279-z.",
+      "pmid": "36271389",
+      "doi": null,
+      "year": 2022,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 91,
+      "text": "Guo K$, Yombo D, Schmit T, Wang Z, Ghosh S, Sathish V, Mathur R, Wu M, Hur J$, and Khan N$. Cellular heterogeneity and molecular reprogramming of host response during influenza acute lung injury. Journal of Virology. 2022 Nov 9;96(21):e0124622. doi: 10.1128/jvi.01246-22. Epub 2022 Oct 26.",
+      "pmid": "36286482",
+      "doi": null,
+      "year": 2022,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 92,
+      "text": "Hur J*, Paez-Colasante X*, Figueroa-Romero C*, Lo TW, Barmada SJ, Paulsen M, Ljungman M, Alakwaa FM, Savelieff MG, Goutman SA, and Feldman EL. miRNA analysis reveals novel dysregulated pathways in amyotrophic lateral sclerosis. Human Molecular Genetics. 2022 Oct 11;ddac250. doi: 10.1093/hmg/ddac250. Online ahead of print.",
+      "pmid": "36219176",
+      "doi": null,
+      "year": 2022,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 93,
+      "text": "Yu H*, Li L*, Huffman A*, Beverley J*, Hur J*, Merrell E, Huang HH, Wang Y, Liu Y, Ong E, Cheng L, Zeng T, Zhang J, Li P, Liu Z, Wang Z, Zhang X, Ye X, Handelman SK, Sexton J, Eaton K, Higgins G, Omenn GS, Athey B, Smith B, Chen L, He Y. A New Framework for Host-Pathogen Interaction Research. Frontiers in Immunology. 2022 Dec 15;13:1066733. doi: 10.3389/fimmu.2022.1066733. eCollection 2022.",
+      "pmid": "36591248",
+      "doi": null,
+      "year": 2022,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 94,
+      "text": "Henn R, Elzinga S, Glass E, Parent R, Guo K, Allouch A, Mendelson F, Hayes J, Webber-Davis I, Murphy G, Hur J, and Feldman EL. Obesity-Induced Neuroinflammation and Cognitive Impairment in Adult versus Aged Mice. Immunity & Ageing. 2022 Dec 22;19(1):67. doi: 10.1186/s12979-022-00323-7.",
+      "pmid": "36550567",
+      "doi": null,
+      "year": 2022,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 95,
+      "text": "Henn RE, Guo K, Elzinga SE, Noureldein M, Mendelson FE, Hayes JM, Rigan DM, Savelieff MG, Hur J, Feldman EL. Single-cell RNA sequencing identifies hippocampal microglial dysregulation in diet-induced obesity. iScience. Feb 8;26(3):106164. doi: 10.1016/j.isci.2023.106164. eCollection 2023 Mar 17.",
+      "pmid": "36915697",
+      "doi": null,
+      "year": 2023,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 96,
+      "text": "Guo K, Figueroa-Romero Claudia, Hinder LM, Noureldein M, Sakowski SA, Rumora AE, Petit H, Savelieff MG, Hur J, and Feldman EL. Gut microbiota in a mouse model of obesity and peripheral neuropathy associated with plasma and nerve lipidomics and nerve transcriptomics. Microbiome. Mar 15;11(1):52. doi: 10.1186/s40168-022-01436-3.",
+      "pmid": "36922895",
+      "doi": null,
+      "year": null,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 97,
+      "text": "Dou JF, Bakulski KM, Guo K, Hur J, …, and Goutman SA. Cumulative genetic score and C9orf72 repeat status independently contribute to ALS risk in two case-control studies. Neurology Genetics. 2023 May 31;9(4):e200079. doi: 10.1212/NXG.0000000000200079. eCollection 2023 Aug.",
+      "pmid": "37293291",
+      "doi": null,
+      "year": 2023,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 98,
+      "text": "Talukdar S, McGregor B, Osan J, Hur J, and Mehedi M. Respiratory Syncytial Virus Infection Does Not Induce Epithelial-Mesenchymal Transition. Journal of Virology. 2023 Jul 27;97(7):e0039423. doi: 10.1128/jvi.0039423. Epub 2023 Jun 20.",
+      "pmid": "37338373",
+      "doi": null,
+      "year": 2023,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 99,
+      "text": "McGregor BA, Razmjou E, Hooshyar H, Seeger DR, Golovko SA, Eckmann L, Golovko MY, Singer SM, Hur J, and Solaymani-Mohammadi S. A shotgun metagenomic analysis of the fecal microbiome in humans infected with Giardia duodenalis. Parasites & Vectors. 2023 Jul 18;16(1):239. doi: 10.1186/s13071-023-05821-1. PMID: [37464386] PMCID: [PMC10354925] Junguk Hur, Ph.D. Curriculum Vitae",
+      "pmid": null,
+      "doi": null,
+      "year": 2023,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 100,
+      "text": "Eid EA, Noureldein M, Kim B, Hinder LM, Mendelson FE, Hayes JM, Hur J, Feldman EL. Single-cell RNAseq uncovers novel metabolic functions of Schwann cells beyond myelination. Journal of Neurochemistry. 2023 Jul;166(2):367-388. doi: 10.1111/jnc.15877. Epub 2023 Jun 16.",
+      "pmid": "37328915",
+      "doi": null,
+      "year": 2023,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 101,
+      "text": "Elzinga SE*, Eid SA*, McGregor BA*, Hinder LM, Dauch JR, Hayes JM, Pennathur S, Kretzler M, Brosius FC, Feldman EL, and Hur J$. Transcriptomic analysis of diabetic kidney disease and neuropathy in mouse models of type 1 and type 2 diabetes. Disease Models and Mechanisms. 2023 Oct 1;16(10):dmm050080. doi: 10.1242/dmm.050080.",
+      "pmid": "37791586",
+      "doi": null,
+      "year": 2023,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 102,
+      "text": "Combs P, Erickson J, Hsieh JH, Guo K, Nolte S, Schmitt C, Auerbach S*, Hur J*. Tox21Enricher-Shiny: An R Shiny Application for Toxicity Functional Annotation Analysis. Frontiers in Toxicology. 2023 Jun 27;5:1147608. doi: 10.3389/ftox.2023.1147608. eCollection 2023.",
+      "pmid": "37441091",
+      "doi": null,
+      "year": 2023,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 103,
+      "text": "Choi IY, Wang WT, Kim B, Hur J, Robbins DC, Jang DG, Savelieff MG, Feldman EL, Lee P. Non‐invasive in vivo measurements of metabolic alterations in the type 2 diabetic brain by 1H magnetic resonance spectroscopy. Journal of Neurochemisry. 2023 Nov 15. doi: 10.1111/jnc.15996.",
+      "pmid": "37965761",
+      "doi": null,
+      "year": 2023,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 104,
+      "text": "Guo K, Figueroa-Romero, Noureldein MH, Murdock BJ, Savelieff MG, Hur J, Goutman SA, and Feldman EL. Gut microbiome correlates with plasma lipids in amyotrophic lateral sclerosis. Brain. 2023 Sep 18:awad306. doi: 10.1093/brain/awad306. Online ahead of print.",
+      "pmid": "37721161",
+      "doi": null,
+      "year": 2023,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 105,
+      "text": "Navaeiseddighi Z, Tripathi JK, Guo K, Wang Z, Schmit T, Navaeiseddighi Z, Hur J, Mathur R, Jurivich D, and Khan N. IL-17RA promotes pathologic epithelial inflammation in a mouse model of upper respiratory influenza infection. PLOS Pathogens. 2023 Dec 7;19(12):e1011847. doi: 10.1371/journal.ppat.1011847. eCollection 2023 Dec.",
+      "pmid": "38060620",
+      "doi": null,
+      "year": 2023,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 106,
+      "text": "Guo K, Yombo DJK, Wang Z, Navaeiseddighi Z, Xu J, Schmit T, Ahamad N, Tripathi J, De Kumar B, Mathur R, Hur J, Sun J, Olszewski M, and Khan N. The chemokine receptor CXCR3 promotes CD8+ T celldependent lung pathology during influenza pathogenesis. Science Advances. 2024 Jan 5;10(1):eadj1120. doi: 10.1126/sciadv.adj1120. Epub 2024 Jan 3.",
+      "pmid": "38170765",
+      "doi": null,
+      "year": 2024,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 107,
+      "text": "You JH*, Hur J*, Jurivich D, You JT, Lee KJ. A novel approach to quantifying individual's biological aging using Korea’s national health screening program toward precision public health. GeroScience. 2024 Feb 2. doi: 10.1007/s11357-024-01079-2",
+      "pmid": "38302843",
+      "doi": null,
+      "year": 2024,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 108,
+      "text": "Wang Z, Gao P, Guo K, Shirrick G, Gill JS, Weis J, Da Costa AL, Rahman M, Mehta H, Fleecs J, Jain S, Debnath T, Hur J, Khan N, Sticca R, Brown-Borg H, Jurivich DA, and Mathur R. Age-related dysregulation of intestinal epithelium fucosylation is linked to an increased risk of colon cancer. JCI Insights. doi: 10.1172/jci.insight.167676. 2024 Mar 8;9(5):e167676.",
+      "pmid": "38456503",
+      "doi": null,
+      "year": 2024,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 109,
+      "text": "Eid SA*, Elzinga SE*, Guo K*, Hinder LM, Hayes JM, Pacut CM, Koubek EJ, Hur J$, and Feldman EL$. Transcriptomic profiling of sciatic nerves and dorsal root ganglia reveals site-specific effects of prediabetic neuropathy. Translational Research. 2024 Mar 29:270:24-41. doi: 10.1016/j.trsl.2024.03.009. [PMCID: PMC11166517 available on 2025-08-01]",
+      "pmid": "38556110",
+      "doi": null,
+      "year": 2025,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 110,
+      "text": "Gill JS, Bansal B, Guo K, Huang F, Singh H, Hur J, Khan N, and Mathur R. Mitochondrial oxidative stress regulates FOXP3+ T cell activity and CD4-mediated inflammation in frail older adults. International Journal of Molecular Sciences. 2024 Jun 5;25(11):6235. doi: 10.3390/ijms25116235.",
+      "pmid": "38892421",
+      "doi": null,
+      "year": 2024,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 111,
+      "text": "Rehana H*, Çam NB*, Masmaci M, Zheng J, Jemiyo C, He Y, Ozgur A$, and Hur J$. Evaluation of GPT and BERT-based models on identifying protein-protein interactions in biomedical text. Bioinformatics Advances. 2024 Sep 11;4(1):vbae133. doi: 10.1093/bioadv/vbae133. eCollection 2024.",
+      "pmid": "39319026",
+      "doi": null,
+      "year": 2024,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 112,
+      "text": "Hasan Al.R.O, Tasnim F.O., Aktaruzzman M.O., Islan M.T.O, Rayhan R.O., Brishti A.O., Hur J, Porter J.E., Raihan MO. The Role of Microglial Calcium Homeostasis in Central Nervous System Disorders: A Comprehensive Review. Neuroglia. https://doi.org/10.3390/neuroglia5040027 Junguk Hur, Ph.D. Curriculum Vitae",
+      "pmid": null,
+      "doi": "https://doi.org/10.3390/neuroglia5040027",
+      "year": null,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 113,
+      "text": "Bergquist T, Loomba J, …, Blasé J; Long COVID Computational Challenge Participants; N3C Consortium. EBioMedicine. 2024 Oct:108:105333. doi: 10.1016/j.ebiom.2024.105333. Epub 2024 Sep 24. (Note: as a challenge participant)",
+      "pmid": "39321500",
+      "doi": null,
+      "year": 2024,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 114,
+      "text": "Zhang K$, Dang Y, Li Y. Tao C$, Hur J$, and He Y$. Impact of Climate Change on Vaccine Responses and Inequity. Nature Climate Change. 14, 1216–1218 (2024). https://doi.org/10.1038/s41558-024-02192-y.",
+      "pmid": "40276125",
+      "doi": "https://doi.org/10.1038/s41558-024-02192-y",
+      "year": 2024,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 115,
+      "text": "Guo K, Savelieff MG, Jang DG, Teener SJ, Zhao L, Hur J, Goutman SA$, and Feldman EL$. Longitudinal metabolomics in amyotrophic lateral sclerosis implicates impaired lipid metabolism. Annals of Neurology. 2025 Feb 20. doi: 10.1002/ana.27208.",
+      "pmid": "39976286",
+      "doi": null,
+      "year": 2025,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 116,
+      "text": "McGregor BA*, Raihan MDO*, Brishti A, Hur J$, and Porter J$. Deciphering Motor Dysfunction and Microglial Activation in mThy1-α-Synuclein Mice: A Comprehensive Study of Behavioral, Gene Expression, and Methylation Changes. Frontiers in Neuroscience. 2025 Feb 13:18:1544971. doi: 10.3389/fnmol.2025.1544971. eCollection 2025.",
+      "pmid": "39976286",
+      "doi": null,
+      "year": 2025,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 117,
+      "text": "Elzinga S, Guo K, Turfah A, Henn RE, Webber-Davis IF, Hayes JM, Pacut CM, Teener SJ, Carter AD, Rigan DM, Allouch AM, Jang DG, Parent R, Glass E, Murphy GG, Lentz SI, Chen KS, Zhao L, Hur J, and Feldman EL. Metabolic stress and age drive inflammation and cognitive decline in mice and humans. Alzheimer's & Dementia. 2025 Mar;21(3):e70060. doi: 10.1002/alz.70060.",
+      "pmid": "40110679",
+      "doi": null,
+      "year": 2025,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 118,
+      "text": "Jemiyo C*, McGregor BA*, Rehana H, and Hur J. Adverse childhood experiences and chronic health outcomes: Evidence from 33 US states in the Behavioral Risk Factor Surveillance System, 2019-2023. BMC Public Health. 2025 May 5;25(1):1650. doi: 10.1186/s12889-025-22785-2.",
+      "pmid": "40325404",
+      "doi": null,
+      "year": 2025,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 119,
+      "text": "Chen K, Noureldein MH, Rigan D, Hayes J, Loi KJ, Hur J, Savelieff MG, and Feldman EL. Interneuron transcriptomics reveals pathologic markers of disease progression in Alzheimer’s disease brain. Neurobiology of Disease. 2025 Sep:213:107012. doi: 10.1016/j.nbd.2025.107012. Epub 2025 Jun 25.",
+      "pmid": "40578769",
+      "doi": null,
+      "year": 2025,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 120,
+      "text": "Wang Z, Schmit T, Guo K, Tripathi JK, Navaeiseddighi Z, Tyagi A, Mathur R, Hur J, Jurivich D, and Khan N. Loss of pulmonary tissue protection and neutrophil microbicidal defects promote severe Aspergillus fumigatus infection during influenza A virus infection. Infection and Immunity. 2025 Sep 9;93(9):e0023425. doi: 10.1128/iai.00234-25. Epub 2025 Aug 11.",
+      "pmid": "40788118",
+      "doi": null,
+      "year": 2025,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 121,
+      "text": "Lee SY, Kim MY, Kim JH, Park SJ, Hur J, Shin DY. Metabolomics and Nutrient Intake Reveal Metabolite– Nutrient Interactions in Metabolic Syndrome: Insights from the Korean Genome and Epidemiology Study. Nutrition Journal. 2025 Aug 19;24(1):128. doi: 10.1186/s12937-025-01189-3.",
+      "pmid": "40830960",
+      "doi": null,
+      "year": 2025,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 122,
+      "text": "Zhao Y, Li X, Savelieff MG, Guo K, Wang K, Li B, Iyer G, Sakowski SA, Zhao L, Teener SJ, Bakulski KM, Dou JF, Traynor BJ, Karnovsky A, Batterman SA, Hur J, Goutman SA, Sartor MA, Feldman EL. Gene Expression Signatures from Whole Blood Predict Amyotrophic Lateral Sclerosis Case Status and Survival. Nature Communications. 2025 Oct 31;16(1):9631. doi: 10.1038/s41467-025-64622-5.",
+      "pmid": "41173979",
+      "doi": null,
+      "year": 2025,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 123,
+      "text": "Jaisil P, Eid SA, Guo K, Savelieff MG, Jang DG, Kim B, Pacut C, Hayes JM, Rigan DM, Carter A, Teener SJ, McQuown H, Webber-Davis IF, Hur J, Meyer JD, and Feldman EL. Dietary and exercise interventions improve cognition and alter hippocampal transcriptome in a mouse model of metabolic syndrome. Experimental Neurology. 2025 Sep 28:395:115483. DOI: 10.1016/j.expneurol.2025.115483",
+      "pmid": "41027539",
+      "doi": null,
+      "year": 2025,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 124,
+      "text": "Liu X, Geng A, Xia M, Lan J, Wu H, Zhou Z, Huang F, He Y, Lei T, Hur J, Guo K, Yu X. Alterations in Short-Chain Fatty Acid-Associated Gut Microbiota and Tight Junction Integrity Predict Clinical Outcomes in Adolescent Major Depressive Disorder. Translational Psychiatry. Transl Psychiatry. 2025 Dec 3. doi: 10.1038/s41398-025-03743-3.",
+      "pmid": "41339503",
+      "doi": null,
+      "year": 2025,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 125,
+      "text": "Goutman SA, Guo K, Park J, Jang D-G, Teener SJ, Webber-Davis IF, Famie JP, Piecuch CE, Hur J, and Murdock BJ. Natural killer cell gene expression signatures shift to a Type 2 inflammatory phenotype during ALS disease progression. Neurology Open Access (Submitted on 10/1/2025; Accepted on 12/9/2025. In press) Junguk Hur, Ph.D. Curriculum Vitae",
+      "pmid": null,
+      "doi": null,
+      "year": 2025,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 126,
+      "text": "Huffman A, Yeh FY, Hur J, Zheng J, Masci AM, Wu G, Tao C, Athey B, and He Y. SEA CDM: Studyexperiment-assay common data model and databases for cross-domain data integration and analysis. Scientific Data. (Submitted in 08/2025. Accepted on 12/30/2025)",
+      "pmid": null,
+      "doi": null,
+      "year": 2025,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 127,
+      "text": "Purnell B*, Hur J*, Fedele D, Ruskin D, Murugan M, Tescarollo F, Singh R, Ramavenkat N, Masino S, Geiger J, Boison D. Commonalities in gene expression and methylation changes across two rat models of acquired epilepsy. Scientific Reports. (Submitted on 1/23/2025; accepted on 1/8/2026)",
+      "pmid": null,
+      "doi": null,
+      "year": 2026,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 128,
+      "text": "Eid SA, Jaisil P, Guo K, Hayes JM, Pacut C, Rigan DM, Carter A, Teener SJ, Kiriluk C, Miller CM, WebberDavis I, McQuown H, Jang D-G, Patterson A, Koubek EJ, Bridges D, Hur J, Meyer JD, and Feldman EL. Ketogenic diet and exercise improve nerve function in a metabolic syndrome mouse model. Diabetes (Initial submission on 11/7/2025; Another revision submitted on 1/5/2026; Accepted on 2/13/2026)",
+      "pmid": null,
+      "doi": null,
+      "year": 2026,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 129,
+      "text": "Liu X, Huang F, He Y, Hur J, Wang J, Xian Y, Yin B, Lei T, Zhang H, Li X, Zhu D, Wen Y, Guo K, and Zhou X. Integrated bulk and single-cell RNA sequencing reveals peripheral immune dysregulation in adolescent major depressive disorder. Brain, Behavior, and Immunity. 2026 Feb 23:135:106512. doi: 10.1016/j.bbi.2026.106512.",
+      "pmid": null,
+      "doi": null,
+      "year": 2026,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 130,
+      "text": "He A*, Hur KN*, Li X, Zheng J, Hur J$, and He Y$. Updated Profiling of COVID-19 Vaccine Adverse Events Using VAERS Case Reports. Frontiers in Pharmacology – Pharmacoepidemiology. (Accepted in March 2026; In press)",
+      "pmid": null,
+      "doi": null,
+      "year": 2026,
+      "isPreprint": false,
+      "category": "originalPaper"
+    },
+    {
+      "number": 131,
+      "text": "Lunn JS, Sakowski SA, Hur J, Feldman EL. Stem cell technology for neurodegenerative diseases, Annals of Neurology, 2011, DOI:10.1002/ana.22487",
+      "pmid": "21905078",
+      "doi": null,
+      "year": 2011,
+      "isPreprint": false,
+      "category": "review"
+    },
+    {
+      "number": 132,
+      "text": "Callaghan BC, Hur J, and Feldman EF. Diabetic Neuropathy: One disease or two?, Current Opinions in Neurology, 2012, 25:536-541",
+      "pmid": "22892951",
+      "doi": null,
+      "year": 2012,
+      "isPreprint": false,
+      "category": "review"
+    },
+    {
+      "number": 133,
+      "text": "Sakellaropoulos T, Hur J, Melas IN, Guo EY, Alexopoulos L, and Bai JPF. Computational Approaches to Accelerating Novel Medicine and Better Patient Care from Bedside to Benchtop. Advances In Protein Chemistry And Structural Biology. 102, 147-179, doi:10.1016/bs.apcsb.2015.09.005 (2016).",
+      "pmid": "26827605",
+      "doi": null,
+      "year": 2016,
+      "isPreprint": false,
+      "category": "review"
+    },
+    {
+      "number": 134,
+      "text": "Bai JPF, Melas IN, Hur J, and Ellen YG. Advances in omics for informed pharmaceutical R&D. Expert Opinion on Drug Discovery. 2018 Jan;13(1):1-4. doi: 10.1080/17460441.2018.1394839. Epub 2017 Oct 27.",
+      "pmid": "29073782",
+      "doi": null,
+      "year": 2017,
+      "isPreprint": false,
+      "category": "review"
+    },
+    {
+      "number": 135,
+      "text": "Huffman A, Ong E, Hur J, D'Mello A, Tettelin H, He Y. COVID-19 vaccine design using reverse and structural vaccinology, ontology-based literature mining and machine learning. Brief Bioinform. 2022 Jul 18;23(4):bbac190. doi: 10.1093/bib/bbac190.",
+      "pmid": "35649389",
+      "doi": null,
+      "year": 2022,
+      "isPreprint": false,
+      "category": "review"
+    },
+    {
+      "number": 136,
+      "text": "Eid SA, Rumora AE, Beirowski B, Bennett DL, Hur J, Savelieff MG, and Feldman EL. New perspective in diabetic neuropathy. Neuron. 2023 May 19;S0896-6273(23)00345-8. doi: 10.1016/j.neuron.2023.05.003.",
+      "pmid": "37263266",
+      "doi": null,
+      "year": 2023,
+      "isPreprint": false,
+      "category": "review"
+    },
+    {
+      "number": 137,
+      "text": "Goutman SA, Savelieff MG, Jang DG, Hur J, and Feldman EL. The amyotrophic lateral sclerosis exposome: recent advances and future directions. Nature Reviews Neurology. 2023 Oct;19(10):617-634. doi: 10.1038/s41582-023-00867-2.",
+      "pmid": "37709948",
+      "doi": null,
+      "year": 2023,
+      "isPreprint": false,
+      "category": "review"
+    },
+    {
+      "number": 138,
+      "text": "Hur J$, Tao C, and He Y. A 2018 workshop: vaccine and drug ontology studies (VDOS 2018). BMC Bioinformatics. 2019 Dec 23;20(Suppl 21):705.",
+      "pmid": "31865905",
+      "doi": null,
+      "year": 2019,
+      "isPreprint": false,
+      "category": "editorialNonPR"
+    },
+    {
+      "number": 139,
+      "text": "Bai JPF and Hur J. Systems Medicine. Methods in Molecular Biology. Springer. April 5th, 2022.",
+      "pmid": null,
+      "doi": null,
+      "year": 2022,
+      "isPreprint": false,
+      "category": "bookEditing"
+    },
+    {
+      "number": 140,
+      "text": "Melas IN, Sakellaropoulos T, Hur J, Messinis D, Guo EY, Alexopoulos LG, and Bai J.P.F., A computational platform and guide for acceleration of novel medicine and precision medicine. Methods in Molecular Biology. Methods in Molecular Biology. Bioinformatics in Drug Discovery 3rd edition. 2019 Edited by Junguk Hur, Ph.D. Curriculum Vitae Richard S Larson and Tudor I Oprea.",
+      "pmid": "30848462",
+      "doi": null,
+      "year": 2019,
+      "isPreprint": false,
+      "category": "bookChapter"
+    },
+    {
+      "number": 141,
+      "text": "Özgür A, Hur J$, and He Y$. Extension of the Interaction Network Ontology for literature mining of genegene interaction networks from sentences with multiple interaction keywords. The Proceedings of the International Workshop on Biomedical Data Mining, Modeling, and Semantic Integration: A Promising Approach to Solving Unmet Medical Needs (BDM2I 2015). Bethlehem, PA, USA.",
+      "pmid": null,
+      "doi": null,
+      "year": 2015,
+      "isPreprint": false,
+      "category": "conferenceProceedings"
+    },
+    {
+      "number": 142,
+      "text": "Guo A, Racz R, Hur J, Lin Y, Xiang Z, Zhao L, Jiang G, Zhu Q, Bai J, and He Y. Ontology-based collection, representation and analysis of drug-associated neuropathy adverse events. The proceedings of the International Conference of Biological Ontologies (ICBO) 2015 Vaccines and Drug Ontology Studies (VDOS) workshop.",
+      "pmid": null,
+      "doi": null,
+      "year": 2015,
+      "isPreprint": false,
+      "category": "conferenceProceedings"
+    },
+    {
+      "number": 143,
+      "text": "Hur J$, Ozgur A, Ong E, and He Y$. Ontology-based literature mining of E. coli vaccine-associated gene interaction networks. The proceedings of the International Conference of Biological Ontologies (ICBO) 2016 Vaccines and Drug Ontology Studies (VDOS) workshop.",
+      "pmid": null,
+      "doi": null,
+      "year": 2016,
+      "isPreprint": false,
+      "category": "conferenceProceedings"
+    },
+    {
+      "number": 144,
+      "text": "Hur J$, Ozgur A, and He Y. Ontology-based NLP literature mining and analysis of adverse drug reactions associated with neuropathy-inducing drugs. The proceedings of the International Conference of Biological Ontologies (ICBO) 2017 Vaccines and Drug Ontology Studies (VDOS) workshop.",
+      "pmid": null,
+      "doi": null,
+      "year": 2017,
+      "isPreprint": false,
+      "category": "conferenceProceedings"
+    },
+    {
+      "number": 145,
+      "text": "Tiftikci M, Ozgur A, He Y, and Hur J$. Machine learning-based identification and rule-based normalization of adverse drug reactions in drug labels. The proceedings of the International Conference of Biological Ontologies (ICBO) 2018 Vaccines and Drug Ontology Studies (VDOS) workshop.",
+      "pmid": null,
+      "doi": null,
+      "year": 2018,
+      "isPreprint": false,
+      "category": "conferenceProceedings"
+    },
+    {
+      "number": 146,
+      "text": "Hur J, Ozgur A, Ong E, Xiang Z, and He Y$. Ignet: A centrality- and ontology-based gene interaction network analysis system and its usage in vaccine-associated gene interaction study. The proceedings of the International Conference of Biological Ontologies (ICBO) 2019 Vaccines and Drug Ontology Studies workshop (VDOS-2019).",
+      "pmid": null,
+      "doi": null,
+      "year": 2019,
+      "isPreprint": false,
+      "category": "conferenceProceedings"
+    },
+    {
+      "number": 147,
+      "text": "Liu Y, Chan KBW, Wang Z, Hur J, Xie J, Sun D, Handelman S, Sexton J, Yu H, and He Y. Development of the International Classification of Diseases Ontology (ICDO) and its application for COVID-19 diagnostic data analysis. The 19th International Conference on Bioinformatics.Virtual. November 25-29, 2020.",
+      "pmid": null,
+      "doi": null,
+      "year": 2020,
+      "isPreprint": false,
+      "category": "conferenceProceedings"
+    },
+    {
+      "number": 148,
+      "text": "Hur J, Huffman A, Basmaci M, Ong E, Ozgur A, and He Y. Literature-derived host-coronavirus gene-gene interaction network of SARS-CoV-2. The proceedings of the 11th International Conference of Biological Ontologies (ICBO) 2020 Vaccines and Drug Ontology Studies workshop (VDOS-2020). September 16 – 19, 2020. Virtual.",
+      "pmid": null,
+      "doi": null,
+      "year": 2020,
+      "isPreprint": false,
+      "category": "conferenceProceedings"
+    },
+    {
+      "number": 149,
+      "text": "Basmaci M, He Y, Hur J$, and Ozgur A$. BioBERT model for protein-protein interaction extraction from biomedical text with a COVID-19 case study. The proceedings of the 12th International Conference of Biological Ontologies (ICBO) 2021 Vaccines and Drug Ontology Studies workshop (VDOS-2021).",
+      "pmid": null,
+      "doi": null,
+      "year": 2021,
+      "isPreprint": false,
+      "category": "conferenceProceedings"
+    },
+    {
+      "number": 150,
+      "text": "Adeluwa T, Kim E, Hur J. GBMPSO: Hybrid Gradient Boosting Machines with Particle Swarm Optimization in Cell Segmentation Data. IEEE Symposium Series on Computational Intelligence (SSCI) (SSCI 2021). December 5-7, 2021. Orlando Florida USA",
+      "pmid": null,
+      "doi": null,
+      "year": 2021,
+      "isPreprint": false,
+      "category": "conferenceProceedings"
+    },
+    {
+      "number": 151,
+      "text": "Basmaci M, He Y, Hur J$, and Ozgur A$. Application of Interaction Network Ontology with BioBERT model to identifying protein-protein interactions from biomedical text. The proceedings of the 13th International Conference of Biological Ontologies (ICBO) 2022 Vaccines and Drug Ontology Studies workshop (VDOS2022). September 26, 2022. Ann Arbor, MI, USA.",
+      "pmid": null,
+      "doi": null,
+      "year": 2022,
+      "isPreprint": false,
+      "category": "conferenceProceedings"
+    },
+    {
+      "number": 152,
+      "text": "He Y, Yu H, Huffman A, Lin AY, Natale DA, Beverley J, Zheng L, Perl Y, Wang Z, Liu Y, Ong E, Wang Y, Huang P, Tran L, Du J, Shah Z, Shah E, Desai R, Huang HH, Tian Y, Merrell E, Duncan WD, Arabandi S, Schriml LM, Zheng J, Masci AM, Wang L, Liu H, Smaili FZ, Hoehndorf R, Pendlington ZM, Roncaglia P, Ye X, Xie J, Tang YW, Yang X, Peng S, Zhang L, Chen L, Hur J, Omenn GS, Athey B, and Smith B. A Comprehensive Update on CIDO: The Community-based Coronavirus Infectious Disease Ontology. The proceedings of the 13th International Conference on Biomedical Ontologies (ICBO-2022). September 2528, 2022. Ann Arbor, MI, USA.",
+      "pmid": null,
+      "doi": null,
+      "year": 2022,
+      "isPreprint": false,
+      "category": "conferenceProceedings"
+    },
+    {
+      "number": 153,
+      "text": "Hasin R*, Bansal B*, Çam NB, Zheng J, He Y, Özgür A, and Hur J. Nested named entity recognition using multilayer BERT-based model. The Proceedings of the Conference and Labs of the Evaluation Forum Junguk Hur, Ph.D. Curriculum Vitae (CLEF) 2024. BioASQ Lab. September 9-12, 2024. Grenoble, France. (https://ceur-ws.org/Vol-3740/paper18.pdf)",
+      "pmid": null,
+      "doi": null,
+      "year": 2024,
+      "isPreprint": false,
+      "category": "conferenceProceedings"
+    },
+    {
+      "number": 154,
+      "text": "Rehana H, Zheng J, Yeh L, Bansal B, Çam NB, Jemiyo C, McGregor B, Özgür A, He Y, and Hur J. Cancer Vaccine Adjuvant Name Recognition from Biomedical Literature using Large Language Models. The proceedings of the AMIA 2025 Annual Symposium. November 15-19, 2025. Atlanta, GA. 2025 May 22;2024:1071-1080. eCollection 2024.",
+      "pmid": "41726492",
+      "doi": null,
+      "year": 2024,
+      "isPreprint": false,
+      "category": "conferenceProceedings"
+    },
+    {
+      "number": 155,
+      "text": "Tiftikci M, He Y, Ozgur A, and Hur J$. Extracting adverse drug reactions using deep learning- and dictionarybased literature mining approaches. Proceedings of Text Analysis Conference 2017.",
+      "pmid": null,
+      "doi": null,
+      "year": 2017,
+      "isPreprint": false,
+      "category": "conferenceProceedingsNonPR"
+    },
+    {
+      "number": 156,
+      "text": "Rehana H, Zheng J, He Y, and Hur J. ChatGPT to identify Drug-Drug Interactions from Biomedical Texts. The proceedings of the 14th International Conference of Biological Ontologies (ICBO) 2023 Vaccines and Drug Ontology Studies workshop (VDOS-2023). August 28-September 1, 2023. Brasilia, Brazil.",
+      "pmid": null,
+      "doi": null,
+      "year": 2023,
+      "isPreprint": false,
+      "category": "conferenceProceedingsNonPR"
+    },
+    {
+      "number": 157,
+      "text": "Çam NB*, Rehana H*, Zheng J, Bansan B, He Y, Hur J$, and Ozgur A$. Ontology-based protein-protein interaction explanation using large language models. The 13th Vaccines and Drug Ontology Studies workshop (VDOS-2024). July 22, 2024. University Twente, Enschede, The Netherlands. (VDOS was virtual)",
+      "pmid": null,
+      "doi": null,
+      "year": 2024,
+      "isPreprint": false,
+      "category": "conferenceProceedingsNonPR"
+    },
+    {
+      "number": 158,
+      "text": "Rehana H, He Y, and Hur J$. Cancer Vaccine Adjuvant Name Recognition from Clinical Trial Data using Large Language Models. The 13th Vaccines and Drug Ontology Studies workshop (VDOS-2024). July 22, 2024. University Twente, Enschede, The Netherlands. (VDOS was virtual)",
+      "pmid": null,
+      "doi": null,
+      "year": 2024,
+      "isPreprint": false,
+      "category": "conferenceProceedingsNonPR"
+    },
+    {
+      "number": 159,
+      "text": "de Anda-Jáuregui G, Espinal-Enriquez J, Hur J, Alcala-Corona SA, Ruiz-Azuara L, and Hernandez-Lemus E. Identification of Casiopeina II-gly secondary targets through a systems pharmacology approach. bioRxiv, 2018. doi: https://doi.org/10.1101/327718 https://www.biorxiv.org/content/early/2018/05/21/327718",
+      "pmid": null,
+      "doi": "https://doi.org/10.1101/327718",
+      "year": 2018,
+      "isPreprint": true,
+      "category": "preprints"
+    },
+    {
+      "number": 160,
+      "text": "Liu Y, Chan W, Wang Z, Hur J, Xie J, Yu H, and He Y. Ontological and bioinformatic analysis of anticoronavirus drugs and their implication for drug repurposing against COVID-19. Preprints 2020, 2020030413 (doi: 10.20944/preprints202003.0413.v1).",
+      "pmid": null,
+      "doi": null,
+      "year": 2020,
+      "isPreprint": true,
+      "category": "preprints"
+    },
+    {
+      "number": 161,
+      "text": "Wang Z, Guo K, Gao P, Pu Q, Wu M$, Huang C$, and Hur J$. Identification of Repurposal Drugs and Adverse Drug Reactions for Various Courses of COVID-19 Based on Single-cell RNA Sequencing Data. arXiv. https://arxiv.org/abs/2005.07856",
+      "pmid": null,
+      "doi": null,
+      "year": 2005,
+      "isPreprint": true,
+      "category": "preprints"
+    },
+    {
+      "number": 162,
+      "text": "Guo K$, Yombo D, Schmit T, Wang Z, Ghosh S, Sathish V, Mathur R, Wu M, Hur J$, and Khan N$. Cellular heterogeneity and molecular reprogramming of host response during influenza acute lung injury. bioRxiv. https://www.biorxiv.org/content/10.1101/2021.08.05.455152v1",
+      "pmid": null,
+      "doi": null,
+      "year": 2021,
+      "isPreprint": true,
+      "category": "preprints"
+    },
+    {
+      "number": 163,
+      "text": "Dou JF, Bakulski KM, Guo K, Hur J, …, and Goutman SA. Cumulative genetic risk andC9orf72repeat status independently associate with ALS status in two case-control studies. medRxiv. https://www.medrxiv.org/content/10.1101/2022.10.27.22281377v1",
+      "pmid": null,
+      "doi": null,
+      "year": 2022,
+      "isPreprint": true,
+      "category": "preprints"
+    },
+    {
+      "number": 164,
+      "text": "Guo K, Wang Z, Debnath T, Mehta H, Abrham E, Even Z, Rahman M, Da Costa AL, Jain S, Wang X, Hur J, Murugaiyan G, Ting AT, Brown-Borg H, Jurivich DA, Khan N, Mathur R. Mitochondrial Transcription Factor A Regulates Foxp3+ T Cell Mediated Maintenance of CD4+ T Cell Landscapes and Immunological Aging. bioRxiv 2022.03.08.483517; doi: https://doi.org/10.1101/2022.03.08.483517.",
+      "pmid": null,
+      "doi": "https://doi.org/10.1101/2022.03.08.483517",
+      "year": 2022,
+      "isPreprint": true,
+      "category": "preprints"
+    },
+    {
+      "number": 165,
+      "text": "Rehana H*, Çam NB*, Masmaci M, Zheng J, Jemiyo C, He Y, Ozgur A$, and Hur J$. Evaluation of GPT and BERT-based models on identifying protein-protein interactions in biomedical text. arXiv. https://doi.org/10.48550/arXiv.2303.17728",
+      "pmid": null,
+      "doi": "https://doi.org/10.48550/arXiv.2303.17728",
+      "year": null,
+      "isPreprint": true,
+      "category": "preprints"
+    },
+    {
+      "number": 166,
+      "text": "Çam NB, Rehana H, Zheng J, Bansal B, He Y, Hur J$, and Özgür A$. Ontology-based Protein-Protein Interaction Explanation Using Large Language Models. bioRxiv. 2025. doi: https://doi.org/10.1101/2025.04.07.647599.",
+      "pmid": null,
+      "doi": "https://doi.org/10.1101/2025.04.07.647599",
+      "year": 2025,
+      "isPreprint": true,
+      "category": "preprints"
+    },
+    {
+      "number": 167,
+      "text": "Huffman A, Yeh F-Y, Hur J, Zheng J, Masci AM, Wu G, Tao C, Athey B, and He Y. SEA CDM: StudyExperiment-Assay Common Data Model and Databases for Cross-Domain Data Integration and Analysis. bioRxiv. 2025. doi: https://doi.org/10.1101/2025.08.26.671804",
+      "pmid": null,
+      "doi": "https://doi.org/10.1101/2025.08.26.671804",
+      "year": 2025,
+      "isPreprint": true,
+      "category": "preprints"
+    },
+    {
+      "number": 168,
+      "text": "Zheng J, Lin AY, Huffman A, …, Hur J, Smith B, and He Y. VO: The Vaccine Ontology. bioRxiv. 2025. doi: https://doi.org/10.1101/2025.08.12.669998 Junguk Hur, Ph.D. Curriculum Vitae",
+      "pmid": null,
+      "doi": "https://doi.org/10.1101/2025.08.12.669998",
+      "year": 2025,
+      "isPreprint": true,
+      "category": "preprints"
+    },
+    {
+      "number": 169,
+      "text": "Rehana H, Zheng J, Yeh L, Bansal B, Çam NB, Jemiyo C, McGregor BA, Ozgur A, He Y, and Hur J. Cancer Vaccine Adjuvant Name Recognition from Biomedical Literature using Large Language Models. arXiv. 2025. doi: https://arxiv.org/abs/2502.09659",
+      "pmid": null,
+      "doi": "https://arxiv.org/abs/2502.09659",
+      "year": 2025,
+      "isPreprint": true,
+      "category": "preprints"
+    },
+    {
+      "number": 170,
+      "text": "Navaeiseddighi Z, Wang Z, Guo K, Hasan S, Schmit T, Ahsan J, Mathur R, Hur J, and Khan N. NF-κB driven inflammation mediates loss of upper airway epithelial tolerance to Streptococcus pneumoniae during influenza co-infection. bioRxiv. 2025. doi: https://doi.org/10.1101/2025.10.25.684585 Manuscripts currently under peer review or in revision",
+      "pmid": null,
+      "doi": "https://doi.org/10.1101/2025.10.25.684585",
+      "year": 2025,
+      "isPreprint": true,
+      "category": "preprints"
+    }
+  ],
+  "underReview": [
+    {
+      "number": 1,
+      "text": "Huang F, Hu D, Guan R, Quan H, McGregor B, Khan N, Hur J$, Zhang J$, and Guo K$. scGEN: Leveraging Adaptive Weighting Strategy for Challenging Cell Clustering in Single-cell RNA-seq. (Submitted on 6/11/2025; NMETH-A61436 Nature Methods; Science Advances; under 1st Revision; revision submitted on 8/28/2025)",
+      "year": 2025,
+      "status": "under 1st Revision"
+    },
+    {
+      "number": 2,
+      "text": "Guo K, Wang Z, Gill JS, Debnath T, Bansal B, Poojary R, Mehta H, Abrham E, Even Z, Rahman M, Da Costa AL, Jain S, Wang X, Murugaiyan G, Ting AT, Hur J, Brown-Borg H, Jurivich DA, Khan N, Mathur R. TFAM-dependent mitochondrial integrity in regulatory T cells preserves CD4⁺ T cell landscape and restrains inflammaging. Nature Aging. (A revised version submitted 5/19/2025; NATAGING-A02563C)",
+      "year": 2025,
+      "status": "A revised version submitted 5/19/2025; NATAGING-A02563C"
+    },
+    {
+      "number": 3,
+      "text": "Jemiyo C, McGregor BA, and Hur J. Risk Factors for Diabetic Peripheral Neuropathy in a Large, Diverse U.S. Cohort from the All of Us Research Program. Scientific Reports (Submitted on 8/15/2025; revised submission on 10/3/2025)",
+      "year": 2025,
+      "status": "Submitted on 8/15/2025; revised submission on 10/3/2025"
+    },
+    {
+      "number": 4,
+      "text": "Zheng J, Lin AY, Huffman A, Masci AM, Racz R, Roan K, Ong E, Sarntivijai S, Hu J, Asfaw E, Kahn H, Li X, Zhang X, Kosar N, Li J, Manuel W, Abeysinghe R, Rehana H, Bansal B, Pan Y, Guo J, He V, Song J, Seleznev AI, Hur K, He A, Davydov A, Ostropolets A, Yang Q, Vita R, Peters B, Ruttenberg A, Diehl AD, Hoyt CT, Roncaglia P, Scheuermann RH, Courtot M, Todd T, Sayers S, Chen F, Li X, Yeh FY, Xiang Z, Ozgur A, Whetzel PL, Musen MA, Mungall C, Leitner W, Cui L, Colby LA, Mobley H, Athey BD, Omenn GS, Cowell LG, Tao C, Hur J, Smith B, and He Y. Vaccine Ontology (VO): a biomedical ontology for unifying vaccine knowledge and data analysis. Scientific Data. (Submitted on 7/22/2025; Revision requested on 1/21/2026)",
+      "year": 2026,
+      "status": "Revision requested on 1/21/2026"
+    },
+    {
+      "number": 5,
+      "text": "Cheng C, McGregor BA, Hur J, and Combs CK. Macrophage and Triple-Negative Breast Cancer Cell Phenotype Changes in a 3D Co-Culture Model. Scientific Reports (Submitted on 11/13/2025; initially submitted to International Immunopharmacology on 9/26/25)",
+      "year": 2025,
+      "status": "Submitted on 11/13/2025; initially submitted to International Immunopharmacology on 9/26/25"
+    },
+    {
+      "number": 6,
+      "text": "He A*, Hur K*, Li X, Zheng J, Hur J$, and He Y$. Updated Profiling of COVID-19 Vaccine Adverse Events Using VAERS Case Reports. Submitted to Frontiers in Pharmacology on 11/08/2025. (Revision requested 12/24/2025; In Revision)",
+      "year": 2025,
+      "status": "Revision requested 12/24/2025"
+    },
+    {
+      "number": 7,
+      "text": "Monickaraj J*, Rehana H*, Bernardi A, Zheng Y, Lin T, Liu L, Madireddi A, Yeh L, Zheng J$, Hur J$, and He Y$. Vaxjo 2.0: A Web-based Vaccine Adjuvant and Adjuvant Mechanism Knowledgebase Powered by Ontology and Large Language Model. Frontiers in Cellular and Infection Microbiology. (Submitted on 12/8/2025; Revision on going since 1/14/2026)",
+      "year": 2026,
+      "status": "Revision on going since 1/14/2026"
+    },
+    {
+      "number": 8,
+      "text": "Navaeiseddighi Z*, Wang Z*, Guo K, Hasan SS, Ahsan J, Tripathi JK, Schmit T, Mathur R, Hur J, Khan N. NF-κB driven inflammation mediates loss of upper airway epithelial tolerance to Streptococcus pneumoniae during influenza co-infection. PLOS Pathogens (Submitted on 11/19/2025; Rejected on 2/9/2026; In preparation for resubmission).",
+      "year": 2026,
+      "status": "Rejected on 2/9/2026"
+    },
+    {
+      "number": 9,
+      "text": "Navaeiseddighi Z*, Guo K*, Wang Z*, Hasan SS*, Mishra R, Schmit T, Ahsan J, Hur J, Zhou L, Mathur R, Khan N. Reduced expression of mitochondrial transcription factor A (TFAM) in CD8⁺ T cells drives senescence-associated inflammatory lung injury during respiratory viral infection. Proceedings of the National Academy of Sciences of the United States of America (Submitted in 2/2026; Under review). Manuscript in preparation",
+      "year": 2026,
+      "status": "Under review"
+    }
+  ],
+  "inPreparation": [
+    {
+      "number": 1,
+      "text": "Eid SA, Guo K, Noureldein M, Jaisail P, Allouch AM, Miller C, Hayes JM, Pacut CM, Rigan D, Carter A, Teener S, Savelieff MG, Hur J$, and Feldman EL$. Single-cell RNA Sequencing Deconvolutes Cellular and Molecular Responses to Diet and Exercise in Prediabetic Neuropathy. Diabetes (In preparation) Junguk Hur, Ph.D. Curriculum Vitae",
+      "status": "In preparation"
+    },
+    {
+      "number": 2,
+      "text": "Bansal B, Guo K, Alam M, Goswami A, Singh J, Hynes J, Wang Z, Ting A, Alexander W, Jurivich D, Hur J$, Mathur R$. Mitochondrial Dysfunction in Microglia Impairs Microglia-Neuron Crosstalk, Inducing RNA Dysregulation and Motor Neuron Dysfunction. (In Preparation for Nature Medicine).",
+      "status": "In Preparation for Nature Medicine"
+    },
+    {
+      "number": 3,
+      "text": "Çam NB*, Rehana H*, Zheng J, Bansal B, He Y, Hur J$, and Özgür A$. Ontology-based protein-protein interaction explanation using large language models. (Submitted on 8/16/2024 for IEEE BIBM 2024; rejected on 10/14/2024; being revised for a journal submission)",
+      "status": "In preparation"
+    },
+    {
+      "number": 4,
+      "text": "Jemiyo C, Dawn D, Lindseth G, Afghah Z, Becker J, Downs Z, Johnson M, Jurivich D, and Hur J. Polypharmacy as the risk factor of the elderly falls. (In preparation for GeroScience)",
+      "status": "In preparation for GeroScience"
+    },
+    {
+      "number": 5,
+      "text": "Guo K, McGregor BA, Porter JE, and Hur J$. VennDetail: a Bioconductor package for visualizing and extracting details of multi-sets intersection. BMC Bioinformatics (In preparation for resubmission to a different journal)",
+      "status": "In preparation for resubmission to a different journal"
+    }
+  ],
+  "talks": [
+    {
+      "number": 1,
+      "text": "Differential location analysis: a novel approach to detecting cellular responses to environmental changes. Center for Genomics and Bioinformatics Round Table, Indiana University. January 26, 2006. Bloomington, Indiana (Invited; Local)",
+      "type": "Invited",
+      "scope": "Local"
+    },
+    {
+      "number": 2,
+      "text": "Defining reactive oxidant genes in diabetes mellitus. Tools and Technology Seminar, University of Michigan. February 01, 2007. Ann Arbor, Michigan (Invited; Local)",
+      "type": "Invited",
+      "scope": "Local"
+    },
+    {
+      "number": 3,
+      "text": "Integration of Text Mining with Systems Biology Provides New Insight into the Pathogenesis of Diabetic Neuropathy. Department of Neurology Research Seminar, University of Michigan, March 17, 2011, Ann Arbor, Michigan (Invited; Local)",
+      "type": "Invited",
+      "scope": "Local"
+    },
+    {
+      "number": 4,
+      "text": "The identification of gene expression profiles predictive of human diabetic neuropathy. Peripheral Nerve Society Biennial Meeting, June 25-29, 2011. Potomac, Maryland (Contributed; International)",
+      "type": "Contributed",
+      "scope": "International"
+    },
+    {
+      "number": 5,
+      "text": "Ontology-based Enrichment Analysis of Gene-Gene Interaction Terms and Application on Literature-derived IFN-γ network. International Conference on Intelligent Systems for Molecular Biology – Bio-Ontologies Special Interest Group, July 14, 2012. Long Beach, California (Contributed; International)",
+      "type": "Contributed",
+      "scope": "International"
+    },
+    {
+      "number": 6,
+      "text": "Informatics tools for interacting with literature and chemical databases to build pharmacological networks of drug-induced neuropathy. 246th American Chemical Society National Meeting and Exposition. Graduate Student Research Symposium in Cheminformatics, Information Science, and Library Science. Sep 8, 2013. Indianapolis, Indiana (Invited; National)",
+      "type": "Invited",
+      "scope": "National"
+    },
+    {
+      "number": 7,
+      "text": "Bioinformatics leads to potential therapeutic targets in ALS. Mayo Clinic Department of Neuroscience Seminar Series. December 20, 2013. Jacksonville, Florida. (Invited; Regional)",
+      "type": "Invited",
+      "scope": "Regional"
+    },
+    {
+      "number": 8,
+      "text": "Glucose and Triglyceride Control Prevents Small but not Large Fiber Diabetic Neuropathy in a Murine Model of Type 2 Diabetes. American Diabetes Association 74th Scientific Sessions, June 13-17, 2014. San Francisco, California (Contributed; National)",
+      "type": "Contributed",
+      "scope": "National"
+    },
+    {
+      "number": 9,
+      "text": "Bioinformatics approaches for understanding the disease mechanisms of diabetic neuropathy and amyotrophic lateral sclerosis. Department of Basic Science, School of Medicine and Health Sciences, University of North Dakota. August 28, 2014. Grand Forks, North Dakota (Invited; Local)",
+      "type": "Invited",
+      "scope": "Local"
+    },
+    {
+      "number": 10,
+      "text": "Transcriptional networks of murine diabetic neuropathy and nephropathy: Common and distinct gene expression patterns. American Diabetes Association 75th Scientific Sessions, June 5-9, 2015. Boston, Massachusetts (Contributed; National)",
+      "type": "Contributed",
+      "scope": "National"
+    },
+    {
+      "number": 11,
+      "text": "Ontology-based literature mining of E. coli vaccine-associated gene interaction networks. The International Conference of Biological Ontologies (ICBO) 2016 Vaccines and Drug Ontology Studies (VDOS) workshop. August 1-4, 2016. Corvallis, Oregon. (Contributed; International).",
+      "type": "",
+      "scope": ""
+    },
+    {
+      "number": 12,
+      "text": "Ignet: A centrality and INO-based web system for analyzing and visualizing literature-mined networks. International Conference of Biological Ontologies (ICBO) & BioCreative 2016. August 1-4, 2016. Corvallis, Oregon. (Contributed talk; International; Flash oral talk & Poster)",
+      "type": "Contributed",
+      "scope": "International"
+    },
+    {
+      "number": 13,
+      "text": "Ontology-based NLP literature mining and analysis of adverse drug reactions associated with neuropathyinducing drugs. International Conference of Biological Ontologies (ICBO) 2017 Vaccines and Drug Ontology Junguk Hur, Ph.D. Curriculum Vitae Studies (VDOS) workshop. September 13-15, 2017. Newcastle Upon Tyne, United Kingdom. (Contributed talk; International)",
+      "type": "Contributed",
+      "scope": "International"
+    },
+    {
+      "number": 14,
+      "text": "Diabetic Peripheral Neuropathy Knowledge-Base (DPNKB), an integrated web-based exploration and analysis platform for diabetic peripheral neuropathy gene expression data. University of Michigan, Department of Neurology. October 27, 2017. Ann Arbor, Michigan. (Invited talk; Local)",
+      "type": "Invited",
+      "scope": "Local"
+    },
+    {
+      "number": 15,
+      "text": "Integration of machine learning- and dictionary-based approach for identification of adverse drug reactions in drug labels. Text Analysis Conference (TAC) 2017. November 13-14. National Institute of Standards and Technology (NIST), Gaithersburg, MD. (Contributed talk; National)",
+      "type": "Contributed",
+      "scope": "National"
+    },
+    {
+      "number": 16,
+      "text": "Computational approaches for elucidating the pathogenic mechanisms of diabetic peripheral neuropathy and identifying small-molecule drugs for its treatment. Chonnam National University, School of Biological Sciences and Technology. March 28, 2018. Gwangju, Korea. (Invited talk; Local)",
+      "type": "Invited",
+      "scope": "Local"
+    },
+    {
+      "number": 17,
+      "text": "Systems biology for diabetic peripheral neuropathy research. United Tribes Technical College, Department of Environmental Sciences and Research. March 22, 2019. Bismarck, ND. (Invited talk; Regional)",
+      "type": "Invited",
+      "scope": "Regional"
+    },
+    {
+      "number": 18,
+      "text": "Alpha-synuclein-mediated epigenomic modification of microglial neuroinflammation in Parkinson’s disease. 2019 IDeA Central Region Conference. June 12-14, 2019. Oklahoma City, OK (Invited talk; Regional)",
+      "type": "Invited",
+      "scope": "Regional"
+    },
+    {
+      "number": 19,
+      "text": "Ignet: A centrality- and ontology-based gene interaction network analysis system and its usage in vaccineassociated gene interaction study. The 8th International Workshop on Vaccine and Drug Ontology Studies (VDOS-2019). July 30-August 2, 2019. Buffalo, NY (Contributed talk; International)",
+      "type": "Contributed",
+      "scope": "International"
+    },
+    {
+      "number": 20,
+      "text": "Gene expression signature-based machine learning classifier of drug-induced liver injury. Critical Assessment of Massive Data Analysis (CAMDA) – CMap Drug Safety Challenge. 28th Intelligent Systems for Molecular Biology conference. July 13, 2020. (Contributed talk; International)",
+      "type": "Contributed",
+      "scope": "International"
+    },
+    {
+      "number": 21,
+      "text": "Host-coronavirus gene-gene interaction network of SARS-CoV-2 derived from biomedical literature. The 9th International Workshop on Vaccine and Drug Ontology Studies (VDOS-2020). September 19, 2020. Virtual (Contributed talk; International)",
+      "type": "Contributed",
+      "scope": "International"
+    },
+    {
+      "number": 22,
+      "text": "Bioinformatics approaches for finding cures for diabetic peripheral neuropathy. March 11, 2022. University of North Dakota, Biology Departmental Seminar (Invited talk; local)",
+      "type": "Invited",
+      "scope": "Local"
+    },
+    {
+      "number": 23,
+      "text": "UND SMHS Computational Data Analysis Core (CDAC). HPI COBRE Research Seminar. May 10, 2022. University of North Dakota (Contributed talk; local)",
+      "type": "Contributed",
+      "scope": "Local"
+    },
+    {
+      "number": 24,
+      "text": "Ontology-based literature mining analysis of molecular level interactions. The 11th International Workshop on Vaccine and Drug Ontology Studies (VDOS-2022). September 26, 2022. Ann Arbor, MI (Contributed talk; International)",
+      "type": "Contributed",
+      "scope": "International"
+    },
+    {
+      "number": 25,
+      "text": "Leveraging Large Language Model for Identifying DDI & PPI. The 1st Vaccine Informatics Working Group Meeting. September 8, 2023. Ann Arbor, MI (Invited; Regional)",
+      "type": "Invited",
+      "scope": "Regional"
+    },
+    {
+      "number": 26,
+      "text": "Computational Data Analysis Core (CDAC) Projects. HPI COBRE Research Seminar. February 13, 2024. Grand Forks, ND (Local)",
+      "type": "",
+      "scope": ""
+    },
+    {
+      "number": 27,
+      "text": "Leveraging Computational Approaches in Systems Medicine: Insights into Neuropathy, Diabetes, and Beyond. Computational Platforms to Accelerate Precision Medicine Workshop. May 4, 2024. Taipei, Taiwan. (Invited)",
+      "type": "Invited",
+      "scope": ""
+    },
+    {
+      "number": 28,
+      "text": "Single-cell RNA-sequencing deconvolutes cellular and molecular responses to diet and exercise interventions in prediabetic neuropathy. 2024 Peripheral Nervous Society Annual Meeting. Montreal, Canada (June 22-25, 2024) (Contributed talk; International)",
+      "type": "Contributed",
+      "scope": "International"
+    },
+    {
+      "number": 29,
+      "text": "Integrating Genetics and Metabolomics in Amyotrophic Lateral Sclerosis (ALS): Pathways, Predictors, and Progress. US FDA. August 29, 2024. Silver Spring, Maryland. (Invited)",
+      "type": "Invited",
+      "scope": ""
+    },
+    {
+      "number": 30,
+      "text": "Systems Biology Approaches to Investigate Mechanisms of Amyotrophic Lateral Sclerosis, a.k.a. Lou Gehrig's Disease. Taipei Medical University workshop on integrative utilization of data science, system pharmacology and quantitative methods to inform rare disease drug development. September 13, 2024. Taipei, Taiwan. (Invited)",
+      "type": "Invited",
+      "scope": ""
+    },
+    {
+      "number": 31,
+      "text": "VIOLIN in the Era of AI: An Integrative Vaccine Knowledgebase and Analysis System. 2024 International Society for Vaccines. October 21-23, 2024. Seoul, Korea. (Contributed; International)",
+      "type": "Contributed",
+      "scope": "International"
+    },
+    {
+      "number": 32,
+      "text": "Unlocking Biomedical Knowledge with AI From Molecular Interactions to Vaccine Discovery. UND Artificial Intelligence Forum. September 9, 2025 (Virtual) Junguk Hur, Ph.D. Curriculum Vitae",
+      "type": "",
+      "scope": ""
+    },
+    {
+      "number": 33,
+      "text": "Unlocking Biomedical Knowledge with LLMs: Literature Mining for Protein Interactions and Vaccine Adjuvant Research. November 1, 2025. International Conference on Biological and Biomedical Ontology (ICBO) EAST 2025 International. Concurrent hybrid session (China, Japan, and Thailand). Keynote (Virtual)",
+      "type": "",
+      "scope": ""
+    },
+    {
+      "number": 34,
+      "text": "Title To Be Determined. The 4th International Workshop on Pattern Recognition for Healthcare Analytics (in conjunction with the 28th International Conference on Pattern Recognition. August 17-22, 2026. Lyon, France. (Keynote speaker accepted)",
+      "type": "Keynote",
+      "scope": "International"
+    }
+  ],
+  "posters": [
+    {
+      "number": 1,
+      "text": "Hur J, Park D, and Kim Y. Construction of Integrated Database for Protein Kinases and Proteases. RECOMB 2002. Washington D.C. (Poster)"
+    },
+    {
+      "number": 2,
+      "text": "Hur J, Lee S, Chung T, and Kim Y. A Mathematical Modeling of GO Hierarchy for Gene Expression Profiling Analysis. RECOMB 2002. Washington D.C. (Poster)"
+    },
+    {
+      "number": 3,
+      "text": "Hur J, Lee W, and Kim Y. Construction of Integrated Database for Protein Kinases and Proteases. The 1st annual conference of the Korean society for bioinformatics. Busan, Korea (Poster)"
+    },
+    {
+      "number": 4,
+      "text": "Lee S, Hur J, and Kim Y. GOODIES: A mathematical modeling of GO hierarchy for automated biological Validation and putative functional categorization of genes. The 1st annual conference of the Korean society for bioinformatics. Busan, Korea (Awarded as the best poster)"
+    },
+    {
+      "number": 5,
+      "text": "Hur JI, Damaj M, Beremand P, Collins J, Hur J, and Thomas T. The Arabidopsis ABI5 bZIP gene alters the global pattern of embryo-related and ABA-regulated gene expression. American Society of Plant Biologists, Lake Buena Vista, Florida (Poster)"
+    },
+    {
+      "number": 6,
+      "text": "Costello J, Dalkilic M, Patwardhan R, Hur J, Middha S, Mehta K, Saple A, Colbourne J, Eads B, and Andrews J. InGeNE: Integrated Gene Network Explorer. i-Conference. Penn State University. (Poster)"
+    },
+    {
+      "number": 7,
+      "text": "Costello J, Dalkilic M, Patwardhan R, Middha S, Eads B, Colbourne J, Hur J, Mehta K, and Andrews J. Network Properties of a Gene Network Built from Drosophila melanogaster Data. NetSci Conference. Bloomington, Indiana (Poster)"
+    },
+    {
+      "number": 8,
+      "text": "Hur J and Tang H. Characterization of transcriptional responses to environmental stress by differential location analysis. Third Annual Indiana Bioinformatics Conference, Indianapolis, Indiana (Poster)"
+    },
+    {
+      "number": 9,
+      "text": "Hur J, States DJ, and Feldman EL. JUMiner: An online literature mining tool for target identification and functional enrichment analysis, NCIBI ARM 2008. National Center for Integrated Biomedical Informatics Annual Research Meeting, Ann Arbor, Michigan (Poster)"
+    },
+    {
+      "number": 10,
+      "text": "Hur J, Wiggin TD, Ade A, States DJ, and Feldman EL. JUMiner: An online literature mining tool for target identification and functional enrichment analysis. ISMB 2008, Toronto, Canada (Poster)"
+    },
+    {
+      "number": 11,
+      "text": "Hur J, Nair V, Wiggin TD, Kretzler M, Brosius FC, and Feldman EL. Conserved regulatory network of diabetic neuropathy and nephropathy. National Center for Integrated Biomedical Informatics Annual Research Meeting (NCIBI ARM) 2009, Ann Arbor, Michigan (Poster)"
+    },
+    {
+      "number": 12,
+      "text": "Hinder LM, Wiggin TD, Hur J, Kretzler M, Pennathur S, and Feldman EL. Bioinformatics discovery of genes relevant to diabetic neuropathy. NeuroDiab/ISDN 2009, Toronto, Canada (Poster)"
+    },
+    {
+      "number": 13,
+      "text": "Hur J, Schuyler AD, Backus C, Hayes JM, States DJ, Jagadish HV and Feldman EL. Discovery of literaturederived diabetes- and ROS-related targets and examination of SOD1 as a novel mediator of diabetic neuropathy in mice. NeuroDiab/ISDN 2009, Toronto, Canada (Poster)"
+    },
+    {
+      "number": 14,
+      "text": "Hur J, Kretzler M, Nair V, Jagadish HV, Sullivan KA, Anders SAA, and Feldman EL. Gene Expression Profiles Predictive of Diabetic Neuropathy Progression. American Neurological Association annual meeting 2009, Baltimore, Maryland (Poster)"
+    },
+    {
+      "number": 15,
+      "text": "Nair V, Hur J, Wiggin TD, Martini S, Brosius FC, Nelson R, Jagadish HV, Feldman EL, and Kretzler M. Identification of Shared Regulatory Transcriptional Networks in Diabetic Nephropathy and Neuropathy. American Society of Nephrology (ASN) 2009 Annual Meeting, San Diego, California (Poster) Junguk Hur, Ph.D. Curriculum Vitae"
+    },
+    {
+      "number": 16,
+      "text": "Pande M, Hur J, Sullivan KA, Kretzler M, and Feldman EL. Transcriptional Profiling of Peripheral Neuropathy in Type 2 Diabetes Using db/db Mouse Model. 5th National Center for Integrative Biomedical Informatics (NCIBI) 2010 Annual Research Meeting, Ann Arbor, Michigan (Poster)"
+    },
+    {
+      "number": 17,
+      "text": "Pande M, Hur J, Sullivan KA, Kretzler M, and Feldman EL. Transcriptional Profiling of Peripheral Neuropathy in Type 2 Diabetes Using db/db Mouse Model. 18th Annual International Conference on Intelligent Systems for Molecular Biology (ISMB), Boston, Massachusetts (Poster)"
+    },
+    {
+      "number": 18,
+      "text": "Hur J, Xiang Z, Feldman EL, and He Y. Ontology-based Vaccine Literature Mining and Indexing. 18th Annual International Conference on Intelligent Systems for Molecular Biology (ISMB), Boston, Massachusetts (Poster)"
+    },
+    {
+      "number": 19,
+      "text": "Figueroa-Romero C, Pilsner JR., Hur J, and Feldman, EL. Epigenomics and Amyotrophic Lateral Sclerosis. International Symposium on ALS/MND. December 7-13, 2010. Orland, Florida (Poster)"
+    },
+    {
+      "number": 20,
+      "text": "Figueroa-Romero C, Hur J, Hong Y, Lunn JS, Pacut C, Delaney CE, Yung R, Callaghan BC, and Feldman EL. Identification of Epigenomic Modifications as Biomarkers for Amyotrophic Lateral Sclerosis. American Academy of Neurology. April 9-16. 2011. Honolulu, Hawaii (Poster)"
+    },
+    {
+      "number": 21,
+      "text": "Figueroa-Romero C, Hur J, Hong Y, Lunn JS, Pacut C, Delaney CE, Yung R, Callaghan BC, and Feldman EL. Identification of Epigenomic Modifications as Biomarkers for Amyotrophic Lateral Sclerosis. 136th American Neurological Association Annual Meeting. September 25-28, 2011. San Diego CA. (Poster)"
+    },
+    {
+      "number": 22,
+      "text": "Pande M, Hur J, Hong Y, Backus C, Hayes JM, Oh S, Kretzler M, and Feldman EL. Transcriptional Profiling of Diabetic neuropathy in the BKS db/db Mouse, a Mouse model of Type 2 Diabetes. Peripheral Nerve Society Biennial Meeting, June 25-29, 2011. Potomac, Maryland (Poster)"
+    },
+    {
+      "number": 23,
+      "text": "Sims-Robinson C, Zhao S, Hur J, and Feldman EL. Hippocampal endoplasmic reticulum stress in a murine model of type 2 diabetes. Keystone Symposia Conference"
+    },
+    {
+      "number": 24,
+      "text": "Hur J, Ozgur A, and He Y. Identification of fever and vaccine-associated gene interaction networks using ontology-based literature mining. International Conference on Biomedical Ontology – Vaccine and Drug Ontology in the Study of Mechanism and Effect, July 21, 2012. Graz Austria (Oral by He)"
+    },
+    {
+      "number": 25,
+      "text": "Feldman EL, Hur J, Bender D, Backus C, Hayes JM, Pande M, Cheng T. Inflammation in Diabetic Neuropathy. Keystone Symposia Conference"
+    },
+    {
+      "number": 26,
+      "text": "Figueroa-Romero C*, Hur J*, Bender DE, Cataldo MD, Smith AL, Yung R, Callaghan BC, and Feldman EL. Identification of Epigenetically Altered Genes in Sporadic Amyotrophic Lateral Sclerosis. Spring Symposium on Epigenetics 2013, Ann Arbor, MI (Poster)"
+    },
+    {
+      "number": 27,
+      "text": "O’Brien PD, Hur J, Robell NJ, Hayes JM, Oh SS, Dauch JR, Hong Yu, and Feldman EL. Neurological Complications of the BTBR OB/OB Mouse. American Diabetes Association 73rd Scientific Sessions, June 21-25, 2013. Chicago, Illinois (Poster)"
+    },
+    {
+      "number": 28,
+      "text": "Hur J, Sullivan KA, Callaghan BC, Pop-Busui R, and Feldman EL. Identification of factors associated with sural nerve regeneration and degeneration in diabetic neuropathy. American Diabetes Association 73rd Scientific Sessions, June 21-25, 2013. Chicago, Illinois (Guided audio poster)"
+    },
+    {
+      "number": 29,
+      "text": "Hur J, Liu Z, Tong W, and Bai PF. Systems pharmacology-based network analysis of drug-induced rhabdomyolysis. 1st Annual FDA Scientific Computing Day. July 14, 2013. Silver Spring, Maryland (Poster)"
+    },
+    {
+      "number": 30,
+      "text": "Hur J, Guo A, Loh W, Feldman EF and Bai PF. Systems pharmacology and transcriptomics analysis to identify signatures of drug-induced peripheral neuropathy. 1st Annual FDA Scientific Computing Day. July 14, 2013. Silver Spring, Maryland (Poster)"
+    },
+    {
+      "number": 31,
+      "text": "O’Brien PD, Hur J, Robell NJ, Hayes JM, Oh SS, Dauch JR, Hong Yu, and Feldman EL. Diabetic Neuropathy in the BTBR OB/OB Mouse. 2013 Peripheral Nerve Society Biennial meeting, June 29-July 3, 2013. Saint Malo, Brittany, France (Oral and poster presentation by f)"
+    },
+    {
+      "number": 32,
+      "text": "Himeno T, Lunn SJ, Backus C, Robinson C, Pacut C, Hayes JM, Oh SS, Dauch JR, McLean LL, Hinder LM, Hur J, O’Brien PD, and Feldman EL. Increased Expression of Neuronal Progenitor Markers in Dorsal Root Ganglia of Diabetic Mice. 2013 Peripheral Nerve Society Biennial meeting, June 29-July 3, 2013. Saint Malo, Brittany, France (Oral and poster presentation by f)"
+    },
+    {
+      "number": 33,
+      "text": "Hur J, Liu Z, Tong W, and Bai PF. Systems pharmacology-based network analysis of drug-induced rhabdomyolysis. US FDA Office of Clinical Pharmacology Science Day. September 16, 2013. Silver Spring, Maryland (Poster) Junguk Hur, Ph.D. Curriculum Vitae"
+    },
+    {
+      "number": 34,
+      "text": "Sarntivijai S, Hur J, Ozgur A, He Y, Omenn GS, Athey BD, and Abernethy DR. An Ontology- and NLPassisted Systems Pharmacology Analysis of Tyrosine Kinase Inhibitor Induced Cardiotoxicity. US FDA Office of Clinical Pharmacology Science Day. September 16, 2013. Silver Spring, Maryland (Poster)"
+    },
+    {
+      "number": 35,
+      "text": "Hur J, Guo A, Loh W, Feldman EF, and Bai PF. Systems pharmacology and transcriptomics analysis to identify signatures of drug-induced peripheral neuropathy. US FDA Office of Clinical Pharmacology Science Day. September 16, 2013. Silver Spring, Maryland (Poster)"
+    },
+    {
+      "number": 36,
+      "text": "Hur J, Sullivan KA, Callaghan BC, Pop-Busui R, and Feldman EL. Identification of factors associated with sural nerve regeneration and degeneration in diabetic neuropathy. 23rd Neurodiab Meeting. September 19-22, 2013. Barcelona, Spain (Oral presentation; presenting author)"
+    },
+    {
+      "number": 37,
+      "text": "Alameer RS, Hur J, Figueroa-Romero C, Feldman EL, and McEachin RC. Modeling Complex Genetic and Environmental Influences on ALS and FTD. A. Alfred Taubman Medical Research Institute 6th Annual Symposium. October 11, 2013. Ann Arbor, Michigan (Poster)"
+    },
+    {
+      "number": 38,
+      "text": "Hur J, Guo A, Loh W, Feldman EF, and Bai PF. Systems pharmacology and transcriptomics analysis to identify signatures of drug-induced peripheral neuropathy. A. Alfred Taubman Medical Research Institute 6th Annual Symposium. October 11, 2013. Ann Arbor, Michigan (Poster)"
+    },
+    {
+      "number": 39,
+      "text": "O’Brien PD, Hur J, Robell NJ, Hayes JM, Oh SS, Dauch JR, Hong Yu, and Feldman EL. Diabetic Neuropathy in the BTBR OB/OB Mouse. American Neurological Association’s (ANA) 2013 Annual Meeting, October 13-15, 2013. New Orleans, LA (Poster)"
+    },
+    {
+      "number": 40,
+      "text": "Figueroa-Romero C*, Hur J*, Bender DE, Cataldo MD, Flores G, Jacoby S, Smith AL, Yung R, Callaghan BC, and Feldman EL. Identification of Epigenetically Altered Genes in Sporadic Amyotrophic Lateral Sclerosis. American Neurological Association’s (ANA) 2013 Annual Meeting, October 13-15, 2013. New Orleans, LA (Poster)"
+    },
+    {
+      "number": 41,
+      "text": "Hur J, Sullivan KA, Callaghan BC, Pop-Busui R, and Feldman EL. Identification of factors associated with sural nerve regeneration and degeneration in diabetic neuropathy. American Neurological Association’s (ANA) 2013 Annual Meeting, October 13-15, 2013. New Orleans, LA (Poster)"
+    },
+    {
+      "number": 42,
+      "text": "Sarntivijai S, Hur J, Ozgur A, Burkhart KK, He Y, Omenn GS, Athey BD, and Abernethy DR. Predicting Gene Interactions of Tyrosine Kinase Inhibitor-Induced Cardiotoxicity with Ontology of Adverse Eventsassisted Bioinformatics. American Society for Clinical Pharmacology and Therapeutics 2014 Annual Meeting, March 18-22, 2014. To be held at Atlanta, Georgia (Poster)"
+    },
+    {
+      "number": 43,
+      "text": "Park M, Hur J, and Feldman EF. A centralized data mining and analysis portal for diabetic neuropathy research. The 9th Great Lake Bioinformatics (GLBio) Conference. May 16-18, 2014. Cincinnati, Ohio (Flashtalk and poster)"
+    },
+    {
+      "number": 44,
+      "text": "Hur J, Guo A, Loh W, Feldman EF, and Bai PF. Systems pharmacology analysis of drug-induced peripheral neuropathy. The 9th Great Lake Bioinformatics (GLBio) Conference. May 16-18, 2014. Cincinnati, Ohio (Flash-talk and poster)"
+    },
+    {
+      "number": 45,
+      "text": "Hur J, Guo A, Loh W, Feldman EF, and Bai PF. Systems pharmacology analysis of drug-induced peripheral neuropathy. International Conference on Systems Biology of Human Disease 2014. June 17-19, 2014. Boston, Massachusetts (Poster)"
+    },
+    {
+      "number": 46,
+      "text": "O'Brien PD, Robell NJ, Hur J, Hayes JM, Backus C, and Feldman EL. Characterization of diabetic peripheral neuropathy in male and female BTBR ob/ob mice reveals increased fiber loss in male mice that correlates with increased plasma triglycerides. Keystone Symposia 2015 The Crossroads of Lipid Metabolism & Diabetes (D6). Copenhagen, Denmark. (Poster by O’Brien)"
+    },
+    {
+      "number": 47,
+      "text": "Park M, Hur J, Eichinger F, Kretzler M, Brosius FC, and Feldman EL. Identification of Tissue-specific Effect of Pioglitazone Treatment in db/db Mice using RNA-Seq. American Diabetes Association 75th Scientific Sessions, June 5-9, 2015. Boston, Massachusetts (Oral by Park)"
+    },
+    {
+      "number": 48,
+      "text": "Hur J, O’Brien PD, Nair V, Hinder LM, Kretzler M, Brosius FC, and Feldman EL. Shared Transcriptional Networks Between Diabetic Peripheral Neuropathy And Nephropathy In Murine Models Of Diabetes. Peripheral Nerve Society biennial meeting, June 28-July 2, 2015. Quebec City, Quebec, Canada (Oral and poster by O’Brien)"
+    },
+    {
+      "number": 49,
+      "text": "Guo A, Racz R, Hur J, Lin Y, Xiang Z, Zhao L, Jiang G, Zhu Q, Bai J, and He Y. Ontology-based collection, representation and analysis of drug-associated neuropathy adverse events. International Conference of Junguk Hur, Ph.D. Curriculum Vitae Biological Ontologies (ICBO) 2015 Vaccines and Drug Ontology Studies (VDOS) workshop, July 27, 2015. Lisbon Portugal (Oral by He)"
+    },
+    {
+      "number": 50,
+      "text": "Ozgur A, Hur J, and He Y. Extension of the interaction network ontology (INO) for literature mining of genegene interaction networks from sentences with multiple interaction keywords. International Workshop on Biomedical Data Mining, Modeling, and Semantic Integration: A promising Approach to Solving Unmet Medical Needs (ISWC-BDM2I 2015). October 11-12, 2015. Bethlehem, Pennsylvania. (Oral by He)"
+    },
+    {
+      "number": 51,
+      "text": "Park M, Hur J, Eichinger F, Kretzler M, Brosius FC, and Feldman EL. Identification of Tissue-specific Effect of Pioglitazone Treatment in db/db Mice using RNA-Seq. The 25th Annual Scientific Meeting of NEURODIAB, September 11-13, 2015. Elsinore, Denmark (Poster by Park)"
+    },
+    {
+      "number": 52,
+      "text": "Hsieh JH, Svoboda D, Hur J, Sipes N, Huang R, Paules R, and Auerbach S. NTP Tox21 Toolbox to prioritize chemicals for extensive toxicological testing. ASCCT: Integrated Approaches to Testing and Assessment: Promises and Challenges of a More Flexible Approach to Toxicology Testing. October 1-2, 2015. Durham, NC (Poster by Hsieh)"
+    },
+    {
+      "number": 53,
+      "text": "Hsieh JH, Svoboda D, Hur J, Sipes N, Huang R, Paules R, and Auerbach S. NTP Tox21 Toolbox to prioritize chemicals for extensive toxicological testing. FutureTox III: Transforming 21st Century Science into Risk Assessment and Regulatory Decision-Making. November 19-20, 2015. Arlington, VA (Poster by Hsieh)"
+    },
+    {
+      "number": 54,
+      "text": "McGregor BA, Porter J, Feldman EL, and Hur J$. Systems Pharmacology Approach to Identify Potential Therapeutic Small- Molecules for Treatment of Diabetic Peripheral Neuropathy. Experimental Biology (EB) American Society for Pharmacology & Experimental Therapeutics (ASPET) 2016 Meeting. April 2-6, 2016. San Diego (Oral presentation presented by McGregor, a student in the lab; 2nd place – best abstract / presentation award)"
+    },
+    {
+      "number": 55,
+      "text": "Bhattacharya A, Hur J, and Dhsarathy A. The Role of CCCTC Binding Factor (CTCF) in Epithelial to Mesenchymal Transition (EMT). North Dakota Academy of Science (NDAS) Annual Meeting, April 15-16, 2016. Fargo, North Dakota (Poster by Bhattacharya)"
+    },
+    {
+      "number": 56,
+      "text": "McGregor BA, Porter J, Feldman EL, and Hur J$. Systems Biology Approach to Identify Conserved Transcriptional Networks between Human and Murine Diabetic Neuropathy. American Diabetes Association 76th Scientific Sessions, June 10-14, 2016. New Orleans (Oral presentation presented by McGregor, a student in the lab)"
+    },
+    {
+      "number": 57,
+      "text": "Hsu CW, Hur J, Liu Z, and Bai JPF. Integrative systems approaches to repurposing drugs for treating ebola virus disease. Drug Safety Gordon Research Conference. June 26 – July 1, 2016. Easton, Massachusetts. (Poster by Hsu)"
+    },
+    {
+      "number": 58,
+      "text": "Ozgur A*, Hur J*, Xiang Z*, Ong E, Radev DR, and He Y. Ignet: A centrality and INO-based web system for analyzing and visualizing literature-mined networks. International Conference of Biological Ontologies (ICBO) & BioCreative 2016. August 1-4, 2016. Corvallis, Oregon. (Flash oral talk & Poster presented by Hur)"
+    },
+    {
+      "number": 59,
+      "text": "McGregor BA, Porter JE, Feldman EL, and Hur J. Transcriptional Signature of Diabetic Peripheral Neuropathy Shared Between Human and Mouse. Graduate Research Achievement Day 2017. University of North Dakota. Grand Forks, ND, March 2017 (Poster by McGregor, a student in the lab)"
+    },
+    {
+      "number": 60,
+      "text": "Guo K, de Anda-Jáuregui G, McGregor BA, Backus C, Pacut C, Feldman EL, and Hur J. RNA-Seq analysis of human diabetic neuropathy in subjects with type 2 diabetes. Diabetes. UND SMHS 37th Frank N. Low Research Day. April 6, 2017. Grand Forks, North Dakota. (Poster by Guo, a post-doc in the lab)"
+    },
+    {
+      "number": 61,
+      "text": "de Anda-Jáuregui G, McGregor B, Guo K, and Hur J$. Using systems pharmacology to identify common mechanisms of druginduced peripheral neuropathy. UND SMHS 37th Frank N. Low Research Day. April 6, 2017. Grand Forks, North Dakota. (Poster by de Anda-Jáuregui, a post-doc in the lab)"
+    },
+    {
+      "number": 62,
+      "text": "Bhattacharya A, Hur J, and Dhasarathy A. The Role of CCCTC Binding Factor CTCF in Epithelial to Mesenchymal Transition (EMT). UND SMHS 37th Frank N. Low Research Day. April 6, 2017. Grand Forks, North Dakota. (Poster by Bhattacharya)"
+    },
+    {
+      "number": 63,
+      "text": "McGregor BA, Porter JE, Feldman EL, and Hur J. Transcriptional Signature of Diabetic Peripheral Neuropathy Shared Between Human and Mouse. Frank N. Low Research Day. April 6, 2017. Grand Forks, North Dakota. (Poster by McGregor, a student in the lab) Junguk Hur, Ph.D. Curriculum Vitae"
+    },
+    {
+      "number": 64,
+      "text": "Shin D, Lee KW, Tande DL, Hur J, Shivappa N, Wirth MD, and Hebert JR. Effects of Dietary Inflammatory Index and History of Gestational Diabetes Mellitus on Insulin Resistance. Experimental Biology (EB) American Society for Nutrition (ASN) 2017 Meeting. April 22-26, 2017. Chicago, Illinois. (Poster by Shin)"
+    },
+    {
+      "number": 65,
+      "text": "Shin D, Lee KW, Tande DL, Hur J, Chung HK, Shivappa N, Wirth MD, and Hebert JR. Prepregnancy Body Mass Index is Positively Associated with Dietary Inflammatory Index and C-Reactive Protein Concentrations during Pregnancy. Experimental Biology (EB) American Society for Nutrition (ASN) 2017 Meeting. April 22-26, 2017. Chicago, Illinois. (Poster by Shin)"
+    },
+    {
+      "number": 66,
+      "text": "Bhattacharya A, Hur J, and Dhasarathy A. The Role of CCCTC Binding Factor CTCF in Epithelial to Mesenchymal Transition (EMT). Experimental Biology (EB) American Society for Biochemistry and Molecular Biology (ASBMB) 2017 Meeting. April 22-26, 2017. Chicago, Illinois. (Poster by Bhattacharya)"
+    },
+    {
+      "number": 67,
+      "text": "Hur J$, Danes L, McGregor BA, Krout D, Hsieh JH, and Auerbach S. Tox21 Enricher: Web-based Chemical and Functional Enrichment Analysis Tool for Tox21 Toxicity Screening Platform. Experimental Biology (EB) American Society for Biochemistry and Molecular Biology (ASBMB) Pharmacogenomics and Toxicogenomics 2017 Meeting. April 22-26, 2017. Chicago, Illinois. (Poster by Danes & McGregor, students in the lab)"
+    },
+    {
+      "number": 68,
+      "text": "Guo K, de Anda-Jáuregui G, McGregor BA, Backus C, Pacut C, Feldman EL, and Hur J$. RNA-Seq analysis of human diabetic neuropathy in subjects with type 2 diabetes. Diabetes. 109th Annual Meeting of the North Dakota Academy of Science, April 28-29, 2017. Grand Forks. North Dakota. (Poster by Guo, a post-doc in the lab)"
+    },
+    {
+      "number": 69,
+      "text": "de Anda-Jáuregui G, McGregor B, Guo K, and Hur J$. Using systems pharmacology to identify common mechanisms of druginduced peripheral neuropathy. 109th Annual Meeting of the North Dakota Academy of Science, April 28-29, 2017. Grand Forks, North Dakota. (Oral by de Anda-Jáuregui, a post-doc in the lab; best post-doc presentation award)"
+    },
+    {
+      "number": 70,
+      "text": "Hinder LM, Guo K, de Anda-Jáuregui G, McGregor BA, Backus C, Feldman EL, Hur J$. Effect of Pioglitazone Treatment on Diabetic Neuropathy in STZ-Diabetic Mice. American Diabetes Association 77th Scientific Sessions, June 9-13, 2017. San Diego, California. (Poster by Hur)"
+    },
+    {
+      "number": 71,
+      "text": "McGregor BA, Hinder LM, Guo K, de Anda-Jáuregui G, Pennathur S, Kretzler M, Brosius FC, Porter J, Feldman EL, and Hur J$. Conserved gene expression changes and dysregulated pathways in complicationprone tissues of streptozotocin-diabetic mouse. American Diabetes Association 77th Scientific Sessions, June 9-13, 2017. San Diego, California. (Poster by McGregor, a student in the lab)"
+    },
+    {
+      "number": 72,
+      "text": "de Anda-Jáuregui G, Guo K, McGregor BA, and Hur J$. Pathway-level effects of pioglitazone on neuropathy in the BKS-db/db mouse model of type 2 diabetes. American Diabetes Association 77th Scientific Sessions, June 9-13, 2017. San Diego, California. (Poster by de Anda-Jáuregui, a post-doc in the lab)"
+    },
+    {
+      "number": 73,
+      "text": "Cho EH, Jeong JY, and Hur J$. Ly2405319, an analog of FGF-21 ameliorates liver fibrosis through succinateGPR 91 pathway in mice. American Diabetes Association 77th Scientific Sessions, June 9-13, 2017. San Diego, California. (Poster by Cho)"
+    },
+    {
+      "number": 74,
+      "text": "Guo K, de Anda-Jáuregui G, McGregor BA, Backus C, Pacut C, Feldman EL, and Hur J. RNA-Seq analysis of human diabetic neuropathy in subjects with type 2 diabetes. Diabetes. American Diabetes Association 77th Scientific Sessions, June 9-13, 2017. San Diego, California. (Poster by Guo, a post-doc in the lab)"
+    },
+    {
+      "number": 75,
+      "text": "de Anda-Jáuregui G, Guo K, McGregor B, and Hur J$. Network pharmacology exploration of the antiinﬂammatory drug space. The 25th Conference on Intelligent Systems for Molecular Biology & 16th European Conference on Computational Biology. July 21-25, 2017. Prague, Czech Republic. (Poster by de Anda-Jáuregui, a post-doc in the lab)"
+    },
+    {
+      "number": 76,
+      "text": "de Anda-Jáuregui G, Guo K, McGregor B, and Hur J$. Changes in pathway connectivity induced by disease and therapeutic treatment: the case of diabetic neuropathy and pioglitazone. Conference on Complex Systems 2017, September 17-22, 2017. Cancún, Mexico. (Oral by de Anda-Jáuregui, a post-doc in the lab)"
+    },
+    {
+      "number": 77,
+      "text": "de Anda-Jáuregui G, McGregor B, Guo K, and Hur J$. The use of a drug-gene perturbation network for the study of drug side eﬀects: The case of drug-induced peripheral neuropathy. The 1st Latin American Conference on Complex Networks. September 25-29, 2017. Puebla, Mexico. (Oral by de Anda-Jáuregui, a post-doc in the lab) Junguk Hur, Ph.D. Curriculum Vitae"
+    },
+    {
+      "number": 78,
+      "text": "Figueroa-Romero C, Lo TW, Hur J, Stoll E, Spring C, Pacut C, Backus C, Goutman SA, Nagrath S, and Feldman EL. Extracellular Vesicles From ALS Spinal Cord And Brain Contain Dysregulated Mirnas. Neuroepigenetics and Neuroepitranscriptomics Conference. February 24-27, 2018. Cancun, Mexico (Poster by Figueroa-Romero & Hur)"
+    },
+    {
+      "number": 79,
+      "text": "O’Brien PD, Hinder LM, Guo K, Hur J, Hayes JM, Mendelson EF, Tabbey MA, Backus C and Feldman EL. Dietary Reversal Ameliorates Peripheral Neuropathy in Mouse Models of Diabetes. Keystone Symposia: Uncomplicating diabetes: Reducing the burden of diabetes-related end organ injury. February 25 – March 1, 2018. Santa Fe, New Mexico (Poster by O’Briend)"
+    },
+    {
+      "number": 80,
+      "text": "Elzinga S*, Guo K*, Eid S, de Anda-Jauregui G, Figueroa-Romero C, McGregor BA, Backus Carey, Pacut C, Feldman EL, and Hur J$. Genome-wide DNA methylation profiling of human diabetic peripheral neuropathy in subjects with type 2 diabetes mellitus. Keystone Symposia: Uncomplicating diabetes: Reducing the burden of diabetes-related end organ injury. February 25 – March 1, 2018. Santa Fe, New Mexico (Poster by Elzinga)"
+    },
+    {
+      "number": 81,
+      "text": "Pan X, Wang J, Deng S, Hur J, Ozgur A, and He Y. Ontology-based systematic collection, representation, and analysis of suicidal behavior-related genes. The 11th international Biocuration Conference, April 08-11, 2018. Shanghai, China (Poster by Pan)"
+    },
+    {
+      "number": 82,
+      "text": "Guo K*, Elzinga S*, Eid S, de Anda-Jauregui G, Figueroa-Romero C, McGregor BA, Backus Carey, Pacut C, Feldman EL, and Hur J$. Genome-wide DNA methylation profiling of human diabetic peripheral neuropathy in subjects with type 2 diabetes mellitus. Frank N. Low Research Day. April 19, 2018. Grand Forks, North Dakota (Oral presentation by Guo, a post-doc in the lab)"
+    },
+    {
+      "number": 83,
+      "text": "McGregor BA, Guo K, Hur J and Porter J. Expression-Based Compound Signatures Used to Identify Alternative Research Uses. Frank N. Low Research Day. April 19, 2018. Grand Forks, North Dakota. (Poster by McGregor, a student in the lab)"
+    },
+    {
+      "number": 84,
+      "text": "Danes L, Hsieh JH, McGregor B, Krout D, Hu WC, Auerbach S, and Hur J$. Tox21 Enricher: Enrichment Analysis of Chemical Annotations for Tox21 Toxicity Screening Platform. Frank N. Low Research Day. April 19, 2018. Grand Forks, North Dakota. (Poster by Danes, a student in the lab) – Best presentation award in the ‘Undergraduate’ category"
+    },
+    {
+      "number": 85,
+      "text": "McGregor BA, Guo K, Hur J, and Porter J. Systems Pharmacology Approach to Assign Expression Based Signatures to Adrenergic Compounds. Experimental Biology (EB) American Society for Pharmacology & Experimental Therapeutics (ASPET) 2018 Meeting. April 21-25, 2018. San Diego, California. (Poster by McGregor, a student in the lab)"
+    },
+    {
+      "number": 86,
+      "text": "Guo K*, Elzinga S*, Eid S, de Anda-Jauregui, Figueroa-Romero C, McGregor BA, Backus Carey, Pacut C, Feldman EL, and Hur J$. Global DNA methylation profiling of human diabetic peripheral neuropathy in subjects with T2DM. The 110th North Dakota Academy of Science Annual Meeting. April 27, 2018. Minot, North Dakota. (Poster by Guo, a post-doc in the lab)"
+    },
+    {
+      "number": 87,
+      "text": "Guo K, Hur J, Lubin F, Lusardi T, Perez G, Ruskin D, Saleumvong B, Sanchez R, Ohm J, Geiger J, Masino S, and Boison D. Protocol matters - reproducibility and rigor of DNA methylation data sets. The 5th Epigenetics and Epigenomics Symposium. May 7-8, 2018. Grand Forks, North Dakota. (Poster by Guo, a post-doc in the lab)"
+    },
+    {
+      "number": 88,
+      "text": "Guo K, Elzinga S, Eid S, Figueroa-Romero C, McGregor BA, de Anda-Jauregui G, Pacut C, Feldman EL and Hur J. Genome-wide DNA methylation profiling of human diabetic peripheral neuropathy in subjects with type 2 diabetes mellitus. Gordon Research Conference Epigenomics of Diabetes and Other Metabolic Diseases. May 27-June 1, 2018. Hong Kong, China. (Poster)"
+    },
+    {
+      "number": 89,
+      "text": "Eid S, Hayes JM, Pacut C, Mendelson FE, Guo K, Hur J, and Feldman EL. Nox, Nox, Are You Here? The Emerging Role of NADPH Oxidase Nox5 in Diabetic Neuropathy. The American Diabetes Association 78th Scientific Sessions, June 22-26, 2018, Orlando, Florida. (Poster by Eid)"
+    },
+    {
+      "number": 90,
+      "text": "O’Brien PD, Guo K, Hinder LM, Hur J, John M. Hayes1, Mendelson EF, Tabbey MA, Backus C and Feldman EL. Amelioration of Peripheral Neuropathy in Mouse Models of Diabetes by Dietary Reversal. The American Diabetes Association 78th Scientific Sessions, June 22-26, 2018, Orlando, Florida. (Poster by O’Briend)"
+    },
+    {
+      "number": 91,
+      "text": "Guo K, Elzinga S, Eid S, Figueroa-Romero C, McGregor BA, de Anda-Jauregui G, Pacut C, Feldman EL, and Hur J$. Large scale DNA methylation profiling of human diabetic peripheral neuropathy in subjects with Junguk Hur, Ph.D. Curriculum Vitae type 2 diabetes mellitus. The American Diabetes Association 78th Scientific Sessions, June 22-26, 2018, Orlando, Florida. (Guided poster by Guo, a post-doc in the lab)"
+    },
+    {
+      "number": 92,
+      "text": "Guo K, Feldman EL, and Hur J$. Two-way Orthogonal Partial Least Squares (O2PLS) analysis of the lipidome and transcriptome in prediabetic and diabetic neuropathy. The American Diabetes Association 78th Scientific Sessions, June 22-26, 2018, Orlando, Florida. (Guided poster by Guo, a post-doc in the lab)"
+    },
+    {
+      "number": 93,
+      "text": "Claycombe-Larson KJ, Bundy AN, Darland D, Hur J, Dhasarathy A, Perley D, Scheidegger A, Johnson L, Krout D, and Roemmich JN. Obesity during human pregnancy is associated with altered placental tissue structure and RBMS1 mRNA expression. The American Society of Nutrition Annual Meeting 2018. June 912, 2018. Boston, MA. (Poster by Claycombe-Larson)"
+    },
+    {
+      "number": 94,
+      "text": "Guo K, and Hur J$. RichR: an R package for enrichment analysis and network construction for biological datasets. The 26th Intelligent Systems for Molecular Biology conference. Chicago. July 6-10, 2018 (Poster by Guo, a post-doc in the lab)"
+    },
+    {
+      "number": 95,
+      "text": "Kim J, Yoon H, White T, Zhang P, Brown J, Kim J, Hur J, Fryer JD, and LeBrasseur NK. The Role of miR-7 in The Regulation of Energy Homeostasis. Keystone Symposia Drivers of Type 2 Diabetes: From Genes to Environment (S1), October 7-11, 2018, Seoul, South Korea. (Poster by Kim)"
+    },
+    {
+      "number": 96,
+      "text": "Koney-Kwaku N, Guo K, Perley D, Hur J, Grove B, and Nechaev S. Post-transcriptional processing at the promoter proximal RNA polymerase II pausing. A possible mechanism for premature termination. Experimental Biology 2019, April 6-9, 2019. Orlando, Florida. (Poster by Koney-Kwaku)"
+    },
+    {
+      "number": 97,
+      "text": "Shin D and Hur J$. Predictive modeling of postpartum depression using Machine Learning approaches. Nutrition 2019, June 8-11, 2019, Baltimore, Maryland. (Poster by Shin)"
+    },
+    {
+      "number": 98,
+      "text": "Guo K, McGregor BA, Porter JE, and Hur J$. VennDetail: An R package for visualizing and extracting details of multi-set intersection. ND Academy of Science Annual Meeting 2019. March 8, 2019. Grand Forks, ND (Poster by Guo, a post-doc in the lab)"
+    },
+    {
+      "number": 99,
+      "text": "Guo K, McGregor BA, Porter JE, and Hur J$. VennDetail: An R package for visualizing and extracting details of multi-set intersection. Frank N. Low Research Day. April 25, 2019. Grand Forks, North Dakota. (Poster by Guo, a post-doc in the lab)"
+    },
+    {
+      "number": 100,
+      "text": "McGregor BA, Schommer J, Guo K, Ghribi O, Hur J, and Porter JE. Alpha-synuclein-induced methylation and gene expression changes in microglia. ND EPSCoR 2019 State Conference. March 27, 2019. Fargo, ND. (Poster by McGregor, a student in the lab)"
+    },
+    {
+      "number": 101,
+      "text": "Guo K, Feldman EL, and Hur J$. Identification of repurposable drug candidates for diabetic peripheral neuropathy using high-throughput drug-perturbation data. The 79th American Diabetes Association Scientific Sessions. June 7-11, 2019. San Francisco, CA. (Poster by Hur)"
+    },
+    {
+      "number": 102,
+      "text": "Eid S, Guo K, Elzinga S, Figueroa-Romero C, Hinder L, Pacut C, Hur J and Feldman E. Genome-wide DNA Methylation Profiling Identifies Epigenetic Clues into Human Peripheral Neuropathy in Type 2 Diabetes. Peripheral Nerve Society Meeting, Genoa, June 2019. (Poster by Eid)"
+    },
+    {
+      "number": 103,
+      "text": "O’Brien PD, Guo K, Eid SA, Rumora AE, Hinder LM, Hayes LM, Mendelson FE, Hur J and Feldman EL. Altered Nerve Triglycerides in Mouse Models of Diabetes with Neuropathy. Peripheral Nerve Society Meeting. June 22-26, 2019, Genoa, Italy (Oral presentation and poster by O’Brien)"
+    },
+    {
+      "number": 104,
+      "text": "Gao P, Guo K, Lin P, Hur J, and Wu M. An integrative bioinformatics pipeline to facilitate the discovery of novel anti-CRISPR proteins. 2019 Host-Pathogen Interactions Symposium. September 17, 2019. Grand Forks, ND (Poster by Gao)"
+    },
+    {
+      "number": 105,
+      "text": "Wang Z, Gao P, Pu Q, Guo K, Lin P, Qin S, Hur J and Wu M. Suppression of cGAS protects against colitis through modification of the intestinal microbiota. 2019 Host-Pathogen Interactions Symposium. September 17, 2019. Grand Forks, ND (Poster by Wang)"
+    },
+    {
+      "number": 106,
+      "text": "Elzinga S, Rumora AE, Hinder LM, Guo K, Eid S, O’Brien PD, Hayes JM, Tabbey MA, Hur J and Feldman EL. Nailing down peripheral neuropathy; a lipidomics approach. Neuroscience 2019, October 1923. Chicago, USA (Poster by Elzinga)"
+    },
+    {
+      "number": 107,
+      "text": "Goutman SA, Boss J, Kim S, Guo K, Hur J, Mukherjee B, Batterman S, and Feldman EL. Unique metabolomic signatures in ALS participants based on persistent organic pollutant plasma concentrations. Northeast Amyotrophic Lateral Sclerosis Consortium (NEALS) 2019 meeting, October 2019. Clearwater Beach, FL. (Poster by Goutman) Junguk Hur, Ph.D. Curriculum Vitae"
+    },
+    {
+      "number": 108,
+      "text": "Guo K, Figueroa-Romero C, Eid S, Hinder LM, Petit H, Hur J, and Feldman EL. Dietary reversal improves peripheral neuropathy and gut microbiota profile in a murine model of prediabetes and obesity. The American Diabetes Association 81st Scientific Sessions. June 25-29, 2020. Virtual (Poster by Guo, a postdoc in the lab)"
+    },
+    {
+      "number": 109,
+      "text": "Elzinga SE, Henn RE, O’Brien PD, Guo K, Eid SA, Rumora AE, Hayes JM, Mendelson FE, Feldman EL, and Hur J$. Hippocampal transcriptomic change due to high-fat diet in prediabetic mice. The American Diabetes Association 81st Scientific Sessions. June 25-29, 2020. Virtual (Proceedings only)"
+    },
+    {
+      "number": 110,
+      "text": "Alakwaa F, Goutman S, Hur J, and Feldman EL. Metabolite enzyme association predictor (MeaP): An algorithm to predict metabolite-enzyme association form Protein-Protein Interaction and metabolomics data. International Society for Computational Biology 2020. Virtual meeting. July 12-16 (Poster by Alakwaa)"
+    },
+    {
+      "number": 111,
+      "text": "McGregor B, Adeluwa T, Guo K, and Hur J. Gene expression signature-based machine learning classifier of drug-induced liver injury. Critical Assessment of Massive Data Analysis (CAMDA) – CMap Drug Safety Challenge. 28th Intelligent Systems for Molecular Biology conference. July 13, 2020. (International; Poster by McGregor, a post-doc in the lab)"
+    },
+    {
+      "number": 112,
+      "text": "Hur J$, Huffman A, Ozgur A, and He Y. Literature mining-based analysis of host-coronavirus gene-gene interactions. University of North Dakota Host-Pathogen Interactions CoBRE Symposium. September 15, 2020. Virtual. (Poster by Hur)"
+    },
+    {
+      "number": 113,
+      "text": "Guo K, Wang Z, Gao P, Pu Q, Wu M, Li C, and Hur J$. Drug repurposing for various courses of COVID-19 based on single-cell RNA sequencing data. University of North Dakota Host-Pathogen Interactions CoBRE Symposium. September 15, 2020. Virtual. (Poster by Wang)"
+    },
+    {
+      "number": 114,
+      "text": "Henn R, Elzinga S, Guo K, Hur J, Feldman EL. Examining the role of obesity in hippocampal activation using single-cell RNA sequencing. American Neurology Association Conference. Oct 17-10, 2021. (Virtual; presented by Henn)"
+    },
+    {
+      "number": 115,
+      "text": "Figueroa-Romero C, Guo K, Noureldein M, Murdock BJ, Goutman SA, Hur J, Batterman S, Feldman EL. The gut microbiome: modulator of environmental insults in Amyotrophic Lateral Sclerosis. American Neurology Association Conference. Oct 17-10, 2021. (Virtual; presented by Figueroa-Romero)"
+    },
+    {
+      "number": 116,
+      "text": "Adeluwa T, Kim E, Hur J. GBMPSO: Hybrid Gradient Boosting Machines with Particle Swarm Optimization in Cell Segmentation Data. IEEE Symposium Series on Computational Intelligence (SSCI) (SSCI 2021). Dec 5-7, 2021. Orlando Florida USA. (Full oral presentation by Mr. Adeluwa, a graduate student in the lab)"
+    },
+    {
+      "number": 117,
+      "text": "Raihan MO, McGregor BA, Hur J, and Porter JE. Alpha-Synucleinopathy-Related Transcriptomic Changes in Microglia. 7th Epigenetics Symposium, March 15-16, 2022, Grand Forks, ND (Poster presented by Raihan)"
+    },
+    {
+      "number": 118,
+      "text": "McGregor BA, Raihan MO, Porter JE, and Hur J. Nanopore Methylation analysis of microglia isolated from a murine model of α-synucleinopathy. The 7th Epigenetics Symposium, March 15-16, 2022, Grand Forks, ND (Poster presented by McGregor)"
+    },
+    {
+      "number": 119,
+      "text": "Raihan MO, McGregor BA, Hur J, and Porter JE. Alpha-Synucleinopathy-Related Transcriptomic Changes in Microglia. The 42nd Frank Low Research Day, April 21, 2022, Grand Forks, ND (Poster presented by Raihan)"
+    },
+    {
+      "number": 120,
+      "text": "Guo K, Noureldein M, Elzinga S, Kim B, Savelieff M, Jacoby S, Hur J*, and Feldman EL*. Metabolic syndrome produces insulin resistance in the brain and impairs oligodendrocyte metabolic support of neurons: a novel mechanism for dementia. 2022 Caswell Diabetes Institute – metabolism, Obesity & Diabetes (CDI-MOD) Symposium with Frontiers in Diabetes Complications. May 11-12, 2022. Ann Arbor, MI (Poster presented by Hur)"
+    },
+    {
+      "number": 121,
+      "text": "McGregor BA, Hur J, and Roiko M. SARS-CoV-2 Whole Genome Sequencing and Microbiome Analysis. DaCCoTA Annual Conference. Aug 2022. (Poster presented by Roiko)"
+    },
+    {
+      "number": 122,
+      "text": "Raihan MO, McGregor BA, Hur J*, and Porter JE*. Exploring the Role of Microglia in α-Synucleinopathy phenotypes. Seminar for the Epigenetics COBRE group. September 21, 2021. (Oral presented by Raihan and McGregor) Junguk Hur, Ph.D. Curriculum Vitae"
+    },
+    {
+      "number": 123,
+      "text": "McGregor BA and Hur J. The University of North Dakota Computational Data Analysis Core. The 7th annual Host-Pathogen Symposium. October 3-4, 2022. Grand Forks, ND (Poster presented by McGregor)"
+    },
+    {
+      "number": 124,
+      "text": "McGregor BA, Tyagi A, Hill M, Nausheen S, DeKumar B, Nechaev S, Parrello D, Hur J, and Roiko M. SARS-CoV-2 Whole Genome Sequencing and Metagenomic Analysis. The 7th annual Host-Pathogen Symposium. October 3-4, 2022. Grand Forks, ND (Poster presented by McGregor)"
+    },
+    {
+      "number": 125,
+      "text": "McGregor BA, Tyagi A, Hill M, Nausheen S, De Kumar B, Nechaev S, Parrello D, Hur J, and Roiko M. SARS-CoV-2 Whole Genome Sequencing and Metagenomic Analysis. American Society for Microbiology (ASM). June 15 - 19, 2023 | Houston, TX"
+    },
+    {
+      "number": 126,
+      "text": "Rehana H, Cam NB, Basmaci M, Ozgur A, He Y, and Hur J. Evaluation of Generative Pre-Trained Transformer 3 (GPT-3) on identifying protein-protein interactions from biomedical text. University of North Dakota Graduate Research Achievement Day (GRAD), March 2-3, 2023. Grand Forks, ND (Poster presented by Rehana)"
+    },
+    {
+      "number": 127,
+      "text": "Aminu O, de Kumar B, and Hur J. Understanding Nanog’s role in cell differentiation. University of North Dakota Graduate Research Achievement Day (GRAD), March 2-3, 2023. Grand Forks, ND (Poster presented by Aminu; 2nd base presentation award)"
+    },
+    {
+      "number": 128,
+      "text": "Aminu O, de Kumar B, and Hur J. Understanding Nanog’s role in cell differentiation. University of North Dakota Frank Low Research Day, April 13, 2023. Grand Forks, ND (Poster presented by Aminu)"
+    },
+    {
+      "number": 129,
+      "text": "Amith M, Hur J, Komalsari R, Roberts K, and Tao C. Preliminary Word-Embedding Experiment to Explore Network Structures of Alzheimer’s Medications from PubMed Literature. Computational Intelligence Methods for Bioinformatics and Biostatistics (CIBB) 2023. (Poster presented by Amith)"
+    },
+    {
+      "number": 130,
+      "text": "McGregor BA and Hur J. Computational Data Analysis Core (CDAC) at the University of North Dakota. University of North Dakota Host Pathogen Interaction COBRE Symposium. September 18-19, 2023. Grand Forks, North Dakota. (Poster presented by McGregor)."
+    },
+    {
+      "number": 131,
+      "text": "McGregor BA and Hur J. Computational Data Analysis Core (CDAC) at the University of North Dakota. University of North Dakota Biomedical Sciences Departmental Retreat. October 21, 2023. Grand Forks, North Dakota. (Poster presented by Hur J)."
+    },
+    {
+      "number": 132,
+      "text": "Rehana H, Zheng J, He Y, and Hur J. ChatGPT to identify drug-drug interactions from texts. The 12th Vaccines and Drug Ontology Studies (VDOS) workshop. Aug. 29th, 2023. University of Brasilia, Brasilia, DF, Brazil. (Oral presentation by Rehana)"
+    },
+    {
+      "number": 133,
+      "text": "Rehana H, Cam NB, Basmaci M, Ozgur A, He Y, and Hur J. Identifying Protein-Protein Interaction from Biomedical Text Using Generative Pre-trained Transformer. University of North Dakota Cybersecurity Awareness & Research Symposium (CARS) 2023. October 30-31, 2023. Grand Forks, ND (Poster presented by Rehana, 1st place award)"
+    },
+    {
+      "number": 134,
+      "text": "Jemiyo C, Afghah Z, Dawn D, Glenda L, Jurivich D, Johnson M, and Hur J. Analyzing Elderly Falls Risk Factors, with a Focus on Polypharmacy. 2023 University of North Dakota International Education Week. November 16, 2023. Grand Forks, North Dakota. (Poster presented by Jemiyo)"
+    },
+    {
+      "number": 135,
+      "text": "Guo K, Eid S, Feldman EL, and Hur J. Dietary Reversal and/or Exercise Correct Peripheral Neuropathy in Diet-Induced Obesity Mouse Model. Northern Plains Biological Symposium 2024. March 28, 2024. Grand Forks, North Dakota. (Poster presented by Guo)"
+    },
+    {
+      "number": 136,
+      "text": "Jemiyo C, Afghah Z, Dawn D, Glenda L, Jurivich D, Johnson M, and Hur J. Analyzing Elderly Falls Risk Factors, with a Focus on Polypharmacy. Northern Plains Biological Symposium 2024. March 28, 2024. Grand Forks, North Dakota. (Oral presentation by Jemiyo)"
+    },
+    {
+      "number": 137,
+      "text": "Huang F, Guo K, Baird L, Feldman EL, Goutman S, Ben M, and Hur J. Transcriptomics analysis with various tofacitinib dose treatments of amyotrophic lateral sclerosis mice. Northern Plains Biological Symposium 2024. March 28, 2024. (Poster presented by Huang)"
+    },
+    {
+      "number": 138,
+      "text": "Rehana H, Zheng J, He Y, and Hur J. Identifying Drug-Drug Interactions from Biomedical Texts using Large Language Models. Northern Plains Biological Symposium 2024. March 28, 2024. (Poster presented by Rehana) Junguk Hur, Ph.D. Curriculum Vitae"
+    },
+    {
+      "number": 139,
+      "text": "Jemiyo C, Afghah Z, Dawn D, Glenda L, Jurivich D, Johnson M, and Hur J. Analyzing Elderly Falls Risk Factors, with a Focus on Polypharmacy. 44th Annual Frank Low Research Day 2024. April 11, 2024. Grand Forks, North Dakota. (Poster presented by Jemiyo)"
+    },
+    {
+      "number": 140,
+      "text": "Rehana H, Zheng J, He Y, and Hur J. Identifying Drug-Drug Interactions from Biomedical Texts using Large Language Models. University of North Dakota 2024 Frank Low Research Day. April 11, 2024. Grand Forks, North Dakota. (Poster presented by Rehana)."
+    },
+    {
+      "number": 141,
+      "text": "Guo K, Eid S, Feldman EL, and Hur J. Dietary Reversal and/or Exercise Correct Peripheral Neuropathy in Diet-Induced Obesity Mouse Model. 44th Annual Frank N. Low Research Day. April 11, 2024. Grand Forks, ND. (Poster presented by Guo)"
+    },
+    {
+      "number": 142,
+      "text": "Huang F, Guo K, Baird L, Feldman EL, Goutman S, Ben M, and Hur J. Transcriptomics analysis with various tofacitinib dose treatments of amyotrophic lateral sclerosis mice. 44th Annual Frank N. Low Research Day. April 11, 2024. Grand Forks, ND. (Poster presented by Huang)"
+    },
+    {
+      "number": 143,
+      "text": "Rehana H, Zheng J, He Y, and Hur J. Identifying Drug-Drug Interactions from Biomedical Texts using Large Language Models. 44th Annual Frank N. Low Research Day. April 11, 2024. Grand Forks, ND. (Poster presented by Rehana)"
+    },
+    {
+      "number": 144,
+      "text": "McGregor BA and Hur J. Capabilities of the Computational Data Analysis Core (CDAC) at the University of North Dakota. University of North Dakota Epigenetics COBRE Symposium. May 13-14, 2024. Grand Forks, North Dakota. (Poster presented by McGregor)."
+    },
+    {
+      "number": 145,
+      "text": "Huffman A, Hur J, Tao C, and He Y. VIOLIN In 2024: 15 Years of Vaccine Resource Development. AMIA 2024 Informatics Summit, March 2024. (Poster presented by Huffman)"
+    },
+    {
+      "number": 146,
+      "text": "Rehana H, Çam NB, Basmaci M, Özgür A, He Y, and Hur J. Leveraging Large Language Models for Extracting Protein-Protein Interactions from Biomedical Corpora. South Dakota State University 2024 Data Science Symposium. February 5-6, 2024. Sioux Falls, South Dakota. (Poster presented by Rehana; Travel award)"
+    },
+    {
+      "number": 147,
+      "text": "Rehana H, Çam NB, Basmaci M, Zheng J, Jemiyo C, He Y, Özgür A, and Hur J. Extracting Protein-Protein Interactions from Biomedical Literature using Large Language Models. University of North Dakota Graduate Research Achievement Day (GRAD), February 28-29, 2024. Grand Forks, ND (Poster presented by Rehana)"
+    },
+    {
+      "number": 148,
+      "text": "He Y, Huffman A, Zheng J, Tao C, and Hur J. VIOLIN in 2024: Comprehensive Vaccine Knowledgebase and Vaccine Data Standardization, Integration, and Analysis. American Society for Microbiology (ASM) MICROBE 2024. June 13-17, 2024, Atlanta (Poster presented by He)"
+    },
+    {
+      "number": 149,
+      "text": "Eid S, Guo K, Hur J, and Feldman EL. Single-cell RNA-sequencing deconvolutes cellular and molecular responses to diet and exercise interventions in prediabetic neuropathy. September 5-8, 2024. Rome, Italy. (Oral presentation by Feldman)"
+    },
+    {
+      "number": 150,
+      "text": "Rehana H, He Y, and Hur J. Cancer Vaccine Adjuvant Name Recognition from Clinical Trial Data using Large Language Models. The 13th Vaccines and Drug Ontology Studies (VDOS) workshop. Jul. 22, 2024. University Twente, Enschede, The Netherlands. (Oral presentation by Rehana)"
+    },
+    {
+      "number": 151,
+      "text": "Huffman A, Zheng J, Masci AM, Hur J, Tao C, and He Y. VS-MIS: A vaccine study minimal information standard and its ontological representation and applications. The 13th Vaccines and Drug Ontology Studies (VDOS) workshop. Jul. 22, 2024. University Twente, Enschede, The Netherlands. (Oral presentation by Huffman)"
+    },
+    {
+      "number": 152,
+      "text": "Çam NB, Rehana H, Zheng J, Bansal B, He Y, Hur J$ and Özgür A$. Ontology-based protein-protein interaction explanation using large language models. The 13th Vaccines and Drug Ontology Studies (VDOS) workshop. Jul. 22, 2024. University Twente, Enschede, The Netherlands. (Oral presentation by Çam)"
+    },
+    {
+      "number": 153,
+      "text": "Rehana H*, Bansal B*, Çam NB, Zheng J, He Y, Özgür A, and Hur J. Nested Named Entity Recognition using Multilayer BERT-based Model. Conference and Labs of the Evaluation Forum (CLEF) 2024. September 9-12, 2024, Grenoble, France. (Presented by Bansal)"
+    },
+    {
+      "number": 154,
+      "text": "Elzinga S, Noureldein M, Guo K, Jang DG, Hayes J, Henn R, Webber-Davis I, Mendelson F, Parent R, Rigan D, Allouch A, Turfah A, Zhao L, Murphy G, Hur J, Feldman EL. Long-term high-fat feeding: Junguk Hur, Ph.D. Curriculum Vitae Connecting metabolism, cognitive impairment, and altered microglial morphology. American Neurology Association Conference, Sept 14-17, 2024. Orlando, Florida (Poster presented by Elzinga)"
+    },
+    {
+      "number": 155,
+      "text": "McGregor BA and Hur J. Computational Data Analysis Core (CDAC) at the University of North Dakota. Host-Pathogen Interactions CoBRE Symposium. October 1, 2024. Grand Forks, ND. (Presented by McGregor)"
+    },
+    {
+      "number": 156,
+      "text": "Kim M, Lee S, Hur J$, and Shin D$. Integrating DNA methylation and nutrition to predict metabolic syndrome: insights from the KoGES cohort. 2024 Korean Nutrition Society Annual Meeting. October 18, 2024. Seoul, Korea. (Poster by Kim; awarded the 3rd best poster presentation)"
+    },
+    {
+      "number": 157,
+      "text": "Lee S, Kim M, Hur J, and Shin D. Metabolomics identifies nutritional pathways associated with metabolic syndrome. 2024 Korean Nutrition Society Annual Meeting. October 18, 2024. Seoul, Korea. (Poster by Lee)"
+    },
+    {
+      "number": 158,
+      "text": "Rehana H, McGregor B, He Y, and Hur J. Cancer Vaccine Adjuvant Name Recognition from Clinical Trial Data using Large Language Models. The 2024 International Society for Vaccines (ISV) Annual Congress. October 21-23, 2024. Seoul, Korea. (Poster presentation by Hur)"
+    },
+    {
+      "number": 159,
+      "text": "Rehana H*, Bansal B*, Çam NB, Zheng J, He Y, Özgür A, and Hur J. Nested Named Entity Recognition using Multilayer BERT-based Model. ND EPSCoR State Conference. November 21, 2024. Grand Forks, ND. (Presented by Bansal)"
+    },
+    {
+      "number": 160,
+      "text": "Jemiyo C, Afghah Z, Dawn D, Glenda L, Jurivich D, Johnson M, and Hur J. Analyzing Elderly Falls Risk Factors, with a Focus on Polypharmacy. ND EPSCoR State Conference, November 21, 2024. Grand Forks, North Dakota. (Poster presented by Jemiyo)"
+    },
+    {
+      "number": 161,
+      "text": "Guo K, Elzinga S,Turfah A, Henn R, Webber-Davis I, Hayes J, Pacut C, Teener S, Carter A, Tigan D, Allouch A, Jang DG, Parent R, Glass E, Murphy G, Lentz S, Chen K, Zhao L, Hur J, Feldman E. Metabolic stress and age drive inflammation and cognitive decline in mice and humans. ND EPSCoR State Conference, Bio & Biomedical Computation Networking Seminar. November 20, 2024. Grand Forks, ND. (Presented by Guo)"
+    },
+    {
+      "number": 162,
+      "text": "Huang F, Guo K, Baird L, Feldman EL, Goutman S, Ben M, and Hur J. Transcriptomics analysis with various tofacitinib dose treatments of amyotrophic lateral sclerosis mice. ND EPSCoR State Conference, Bio & Biomedical Computation Networking Seminar. November 20, 2024. Grand Forks, ND. (Poster presented by Huang)"
+    },
+    {
+      "number": 163,
+      "text": "Bansal B, Combs P, Basmaci M, Ozgur A, He Y, Mathur R, Hur J. Ignet: A Web-Based Literature Mining System for Gene Interaction Networks. ND EPSCoR State Conference, Bio & Biomedical Computation Networking Seminar. November 20, 2024. Grand Forks, ND. (Presented by Bansal)"
+    },
+    {
+      "number": 164,
+      "text": "McGregor BA, Raihan MO, Brishti A, Hur J, Porter JE. Deciphering Motor Dysfunction and Microglial Activation in mThy1-α-Synuclein Mice: A Comprehensive Study of Behavioral, Gene Expression, and Methylation Changes. ND EPSCoR State Conference, Bio & Biomedical Computation Networking Seminar. November 21, 2024. Grand Forks, ND. (Presented by McGregor)"
+    },
+    {
+      "number": 165,
+      "text": "Rehana H, McGregor B, He Y, and Hur J. Recognizing Cancer Vaccine Adjuvant Names from Clinical Trial Data with Large Language Models. ND EPSCoR State Conference, Bio & Biomedical Computation Networking Seminar. November 21, 2024. Grand Forks, ND. (Presented by Rehana)"
+    },
+    {
+      "number": 166,
+      "text": "Elzinga S, Guo K, Hayes J, Pacut C, Rigan D, Teener S, Carter A, Jang DG, Park J, Hur J, Feldman E. Midlife Obesity and Prediabetes: Influence of cGAS/STING on Later Life Cognitive Impairment. American Physiology Summit 2025; April 24-27, 2025; Baltimore, MD. (Poster presentation by Elzinga)"
+    },
+    {
+      "number": 167,
+      "text": "Elzinga S, Guo K, Hayes J, Pacut C, Rigan D, Teener S, Webber-Davis I, Carter A, Park J, Jang D, Hur J, Feldman E. Sexually Dimorphic Microglial Senescence and Inflammatory Mechanisms in Obesity- and Prediabetes-Induced Cognitive Impairment. American Diabetes Association 85th Scientific Sessions; June 20-23, 2025; Chicago, IL. (Poster presentation by Elzinga)"
+    },
+    {
+      "number": 168,
+      "text": "Huffman A, Zheng J, Wu G, Cui L, Athey B, Hur J, Tao C, He Y. SEA-CDM: An Ontology-Based StudyExperiment-Assay Common Data Model for Interoperable Biomedical Experimental Data Standardization and Integration and Its Application in Vaccine Studies. NIH Data Repository & Knowledgebase Program Network Meeting; March 5-6, 2025; Rockville, MD. (Poster presentation by He, Hur) Junguk Hur, Ph.D. Curriculum Vitae"
+    },
+    {
+      "number": 169,
+      "text": "He Y, Hur J, Tao C, Zheng J, Cui L, Wu G, Athey B, Huffman A. SEA-CDM: An Ontology-Based StudyExperiment-Assay Common Data Model for Standardizing and Integrating Biomedical Experimental Data with Application in Vaccine Studies. ISMB/ECCB 2025, BioData Resources Track (Evolution and Innovation); July 20-24, 2025; Liverpool, United Kingdom. (Oral presentation by He)"
+    },
+    {
+      "number": 170,
+      "text": "Rehana H, Zheng J, Yeh L, Bansal B, Cam NB, Jemiyo C, McGregor BA, Özgür A, He Y, Hur J. Identifying Cancer Vaccine Adjuvants in Biomedical Literature Using Large Language Models. Great Lakes Bioinformatics Conference (GLBIO 2025); May 12-15, 2025; Minneapolis, MN. (Oral presentation by Rehana)"
+    },
+    {
+      "number": 171,
+      "text": "Huang F, Hu D, Guan R, Quan H, McGregor BA, Hur J$, Zhang J$, Guo K$. scGEN: Adaptive Weighting Strategy for Challenging Cell Clustering in Single-Cell RNA-seq. Great Lakes Bioinformatics Conference (GLBIO 2025); May 12-15, 2025; Minneapolis, MN. (Oral presentation by Huang)"
+    },
+    {
+      "number": 172,
+      "text": "Bansal B, Guo K, Hur J, Mathur R. Mitochondrial TFAM Maintains Microglia-Neuron Crosstalk via CX3CR1 Signaling and Prevents Motor Neuron Degeneration. Frank Low Research Day 2025; April 22-23, 2025; Grand Forks, ND. (Poster presentation by Bansal)"
+    },
+    {
+      "number": 173,
+      "text": "Rehana H, Zheng J, Yeh L, Bansal B, Çam NB, Jemiyo C, McGregor BA, Özgür A, He Y, Hur J. Leveraging Large Language Models to Identify Vaccine Adjuvants from Biomedical Literature. Frank Low Research Day 2025; April 22-23, 2025; Grand Forks, ND. (Poster presentation by Rehana)"
+    },
+    {
+      "number": 174,
+      "text": "Jemiyo C, McGregor BA, Rehana H, Hur J. Racial and Geographic Disparities in the Health Impact of Adverse Childhood Experiences: Evidence from 33 U.S. States. Frank Low Research Day 2025; April 2223, 2025; Grand Forks, ND. (Poster presentation by Jemiyo)"
+    },
+    {
+      "number": 175,
+      "text": "Hong S, Guo K, Kim J, Hur J. richCluster: An R Package for Cross-Dataset Clustering of Gene Enrichment Analyses. Frank Low Research Day 2025; April 22-23, 2025; Grand Forks, ND. (Poster presentation by Hong)"
+    },
+    {
+      "number": 176,
+      "text": "Huang F, Hu D, Guan R, Quan H, McGregor BA, Khan N, Feldman E, Hur J, Zhang J, Guo K. scGEN: Leveraging Adaptive Weighting Strategy for Challenging Cell Clustering in Single-Cell RNA-seq. Frank Low Research Day 2025; April 22-23, 2025; Grand Forks, ND. (Poster presentation by Huang)"
+    },
+    {
+      "number": 177,
+      "text": "Karimi B, Chen YL, Suzuki A, Hur J, Takaku M. Chromatin Structure and Transcriptional Program Across the Cell Cycle: Insights into Mitotic Bookmarking. Epigenetic Society Conference; October 2025; Chicago, IL. (Poster presentation by Karimi)"
+    },
+    {
+      "number": 178,
+      "text": "Karimi B, Suzuki A, Hur J, Takaku M. Dynamics of Gene Transcription and Chromatin Accessibility Across the Cell Cycle. Frank Low Research Day 2025; April 22-23, 2025; Grand Forks, ND. (Poster presentation by Karimi; Best poster presentation award)"
+    },
+    {
+      "number": 179,
+      "text": "Karimi B, Suzuki A, Hur J, Takaku M. Dynamics of Gene Transcription and Chromatin Accessibility Across the Cell Cycle. Epigenetics COBRE Annual Symposium; May 2025; Grand Forks, ND. (Poster presentation by Karimi)"
+    },
+    {
+      "number": 180,
+      "text": "McGregor BA, Raihan O, Guo K, Porter JE, Hur J. Midbrain Spatial Gene Expression in the Thy1-αsynuclein Mouse Model of Parkinson’s Disease. Epigenetics COBRE Annual Symposium; May 2025; Grand Forks, ND. (Oral presentation by McGregor)"
+    },
+    {
+      "number": 181,
+      "text": "McGregor BA, Raihan O, Guo K, Porter JE, Hur J. Midbrain Spatial Gene Expression in the Thy1-αsynuclein Mouse Model of Parkinson’s Disease. Host-Pathogen Interaction Research Meeting, University of North Dakota School of Medicine and Health Sciences; July 2025; Grand Forks, ND. (Poster presentation by McGregor)"
+    },
+    {
+      "number": 182,
+      "text": "Shabb JB, Hur J. Undergraduate Biochemistry Course Outcomes as Predictors of Medical College Admissions Test Performance. ASBMB Transforming Undergraduate Education in the Molecular Life Sciences (TUEMLS); July 24-27, 2025; St. Paul, MN. (Poster presentation by Shabb)"
+    },
+    {
+      "number": 183,
+      "text": "Zheng J, Davydov A, Qi Y, Li X, Zhang X, Manuel W, Lin T, Liu L, Abeysinghe R, Hu J, Zheng Y, Hur K, He A, Pan Y, Khan A, Ostropolets A, Masci AM, Hur J, Cui L, Smith B, He Y. Improvement of Vaccine Representation in OHDSI Standardized Vocabularies Using Vaccine Ontology. International Conference on Biological and Biomedical Ontology (ICBO 2025); November 9-11, 2025; Virtual. (Oral presentation by Zheng) Junguk Hur, Ph.D. Curriculum Vitae"
+    },
+    {
+      "number": 184,
+      "text": "Huffman A, Zheng J, Masci AM, Hur J, Cui T, He Y. Ontological Modeling of the SEA-CDM and Its Applications for the Vaccine Domain. International Conference on Biological and Biomedical Ontology (ICBO 2025), Short Talks; November 9-11, 2025; Virtual. (Oral presentation by Huffman)"
+    },
+    {
+      "number": 185,
+      "text": "Rehana H, Zheng J, Hur J$, He Y$. PICO/PECO-Guided Large Language Model Extraction and Ontological Modeling of Structured Occupational Safety and Health Evidence from Biomedical Literature. International Conference on Biological and Biomedical Ontology (ICBO 2025); November 9-11, 2025; Virtual. (Oral presentation by Rehana)"
+    },
+    {
+      "number": 186,
+      "text": "He A*, Hur K*, Li X, Zheng J, Hur J$, He Y$. Updated Profiling of COVID-19 Vaccine Adverse Events Using VAERS Case Reports. International Conference on Biological and Biomedical Ontology (ICBO 2025); November 9-11, 2025; Virtual. (Oral presentation by He, Hur)"
+    },
+    {
+      "number": 187,
+      "text": "McGregor BA, Raihan MD, Guo K, Porter JE, Hur J. Midbrain Spatial Gene Expression in the Thy1-αsynuclein Mouse Model of Parkinson’s Disease. Neuroscience 2025 (SfN25); November 15-19, 2025; San Diego, CA. (Poster presentation by McGregor)"
+    },
+    {
+      "number": 188,
+      "text": "Rehana H, Zheng J, Yeh L, Oğuzoğlu B, Özgür A, He Y, Hur J. Automated Extraction and Classification of Vaccine Adjuvant Mechanisms Using Large Language Models. Vaccine and Drug Ontology Studies (VDOS) Workshop 2025; November 7, 2025; Virtual. (Oral presentation by Rehana)"
+    },
+    {
+      "number": 189,
+      "text": "Rehana H, Zheng J, Yeh L, Bansal B, Çam NB, Jemiyo C, McGregor BA, Özgür A, He Y, Hur J. Cancer Vaccine Adjuvant Name Recognition from Biomedical Literature Using Large Language Models. AMIA 2025 Annual Symposium Proceedings; November 15-19, 2025; Atlanta, GA. (Oral presentation by Rehana)"
+    },
+    {
+      "number": 190,
+      "text": "Shabb JB and Hur J. Undergraduate Premedical Course Outcomes as Predictors of Medical College Admissions Test Performance. Academic Medicine (AAMC) (submitted in 12/2025)"
+    }
+  ],
+  "patent": {
+    "title": "A System for Analyzing DNA-Chips Using Gene Ontology, and a Method Thereof",
+    "year": 2002,
+    "country": "Republic of Korea"
+  },
+  "lastUpdated": "2026-03-14"
+}

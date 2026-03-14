@@ -1,0 +1,28 @@
+#Alignment (Global) Succesfully Completed
+#Seq1 Length: 5 ACCTG
+#Seq2 Length: 5 TCCGC
+#Match Score: 3
+#Mismatch Score: -2
+#GapOpening Penalty: -1
+#GapExtension Penalty: -1
+#Number of Alignments Found: 3
+#Number of Alignments Displayed: 3
+
+>>Rank.1 Global Alignment   Score:5.0  Sum:17.0  Identity:75.0%
+seq1: 1 ACCTG-
+        *|| | 
+seq2: 1 TCC-GC
+
+
+>>Rank.2 Global Alignment   Score:5.0  Sum:16.0  Identity:100.0%
+seq1: 1 A-CCTG-
+          || | 
+seq2: 1 -TCC-GC
+
+
+>>Rank.3 Global Alignment   Score:5.0  Sum:16.0  Identity:100.0%
+seq1: 1 -ACCTG-
+          || | 
+seq2: 1 T-CC-GC
+
+

@@ -1,0 +1,7 @@
+#Error4: The first sequence DOES NOT seem to be a protein sequence
+#Error5: The second sequence DOES NOT seem to be a protein sequence
+
+
+
+#Error4: The first sequence DOES NOT seem to be a protein sequence
+#Error5: The second sequence DOES NOT seem to be a protein sequence

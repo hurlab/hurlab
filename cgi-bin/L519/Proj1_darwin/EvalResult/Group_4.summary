@@ -1,0 +1,23 @@
+	Overall Quality	Liked	Suggestion
+Evaluator#1	6	__	__
+Evaluator#2	8	__	__
+Evaluator#3	7	__	__
+Evaluator#4	10	__	__
+Evaluator#5	10	__	__
+Evaluator#6	10	__	A little more help on the webpage regarding your sequence format
+Evaluator#7	8	simple	show the cutting position for the complementary strand too
+Evaluator#8	8	Good interface.	Using rebase file and printing results from complement.
+Evaluator#9	5	good	__
+Evaluator#10	7	__	can not give collect answer for my test
+Evaluator#11	10	the page layout.	Not complete enzyme list;
+Evaluator#12	8	__	__
+Evaluator#13	10	__	__
+Evaluator#14	7	__	__
+Evaluator#15	10	the simplicity of the interface!	__
+Evaluator#16	7	__	can not give collect answer for my test
+Evaluator#17	7	Interface	What happens if the recognition site is not a palindrome
+Evaluator#18	7	__	can not give collect answer for my test
+Evaluator#19	8	__	__
+Evaluator#20	6	__	There is no default value , means if user gives both file and sequence in text area he does not know what he is taking as default value
+
+	8.0

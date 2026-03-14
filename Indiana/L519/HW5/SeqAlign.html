@@ -1,0 +1,85 @@
+<html><head><title>Protein Sequences Alignment Tool</title>
+</head><body bgcolor="#C3EAE0"><body bgcolor=#C3EAE0>
+      <h1 align="center"><font face="Arial Black" color="#9900CC"><span style="background-color:rgb(153,255,204);">Protein Sequence Alignment Webtool</span></font></h1>
+      <HR COLOR = "#FFFF66" SIZE = 4></HR>
+      <font face = "Courier New" size = 2><table border='0'>
+           <tr>
+               <td width='100%' height='72'>
+                   <p><font size='4' face='Arial'>Hello! Welcome to Junguk's Sequence Alignment Webtool. Here you can align two protein sequences using either the Needleman-wunsch global alignment algorithm or the Smith-waterman local alignment algorithm. You may choose up to three scoring matrixes and their <b>RELATIVE</b> weights can be adjusted. Make sure that at least one of the three matrix weight should <b>NOT BE ZERO</b>.</font></p>
+               </td>
+           </tr>
+       </table>
+       <HR COLOR = "#FFFF66" SIZE = 4><BR><BR><form action='http://biokdd.informatics.indiana.edu/cgi-bin/juhur/L519/HW5/SeqAlign.cgi' method='POST' enctype="multipart/form-data"><table border="1" width="960" cellspacing="0" bordercolordark="white" bordercolorlight="black">
+                <tr align="center" valign="top">
+                    <th width="240" height="69" align="left" valign="middle">
+
+                        <p><b>&nbsp;&nbsp;</b><img src="http://biokdd.informatics.indiana.edu/~juhur/icons/crossImage.jpg" width="17" height="17" border="0"> <b> <font face="Arial Black">ALIGNMENT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;METHOD</font></b></p>
+                    </th>
+                    <td width="822" height="69" align="left" valign="middle" colspan="3">
+                            <p><font face="Verdana">&nbsp;&nbsp;</font><input type="checkbox" name="global" value="select" checked>  <font face="Arial"><b>Global Alignment (Needman-wunsch)</b></font></p>
+                            <font face="Verdana">&nbsp;&nbsp;</font><input type="checkbox" name="local" value="select" checked><font face="Verdana"> </font><font face="Arial"><b>Local Alignment (Smith-waterman)</b></font>
+                    </td>
+                </tr>     <tr align="center" valign="top">
+                    <th width="240" height="230" align="left" valign="middle">
+                        <p>&nbsp;&nbsp;<img src="http://biokdd.informatics.indiana.edu/~juhur/icons/crossImage.jpg" width="17" height="17" border="0">    <b><font face="Arial Black">SEQUENCES</font></b></p>
+                        <p align="left">&nbsp;&nbsp;&nbsp;Paste sequences <br> &nbsp;&nbsp;&nbsp;or upload&nbsp;files.<br>&nbsp;&nbsp;&nbsp;(Files have a <br> &nbsp;&nbsp;&nbsp;&nbsp;higher&nbsp;priority)</p>
+                    </th>
+                    <td width="822" height="230" align="left" valign="baseline" colspan="3">
+                        <b><font face="Arial Black">&nbsp;Sequence#1</font></b><BR>
+                        &nbsp;<textarea name="sequence1Input" rows="5" cols="49"></textarea> &nbsp;or <input type="file" name="seq1File" size="20">
+                            <b><font face="Arial Black">&nbsp;Sequence#2</font></b><BR>
+                        &nbsp;<textarea name="sequence2Input" rows="5" cols="49"></textarea> &nbsp;or <input type="file" name="seq2File" size="20">
+                    </td>
+                </tr>     <tr align="center" valign="top">
+                    <th width="240" height="69" align="left" valign="middle">
+
+                        <p>&nbsp;<img src="http://biokdd.informatics.indiana.edu/~juhur/icons/crossImage.jpg" width="17" height="17" border="0">    <b><font face="Arial Black">SCORING MATRIX</font></b></p>
+                    </th>
+                    <td width="281" height="69" align="left" valign="middle">
+                            <p><b><font face="Courier New">&nbsp;&nbsp;Matrix#1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b><font face="Courier New">Weight</font></p>
+                            <p><font face="Courier New">&nbsp;<select name="matrix1" size="1"><option selected value="BLOSUM62">BLOSUM62</option><option value="BLOSUM45">BLOSUM45</option><option value="BLOSUM80">BLOSUM80</option><option value="PAM10">PAM10</option><option value="PAM30">PAM30</option><option value="PAM70">PAM70</option><option value="PAM100">PAM100</option><option value="PAM250">PAM250</option><option value="HYDROPHOBICITY">HYDROPHOBICITY</option><option value="SIZE">SIZE</option> </select>&nbsp;&nbsp;<select name="weight1" size="1"><option selected value="10">10</option><option value="9">9</option><option value="8">8</option><option value="7">7</option><option value="6">6</option><option value="5">5</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1</option><option value="0">0</option> </select></font></p>
+                    </td>
+                    <td width="281" height="69" align="left" valign="middle">
+                            <p><b><font face="Courier New">&nbsp;&nbsp;Matrix#2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b><font face="Courier New">Weight</font></p>
+                            <p><font face="Courier New">&nbsp;<select name="matrix2" size="1"><option selected value="HYDROPHOBICITY">HYDROPHOBICITY</option><option value="BLOSUM45">BLOSUM45</option><option value="BLOSUM80">BLOSUM80</option><option value="PAM10">PAM10</option><option value="PAM30">PAM30</option><option value="PAM70">PAM70</option><option value="PAM100">PAM100</option><option value="PAM250">PAM250</option><option value="SIZE">SIZE</option> </select>&nbsp;&nbsp;<select name="weight2" size="1"><option selected value="0">0</option><option value="10">10</option><option value="9">9</option><option value="8">8</option><option value="7">7</option><option value="6">6</option><option value="5">5</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1</option> </select></font></p>
+                    </td>
+                    <td width="282" height="69" align="left" valign="middle">
+                            <p><b><font face="Courier New">&nbsp;&nbsp;Matrix#3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b><font face="Courier New">Weight</font></p>
+                            <p><font face="Courier New">&nbsp;<select name="matrix3" size="1"><option selected value="SIZE">SIZE</option><option value="BLOSUM45">BLOSUM45</option><option value="BLOSUM80">BLOSUM80</option><option value="PAM10">PAM10</option><option value="PAM30">PAM30</option><option value="PAM70">PAM70</option><option value="PAM100">PAM100</option><option value="PAM250">PAM250</option><option value="HYDROPHOBICITY">HYDROPHOBICITY</option> </select>&nbsp;&nbsp;<select name="weight3" size="1"><option selected value="0">0</option><option value="10">10</option><option value="9">9</option><option value="8">8</option><option value="7">7</option><option value="6">6</option><option value="5">5</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1</option> </select></p>
+                    </td>
+                </tr>
+                <tr align="center" valign="top">
+                    <th width="240" height="40" align="left" valign="middle">
+
+                        <p>&nbsp;<img src="http://biokdd.informatics.indiana.edu/~juhur/icons/crossImage.jpg" width="17" height="17" border="0">    <b><font face="Arial Black">GAP PENANTY</font></b></p>
+                    </th>
+                    <td width="822" height="40" align="left" valign="middle" colspan="3">
+                            <font face="Arial"><b>&nbsp;&nbsp;Gap Opening Penalty &nbsp;&nbsp;: <input type="text" name="gapOpen" value="-10" size="3"></b></font>
+                            <font face="Arial"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gap Extension Penalty : <input type="text" name="gapExt" value="-1" size="3"></b></font>
+                    </td>
+                </tr>
+                <tr align="center" valign="top">
+                    <th width="240" height="50" align="left" valign="middle">
+
+                        <p><font face="Arial Black"><b>&nbsp;</b></font><img src="http://biokdd.informatics.indiana.edu/~juhur/icons/crossImage.jpg" width="17" height="17" border="0">  <b><font face="Arial Black"> NUM OF MAXIMUM &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALIGNMENTS</font></b></p>
+                    </th>
+                    <td width="822" height="50" align="left" valign="middle" colspan="3">
+                            <p><font face="Arial"><b>&nbsp;&nbsp;Maximum&nbsp;number&nbsp;of&nbsp;alignments&nbsp;to&nbsp;display,&nbsp;if&nbsp;more than one&nbsp;:</b></font>&nbsp;<font face="Arial"><b><input type="text" name="maxAlign" value="3" size="3"> </b></font></p>
+                    </td>
+                </tr>
+                <tr align="center" valign="top">
+                    <th width="240" height="40" align="left" valign="middle">
+                        <p>&nbsp;<img src="http://biokdd.informatics.indiana.edu/~juhur/icons/crossImage.jpg" width="17" height="17" border="0">   <b><font face="Arial Black">Result via Email</font></b></p>
+                    </th>
+                    <td width="822" height="40" align="left" valign="middle" colspan="3">
+                            <p><font face="Courier New">&nbsp;</font><font face="Arial"><b><input type="checkbox" name="emailCheck" value="sendToEmail"> Send&nbsp;the&nbsp;result&nbsp;to&nbsp;the&nbsp;following&nbsp;email&nbsp;address&nbsp;&nbsp;:&nbsp;&nbsp;</b></font><font face="Arial"><b><input type="text" name="resultByEmail" size="45"> </b></font></p>
+                    </td>
+                </tr>
+            </table>
+                <p><input type="submit" name="alignNow" value="ALIGN"> <input type="reset" name="resut" value="RESET"> <input type="submit" name="sampleAlign" value="SAMPLE_SEQ"></p>
+             </form>
+          <HR COLOR = "#FFFF66" SIZE = 4><font size="3"><p>Detailed Description : <a href="http://biokdd.informatics.indiana.edu/~juhur/L519/HW5/ALIGN_README.pdf">README</a>
+          &nbsp;&nbsp;<a href="http://biokdd.informatics.indiana.edu/~juhur/L519/HW5/sample_result.pdf">Sample Result</a><BR>
+          Last Modified : Nov.&nbsp;4, 2004<br>Class: <A href="http://mypage.iu.edu/~juhur/L519/L519.htm">L519 Bioinformatics :
+          Theory and Application<br></A>Got any comment? Send an email to me<a href="mailto:jungwindy@hanmail.netr?subject=Protein Sequence Alignments"><img src="http://biokdd.informatics.indiana.edu/~juhur/icons/email.jpg" width="20" height="20" border="0"></a></p>
+          </font></font></body></html>

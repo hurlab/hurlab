@@ -1,0 +1,62 @@
+#Alignment (Global) Succesfully Completed
+#Seq1 Length: 8 ATAGACTA
+#Seq2 Length: 10 CTGTATCCCA
+#Match Score: 1
+#Mismatch Score: -1
+#GapOpening Penalty: -2
+#GapExtension Penalty: -2
+#Number of Alignments Found: 7
+#Number of Alignments Displayed: 3
+
+>>Rank.1 Global Alignment   Score:-4.0  Sum:-22.0  Identity:50.0%
+seq1:  1 ATAGA-CT-A
+         *|**| |* |
+seq2:  1 CTGTATCCCA
+
+
+>>Rank.2 Global Alignment   Score:-4.0  Sum:-23.0  Identity:50.0%
+seq1:  1 ATAGA-C-TA
+         *|**| | *|
+seq2:  1 CTGTATCCCA
+
+
+>>Rank.3 Global Alignment   Score:-4.0  Sum:-26.0  Identity:50.0%
+seq1:  1 ATAGA--CTA
+         *|**|  |*|
+seq2:  1 CTGTATCCCA
+
+
+
+
+
+Table initialization completed
+Aligning sequences
+Track back started
+#Alignment (Local) Succesfully Completed
+#Seq1 Length: 8 ATAGACTA
+#Seq2 Length: 10 CTGTATCCCA
+#Match Score: 1
+#Mismatch Score: -1
+#GapOpening Penalty: -2
+#GapExtension Penalty: -2
+#Number of Alignments Found: 4
+#Number of Alignments Displayed: 3
+
+>>Rank.1 Local Alignment   Score:2.0  Sum:3.0  Identity:100.0%
+seq1: 6 CT
+        ||
+seq2: 1 CT
+
+
+>>Rank.2 Local Alignment   Score:2.0  Sum:3.0  Identity:100.0%
+seq1: 7 TA
+        ||
+seq2: 4 TA
+
+
+>>Rank.3 Local Alignment   Score:2.0  Sum:3.0  Identity:100.0%
+seq1: 1 AT
+        ||
+seq2: 5 AT
+
+

@@ -1,0 +1,13 @@
+
+ORCID: 0000-0002-7749-0365
+
+github: guillermodeandajauregui
+
+RESEARCH INTERESTS:
+
+Systems and network biology
+Identification of pharmacological targets for complex diseases based on systems
+biology approaches
+Classification algorithms for heterogeneous diseases
+Pathway deregulation in complex diseases
+Crosstalk phenomena in biological networks

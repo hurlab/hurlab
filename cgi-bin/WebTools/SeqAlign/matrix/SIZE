@@ -1,0 +1,45 @@
+#
+# This matrix was created by Junguk HUR
+# Based upon the physical property of amino acids
+# http://www.russell.embl-heidelberg.de/aas/aas.html
+# Robert B. Russell, Matthew J. Betts & Michael R. Barnes
+# Three Groups of Amino Acids;
+#    1. Tiny  : A, G, C, S
+#    2. Small : P, N, D, T, V
+#    3. Large : E, F, H, I, K, L, Q, R, W, Y, M
+#
+# Scoring Scheme
+# Self    <->   Self    : 10
+# Tiny    <->   Tiny    : 5
+# Tiny    <->  Small    : 2
+# Tiny    <->  Large    : -5
+# Small   <->  Small    : 5
+# Small   <->  Large    : -2
+# Large   <->  Large    : 5
+#
+# It's based upon a simple assumption that same group can be
+# acceptably substituted but substitution between tiny(small) and
+# large groups are generally unfavorable. 
+# 
+   A  G  C  S  P  N  D  T  V  E  F  H  I  K  L  Q  R  W  Y  M  *
+A 10  5  5  5  2  2  2  2  2 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5
+G  5 10  5  5  2  2  2  2  2 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5
+C  5  5 10  5  2  2  2  2  2 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5
+S  5  5  5 10  2  2  2  2  2 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5
+P  2  2  2  2 10  5  5  5  5 -2 -2 -2 -2 -2 -2 -2 -2 -2 -2 -2 -5
+N  2  2  2  2  5 10  5  5  5 -2 -2 -2 -2 -2 -2 -2 -2 -2 -2 -2 -5
+D  2  2  2  2  5  5 10  5  5 -2 -2 -2 -2 -2 -2 -2 -2 -2 -2 -2 -5
+T  2  2  2  2  5  5  5 10  5 -2 -2 -2 -2 -2 -2 -2 -2 -2 -2 -2 -5
+V  2  2  2  2  5  5  5  5 10 -2 -2 -2 -2 -2 -2 -2 -2 -2 -2 -2 -5
+E -5 -5 -5 -5 -2 -2 -2 -2 -2 10  5  5  5  5  5  5  5  5  5  5 -5
+F -5 -5 -5 -5 -2 -2 -2 -2 -2  5 10  5  5  5  5  5  5  5  5  5 -5
+H -5 -5 -5 -5 -2 -2 -2 -2 -2  5  5 10  5  5  5  5  5  5  5  5 -5
+I -5 -5 -5 -5 -2 -2 -2 -2 -2  5  5  5 10  5  5  5  5  5  5  5 -5
+K -5 -5 -5 -5 -2 -2 -2 -2 -2  5  5  5  5 10  5  5  5  5  5  5 -5
+L -5 -5 -5 -5 -2 -2 -2 -2 -2  5  5  5  5  5 10  5  5  5  5  5 -5
+Q -5 -5 -5 -5 -2 -2 -2 -2 -2  5  5  5  5  5  5 10  5  5  5  5 -5
+R -5 -5 -5 -5 -2 -2 -2 -2 -2  5  5  5  5  5  5  5 10  5  5  5 -5
+W -5 -5 -5 -5 -2 -2 -2 -2 -2  5  5  5  5  5  5  5  5 10  5  5 -5
+Y -5 -5 -5 -5 -2 -2 -2 -2 -2  5  5  5  5  5  5  5  5  5 10  5 -5
+M -5 -5 -5 -5 -2 -2 -2 -2 -2  5  5  5  5  5  5  5  5  5  5 10 -5
+* -5 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5 -5  1

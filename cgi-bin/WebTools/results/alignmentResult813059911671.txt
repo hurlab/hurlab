@@ -1,0 +1,59 @@
+#Alignment (Global) Succesfully Completed
+#Combined Scoring Matrix Created Using The Following
+# Matrix1 : BLOSUM62  Weight: 100.0%
+# Matrix2 : HYDROPHOBICITY  Weight: 0.0%
+# Matrix3 : SIZE  Weight: 0.0%
+#Seq1 Length: 5 CGATC
+#Seq2 Length: 14 TTATCGTTAGCATA
+#GapOpening Penalty: -10
+#GapExtension Penalty: -1
+#Number of Alignments Found: 3
+#Number of Alignments Displayed: 3
+
+>>Rank.1 Global Alignment   Score:-3.0  Sum:-149.0  Identity:80.0%
+seq1:  1 ----C----G-ATC
+             |    | ||*
+seq2:  1 TTATCGTTAGCATA
+
+
+>>Rank.2 Global Alignment   Score:-3.0  Sum:-162.0  Identity:60.0%
+seq1:  1 --------CG-ATC
+                 *| ||*
+seq2:  1 TTATCGTTAGCATA
+
+
+>>Rank.3 Global Alignment   Score:-3.0  Sum:-162.0  Identity:60.0%
+seq1:  1 --------CG-ATC
+                 *| ||*
+seq2:  1 TTATCGTTAGCATA
+
+
+
+
+
+#Alignment (Local) Succesfully Completed
+#Combined Scoring Matrix Created Using The Following
+# Matrix1 : BLOSUM62  Weight: 100.0%
+# Matrix2 : HYDROPHOBICITY  Weight: 0.0%
+# Matrix3 : SIZE  Weight: 0.0%
+#Seq1 Length: 5 CGATC
+#Seq2 Length: 14 TTATCGTTAGCATA
+#GapOpening Penalty: -10
+#GapExtension Penalty: -1
+Sorted by score 1
+Sorted by score 0
+#Number of Alignments Found: 2
+#Number of Alignments Displayed: 2
+
+>>Rank.1 Local Alignment   Score:20.0  Sum:79.0  Identity:60.0%
+seq1: 1 CGATC
+        ||*|*
+seq2: 5 CGTTA
+
+
+>>Rank.2 Local Alignment   Score:20.0  Sum:59.0  Identity:75.0%
+seq1: 1 CGAT
+        ||*|
+seq2: 5 CGTT
+
+

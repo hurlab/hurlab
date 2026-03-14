@@ -1,0 +1,25 @@
+Table initialization completed
+Aligning sequences
+Track back started
+#Alignment (Local) Succesfully Completed
+#Seq1 Length: 8 CGGGTTCC
+#Seq2 Length: 8 AGGCTTCG
+#Match Score: 1
+#Mismatch Score: -1
+#GapOpening Penalty: -1
+#GapExtension Penalty: -1
+#Number of Alignments Found: 2
+#Number of Alignments Displayed: 2
+
+>>Rank.1 Local Alignment   Score:4.0  Sum:13.0  Identity:83.3%
+seq1: 2 GGGTTC
+        ||*|||
+seq2: 2 GGCTTC
+
+
+>>Rank.2 Local Alignment   Score:4.0  Sum:13.0  Identity:100.0%
+seq1: 3 GG-TTC
+        || |||
+seq2: 2 GGCTTC
+
+

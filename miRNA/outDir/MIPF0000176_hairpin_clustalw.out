@@ -1,0 +1,24 @@
+
+
+
+ CLUSTAL W (1.83) Multiple Sequence Alignments
+
+
+
+Sequence format is Pearson
+Sequence 1: hsa-mir-506      124 bp
+Sequence 2: hsa-mir-507       94 bp
+Sequence 3: hsa-mir-508      115 bp
+Start of Pairwise alignments
+Aligning...
+Sequences (1:2) Aligned. Score:  61
+Sequences (1:3) Aligned. Score:  66
+Sequences (2:3) Aligned. Score:  62
+Guide tree        file created:   [/var/www/htdocs/miRNA/outDir/MIPF0000176_hairpin.dnd]
+Start of Multiple Alignment
+There are 2 groups
+Aligning...
+Group 1: Sequences:   2      Score:1553
+Group 2: Sequences:   3      Score:1258
+Alignment Score 820
+CLUSTAL-Alignment file created  [/var/www/htdocs/miRNA/outDir/MIPF0000176_hairpin.aln]

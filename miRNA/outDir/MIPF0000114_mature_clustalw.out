@@ -1,0 +1,50 @@
+
+
+
+ CLUSTAL W (1.83) Multiple Sequence Alignments
+
+
+
+Sequence format is Pearson
+Sequence 1: hsa-miR-375       22 bp
+Sequence 2: mmu-miR-375       22 bp
+Sequence 3: dre-miR-375       22 bp
+Sequence 4: fru-miR-375       22 bp
+Sequence 5: tni-miR-375       22 bp
+Sequence 6: gga-miR-375       22 bp
+Sequence 7: mdo-miR-375       23 bp
+Start of Pairwise alignments
+Aligning...
+Sequences (1:2) Aligned. Score:  100
+Sequences (1:3) Aligned. Score:  95
+Sequences (1:4) Aligned. Score:  95
+Sequences (1:5) Aligned. Score:  95
+Sequences (1:6) Aligned. Score:  95
+Sequences (1:7) Aligned. Score:  100
+Sequences (2:3) Aligned. Score:  95
+Sequences (2:4) Aligned. Score:  95
+Sequences (2:5) Aligned. Score:  95
+Sequences (2:6) Aligned. Score:  95
+Sequences (2:7) Aligned. Score:  100
+Sequences (3:4) Aligned. Score:  100
+Sequences (3:5) Aligned. Score:  100
+Sequences (3:6) Aligned. Score:  100
+Sequences (3:7) Aligned. Score:  95
+Sequences (4:5) Aligned. Score:  100
+Sequences (4:6) Aligned. Score:  100
+Sequences (4:7) Aligned. Score:  95
+Sequences (5:6) Aligned. Score:  100
+Sequences (5:7) Aligned. Score:  95
+Sequences (6:7) Aligned. Score:  95
+Guide tree        file created:   [/var/www/htdocs/miRNA/outDir/MIPF0000114_mature.dnd]
+Start of Multiple Alignment
+There are 6 groups
+Aligning...
+Group 1: Sequences:   2      Score:418
+Group 2: Sequences:   3      Score:418
+Group 3: Sequences:   4      Score:418
+Group 4: Sequences:   2      Score:418
+Group 5: Sequences:   3      Score:418
+Group 6: Sequences:   7      Score:399
+Alignment Score 2073
+CLUSTAL-Alignment file created  [/var/www/htdocs/miRNA/outDir/MIPF0000114_mature.aln]

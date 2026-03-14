@@ -1,0 +1,31 @@
+# Large data directories
+Files/
+Temp/
+BACKUPS/
+
+# Legacy site backup
+v1/
+
+# Personal data (PDFs tracked via symlinks only)
+Personal/*.pdf
+!Personal/JungukHur-CV.pdf
+!Personal/JungukHur_CV.pdf
+!Personal/JungukHur.pdf
+
+# Admin credentials and runtime
+scripts/.admin_credentials
+scripts/.admin_server.pid
+scripts/admin_server.log
+scripts/__pycache__/
+
+# SSL
+ssl_fullchain.crt
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~

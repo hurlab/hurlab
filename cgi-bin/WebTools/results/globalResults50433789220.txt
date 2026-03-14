@@ -1,0 +1,18 @@
+#Alignment (Global) Succesfully Completed
+#Combined Scoring Matrix Created Using The Following
+# Matrix1 : BLOSUM62  Weight: 100.0%
+# Matrix2 : HYDROPHOBICITY  Weight: 0.0%
+# Matrix3 : SIZE  Weight: 0.0%
+#Seq1 Length: 10 HEAGAWGHEE
+#Seq2 Length: 7 PAWHEAE
+#GapOpening Penalty: -8
+#GapExtension Penalty: -8
+#Number of Alignments Found: 1
+#Number of Alignments Displayed: 1
+
+>>Rank.1 Global Alignment   Score:-8.0  Sum:-142.0  Identity:42.9%
+seq1:  1 HEAGAWGHEE
+           * ||***|
+seq2:  1 --P-AWHEAE
+
+

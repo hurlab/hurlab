@@ -1,0 +1,50 @@
+#Alignment (Global) Succesfully Completed
+#Seq1 Length: 9 ACTGATTCA
+#Seq2 Length: 8 ACGCATCA
+#Match Score: 2
+#Mismatch Score: -3
+#GapOpening Penalty: -2
+#GapExtension Penalty: -2
+#Number of Alignments Found: 2
+#Number of Alignments Displayed: 2
+
+>>Rank.1 Global Alignment   Score:8.0  Sum:42.0  Identity:100.0%
+seq1:  1 ACTG-ATTCA
+         || | || ||
+seq2:  1 AC-GCAT-CA
+
+
+>>Rank.2 Global Alignment   Score:8.0  Sum:38.0  Identity:100.0%
+seq1:  1 ACTG-ATTCA
+         || | | |||
+seq2:  1 AC-GCA-TCA
+
+
+
+
+
+Table initialization completed
+Aligning sequences
+Track back started
+#Alignment (Local) Succesfully Completed
+#Seq1 Length: 9 ACTGATTCA
+#Seq2 Length: 8 ACGCATCA
+#Match Score: 2
+#Mismatch Score: -3
+#GapOpening Penalty: -2
+#GapExtension Penalty: -2
+#Number of Alignments Found: 2
+#Number of Alignments Displayed: 2
+
+>>Rank.1 Local Alignment   Score:8.0  Sum:42.0  Identity:100.0%
+seq1:  1 ACTG-ATTCA
+         || | || ||
+seq2:  1 AC-GCAT-CA
+
+
+>>Rank.2 Local Alignment   Score:8.0  Sum:38.0  Identity:100.0%
+seq1:  1 ACTG-ATTCA
+         || | | |||
+seq2:  1 AC-GCA-TCA
+
+

@@ -1,0 +1,370 @@
+{
+  "current": [
+    {
+      "number": 1,
+      "funder": "NIH/NIAID U24 1U24AI171008",
+      "pis": "Tao, He, Hur",
+      "role": "MPI",
+      "total": "$3,839,270 (7/1/2022-6/30/2027)",
+      "period": "7/1/2022-6/30/2027",
+      "title": "VIOLIN 2.0: Vaccine Information and Ontology LInked kNowledgebase",
+      "note": "15% efforts."
+    },
+    {
+      "number": 2,
+      "funder": "NIH/NIDDK R01 R01DK130913",
+      "pis": "Feldman, Hur",
+      "role": "MPI",
+      "total": "$2,555,612 (8/23/2022-6/30/2026)",
+      "period": "8/23/2022-6/30/2026",
+      "title": "Metabolic coupling between Schwann cells and axons is functionally distinct from myelination and is disrupted in obesity, prediabetes, and diabetes",
+      "note": "17.5% efforts."
+    },
+    {
+      "number": 3,
+      "funder": "NIGMS P20 5P20GM113123 COBRE",
+      "pis": "Bradley & Brissette",
+      "role": "Core Director",
+      "total": "$778,850 (Core)",
+      "period": "7/1/2021-6/30/2026",
+      "title": "Center for Excellence in Host Pathogen Interactions (HPI COBRE)",
+      "note": "Establishment of Computational Data Analysis Core (CDAC). 10% efforts."
+    },
+    {
+      "number": 4,
+      "funder": "NIH/NIGMS 5P20GM155890 CTR",
+      "pis": "Schwartz",
+      "role": "Core Lead",
+      "total": "$10,774,235 (7/1/2024-6/30/2029)",
+      "period": "7/1/2024-6/30/2029",
+      "title": "Translational Science Engaging North Dakota (TRANSCEND)",
+      "note": "Research Design, Compliance & Data Management Core. 10% efforts."
+    },
+    {
+      "number": 5,
+      "funder": "ARPA-H",
+      "pis": "Tavakolian",
+      "role": "Co-PI",
+      "total": "$19,954,800 (8/22/2025-8/21/2028)",
+      "period": "8/22/2025-8/21/2028",
+      "title": "Decentralized Diabetes Data Platform for Senior Health Management",
+      "note": "Lead the analytics team for data analysis and predictive modeling. 5% efforts."
+    }
+  ],
+  "pending": [
+    {
+      "number": 1,
+      "funder": "NIH R01",
+      "pis": "Nicholas Lyssenko Temple University",
+      "role": "Co-Investigator",
+      "total": "$352,500 (UND)",
+      "period": "12/1/2026-11/30/2031",
+      "title": "Omics signatures and Abeta/tau stage of low ABCA7 in Alzheimer's",
+      "note": "",
+      "submitted": "submitted in 3/2026"
+    },
+    {
+      "number": 2,
+      "funder": "NIH R24",
+      "pis": "He, Diehl, Duncan, Hur",
+      "role": "MPI",
+      "total": "$1,115,350 (UND)",
+      "period": "12/1/2026-11/30/2030",
+      "title": "HPI-AI: AI-Powered Host-Pathogen Interaction Data Standardization, Integration, and Analysis",
+      "note": "",
+      "submitted": "Submitted in 2/2026"
+    },
+    {
+      "number": 3,
+      "funder": "NIH R01",
+      "pis": "Picking, Picking, Lu; University of Missouri",
+      "role": "Co-Investigator (Site PI)",
+      "total": "$239,263 (UND)",
+      "period": "7/1/2026-6/30/2031",
+      "title": "ET: a wild mouse habitat mimic for assessment of vaccine efficacy",
+      "note": "",
+      "submitted": "Submitted in 12/2025"
+    },
+    {
+      "number": 4,
+      "funder": "American Cancer Society",
+      "pis": "Mathur",
+      "role": "Co-Investigator",
+      "total": "$946,000 (7/1/2026-6/30/2030)",
+      "period": "7/1/2026-6/30/2030",
+      "title": "Glycan-Based Approaches to Modulate Tumor Immunity and Apoptotic Signaling",
+      "note": "",
+      "submitted": "submitted in 11/2025"
+    },
+    {
+      "number": 5,
+      "funder": "NIH R01",
+      "pis": "Khan; University of Florida",
+      "role": "Co-Investigator (Site PI)",
+      "total": "$239,263 (UND)",
+      "period": "7/1/2026-6/30/2031",
+      "title": "Pathogenic role of IL-17 response in Streptococcus pneumoniae nasopharyngeal pathogenesis during an influenza virus co-infection",
+      "note": "Renewal application",
+      "submitted": "Submitted in 11/2025"
+    },
+    {
+      "number": 6,
+      "funder": "NIH R01",
+      "pis": "Feldman, Hur",
+      "role": "MPI",
+      "total": "$1,309,079 (UND)",
+      "period": "7/1/2026-6/30/2031",
+      "title": "Schwann Cell Senescence and the Secretome Provide a Unifying Mechanism for the Onset and Progression of Diabetic Neuropathy",
+      "note": "Renewal application",
+      "submitted": "Submitted in 11/2025"
+    },
+    {
+      "number": 7,
+      "funder": "NIH R01",
+      "pis": "He; University of Michigan",
+      "role": "Co-Investigator (Site PI)",
+      "total": "$440,097 (UND)",
+      "period": "7/1/2026-6/30/2030",
+      "title": "Ontology-supported Occupational Safety and Health Data Standardization, Integration, and Analysis",
+      "note": "",
+      "submitted": "submitted in 10/2025"
+    },
+    {
+      "number": 8,
+      "funder": "NIH R01",
+      "pis": "Rumora; Columbia University",
+      "role": "Co-Investigator (Site PI)",
+      "total": "$154,979 (UND)",
+      "period": "7/1/2026-6/30/2028",
+      "title": "Lipids and inflammation in peripheral neuropathy and metabolic syndrome",
+      "note": "",
+      "submitted": "submitted in 10/2025"
+    },
+    {
+      "number": 9,
+      "funder": "NIH R01",
+      "pis": "Mathur",
+      "role": "Co-Investigator",
+      "total": "$4,026,438 (7/1/2026-6/30/2028)",
+      "period": "7/1/2026-6/30/2028",
+      "title": "Modulating HSF1 Post-Translational Regulation to Restore Proteostasis in Neurodegeneration",
+      "note": "",
+      "submitted": "submitted in 10/2025"
+    },
+    {
+      "number": 10,
+      "funder": "NIH R21",
+      "pis": "Mathur, Hur",
+      "role": "MPI",
+      "total": "$387,750 (7/1/2026-6/30/2028)",
+      "period": "7/1/2026-6/30/2028",
+      "title": "Age-Stratified Glycosylation Signatures Define Predictive and Therapeutic Determinants of Immune Junguk Hur, Ph.D. Curriculum Vitae Resistance in Colorectal Cancer",
+      "note": "",
+      "submitted": "submitted on 9/24/2025"
+    },
+    {
+      "number": 11,
+      "funder": "NIGMS P20 5P20GM113123 COBRE",
+      "pis": "Bradley & Brissette",
+      "role": "Core Director",
+      "total": "$5,287,500 (7/1/2026-6/30/2031)",
+      "period": "7/1/2026-6/30/2031",
+      "title": "Center for Excellence in Host Pathogen Interactions (HPI COBRE) Phase 3",
+      "note": "Computational Data Analysis Core (CDAC) In preparation"
+    },
+    {
+      "number": 1,
+      "funder": "NIH R01",
+      "pis": "Hur, Porter, Raihan",
+      "role": "MPI (Contact)",
+      "total": "$3,094,063 (4/1/2027-3/31/2032)",
+      "period": "4/1/2027-3/31/2032",
+      "title": "From Map to Mechanism: Spatial Profiling and Targeted Perturbations of Microglia-α-Synuclein Axes in Parkinsons Disease",
+      "note": "",
+      "submitted": "for submission in 06/2026"
+    }
+  ],
+  "previous": [
+    {
+      "number": 1,
+      "funder": "Juvenile Diabetes Research Foundation, Postdoctoral Research Fellowship Grant",
+      "pis": "",
+      "role": "Project PI",
+      "total": "$136,620 (3/1/2011-6/30/2014)",
+      "period": "3/1/2011-6/30/2014",
+      "title": "Cross-tissue transcriptomics predict diabetic complications",
+      "note": ""
+    },
+    {
+      "number": 2,
+      "funder": "Diabetic Complication Consortium, Pilot & Feasibility Grant",
+      "pis": "",
+      "role": "Project PI",
+      "total": "$89,537 (10/2015-1/2017)",
+      "period": "10/2015-1/2017",
+      "title": "Comparative Transcriptomics to Identify Key Gene Networks of Diabetic Neuropathy",
+      "note": "5% effort with salary support. Generating and analyzing RNA-Seq of human sural nerve samples obtained from diabetic neuropathy (DN) patients to identify critical gene regulatory networks of DN."
+    },
+    {
+      "number": 3,
+      "funder": "NIDDK 1R24082841",
+      "pis": "Eva Feldman, U of Michigan",
+      "role": "Co-investigator",
+      "total": "$437,458 (UND)",
+      "period": "4/2017-7/2021",
+      "title": "Integrated systems biology approach to diabetic microvascular complications",
+      "note": "20% effort. My role involves bioinformatics analysis on diabetic complications-related high-throughput Omics data to identify critical genes and pathways, responsible for the development of diabetic complications. This grant supports 20% of my salary and 100% of one post-doctoral fellow."
+    },
+    {
+      "number": 4,
+      "funder": "NINDS R01 5R01NS120926",
+      "pis": "Goutman & Murdock at University of Michigan",
+      "role": "Co-investigator",
+      "total": "$49,852 (UND)",
+      "period": "",
+      "title": "Creating a foundation for personalized age‐ and sex‐based immune‐targeted therapies from an ALS longitudinal cohort by identifying peripheral and central immune signatures.",
+      "note": ""
+    },
+    {
+      "number": 5,
+      "funder": "NINDS R01 5R01NS065957",
+      "pis": "Susan Masino, Trinity University",
+      "role": "Co-investigator",
+      "total": "$2,254,373 (6/2018-6/2024)",
+      "period": "6/2018-6/2024",
+      "title": "Ketogenic diet and adenosine: epigenetics and antiepileptogenesis",
+      "note": "10% effort. My role focuses on bioinformatics analyses of the high-throughput next-generation sequencing data (transcriptomics and methylomics) from animal models of epileptogenesis with/without two treatments."
+    },
+    {
+      "number": 1,
+      "funder": "UND COBRE Epigenomics and Development and Disease, Pilot Grant",
+      "pis": "",
+      "role": "Project PI",
+      "total": "$42,347 (10/2015-5/2016)",
+      "period": "10/2015-5/2016",
+      "title": "RNA-Seq and Comparative Transcriptomics to Identify Key Gene Networks of Diabetic Neuropathy Effort: 5% with no salary support. The award was used to perform high-throughput DNA-methylation sequencing analysis of sural nerves collected from diabetic neuropathy patients.",
+      "note": ""
+    },
+    {
+      "number": 2,
+      "funder": "UND Neuroscience COBRE Pilot Grant",
+      "pis": "",
+      "role": "Project PI",
+      "total": "$40,000 (9/2016-5/2017)",
+      "period": "9/2016-5/2017",
+      "title": "Cross-center validation study for epigenetic changes associated with epileptogenesis",
+      "note": "5% effort. The support was for next-generation sequencing service (RNA-Seq & RRBS) of rat Junguk Hur, Ph.D. Curriculum Vitae hippocampus samples collected during epileptogenesis."
+    },
+    {
+      "number": 3,
+      "funder": "UND Post-doctoral Pilot Funding Program",
+      "pis": "",
+      "role": "PI",
+      "total": "$120,000 (7/2016-6/2018)",
+      "period": "7/2016-6/2018",
+      "title": "Epigenetics for anti-epileptogenic therapy",
+      "note": "Salary and benefits support for a post-doctoral associate (Dr. Kai Guo) for two years. The project is to examine the epigenetic/transcriptomic changes during epileptogenesis by generating/analyzing nextgeneration sequencing data (RNA-Seq & RRBS)."
+    },
+    {
+      "number": 4,
+      "funder": "UND COBRE Epigenomics and Development and Disease, Pilot Grant",
+      "pis": "Porter and Hur",
+      "role": "Co-PI",
+      "total": "$30,000 (10/2017-05/2019)",
+      "period": "10/2017-05/2019",
+      "title": "Epigenetic modification of microglial phenotype in Parkinson’s Disease",
+      "note": "5% effort. The grant support is for high-throughput next-generation sequencing for gene expression (RNA-Seq) and methylation (RRBS) of microglia obtained from an animal model of Parkinson’s disease."
+    },
+    {
+      "number": 5,
+      "funder": "UND Health Challenge Seed Program",
+      "pis": "Dhasarathy, Hur & Scheidegger",
+      "role": "Co-PI",
+      "total": "$50,000 (10/2017-05/2018)",
+      "period": "10/2017-05/2018",
+      "title": "Transcription proteins and mRNA splicing: a novel molecular mechanism influencing cancer progression",
+      "note": "5% effort. This seed grant is to examine the novel mechanism of the RNA-binding feature of cancer progression-related transcription factor SNAIL. My role is to analyze high-throughput sequencing data analysis using bioinformatics approaches."
+    },
+    {
+      "number": 6,
+      "funder": "UND Post-doctoral Pilot Funding Program",
+      "pis": "Brissette, Dhasarathy, and Hur",
+      "role": "Co-PI",
+      "total": "$129,600 (UND)",
+      "period": "7/2018-6/2020",
+      "title": "Exploring epithelial-to-mesenchymal transitions in Lyme arthritis through a systems approach",
+      "note": "Salary and benefits support for a post-doctoral associate for two years, who will work on a project to investigate the role of epithelial-to-mesenchymal transition in Lyme arthritis."
+    },
+    {
+      "number": 7,
+      "funder": "UND COBRE Host-Pathogen Interaction, Pilot Grant",
+      "pis": "",
+      "role": "PI",
+      "total": "$25,000 (7/2019-4/2020)",
+      "period": "7/2019-4/2020",
+      "title": "Development of ontology-based literature mining system for host-pathogen interactions",
+      "note": "5% effort. This grant supports to development of a literature-mining platform to support the identification and mining of host-pathogen gene interactions from biomedical literature."
+    },
+    {
+      "number": 8,
+      "funder": "UND Epigenetics COBRE Pilot",
+      "pis": "Porter & Hur",
+      "role": "Co-PI",
+      "total": "$30,000 (12/2019-5/2020)",
+      "period": "12/2019-5/2020",
+      "title": "Epigenetic modifications of microglial phenotypes in α-synucleinopathy disorders",
+      "note": "5% effort. My role focuses on bioinformatics analysis of transcriptomic and epigenetic data."
+    },
+    {
+      "number": 9,
+      "funder": "UND Post-doctoral Pilot Funding Program",
+      "pis": "Porter & Hur",
+      "role": "Co-PI",
+      "total": "$129,600 (1/2019-12/2021)",
+      "period": "1/2019-12/2021",
+      "title": "Alpha-Synuclein-mediated epigenomic modification of microglial neuroinflammatory profiles during the Progression of Parkinson's Disease from Early to Advanced Stages",
+      "note": ""
+    },
+    {
+      "number": 10,
+      "funder": "NIAID R01 1R01AI143741",
+      "pis": "Khan",
+      "role": "Co-investigator",
+      "total": "$1,780,000",
+      "period": "12/2019-12/2021",
+      "title": "Pathogenic role of IL-17 response in Streptococcus pneumoniae nasopharyngeal pathogenesis during an influenza virus co-infection",
+      "note": "5% effort. My role focuses on bioinformatics analyses of high-throughput sequencing data."
+    },
+    {
+      "number": 11,
+      "funder": "UND COBRE Epigenetics Pilot Grant",
+      "pis": "",
+      "role": "Co-PI",
+      "total": "$50,000 (10/2021-5/2022)",
+      "period": "10/2021-5/2022",
+      "title": "Correlated Epigenetic and Behavioral Modifications in α-Synucleinopathy Disorders",
+      "note": ""
+    },
+    {
+      "number": 12,
+      "funder": "UND Epigenomics COBRE Pilot",
+      "pis": "Hur and Porter",
+      "role": "MPI (contact)",
+      "total": "$40,000 (7/1/2023-6/30/2025)",
+      "period": "7/1/2023-6/30/2025",
+      "title": "Spatial pattern of microglial transcriptomic response to α-Synuclein overexpression in Thy1-αSynuclein mice",
+      "note": "No cost extension Junguk Hur, Ph.D. Curriculum Vitae"
+    },
+    {
+      "number": 13,
+      "funder": "UND SMHS Pilot Grant",
+      "pis": "Dhasarathy, Brissette",
+      "role": "Co-Investigator",
+      "total": "$50,000 (8/1/2014-7/31/2025)",
+      "period": "8/1/2014-7/31/2025",
+      "title": "Deciphering transcriptional and epigenetic priming mechanisms contributing to refractory Lyme disease",
+      "note": ""
+    }
+  ],
+  "lastUpdated": "2026-03-14"
+}

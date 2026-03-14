@@ -1,0 +1,19 @@
+Table initialization completed
+Aligning sequences
+Track back started
+#Alignment (Local) Succesfully Completed
+#Seq1 Length: 5 ACCTG
+#Seq2 Length: 5 TCCGC
+#Match Score: 3
+#Mismatch Score: -2
+#GapOpening Penalty: -1
+#GapExtension Penalty: -1
+#Number of Alignments Found: 1
+#Number of Alignments Displayed: 1
+
+>>Rank.1 Local Alignment   Score:8.0  Sum:22.0  Identity:100.0%
+seq1: 2 CCTG
+        || |
+seq2: 2 CC-G
+
+

@@ -1,0 +1,16 @@
+#Alignment (Global) Succesfully Completed
+#Seq1 Length: 7 CGGATGC
+#Seq2 Length: 6 GCATGA
+#Match Score: 1
+#Mismatch Score: -1
+#GapOpening Penalty: -2
+#GapExtension Penalty: -2
+#Number of Alignments Found: 1
+#Number of Alignments Displayed: 1
+
+>>Rank.1 Global Alignment   Score:0.0  Sum:-5.0  Identity:66.7%
+seq1: 1 CGGATGC
+         |*|||*
+seq2: 1 -GCATGA
+
+

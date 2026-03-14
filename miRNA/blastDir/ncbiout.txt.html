@@ -1,0 +1,226 @@
+<html>
+<head>
+<title>NCBI Blast</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" href="http://www.ncbi.nlm.nih.gov/corehtml/ncbi.css">
+</head>
+
+
+<body bgcolor="#FFFFFF" text="#000000" link="#CC6600" vlink="#CC6600" onload="StartBlastCgi();">
+
+<!--  the header   --> 
+
+<table border="0" width="600" cellspacing="0" cellpadding="0">
+<tr> 
+    <td width="600" colspan=4>
+    <map name="head_img_map">
+	<area shape="rect" coords="0,0,300,40" href="http://www.ncbi.nlm.nih.gov" alt="NCBI home page">
+	<area shape="rect" coords="301,0,600,40" href="http://www.ncbi.nlm.nih.gov/blast" alt="NCBI BLAST home page">
+    </map>
+
+    <IMG SRC="html/blastheader.gif" USEMAP="#head_img_map" BORDER="0" NAME="BlastHeaderGif" ALT="BLAST header image" WIDTH="600" HEIGHT="45" BORDER="0" ALIGN="middle">
+    </td>
+</tr>
+<tr align="center">
+    <td width="150" bgcolor="#003366">
+        <a href="http://www.ncbi.nlm.nih.gov/blast/Blast.cgi?CMD=Web&LAYOUT=TwoWindows&AUTO_FORMAT=Semiauto&PAGE=Nucleotides&NCBI_GI=yes&FILTER=L&HITLIST_SIZE=100&SHOW_OVERVIEW=yes&AUTO_FORMAT=yes&SHOW_LINKOUT=yes"
+        class="HELPBAR"><FONT COLOR="#FFFFFF">Nucleotide</FONT></a></td>
+    <td width="150" bgcolor="#003366">
+        <a href="http://www.ncbi.nlm.nih.gov/blast/Blast.cgi?CMD=Web&LAYOUT=TwoWindows&AUTO_FORMAT=Semiauto&PAGE=Proteins&NCBI_GI=yes&HITLIST_SIZE=100&COMPOSITION_BASED_STATISTICS=yes&SHOW_OVERVIEW=yes&AUTO_FORMAT=yes&CDD_SEARCH=yes&FILTER=L&SHOW_LINKOUT=yes"
+        class="HELPBAR"><FONT COLOR="#FFFFFF">Protein</FONT></a></td>
+    <td width="150" bgcolor="#003366">
+        <a href="http://www.ncbi.nlm.nih.gov/blast/Blast.cgi?CMD=Web&LAYOUT=TwoWindows&AUTO_FORMAT=Semiauto&PAGE=Translations&NCBI_GI=yes&FILTER=L&HITLIST_SIZE=100&SHOW_OVERVIEW=yes&AUTO_FORMAT=yes&SHOW_LINKOUT=yes"
+        class="HELPBAR"><FONT COLOR="#FFFFFF">Translations</FONT></a></td>
+    <td width="150" bgcolor="#003366">
+        <a href="http://www.ncbi.nlm.nih.gov/blast/Blast.cgi?CMD=Web&LAYOUT=TwoWindows&AUTO_FORMAT=Semiauto&PAGE=Formating&NCBI_GI=yes&SHOW_OVERVIEW=yes&AUTO_FORMAT=yes&SHOW_LINKOUT=yes"
+        class="HELPBAR"><FONT COLOR="#FFFFFF">Retrieve results for an RID</FONT></a></td>
+</tr>
+</table>
+
+<br>
+
+<!--  the contents   --> 
+
+<form action="Blast.cgi" enctype="application/x-www-form-urlencoded" method="POST" NAME="FormatForm"><script src="blastcgi.js"></script>
+<SCRIPT LANGUAGE="JavaScript">
+ <!--
+document.images['BlastHeaderGif'].src = 'html/head_formating.gif';
+// -->
+</SCRIPT><br>Your request has been successfully submitted and put into the Blast Queue.<p></p>
+<b>Query</b> =  (22 letters)
+<p></p>
+<br><p></p>
+The request ID is <input name="RID" size="50" type="text" value="1166071004-7374-19769443571.BLASTQ2"><p></p>
+&nbsp;<a href="javascript:document.forms[0].submit();"><img align="middle" alt="Format button" border="0" src="html/format_but.gif"></a><font size="-1"> or </font><a href="javascript:document.forms[0].reset();"><img align="middle" alt="Reset form button" border="0" src="html/reset_all.gif"></a><p></p>
+<font size="-1">The results are estimated to be ready in 37 seconds but may be done sooner.</font><p></p>
+<font size="-1">Please press &quot;FORMAT!&quot; when you wish to check your results.</font><font size="-1">  You may change the formatting options for your result via the form below and press &quot;FORMAT!&quot; again.</font><font size="-1">  You may also request results of a different search by entering any other valid request ID to see other recent jobs.</font><hr><script src="blastcgi.js"></script><table border="0" cellpadding="0" cellspacing="0" width="600"><tr><td align="left" colspan="2" height="2" rowspan="2" width="2"><img align="middle" alt=" " border="0" height="16" src="html/corner_tl.gif" width="16"></td>
+<td align="left" bgcolor="#FF6600" height="4"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="100"></td>
+</tr>
+<tr><td align="left" bgcolor="#FFFFFF" height="12"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="2"></td></tr>
+<tr><td bgcolor="#FF6600" width="4"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="4"></td>
+<td bgcolor="#FFFFFF" width="12">&nbsp;</td>
+<td colspan="3"></td>
+</tr><tr><td bgcolor="#FF6600" width="4"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="4"></td>
+<td bgcolor="#FFFFFF" width="12">&nbsp;</td>
+<td align="right" valign="middle"><b>Format</b></td>
+<td align="left" nowrap valign="CENTER">&nbsp;&nbsp;</td>
+</tr>
+<tr><td bgcolor="#FF6600" width="4"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="4"></td>
+<td bgcolor="#FFFFFF" width="12">&nbsp;</td>
+<td colspan="3"></td>
+</tr><tr><td bgcolor="#FF6600" width="4"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="4"></td>
+<td bgcolor="#FFFFFF" width="12">&nbsp;</td>
+<td align="right" valign="middle"><font size="-1">Show</font></td>
+<td align="left" nowrap valign="CENTER">&nbsp;&nbsp;<input name="SHOW_OVERVIEW" type="checkbox"><font size="-1"><a href="blastcgihelp.shtml#show_overview" TARGET="BlastHelpWindow">Graphical Overview</a></font><input name="SHOW_LINKOUT" type="checkbox"><font size="-1"><a href="blastcgihelp.shtml#show_linkout" TARGET="BlastHelpWindow">Linkout</a></font><input name="GET_SEQUENCE" type="checkbox"><font size="-1"><a href="blastcgihelp.shtml#get_sequence" TARGET="BlastHelpWindow">Sequence Retrieval</a></font><input name="NCBI_GI" type="checkbox"><font size="-1"><a href="blastcgihelp.shtml#ncbi_gi" TARGET="BlastHelpWindow">NCBI-gi</a></font><font size="-1"><select name="FORMAT_OBJECT" onChange="Object_Type_Combinations(this, document.forms[0].FORMAT_TYPE.options);"><option selected value="Alignment">Alignment</option>
+<option value="PSSM">PSSM</option>
+<option value="Bioseq">Bioseq</option>
+</select></font><font size="-1"> in </font><font size="-1"><select name="FORMAT_TYPE"><option selected value="HTML">HTML</option>
+<option value="Text">Plain text</option>
+<option value="ASN.1">ASN.1</option>
+<option value="XML">XML</option>
+</select></font><font size="-1"><a href="blastcgihelp.shtml#format_object" TARGET="BlastHelpWindow">format</a></font></td>
+</tr>
+<tr><td bgcolor="#FF6600" width="4"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="4"></td>
+<td bgcolor="#FFFFFF" width="12">&nbsp;</td>
+<td colspan="3"></td>
+</tr><tr><td bgcolor="#FF6600" width="4"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="4"></td>
+<td bgcolor="#FFFFFF" width="12">&nbsp;</td>
+<td align="right" valign="middle"></td>
+<td align="left" nowrap valign="CENTER">&nbsp;&nbsp;<input name="SHOW_CDS_FEATURE" type="checkbox"><font size="-1"><a href="blastcgihelp.shtml#show_cds_feature" TARGET="BlastHelpWindow">CDS feature</a></font></td>
+</tr>
+<tr><td bgcolor="#FF6600" width="4"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="4"></td>
+<td bgcolor="#FFFFFF" width="12">&nbsp;</td>
+<td colspan="3"></td>
+</tr><tr><td bgcolor="#FF6600" width="4"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="4"></td>
+<td bgcolor="#FFFFFF" width="12">&nbsp;</td>
+<td align="right" valign="middle"><font size="-1"></font></td>
+<td align="left" nowrap valign="CENTER">&nbsp;&nbsp;<font size="-1"><a href="blastcgihelp.shtml#mask_character">Masking Character</a></font><select name="MASK_CHAR"><option value="0">X for protein, n for nucleotide</option>
+<option selected value="2">Lower Case</option>
+</select>
+<font size="-1"><a href="blastcgihelp.shtml#mask_color">Masking Color</a></font><select name="MASK_COLOR"><option value="0">Black</option>
+<option selected value="1">Grey</option>
+<option value="2">Red</option>
+</select>
+</td>
+</tr>
+<tr><td bgcolor="#FF6600" width="4"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="4"></td>
+<td bgcolor="#FFFFFF" width="12">&nbsp;</td>
+<td colspan="3"></td>
+</tr><tr><td bgcolor="#FF6600" width="4"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="4"></td>
+<td bgcolor="#FFFFFF" width="12">&nbsp;</td>
+<td align="right" valign="middle"><font size="-1">Number of:</font></td>
+<td align="left" nowrap valign="CENTER">&nbsp;&nbsp;<font size="-1"><a href="blastcgihelp.shtml#descriptions" TARGET="BlastHelpWindow">Descriptions</a></font><select name="DESCRIPTIONS"><option>0</option>
+<option>10</option>
+<option>50</option>
+<option>100</option>
+<option>250</option>
+<option selected>500</option>
+</select>
+<font size="-1"><a href="blastcgihelp.shtml#alignments" TARGET="BlastHelpWindow">Alignments</a></font><select name="ALIGNMENTS"><option>0</option>
+<option>10</option>
+<option>50</option>
+<option>100</option>
+<option>250</option>
+<option selected>500</option>
+</select>
+<font size="-1"><a href="blastcgihelp.shtml#num_overview" TARGET="BlastHelpWindow">Graphic overview</a></font><select name="NUM_OVERVIEW"><option>0</option>
+<option>10</option>
+<option>50</option>
+<option selected>100</option>
+<option>250</option>
+<option>500</option>
+<option>1000</option>
+</select>
+</td>
+</tr>
+<tr><td bgcolor="#FF6600" width="4"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="4"></td>
+<td bgcolor="#FFFFFF" width="12">&nbsp;</td>
+<td colspan="3"></td>
+</tr><tr><td bgcolor="#FF6600" width="4"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="4"></td>
+<td bgcolor="#FFFFFF" width="12">&nbsp;</td>
+<td align="right" valign="middle"><font size="-1"><a href="blastcgihelp.shtml#alignment_view" TARGET="BlastHelpWindow">Alignment view</a></font></td>
+<td align="left" nowrap valign="CENTER">&nbsp;&nbsp;<select name="ALIGNMENT_VIEW"><option selected value="Pairwise">Pairwise</option>
+<option value="PairwiseWithIdentities">Pairwise with identities</option>
+<option value="QueryAnchored">query-anchored with identities</option>
+<option value="QueryAnchoredNoIdentities">query-anchored without identities</option>
+<option value="FlatQueryAnchored">flat query-anchored with identities</option>
+<option value="FlatQueryAnchoredNoIdentities">flat query-anchored without identities</option>
+<option value="Tabular">Hit Table</option>
+</select></td>
+</tr>
+<tr><td bgcolor="#FF6600" width="4"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="4"></td>
+<td bgcolor="#FFFFFF" width="12">&nbsp;</td>
+<td colspan="3"></td>
+</tr><tr><td bgcolor="#FF6600" width="4"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="4"></td>
+<td bgcolor="#FFFFFF" width="12">&nbsp;</td>
+<td align="right" valign="middle"><font size="-1"><a href="blastcgihelp.shtml#entrez_query" TARGET="BlastHelpWindow">Limit results by entrez query</a></font></td>
+<td align="left" nowrap valign="CENTER">&nbsp;&nbsp;<input name="FORMAT_ENTREZ_QUERY" size="20" type="text"><font size="-1"> or select from:</font><font size="-1"><select name="FORMAT_ENTREZ_QUERY"><option selected>All organisms</option>
+<option>Viruses [ORGN]</option>
+<option>Archaea [ORGN]</option>
+<option>Bacteria [ORGN]</option>
+<option>Eukaryota [ORGN]</option>
+<option>Viridiplantae [ORGN]</option>
+<option>Fungi [ORGN]</option>
+<option>Metazoa [ORGN]</option>
+<option>Arthropoda [ORGN]</option>
+<option>Vertebrata [ORGN]</option>
+<option>Mammalia [ORGN]</option>
+<option>Rodentia [ORGN]</option>
+<option>Primates [ORGN]</option>
+<option>-------------------</option>
+<option>Aeropyrum pernix [ORGN]</option>
+<option>Aquifex aeolicus [ORGN]</option>
+<option>Arabidopsis thaliana [ORGN]</option>
+<option>Bacillus subtilis [ORGN]</option>
+<option>Bos taurus [ORGN]</option>
+<option>Caenorhabditis elegans [ORGN]</option>
+<option>Canis familiaris[ORGN]</option>
+<option>Danio rerio [ORGN]</option>
+<option>Dictyostelium discoideum [ORGN]</option>
+<option>Drosophila melanogaster [ORGN]</option>
+<option>Escherichia coli [ORGN]</option>
+<option>Gallus gallus [ORGN]</option>
+<option>Homo sapiens [ORGN]</option>
+<option>Human immunodeficiency virus type 1 [ORGN]</option>
+<option>Methanococcus jannaschii [ORGN]</option>
+<option>Mus musculus [ORGN]</option>
+<option>Oryctolagus cuniculus [ORGN]</option>
+<option>Oryza sativa [ORGN]</option>
+<option>Ovis aries [ORGN]</option>
+<option>Plasmodium falciparum [ORGN]</option>
+<option>Rattus norvegicus [ORGN]</option>
+<option>Saccharomyces cerevisiae [ORGN]</option>
+<option>Schizosaccharomyces pombe [ORGN]</option>
+<option>Xenopus tropicalis[ORGN]</option>
+<option>Simian immunodeficiency virus [ORGN]</option>
+<option>Sus scrofa[ORGN]</option>
+<option>Synechocystis PCC6803 [ORGN]</option>
+<option>Takifugu rubripes [ORGN]</option>
+<option>Xenopus laevis [ORGN]</option>
+<option>Zea mays [ORGN]</option>
+</select></font></td>
+</tr>
+<tr><td bgcolor="#FF6600" width="4"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="4"></td>
+<td bgcolor="#FFFFFF" width="12">&nbsp;</td>
+<td colspan="3"></td>
+</tr><tr><td bgcolor="#FF6600" width="4"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="4"></td>
+<td bgcolor="#FFFFFF" width="12">&nbsp;</td>
+<td align="right" valign="middle"><font size="-1"><a href="blastcgihelp.shtml#expect" TARGET="BlastHelpWindow">Expect value range:</a></font></td>
+<td align="left" nowrap valign="CENTER">&nbsp;&nbsp;<input name="EXPECT_LOW" size="10" type="text"><font size="-1">  </font><input name="EXPECT_HIGH" size="10" type="text"></td>
+</tr>
+<tr><td align="left" colspan="2" height="2" rowspan="2" width="2"><img align="middle" alt=" " border="0" height="16" src="html/corner_bl.gif" width="16"></td>
+<td align="left" bgcolor="#FFFFFF" colspan="3" height="12"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="200"></td>
+</tr>
+<tr><td align="left" bgcolor="#FF6600" colspan="2" height="4"><img align="middle" alt=" " border="0" height="2" src="html/Pixel.gif" width="200"></td></tr>
+</table>
+<input name="RID" type="hidden" value="1166071004-7374-19769443571.BLASTQ2"><input name="RTOE" type="hidden" value="37"><input name="CLIENT" type="hidden" value="web"><input name="FORMAT_OBJECT" type="hidden" value="Alignment"><input name="CMD" type="hidden" value="Get"><input name="PAGE" type="hidden" value=""><input name="_PGR" type="hidden" value="0"><input name="PID" type="hidden" value="7374"><input name="LAYOUT" type="hidden" value=""><input name="FORMAT_BLOCK_ON_RESPAGE" type="hidden" value=""><input name="STEP_NUMBER" type="hidden" value="1"><input name="EXPECT" type="hidden" value="10"><input name="HITLIST_SIZE" type="hidden" value="500"><input name="DESCRIPTIONS" type="hidden" value="500"><input name="ALIGNMENTS" type="hidden" value="500"><input name="COMPOSITION_BASED_STATISTICS" type="hidden" value="0"><input name="AUTO_FORMAT" type="hidden" value="Off"><p></p>
+<!--QBlastInfoBegin
+    RID = 1166071004-7374-19769443571.BLASTQ2
+    RTOE = 37
+QBlastInfoEnd
+--></form>
+   
+</body>
+</html>
+
+

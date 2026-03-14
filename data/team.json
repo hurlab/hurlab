@@ -1,0 +1,96 @@
+{
+  "pi": {
+    "name": "Junguk Hur, Ph.D.",
+    "title": "Associate Professor & Director, Computational Data Analysis Core",
+    "department": "Department of Biomedical Sciences",
+    "institution": "School of Medicine & Health Sciences, University of North Dakota",
+    "photo": "Images/Junguk-3.jpg",
+    "email": "junguk.hur@med.UND.edu",
+    "email2": "jung.hur@UND.edu",
+    "phone": "(701) 777-6814",
+    "github": "https://github.com/windysky/",
+    "address": "1301 N Columbia Rd Stop 9037, Grand Forks, ND 58202-9037",
+    "orcid": "0000-0002-0736-2149",
+    "cv": "Personal/JungukHur-CV.pdf",
+    "researchgate": "https://www.researchgate.net/profile/Junguk_Hur",
+    "interests": ["Bioinformatics", "Systems Pharmacology", "Literature Mining", "Machine Learning", "Artificial Intelligence", "Diabetic Neuropathy"]
+  },
+  "current": [
+    {
+      "name": "Masha Savelieff, Ph.D.",
+      "role": "Research Scientist",
+      "category": "staff",
+      "description": "Lab/grant manager and research scientist",
+      "photo": null
+    },
+    {
+      "name": "Brett McGregor, Ph.D.",
+      "role": "Data Analyst",
+      "category": "staff",
+      "description": "Data analyst, Computational Data Analysis Core",
+      "photo": "Images/mcgregor_brett.jpg"
+    },
+    {
+      "name": "Kai Guo, Ph.D.",
+      "role": "Visiting Scholar / Research Assistant Professor",
+      "category": "visiting",
+      "description": "Research Assistant Professor at University of Michigan. Interests: Bioinformatics, Epigenetics, Transcriptomic analysis, Genome Assembly",
+      "photo": null
+    },
+    {
+      "name": "Hasin Rehana",
+      "role": "Ph.D. Student, Computer Sciences",
+      "category": "student",
+      "description": "Bioinformatics, NLP, and Machine Learning",
+      "photo": null
+    },
+    {
+      "name": "Behnaz Karimi",
+      "role": "Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Genetics",
+      "photo": null
+    },
+    {
+      "name": "Davis Payne",
+      "role": "Ph.D. Student, Biomedical Engineering",
+      "category": "student",
+      "description": "Biomedical Engineering",
+      "photo": null
+    },
+    {
+      "name": "Sayed Asaduzzaman",
+      "role": "Ph.D. Student, Computer Science",
+      "category": "student",
+      "description": "Imaging analysis",
+      "photo": null
+    },
+    {
+      "name": "Christianah Jemiyo",
+      "role": "Ph.D. Student",
+      "category": "student",
+      "description": "Artificial Intelligence",
+      "photo": null
+    },
+    {
+      "name": "Jane Kim",
+      "role": "Remote Research Intern",
+      "category": "student",
+      "description": "High school researcher from Korea",
+      "photo": null
+    }
+  ],
+  "alumni": [
+    {
+      "name": "Guillermo De Anda Jauregui, Ph.D.",
+      "role": "Former Post-doctoral Fellow",
+      "description": "Systems and network biology, systems pharmacology",
+      "orcid": "0000-0002-7749-0365"
+    },
+    {
+      "name": "Larson Danes",
+      "role": "Former Undergraduate Researcher",
+      "description": "Bioinformatics software development"
+    }
+  ]
+}

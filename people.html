@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>People - Hur Lab</title>
+  <meta name="description" content="Team members of the Hur Lab at University of North Dakota">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/custom.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body class="bg-surface font-sans text-gray-800 antialiased">
+
+  <div id="nav-placeholder"></div>
+
+  <!-- Header Banner -->
+  <section class="hero-pattern bg-gradient-to-br from-teal-800 via-teal-900 to-indigo-900 py-16 pt-28 text-center" data-aos="fade-down">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Our Team</h1>
+      <p class="text-lg text-teal-200/80">Researchers and students driving computational biology forward</p>
+    </div>
+  </section>
+
+  <!-- Data-driven content -->
+  <div x-data="teamPage()" x-init="init()">
+
+    <!-- Principal Investigator Section -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16" x-show="pi.name" x-cloak>
+      <div class="bg-white rounded-2xl shadow-lg gradient-border overflow-hidden" data-aos="fade-up">
+        <div class="flex flex-col md:flex-row gap-8 p-8 pt-10">
+          <div class="flex-shrink-0 flex justify-center md:justify-start">
+            <template x-if="pi.photo">
+              <img :src="pi.photo" :alt="pi.name" class="w-56 h-56 object-cover rounded-xl shadow-md">
+            </template>
+          </div>
+          <div class="flex-1 space-y-4">
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-gray-900" x-text="pi.name"></h2>
+              <p class="text-teal-700 font-semibold mt-1" x-text="pi.title"></p>
+              <p class="text-gray-500 text-sm mt-1" x-text="pi.department + ', ' + pi.institution"></p>
+            </div>
+
+            <!-- Research Interest Tags -->
+            <div class="flex flex-wrap gap-2">
+              <template x-for="(interest, i) in (pi.interests || [])" :key="i">
+                <span :class="i % 2 === 0 ? 'bg-teal-50 text-teal-700 border-teal-200' : 'bg-indigo-50 text-indigo-700 border-indigo-200'"
+                      class="px-3 py-1 text-xs font-medium rounded-full border" x-text="interest"></span>
+              </template>
+            </div>
+
+            <!-- Contact -->
+            <div class="flex flex-col sm:flex-row flex-wrap gap-4 text-sm text-gray-600">
+              <template x-if="pi.email">
+                <a :href="'mailto:' + pi.email" class="flex items-center gap-2 hover:text-teal-600 transition-colors">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  <span x-text="pi.email"></span>
+                </a>
+              </template>
+              <template x-if="pi.email2">
+                <a :href="'mailto:' + pi.email2" class="flex items-center gap-2 hover:text-teal-600 transition-colors">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  <span x-text="pi.email2"></span>
+                </a>
+              </template>
+              <template x-if="pi.phone">
+                <span class="flex items-center gap-2">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                  <span x-text="pi.phone"></span>
+                </span>
+              </template>
+            </div>
+
+            <!-- Links Row -->
+            <div class="flex flex-wrap gap-3 pt-2">
+              <template x-if="pi.orcid">
+                <a :href="'https://orcid.org/' + pi.orcid" target="_blank" rel="noopener"
+                   class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 text-xs font-medium rounded-lg border border-green-200 hover:bg-green-100 transition-colors">
+                  ORCID
+                </a>
+              </template>
+              <template x-if="pi.researchgate">
+                <a :href="pi.researchgate" target="_blank" rel="noopener"
+                   class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-cyan-50 text-cyan-700 text-xs font-medium rounded-lg border border-cyan-200 hover:bg-cyan-100 transition-colors">
+                  ResearchGate
+                </a>
+              </template>
+              <template x-if="pi.cv">
+                <a :href="pi.cv" target="_blank" rel="noopener"
+                   class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 text-gray-700 text-xs font-medium rounded-lg border border-gray-200 hover:bg-gray-200 transition-colors">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  Download CV
+                </a>
+              </template>
+              <template x-if="pi.github">
+                <a :href="pi.github" target="_blank" rel="noopener"
+                   class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-900 text-white text-xs font-medium rounded-lg hover:bg-gray-800 transition-colors">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  GitHub (Personal)
+                </a>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Current Team Section -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16" x-show="current.length > 0" x-cloak>
+      <div class="flex items-center gap-3 mb-10" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900">Current Members</h2>
+        <span class="inline-flex items-center justify-center px-3 py-1 bg-teal-100 text-teal-800 text-sm font-semibold rounded-full" x-text="current.length"></span>
+      </div>
+
+      <!-- Group by category -->
+      <template x-for="group in groupedCurrent" :key="group.label">
+        <div class="mb-12" data-aos="fade-up">
+          <h3 class="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
+            <span class="w-1.5 h-6 rounded-full" :class="group.color"></span>
+            <span x-text="group.label"></span>
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <template x-for="member in group.members" :key="member.name">
+              <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 card-hover">
+                <div class="flex items-center gap-4 mb-3">
+                  <template x-if="member.photo">
+                    <img :src="member.photo" :alt="member.name" class="w-14 h-14 rounded-full object-cover flex-shrink-0">
+                  </template>
+                  <template x-if="!member.photo">
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0"
+                         :class="group.gradient"
+                         x-text="getInitials(member.name)"></div>
+                  </template>
+                  <div>
+                    <h4 class="font-semibold text-gray-900" x-text="member.name"></h4>
+                    <p class="text-sm font-medium" :class="group.textColor" x-text="member.role"></p>
+                  </div>
+                </div>
+                <template x-if="member.description">
+                  <p class="text-sm text-gray-500" x-text="member.description"></p>
+                </template>
+              </div>
+            </template>
+          </div>
+        </div>
+      </template>
+    </section>
+
+    <!-- Alumni Section -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20" x-show="alumni.length > 0" x-cloak x-data="{ showAlumni: false }" data-aos="fade-up">
+      <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center gap-3">
+          <h2 class="text-3xl font-bold text-gray-900">Alumni</h2>
+          <span class="inline-flex items-center justify-center px-3 py-1 bg-gray-200 text-gray-700 text-sm font-semibold rounded-full" x-text="alumni.length"></span>
+        </div>
+        <button @click="showAlumni = !showAlumni"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium rounded-lg transition-colors">
+          <span x-text="showAlumni ? 'Hide' : 'Show'"></span>
+          <svg class="w-4 h-4 transition-transform duration-300" :class="{ 'rotate-180': showAlumni }" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+      </div>
+
+      <div x-show="showAlumni" x-transition>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <template x-for="member in alumni" :key="member.name">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+              <div class="flex items-center gap-4 mb-3">
+                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-gray-400 to-slate-500 flex items-center justify-center text-white font-bold text-lg flex-shrink-0"
+                     x-text="getInitials(member.name)"></div>
+                <div>
+                  <h4 class="font-semibold text-gray-900" x-text="member.name"></h4>
+                  <p class="text-sm text-gray-500 font-medium" x-text="member.role"></p>
+                </div>
+              </div>
+              <template x-if="member.description">
+                <p class="text-sm text-gray-500 mb-3" x-text="member.description"></p>
+              </template>
+              <template x-if="member.orcid">
+                <a :href="'https://orcid.org/' + member.orcid" target="_blank" rel="noopener"
+                   class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-green-50 text-green-700 text-xs font-medium rounded-md border border-green-200 hover:bg-green-100 transition-colors">
+                  ORCID
+                </a>
+              </template>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script>
+    function teamPage() {
+      return {
+        pi: {},
+        current: [],
+        alumni: [],
+
+        async init() {
+          try {
+            const res = await fetch('data/team.json');
+            const data = await res.json();
+            this.pi = data.pi || {};
+            this.current = data.current || [];
+            this.alumni = data.alumni || [];
+          } catch (e) {
+            console.error('Failed to load team data:', e);
+          }
+          this.$nextTick(() => {
+            if (typeof AOS !== 'undefined') AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 50 });
+          });
+        },
+
+        getInitials(name) {
+          if (!name) return '?';
+          const parts = name.replace(/,.*$/, '').replace(/\s+(Ph\.?D\.?|M\.?D\.?|M\.?S\.?|B\.?S\.?).*$/i, '').trim().split(/\s+/);
+          if (parts.length >= 2) return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+          return parts[0][0].toUpperCase();
+        },
+
+        get groupedCurrent() {
+          const categoryConfig = {
+            staff:    { label: 'Research Staff',     color: 'bg-teal-500',   gradient: 'bg-gradient-to-br from-teal-400 to-indigo-500',  textColor: 'text-teal-600' },
+            visiting: { label: 'Visiting Scholars',  color: 'bg-indigo-500', gradient: 'bg-gradient-to-br from-indigo-400 to-purple-500', textColor: 'text-indigo-600' },
+            student:  { label: 'Graduate Students',  color: 'bg-teal-500',   gradient: 'bg-gradient-to-br from-teal-400 to-cyan-500',    textColor: 'text-teal-600' },
+            other:    { label: 'Other',              color: 'bg-amber-500',  gradient: 'bg-gradient-to-br from-amber-400 to-orange-500', textColor: 'text-amber-600' }
+          };
+          const order = ['staff', 'visiting', 'student', 'other'];
+          const groups = [];
+          for (const cat of order) {
+            const members = this.current.filter(m => m.category === cat);
+            if (members.length > 0) {
+              groups.push({ ...categoryConfig[cat], members });
+            }
+          }
+          // Any uncategorized
+          const known = new Set(order);
+          const uncategorized = this.current.filter(m => !known.has(m.category));
+          if (uncategorized.length > 0) {
+            groups.push({ ...categoryConfig.other, label: 'Other', members: uncategorized });
+          }
+          return groups;
+        }
+      };
+    }
+  </script>
+
+  <script src="js/components.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>

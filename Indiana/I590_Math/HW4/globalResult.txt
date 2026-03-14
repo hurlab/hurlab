@@ -1,0 +1,28 @@
+#Alignment (Global) Succesfully Completed
+#Seq1 Length: 47 SGRPRTTATPGQGTDRVQEVSYTDTKVIGNGSFGELVAIKKVLQRFK
+#Seq2 Length: 47 MSGRPRTSSFAEGNKQSPSLVLGGVKTCSRDGSKITTVVATPGQDRV
+#Match Score: 1
+#Mismatch Score: -1
+#GapOpening Penalty: -2
+#GapExtension Penalty: -2
+#Number of Alignments Found: 8
+#Number of Alignments Displayed: 3
+
+>>Rank.1 Global Alignment   Score:-28.0  Sum:-541.0  Identity:23.9%
+seq1:  1 -SGRPRTTATPGQGTDRVQEVSYTDTKVIGNGSFGELVAIKKVLQRFK
+          ||||||*************|**********||****|*******|* 
+seq2:  1 MSGRPRTSSFAEGNKQSPSLVLGGVKTCSRDGSKITTVVATPGQDRV-
+
+
+>>Rank.2 Global Alignment   Score:-28.0  Sum:-542.0  Identity:23.9%
+seq1:  1 -SGRPRTTATPGQGTDRVQEVSYTDTKVIGNGSFGELVAIKKVLQRFK
+          ||||||*************|**********||****|*******| *
+seq2:  1 MSGRPRTSSFAEGNKQSPSLVLGGVKTCSRDGSKITTVVATPGQDR-V
+
+
+>>Rank.3 Global Alignment   Score:-28.0  Sum:-543.0  Identity:23.9%
+seq1:  1 -SGRPRTTATPGQGTDRVQEVSYTDTKVIGNGSFGELVAIKKVLQRFK
+          ||||||*************|**********||****|***** |***
+seq2:  1 MSGRPRTSSFAEGNKQSPSLVLGGVKTCSRDGSKITTVVATPG-QDRV
+
+

@@ -1,0 +1,14 @@
+Table initialization completed
+Aligning sequences
+Track back started
+#Alignment (Local) Succesfully Completed
+#Seq1 Length: 5 TAAGG
+#Seq2 Length: 4 AGGA
+#Match Score: 0
+#Mismatch Score: -1
+#GapOpening Penalty: -1
+#GapExtension Penalty: -1
+#Number of Alignment Found: 0
+#Number of Alignment Displayed: 0
+
+No LOCAL alignment is available

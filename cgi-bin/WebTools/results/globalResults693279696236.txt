@@ -1,0 +1,18 @@
+#Alignment (Global) Succesfully Completed
+#Combined Scoring Matrix Created Using The Following
+# Matrix1 : BLOSUM45  Weight: 100.0%
+# Matrix2 : SIZE  Weight: 0.0%
+# Matrix3 : SIZE  Weight: 0.0%
+#Seq1 Length: 9 LAKKYAAKL
+#Seq2 Length: 8 ALKYYAKL
+#GapOpening Penalty: -5
+#GapExtension Penalty: -5
+#Number of Alignments Found: 1
+#Number of Alignments Displayed: 1
+
+>>Rank.1 Global Alignment   Score:23.0  Sum:66.0  Identity:75.0%
+seq1:  1 LAKKYAAKL
+          |*||*|||
+seq2:  1 -ALKYYAKL
+
+

@@ -1,0 +1,31 @@
+Table initialization completed
+Aligning sequences
+Track back started
+#Alignment (Local) Succesfully Completed
+#Seq1 Length: 102 ATCCGATATAGCTAGATCGATAGACCCGATAGCTAGACATCGATCGAGAGGACTAGATAGCTCGCTAGATAGACACACACAGAGACTGATCGCTGCTTACAA
+#Seq2 Length: 102 GATAGCTAGCTTCGACCTAGCACGATCTCTCTCGATAGCTAGCTAGCTAGAGGAGCTCCTCCCCCGATCTGAGCTAGCTAAGCTAACCCGATCGACTGAAAA
+#Match Score: 1
+#Mismatch Score: -1
+#GapOpening Penalty: -2
+#GapExtension Penalty: -2
+#Number of Alignments Found: 14
+#Number of Alignments Displayed: 3
+
+>>Rank.1 Local Alignment   Score:17.0  Sum:474.0  Identity:84.4%
+seq1: 28 GATAGCTAGACATCGATCGAG-AGGA-CTA----GATAGCTCGCTAGATAGA
+         ||||||||| |*||||*|*|| |*|| ||*    |||||||*|||||*||||
+seq2:  1 GATAGCTAG-CTTCGACCTAGCACGATCTCTCTCGATAGCTAGCTAGCTAGA
+
+
+>>Rank.2 Local Alignment   Score:17.0  Sum:473.0  Identity:84.4%
+seq1: 28 GATAGCTAGACATCGATCGAG-AGGA-CT-A---GATAGCTCGCTAGATAGA
+         ||||||||| |*||||*|*|| |*|| || *   |||||||*|||||*||||
+seq2:  1 GATAGCTAG-CTTCGACCTAGCACGATCTCTCTCGATAGCTAGCTAGCTAGA
+
+
+>>Rank.3 Local Alignment   Score:17.0  Sum:472.0  Identity:84.4%
+seq1: 28 GATAGCTAGACATCGATCGAG-AGGA-CT--A--GATAGCTCGCTAGATAGA
+         ||||||||| |*||||*|*|| |*|| ||  *  |||||||*|||||*||||
+seq2:  1 GATAGCTAG-CTTCGACCTAGCACGATCTCTCTCGATAGCTAGCTAGCTAGA
+
+
