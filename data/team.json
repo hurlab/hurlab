@@ -54,54 +54,53 @@
       "institution": "UM"
     },
     {
-      "name": "Hasin Rehana",
+      "name": "Hasin Rehana, M.S.",
       "role": "Ph.D. Student, Computer Sciences",
       "category": "student",
       "description": "Bioinformatics, NLP, and Machine Learning",
-      "photo": null,
-      "period": "Jan 2023 \u2013",
-      "advisingRole": "chair of FAC",
-      "institution": "UND"
+      "photo": null
     },
     {
-      "name": "Davis Payne",
+      "name": "Davis Payne, M.S.",
       "role": "Ph.D. Student, Biomedical Engineering",
       "category": "student",
       "description": "Biomedical Engineering",
-      "photo": null,
-      "period": "Mar 2024 \u2013",
-      "advisingRole": "chair of FAC",
-      "institution": "UND"
+      "photo": null
     },
     {
-      "name": "Behnaz Karimialiabadi",
+      "name": "Behnaz Karimialiabadi, M.S.",
       "role": "Ph.D. Student, Biomedical Sciences",
       "category": "student",
       "description": "Genetics",
-      "photo": null,
-      "period": "Apr 2024 \u2013",
-      "advisingRole": "chair of FAC",
-      "institution": "UND"
+      "photo": null
     },
     {
-      "name": "Sayed Asaduzzaman",
+      "name": "Sayed Asaduzzaman, M.S.",
       "role": "Ph.D. Student, Computer Science",
       "category": "student",
       "description": "Imaging analysis",
-      "photo": null,
-      "period": "Aug 2025 \u2013",
-      "advisingRole": "chair of FAC",
-      "institution": "UND"
+      "photo": null
     },
     {
-      "name": "Christianah Jemiyo",
+      "name": "Christianah Jemiyo, M.S.",
       "role": "Former Visiting Scholar / Ph.D. Student",
       "category": "student",
       "description": "NABRO, Nigeria; was visiting scholar, then became Ph.D. student",
-      "photo": null,
-      "period": "Sep 2022 \u2013 Dec 2025",
-      "advisingRole": null,
-      "institution": "UND"
+      "photo": null
+    },
+    {
+      "name": "Francisco Mimica Porras, Ph.D.",
+      "role": "Ph.D. Student",
+      "category": "student",
+      "description": "Epidemiology, Infection Surveillance ",
+      "photo": null
+    },
+    {
+      "name": "Jane Kim",
+      "role": "Former Remote Research Intern",
+      "category": "student",
+      "description": "Research mentee, Chadwick International High School, Korea",
+      "photo": null
     }
   ],
   "alumni": [
@@ -254,13 +253,6 @@
       "period": "Feb 2024 \u2013 May 2025",
       "advisingRole": "chair of FAC",
       "institution": "UND"
-    },
-    {
-      "name": "Jane Kim",
-      "role": "Former Remote Research Intern",
-      "category": "student",
-      "description": "Research mentee, Chadwick International High School, Korea",
-      "photo": null
     },
     {
       "name": "Sarah Hong",
@@ -470,7 +462,7 @@
   "visibility": {
     "current": true,
     "alumni": true,
-    "fac": false,
-    "fac_alumni": false
+    "fac": true,
+    "fac_alumni": true
   }
 }
