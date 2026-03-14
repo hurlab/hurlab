@@ -100,9 +100,13 @@ def purge_expired_sessions():
 def load_team_data() -> dict:
     """Load team.json, returning empty structure if missing."""
     if not TEAM_FILE.exists():
-        return {"pi": {}, "current": [], "alumni": []}
+        return {"pi": {}, "current": [], "alumni": [], "hidden": []}
     with open(TEAM_FILE, "r") as f:
-        return json.load(f)
+        data = json.load(f)
+    # Ensure "hidden" key exists for older team.json files
+    if "hidden" not in data:
+        data["hidden"] = []
+    return data
 
 
 def save_team_data(data: dict):
@@ -297,7 +301,18 @@ class AdminHandler(BaseHTTPRequestHandler):
         if self.path == "/api/team":
             if not self._require_auth():
                 return
-            self._send_json(load_team_data())
+            team_data = load_team_data()
+            # Include list of available team photos from Images/team/
+            team_images_dir = BASE_DIR / "Images" / "team"
+            photos = []
+            if team_images_dir.is_dir():
+                photos = sorted(
+                    f"Images/team/{f.name}"
+                    for f in team_images_dir.iterdir()
+                    if f.is_file() and f.suffix.lower() in (".jpg", ".jpeg", ".png", ".gif", ".webp")
+                )
+            team_data["team_photos"] = photos
+            self._send_json(team_data)
             return
 
         self.send_error(404, "Not Found")
@@ -321,6 +336,8 @@ class AdminHandler(BaseHTTPRequestHandler):
             self._handle_team_member()
         elif self.path == "/api/team/pi":
             self._handle_team_pi()
+        elif self.path == "/api/team/photo":
+            self._handle_team_photo()
         else:
             self.send_error(404, "Not Found")
 
@@ -522,37 +539,50 @@ class AdminHandler(BaseHTTPRequestHandler):
     def _handle_status(self):
         status = {}
 
-        # Current CV file (symlink target)
+        # Current CV file info (nested under "cv" for the frontend)
         cv_link = PERSONAL_DIR / "JungukHur-CV.pdf"
+        cv_info = {}
         if cv_link.is_symlink():
-            status["current_cv"] = os.readlink(str(cv_link))
+            cv_info["filename"] = os.readlink(str(cv_link))
         elif cv_link.exists():
-            status["current_cv"] = "JungukHur-CV.pdf (not a symlink)"
+            cv_info["filename"] = "JungukHur-CV.pdf"
         else:
-            status["current_cv"] = "Not found"
+            cv_info["filename"] = "Not found"
 
-        # CV file size
         if cv_link.exists():
-            size = cv_link.stat().st_size
-            status["cv_size"] = f"{size / 1024:.1f} KB"
+            stat = cv_link.stat()
+            cv_info["size"] = f"{stat.st_size / 1024:.1f} KB"
+            cv_info["modified"] = datetime.fromtimestamp(stat.st_mtime).strftime("%Y-%m-%d %H:%M")
         else:
-            status["cv_size"] = "N/A"
+            cv_info["size"] = "N/A"
+            cv_info["modified"] = "N/A"
+        status["cv"] = cv_info
 
-        # Last parse date & publication count from publications.json
-        pub_file = BASE_DIR / "publications.json"
+        # Publications counts from data/publications.json
+        pub_file = DATA_DIR / "publications.json"
+        pub_info = {}
         if pub_file.exists():
             try:
                 with open(pub_file, "r") as f:
                     pub_data = json.load(f)
-                status["last_parse_date"] = pub_data.get("lastUpdated", "Unknown")
-                pubs = pub_data.get("publications", [])
-                status["publication_count"] = len(pubs)
-                status["publications_json_size"] = f"{pub_file.stat().st_size / 1024:.1f} KB"
+                pub_info["peer_reviewed"] = len(pub_data.get("peerReviewed", []))
+                pub_info["under_review"] = len(pub_data.get("underReview", []))
+                pub_info["in_preparation"] = len(pub_data.get("inPreparation", []))
+                status["last_updated"] = pub_data.get("lastUpdated", "Unknown")
             except Exception as e:
-                status["publications_json_error"] = str(e)
+                pub_info["peer_reviewed"] = 0
+                pub_info["under_review"] = 0
+                pub_info["in_preparation"] = 0
+                status["last_updated"] = f"Error: {e}"
         else:
-            status["last_parse_date"] = "No publications.json found"
-            status["publication_count"] = 0
+            pub_info["peer_reviewed"] = 0
+            pub_info["under_review"] = 0
+            pub_info["in_preparation"] = 0
+            status["last_updated"] = "No data yet"
+        status["publications"] = pub_info
+
+        # Username
+        status["user"] = self._get_username()
 
         self._send_json(status)
 
@@ -578,9 +608,11 @@ class AdminHandler(BaseHTTPRequestHandler):
         try:
             if action == "add":
                 section = body.get("section")
-                if section not in ("current", "alumni"):
+                if section not in ("current", "alumni", "hidden"):
                     self._send_json({"error": "Invalid section"}, status=400)
                     return
+                if section not in team:
+                    team[section] = []
                 member = body.get("member", {})
                 if not member.get("name"):
                     self._send_json({"error": "Member name is required"}, status=400)
@@ -590,7 +622,7 @@ class AdminHandler(BaseHTTPRequestHandler):
             elif action == "edit":
                 section = body.get("section")
                 index = body.get("index")
-                if section not in ("current", "alumni"):
+                if section not in ("current", "alumni", "hidden"):
                     self._send_json({"error": "Invalid section"}, status=400)
                     return
                 if not isinstance(index, int) or index < 0 or index >= len(team[section]):
@@ -605,7 +637,7 @@ class AdminHandler(BaseHTTPRequestHandler):
             elif action == "delete":
                 section = body.get("section")
                 index = body.get("index")
-                if section not in ("current", "alumni"):
+                if section not in ("current", "alumni", "hidden"):
                     self._send_json({"error": "Invalid section"}, status=400)
                     return
                 if not isinstance(index, int) or index < 0 or index >= len(team[section]):
@@ -617,7 +649,7 @@ class AdminHandler(BaseHTTPRequestHandler):
                 from_section = body.get("from")
                 to_section = body.get("to")
                 index = body.get("index")
-                if from_section not in ("current", "alumni") or to_section not in ("current", "alumni"):
+                if from_section not in ("current", "alumni", "hidden") or to_section not in ("current", "alumni", "hidden"):
                     self._send_json({"error": "Invalid section"}, status=400)
                     return
                 if from_section == to_section:
@@ -658,6 +690,129 @@ class AdminHandler(BaseHTTPRequestHandler):
         try:
             save_team_data(team)
             self._send_json(team["pi"])
+        except Exception as e:
+            self._send_json({"error": str(e)}, status=500)
+
+    def _handle_team_photo(self):
+        if not self._require_auth():
+            return
+
+        content_type = self.headers.get("Content-Type", "")
+        if "multipart/form-data" not in content_type:
+            self._send_json({"error": "Expected multipart/form-data"}, status=400)
+            return
+
+        try:
+            content_length = int(self.headers.get("Content-Length", 0))
+            body_bytes = self.rfile.read(content_length)
+
+            # Extract boundary
+            boundary = None
+            for part in content_type.split(";"):
+                part = part.strip()
+                if part.startswith("boundary="):
+                    boundary = part[len("boundary="):]
+                    break
+
+            if not boundary:
+                self._send_json({"error": "No boundary in multipart data"}, status=400)
+                return
+
+            # Parse multipart parts manually to get both photo and member_name
+            boundary_bytes = boundary.encode("utf-8")
+            delimiter = b"--" + boundary_bytes
+            parts = body_bytes.split(delimiter)
+
+            photo_data = None
+            photo_filename = None
+            member_name = None
+
+            for part in parts:
+                if part in (b"", b"--\r\n", b"--\n", b"--"):
+                    continue
+                if b"\r\n\r\n" in part:
+                    header_section, part_body = part.split(b"\r\n\r\n", 1)
+                elif b"\n\n" in part:
+                    header_section, part_body = part.split(b"\n\n", 1)
+                else:
+                    continue
+
+                header_text = header_section.decode("utf-8", errors="replace")
+
+                # Strip trailing CRLF
+                if part_body.endswith(b"\r\n"):
+                    part_body = part_body[:-2]
+                elif part_body.endswith(b"\n"):
+                    part_body = part_body[:-1]
+
+                if 'name="member_name"' in header_text:
+                    member_name = part_body.decode("utf-8").strip()
+                elif 'name="photo"' in header_text and 'filename="' in header_text:
+                    fname_start = header_text.index('filename="') + len('filename="')
+                    fname_end = header_text.index('"', fname_start)
+                    photo_filename = header_text[fname_start:fname_end]
+                    photo_data = part_body
+
+            if not member_name:
+                self._send_json({"error": "member_name is required"}, status=400)
+                return
+            if photo_data is None or not photo_filename:
+                self._send_json({"error": "photo file is required"}, status=400)
+                return
+
+            # Build a clean filename from the member name
+            clean_name = member_name.strip().lower().replace(" ", "_")
+            # Remove any characters that aren't alphanumeric or underscore
+            clean_name = "".join(c for c in clean_name if c.isalnum() or c == "_")
+
+            # Determine extension from the original filename
+            ext = ".jpg"
+            if "." in photo_filename:
+                ext = photo_filename[photo_filename.rfind("."):]
+                ext = ext.lower()
+
+            save_filename = f"{clean_name}{ext}"
+
+            # Ensure the team images directory exists
+            team_images_dir = BASE_DIR / "Images" / "team"
+            team_images_dir.mkdir(parents=True, exist_ok=True)
+
+            # Save the photo
+            save_path = team_images_dir / save_filename
+            with open(save_path, "wb") as f:
+                f.write(photo_data)
+
+            # Update the member's photo field in team.json
+            photo_rel_path = f"Images/team/{save_filename}"
+            team = load_team_data()
+            updated = False
+
+            for section in ("current", "alumni", "hidden"):
+                for member in team.get(section, []):
+                    if member.get("name", "").strip().lower() == member_name.strip().lower():
+                        member["photo"] = photo_rel_path
+                        updated = True
+                        break
+                if updated:
+                    break
+
+            # Also check the PI
+            if not updated:
+                pi = team.get("pi", {})
+                if pi.get("name", "").strip().lower() == member_name.strip().lower():
+                    team["pi"]["photo"] = photo_rel_path
+                    updated = True
+
+            if updated:
+                save_team_data(team)
+
+            self._send_json({
+                "success": True,
+                "photo_path": photo_rel_path,
+                "member_name": member_name,
+                "updated_team_json": updated,
+            })
+
         except Exception as e:
             self._send_json({"error": str(e)}, status=500)
 

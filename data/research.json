@@ -5,31 +5,91 @@
       "title": "Bioinformatics and Systems Biology",
       "description": "Integration and analysis of multi-omics data (transcriptomics, epigenomics, metabolomics, lipidomics, proteomics) to identify molecular mechanisms underlying human diseases.",
       "icon": "dna",
-      "color": "teal"
+      "color": "teal",
+      "details": {
+        "overview": "Our bioinformatics and systems biology research centers on the integration and analysis of multi-omics datasets to unravel the complex molecular mechanisms underlying human diseases. By combining transcriptomics, epigenomics, metabolomics, lipidomics, and proteomics data, we develop computational pipelines that reveal hidden biological relationships and identify potential therapeutic targets. Our work spans from single-cell RNA sequencing analysis to large-scale network modeling of disease pathways.\n\nA key focus is the development of open-source bioinformatics tools that empower the broader research community. We have created scGEN for single-cell generative modeling, richR for functional enrichment analysis, and VennDetail for detailed comparison of gene lists across experiments. These tools are designed to be accessible and reproducible, enabling researchers across disciplines to perform rigorous multi-omics analyses.\n\nOur systems biology approach leverages pathway analysis, gene regulatory network inference, and functional enrichment methods to transform raw omics data into actionable biological insights. We apply these methods to study diabetic complications, neurological disorders, and host-pathogen interactions, collaborating closely with experimental biologists to validate computational predictions.",
+        "keyTopics": [
+          "Multi-omics data integration",
+          "Single-cell RNA-seq analysis",
+          "Pathway and network analysis",
+          "Functional enrichment analysis"
+        ],
+        "tools": ["scGEN", "richR", "VennDetail"],
+        "collaborators": ["Eva Feldman (University of Michigan)", "Stephen Goutman (University of Michigan)"],
+        "keywords": ["omics", "transcriptom", "epigenom", "metabolom", "proteom", "RNA-Seq", "single-cell", "pathway", "network", "enrichment"]
+      }
     },
     {
       "title": "Ontology-Based Knowledge Systems",
       "description": "Development of interoperable ontologies and AI-driven frameworks for data standardization, integration, and literature mining (e.g., VIOLIN, OLAS, MILAM).",
       "icon": "database",
-      "color": "indigo"
+      "color": "indigo",
+      "details": {
+        "overview": "Our ontology-based knowledge systems research focuses on building structured, computable representations of biomedical knowledge that enable data integration, standardization, and automated reasoning. We have developed and contributed to several major ontology-driven platforms, including VIOLIN (Vaccine Investigation and Online Information Network), a comprehensive vaccine knowledgebase, and the Interaction Network Ontology (INO), which formally represents molecular and cellular interactions.\n\nWe pioneer the application of ontology-based approaches to literature mining and knowledge extraction. Our OLAS (Ontology-based Literature Analysis System) and MILAM (Michigan Literature Analysis and Mining) platforms leverage ontological structures to systematically identify and organize biomedical knowledge from the published literature. These systems go beyond simple keyword matching by using semantic relationships defined in ontologies to discover implicit connections between biological entities.\n\nThis research has been particularly impactful in the domain of vaccine informatics and infectious disease research, where we have applied ontology-based methods to model Brucella vaccine-gene associations and analyze host-pathogen interaction networks. Our work bridges the gap between unstructured text data and structured knowledge representations, enabling more effective data-driven discovery in biomedicine.",
+        "keyTopics": [
+          "Biomedical ontology development",
+          "Vaccine knowledgebases",
+          "Ontology-based literature mining",
+          "Semantic data integration"
+        ],
+        "tools": ["VIOLIN", "OLAS", "MILAM", "INO"],
+        "collaborators": ["Yongqun He (University of Michigan)"],
+        "keywords": ["ontology", "VIOLIN", "vaccine", "INO", "knowledge", "OLAS", "MILAM", "Brucella"]
+      }
     },
     {
       "title": "Artificial Intelligence and Machine Learning",
       "description": "Application of deep learning and natural language processing to biomedical data, focusing on biological age prediction, disease modeling, and knowledge extraction.",
       "icon": "chip",
-      "color": "teal"
+      "color": "teal",
+      "details": {
+        "overview": "Our artificial intelligence and machine learning research applies cutting-edge computational approaches to biomedical problems, with particular emphasis on natural language processing (NLP), deep learning, and predictive modeling. A cornerstone of this work is SciMiner, our web-based literature mining tool that uses NLP techniques to automatically extract gene and protein mentions from biomedical texts and perform functional enrichment analysis on the extracted targets.\n\nWe are actively exploring the use of large language models (LLMs) for biomedical text mining and knowledge extraction, investigating how transformer-based architectures can improve the accuracy and scope of automated literature analysis. Our machine learning work also extends to drug safety prediction, where we develop classifiers to predict drug-induced liver injury (DILI) and other adverse drug reactions using chemical structure features and gene expression data.\n\nAnother major thrust is biological age prediction and disease modeling, where we apply deep learning methods to multi-omics data to estimate biological age and identify accelerated aging signatures associated with metabolic syndrome and neurological disorders. These AI-driven approaches enable us to identify novel biomarkers and therapeutic targets that would be difficult to discover through traditional statistical methods alone.",
+        "keyTopics": [
+          "Biomedical text mining and NLP",
+          "Large language models for biomedicine",
+          "Drug safety prediction",
+          "Biological age prediction"
+        ],
+        "tools": ["SciMiner"],
+        "collaborators": ["Eva Feldman (University of Michigan)", "Stephen Goutman (University of Michigan)"],
+        "keywords": ["machine learning", "deep learning", "NLP", "text mining", "SciMiner", "language model", "LLM", "classifier", "prediction", "artificial intelligence"]
+      }
     },
     {
       "title": "Neurological Disorders",
       "description": "Focus on diabetic peripheral neuropathy (DPN), metabolic syndrome-associated cognitive impairment, and amyotrophic lateral sclerosis (ALS), in collaboration with Drs. Eva Feldman and Stephen Goutman (University of Michigan).",
       "icon": "brain",
-      "color": "indigo"
+      "color": "indigo",
+      "details": {
+        "overview": "Our neurological disorders research applies computational biology approaches to understand the molecular mechanisms of diabetic peripheral neuropathy (DPN), amyotrophic lateral sclerosis (ALS), and related neurodegenerative conditions. We have developed the Diabetic Peripheral Neuropathy Knowledge Base (DPNKB), a comprehensive resource that integrates genomic, transcriptomic, and clinical data to facilitate the study of DPN. Our transcriptomic profiling studies of Schwann cells and sural nerve biopsies from diabetic patients have revealed key gene expression changes associated with nerve damage in type 2 diabetes.\n\nIn collaboration with Drs. Eva Feldman and Stephen Goutman at the University of Michigan, we investigate the molecular underpinnings of ALS through multi-omics analyses. This work involves integrating metabolomics, lipidomics, and transcriptomics data from ALS patient cohorts to identify disease biomarkers and potential therapeutic targets. Our computational analyses have contributed to understanding metabolic disruptions and environmental exposures associated with ALS risk and progression.\n\nWe also study the intersection of metabolic syndrome and neurological complications, using systems biology approaches to map the complex molecular networks that link diabetes, obesity, and dyslipidemia to nerve damage and cognitive impairment. This translational research aims to identify early intervention targets that could prevent or slow the progression of neurological complications in metabolic diseases.",
+        "keyTopics": [
+          "Diabetic peripheral neuropathy",
+          "ALS biomarker discovery",
+          "Schwann cell transcriptomics",
+          "Metabolic syndrome and neurodegeneration"
+        ],
+        "tools": ["DPNKB"],
+        "collaborators": ["Eva Feldman (University of Michigan)", "Stephen Goutman (University of Michigan)"],
+        "keywords": ["neuropathy", "diabetic", "ALS", "amyotrophic", "Schwann", "sural nerve", "neurolog", "Parkinson", "epilep"]
+      }
     },
     {
       "title": "Host-Pathogen Interactions",
       "description": "Ontology-based modeling of infectious diseases and immune responses, in collaboration with Dr. Yongqun He (University of Michigan).",
       "icon": "shield",
-      "color": "teal"
+      "color": "teal",
+      "details": {
+        "overview": "Our host-pathogen interactions research uses computational and ontology-based approaches to model and analyze the complex molecular interplay between hosts and infectious agents. In collaboration with Dr. Yongqun He at the University of Michigan, we have developed systematic methods to analyze vaccine-associated gene networks and immune response pathways, with applications spanning bacterial infections such as Brucella to viral diseases including influenza and SARS-CoV-2.\n\nA significant focus of our recent work has been on understanding host-coronavirus interactions during the COVID-19 pandemic. We have applied multi-omics and network analysis approaches to characterize the host immune response to SARS-CoV-2 infection, identifying key molecular pathways and gene regulatory networks that are dysregulated during severe COVID-19. This work contributes to the broader understanding of how respiratory viruses hijack host cellular machinery and evade immune defenses.\n\nOur infectious disease research also encompasses ontology-based literature mining approaches to systematically catalog and analyze host-pathogen interaction data from the published literature. By integrating knowledge from diverse sources including genomics, immunology, and clinical studies, we build comprehensive models of infection biology that can inform vaccine development and therapeutic strategies for emerging infectious diseases.",
+        "keyTopics": [
+          "Host-coronavirus interactions",
+          "Vaccine-gene network analysis",
+          "Infectious disease ontology",
+          "Immune response modeling"
+        ],
+        "tools": ["VIOLIN"],
+        "collaborators": ["Yongqun He (University of Michigan)"],
+        "keywords": ["host-pathogen", "pathogen", "infection", "immune", "coronavirus", "SARS", "pneumoniae", "influenza"]
+      }
     }
   ],
   "lastUpdated": "2026-03-14"

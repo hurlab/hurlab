@@ -239,6 +239,33 @@
             </div>
         </div>
 
+        <!-- Hidden Members -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h2 class="text-lg font-semibold text-gray-800">Hidden (Not Shown)</h2>
+                    <p class="text-xs text-gray-400 mt-1">These members are in the CV but not displayed on the public website</p>
+                </div>
+                <button onclick="showMemberForm('hidden')" class="bg-teal-600 hover:bg-teal-700 text-white text-sm px-4 py-2 rounded-lg transition">Add Member</button>
+            </div>
+            <div id="addHiddenForm" class="hidden mb-4 p-4 bg-gray-50 rounded-lg"></div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">#</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Name</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Role</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Category</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Description</th>
+                            <th class="text-left py-3 px-2 font-medium text-gray-500">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="hiddenMembersBody"></tbody>
+                </table>
+            </div>
+        </div>
+
         <!-- Team operation result -->
         <div id="teamOpResult" class="hidden p-4 rounded-lg text-sm"></div>
 
@@ -407,8 +434,12 @@
                     resultDiv.textContent = data.error || 'Parse failed.';
                 }
 
-                if (data.output) {
-                    logOutput.textContent = data.output;
+                // Show stdout and stderr in the log area
+                let parseLog = '';
+                if (data.stdout) parseLog += data.stdout;
+                if (data.stderr) parseLog += (parseLog ? '\n' : '') + data.stderr;
+                if (parseLog) {
+                    logOutput.textContent = parseLog;
                 }
 
                 fetchStatus();
@@ -457,6 +488,7 @@
                 renderPi();
                 renderMembers('current');
                 renderMembers('alumni');
+                renderMembers('hidden');
             } catch (e) {
                 console.error('Team fetch error:', e);
             }
@@ -529,14 +561,28 @@
         }
 
         function renderMembers(section) {
-            const tbody = document.getElementById(section === 'current' ? 'currentMembersBody' : 'alumniMembersBody');
+            const tbodyId = section === 'current' ? 'currentMembersBody' : (section === 'alumni' ? 'alumniMembersBody' : 'hiddenMembersBody');
+            const tbody = document.getElementById(tbodyId);
             const members = teamData[section] || [];
             if (members.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="6" class="py-4 text-center text-gray-400">No members</td></tr>';
                 return;
             }
-            const moveLabel = section === 'current' ? 'Move to Alumni' : 'Move to Current';
-            const moveTo = section === 'current' ? 'alumni' : 'current';
+            // Build move buttons depending on section
+            function getMoveButtons(section, i) {
+                let btns = '';
+                if (section === 'current') {
+                    btns += `<button onclick="moveMember('current', 'alumni', ${i})" class="text-indigo-600 hover:text-indigo-800 text-xs font-medium mr-2">To Alumni</button>`;
+                    btns += `<button onclick="moveMember('current', 'hidden', ${i})" class="text-gray-500 hover:text-gray-700 text-xs font-medium">To Hidden</button>`;
+                } else if (section === 'alumni') {
+                    btns += `<button onclick="moveMember('alumni', 'current', ${i})" class="text-indigo-600 hover:text-indigo-800 text-xs font-medium mr-2">To Current</button>`;
+                    btns += `<button onclick="moveMember('alumni', 'hidden', ${i})" class="text-gray-500 hover:text-gray-700 text-xs font-medium">To Hidden</button>`;
+                } else if (section === 'hidden') {
+                    btns += `<button onclick="moveMember('hidden', 'current', ${i})" class="text-indigo-600 hover:text-indigo-800 text-xs font-medium mr-2">To Current</button>`;
+                    btns += `<button onclick="moveMember('hidden', 'alumni', ${i})" class="text-indigo-600 hover:text-indigo-800 text-xs font-medium">To Alumni</button>`;
+                }
+                return btns;
+            }
             let html = '';
             members.forEach((m, i) => {
                 if (editingRow && editingRow.section === section && editingRow.index === i) {
@@ -551,7 +597,7 @@
                         <td class="py-3 px-2 whitespace-nowrap">
                             <button onclick="startEdit('${section}', ${i})" class="text-teal-600 hover:text-teal-800 text-xs font-medium mr-2">Edit</button>
                             <button onclick="deleteMember('${section}', ${i})" class="text-red-600 hover:text-red-800 text-xs font-medium mr-2">Delete</button>
-                            <button onclick="moveMember('${section}', '${moveTo}', ${i})" class="text-indigo-600 hover:text-indigo-800 text-xs font-medium">${moveLabel}</button>
+                            ${getMoveButtons(section, i)}
                         </td>
                     </tr>`;
                 }
@@ -631,7 +677,7 @@
         }
 
         function showMemberForm(section) {
-            const formId = section === 'current' ? 'addCurrentForm' : 'addAlumniForm';
+            const formId = section === 'current' ? 'addCurrentForm' : (section === 'alumni' ? 'addAlumniForm' : 'addHiddenForm');
             const el = document.getElementById(formId);
             if (!el.classList.contains('hidden')) {
                 el.classList.add('hidden');
@@ -685,7 +731,7 @@
                 photo: document.getElementById('addPhoto_' + section).value || null
             };
             await teamMemberAction({ action: 'add', section, member });
-            const formId = section === 'current' ? 'addCurrentForm' : 'addAlumniForm';
+            const formId = section === 'current' ? 'addCurrentForm' : (section === 'alumni' ? 'addAlumniForm' : 'addHiddenForm');
             document.getElementById(formId).classList.add('hidden');
         }
 
@@ -701,6 +747,7 @@
                     teamData = data;
                     renderMembers('current');
                     renderMembers('alumni');
+                    renderMembers('hidden');
                     showTeamMsg('teamOpResult', 'Operation completed successfully.', true);
                 } else {
                     showTeamMsg('teamOpResult', data.error || 'Operation failed.', false);

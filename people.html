@@ -177,6 +177,9 @@
                 <div>
                   <h4 class="font-semibold text-gray-900" x-text="member.name"></h4>
                   <p class="text-sm text-gray-500 font-medium" x-text="member.role"></p>
+                  <template x-if="member.period">
+                    <p class="text-xs text-gray-400" x-text="member.period"></p>
+                  </template>
                 </div>
               </div>
               <template x-if="member.description">

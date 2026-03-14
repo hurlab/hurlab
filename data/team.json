@@ -21,76 +21,444 @@
       "role": "Research Scientist",
       "category": "staff",
       "description": "Lab/grant manager and research scientist",
-      "photo": null
+      "photo": null,
+      "period": null,
+      "advisingRole": null,
+      "institution": "UND"
     },
     {
       "name": "Brett McGregor, Ph.D.",
       "role": "Data Analyst",
       "category": "staff",
       "description": "Data analyst, Computational Data Analysis Core",
-      "photo": "Images/mcgregor_brett.jpg"
+      "photo": "Images/mcgregor_brett.jpg",
+      "period": "Sep 2019 –",
+      "advisingRole": null,
+      "institution": "UND"
     },
     {
       "name": "Kai Guo, Ph.D.",
       "role": "Visiting Scholar / Research Assistant Professor",
       "category": "visiting",
       "description": "Research Assistant Professor at University of Michigan. Interests: Bioinformatics, Epigenetics, Transcriptomic analysis, Genome Assembly",
-      "photo": null
+      "photo": null,
+      "period": "Sep 2023 –",
+      "advisingRole": null,
+      "institution": "UM"
     },
     {
       "name": "Hasin Rehana",
       "role": "Ph.D. Student, Computer Sciences",
       "category": "student",
       "description": "Bioinformatics, NLP, and Machine Learning",
-      "photo": null
-    },
-    {
-      "name": "Behnaz Karimi",
-      "role": "Ph.D. Student, Biomedical Sciences",
-      "category": "student",
-      "description": "Genetics",
-      "photo": null
+      "photo": null,
+      "period": "Jan 2023 –",
+      "advisingRole": "chair of FAC",
+      "institution": "UND"
     },
     {
       "name": "Davis Payne",
       "role": "Ph.D. Student, Biomedical Engineering",
       "category": "student",
       "description": "Biomedical Engineering",
-      "photo": null
+      "photo": null,
+      "period": "Mar 2024 –",
+      "advisingRole": "chair of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Behnaz Karimialiabadi",
+      "role": "Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Genetics",
+      "photo": null,
+      "period": "Apr 2024 –",
+      "advisingRole": "chair of FAC",
+      "institution": "UND"
     },
     {
       "name": "Sayed Asaduzzaman",
       "role": "Ph.D. Student, Computer Science",
       "category": "student",
       "description": "Imaging analysis",
-      "photo": null
+      "photo": null,
+      "period": "Aug 2025 –",
+      "advisingRole": "chair of FAC",
+      "institution": "UND"
     },
     {
-      "name": "Christianah Jemiyo",
-      "role": "Ph.D. Student",
-      "category": "student",
-      "description": "Artificial Intelligence",
-      "photo": null
-    },
-    {
-      "name": "Jane Kim",
-      "role": "Remote Research Intern",
-      "category": "student",
-      "description": "High school researcher from Korea",
-      "photo": null
+      "name": "Sarah Hong",
+      "role": "Undergraduate Researcher (Remote)",
+      "category": "other",
+      "description": "Remote research mentee, Columbia University",
+      "photo": null,
+      "period": "Jun 2023 –",
+      "advisingRole": "mentor",
+      "institution": "Columbia University"
     }
   ],
   "alumni": [
     {
+      "name": "Kai Guo, Ph.D.",
+      "role": "Former Post-doctoral Fellow",
+      "category": "postdoc",
+      "description": "Joint with UM Dr. Eva Feldman. Bioinformatics, Epigenetics, Transcriptomic analysis, Genome Assembly",
+      "photo": null,
+      "period": "Nov 2016 – Jul 2022",
+      "advisingRole": null,
+      "institution": "UND"
+    },
+    {
       "name": "Guillermo De Anda Jauregui, Ph.D.",
       "role": "Former Post-doctoral Fellow",
+      "category": "postdoc",
       "description": "Systems and network biology, systems pharmacology",
-      "orcid": "0000-0002-7749-0365"
+      "photo": null,
+      "period": "Nov 2016 – Dec 2017",
+      "advisingRole": null,
+      "institution": "UND"
+    },
+    {
+      "name": "Atrayee Ray, Ph.D.",
+      "role": "Former Post-doctoral Fellow",
+      "category": "postdoc",
+      "description": "Co-mentored with Drs. Dhasarathy and Brissette",
+      "photo": null,
+      "period": "Aug 2018 – Aug 2022",
+      "advisingRole": null,
+      "institution": "UND"
+    },
+    {
+      "name": "Brett McGregor, Ph.D.",
+      "role": "Former Post-doctoral Fellow",
+      "category": "postdoc",
+      "description": "Now Data Analyst at Computational Data Analysis Core",
+      "photo": null,
+      "period": "Sep 2019 – Feb 2022",
+      "advisingRole": null,
+      "institution": "UND"
+    },
+    {
+      "name": "MD Obayed Raihan, Ph.D.",
+      "role": "Former Post-doctoral Fellow",
+      "category": "postdoc",
+      "description": "Co-mentored with Dr. Porter",
+      "photo": null,
+      "period": "Mar 2020 – Jul 2023",
+      "advisingRole": null,
+      "institution": "UND"
+    },
+    {
+      "name": "Ling Li, Ph.D.",
+      "role": "Former Visiting Scholar",
+      "category": "visiting",
+      "description": "Guangzhou First People's Hospital, China",
+      "photo": null,
+      "period": "Nov 2019 – Aug 2021",
+      "advisingRole": null,
+      "institution": "Guangzhou First People's Hospital"
+    },
+    {
+      "name": "Hasin Rehana",
+      "role": "Former Visiting Scholar",
+      "category": "visiting",
+      "description": "University of Dhaka; later became Ph.D. student",
+      "photo": null,
+      "period": "Sep 2022 – Dec 2022",
+      "advisingRole": null,
+      "institution": "University of Dhaka"
+    },
+    {
+      "name": "Christianah Jemiyo",
+      "role": "Former Visiting Scholar / Ph.D. Student",
+      "category": "student",
+      "description": "NABRO, Nigeria; was visiting scholar, then became Ph.D. student",
+      "photo": null,
+      "period": "Sep 2022 – Dec 2025",
+      "advisingRole": null,
+      "institution": "UND"
+    },
+    {
+      "name": "Fang Huang",
+      "role": "Former Visiting Scholar",
+      "category": "visiting",
+      "description": "Chongqing Medical University",
+      "photo": null,
+      "period": "Dec 2023 – Dec 2025",
+      "advisingRole": null,
+      "institution": "Chongqing Medical University"
+    },
+    {
+      "name": "George Zhao",
+      "role": "Former M.S. Student",
+      "category": "student",
+      "description": "Mentor for M.S., University of Michigan",
+      "photo": null,
+      "period": "Oct 2010 – Jan 2013",
+      "advisingRole": "mentor",
+      "institution": "UM"
+    },
+    {
+      "name": "Brett A. McGregor",
+      "role": "Former Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Co-chair of FAC, UND Biomedical Sciences Ph.D.",
+      "photo": null,
+      "period": "May 2015 – May 2019",
+      "advisingRole": "co-chair of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Dakota Krout",
+      "role": "Former Undergraduate Student, Computer Sciences",
+      "category": "student",
+      "description": "Advisor, UND Computer Sciences undergraduate",
+      "photo": null,
+      "period": "Oct 2015 – May 2016",
+      "advisingRole": "advisor",
+      "institution": "UND"
     },
     {
       "name": "Larson Danes",
-      "role": "Former Undergraduate Researcher",
-      "description": "Bioinformatics software development"
+      "role": "Former Undergraduate Co-op Student, Computer Sciences",
+      "category": "student",
+      "description": "Bioinformatics software development",
+      "photo": null,
+      "period": "May 2016 – May 2018",
+      "advisingRole": "advisor",
+      "institution": "UND"
+    },
+    {
+      "name": "Temidayo Adeluwa",
+      "role": "Former M.S. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Chair of FAC, UND Biomedical Sciences M.S.",
+      "photo": null,
+      "period": "Jan 2020 – Jul 2021",
+      "advisingRole": "chair of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Oluwatobiloba Aminu",
+      "role": "Former M.S. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Chair of FAC, UND Biomedical Sciences M.S.",
+      "photo": null,
+      "period": "Jan 2022 – Aug 2023",
+      "advisingRole": "chair of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Mostafa Elhennawy",
+      "role": "Former Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
+      "photo": null,
+      "period": "Aug 2023 – Spring 2025",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Benu Bansal",
+      "role": "Former Ph.D. Student, Biomedical Engineering",
+      "category": "student",
+      "description": "Chair of FAC, UND Biomedical Engineering Ph.D.",
+      "photo": null,
+      "period": "Feb 2024 – May 2025",
+      "advisingRole": "chair of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Jame Kim",
+      "role": "Former Remote Research Intern",
+      "category": "student",
+      "description": "Research mentee, Chadwick International High School, Korea",
+      "photo": null,
+      "period": "May 2024 – Dec 2025",
+      "advisingRole": "mentor",
+      "institution": "Chadwick International High School"
+    },
+    {
+      "name": "Peter Halcrow",
+      "role": "Former Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Member of Ph.D. FAC, UND Biomedical Sciences Ph.D.",
+      "photo": null,
+      "period": "Nov 2015 – Jul 2019",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Derick Thompson",
+      "role": "Former Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
+      "photo": null,
+      "period": "Jun 2016 – Jul 2020",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Leo Lakpa",
+      "role": "Former Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
+      "photo": null,
+      "period": "Jun 2017 – May 2021",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Smruthi Rudraraju",
+      "role": "Former Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
+      "photo": null,
+      "period": "Oct 2017 – Jul 2021",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Sayem Bhuiyan",
+      "role": "Former Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
+      "photo": null,
+      "period": "Nov 2018 – May 2022",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Joanna Handzlik",
+      "role": "Former Ph.D. Student, Biology",
+      "category": "student",
+      "description": "Member of FAC, UND Biology Ph.D.",
+      "photo": null,
+      "period": "Apr 2019 – May 2022",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Malak Alzidaneen",
+      "role": "Former M.S. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Member of FAC, UND Biomedical Sciences M.S.",
+      "photo": null,
+      "period": "Aug 2020 – Dec 2021",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Abiodun Ebenezer Odufuwa",
+      "role": "Former Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
+      "photo": null,
+      "period": "Mar 2021 – Jul 2024",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Dehui Kong",
+      "role": "Former Ph.D. Student, Biology",
+      "category": "student",
+      "description": "Member of FAC, UND Biology Ph.D.",
+      "photo": null,
+      "period": "Jan 2022 – Aug 2023",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    }
+  ],
+  "hidden": [
+    {
+      "name": "Blessing Okosun",
+      "role": "Ph.D. Student, Biology",
+      "category": "student",
+      "description": "Member of FAC, UND Biology Ph.D.",
+      "photo": null,
+      "period": "Jan 2022 –",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Sakuntha Gunarathna",
+      "role": "Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
+      "photo": null,
+      "period": "Aug 2022 –",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Akhtar Hussain",
+      "role": "Ph.D. Student, Computer Science",
+      "category": "student",
+      "description": "Member of FAC, UND Computer Science Ph.D.",
+      "photo": null,
+      "period": "Dec 2023 –",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Kelsey Klinger",
+      "role": "Ph.D. Student, Counseling Psychology",
+      "category": "student",
+      "description": "Member of FAC, UND Counseling Psychology Ph.D.",
+      "photo": null,
+      "period": "Apr 2024 –",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Hakan Celik",
+      "role": "Ph.D. Student, Biomedical Engineering",
+      "category": "student",
+      "description": "Member of FAC, UND Biomedical Engineering Ph.D.",
+      "photo": null,
+      "period": "May 2024 –",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Mohammad Abuabdoh",
+      "role": "Ph.D. Student, Biomedical Engineering",
+      "category": "student",
+      "description": "Member of FAC, UND Biomedical Engineering Ph.D.",
+      "photo": null,
+      "period": "Jul 2024 –",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Frances Kujawski",
+      "role": "Ph.D. Student, Biology",
+      "category": "student",
+      "description": "Member of FAC, UND Biology Ph.D.",
+      "photo": null,
+      "period": "Jan 2025 –",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Arhita Das",
+      "role": "Ph.D. Student, Biology",
+      "category": "student",
+      "description": "Member of FAC, UND Biology Ph.D.",
+      "photo": null,
+      "period": "Feb 2025 –",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
+    },
+    {
+      "name": "Timothy Ayeni",
+      "role": "Ph.D. Student, Biomedical Sciences",
+      "category": "student",
+      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
+      "photo": null,
+      "period": "Oct 2025 –",
+      "advisingRole": "member of FAC",
+      "institution": "UND"
     }
   ]
 }
