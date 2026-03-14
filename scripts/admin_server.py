@@ -829,6 +829,11 @@ class AdminHandler(BaseHTTPRequestHandler):
 # ---------------------------------------------------------------------------
 
 def main():
+    # Disable reverse DNS lookups — they cause 30-60s delays per request
+    import socketserver
+    socketserver.TCPServer.address_family
+    HTTPServer.address_family = __import__('socket').AF_INET
+    AdminHandler.address_string = lambda self: self.client_address[0]
     server = HTTPServer(("0.0.0.0", PORT), AdminHandler)
     print(f"Hur Lab Admin Server running on http://0.0.0.0:{PORT}")
     print(f"Base dir: {BASE_DIR}")
