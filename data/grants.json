@@ -8,7 +8,7 @@
       "total": "$3,839,270 (7/1/2022-6/30/2027)",
       "period": "7/1/2022-6/30/2027",
       "title": "VIOLIN 2.0: Vaccine Information and Ontology LInked kNowledgebase",
-      "note": "15% efforts.",
+      "note": null,
       "url": "https://reporter.nih.gov/search/jA0GT0OB0UKiSkA-L6OMfw/project-details/11109428"
     },
     {
@@ -19,7 +19,7 @@
       "total": "$2,555,612 (8/23/2022-6/30/2026)",
       "period": "8/23/2022-6/30/2026",
       "title": "Metabolic coupling between Schwann cells and axons is functionally distinct from myelination and is disrupted in obesity, prediabetes, and diabetes",
-      "note": "17.5% efforts.",
+      "note": null,
       "url": "https://reporter.nih.gov/search/t7YtpU8KqkGvzMfmIS_LXw/project-details/10518251"
     },
     {
@@ -30,7 +30,7 @@
       "total": "$778,850 (Core)",
       "period": "7/1/2021-6/30/2026",
       "title": "Center for Excellence in Host Pathogen Interactions (HPI COBRE)",
-      "note": "Establishment of Computational Data Analysis Core (CDAC). 10% efforts.",
+      "note": "Establishment of Computational Data Analysis Core (CDAC).",
       "url": "https://reporter.nih.gov/search/t7YtpU8KqkGvzMfmIS_LXw/project-details/10663891"
     },
     {
@@ -41,7 +41,7 @@
       "total": "$10,774,235 (7/1/2024-6/30/2029)",
       "period": "7/1/2024-6/30/2029",
       "title": "Translational Science Engaging North Dakota (TRANSCEND)",
-      "note": "Research Design, Compliance & Data Management Core. 10% efforts.",
+      "note": "Research Design, Compliance & Data Management Core.",
       "url": "https://reporter.nih.gov/search/t7YtpU8KqkGvzMfmIS_LXw/project-details/10983176"
     },
     {
@@ -52,7 +52,7 @@
       "total": "$19,954,800 (8/22/2025-8/21/2028)",
       "period": "8/22/2025-8/21/2028",
       "title": "Decentralized Diabetes Data Platform for Senior Health Management",
-      "note": "Lead the analytics team for data analysis and predictive modeling. 5% efforts.",
+      "note": "Lead the analytics team for data analysis and predictive modeling.",
       "url": "https://arpa-h.gov/explore-funding/awards/2651"
     }
   ],
@@ -184,7 +184,7 @@
       "role": "MPI (Contact)",
       "total": "$3,094,063 (4/1/2027-3/31/2032)",
       "period": "4/1/2027-3/31/2032",
-      "title": "From Map to Mechanism: Spatial Profiling and Targeted Perturbations of Microglia-α-Synuclein Axes in Parkinsons Disease",
+      "title": "From Map to Mechanism: Spatial Profiling and Targeted Perturbations of Microglia-\u03b1-Synuclein Axes in Parkinsons Disease",
       "note": "",
       "submitted": "for submission in 06/2026"
     }
@@ -208,7 +208,7 @@
       "total": "$89,537 (10/2015-1/2017)",
       "period": "10/2015-1/2017",
       "title": "Comparative Transcriptomics to Identify Key Gene Networks of Diabetic Neuropathy",
-      "note": "5% effort with salary support. Generating and analyzing RNA-Seq of human sural nerve samples obtained from diabetic neuropathy (DN) patients to identify critical gene regulatory networks of DN."
+      "note": "with salary support. Generating and analyzing RNA-Seq of human sural nerve samples obtained from diabetic neuropathy (DN) patients to identify critical gene regulatory networks of DN."
     },
     {
       "number": 3,
@@ -218,7 +218,7 @@
       "total": "$437,458 (UND)",
       "period": "4/2017-7/2021",
       "title": "Integrated systems biology approach to diabetic microvascular complications",
-      "note": "20% effort. My role involves bioinformatics analysis on diabetic complications-related high-throughput Omics data to identify critical genes and pathways, responsible for the development of diabetic complications. This grant supports 20% of my salary and 100% of one post-doctoral fellow."
+      "note": "My role involves bioinformatics analysis on diabetic complications-related high-throughput Omics data to identify critical genes and pathways, responsible for the development of diabetic complications. This grant supports 20% of my salary and 100% of one post-doctoral fellow."
     },
     {
       "number": 4,
@@ -227,7 +227,7 @@
       "role": "Co-investigator",
       "total": "$49,852 (UND)",
       "period": "",
-      "title": "Creating a foundation for personalized age‐ and sex‐based immune‐targeted therapies from an ALS longitudinal cohort by identifying peripheral and central immune signatures.",
+      "title": "Creating a foundation for personalized age\u2010 and sex\u2010based immune\u2010targeted therapies from an ALS longitudinal cohort by identifying peripheral and central immune signatures.",
       "note": ""
     },
     {
@@ -238,7 +238,7 @@
       "total": "$2,254,373 (6/2018-6/2024)",
       "period": "6/2018-6/2024",
       "title": "Ketogenic diet and adenosine: epigenetics and antiepileptogenesis",
-      "note": "10% effort. My role focuses on bioinformatics analyses of the high-throughput next-generation sequencing data (transcriptomics and methylomics) from animal models of epileptogenesis with/without two treatments."
+      "note": "My role focuses on bioinformatics analyses of the high-throughput next-generation sequencing data (transcriptomics and methylomics) from animal models of epileptogenesis with/without two treatments."
     },
     {
       "number": 1,
@@ -258,7 +258,7 @@
       "total": "$40,000 (9/2016-5/2017)",
       "period": "9/2016-5/2017",
       "title": "Cross-center validation study for epigenetic changes associated with epileptogenesis",
-      "note": "5% effort. The support was for next-generation sequencing service (RNA-Seq & RRBS) of rat Junguk Hur, Ph.D. Curriculum Vitae hippocampus samples collected during epileptogenesis."
+      "note": "The support was for next-generation sequencing service (RNA-Seq & RRBS) of rat Junguk Hur, Ph.D. Curriculum Vitae hippocampus samples collected during epileptogenesis."
     },
     {
       "number": 3,
@@ -277,8 +277,8 @@
       "role": "Co-PI",
       "total": "$30,000 (10/2017-05/2019)",
       "period": "10/2017-05/2019",
-      "title": "Epigenetic modification of microglial phenotype in Parkinson’s Disease",
-      "note": "5% effort. The grant support is for high-throughput next-generation sequencing for gene expression (RNA-Seq) and methylation (RRBS) of microglia obtained from an animal model of Parkinson’s disease."
+      "title": "Epigenetic modification of microglial phenotype in Parkinson\u2019s Disease",
+      "note": "The grant support is for high-throughput next-generation sequencing for gene expression (RNA-Seq) and methylation (RRBS) of microglia obtained from an animal model of Parkinson\u2019s disease."
     },
     {
       "number": 5,
@@ -288,7 +288,7 @@
       "total": "$50,000 (10/2017-05/2018)",
       "period": "10/2017-05/2018",
       "title": "Transcription proteins and mRNA splicing: a novel molecular mechanism influencing cancer progression",
-      "note": "5% effort. This seed grant is to examine the novel mechanism of the RNA-binding feature of cancer progression-related transcription factor SNAIL. My role is to analyze high-throughput sequencing data analysis using bioinformatics approaches."
+      "note": "This seed grant is to examine the novel mechanism of the RNA-binding feature of cancer progression-related transcription factor SNAIL. My role is to analyze high-throughput sequencing data analysis using bioinformatics approaches."
     },
     {
       "number": 6,
@@ -308,7 +308,7 @@
       "total": "$25,000 (7/2019-4/2020)",
       "period": "7/2019-4/2020",
       "title": "Development of ontology-based literature mining system for host-pathogen interactions",
-      "note": "5% effort. This grant supports to development of a literature-mining platform to support the identification and mining of host-pathogen gene interactions from biomedical literature."
+      "note": "This grant supports to development of a literature-mining platform to support the identification and mining of host-pathogen gene interactions from biomedical literature."
     },
     {
       "number": 8,
@@ -317,8 +317,8 @@
       "role": "Co-PI",
       "total": "$30,000 (12/2019-5/2020)",
       "period": "12/2019-5/2020",
-      "title": "Epigenetic modifications of microglial phenotypes in α-synucleinopathy disorders",
-      "note": "5% effort. My role focuses on bioinformatics analysis of transcriptomic and epigenetic data."
+      "title": "Epigenetic modifications of microglial phenotypes in \u03b1-synucleinopathy disorders",
+      "note": "My role focuses on bioinformatics analysis of transcriptomic and epigenetic data."
     },
     {
       "number": 9,
@@ -338,7 +338,7 @@
       "total": "$1,780,000",
       "period": "12/2019-12/2021",
       "title": "Pathogenic role of IL-17 response in Streptococcus pneumoniae nasopharyngeal pathogenesis during an influenza virus co-infection",
-      "note": "5% effort. My role focuses on bioinformatics analyses of high-throughput sequencing data."
+      "note": "My role focuses on bioinformatics analyses of high-throughput sequencing data."
     },
     {
       "number": 11,
@@ -347,7 +347,7 @@
       "role": "Co-PI",
       "total": "$50,000 (10/2021-5/2022)",
       "period": "10/2021-5/2022",
-      "title": "Correlated Epigenetic and Behavioral Modifications in α-Synucleinopathy Disorders",
+      "title": "Correlated Epigenetic and Behavioral Modifications in \u03b1-Synucleinopathy Disorders",
       "note": ""
     },
     {
@@ -357,7 +357,7 @@
       "role": "MPI (contact)",
       "total": "$40,000 (7/1/2023-6/30/2025)",
       "period": "7/1/2023-6/30/2025",
-      "title": "Spatial pattern of microglial transcriptomic response to α-Synuclein overexpression in Thy1-αSynuclein mice",
+      "title": "Spatial pattern of microglial transcriptomic response to \u03b1-Synuclein overexpression in Thy1-\u03b1Synuclein mice",
       "note": "No cost extension Junguk Hur, Ph.D. Curriculum Vitae"
     },
     {
