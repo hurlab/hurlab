@@ -136,6 +136,12 @@ def extract_pmid(text):
     return m.group(1) if m else None
 
 
+def extract_pmcid(text):
+    """Extract PMCID from text like [PMCID: PMC12345678]."""
+    m = re.search(r"\[PMCID:\s*(PMC\d+)\]", text)
+    return m.group(1) if m else None
+
+
 def extract_doi(text):
     """Extract DOI URL from text."""
     # Match doi: https://... or doi: 10.xxxx/...
@@ -472,6 +478,7 @@ def parse_peer_reviewed(text, sections):
         for num, raw in entries:
             global_num[0] += 1
             pmid = extract_pmid(raw)
+            pmcid = extract_pmcid(raw)
             doi = extract_doi(raw)
             year = extract_year(raw)
             preprint = is_preprint(raw)
@@ -491,6 +498,7 @@ def parse_peer_reviewed(text, sections):
                 "number": global_num[0],
                 "text": display_text,
                 "pmid": pmid,
+                "pmcid": pmcid,
                 "doi": doi,
                 "year": year,
                 "isPreprint": preprint,

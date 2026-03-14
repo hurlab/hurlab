@@ -334,6 +334,12 @@
                           PMID: <span x-text="pub.pmid"></span>
                         </a>
                       </template>
+                      <template x-if="pub.pmcid">
+                        <a :href="'https://www.ncbi.nlm.nih.gov/pmc/articles/' + pub.pmcid" target="_blank" rel="noopener noreferrer"
+                           class="px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700 hover:bg-blue-200 transition-colors">
+                          <span x-text="pub.pmcid"></span>
+                        </a>
+                      </template>
                       <template x-if="pub.doi">
                         <a :href="pub.doi.startsWith('http') ? pub.doi : 'https://doi.org/' + pub.doi" target="_blank" rel="noopener noreferrer"
                            class="px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700 hover:bg-green-200 transition-colors">

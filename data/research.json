@@ -33,7 +33,7 @@
           "Semantic data integration"
         ],
         "tools": ["VIOLIN", "OLAS", "MILAM", "INO"],
-        "collaborators": ["Yongqun He (University of Michigan)"],
+        "collaborators": ["Yongqun He (University of Michigan)", "Arzucan Ozgur (Bogazici University)"],
         "keywords": ["ontology", "VIOLIN", "vaccine", "INO", "knowledge", "OLAS", "MILAM", "Brucella"]
       }
     },
@@ -51,7 +51,7 @@
           "Biological age prediction"
         ],
         "tools": ["SciMiner"],
-        "collaborators": ["Eva Feldman (University of Michigan)", "Stephen Goutman (University of Michigan)"],
+        "collaborators": ["Cornelius Dyke, M.D. (Sanford Health / UND)", "Marina Kim (University of North Dakota)"],
         "keywords": ["machine learning", "deep learning", "NLP", "text mining", "SciMiner", "language model", "LLM", "classifier", "prediction", "artificial intelligence"]
       }
     },

@@ -5,11 +5,11 @@
       "color": "teal",
       "icon": "dna",
       "members": [
-        { "name": "Eva L. Feldman, M.D., Ph.D.", "institution": "University of Michigan", "url": "http://www.pnrdfeldman.org/" },
-        { "name": "Matthias Kretzler, M.D.", "institution": "University of Michigan", "url": null },
-        { "name": "Frank Chip Brosius III, M.D.", "institution": "University of Michigan", "url": null },
-        { "name": "Eun-Hee Cho, M.D.", "institution": "Kangwon National University, South Korea", "url": null },
-        { "name": "Kyung Ju Lee, M.D., Ph.D.", "institution": "Korea University, South Korea", "url": null }
+        { "name": "Eva L. Feldman, M.D., Ph.D.", "institution": "University of Michigan", "url": "https://medschool.umich.edu/profile/4807/eva-l-feldman" },
+        { "name": "Matthias Kretzler, M.D.", "institution": "University of Michigan", "url": "https://medschool.umich.edu/profile/2128/matthias-kretzler" },
+        { "name": "Frank Chip Brosius III, M.D.", "institution": "University of Arizona", "url": "https://medicine.arizona.edu/person/frank-c-chip-brosius-iii-md" },
+        { "name": "Eun-Hee Cho, M.D.", "institution": "Kangwon National University", "url": "https://cms.kangwon.ac.kr/smed_en/research/lab01.do" },
+        { "name": "Kyung Ju Lee, M.D., Ph.D.", "institution": "Korean National Rehabilitation Center", "url": "https://orcid.org/0000-0003-4655-1521" }
       ]
     },
     {
@@ -17,8 +17,8 @@
       "color": "indigo",
       "icon": "database",
       "members": [
-        { "name": "Oliver Yongqun He, Ph.D.", "institution": "University of Michigan", "url": "http://www.hegroup.org/" },
-        { "name": "Arzucan Ozgur, Ph.D.", "institution": "Bogazici University, Turkey", "url": null }
+        { "name": "Oliver Yongqun He, Ph.D.", "institution": "University of Michigan", "url": "https://hegroup.org/" },
+        { "name": "Arzucan Ozgur, Ph.D.", "institution": "Bogazici University", "url": "https://cmpe.boun.edu.tr/~ozgur/" }
       ]
     },
     {
@@ -26,11 +26,10 @@
       "color": "purple",
       "icon": "chip",
       "members": [
-        { "name": "Joyce Ohm, Ph.D.", "institution": "Roswell Park Cancer Research", "url": null },
-        { "name": "Jonathan Geiger, Ph.D.", "institution": "University of North Dakota", "url": null },
-        { "name": "Detlev Boison, Ph.D.", "institution": "Legacy Health", "url": null },
-        { "name": "Susan Masino, Ph.D.", "institution": "Trinity College", "url": null },
-        { "name": "Archana Dhasarathy, Ph.D.", "institution": "University of North Dakota", "url": null }
+        { "name": "Joyce Ohm, Ph.D.", "institution": "Roswell Park Cancer Research Center", "url": "https://www.roswellpark.org/joyce-ohm" },
+        { "name": "Detlev Boison, Ph.D.", "institution": "Rutgers", "url": "https://sites.rutgers.edu/neurological-surgery/people/detlev-boison-phd-2/" },
+        { "name": "Susan Masino, Ph.D.", "institution": "Trinity College", "url": "https://commons.trincoll.edu/smasino/" },
+        { "name": "Archana Dhasarathy, Ph.D.", "institution": "University of North Dakota", "url": "https://med.und.edu/research/labs/dhasarathy/" }
       ]
     },
     {
@@ -38,9 +37,8 @@
       "color": "green",
       "icon": "flask",
       "members": [
-        { "name": "Jane P.F. Bai, Ph.D.", "institution": "US Food and Drug Administration", "url": null },
-        { "name": "Aravind Subramanian, Ph.D.", "institution": "Broad Institute", "url": null },
-        { "name": "James Porter, Ph.D.", "institution": "University of North Dakota", "url": null }
+        { "name": "Jane P.F. Bai, Ph.D.", "institution": "US Food and Drug Administration", "url": "https://www.fda.gov/about-fda/science-research-fda/jane-pf-bai" },
+        { "name": "James Porter, Ph.D.", "institution": "University of North Dakota", "url": "https://med.und.edu/research/faculty/james-porter.html" }
       ]
     }
   ],
