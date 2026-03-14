@@ -66,3 +66,143 @@
 - File existence verified for all 15 v2/ files
 - Script load order reviewed and confirmed correct across all pages
 - No browser-based visual testing performed (Playwright blocked)
+
+---
+
+## Session 2026-03-14 16:30 CDT
+
+- **Coding CLI used**: Claude Code CLI (Claude Opus 4.6, 1M context)
+
+### Phase(s) worked on
+- Phase 2 (extended): Full JSON-as-database migration for all pages
+- Phase 5: Admin panel with CV parser, team management, visibility controls
+- Phase 6: Cutover from v2/ to root, directory cleanup, git setup
+- Bug fixing and testing audit
+
+### Concrete changes implemented
+
+**Site cutover & cleanup:**
+1. Moved v2/ contents to root, fixed all `../` paths to direct paths
+2. Fixed broken CV file references (standardized to `JungukHur-CV.pdf`)
+3. Removed v2/ directory (was duplicate after copy)
+4. Moved 14 unused directories to v1/ (Admissions, BACKUPS, Files, icons, Indiana, Jumgim, LabMembers, Michigan, Projects, Publications, Study, Supplemental, Temp, Tools)
+5. Created empty Files/ and Temp/ placeholders
+6. Initialized git repo, pushed to github.com/hurlab/hurlab.git
+7. Created .gitignore (excludes large dirs, *.zip, credentials, runtime files)
+
+**JSON-as-database migration:**
+8. Created `data/research.json` with 5 research areas + detail content (overview, topics, tools, collaborators, keywords)
+9. Created `data/collaborators.json` with 4 categories, 14 collaborators, updated URLs
+10. Created `data/positions.json` with isHiring flag, 3 position types, research areas
+11. Created `data/site.json` with lab-wide configuration
+12. Created `data/grants.json` from CV parser (5 current + 12 pending + 18 previous)
+13. Rewrote research.html, collaborators.html, positions.html to be data-driven (Alpine.js + JSON fetch)
+14. Created `research-detail.html` — per-area detail page with keyword-filtered publications
+
+**CV parser & admin panel:**
+15. Created `scripts/parse_cv.py` — parses CV PDF via pdftotext, extracts 170 publications (with PMID, PMCID, DOI, year), 9 under review, 5 in prep, 34 talks, 190 posters, 35 grants
+16. Created `scripts/admin_server.py` — Python HTTP server on port 8180 with session auth
+17. Created admin templates (dashboard, login, setup) with Tailwind CSS
+18. Added CV upload with dated filename + 3 symlink management
+19. Added team CRUD API (add/edit/delete/move across current/alumni/fac/fac_alumni)
+20. Added PI info editor
+21. Added photo upload (saves to Images/team/, updates team.json)
+22. Added section visibility toggles (current/alumni/fac/fac_alumni)
+23. Added git auto-commit after CV parsing
+
+**Publications page overhaul:**
+24. Replaced PubMed API with CV-parsed data as primary source
+25. Added 6 tabs (peer-reviewed, preprints, under review, in preparation, presentations, all)
+26. Added sort dropdown (newest first default, oldest, CV order)
+27. Added PMCID badges (59 of 170 have PMCID) linking to PubMed Central
+28. Fixed Google Scholar link to correct ID (`Iug5mCsAAAAJ`)
+29. Fixed year filter reset on tab switch
+30. Fixed preprints showing in "all" tab
+
+**People page overhaul:**
+31. Made fully data-driven from team.json
+32. Loaded all CV members: 8 current, 17 alumni, 9 FAC current, 10 FAC previous
+33. Added visibility toggle support (FAC sections hidden by default)
+34. Added GitHub (Personal) + GitHub (Hur Lab) links to PI
+
+**Content fixes:**
+35. Phone number fixed to (701) 777-6814 everywhere
+36. Email corrected: junguk.hur@med.UND.edu + jung.hur@UND.edu
+37. Added GitHub personal link (windysky/)
+38. Removed DaYeon Shin, Farah Lubin from collaborators
+39. Added Arzucan Ozgur to Ontology research collaborators
+40. Added Cornelius Dyke + Marina Kim to AI/ML research collaborators
+41. Updated all collaborator URLs to current pages
+42. Added NIH Reporter + ARPA-H links to active grants
+43. Removed effort percentages from grant notes
+44. Positions page changed to "Future Openings" (no current openings)
+45. Visiting scholar duration changed to 6 months–3 years
+46. Tools page added R Shiny to category filter
+47. Funding section made dynamic (current + previous grants total)
+
+**Performance fix:**
+48. Fixed admin server 56-second delay caused by reverse DNS lookups (override `address_string()`)
+
+**Bug fixes from testing audit:**
+49. Fixed preprints missing from "all" tab
+50. Fixed year filter persisting across tab switches
+51. Removed orphaned js/publications.js
+52. Fixed admin dashboard status cards not populating (wrong file path + response structure mismatch)
+53. Fixed admin parse output not displaying (wrong field name: data.output → data.stdout)
+
+### Files/modules/functions touched
+- `index.html` — dynamic stats, recent pubs from JSON, dynamic funding section
+- `research.html` — data-driven from research.json + grants.json, grant title links
+- `research-detail.html` — NEW: per-area detail with keyword-filtered publications
+- `publications.html` — complete rewrite: CV data source, 6 tabs, sort, PMCID badges
+- `tools.html` — added R Shiny filter
+- `people.html` — complete rewrite: data-driven, visibility, FAC sections, GitHub links
+- `positions.html` — data-driven from positions.json, "Future Openings" mode
+- `collaborators.html` — data-driven from collaborators.json
+- `js/components.js` — phone/email fix, admin link in footer
+- `data/*.json` — all 8 JSON data files created/updated
+- `scripts/parse_cv.py` — CV parser with PMCID extraction, git auto-commit
+- `scripts/admin_server.py` — admin server with team CRUD, visibility, photo upload, DNS fix
+- `scripts/templates/admin.html` — dashboard + team management with FAC sections
+- `.gitignore` — created with exclusions for large dirs, zips, credentials
+- `CLAUDE.md` — updated to reflect final architecture
+
+### Key technical decisions and rationale
+- **JSON-as-database over SQL**: Zero dependencies, human-readable, git-trackable, sufficient for lab website traffic
+- **CV parser as single source of truth**: Publications and grants auto-generated from PDF, reducing manual maintenance
+- **Section visibility in team.json**: Allows admin to control public page display without code changes
+- **FAC split (current/previous)**: Better organization than a single "hidden" bucket
+- **Reverse DNS override**: Python's BaseHTTPRequestHandler does DNS lookups by default, causing 56s delays
+- **Git auto-commit on parse**: Creates version history of every CV update automatically
+
+### Problems encountered and resolutions
+1. **SSL/HTTPS not working externally**: University firewall blocks port 443. Nginx configured correctly but unreachable. Let's Encrypt failed (port 80 also blocked from internet). **Unresolved** — need UND IT.
+2. **Admin server 56s delay**: Reverse DNS lookups on every request. **Resolved** by overriding `address_string()`.
+3. **Admin dashboard blank status**: Backend returned wrong structure + wrong file path. **Resolved** by rewriting `_handle_status()`.
+4. **Admin template `hidden` CSS class corruption**: Bulk sed replaced CSS class `hidden` with `fac`. **Resolved** by targeted fixes to restore CSS classes.
+5. **Publications missing from "all" tab**: Preprints section only showed on preprints tab. **Resolved** by adding `activeTab === 'all'` condition.
+
+### Items explicitly completed
+- All pages data-driven from JSON (no more hardcoded content)
+- Admin panel with CV upload, parsing, team management, visibility toggles
+- v2→root cutover complete
+- Git repository initialized and pushed
+- Directory cleanup (unused dirs → v1/)
+- Google Scholar link corrected
+- All collaborator URLs updated
+- Grant links added (NIH Reporter, ARPA-H)
+- PMCID support added to publications
+- Publication sorting (newest/oldest/CV order)
+
+### Items not completed
+- Image optimization, favicon, OG meta tags, mobile testing
+- HTTPS (blocked by university network)
+- Admin tabs for editing collaborators/research/positions JSON
+- Admin server auto-start on boot
+
+### Verification performed
+- All 8 HTML pages + 8 JSON data files return HTTP 200
+- CV parser produces correct counts: 170 pubs, 59 PMCID, 35 grants
+- Admin server response time: 0.001s (down from 56s)
+- Full code audit by 3 parallel agents: found and fixed 5 bugs
+- Git push successful to github.com/hurlab/hurlab.git
