@@ -9,6 +9,11 @@
         body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
         .drop-zone { transition: all 0.2s ease; }
         .drop-zone.drag-over { border-color: #0d9488; background-color: #f0fdfa; }
+        tr.dragging { opacity: 0.4; }
+        tr.drag-over-row { border-top: 2px solid #0d9488 !important; }
+        .drag-handle { cursor: grab; color: #9ca3af; }
+        .drag-handle:hover { color: #6b7280; }
+        .drag-handle:active { cursor: grabbing; }
         .log-output { max-height: 400px; overflow-y: auto; }
         .spinner { animation: spin 1s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
@@ -677,8 +682,14 @@
                 if (editingRow && editingRow.section === section && editingRow.index === i) {
                     html += buildEditRow(section, i, m);
                 } else {
-                    html += `<tr class="border-b border-gray-100 hover:bg-gray-50">
-                        <td class="py-3 px-2 text-gray-400">${i + 1}</td>
+                    html += `<tr class="border-b border-gray-100 hover:bg-gray-50" draggable="true"
+                                data-section="${section}" data-index="${i}"
+                                ondragstart="onRowDragStart(event)" ondragover="onRowDragOver(event)"
+                                ondragenter="onRowDragEnter(event)" ondragleave="onRowDragLeave(event)"
+                                ondrop="onRowDrop(event)" ondragend="onRowDragEnd(event)">
+                        <td class="py-3 px-2 text-gray-400 drag-handle" title="Drag to reorder">
+                            <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/></svg>${i + 1}
+                        </td>
                         <td class="py-3 px-2 font-medium text-gray-800">${esc(m.name || '')}</td>
                         <td class="py-3 px-2 text-gray-600">${esc(m.role || '')}</td>
                         <td class="py-3 px-2"><span class="inline-block px-2 py-0.5 rounded-full text-xs font-medium ${categoryColor(m.category)}">${esc(m.category || '--')}</span></td>
@@ -692,6 +703,72 @@
                 }
             });
             tbody.innerHTML = html;
+        }
+
+        // --- Drag-and-drop reorder ---
+        let dragSection = null;
+        let dragFromIdx = null;
+
+        function onRowDragStart(e) {
+            const tr = e.target.closest('tr');
+            dragSection = tr.dataset.section;
+            dragFromIdx = parseInt(tr.dataset.index);
+            tr.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', dragFromIdx);
+        }
+
+        function onRowDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+        }
+
+        function onRowDragEnter(e) {
+            const tr = e.target.closest('tr');
+            if (tr && tr.dataset.section === dragSection) {
+                tr.classList.add('drag-over-row');
+            }
+        }
+
+        function onRowDragLeave(e) {
+            const tr = e.target.closest('tr');
+            if (tr) tr.classList.remove('drag-over-row');
+        }
+
+        function onRowDragEnd(e) {
+            document.querySelectorAll('tr.dragging, tr.drag-over-row').forEach(el => {
+                el.classList.remove('dragging', 'drag-over-row');
+            });
+        }
+
+        async function onRowDrop(e) {
+            e.preventDefault();
+            const tr = e.target.closest('tr');
+            if (!tr || tr.dataset.section !== dragSection) return;
+            const toIdx = parseInt(tr.dataset.index);
+            if (dragFromIdx === toIdx) return;
+            tr.classList.remove('drag-over-row');
+
+            try {
+                const res = await fetch('/api/team/reorder', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ section: dragSection, from: dragFromIdx, to: toIdx })
+                });
+                if (res.ok) {
+                    // Refresh data
+                    const teamRes = await fetch('/api/team');
+                    if (teamRes.ok) {
+                        teamData = await teamRes.json();
+                        renderMembers(dragSection);
+                    }
+                } else {
+                    const data = await res.json();
+                    showTeamMsg('teamOpResult', data.error || 'Reorder failed', false);
+                }
+            } catch (err) {
+                showTeamMsg('teamOpResult', 'Error: ' + err.message, false);
+            }
         }
 
         function categoryColor(cat) {
