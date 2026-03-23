@@ -57,20 +57,22 @@
     },
     {
       "title": "Neurological Disorders",
-      "description": "Focus on diabetic peripheral neuropathy (DPN), metabolic syndrome-associated cognitive impairment, and amyotrophic lateral sclerosis (ALS), in collaboration with Drs. Eva Feldman and Stephen Goutman (University of Michigan).",
+      "description": "Focus on diabetic peripheral neuropathy (DPN), metabolic syndrome-associated cognitive impairment, amyotrophic lateral sclerosis (ALS), Alzheimer's disease, and Parkinson's disease, in collaboration with Drs. Eva Feldman and Stephen Goutman (University of Michigan).",
       "icon": "brain",
       "color": "indigo",
       "details": {
-        "overview": "Our neurological disorders research applies computational biology approaches to understand the molecular mechanisms of diabetic peripheral neuropathy (DPN), amyotrophic lateral sclerosis (ALS), and related neurodegenerative conditions. We have developed the Diabetic Peripheral Neuropathy Knowledge Base (DPNKB), a comprehensive resource that integrates genomic, transcriptomic, and clinical data to facilitate the study of DPN. Our transcriptomic profiling studies of Schwann cells and sural nerve biopsies from diabetic patients have revealed key gene expression changes associated with nerve damage in type 2 diabetes.\n\nIn collaboration with Drs. Eva Feldman and Stephen Goutman at the University of Michigan, we investigate the molecular underpinnings of ALS through multi-omics analyses. This work involves integrating metabolomics, lipidomics, and transcriptomics data from ALS patient cohorts to identify disease biomarkers and potential therapeutic targets. Our computational analyses have contributed to understanding metabolic disruptions and environmental exposures associated with ALS risk and progression.\n\nWe also study the intersection of metabolic syndrome and neurological complications, using systems biology approaches to map the complex molecular networks that link diabetes, obesity, and dyslipidemia to nerve damage and cognitive impairment. This translational research aims to identify early intervention targets that could prevent or slow the progression of neurological complications in metabolic diseases.",
+        "overview": "Our neurological disorders research applies computational biology approaches to understand the molecular mechanisms of diabetic peripheral neuropathy (DPN), amyotrophic lateral sclerosis (ALS), Alzheimer's disease (AD), Parkinson's disease (PD), and related neurodegenerative conditions. We have developed the Diabetic Peripheral Neuropathy Knowledge Base (DPNKB), a comprehensive resource that integrates genomic, transcriptomic, and clinical data to facilitate the study of DPN. Our transcriptomic profiling studies of Schwann cells and sural nerve biopsies from diabetic patients have revealed key gene expression changes associated with nerve damage in type 2 diabetes.\n\nIn collaboration with Drs. Eva Feldman and Stephen Goutman at the University of Michigan, we investigate the molecular underpinnings of ALS through multi-omics analyses. This work involves integrating metabolomics, lipidomics, and transcriptomics data from ALS patient cohorts to identify disease biomarkers and potential therapeutic targets. Our computational analyses have contributed to understanding metabolic disruptions and environmental exposures associated with ALS risk and progression.\n\nOur research extends to other major neurodegenerative diseases. In Alzheimer's disease, we apply omics-based approaches to identify molecular signatures and potential therapeutic determinants, including investigations of ABCA7 and Abeta/tau pathology. In Parkinson's disease, we study alpha-synuclein-mediated epigenomic modifications of microglial neuroinflammation and spatial profiling of microglia-synuclein interactions, leveraging both epigenetics and spatial transcriptomics data.\n\nWe also study the intersection of metabolic syndrome and neurological complications, using systems biology approaches to map the complex molecular networks that link diabetes, obesity, and dyslipidemia to nerve damage and cognitive impairment. This translational research aims to identify early intervention targets that could prevent or slow the progression of neurological complications in metabolic diseases.",
         "keyTopics": [
           "Diabetic peripheral neuropathy",
           "ALS biomarker discovery",
+          "Alzheimer's disease molecular signatures",
+          "Parkinson's disease epigenomics",
           "Schwann cell transcriptomics",
           "Metabolic syndrome and neurodegeneration"
         ],
         "tools": ["DPNKB"],
-        "collaborators": ["Eva Feldman (University of Michigan)", "Stephen Goutman (University of Michigan)"],
-        "keywords": ["neuropathy", "diabetic", "ALS", "amyotrophic", "Schwann", "sural nerve", "neurolog", "Parkinson", "epilep"]
+        "collaborators": ["Eva Feldman (University of Michigan)", "Stephen Goutman (University of Michigan)", "James Porter (University of North Dakota)"],
+        "keywords": ["neuropathy", "diabetic", "ALS", "amyotrophic", "Schwann", "sural nerve", "neurolog", "Parkinson", "epilep", "Alzheimer", "alpha-synuclein", "microglia", "neurodegenerat", "ABCA7", "cognitive"]
       }
     },
     {
