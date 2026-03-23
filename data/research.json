@@ -71,7 +71,7 @@
           "Metabolic syndrome and neurodegeneration"
         ],
         "tools": ["DPNKB"],
-        "collaborators": ["Eva Feldman (University of Michigan)", "Stephen Goutman (University of Michigan)", "James Porter (University of North Dakota)"],
+        "collaborators": ["Eva Feldman (University of Michigan)", "Stephen Goutman (University of Michigan)", "James Porter (University of North Dakota)", "Nicholas Lyssenko (Temple University)"],
         "keywords": ["neuropathy", "diabetic", "ALS", "amyotrophic", "Schwann", "sural nerve", "neurolog", "Parkinson", "epilep", "Alzheimer", "alpha-synuclein", "microglia", "neurodegenerat", "ABCA7", "cognitive"]
       }
     },
