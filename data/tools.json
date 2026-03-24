@@ -97,5 +97,27 @@
     "url": null,
     "github": "https://github.com/hurlab/scGEN",
     "language": "Python"
+  },
+  {
+    "name": "VIOLIN",
+    "description": "Vaccine Investigation and Online Information Network — a comprehensive vaccine knowledgebase integrating AI-driven literature analysis with ontology annotation.",
+    "version": "2.0",
+    "updated": "2025-01-01",
+    "category": "Knowledgebase",
+    "status": "active",
+    "url": "https://violinet.org/",
+    "github": null,
+    "language": "Web"
+  },
+  {
+    "name": "Ignet",
+    "description": "Interactive gene interaction network visualization and analysis system for ontology-based literature-mined networks.",
+    "version": "Latest",
+    "updated": "2025-01-01",
+    "category": "Web Tool",
+    "status": "active",
+    "url": "https://ignet.org/",
+    "github": null,
+    "language": "Web"
   }
 ]
