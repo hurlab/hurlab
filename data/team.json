@@ -24,22 +24,22 @@
   },
   "current": [
     {
-      "name": "Masha Savelieff, Ph.D.",
-      "role": "Research Scientist",
-      "category": "staff",
-      "description": "Lab/grant manager and research scientist",
-      "photo": null,
-      "period": null,
-      "advisingRole": null,
-      "institution": "UND"
-    },
-    {
       "name": "Brett McGregor, Ph.D.",
       "role": "Data Analyst",
       "category": "staff",
       "description": "Data analyst, Computational Data Analysis Core",
       "photo": "Images/mcgregor_brett.jpg",
       "period": "Sep 2019 \u2013",
+      "advisingRole": null,
+      "institution": "UND"
+    },
+    {
+      "name": "Masha Savelieff, Ph.D.",
+      "role": "Research Scientist",
+      "category": "staff",
+      "description": "Lab/grant manager and research scientist",
+      "photo": null,
+      "period": null,
       "advisingRole": null,
       "institution": "UND"
     },
