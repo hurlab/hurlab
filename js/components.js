@@ -133,6 +133,7 @@ function injectFooter() {
             <li><a href="tools.html" class="hover:text-primary-400 transition-colors">Tools & Software</a></li>
             <li><a href="positions.html" class="hover:text-primary-400 transition-colors">Open Positions</a></li>
             <li><a href="https://github.com/hurlab" target="_blank" class="hover:text-primary-400 transition-colors">GitHub</a></li>
+            <li><a href="http://hurlab.med.und.edu:8282/portal/" target="_blank" class="hover:text-primary-400 transition-colors">Sakai Portal</a></li>
           </ul>
         </div>
 
