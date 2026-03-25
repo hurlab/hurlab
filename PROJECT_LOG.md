@@ -206,3 +206,110 @@
 - Admin server response time: 0.001s (down from 56s)
 - Full code audit by 3 parallel agents: found and fixed 5 bugs
 - Git push successful to github.com/hurlab/hurlab.git
+
+---
+
+## Session 2026-03-25 14:39 CDT
+
+- **Coding CLI used**: Claude Code CLI (Claude Opus 4.6, 1M context)
+
+### Phase(s) worked on
+- Phase 7: SEO & Analytics (favicon, sitemap, robots.txt, OG tags, schema.org, GA4)
+- Phase 8: Content refinement (research areas, collaborators, tools expandable cards)
+- Admin panel enhancements (drag-and-drop reorder)
+
+### Concrete changes implemented
+
+**SEO & Analytics:**
+1. Created `favicon.svg` (teal-to-indigo H monogram with DNA dots)
+2. Created `robots.txt` (allows crawling, blocks scripts/v1/cgi-bin)
+3. Created `sitemap.xml` (12 URLs: 7 main + 5 research detail pages)
+4. Added Open Graph meta tags to all 8 HTML pages
+5. Added Twitter Card meta tags to index.html
+6. Added schema.org ResearchOrganization JSON-LD to index.html
+7. Added missing meta descriptions to positions.html and collaborators.html
+8. Added favicon link to all pages
+9. Added Google Analytics 4 (G-Z36JMZ1F1K) tracking to all 8 pages
+
+**Content Updates:**
+10. Expanded Neurological Disorders research area to include Alzheimer's and Parkinson's disease
+11. Added AD/PD overview paragraphs, key topics, keywords, collaborator (James Porter)
+12. Added Dr. Nicholas Lyssenko (Temple University) as AD collaborator in research.json and collaborators.json
+13. Added Arzucan Ozgur to Ontology research collaborators
+14. Added Cornelius Dyke + Marina Kim to AI/ML research collaborators
+15. Added NIH Reporter + ARPA-H URLs to all 5 current grants in grants.json
+16. Removed effort percentages from all grant notes
+17. Added Sakai Portal link to footer (http://hurlab.med.und.edu:8282/portal/)
+18. Added VIOLIN (violinet.org) as Knowledgebase category tool
+19. Added Ignet (ignet.org) as Web Tool
+20. Added "Knowledgebase" filter category to tools page (purple badge)
+
+**Tools Page Expandable Cards:**
+21. Added `details` field to all 11 tools in tools.json (longDescription, features, publications, relatedAreas)
+22. Rewrote tool card template with Alpine.js click-to-expand functionality
+23. Expanded card spans full width (col-span-3), shows detail sections
+24. Added Alpine.js `x-collapse` plugin for smooth expand/collapse animation
+25. Added chevron rotation indicator for expand state
+26. Buttons (Launch/GitHub) and PubMed links use @click.stop to prevent toggle
+27. Fixed collapse on click — removed @click.stop from detail container
+28. Added auto-scroll to expanded card with 80px navbar offset
+29. Limited to single expanded card — opening new card collapses previous
+
+**Admin Panel:**
+30. Added drag-and-drop reorder for team members (HTML5 Drag and Drop API)
+31. Added POST /api/team/reorder endpoint (section, from, to)
+32. Visual feedback: drag handle icon, dragged row fades, target row teal border
+33. Reorder works for all 4 sections (current, alumni, fac, fac_alumni)
+
+**External Review Assessment (HURLAB_IMPROVEMENT_PLAN.md):**
+34. Reviewed all items from external agent's report
+35. Most items were false positives (server-side fetch without JS execution)
+36. Implemented genuine SEO items (favicon, sitemap, robots, OG, schema.org)
+
+### Files/modules/functions touched
+- `favicon.svg` — NEW: teal-to-indigo H monogram
+- `robots.txt` — NEW: crawling rules
+- `sitemap.xml` — NEW: 12 URLs
+- `index.html` — GA4, OG tags, Twitter Card, schema.org JSON-LD
+- `research.html` — GA4, OG tags
+- `research-detail.html` — GA4, OG tags, PMCID badges
+- `publications.html` — GA4, OG tags, PMCID badges
+- `tools.html` — GA4, OG tags, expandable cards, x-collapse plugin, Knowledgebase filter, single-expand, auto-scroll
+- `people.html` — GA4, OG tags, GitHub (Hur Lab) link on PI
+- `positions.html` — GA4, OG tags, meta description added
+- `collaborators.html` — GA4, OG tags, meta description added
+- `js/components.js` — Sakai Portal link in footer
+- `data/tools.json` — 11 tools (added VIOLIN, Ignet) with details field
+- `data/research.json` — Neuro expanded (AD/PD), collaborators updated
+- `data/collaborators.json` — Lyssenko added, URLs updated
+- `data/grants.json` — NIH Reporter/ARPA-H URLs, effort % removed
+- `scripts/admin_server.py` — POST /api/team/reorder endpoint
+- `scripts/templates/admin.html` — drag-and-drop reorder UI
+
+### Key technical decisions and rationale
+- **Alpine.js x-collapse plugin**: Provides smooth expand/collapse animation without custom CSS transitions
+- **Single-expand pattern**: `expandedTool` state lifted to parent component rather than per-card x-data — cleaner UX, prevents multiple open cards
+- **Auto-scroll with offset**: `getBoundingClientRect().top + scrollY - 80` accounts for fixed navbar height
+- **@click.stop selective**: Only on interactive elements (links, buttons), not on the detail container — so clicking the expanded card collapses it
+- **External review triage**: Most findings were false positives from server-side fetch without JS execution. Only SEO items (genuinely missing files) were acted on.
+
+### Problems encountered and resolutions
+1. **Tool card collapse not working**: `@click.stop` on detail div blocked event propagation. **Resolved** by removing it, keeping @click.stop only on interactive elements.
+2. **Expanded card scroll hiding title**: `scrollIntoView({block:'start'})` scrolled to exact top, hidden by fixed navbar. **Resolved** by using manual scroll with 80px offset.
+3. **GA4 insertion via sed failed**: Escaping issues with shell heredoc. **Resolved** by using Python script for insertion.
+
+### Items explicitly completed
+- SEO: favicon, sitemap, robots.txt, OG tags, schema.org, GA4
+- Tools: expandable detail cards with single-expand and auto-scroll
+- Research: Neurological Disorders expanded with AD/PD
+- Collaborators: Lyssenko, Dyke, Kim added
+- Admin: drag-and-drop team member reorder
+- VIOLIN and Ignet tools added
+- Sakai Portal link restored
+
+### Verification performed
+- All pages return HTTP 200
+- GA4 tag confirmed on all 8 pages (grep count)
+- SEO files (robots.txt, sitemap.xml, favicon.svg) return HTTP 200
+- Tool card expand/collapse/scroll tested by user
+- Git push successful for all commits
