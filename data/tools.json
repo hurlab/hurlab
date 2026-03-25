@@ -8,7 +8,13 @@
     "status": "active",
     "url": "http://hurlab.med.und.edu/SciMiner/",
     "github": null,
-    "language": "Web"
+    "language": "Web",
+    "details": {
+      "longDescription": "SciMiner is a web-based literature mining and functional analysis tool that automatically identifies genes and proteins mentioned in biomedical text. It processes PubMed abstracts or user-supplied text to extract gene/protein mentions using dictionary-based and rule-based NLP approaches, then performs functional enrichment analysis (Gene Ontology, KEGG pathways) on the extracted targets.",
+      "features": ["Automated gene/protein extraction from PubMed abstracts", "Dictionary-based and rule-based NLP", "Functional enrichment analysis (GO, KEGG)", "Batch processing of multiple PMIDs", "Export results in multiple formats"],
+      "publications": ["PMID: 19417056", "PMID: 24267901"],
+      "relatedAreas": ["Literature Mining / Ontology", "AI & Machine Learning"]
+    }
   },
   {
     "name": "PubChemSR",
@@ -19,7 +25,13 @@
     "status": "active",
     "url": "https://sourceforge.net/projects/pubchemsr/",
     "github": null,
-    "language": "Java"
+    "language": "Java",
+    "details": {
+      "longDescription": "PubChemSR (PubChem Structure-activity Relationship) is a Java-based stand-alone application for retrieving and analyzing chemical compound data from NCBI PubChem databases. It supports batch queries, bioassay data retrieval, and structure-activity analysis for pharmacological research.",
+      "features": ["Batch chemical compound queries", "Bioassay data retrieval from PubChem", "Structure-activity relationship analysis", "Cross-platform Java application", "Export to CSV and SDF formats"],
+      "publications": ["PMID: 26150531"],
+      "relatedAreas": ["Systems Pharmacology"]
+    }
   },
   {
     "name": "DNMKB2",
@@ -30,7 +42,13 @@
     "status": "active",
     "url": "http://hurlab.med.und.edu/DNMKB2/",
     "github": null,
-    "language": "Web"
+    "language": "Web",
+    "details": {
+      "longDescription": "DNMKB2 (Diabetic Neuropathy Molecular Knowledge Base v2) is a comprehensive repository and analysis portal for diabetic peripheral neuropathy transcriptomics data. It integrates 140 differentially expressed gene (DEG) sets from multiple DPN studies, enabling cross-study comparison, meta-analysis, and pathway enrichment across mouse and human models.",
+      "features": ["140 DEG sets from DPN studies", "Cross-study meta-analysis", "Mouse and human model comparison", "Pathway enrichment analysis", "Interactive data visualization"],
+      "publications": ["PMID: 26150531"],
+      "relatedAreas": ["Neurological Disorders", "Bioinformatics & Systems Biology"]
+    }
   },
   {
     "name": "VennDetail",
@@ -41,7 +59,13 @@
     "status": "active",
     "url": "http://hurlab.med.und.edu/VennDetail",
     "github": "https://github.com/hurlab/VennDetail",
-    "language": "R"
+    "language": "R",
+    "details": {
+      "longDescription": "VennDetail is a Bioconductor R package that provides comprehensive Venn diagram analysis with Pie chart overlays. Unlike traditional Venn diagrams limited to 3-4 sets, VennDetail supports up to 8 sets and provides detailed subset extraction, making it ideal for comparing gene lists from multiple omics experiments.",
+      "features": ["Support for up to 8 comparison sets", "Venn-Pie hybrid visualization", "Detailed subset extraction and annotation", "Integration with Bioconductor workflows", "Publication-ready figures"],
+      "publications": [],
+      "relatedAreas": ["Bioinformatics & Systems Biology"]
+    }
   },
   {
     "name": "richR",
@@ -52,7 +76,13 @@
     "status": "active",
     "url": "http://hurlab.med.und.edu/richR",
     "github": "https://github.com/hurlab/richR",
-    "language": "R"
+    "language": "R",
+    "details": {
+      "longDescription": "richR is a comprehensive R package for functional enrichment analysis supporting GO, KEGG, Reactome, and custom gene sets. It provides advanced visualization including dot plots, bar plots, network plots, and enrichment maps, with built-in support for multiple species and gene ID conversion.",
+      "features": ["GO, KEGG, Reactome enrichment", "Multiple visualization types (dot, bar, network, enrichment map)", "Multi-species support", "Gene ID auto-conversion", "Customizable color palettes and themes"],
+      "publications": [],
+      "relatedAreas": ["Bioinformatics & Systems Biology"]
+    }
   },
   {
     "name": "Tox21 Enricher",
@@ -63,7 +93,13 @@
     "status": "active",
     "url": "http://hurlab.med.und.edu/Tox21Enricher",
     "github": "https://github.com/hurlab/tox21enricher",
-    "language": "R/Web"
+    "language": "R/Web",
+    "details": {
+      "longDescription": "Tox21 Enricher is an online tool for performing enrichment analysis on Tox21 chemical screening data from the NIH Tox21 program. It allows researchers to identify overrepresented biological pathways and toxicity endpoints among sets of chemical compounds, supporting both web-based and R package interfaces.",
+      "features": ["Enrichment analysis for Tox21 chemical data", "Web interface and R package", "Pathway and toxicity endpoint analysis", "Chemical set comparison", "FDA collaboration for drug safety"],
+      "publications": ["PMID: 35234869"],
+      "relatedAreas": ["Systems Pharmacology"]
+    }
   },
   {
     "name": "richStudio",
@@ -74,7 +110,13 @@
     "status": "development",
     "url": "http://hurlab.med.und.edu:3838/richStudio/",
     "github": "https://github.com/hurlab/richStudio",
-    "language": "R"
+    "language": "R",
+    "details": {
+      "longDescription": "richStudio is an interactive R Shiny web application that provides a GUI for performing enrichment analysis and hierarchical clustering without writing code. It wraps richR and richCluster functionality in an accessible web interface for researchers with limited programming experience.",
+      "features": ["No-code enrichment analysis GUI", "Interactive clustering visualization", "Drag-and-drop data upload", "Real-time parameter adjustment", "Export publication-ready figures"],
+      "publications": [],
+      "relatedAreas": ["Bioinformatics & Systems Biology"]
+    }
   },
   {
     "name": "richCluster",
@@ -85,7 +127,13 @@
     "status": "active",
     "url": null,
     "github": "https://github.com/hurlab/richCluster",
-    "language": "R/C++"
+    "language": "R/C++",
+    "details": {
+      "longDescription": "richCluster is an R package with a C++ backend that provides high-performance hierarchical clustering for large-scale biological data. It implements optimized algorithms for gene expression clustering, pathway grouping, and enrichment result organization, significantly outperforming pure R implementations.",
+      "features": ["C++ optimized clustering engine", "Hierarchical and k-means clustering", "Large dataset support", "Integration with richR ecosystem", "Customizable distance metrics"],
+      "publications": [],
+      "relatedAreas": ["Bioinformatics & Systems Biology"]
+    }
   },
   {
     "name": "scGEN",
@@ -96,7 +144,13 @@
     "status": "development",
     "url": null,
     "github": "https://github.com/hurlab/scGEN",
-    "language": "Python"
+    "language": "Python",
+    "details": {
+      "longDescription": "scGEN (single-cell Gene-aware Embedding Network) is a deep learning framework for single-cell RNA-seq analysis. It uses gene-aware neural network architectures to learn biologically meaningful cell embeddings, enabling improved cell type clustering, trajectory inference, and batch effect correction compared to traditional dimensionality reduction methods.",
+      "features": ["Gene-aware neural network architecture", "Improved cell type clustering", "Batch effect correction", "Trajectory inference support", "Integration with Scanpy/AnnData workflows"],
+      "publications": [],
+      "relatedAreas": ["AI & Machine Learning", "Bioinformatics & Systems Biology"]
+    }
   },
   {
     "name": "VIOLIN",
@@ -107,7 +161,13 @@
     "status": "active",
     "url": "https://violinet.org/",
     "github": null,
-    "language": "Web"
+    "language": "Web",
+    "details": {
+      "longDescription": "VIOLIN (Vaccine Investigation and Online Information Network) is a comprehensive web-based vaccine knowledgebase that integrates AI-driven literature analysis with ontology-based data annotation. VIOLIN 2.0 includes curated data on vaccine components, host responses, and protection mechanisms across hundreds of licensed and experimental vaccines, supported by the Vaccine Ontology (VO) for standardized representation.",
+      "features": ["Comprehensive vaccine knowledge repository", "AI-driven literature mining and curation", "Vaccine Ontology (VO) integration", "Host response and protection mechanism data", "Cross-species vaccine comparison"],
+      "publications": ["PMID: 18832364", "PMID: 25378327"],
+      "relatedAreas": ["Ontology-Based Knowledge Systems", "Host-Pathogen Interactions"]
+    }
   },
   {
     "name": "Ignet",
@@ -118,6 +178,12 @@
     "status": "active",
     "url": "https://ignet.org/",
     "github": null,
-    "language": "Web"
+    "language": "Web",
+    "details": {
+      "longDescription": "Ignet is an interactive web-based system for visualizing and analyzing gene-gene interaction networks derived from ontology-based literature mining. It displays networks extracted by SciMiner and other NLP tools, allowing researchers to explore gene relationships, identify hub genes, and discover novel biological connections in the published literature.",
+      "features": ["Interactive network visualization", "Literature-mined gene interactions", "Hub gene identification", "Ontology-based relationship annotation", "Network export and analysis"],
+      "publications": [],
+      "relatedAreas": ["Literature Mining / Ontology", "AI & Machine Learning"]
+    }
   }
 ]
