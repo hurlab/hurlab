@@ -103,7 +103,7 @@
         <div x-data="{ expanded: false }"
              class="gradient-border bg-white rounded-xl shadow-sm overflow-hidden flex flex-col transition-all duration-300 cursor-pointer"
              :class="expanded ? 'md:col-span-2 lg:col-span-3 shadow-lg ring-2 ring-teal-200' : 'card-hover'"
-             @click="expanded = !expanded"
+             @click="expanded = !expanded; if(expanded) $nextTick(() => $el.scrollIntoView({ behavior: 'smooth', block: 'start' }))"
              data-aos="fade-up"
              :data-aos-delay="(idx % 3) * 100">
 
