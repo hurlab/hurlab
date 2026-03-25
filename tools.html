@@ -61,6 +61,7 @@
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
            x-data="{
              activeFilter: 'All',
+             expandedTool: null,
              tools: [],
              categories: ['All', 'Knowledgebase', 'Web Tool', 'R Package', 'R Shiny', 'Python', 'Desktop'],
              get filteredTools() {
@@ -100,10 +101,9 @@
     <!-- Tools Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <template x-for="(tool, idx) in filteredTools" :key="tool.name">
-        <div x-data="{ expanded: false }"
-             class="gradient-border bg-white rounded-xl shadow-sm overflow-hidden flex flex-col transition-all duration-300 cursor-pointer"
-             :class="expanded ? 'md:col-span-2 lg:col-span-3 shadow-lg ring-2 ring-teal-200' : 'card-hover'"
-             @click="expanded = !expanded; if(expanded) $nextTick(() => { const y = $el.getBoundingClientRect().top + window.scrollY - 80; window.scrollTo({ top: y, behavior: 'smooth' }) })"
+        <div class="gradient-border bg-white rounded-xl shadow-sm overflow-hidden flex flex-col transition-all duration-300 cursor-pointer"
+             :class="expandedTool === tool.name ? 'md:col-span-2 lg:col-span-3 shadow-lg ring-2 ring-teal-200' : 'card-hover'"
+             @click="expandedTool = (expandedTool === tool.name) ? null : tool.name; if(expandedTool === tool.name) $nextTick(() => { const y = $el.getBoundingClientRect().top + window.scrollY - 80; window.scrollTo({ top: y, behavior: 'smooth' }) })"
              data-aos="fade-up"
              :data-aos-delay="(idx % 3) * 100">
 
@@ -125,7 +125,7 @@
                 </span>
                 <!-- Expand/collapse chevron -->
                 <svg class="w-5 h-5 text-gray-400 transition-transform duration-300"
-                     :class="expanded && 'rotate-180'"
+                     :class="expandedTool === tool.name && 'rotate-180'"
                      fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
@@ -140,10 +140,10 @@
             </div>
 
             <!-- Description -->
-            <p class="text-gray-600 text-sm leading-relaxed mb-4" :class="!expanded && 'flex-1'" x-text="tool.description"></p>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4" :class="expandedTool !== tool.name && 'flex-1'" x-text="tool.description"></p>
 
             <!-- ===== EXPANDED DETAIL SECTION ===== -->
-            <div x-show="expanded" x-collapse x-cloak class="mt-2">
+            <div x-show="expandedTool === tool.name" x-collapse x-cloak class="mt-2">
 
               <!-- Long description -->
               <template x-if="tool.details && tool.details.longDescription">
