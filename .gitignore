@@ -31,6 +31,14 @@ scripts/__pycache__/
 # SSL
 ssl_fullchain.crt
 
+# Node modules (Playwright)
+node_modules/
+
+# Test artifacts
+tests/screenshots/
+test-results/
+playwright-report/
+
 # Misc
 1
 

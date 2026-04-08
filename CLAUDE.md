@@ -12,62 +12,67 @@ The site serves as a research portal, combining lab information, publications, b
 
 - **Server**: Apache Tomcat 9.0.37 at `/home/hurlab/apache-tomcat-9.0.37/`
 - **Webapp root**: `/home/hurlab/apache-tomcat-9.0.37/webapps/hurlab/`
-- **Modern site**: `v2/` subdirectory — the redesigned website
-- **Legacy site**: Root-level HTML files (frameset-based, kept for reference)
+- **Site URL**: `https://hurlab.med.und.edu/hurlab/`
+- **Modern site**: Root-level HTML files — the redesigned data-driven website
+- **Legacy site**: Archived in `v1/` subdirectory (frameset-based, kept for reference)
 - **CGI scripts**: `cgi-bin/` — Perl-based bioinformatics tools (still active)
+- **Admin panel**: Port 8180 (credentials in `scripts/.admin_credentials`)
 - No build system or package manager — all CDN-based, served directly by Tomcat
 
-## Modern Site Architecture (`v2/`)
+## Site Architecture
 
 ### Tech Stack (all via CDN, no build step)
 - **CSS**: Tailwind CSS Play CDN — configured in `js/theme.js`
 - **JS Interactivity**: Alpine.js 3.x (deferred) — tabs, filters, search, mobile menu
 - **Animations**: AOS (Animate on Scroll)
 - **Fonts**: Inter (body) + JetBrains Mono (code/tool names) via Google Fonts
-- **Publications**: NCBI PubMed E-utilities API + static JSON fallback
+- **Data layer**: 8 JSON files in `data/` serve as the database
 
 ### File Structure
 ```
-v2/
-  index.html              # Home: hero + research highlights + recent pubs + tools
-  research.html           # 5 research areas + funded grants
-  publications.html       # Dynamic PubMed + filterable list + tabs
-  tools.html              # Tool cards with filters, fetched from JSON
-  people.html             # PI profile + team grid + alumni
-  positions.html          # Open positions
-  collaborators.html      # Grouped by research area
+hurlab/                   ← webroot (Tomcat webapp)
+  *.html                  # 8 public pages + research-detail.html
   css/custom.css          # Custom animations, card effects, scrollbar
   js/
     theme.js              # Tailwind Play CDN config (colors, fonts)
     components.js         # Shared nav + footer injection (runs as IIFE)
-    publications.js       # PubMed API integration with sessionStorage cache
     animations.js         # AOS init + counter animations
   data/
-    tools.json            # 9 tool definitions
-    team.json             # PI + current members + alumni
-    publications.json     # Static fallback + non-PubMed entries
+    publications.json     # 170 peer-reviewed + preprints + talks + posters
+    grants.json           # Current + pending + previous grants
+    team.json             # PI + current + alumni + FAC + visibility settings
+    tools.json            # 11 tools with expandable details
+    research.json         # 5 research areas with detail content
+    collaborators.json    # 4 categories, 15 collaborators
+    positions.json        # Position types, isHiring flag
+    site.json             # Lab-wide configuration
+  Images/                 # Photos (team/, etc.)
+  Personal/               # CV PDF (symlinks)
+  scripts/
+    admin_server.py       # Admin panel server (port 8180)
+    parse_cv.py           # CV parser → publications.json + grants.json
+    start_admin.sh        # Admin server launcher
+    templates/            # Admin panel HTML templates
+  cgi-bin/                # Active Perl CGI tools
+  miRNA/                  # Active miRNA BLAST tools
+  v1/                     # Legacy site + archived directories
 ```
 
 ### Key Patterns
 - **Navigation**: Injected by `components.js` IIFE (runs before Alpine.js `defer` init). Fixed top glassmorphism nav with mobile hamburger.
 - **Script order**: `components.js` must load as regular script at bottom of body BEFORE Alpine processes `x-data` attributes. Alpine is loaded with `defer` in head.
-- **Data-driven pages**: Tools and People pages fetch from `data/*.json` via Alpine.js `x-init`, making content updates JSON-only.
-- **Publications**: Primary source is live PubMed API (cached in sessionStorage for 24h). Falls back to `data/publications.json` for non-PubMed entries (under review, presentations, patent).
+- **Data-driven pages**: All pages fetch from `data/*.json` via Alpine.js `x-init`, making content updates JSON-only.
+- **Publications**: Primary source is CV-parsed data in `data/publications.json`. 6 tabs, sort, search, year filter, PMID+PMCID+DOI badges.
 - **Color palette**: Teal primary (#0F766E), indigo accent (#6366F1), surface (#F0FDFA). Defined in `js/theme.js`.
 - **Hero sections**: Use `bg-hero-pattern` (teal-to-indigo gradient) defined in Tailwind config.
 
 ### Adding/Updating Content
-- **Team members**: Edit `data/team.json`
+- **Team members**: Edit `data/team.json` or use admin panel
 - **Tools**: Edit `data/tools.json`
-- **Publications**: Non-PubMed entries in `data/publications.json`; PubMed papers auto-fetched
+- **Publications/Grants**: Upload CV via admin panel → `parse_cv.py` auto-updates JSON + git commits
+- **Research areas**: Edit `data/research.json`
+- **Collaborators**: Edit `data/collaborators.json`
 - **New pages**: Copy head/body pattern from any existing page, ensure `components.js` loads at bottom
-
-## Legacy Site (root-level files)
-
-The original frameset-based site remains at root level for reference:
-- `index.html` — frameset entry point
-- `menu.html` — sidebar nav
-- Individual content pages: `home.html`, `people.html`, etc.
 
 ## CGI/Perl Tools (`cgi-bin/`)
 
@@ -79,4 +84,4 @@ Server-side bioinformatics tools (still active):
 
 ## Large Data Directories (avoid scanning)
 
-- **Files/** (~21GB), **Temp/** (~49GB), **BACKUPS/** — research data and archives
+- **Files/** (~21GB), **Temp/** (~49GB) — research data and archives

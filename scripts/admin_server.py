@@ -9,9 +9,11 @@ Uses only Python standard library modules.
 import hashlib
 import json
 import os
+import secrets
 import shutil
 import subprocess
 import uuid
+from collections import defaultdict
 from datetime import datetime, timedelta
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
@@ -33,16 +35,38 @@ CREDENTIALS_FILE = SCRIPTS_DIR / ".admin_credentials"
 PYTHON_BIN = "/usr/bin/python3.12"
 COOKIE_NAME = "hurlab_admin_session"
 SESSION_LIFETIME_HOURS = 24
+MAX_UPLOAD_SIZE = 50 * 1024 * 1024  # 50 MB for CV PDFs
+MAX_PHOTO_SIZE = 10 * 1024 * 1024   # 10 MB for team photos
+ALLOWED_PHOTO_EXTENSIONS = {".jpg", ".jpeg", ".png", ".gif", ".webp"}
+LOGIN_MAX_ATTEMPTS = 5
+LOGIN_LOCKOUT_SECONDS = 300  # 5 minutes
 
 # In-memory session store: token -> {"username": str, "expiry": datetime}
 sessions: dict = {}
+
+# Brute force protection: ip -> {"attempts": int, "locked_until": datetime|None}
+login_attempts: dict = defaultdict(lambda: {"attempts": 0, "locked_until": None})
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
 
-def hash_password(password: str) -> str:
-    return hashlib.sha256(password.encode("utf-8")).hexdigest()
+def hash_password(password: str, salt: str | None = None) -> tuple[str, str]:
+    """Hash password with PBKDF2-SHA256 and a random salt. Returns (hash_hex, salt_hex)."""
+    if salt is None:
+        salt = secrets.token_hex(16)
+    pw_hash = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), salt.encode("utf-8"), 600_000)
+    return pw_hash.hex(), salt
+
+
+def verify_password(password: str, stored_hash: str, salt: str | None = None) -> bool:
+    """Verify password against stored hash. Supports both legacy SHA-256 and PBKDF2."""
+    if salt:
+        computed, _ = hash_password(password, salt)
+        return secrets.compare_digest(computed, stored_hash)
+    # Legacy fallback: unsalted SHA-256
+    legacy = hashlib.sha256(password.encode("utf-8")).hexdigest()
+    return secrets.compare_digest(legacy, stored_hash)
 
 
 def load_credentials():
@@ -53,13 +77,16 @@ def load_credentials():
 
 
 def save_credentials(username: str, password: str):
+    pw_hash, salt = hash_password(password)
     data = {
         "username": username,
-        "password_hash": hash_password(password),
+        "password_hash": pw_hash,
+        "salt": salt,
         "created": datetime.now().strftime("%Y-%m-%d"),
     }
     with open(CREDENTIALS_FILE, "w") as f:
         json.dump(data, f, indent=2)
+    os.chmod(CREDENTIALS_FILE, 0o600)
 
 
 def create_session(username: str) -> str:
@@ -95,6 +122,29 @@ def purge_expired_sessions():
     expired = [t for t, s in sessions.items() if now > s["expiry"]]
     for t in expired:
         del sessions[t]
+
+
+def load_json_data(filename: str) -> dict:
+    """Load any JSON data file from DATA_DIR."""
+    path = DATA_DIR / filename
+    if not path.exists():
+        return {}
+    with open(path, "r") as f:
+        return json.load(f)
+
+
+def save_json_data(filename: str, data: dict, commit_msg: str = None):
+    """Save any JSON data file to DATA_DIR with optional git commit."""
+    path = DATA_DIR / filename
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(".tmp")
+    data["lastUpdated"] = datetime.now().strftime("%Y-%m-%d")
+    with open(tmp, "w") as f:
+        json.dump(data, f, indent=2)
+    tmp.rename(path)
+    if commit_msg:
+        subprocess.run(["git", "add", str(path)], cwd=str(BASE_DIR))
+        subprocess.run(["git", "commit", "-m", commit_msg], cwd=str(BASE_DIR))
 
 
 def load_team_data() -> dict:
@@ -245,11 +295,17 @@ class AdminHandler(BaseHTTPRequestHandler):
 
     # -- response helpers ---------------------------------------------------
 
+    def _add_security_headers(self):
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("X-Frame-Options", "DENY")
+        self.send_header("Referrer-Policy", "same-origin")
+
     def _send_html(self, html: str, status: int = 200):
         body = html.encode("utf-8")
         self.send_response(status)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
+        self._add_security_headers()
         self.end_headers()
         self.wfile.write(body)
 
@@ -258,6 +314,7 @@ class AdminHandler(BaseHTTPRequestHandler):
         self.send_response(status)
         self.send_header("Content-Type", "application/json")
         self.send_header("Content-Length", str(len(body)))
+        self._add_security_headers()
         self.end_headers()
         self.wfile.write(body)
 
@@ -315,6 +372,24 @@ class AdminHandler(BaseHTTPRequestHandler):
             self._send_json(team_data)
             return
 
+        if self.path == "/api/collaborators":
+            if not self._require_auth():
+                return
+            self._send_json(load_json_data("collaborators.json"))
+            return
+
+        if self.path == "/api/research":
+            if not self._require_auth():
+                return
+            self._send_json(load_json_data("research.json"))
+            return
+
+        if self.path == "/api/positions":
+            if not self._require_auth():
+                return
+            self._send_json(load_json_data("positions.json"))
+            return
+
         self.send_error(404, "Not Found")
 
     # -- POST ---------------------------------------------------------------
@@ -342,6 +417,12 @@ class AdminHandler(BaseHTTPRequestHandler):
             self._handle_team_visibility()
         elif self.path == "/api/team/reorder":
             self._handle_team_reorder()
+        elif self.path == "/api/collaborators":
+            self._handle_save_json("collaborators.json", "collaborators")
+        elif self.path == "/api/research":
+            self._handle_save_json("research.json", "research areas")
+        elif self.path == "/api/positions":
+            self._handle_save_json("positions.json", "positions")
         else:
             self.send_error(404, "Not Found")
 
@@ -373,11 +454,17 @@ class AdminHandler(BaseHTTPRequestHandler):
         self.send_header("Location", "/")
         self.send_header(
             "Set-Cookie",
-            f"{COOKIE_NAME}={token}; Path=/; HttpOnly; Max-Age={SESSION_LIFETIME_HOURS * 3600}",
+            f"{COOKIE_NAME}={token}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age={SESSION_LIFETIME_HOURS * 3600}",
         )
         self.end_headers()
 
     def _handle_login(self):
+        client_ip = self.client_address[0]
+        record = login_attempts[client_ip]
+        if record["locked_until"] and datetime.now() < record["locked_until"]:
+            self._send_html(login_page("Too many failed attempts. Try again later."), status=429)
+            return
+
         form = self._read_form_data()
         username = form.get("username", "").strip()
         password = form.get("password", "")
@@ -387,16 +474,26 @@ class AdminHandler(BaseHTTPRequestHandler):
             self._redirect("/")
             return
 
-        if username != creds["username"] or hash_password(password) != creds["password_hash"]:
+        if username != creds["username"] or not verify_password(password, creds["password_hash"], creds.get("salt")):
+            record["attempts"] += 1
+            if record["attempts"] >= LOGIN_MAX_ATTEMPTS:
+                record["locked_until"] = datetime.now() + timedelta(seconds=LOGIN_LOCKOUT_SECONDS)
+                record["attempts"] = 0
             self._send_html(login_page("Invalid username or password."), status=401)
             return
+
+        # Successful login — reset attempts and migrate legacy hash if needed
+        record["attempts"] = 0
+        record["locked_until"] = None
+        if not creds.get("salt"):
+            save_credentials(username, password)
 
         token = create_session(username)
         self.send_response(303)
         self.send_header("Location", "/")
         self.send_header(
             "Set-Cookie",
-            f"{COOKIE_NAME}={token}; Path=/; HttpOnly; Max-Age={SESSION_LIFETIME_HOURS * 3600}",
+            f"{COOKIE_NAME}={token}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age={SESSION_LIFETIME_HOURS * 3600}",
         )
         self.end_headers()
 
@@ -412,6 +509,9 @@ class AdminHandler(BaseHTTPRequestHandler):
         try:
             # Parse multipart form data
             content_length = int(self.headers.get("Content-Length", 0))
+            if content_length > MAX_UPLOAD_SIZE:
+                self._send_json({"success": False, "error": f"File too large (max {MAX_UPLOAD_SIZE // 1024 // 1024}MB)"}, status=413)
+                return
             environ = {
                 "REQUEST_METHOD": "POST",
                 "CONTENT_TYPE": content_type,
@@ -761,6 +861,9 @@ class AdminHandler(BaseHTTPRequestHandler):
 
         try:
             content_length = int(self.headers.get("Content-Length", 0))
+            if content_length > MAX_PHOTO_SIZE:
+                self._send_json({"error": f"Photo too large (max {MAX_PHOTO_SIZE // 1024 // 1024}MB)"}, status=413)
+                return
             body_bytes = self.rfile.read(content_length)
 
             # Extract boundary
@@ -822,11 +925,14 @@ class AdminHandler(BaseHTTPRequestHandler):
             # Remove any characters that aren't alphanumeric or underscore
             clean_name = "".join(c for c in clean_name if c.isalnum() or c == "_")
 
-            # Determine extension from the original filename
+            # Determine and validate extension from the original filename
             ext = ".jpg"
             if "." in photo_filename:
                 ext = photo_filename[photo_filename.rfind("."):]
                 ext = ext.lower()
+            if ext not in ALLOWED_PHOTO_EXTENSIONS:
+                self._send_json({"error": f"Invalid photo type. Allowed: {', '.join(sorted(ALLOWED_PHOTO_EXTENSIONS))}"}, status=400)
+                return
 
             save_filename = f"{clean_name}{ext}"
 
@@ -873,6 +979,24 @@ class AdminHandler(BaseHTTPRequestHandler):
         except Exception as e:
             self._send_json({"error": str(e)}, status=500)
 
+    def _handle_save_json(self, filename: str, label: str):
+        """Generic handler for saving a JSON data file."""
+        if not self._require_auth():
+            return
+        try:
+            body = self._read_json_body()
+        except (json.JSONDecodeError, ValueError) as e:
+            self._send_json({"error": f"Invalid JSON: {e}"}, status=400)
+            return
+        if not isinstance(body, dict):
+            self._send_json({"error": "Expected a JSON object"}, status=400)
+            return
+        try:
+            save_json_data(filename, body, commit_msg=f"Admin: update {label}")
+            self._send_json({"success": True, "message": f"{label.title()} updated successfully."})
+        except Exception as e:
+            self._send_json({"error": str(e)}, status=500)
+
     def _handle_logout(self):
         cookie = self.headers.get("Cookie", "")
         token = get_session_token(cookie)
@@ -891,8 +1015,9 @@ def main():
     socketserver.TCPServer.address_family
     HTTPServer.address_family = __import__('socket').AF_INET
     AdminHandler.address_string = lambda self: self.client_address[0]
-    server = HTTPServer(("0.0.0.0", PORT), AdminHandler)
-    print(f"Hur Lab Admin Server running on http://0.0.0.0:{PORT}")
+    bind_addr = os.environ.get("ADMIN_BIND_ADDR", "127.0.0.1")
+    server = HTTPServer((bind_addr, PORT), AdminHandler)
+    print(f"Hur Lab Admin Server running on http://{bind_addr}:{PORT}")
     print(f"Base dir: {BASE_DIR}")
     print(f"Press Ctrl+C to stop")
     try:

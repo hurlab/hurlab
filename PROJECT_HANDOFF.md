@@ -6,7 +6,7 @@
 
 **Scope**: 9 HTML pages (8 public + 1 research detail), admin server (port 8180), CV parser script, 8 JSON data files. Deployed on Apache Tomcat 9.0.37 with nginx reverse proxy.
 
-- **Last updated**: 2026-03-25 14:39 CDT
+- **Last updated**: 2026-04-08 CDT
 - **Last coding CLI used**: Claude Code CLI (Claude Opus 4.6)
 - **Git repo**: https://github.com/hurlab/hurlab.git (branch: main)
 
@@ -81,11 +81,13 @@
 
 | Item | Status | Last Updated | Reference |
 |---|---|---|---|
-| Image optimization (compress JPGs, add WebP) | Not started | 2026-03-25 14:39 CDT | Session 2026-03-14 16:30 CDT |
-| Mobile responsiveness testing | Not started | 2026-03-25 14:39 CDT | Session 2026-03-14 16:30 CDT |
-| HTTPS fix (university firewall blocks 443) | Blocked | 2026-03-25 14:39 CDT | Session 2026-03-14 16:30 CDT |
-| Admin panel: collaborators/research/positions editors | Not started | 2026-03-25 14:39 CDT | Could add more admin tabs |
-| Auto-start admin server on boot | Not started | 2026-03-25 14:39 CDT | Needs systemd or cron @reboot |
+| Image optimization (compress JPGs, add WebP) | Completed | 2026-04-08 CDT | 59.6% size reduction (2.76MB→1.11MB), 6 WebP alternatives, originals backed up |
+| Mobile responsiveness testing | Completed | 2026-04-08 CDT | All 8 pages pass at 375px/768px/1280px, touch targets fixed |
+| HTTPS fix (university firewall blocks 443) | Resolved | 2026-04-08 CDT | Port 443 opened, SSL renewed |
+| Admin panel: collaborators/research/positions editors | Completed | 2026-04-08 CDT | 3 new tabs, 6 API endpoints, full CRUD with git auto-commit |
+| Auto-start admin server on boot | Completed | 2026-04-08 CDT | systemd user service + lingering enabled |
+| Security hardening | Completed | 2026-04-08 CDT | PBKDF2 hashing, brute force protection, cookie flags, security headers, upload limits, localhost binding |
+| Playwright E2E test suite | Completed | 2026-04-08 CDT | 90 tests across 6 spec files, all passing |
 
 ---
 
@@ -93,10 +95,10 @@
 
 | Item | Status | Opened | Notes |
 |---|---|---|---|
-| HTTPS unreachable externally | Open | 2026-03-14 | University firewall blocks port 443. Contact UND IT. Site works via HTTP. |
+| HTTPS unreachable externally | Resolved | 2026-03-14 | Resolved 2026-04-08: port 443 opened, SSL certificate renewed |
 | Tailwind Play CDN first-load delay | Open | 2026-03-14 | ~200-400ms, acceptable for academic site |
 | Team member photos mostly missing | Open | 2026-03-14 | Only PI and Brett McGregor have photos; admin panel supports upload |
-| Admin server not auto-started | Open | 2026-03-14 | Needs systemd service or cron @reboot entry |
+| Admin server not auto-started | Resolved | 2026-04-08 | systemd user service enabled with lingering |
 
 ---
 
@@ -113,20 +115,36 @@
 | Google Analytics 4 | GA tag present on all 8 pages | G-Z36JMZ1F1K confirmed | 2026-03-25 14:39 CDT |
 | SEO files | `curl` check | robots.txt, sitemap.xml, favicon.svg all 200 | 2026-03-25 14:39 CDT |
 | External review (HURLAB_IMPROVEMENT_PLAN.md) | Assessed all items | Most false positives (server-side fetch without JS); genuine SEO items fixed | 2026-03-25 14:39 CDT |
-| Mobile responsiveness | Not verified | Not formally tested | - |
+| Mobile responsiveness | Playwright screenshots at 375/768/1280px | All 8 pages pass, no overflow, touch targets fixed | 2026-04-08 CDT |
+| Playwright E2E test suite | `npx playwright test` (90 tests) | 90 passed, 0 failed (34.5s) | 2026-04-08 CDT |
+| Security audit | Automated review by Security Auditor agent | 17 findings (0 Critical, 3 High → fixed, 7 Medium → fixed) | 2026-04-08 CDT |
+| Admin panel editors | Code review by Reviewer agent | APPROVED with 5 minor non-blocking issues (2 fixed) | 2026-04-08 CDT |
+| Image optimization | Before/after size comparison | 59.6% reduction, all images render correctly | 2026-04-08 CDT |
+| Admin auto-start | `systemctl --user status` | active (running), linger=yes | 2026-04-08 CDT |
 
 ---
 
 ## 7. Restart Instructions
 
-**Site URL**: `http://hurlab.med.und.edu/hurlab/`
-**Admin panel**: `http://hurlab.med.und.edu:8180/` (credentials in `scripts/.admin_credentials`)
+**Site URL**: `https://hurlab.med.und.edu/hurlab/`
+**Admin panel**: `http://localhost:8180/` (credentials in `scripts/.admin_credentials`, bound to localhost only)
 **Git repo**: `https://github.com/hurlab/hurlab.git`
 
-**Starting the admin server** (if not running):
+**Admin server management** (systemd user service, auto-starts on boot):
 ```bash
-cd /home/hurlab/apache-tomcat-9.0.37/webapps/hurlab/scripts
-bash start_admin.sh
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
+systemctl --user status hurlab-admin.service   # check status
+systemctl --user restart hurlab-admin.service   # restart
+systemctl --user stop hurlab-admin.service      # stop
+journalctl --user -u hurlab-admin.service       # view logs
+```
+
+**Running E2E tests**:
+```bash
+cd /home/hurlab/apache-tomcat-9.0.37/webapps/hurlab
+npx playwright test --reporter=list              # run all 90 tests
+npx playwright test --reporter=html              # with HTML report
+npx playwright test tests/e2e/smoke.spec.ts      # run specific suite
 ```
 
 **Directory structure**:
@@ -135,19 +153,18 @@ hurlab/           ← webroot (Tomcat webapp)
   *.html          ← 8 public pages + research-detail.html
   css/, js/       ← styles and scripts
   data/           ← 8 JSON data files (the "database")
-  Images/         ← photos
+  Images/         ← photos (compressed JPGs + WebP alternatives)
   Personal/       ← CV PDF (symlinks)
   scripts/        ← admin_server.py, parse_cv.py, templates/
+  tests/          ← Playwright E2E tests + mobile QA screenshots
   cgi-bin/        ← active Perl CGI tools
   miRNA/          ← active miRNA BLAST tools
   v1/             ← legacy site + archived directories
 ```
 
-**Recommended next actions**:
-1. Image optimization (compress existing JPGs)
-2. Add admin panel tabs for editing collaborators, research areas, and positions JSON
-3. Set up admin server auto-start (systemd or cron)
-4. Mobile responsiveness testing
-5. Contact UND IT about HTTPS/port 443
-
-- **Last updated**: 2026-03-25 14:39 CDT
+**Recommended next actions** (all original outstanding items are now complete):
+1. Upload team member photos via admin panel (most still missing)
+2. Consider adding CSRF token protection to admin panel POST endpoints
+3. Consider Tomcat WEB-INF/web.xml security constraints to block direct access to scripts/
+4. Monitor GA4 dashboard for traffic data
+- **Last updated**: 2026-04-08 CDT

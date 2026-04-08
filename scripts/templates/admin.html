@@ -45,6 +45,18 @@
                     class="tab-btn px-6 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 bg-white rounded-t-lg">
                     Team Management
                 </button>
+                <button onclick="switchTab('collaborators')" id="tab-collaborators"
+                    class="tab-btn px-6 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 bg-white rounded-t-lg">
+                    Collaborators
+                </button>
+                <button onclick="switchTab('research')" id="tab-research"
+                    class="tab-btn px-6 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 bg-white rounded-t-lg">
+                    Research Areas
+                </button>
+                <button onclick="switchTab('positions')" id="tab-positions"
+                    class="tab-btn px-6 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 bg-white rounded-t-lg">
+                    Positions
+                </button>
             </nav>
         </div>
     </div>
@@ -327,6 +339,75 @@
 
     </div><!-- end panel-team -->
 
+    <!-- Collaborators Tab -->
+    <div id="panel-collaborators" class="tab-panel hidden space-y-8">
+        <div class="flex items-center justify-between">
+            <h2 class="text-lg font-semibold text-gray-800">Collaborator Categories</h2>
+            <div class="flex gap-2">
+                <button onclick="addCollabCategory()" class="bg-teal-600 hover:bg-teal-700 text-white text-sm px-4 py-2 rounded-lg transition">Add Category</button>
+                <button onclick="saveCollaborators()" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-4 py-2 rounded-lg transition">Save All</button>
+            </div>
+        </div>
+        <div id="collabMsg" class="hidden p-3 rounded-lg text-sm"></div>
+        <div id="collabCategories" class="space-y-6"></div>
+    </div><!-- end panel-collaborators -->
+
+    <!-- Research Areas Tab -->
+    <div id="panel-research" class="tab-panel hidden space-y-8">
+        <div class="flex items-center justify-between">
+            <h2 class="text-lg font-semibold text-gray-800">Research Areas</h2>
+            <div class="flex gap-2">
+                <button onclick="addResearchArea()" class="bg-teal-600 hover:bg-teal-700 text-white text-sm px-4 py-2 rounded-lg transition">Add Area</button>
+                <button onclick="saveResearch()" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-4 py-2 rounded-lg transition">Save All</button>
+            </div>
+        </div>
+        <div id="researchMsg" class="hidden p-3 rounded-lg text-sm"></div>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <label class="block text-sm font-medium text-gray-600 mb-1">Introduction Text</label>
+            <textarea id="researchIntro" rows="3" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm"></textarea>
+        </div>
+        <div id="researchAreas" class="space-y-6"></div>
+    </div><!-- end panel-research -->
+
+    <!-- Positions Tab -->
+    <div id="panel-positions" class="tab-panel hidden space-y-8">
+        <div class="flex items-center justify-between">
+            <h2 class="text-lg font-semibold text-gray-800">Positions / Hiring</h2>
+            <button onclick="savePositions()" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-4 py-2 rounded-lg transition">Save All</button>
+        </div>
+        <div id="positionsMsg" class="hidden p-3 rounded-lg text-sm"></div>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 space-y-4">
+            <div class="flex items-center gap-4">
+                <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="checkbox" id="posIsHiring" class="w-5 h-5 rounded text-teal-600 focus:ring-teal-500">
+                    <span class="text-sm font-medium text-gray-700">Currently Hiring</span>
+                </label>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">Headline</label>
+                <input type="text" id="posHeadline" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">Description</label>
+                <textarea id="posDescription" rows="3" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm"></textarea>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">Contact Email</label>
+                <input type="email" id="posContactEmail" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">Research Areas (one per line)</label>
+                <textarea id="posResearchAreas" rows="4" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm"></textarea>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between">
+            <h3 class="text-md font-semibold text-gray-800">Position Types</h3>
+            <button onclick="addPositionType()" class="bg-teal-600 hover:bg-teal-700 text-white text-sm px-4 py-2 rounded-lg transition">Add Position Type</button>
+        </div>
+        <div id="positionTypes" class="space-y-6"></div>
+    </div><!-- end panel-positions -->
+
     </main>
 
     <script>
@@ -530,6 +611,9 @@
             btn.classList.remove('border-transparent', 'text-gray-500');
 
             if (tabName === 'team') fetchTeamData();
+            if (tabName === 'collaborators') fetchCollaborators();
+            if (tabName === 'research') fetchResearch();
+            if (tabName === 'positions') fetchPositions();
         }
 
         // --- Team Management ---
@@ -916,12 +1000,318 @@
                     renderMembers('current');
                     renderMembers('alumni');
                     renderMembers('fac');
+                    renderMembers('fac_alumni');
                     showTeamMsg('teamOpResult', 'Operation completed successfully.', true);
                 } else {
                     showTeamMsg('teamOpResult', data.error || 'Operation failed.', false);
                 }
             } catch (e) {
                 showTeamMsg('teamOpResult', 'Error: ' + e.message, false);
+            }
+        }
+
+        // =====================================================================
+        // --- Collaborators ---
+        // =====================================================================
+        let collabData = null;
+        const colorOptions = ['teal', 'indigo', 'purple', 'green', 'blue'];
+        const iconOptions = ['dna', 'database', 'chip', 'flask', 'shield', 'brain', 'globe', 'book'];
+
+        function colorBadgeClass(color) {
+            const map = { teal: 'bg-teal-100 text-teal-700', indigo: 'bg-indigo-100 text-indigo-700', purple: 'bg-purple-100 text-purple-700', green: 'bg-green-100 text-green-700', blue: 'bg-blue-100 text-blue-700' };
+            return map[color] || 'bg-gray-100 text-gray-700';
+        }
+
+        function buildSelectOptions(options, selected) {
+            return options.map(o => `<option value="${o}" ${o === selected ? 'selected' : ''}>${o}</option>`).join('');
+        }
+
+        async function fetchCollaborators() {
+            try {
+                const res = await fetch('/api/collaborators');
+                if (!res.ok) throw new Error('Failed to fetch');
+                collabData = await res.json();
+                renderCollaborators();
+            } catch (e) {
+                showTeamMsg('collabMsg', 'Error loading collaborators: ' + e.message, false);
+            }
+        }
+
+        function renderCollaborators() {
+            const container = document.getElementById('collabCategories');
+            if (!collabData || !collabData.categories || collabData.categories.length === 0) {
+                container.innerHTML = '<p class="text-gray-400 text-sm">No categories yet.</p>';
+                return;
+            }
+            let html = '';
+            collabData.categories.forEach((cat, ci) => {
+                html += `<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="inline-block px-2 py-0.5 rounded-full text-xs font-medium ${colorBadgeClass(cat.color)}">${esc(cat.color)}</span>
+                            <input value="${esc(cat.title)}" onchange="collabData.categories[${ci}].title=this.value" class="text-lg font-semibold text-gray-800 border-b border-transparent hover:border-gray-300 focus:border-teal-500 outline-none px-1">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <select onchange="collabData.categories[${ci}].color=this.value; renderCollaborators()" class="border rounded px-2 py-1 text-xs">${buildSelectOptions(colorOptions, cat.color)}</select>
+                            <select onchange="collabData.categories[${ci}].icon=this.value" class="border rounded px-2 py-1 text-xs">${buildSelectOptions(iconOptions, cat.icon)}</select>
+                            <button onclick="deleteCollabCategory(${ci})" class="text-red-600 hover:text-red-800 text-xs font-medium ml-2">Delete Category</button>
+                        </div>
+                    </div>
+                    <table class="w-full text-sm">
+                        <thead><tr class="border-b border-gray-200">
+                            <th class="text-left py-2 px-2 font-medium text-gray-500">Name</th>
+                            <th class="text-left py-2 px-2 font-medium text-gray-500">Institution</th>
+                            <th class="text-left py-2 px-2 font-medium text-gray-500">URL</th>
+                            <th class="text-left py-2 px-2 font-medium text-gray-500 w-20">Actions</th>
+                        </tr></thead>
+                        <tbody>`;
+                (cat.members || []).forEach((m, mi) => {
+                    html += `<tr class="border-b border-gray-100">
+                        <td class="py-2 px-2"><input value="${esc(m.name)}" onchange="collabData.categories[${ci}].members[${mi}].name=this.value" class="w-full border rounded px-2 py-1 text-sm"></td>
+                        <td class="py-2 px-2"><input value="${esc(m.institution)}" onchange="collabData.categories[${ci}].members[${mi}].institution=this.value" class="w-full border rounded px-2 py-1 text-sm"></td>
+                        <td class="py-2 px-2"><input value="${esc(m.url || '')}" onchange="collabData.categories[${ci}].members[${mi}].url=this.value" class="w-full border rounded px-2 py-1 text-sm"></td>
+                        <td class="py-2 px-2"><button onclick="collabData.categories[${ci}].members.splice(${mi},1); renderCollaborators()" class="text-red-600 hover:text-red-800 text-xs">Remove</button></td>
+                    </tr>`;
+                });
+                html += `</tbody></table>
+                    <button onclick="collabData.categories[${ci}].members.push({name:'',institution:'',url:''}); renderCollaborators()" class="mt-3 text-teal-600 hover:text-teal-800 text-xs font-medium">+ Add Member</button>
+                </div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        function addCollabCategory() {
+            if (!collabData) collabData = { categories: [] };
+            if (!collabData.categories) collabData.categories = [];
+            collabData.categories.push({ title: 'New Category', color: 'teal', icon: 'dna', members: [] });
+            renderCollaborators();
+        }
+
+        function deleteCollabCategory(ci) {
+            if (!confirm('Delete category "' + collabData.categories[ci].title + '"?')) return;
+            collabData.categories.splice(ci, 1);
+            renderCollaborators();
+        }
+
+        async function saveCollaborators() {
+            try {
+                const res = await fetch('/api/collaborators', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(collabData)
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    showTeamMsg('collabMsg', 'Collaborators saved successfully.', true);
+                } else {
+                    showTeamMsg('collabMsg', data.error || 'Save failed.', false);
+                }
+            } catch (e) {
+                showTeamMsg('collabMsg', 'Error: ' + e.message, false);
+            }
+        }
+
+        // =====================================================================
+        // --- Research Areas ---
+        // =====================================================================
+        let researchData = null;
+
+        async function fetchResearch() {
+            try {
+                const res = await fetch('/api/research');
+                if (!res.ok) throw new Error('Failed to fetch');
+                researchData = await res.json();
+                renderResearch();
+            } catch (e) {
+                showTeamMsg('researchMsg', 'Error loading research: ' + e.message, false);
+            }
+        }
+
+        function renderResearch() {
+            document.getElementById('researchIntro').value = researchData.intro || '';
+            const container = document.getElementById('researchAreas');
+            if (!researchData.areas || researchData.areas.length === 0) {
+                container.innerHTML = '<p class="text-gray-400 text-sm">No research areas yet.</p>';
+                return;
+            }
+            let html = '';
+            researchData.areas.forEach((area, ai) => {
+                const d = area.details || {};
+                html += `<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="inline-block px-2 py-0.5 rounded-full text-xs font-medium ${colorBadgeClass(area.color)}">${esc(area.color)}</span>
+                            <span class="text-xs text-gray-400">${esc(area.icon)}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <select onchange="researchData.areas[${ai}].color=this.value; renderResearch()" class="border rounded px-2 py-1 text-xs">${buildSelectOptions(colorOptions, area.color)}</select>
+                            <select onchange="researchData.areas[${ai}].icon=this.value; renderResearch()" class="border rounded px-2 py-1 text-xs">${buildSelectOptions(iconOptions, area.icon)}</select>
+                            <button onclick="deleteResearchArea(${ai})" class="text-red-600 hover:text-red-800 text-xs font-medium ml-2">Delete</button>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-medium text-gray-500 mb-1">Title</label>
+                            <input value="${esc(area.title)}" onchange="researchData.areas[${ai}].title=this.value" class="w-full border rounded-lg px-3 py-2 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-gray-500 mb-1">Short Description</label>
+                            <textarea onchange="researchData.areas[${ai}].description=this.value" rows="2" class="w-full border rounded-lg px-3 py-2 text-sm">${esc(area.description || '')}</textarea>
+                        </div>
+                        <details class="border rounded-lg p-3">
+                            <summary class="text-sm font-medium text-gray-600 cursor-pointer">Details (click to expand)</summary>
+                            <div class="mt-3 space-y-3">
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-500 mb-1">Overview</label>
+                                    <textarea onchange="ensureDetails(${ai}); researchData.areas[${ai}].details.overview=this.value" rows="5" class="w-full border rounded-lg px-3 py-2 text-sm">${esc(d.overview || '')}</textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-500 mb-1">Key Topics (comma-separated)</label>
+                                    <input value="${esc((d.keyTopics || []).join(', '))}" onchange="ensureDetails(${ai}); researchData.areas[${ai}].details.keyTopics=this.value.split(',').map(s=>s.trim()).filter(s=>s)" class="w-full border rounded-lg px-3 py-2 text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-500 mb-1">Tools (comma-separated)</label>
+                                    <input value="${esc((d.tools || []).join(', '))}" onchange="ensureDetails(${ai}); researchData.areas[${ai}].details.tools=this.value.split(',').map(s=>s.trim()).filter(s=>s)" class="w-full border rounded-lg px-3 py-2 text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-500 mb-1">Collaborators (comma-separated)</label>
+                                    <input value="${esc((d.collaborators || []).join(', '))}" onchange="ensureDetails(${ai}); researchData.areas[${ai}].details.collaborators=this.value.split(',').map(s=>s.trim()).filter(s=>s)" class="w-full border rounded-lg px-3 py-2 text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-500 mb-1">Keywords (comma-separated)</label>
+                                    <input value="${esc((d.keywords || []).join(', '))}" onchange="ensureDetails(${ai}); researchData.areas[${ai}].details.keywords=this.value.split(',').map(s=>s.trim()).filter(s=>s)" class="w-full border rounded-lg px-3 py-2 text-sm">
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        function ensureDetails(ai) {
+            if (!researchData.areas[ai].details) researchData.areas[ai].details = {};
+        }
+
+        function addResearchArea() {
+            if (!researchData) researchData = { intro: '', areas: [] };
+            if (!researchData.areas) researchData.areas = [];
+            researchData.areas.push({ title: 'New Research Area', description: '', icon: 'dna', color: 'teal', details: { overview: '', keyTopics: [], tools: [], collaborators: [], keywords: [] } });
+            renderResearch();
+        }
+
+        function deleteResearchArea(ai) {
+            if (!confirm('Delete research area "' + researchData.areas[ai].title + '"?')) return;
+            researchData.areas.splice(ai, 1);
+            renderResearch();
+        }
+
+        async function saveResearch() {
+            researchData.intro = document.getElementById('researchIntro').value;
+            try {
+                const res = await fetch('/api/research', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(researchData)
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    showTeamMsg('researchMsg', 'Research areas saved successfully.', true);
+                } else {
+                    showTeamMsg('researchMsg', data.error || 'Save failed.', false);
+                }
+            } catch (e) {
+                showTeamMsg('researchMsg', 'Error: ' + e.message, false);
+            }
+        }
+
+        // =====================================================================
+        // --- Positions ---
+        // =====================================================================
+        let positionsData = null;
+
+        async function fetchPositions() {
+            try {
+                const res = await fetch('/api/positions');
+                if (!res.ok) throw new Error('Failed to fetch');
+                positionsData = await res.json();
+                renderPositions();
+            } catch (e) {
+                showTeamMsg('positionsMsg', 'Error loading positions: ' + e.message, false);
+            }
+        }
+
+        function renderPositions() {
+            document.getElementById('posIsHiring').checked = positionsData.isHiring === true;
+            document.getElementById('posHeadline').value = positionsData.headline || '';
+            document.getElementById('posDescription').value = positionsData.description || '';
+            document.getElementById('posContactEmail').value = positionsData.contactEmail || '';
+            document.getElementById('posResearchAreas').value = (positionsData.researchAreas || []).join('\n');
+
+            const container = document.getElementById('positionTypes');
+            const types = positionsData.positionTypes || [];
+            if (types.length === 0) {
+                container.innerHTML = '<p class="text-gray-400 text-sm">No position types yet.</p>';
+                return;
+            }
+            let html = '';
+            types.forEach((pt, pi) => {
+                html += `<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-2">
+                            <select onchange="positionsData.positionTypes[${pi}].color=this.value" class="border rounded px-2 py-1 text-xs">${buildSelectOptions(colorOptions, pt.color)}</select>
+                            <select onchange="positionsData.positionTypes[${pi}].icon=this.value" class="border rounded px-2 py-1 text-xs">${buildSelectOptions(['academic-cap', 'book', 'globe', 'flask', 'briefcase', 'users'].concat(iconOptions), pt.icon)}</select>
+                        </div>
+                        <button onclick="deletePositionType(${pi})" class="text-red-600 hover:text-red-800 text-xs font-medium">Delete</button>
+                    </div>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-medium text-gray-500 mb-1">Title</label>
+                            <input value="${esc(pt.title)}" onchange="positionsData.positionTypes[${pi}].title=this.value" class="w-full border rounded-lg px-3 py-2 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-gray-500 mb-1">Requirements (one per line)</label>
+                            <textarea onchange="positionsData.positionTypes[${pi}].requirements=this.value.split('\\n').filter(s=>s.trim())" rows="4" class="w-full border rounded-lg px-3 py-2 text-sm">${esc((pt.requirements || []).join('\n'))}</textarea>
+                        </div>
+                    </div>
+                </div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        function addPositionType() {
+            if (!positionsData) positionsData = { isHiring: false, positionTypes: [] };
+            if (!positionsData.positionTypes) positionsData.positionTypes = [];
+            positionsData.positionTypes.push({ title: 'New Position', icon: 'academic-cap', color: 'teal', requirements: [] });
+            renderPositions();
+        }
+
+        function deletePositionType(pi) {
+            if (!confirm('Delete position type "' + positionsData.positionTypes[pi].title + '"?')) return;
+            positionsData.positionTypes.splice(pi, 1);
+            renderPositions();
+        }
+
+        async function savePositions() {
+            positionsData.isHiring = document.getElementById('posIsHiring').checked;
+            positionsData.headline = document.getElementById('posHeadline').value;
+            positionsData.description = document.getElementById('posDescription').value;
+            positionsData.contactEmail = document.getElementById('posContactEmail').value;
+            positionsData.researchAreas = document.getElementById('posResearchAreas').value.split('\n').filter(s => s.trim());
+            try {
+                const res = await fetch('/api/positions', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(positionsData)
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    showTeamMsg('positionsMsg', 'Positions saved successfully.', true);
+                } else {
+                    showTeamMsg('positionsMsg', data.error || 'Save failed.', false);
+                }
+            } catch (e) {
+                showTeamMsg('positionsMsg', 'Error: ' + e.message, false);
             }
         }
 
