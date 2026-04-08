@@ -29,7 +29,7 @@
     "details": {
       "longDescription": "PubChemSR (PubChem Structure-activity Relationship) is a Java-based stand-alone application for retrieving and analyzing chemical compound data from NCBI PubChem databases. It supports batch queries, bioassay data retrieval, and structure-activity analysis for pharmacological research.",
       "features": ["Batch chemical compound queries", "Bioassay data retrieval from PubChem", "Structure-activity relationship analysis", "Cross-platform Java application", "Export to CSV and SDF formats"],
-      "publications": ["PMID: 26150531"],
+      "publications": ["PMID: 18482452"],
       "relatedAreas": ["Systems Pharmacology"]
     }
   },
@@ -46,7 +46,7 @@
     "details": {
       "longDescription": "DNMKB2 (Diabetic Neuropathy Molecular Knowledge Base v2) is a comprehensive repository and analysis portal for diabetic peripheral neuropathy transcriptomics data. It integrates 140 differentially expressed gene (DEG) sets from multiple DPN studies, enabling cross-study comparison, meta-analysis, and pathway enrichment across mouse and human models.",
       "features": ["140 DEG sets from DPN studies", "Cross-study meta-analysis", "Mouse and human model comparison", "Pathway enrichment analysis", "Interactive data visualization"],
-      "publications": ["PMID: 26150531"],
+      "publications": [],
       "relatedAreas": ["Neurological Disorders", "Bioinformatics & Systems Biology"]
     }
   },
@@ -150,6 +150,23 @@
       "features": ["Gene-aware neural network architecture", "Improved cell type clustering", "Batch effect correction", "Trajectory inference support", "Integration with Scanpy/AnnData workflows"],
       "publications": [],
       "relatedAreas": ["AI & Machine Learning", "Bioinformatics & Systems Biology"]
+    }
+  },
+  {
+    "name": "DPNKB",
+    "description": "Comprehensive knowledgebase integrating genomic, transcriptomic, and clinical data for diabetic peripheral neuropathy research.",
+    "version": "Latest",
+    "updated": "2025-01-01",
+    "category": "Knowledgebase",
+    "status": "active",
+    "url": "https://hurlab.med.und.edu/DPNKB/",
+    "github": null,
+    "language": "Web",
+    "details": {
+      "longDescription": "DPNKB (Diabetic Peripheral Neuropathy Knowledge Base) is a comprehensive web-based knowledgebase that integrates genomic, transcriptomic, and clinical data for the study of diabetic peripheral neuropathy (DPN). It serves as an exploration and analysis platform for DPN gene expression data, enabling researchers to query and analyze differentially expressed genes across multiple DPN studies and models.",
+      "features": ["Integrated DPN gene expression data", "Cross-study gene expression comparison", "Mouse and human model data", "Interactive data exploration and analysis", "Pathway and functional annotation"],
+      "publications": [],
+      "relatedAreas": ["Neurological Disorders", "Bioinformatics & Systems Biology"]
     }
   },
   {

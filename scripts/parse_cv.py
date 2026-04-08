@@ -63,7 +63,11 @@ def extract_text(pdf_path):
     # Remove page footers: standalone page numbers on their own line
     text = re.sub(r"\n\d{1,2}\n", "\n", text)
     # Remove page headers like "Junguk Hur, Ph.D.\nCurriculum Vitae"
+    # Handle both multi-line and single-line variants from pdftotext
     text = re.sub(r"\nJunguk Hur, Ph\.D\.\s*\nCurriculum Vitae\n", "\n", text)
+    text = re.sub(r"\nJunguk Hur, Ph\.D\.?\s*Curriculum Vitae\n", "\n", text)
+    # Also remove any inline occurrences that got concatenated into text
+    text = re.sub(r"Junguk Hur, Ph\.D\.?\s*Curriculum Vitae", "", text)
     return text
 
 

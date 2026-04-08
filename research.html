@@ -33,13 +33,19 @@
         research: null,
         grants: null,
         async init() {
-          const [resRes, grantsRes] = await Promise.all([
-            fetch('data/research.json'),
-            fetch('data/grants.json')
-          ]);
-          this.research = await resRes.json();
-          this.grants = await grantsRes.json();
-          this.$nextTick(() => AOS.refresh());
+          try {
+            const [resRes, grantsRes] = await Promise.all([
+              fetch('data/research.json'),
+              fetch('data/grants.json')
+            ]);
+            this.research = await resRes.json();
+            this.grants = await grantsRes.json();
+            this.$nextTick(() => AOS.refresh());
+          } catch (e) {
+            console.error('Failed to load research data:', e);
+            this.research = { areas: [], intro: 'Unable to load research data.' };
+            this.grants = { current: [], pending: [], previous: [] };
+          }
         },
         iconSvg(name) {
           const icons = {

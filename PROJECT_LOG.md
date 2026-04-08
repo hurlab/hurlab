@@ -576,3 +576,46 @@
 - **Issues found**: 13 actionable bugs
 - **Issues fixed**: 13/13 (100%)
 - **E2E regression**: 90 passed, 0 failed
+
+---
+
+## Session 2026-04-08 CDT (code review pass 2)
+
+- **Coding CLI used**: Claude Code CLI (Claude Opus 4.6, 1M context)
+- **Harness**: Deep sweep recon + 2 Implementers + QA
+
+### Reconnaissance
+- Second-pass deep sweep covering areas missed by first review
+- 5 new issues found (1 Critical, 1 High, 2 Medium, 1 Known/intentional)
+
+### Concrete changes implemented
+
+**CV parsing artifact cleanup (Critical):**
+1. Cleaned 26 publications in `data/publications.json` — removed "Junguk Hur, Ph.D. Curriculum Vitae" from text fields
+2. Cleaned 3 grant fields in `data/grants.json` — same artifact removed from titles/notes
+3. Fixed `scripts/parse_cv.py` `extract_text()` to strip CV header/footer artifacts during parsing (prevents recurrence)
+
+**Error handling (High):**
+4. Added try/catch to `research.html` init() — graceful fallback on fetch failure
+5. Added try/catch to `collaborators.html` init() — graceful fallback on fetch failure
+
+**Data consistency (Medium):**
+6. Added DPNKB tool entry to `data/tools.json` — matches research.json reference, links to existing webapp
+7. Fixed duplicate PMID in `data/tools.json` — PubChemSR corrected to PMID 18482452, DNMKB2 publications cleared
+
+### Files modified
+- `data/publications.json` — 26 entries cleaned
+- `data/grants.json` — 3 fields cleaned
+- `scripts/parse_cv.py` — CV header/footer stripping added
+- `research.html` — try/catch error handling
+- `collaborators.html` — try/catch error handling
+- `data/tools.json` — DPNKB added, PMIDs corrected
+
+### Verification performed
+- Playwright E2E regression: 90/90 passed (36.2s)
+- Zero CV artifacts in data files (grep verified)
+
+### Harness statistics
+- **Subagent spawns**: 4 (1 Recon, 2 Implementers, 1 QA)
+- **Issues found**: 5 (1 intentional/skipped)
+- **Issues fixed**: 4/4 actionable (100%)
