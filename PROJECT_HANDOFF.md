@@ -87,6 +87,9 @@
 | Admin panel: collaborators/research/positions editors | Completed | 2026-04-08 CDT | 3 new tabs, 6 API endpoints, full CRUD with git auto-commit |
 | Auto-start admin server on boot | Completed | 2026-04-08 CDT | systemd user service + lingering enabled |
 | Security hardening | Completed | 2026-04-08 CDT | PBKDF2 hashing, brute force protection, cookie flags, security headers, upload limits, localhost binding |
+| CSRF token protection | Completed | 2026-04-08 CDT | Per-session tokens, X-CSRF-Token header on all POST endpoints, timing-safe validation |
+| WEB-INF/web.xml security constraints | Completed | 2026-04-08 CDT | Blocks scripts/, tests/, node_modules/, dot files, project files; 403 on all sensitive paths |
+| Server-side input sanitization | Completed | 2026-04-08 CDT | HTML tag stripping on stored text fields, generic error messages (no path leaks) |
 | Playwright E2E test suite | Completed | 2026-04-08 CDT | 90 tests across 6 spec files, all passing |
 
 ---
@@ -121,6 +124,10 @@
 | Admin panel editors | Code review by Reviewer agent | APPROVED with 5 minor non-blocking issues (2 fixed) | 2026-04-08 CDT |
 | Image optimization | Before/after size comparison | 59.6% reduction, all images render correctly | 2026-04-08 CDT |
 | Admin auto-start | `systemctl --user status` | active (running), linger=yes | 2026-04-08 CDT |
+| CSRF protection | Code review by Reviewer agent | APPROVED — timing-safe, all POST endpoints covered | 2026-04-08 CDT |
+| Input sanitization | Code review by Reviewer agent | APPROVED — HTML tag stripping, generic errors | 2026-04-08 CDT |
+| WEB-INF/web.xml | `curl` HTTP status checks | scripts/→403, tests/→403, public pages→200 | 2026-04-08 CDT |
+| Regression after security | `npx playwright test` (90 tests) | 90 passed, 0 failed (36.5s) | 2026-04-08 CDT |
 
 ---
 
@@ -162,9 +169,9 @@ hurlab/           ← webroot (Tomcat webapp)
   v1/             ← legacy site + archived directories
 ```
 
-**Recommended next actions** (all original outstanding items are now complete):
+**Recommended next actions** (all outstanding items and security findings are resolved):
 1. Upload team member photos via admin panel (most still missing)
-2. Consider adding CSRF token protection to admin panel POST endpoints
-3. Consider Tomcat WEB-INF/web.xml security constraints to block direct access to scripts/
-4. Monitor GA4 dashboard for traffic data
+2. Monitor GA4 dashboard for traffic data
+3. Consider Content-Security-Policy header for the admin panel (currently uses Tailwind CDN which requires unsafe-inline)
+4. Consider adding WebP `<picture>` elements to HTML for browsers that support it
 - **Last updated**: 2026-04-08 CDT

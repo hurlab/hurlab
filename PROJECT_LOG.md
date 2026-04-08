@@ -446,3 +446,68 @@
 
 ### Remaining outstanding work
 - None from original backlog. Future improvements noted in PROJECT_HANDOFF.md §7.
+
+---
+
+## Session 2026-04-08 CDT (security completion)
+
+- **Coding CLI used**: Claude Code CLI (Claude Opus 4.6, 1M context)
+- **Harness**: 4-agent team (Orchestrator + Implementer + Reviewer + QA)
+
+### Phase(s) worked on
+- Remaining security hardening items from previous session's recommendations
+
+### Concrete changes implemented
+
+**CSRF Token Protection:**
+1. `create_session()` generates 256-bit CSRF token via `secrets.token_hex(32)`
+2. Token injected into admin template via `{{CSRF_TOKEN}}` meta tag
+3. `_validate_csrf()` method validates `X-CSRF-Token` header with timing-safe comparison
+4. All 10 POST endpoints protected (upload, parse, team/member, team/pi, team/photo, team/visibility, team/reorder, collaborators, research, positions)
+5. Login, setup, logout correctly excluded
+6. Frontend `apiFetch()` helper auto-attaches header on all API calls
+7. XHR file upload also sends CSRF header
+
+**WEB-INF/web.xml Security Constraints:**
+8. Created `WEB-INF/web.xml` with Tomcat 4.0 servlet spec
+9. Blocks: `/scripts/*`, `/tests/*`, `/node_modules/*`, dot files, project management files
+10. Custom error pages: 403/404 redirect to `/index.html`
+11. Tomcat auto-reloaded — all sensitive paths return 403
+
+**Server-Side Input Sanitization:**
+12. Added `sanitize_text()` — strips HTML tags via regex
+13. Added `sanitize_dict()` — recursive sanitization of string fields in dicts/lists
+14. Applied to: team member add/edit, PI info edit, generic JSON save (collaborators/research/positions)
+15. Text fields sanitized: name, title, description, institution, url, headline, overview, contactEmail, intro
+
+**Generic Error Messages:**
+16. Updated 8 `except Exception` handlers to log real error to stderr, return "Internal server error" to client
+17. Fixed one remaining path leak in status endpoint (`f"Error: {e}"` → `"Error reading publications"`)
+
+### Files/modules/functions touched
+- `scripts/admin_server.py` — CSRF methods, sanitize helpers, generic error handlers, status fix
+- `scripts/templates/admin.html` — CSRF meta tag, `apiFetch()` helper, XHR header
+- `WEB-INF/web.xml` — new Tomcat security constraints
+- `PROJECT_HANDOFF.md` — updated outstanding items and verification
+- `PROJECT_LOG.md` — this entry
+
+### Verification performed
+- Code review by Reviewer agent: APPROVED (1 minor issue found and fixed)
+- Playwright E2E regression: 90/90 passed (36.5s)
+- web.xml security: all sensitive paths → 403, all public paths → 200
+- Admin server compile + restart: OK, HTTP 200
+
+### Harness statistics
+- **Subagent spawns**: 5 total (3 Implementers, 1 Reviewer, 1 QA)
+- **Task briefs issued**: 5
+- **Review verdict**: APPROVED with 1 minor issue (fixed)
+- **E2E regression**: 90 passed, 0 failed
+
+### Items explicitly completed
+- CSRF token protection (Security finding #5 - Medium → resolved)
+- WEB-INF/web.xml (Security finding #13 - Low → resolved)
+- Input sanitization (Security finding #10 - Medium → resolved)
+- Generic error messages (Security finding #15 - Low → resolved)
+
+### Remaining outstanding work
+- None. All security findings from audit now resolved or documented as acceptable risk.

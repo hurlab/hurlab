@@ -9,6 +9,7 @@ Uses only Python standard library modules.
 import hashlib
 import json
 import os
+import re
 import secrets
 import shutil
 import subprocess
@@ -91,9 +92,11 @@ def save_credentials(username: str, password: str):
 
 def create_session(username: str) -> str:
     token = uuid.uuid4().hex
+    csrf_token = secrets.token_hex(32)
     sessions[token] = {
         "username": username,
         "expiry": datetime.now() + timedelta(hours=SESSION_LIFETIME_HOURS),
+        "csrf_token": csrf_token,
     }
     return token
 
@@ -122,6 +125,35 @@ def purge_expired_sessions():
     expired = [t for t, s in sessions.items() if now > s["expiry"]]
     for t in expired:
         del sessions[t]
+
+
+def sanitize_text(value):
+    """Strip HTML tags from a string value. Returns the cleaned string."""
+    if not isinstance(value, str):
+        return value
+    return re.sub(r'<[^>]+>', '', value)
+
+
+def sanitize_dict(data: dict, text_fields: set[str] | None = None) -> dict:
+    """Recursively sanitize string values in a dict. If text_fields is given, only sanitize those keys."""
+    if not isinstance(data, dict):
+        return data
+    result = {}
+    for key, value in data.items():
+        if isinstance(value, str) and (text_fields is None or key in text_fields):
+            result[key] = sanitize_text(value)
+        elif isinstance(value, dict):
+            result[key] = sanitize_dict(value, text_fields)
+        elif isinstance(value, list):
+            result[key] = [
+                sanitize_dict(item, text_fields) if isinstance(item, dict)
+                else sanitize_text(item) if isinstance(item, str) and (text_fields is None or key in text_fields)
+                else item
+                for item in value
+            ]
+        else:
+            result[key] = value
+    return result
 
 
 def load_json_data(filename: str) -> dict:
@@ -247,13 +279,14 @@ def setup_page(error: str = "") -> str:
 """)
 
 
-def dashboard_page(username: str) -> str:
+def dashboard_page(username: str, csrf_token: str = "") -> str:
     """Load the admin dashboard from the template file."""
     template_path = SCRIPTS_DIR / "templates" / "admin.html"
     if template_path.exists():
         html = template_path.read_text(encoding="utf-8")
-        # Inject the username into the page
+        # Inject the username and CSRF token into the page
         html = html.replace("{{USERNAME}}", username)
+        html = html.replace("{{CSRF_TOKEN}}", csrf_token)
         return html
     # Fallback if template missing
     return html_page("Dashboard", f"<h1>Template not found</h1><p>Expected at {template_path}</p>")
@@ -292,6 +325,20 @@ class AdminHandler(BaseHTTPRequestHandler):
             return True
         self._send_json({"error": "Not authenticated"}, status=401)
         return False
+
+    def _validate_csrf(self) -> bool:
+        """Validate CSRF token from X-CSRF-Token header against session. Returns True if valid."""
+        cookie = self.headers.get("Cookie", "")
+        session_token = get_session_token(cookie)
+        if not session_token or session_token not in sessions:
+            self._send_json({"error": "Not authenticated"}, status=401)
+            return False
+        expected = sessions[session_token].get("csrf_token", "")
+        provided = self.headers.get("X-CSRF-Token", "")
+        if not expected or not secrets.compare_digest(expected, provided):
+            self._send_json({"error": "Invalid CSRF token"}, status=403)
+            return False
+        return True
 
     # -- response helpers ---------------------------------------------------
 
@@ -344,7 +391,10 @@ class AdminHandler(BaseHTTPRequestHandler):
             if creds is None:
                 self._send_html(setup_page())
             elif self._is_authenticated():
-                self._send_html(dashboard_page(self._get_username()))
+                cookie = self.headers.get("Cookie", "")
+                token = get_session_token(cookie)
+                csrf = sessions[token].get("csrf_token", "") if token and token in sessions else ""
+                self._send_html(dashboard_page(self._get_username(), csrf))
             else:
                 self._send_html(login_page())
             return
@@ -500,6 +550,8 @@ class AdminHandler(BaseHTTPRequestHandler):
     def _handle_upload(self):
         if not self._require_auth():
             return
+        if not self._validate_csrf():
+            return
 
         content_type = self.headers.get("Content-Type", "")
         if "multipart/form-data" not in content_type:
@@ -569,7 +621,8 @@ class AdminHandler(BaseHTTPRequestHandler):
             })
 
         except Exception as e:
-            self._send_json({"success": False, "error": str(e)}, status=500)
+            print(f"[ERROR] {self.path}: {e}", file=sys.stderr)
+            self._send_json({"success": False, "error": "Internal server error"}, status=500)
 
     def _parse_multipart(self, body: bytes, boundary: str) -> tuple | None:
         """Minimal multipart parser. Returns (filename, data) or None."""
@@ -615,6 +668,8 @@ class AdminHandler(BaseHTTPRequestHandler):
     def _handle_parse(self):
         if not self._require_auth():
             return
+        if not self._validate_csrf():
+            return
 
         parse_script = SCRIPTS_DIR / "parse_cv.py"
         if not parse_script.exists():
@@ -638,7 +693,8 @@ class AdminHandler(BaseHTTPRequestHandler):
         except subprocess.TimeoutExpired:
             self._send_json({"success": False, "error": "Script timed out after 120 seconds"}, status=504)
         except Exception as e:
-            self._send_json({"success": False, "error": str(e)}, status=500)
+            print(f"[ERROR] {self.path}: {e}", file=sys.stderr)
+            self._send_json({"success": False, "error": "Internal server error"}, status=500)
 
     def _handle_status(self):
         status = {}
@@ -677,7 +733,8 @@ class AdminHandler(BaseHTTPRequestHandler):
                 pub_info["peer_reviewed"] = 0
                 pub_info["under_review"] = 0
                 pub_info["in_preparation"] = 0
-                status["last_updated"] = f"Error: {e}"
+                print(f"[ERROR] /status: {e}", file=sys.stderr)
+                status["last_updated"] = "Error reading publications"
         else:
             pub_info["peer_reviewed"] = 0
             pub_info["under_review"] = 0
@@ -699,6 +756,8 @@ class AdminHandler(BaseHTTPRequestHandler):
     def _handle_team_member(self):
         if not self._require_auth():
             return
+        if not self._validate_csrf():
+            return
 
         try:
             body = self._read_json_body()
@@ -718,6 +777,7 @@ class AdminHandler(BaseHTTPRequestHandler):
                 if section not in team:
                     team[section] = []
                 member = body.get("member", {})
+                member = sanitize_dict(member, {"name", "role", "description", "category"})
                 if not member.get("name"):
                     self._send_json({"error": "Member name is required"}, status=400)
                     return
@@ -733,6 +793,7 @@ class AdminHandler(BaseHTTPRequestHandler):
                     self._send_json({"error": "Invalid index"}, status=400)
                     return
                 member = body.get("member", {})
+                member = sanitize_dict(member, {"name", "role", "description", "category"})
                 if not member.get("name"):
                     self._send_json({"error": "Member name is required"}, status=400)
                     return
@@ -773,10 +834,13 @@ class AdminHandler(BaseHTTPRequestHandler):
             self._send_json(team)
 
         except Exception as e:
-            self._send_json({"error": str(e)}, status=500)
+            print(f"[ERROR] {self.path}: {e}", file=sys.stderr)
+            self._send_json({"error": "Internal server error"}, status=500)
 
     def _handle_team_pi(self):
         if not self._require_auth():
+            return
+        if not self._validate_csrf():
             return
 
         try:
@@ -789,16 +853,19 @@ class AdminHandler(BaseHTTPRequestHandler):
         allowed_fields = {"email", "email2", "phone", "github", "interests"}
         for key, value in body.items():
             if key in allowed_fields:
-                team["pi"][key] = value
+                team["pi"][key] = sanitize_text(value) if isinstance(value, str) else value
 
         try:
             save_team_data(team)
             self._send_json(team["pi"])
         except Exception as e:
-            self._send_json({"error": str(e)}, status=500)
+            print(f"[ERROR] {self.path}: {e}", file=sys.stderr)
+            self._send_json({"error": "Internal server error"}, status=500)
 
     def _handle_team_visibility(self):
         if not self._require_auth():
+            return
+        if not self._validate_csrf():
             return
         try:
             body = self._read_json_body()
@@ -816,10 +883,13 @@ class AdminHandler(BaseHTTPRequestHandler):
             save_team_data(team)
             self._send_json(vis)
         except Exception as e:
-            self._send_json({"error": str(e)}, status=500)
+            print(f"[ERROR] {self.path}: {e}", file=sys.stderr)
+            self._send_json({"error": "Internal server error"}, status=500)
 
     def _handle_team_reorder(self):
         if not self._require_auth():
+            return
+        if not self._validate_csrf():
             return
         try:
             body = self._read_json_body()
@@ -848,10 +918,13 @@ class AdminHandler(BaseHTTPRequestHandler):
             save_team_data(team)
             self._send_json({"success": True, "section": section})
         except Exception as e:
-            self._send_json({"error": str(e)}, status=500)
+            print(f"[ERROR] {self.path}: {e}", file=sys.stderr)
+            self._send_json({"error": "Internal server error"}, status=500)
 
     def _handle_team_photo(self):
         if not self._require_auth():
+            return
+        if not self._validate_csrf():
             return
 
         content_type = self.headers.get("Content-Type", "")
@@ -977,11 +1050,14 @@ class AdminHandler(BaseHTTPRequestHandler):
             })
 
         except Exception as e:
-            self._send_json({"error": str(e)}, status=500)
+            print(f"[ERROR] {self.path}: {e}", file=sys.stderr)
+            self._send_json({"error": "Internal server error"}, status=500)
 
     def _handle_save_json(self, filename: str, label: str):
         """Generic handler for saving a JSON data file."""
         if not self._require_auth():
+            return
+        if not self._validate_csrf():
             return
         try:
             body = self._read_json_body()
@@ -991,11 +1067,13 @@ class AdminHandler(BaseHTTPRequestHandler):
         if not isinstance(body, dict):
             self._send_json({"error": "Expected a JSON object"}, status=400)
             return
+        body = sanitize_dict(body, {"name", "title", "description", "institution", "url", "headline", "overview", "contactEmail", "intro"})
         try:
             save_json_data(filename, body, commit_msg=f"Admin: update {label}")
             self._send_json({"success": True, "message": f"{label.title()} updated successfully."})
         except Exception as e:
-            self._send_json({"error": str(e)}, status=500)
+            print(f"[ERROR] {self.path}: {e}", file=sys.stderr)
+            self._send_json({"error": "Internal server error"}, status=500)
 
     def _handle_logout(self):
         cookie = self.headers.get("Cookie", "")

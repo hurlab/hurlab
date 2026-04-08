@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <display-name>Hur Lab</display-name>
+
+    <!-- Block access to scripts directory (admin server, parser, credentials) -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Scripts</web-resource-name>
+            <url-pattern>/scripts/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint/>
+    </security-constraint>
+
+    <!-- Block access to hidden/dot files -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Hidden Files</web-resource-name>
+            <url-pattern>/.*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint/>
+    </security-constraint>
+
+    <!-- Block access to WEB-INF itself -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>WEB-INF</web-resource-name>
+            <url-pattern>/WEB-INF/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint/>
+    </security-constraint>
+
+    <!-- Block access to test files -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Tests</web-resource-name>
+            <url-pattern>/tests/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint/>
+    </security-constraint>
+
+    <!-- Block access to node_modules -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Node Modules</web-resource-name>
+            <url-pattern>/node_modules/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint/>
+    </security-constraint>
+
+    <!-- Block access to project management files -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Project Files</web-resource-name>
+            <url-pattern>/PROJECT_HANDOFF.md</url-pattern>
+            <url-pattern>/PROJECT_LOG.md</url-pattern>
+            <url-pattern>/CLAUDE.md</url-pattern>
+            <url-pattern>/ARCHITECTURE.md</url-pattern>
+            <url-pattern>/package.json</url-pattern>
+            <url-pattern>/package-lock.json</url-pattern>
+            <url-pattern>/playwright.config.ts</url-pattern>
+            <url-pattern>/.gitignore</url-pattern>
+        </web-resource-collection>
+        <auth-constraint/>
+    </security-constraint>
+
+    <!-- Default error pages to avoid leaking server info -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/index.html</location>
+    </error-page>
+
+    <error-page>
+        <error-code>403</error-code>
+        <location>/index.html</location>
+    </error-page>
+
+</web-app>

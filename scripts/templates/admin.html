@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{CSRF_TOKEN}}">
     <title>Hur Lab Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -411,6 +412,17 @@
     </main>
 
     <script>
+        // --- CSRF Protection ---
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
+
+        function apiFetch(url, options = {}) {
+            const headers = options.headers || {};
+            if (options.method === 'POST' || options.method === 'PUT' || options.method === 'DELETE') {
+                headers['X-CSRF-Token'] = csrfToken;
+            }
+            return fetch(url, { ...options, headers });
+        }
+
         // --- Status ---
         async function fetchStatus() {
             try {
@@ -493,6 +505,7 @@
 
             const xhr = new XMLHttpRequest();
             xhr.open('POST', '/upload');
+            xhr.setRequestHeader('X-CSRF-Token', csrfToken);
 
             xhr.upload.addEventListener('progress', (e) => {
                 if (e.lengthComputable) {
@@ -558,7 +571,7 @@
             resultDiv.classList.add('hidden');
 
             try {
-                const res = await fetch('/parse', { method: 'POST' });
+                const res = await apiFetch('/parse', { method: 'POST' });
                 const data = await res.json();
 
                 resultDiv.classList.remove('hidden', 'bg-green-50', 'text-green-800', 'bg-red-50', 'text-red-800');
@@ -652,7 +665,7 @@
                 fac_alumni: document.getElementById('vis_fac_alumni').checked
             };
             try {
-                const res = await fetch('/api/team/visibility', {
+                const res = await apiFetch('/api/team/visibility', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(vis)
@@ -708,7 +721,7 @@
                 interests: interests
             };
             try {
-                const res = await fetch('/api/team/pi', {
+                const res = await apiFetch('/api/team/pi', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body)
@@ -834,7 +847,7 @@
             tr.classList.remove('drag-over-row');
 
             try {
-                const res = await fetch('/api/team/reorder', {
+                const res = await apiFetch('/api/team/reorder', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ section: dragSection, from: dragFromIdx, to: toIdx })
@@ -989,7 +1002,7 @@
 
         async function teamMemberAction(body) {
             try {
-                const res = await fetch('/api/team/member', {
+                const res = await apiFetch('/api/team/member', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body)
@@ -1095,7 +1108,7 @@
 
         async function saveCollaborators() {
             try {
-                const res = await fetch('/api/collaborators', {
+                const res = await apiFetch('/api/collaborators', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(collabData)
@@ -1209,7 +1222,7 @@
         async function saveResearch() {
             researchData.intro = document.getElementById('researchIntro').value;
             try {
-                const res = await fetch('/api/research', {
+                const res = await apiFetch('/api/research', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(researchData)
@@ -1299,7 +1312,7 @@
             positionsData.contactEmail = document.getElementById('posContactEmail').value;
             positionsData.researchAreas = document.getElementById('posResearchAreas').value.split('\n').filter(s => s.trim());
             try {
-                const res = await fetch('/api/positions', {
+                const res = await apiFetch('/api/positions', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(positionsData)
