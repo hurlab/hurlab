@@ -511,3 +511,68 @@
 
 ### Remaining outstanding work
 - None. All security findings from audit now resolved or documented as acceptable risk.
+
+---
+
+## Session 2026-04-08 CDT (code review)
+
+- **Coding CLI used**: Claude Code CLI (Claude Opus 4.6, 1M context)
+- **Harness**: 4-agent team (Orchestrator + 2 Recon Reviewers + 3 Implementers + 1 QA)
+
+### Phase(s) worked on
+- Deep code review and bug fix across entire codebase
+
+### Reconnaissance findings
+- **Frontend reviewer**: 15 issues (3 High, 3 Medium, 9 Low)
+- **Backend reviewer**: 15 issues (3 High, 4 Medium, 8 Low)
+- After dedup and triage: 13 unique actionable bugs
+
+### Concrete changes implemented
+
+**HTTP→HTTPS migration (28 URLs across 10 files):**
+1. Fixed og:url meta tags on all 8 HTML pages
+2. Fixed schema.org JSON-LD URL on index.html
+3. Fixed all 12 sitemap.xml `<loc>` entries
+4. Fixed 5 tool launch URLs in data/tools.json
+5. Fixed 2 hardcoded tool URLs on index.html homepage
+6. Left 3 port-based URLs (3838, 8282, 8180) as http intentionally
+
+**Admin panel bug fixes (6 bugs):**
+7. Fixed logout redirect: `/login` (404) → `/` (correct)
+8. Fixed `esc()` function to escape double quotes with `&quot;` — prevents HTML attribute breakout
+9. Added 401 session-expiry handling: `apiFetch()` redirects to `/` on 401, all GET calls converted to use it
+10. Removed `"url"` from sanitize_dict text_fields in `_handle_save_json()` — prevents URL corruption
+11. Added try/except guard in `load_credentials()` for corrupt JSON
+12. Removed dead no-op line `socketserver.TCPServer.address_family`
+
+**Frontend consistency fixes (5 issues):**
+13. Normalized Alpine.js CDN on index.html: jsdelivr → unpkg (matches all other pages)
+14. Fixed AOS version on index.html: 2.3.4 → 2.3.1 (matches all other pages)
+15. Removed unused dark mode `x-data` binding from index.html `<html>` tag
+16. Fixed highlightPI regex on index.html: `\$` → `$|Hur\s*JU?\b` (matches publications.html)
+17. Removed duplicate AOS.init() inline scripts from index.html, positions.html, collaborators.html
+
+### Files modified
+- `index.html` — OG tag, JSON-LD, tool URLs, Alpine CDN, AOS version, dark mode, regex, AOS dupe
+- `research.html` — OG tag
+- `publications.html` — OG tag
+- `tools.html` — OG tag
+- `people.html` — OG tag
+- `positions.html` — OG tag, AOS dupe
+- `collaborators.html` — OG tag, AOS dupe
+- `research-detail.html` — OG tag
+- `sitemap.xml` — all 12 loc entries
+- `data/tools.json` — 5 tool launch URLs
+- `scripts/admin_server.py` — sanitize fix, credentials guard, dead code removal
+- `scripts/templates/admin.html` — esc(), logout, 401 handling
+
+### Verification performed
+- Playwright E2E regression: 90/90 passed (40.9s)
+- Admin server: compile OK, restart OK, HTTP 200
+- Zero remaining `http://hurlab.med.und.edu` on standard ports
+
+### Harness statistics
+- **Subagent spawns**: 6 (2 Recon Reviewers, 3 Implementers, 1 QA)
+- **Issues found**: 13 actionable bugs
+- **Issues fixed**: 13/13 (100%)
+- **E2E regression**: 90 passed, 0 failed

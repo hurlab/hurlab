@@ -73,8 +73,11 @@ def verify_password(password: str, stored_hash: str, salt: str | None = None) ->
 def load_credentials():
     if not CREDENTIALS_FILE.exists():
         return None
-    with open(CREDENTIALS_FILE, "r") as f:
-        return json.load(f)
+    try:
+        with open(CREDENTIALS_FILE, "r") as f:
+            return json.load(f)
+    except (json.JSONDecodeError, IOError):
+        return None
 
 
 def save_credentials(username: str, password: str):
@@ -1067,7 +1070,7 @@ class AdminHandler(BaseHTTPRequestHandler):
         if not isinstance(body, dict):
             self._send_json({"error": "Expected a JSON object"}, status=400)
             return
-        body = sanitize_dict(body, {"name", "title", "description", "institution", "url", "headline", "overview", "contactEmail", "intro"})
+        body = sanitize_dict(body, {"name", "title", "description", "institution", "headline", "overview", "contactEmail", "intro"})
         try:
             save_json_data(filename, body, commit_msg=f"Admin: update {label}")
             self._send_json({"success": True, "message": f"{label.title()} updated successfully."})
@@ -1090,7 +1093,6 @@ class AdminHandler(BaseHTTPRequestHandler):
 def main():
     # Disable reverse DNS lookups — they cause 30-60s delays per request
     import socketserver
-    socketserver.TCPServer.address_family
     HTTPServer.address_family = __import__('socket').AF_INET
     AdminHandler.address_string = lambda self: self.client_address[0]
     bind_addr = os.environ.get("ADMIN_BIND_ADDR", "127.0.0.1")

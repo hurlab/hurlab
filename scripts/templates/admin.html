@@ -415,18 +415,23 @@
         // --- CSRF Protection ---
         const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
 
-        function apiFetch(url, options = {}) {
+        async function apiFetch(url, options = {}) {
             const headers = options.headers || {};
             if (options.method === 'POST' || options.method === 'PUT' || options.method === 'DELETE') {
                 headers['X-CSRF-Token'] = csrfToken;
             }
-            return fetch(url, { ...options, headers });
+            const res = await fetch(url, { ...options, headers });
+            if (res.status === 401) {
+                window.location.href = '/';
+                throw new Error('Session expired');
+            }
+            return res;
         }
 
         // --- Status ---
         async function fetchStatus() {
             try {
-                const res = await fetch('/status');
+                const res = await apiFetch('/status');
                 if (!res.ok) throw new Error('Failed to fetch status');
                 const data = await res.json();
 
@@ -608,7 +613,7 @@
         // --- Logout ---
         async function logout() {
             await fetch('/logout', { method: 'POST' });
-            window.location.href = '/login';
+            window.location.href = '/';
         }
 
         // --- Tabs ---
@@ -635,7 +640,7 @@
 
         async function fetchTeamData() {
             try {
-                const res = await fetch('/api/team');
+                const res = await apiFetch('/api/team');
                 if (!res.ok) throw new Error('Failed to fetch team data');
                 teamData = await res.json();
                 renderPi();
@@ -854,7 +859,7 @@
                 });
                 if (res.ok) {
                     // Refresh data
-                    const teamRes = await fetch('/api/team');
+                    const teamRes = await apiFetch('/api/team');
                     if (teamRes.ok) {
                         teamData = await teamRes.json();
                         renderMembers(dragSection);
@@ -880,7 +885,7 @@
         function esc(s) {
             const d = document.createElement('div');
             d.appendChild(document.createTextNode(s));
-            return d.innerHTML;
+            return d.innerHTML.replace(/"/g, '&quot;');
         }
 
         function buildEditRow(section, index, member) {
@@ -1041,7 +1046,7 @@
 
         async function fetchCollaborators() {
             try {
-                const res = await fetch('/api/collaborators');
+                const res = await apiFetch('/api/collaborators');
                 if (!res.ok) throw new Error('Failed to fetch');
                 collabData = await res.json();
                 renderCollaborators();
@@ -1131,7 +1136,7 @@
 
         async function fetchResearch() {
             try {
-                const res = await fetch('/api/research');
+                const res = await apiFetch('/api/research');
                 if (!res.ok) throw new Error('Failed to fetch');
                 researchData = await res.json();
                 renderResearch();
@@ -1245,7 +1250,7 @@
 
         async function fetchPositions() {
             try {
-                const res = await fetch('/api/positions');
+                const res = await apiFetch('/api/positions');
                 if (!res.ok) throw new Error('Failed to fetch');
                 positionsData = await res.json();
                 renderPositions();

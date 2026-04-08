@@ -6,7 +6,7 @@
     "updated": "2016-04-19",
     "category": "Web Tool",
     "status": "active",
-    "url": "http://hurlab.med.und.edu/SciMiner/",
+    "url": "https://hurlab.med.und.edu/SciMiner/",
     "github": null,
     "language": "Web",
     "details": {
@@ -40,7 +40,7 @@
     "updated": "2018-10-21",
     "category": "Web Tool",
     "status": "active",
-    "url": "http://hurlab.med.und.edu/DNMKB2/",
+    "url": "https://hurlab.med.und.edu/DNMKB2/",
     "github": null,
     "language": "Web",
     "details": {
@@ -57,7 +57,7 @@
     "updated": "2022-02-10",
     "category": "R Package",
     "status": "active",
-    "url": "http://hurlab.med.und.edu/VennDetail",
+    "url": "https://hurlab.med.und.edu/VennDetail",
     "github": "https://github.com/hurlab/VennDetail",
     "language": "R",
     "details": {
@@ -74,7 +74,7 @@
     "updated": "2025-01-20",
     "category": "R Package",
     "status": "active",
-    "url": "http://hurlab.med.und.edu/richR",
+    "url": "https://hurlab.med.und.edu/richR",
     "github": "https://github.com/hurlab/richR",
     "language": "R",
     "details": {
@@ -91,7 +91,7 @@
     "updated": "2023-04-25",
     "category": "Web Tool",
     "status": "active",
-    "url": "http://hurlab.med.und.edu/Tox21Enricher",
+    "url": "https://hurlab.med.und.edu/Tox21Enricher",
     "github": "https://github.com/hurlab/tox21enricher",
     "language": "R/Web",
     "details": {
