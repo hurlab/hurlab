@@ -92,7 +92,44 @@
         "collaborators": ["Yongqun He (University of Michigan)"],
         "keywords": ["host-pathogen", "pathogen", "infection", "immune", "coronavirus", "SARS", "pneumoniae", "influenza"]
       }
+    },
+    {
+      "title": "Systems Pharmacology",
+      "description": "Computational modeling of drug treatment-associated adverse events by integrating literature mining, cheminformatics, and network-level transcriptomic analyses.",
+      "icon": "molecule",
+      "color": "indigo",
+      "details": {
+        "overview": "Our systems pharmacology program develops computational approaches to predict, mechanistically explain, and mitigate adverse drug reactions (ADRs). We integrate literature mining, cheminformatics, high-throughput screening data, and network-level transcriptomic analyses into a unified pipeline that can identify common molecular mechanisms across structurally diverse drugs that share a clinical adverse-event signal.\n\nWe have applied this framework to drug-induced peripheral neuropathy, drug-induced rhabdomyolysis, drug-induced cardiomyopathy, and Stevens–Johnson syndrome / toxic epidermal necrolysis, reporting crucial genes and pathways that were not previously implicated in these adverse events. Complementary work on polypharmacy uses network-based assessment of high-throughput screening data to estimate ADR risk when multiple drugs are combined, and machine-learning predictors built on diverse chemical and biological features have been used to forecast drug-induced liver injury.\n\nThe lab continues to extend this work through open-source cheminformatics tooling. PubChemSR provides programmatic access to PubChem-scale compound and bioassay data, and the newer ChemFuse suite unifies queries across PubChem, ChEMBL, UniChem, BindingDB, Open Targets, and SureChEMBL with ADMET prediction and similarity-based screening, giving downstream systems-pharmacology pipelines a single, reproducible chemical-data layer.",
+        "keyTopics": [
+          "Drug-induced adverse event prediction",
+          "Network pharmacology and polypharmacy",
+          "Cheminformatics and ADMET modeling",
+          "Drug repurposing and target identification"
+        ],
+        "tools": ["PubChemSR", "ChemFuse", "Tox21 Enricher"],
+        "collaborators": [
+          "Jane P.F. Bai (US FDA)",
+          "Guillermo de Anda-Jáuregui (INMEGEN, Mexico)"
+        ],
+        "keywords": [
+          "systems pharmacolog",
+          "network pharmacolog",
+          "pharmacological",
+          "drug-induced",
+          "drug induced",
+          "adverse drug",
+          "polypharmac",
+          "rhabdomyolys",
+          "stevens",
+          "toxic epidermal",
+          "cheminformat",
+          "PubChem",
+          "Casiopeina",
+          "cardiomyopathy",
+          "repurpos"
+        ]
+      }
     }
   ],
-  "lastUpdated": "2026-03-14"
+  "lastUpdated": "2026-05-21"
 }

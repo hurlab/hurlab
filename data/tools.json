@@ -6,7 +6,7 @@
     "updated": "2016-04-19",
     "category": "Web Tool",
     "status": "active",
-    "url": "https://hurlab.med.und.edu/SciMiner/",
+    "url": "http://hurlab.med.und.edu/SciMiner/",
     "github": null,
     "language": "Web",
     "details": {
@@ -18,18 +18,51 @@
   },
   {
     "name": "PubChemSR",
-    "description": "Stand-alone program for data retrieval from NCBI PubChem databases.",
-    "version": "v3.6.4",
-    "updated": "2019-12-18",
-    "category": "Desktop",
-    "status": "active",
-    "url": "https://sourceforge.net/projects/pubchemsr/",
-    "github": null,
-    "language": "Java",
+    "description": "PubChem Search Refined — Python cheminformatics toolkit with CLI, web dashboard, and AI-augmented ADMET prediction.",
+    "version": "2.x",
+    "updated": "2026-05-09",
+    "category": "Python",
+    "status": "development",
+    "url": "https://github.com/hurlab/PubChemSR",
+    "github": "https://github.com/hurlab/PubChemSR",
+    "language": "Python",
     "details": {
-      "longDescription": "PubChemSR (PubChem Structure-activity Relationship) is a Java-based stand-alone application for retrieving and analyzing chemical compound data from NCBI PubChem databases. It supports batch queries, bioassay data retrieval, and structure-activity analysis for pharmacological research.",
-      "features": ["Batch chemical compound queries", "Bioassay data retrieval from PubChem", "Structure-activity relationship analysis", "Cross-platform Java application", "Export to CSV and SDF formats"],
+      "longDescription": "PubChemSR is an open-source cheminformatics toolkit for searching, retrieving, and analyzing compound data from NCBI PubChem. The current generation ships three coordinated interfaces: a scriptable Python library plus CLI (pubchemsr) for batch workflows, an interactive web dashboard (pubchemsr-web) for point-and-click exploration, and an AI-augmented discovery platform (pubchemsr-ai) that layers ADMET prediction, SAR analysis, and chemical-space visualization on top of the core search engine.",
+      "features": [
+        "Compound search by name, CID, SMILES, InChI, or molecular formula",
+        "40+ molecular properties and 200+ RDKit descriptors",
+        "Similarity (Tanimoto) and substructure/SMARTS search",
+        "BioAssay data retrieval and batch processing from CSV/TXT",
+        "Drug-likeness filters (Lipinski, Veber, Ghose, Egan, Muegge)",
+        "ADMET prediction, SAR analysis, and chemical-space visualization (AI module)",
+        "Export to CSV, Excel, JSON, and SDF formats"
+      ],
       "publications": ["PMID: 18482452"],
+      "relatedAreas": ["Systems Pharmacology"]
+    }
+  },
+  {
+    "name": "ChemFuse",
+    "description": "Multi-database cheminformatics suite integrating PubChem, ChEMBL, UniChem, BindingDB, Open Targets, and SureChEMBL.",
+    "version": "0.x",
+    "updated": "2026-05-09",
+    "category": "Python",
+    "status": "development",
+    "url": "https://github.com/hurlab/chemfuse",
+    "github": "https://github.com/hurlab/chemfuse",
+    "language": "Python / R",
+    "details": {
+      "longDescription": "ChemFuse unifies compound search, ADMET prediction, and cross-database identifier mapping into a single coherent API. A single function call searches PubChem, ChEMBL, UniChem, BindingDB, Open Targets, and SureChEMBL in parallel, merges the results by structure, and returns a unified compound collection. From there, ChemFuse computes 200+ molecular descriptors, applies drug-likeness filters, predicts ADMET properties via ML models, clusters compounds in chemical space, and exports the merged dataset — all from Python, R, the command line, or a Streamlit dashboard.",
+      "features": [
+        "Parallel async queries across 6 public chemistry databases",
+        "No API keys required for any integrated source",
+        "Cross-database identifier resolution via UniChem",
+        "200+ RDKit descriptors and Lipinski / Veber / Ghose / Egan / Muegge filters",
+        "ML-based ADMET prediction (solubility, BBB, CYP, hepatotoxicity, etc.)",
+        "Local SQLite cache with TTL + LRU eviction",
+        "Python package, R package (via reticulate), CLI, Streamlit dashboard, Docker"
+      ],
+      "publications": [],
       "relatedAreas": ["Systems Pharmacology"]
     }
   },
@@ -40,7 +73,7 @@
     "updated": "2018-10-21",
     "category": "Web Tool",
     "status": "active",
-    "url": "https://hurlab.med.und.edu/DNMKB2/",
+    "url": "http://hurlab.med.und.edu/DNMKB2/",
     "github": null,
     "language": "Web",
     "details": {
@@ -57,7 +90,7 @@
     "updated": "2022-02-10",
     "category": "R Package",
     "status": "active",
-    "url": "https://hurlab.med.und.edu/VennDetail",
+    "url": "http://hurlab.med.und.edu/VennDetail",
     "github": "https://github.com/hurlab/VennDetail",
     "language": "R",
     "details": {
@@ -74,7 +107,7 @@
     "updated": "2025-01-20",
     "category": "R Package",
     "status": "active",
-    "url": "https://hurlab.med.und.edu/richR",
+    "url": "http://hurlab.med.und.edu/richR",
     "github": "https://github.com/hurlab/richR",
     "language": "R",
     "details": {
@@ -91,7 +124,7 @@
     "updated": "2023-04-25",
     "category": "Web Tool",
     "status": "active",
-    "url": "https://hurlab.med.und.edu/Tox21Enricher",
+    "url": "http://hurlab.med.und.edu/Tox21Enricher",
     "github": "https://github.com/hurlab/tox21enricher",
     "language": "R/Web",
     "details": {
@@ -159,7 +192,7 @@
     "updated": "2025-01-01",
     "category": "Knowledgebase",
     "status": "active",
-    "url": "https://hurlab.med.und.edu/DPNKB/",
+    "url": "http://hurlab.med.und.edu/DPNKB/",
     "github": null,
     "language": "Web",
     "details": {

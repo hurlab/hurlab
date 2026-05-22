@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hurlab.med.und.edu/hurlab/sitemap.xml
+Sitemap: http://hurlab.med.und.edu/hurlab/sitemap.xml
 
 # Exclude admin and data directories
 Disallow: /hurlab/scripts/

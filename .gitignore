@@ -22,8 +22,10 @@ Personal/*.doc
 Personal/*.gif
 !Personal/JungukHur_CV.pdf
 
-# Admin credentials and runtime
+# Admin credentials and runtime (contain password hash, TOTP secret, backup-code hashes)
 scripts/.admin_credentials
+scripts/.admin_credentials.*
+scripts/.admin_trusted_devices.json
 scripts/.admin_server.pid
 scripts/admin_server.log
 scripts/__pycache__/

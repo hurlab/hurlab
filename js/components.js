@@ -158,7 +158,7 @@ function injectFooter() {
 
       <div class="border-t border-white/10 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
         <p>&copy; ${new Date().getFullYear()} Hur Lab, University of North Dakota. All rights reserved.</p>
-        <p>Dept. of Biomedical Sciences, School of Medicine & Health Sciences · <a href="http://hurlab.med.und.edu:8180/" class="hover:text-primary-400 transition-colors">Admin</a></p>
+        <p>Dept. of Biomedical Sciences, School of Medicine & Health Sciences · <a href="https://hurlab.med.und.edu:8443/" class="hover:text-primary-400 transition-colors">Admin</a></p>
       </div>
     </div>
   </footer>
