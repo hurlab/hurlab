@@ -569,7 +569,7 @@
 ### Verification performed
 - Playwright E2E regression: 90/90 passed (40.9s)
 - Admin server: compile OK, restart OK, HTTP 200
-- Zero remaining `http://hurlab.med.und.edu` on standard ports
+- Zero remaining `https://hurlab.med.und.edu` on standard ports
 
 ### Harness statistics
 - **Subagent spawns**: 6 (2 Recon Reviewers, 3 Implementers, 1 QA)

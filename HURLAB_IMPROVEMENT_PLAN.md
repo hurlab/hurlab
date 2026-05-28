@@ -1,6 +1,6 @@
 # Hur Lab Website Improvement Plan
 
-**URL:** http://hurlab.med.und.edu/hurlab/  
+**URL:** https://hurlab.med.und.edu/hurlab/  
 **Date:** 2026-03-24  
 **Author:** Bench (Virtual Lab Architect)
 

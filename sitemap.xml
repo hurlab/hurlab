@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://hurlab.med.und.edu/hurlab/index.html</loc>
+    <loc>https://hurlab.med.und.edu/hurlab/index.html</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://hurlab.med.und.edu/hurlab/research.html</loc>
+    <loc>https://hurlab.med.und.edu/hurlab/research.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://hurlab.med.und.edu/hurlab/publications.html</loc>
+    <loc>https://hurlab.med.und.edu/hurlab/publications.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://hurlab.med.und.edu/hurlab/tools.html</loc>
+    <loc>https://hurlab.med.und.edu/hurlab/tools.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://hurlab.med.und.edu/hurlab/people.html</loc>
+    <loc>https://hurlab.med.und.edu/hurlab/people.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://hurlab.med.und.edu/hurlab/positions.html</loc>
+    <loc>https://hurlab.med.und.edu/hurlab/positions.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://hurlab.med.und.edu/hurlab/collaborators.html</loc>
+    <loc>https://hurlab.med.und.edu/hurlab/collaborators.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://hurlab.med.und.edu/hurlab/research-detail.html?area=0</loc>
+    <loc>https://hurlab.med.und.edu/hurlab/research-detail.html?area=0</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>http://hurlab.med.und.edu/hurlab/research-detail.html?area=1</loc>
+    <loc>https://hurlab.med.und.edu/hurlab/research-detail.html?area=1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>http://hurlab.med.und.edu/hurlab/research-detail.html?area=2</loc>
+    <loc>https://hurlab.med.und.edu/hurlab/research-detail.html?area=2</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>http://hurlab.med.und.edu/hurlab/research-detail.html?area=3</loc>
+    <loc>https://hurlab.med.und.edu/hurlab/research-detail.html?area=3</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>http://hurlab.med.und.edu/hurlab/research-detail.html?area=4</loc>
+    <loc>https://hurlab.med.und.edu/hurlab/research-detail.html?area=4</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>http://hurlab.med.und.edu/hurlab/research-detail.html?area=5</loc>
+    <loc>https://hurlab.med.und.edu/hurlab/research-detail.html?area=5</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
