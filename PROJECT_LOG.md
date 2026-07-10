@@ -1,4 +1,71 @@
-# PROJECT_LOG.md
+# PROJECT_LOG.md (active) — Hur Lab
+
+Bounded active log. Newest first. Older sessions are archived under `logs/` when over budget (>10 sessions / ~1000 lines).
+
+## Archives
+- (none yet)
+
+## Session Index (active, newest first)
+- 2026-07-09 23:57 CDT — Collaborators page reorganized (7 sections, 2-col grid, 5 hidden, 14 added w/ verified URLs); deployed live
+- 2026-04-08 CDT (code review pass 2) — CV artifact cleanup, error handling, data consistency
+- 2026-04-08 CDT (code review) — 13 bug fixes (http→https, admin panel, frontend consistency)
+- 2026-04-08 CDT (security completion) — CSRF, WEB-INF/web.xml, input sanitization
+- 2026-04-08 CDT (implementation) — image opt, mobile QA, admin JSON editors, auto-start, security, E2E
+- 2026-04-08 CDT (early) — doc updates (HTTPS resolved marker)
+- 2026-03-25 14:39 CDT — SEO/analytics, tools expandable cards, admin drag-reorder
+- 2026-03-14 16:30 CDT — JSON-as-DB migration, admin panel, v2→root cutover
+- 2026-03-14 13:23 CDT — Foundation, initial v2 build
+
+> Note: three commits between 2026-04-08 and this session were made directly on the server (admin-panel auto-parse + manual edits) and were not logged at the time — fef9c27 (CV auto-update, 2026-04-17), c0a907a (Systems Pharmacology research area + new tools + 2FA admin, 2026-05-21), d1eb197 (https:// URL restore after firewall fix, 2026-05-28). Their effects are now reflected in PROJECT_HANDOFF.md. Sessions below this note remain in their original oldest-first order (legacy tail).
+
+---
+
+## Session 2026-07-09 23:57 CDT
+- **Coding CLI used**: Claude Code CLI (Claude Opus 4.8)
+
+### Phase(s) worked on
+- Session start (startsession reconcile): classified project state; found handoff/git drift (3 commits post-dating the docs)
+- Deployment verification: confirmed live server ↔ GitHub ↔ local fully synced
+- Content maintenance: collaborators page reorganization + live deploy
+
+### Concrete changes implemented
+1. Verified the deployed webapp dir on hurlab.med.und.edu **is** the git working tree Tomcat serves; all three copies (local, GitHub, server) at the same HEAD. Deploy path = commit/push + `git pull` on server.
+2. Reorganized `data/collaborators.json` from 4 → 7 sections:
+   - Hid 5 collaborators via a reversible `"hidden": true` flag (Brosius, Eun-Hee Cho, Kyung Ju Lee, Joyce Ohm, Susan Masino) — retained in JSON, filtered out on the page.
+   - Added 14 collaborators, each with an individually web-verified profile URL: Stephanie Eid (AUB), Amy Rumora (Columbia), Yong Kim & Mi-Hyeon Jang (Rutgers), Alexander Diehl (UB), Bill Duncan (UF), Guanming Wu (OHSU), Cui Tao (Mayo), Ramkumar Mathur & Donald Jurivich (UND), Jun-Il Yoo (Inha), Motoki Takaku (UND), Nadeem Khan (UF), Kumi Nagamoto-Combs (UND), Jinho Yoo (YooJinBioSoft, Korea).
+   - New sections: Geriatrics / Biological Age / Digital Health, Cancer, Immunology / Infectious Disease.
+   - Renamed: "Epigenetics in NeuroSciences" → Neuroscience; "Literature Mining / Ontology" → Biomedical Informatics / Ontology (moved to first). Moved Archana Dhasarathy → Cancer. Title separators normalized to "/" (no "&").
+3. `collaborators.html`: reversible hidden filter in the member `x-for`; added amber/rose/blue colors + clock/chart/shield icons; two-column responsive grid per section (`grid-cols-1 sm:grid-cols-2`).
+4. `scripts/templates/admin.html`: added amber/rose colors + clock/chart icons to the admin panel color/icon dropdowns.
+
+### Files/modules/functions touched
+- `data/collaborators.json` — 4→7 sections, 24 visible + 5 hidden members
+- `collaborators.html` — hidden filter, colorMap +3, icons +3, 2-column grid
+- `scripts/templates/admin.html` — colorOptions/iconOptions extended
+- `PROJECT_HANDOFF.md`, `PROJECT_LOG.md` — this endsession reconcile
+
+### Key technical decisions and rationale
+- Reversible `hidden` flag over deletion: keeps the data; the admin save round-trips it (whole-object JSON serialization preserves unknown fields).
+- No-fabrication URL verification: every new link fetched and identity-confirmed. Caught a search-surfaced ORCID that belonged to a DIFFERENT person (jiyeon jo, not Jinho Yoo); used YooJinBioSoft's http site (its HTTPS cert is mismatched — shared hosting).
+- Two-column grid to cut vertical page length.
+
+### Problems encountered and resolutions
+- Local clone had no node_modules (gitignored) → installed `@playwright/test` (browsers already cached) to run headless render QA with Chromium.
+- AOS opacity hid below-fold sections in static screenshots → forced `aos-animate` for the QA capture.
+- Cui Tao's Mayo bio bot-blocks (HTTP 403) and Stephanie Eid's AUB profile is a JS SPA → used verified Google Scholar / AUB registry cross-check; flagged for a browser spot-check.
+
+### Deployment (3 commits, pushed + pulled to server + live-verified)
+- `c3f1df5` reorg → `b3b8a36` two-column → `e581475` Jinho Yoo + title tidy.
+- Each: `git pull --ff-only` on server (admin service restart for the admin.html change); live `https://hurlab.med.und.edu/hurlab/` returned HTTP 200 with updated content.
+
+### Items explicitly completed / resolved this session
+- Collaborators reorganization deployed live and verified.
+- Handoff/log drift reconciled: 3 previously-undocumented commits (fef9c27, c0a907a, d1eb197) now reflected in PROJECT_HANDOFF.md; HTTPS risk row corrected for the 2026-05 recurrence.
+
+### Verification performed
+- Headless Chromium render QA: 7 sections, 24 visible + 5 hidden, all icons resolved, 0 JS errors.
+- Live URL curl after each deploy: HTTP 200, correct titles/members.
+- git: clean tree; local HEAD == origin/main == server HEAD (e581475).
 
 ---
 

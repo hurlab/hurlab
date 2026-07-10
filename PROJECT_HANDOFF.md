@@ -6,8 +6,8 @@
 
 **Scope**: 9 HTML pages (8 public + 1 research detail), admin server (port 8180), CV parser script, 8 JSON data files. Deployed on Apache Tomcat 9.0.37 with nginx reverse proxy.
 
-- **Last updated**: 2026-04-08 CDT
-- **Last coding CLI used**: Claude Code CLI (Claude Opus 4.6)
+- **Last updated**: 2026-07-09 23:57 CDT
+- **Last coding CLI used**: Claude Code CLI (Claude Opus 4.8)
 - **Git repo**: https://github.com/hurlab/hurlab.git (branch: main)
 
 ---
@@ -24,7 +24,7 @@
 | Tools page (`tools.html`) | Completed in Session 2026-03-25 14:39 CDT | 11 tools (added VIOLIN, Ignet), expandable detail cards, single-expand, auto-scroll |
 | People page (`people.html`) | Completed in Session 2026-03-14 16:30 CDT | Data-driven, visibility toggles, FAC sections, GitHub (Personal + Lab) |
 | Positions page (`positions.html`) | Completed in Session 2026-03-14 16:30 CDT | Data-driven, isHiring=false, visiting scholar 6mo–3yr |
-| Collaborators page (`collaborators.html`) | Completed in Session 2026-03-25 14:39 CDT | Updated: Lyssenko added, Brosius→U Arizona, Lee→Korean NRC |
+| Collaborators page (`collaborators.html`) | Completed in Session 2026-07-09 23:57 CDT | 7 sections, responsive 2-column grid, reversible hidden-member flag; see PROJECT_LOG 2026-07-09 |
 | **Infrastructure** | | |
 | Shared nav/footer (`js/components.js`) | Completed in Session 2026-03-25 14:39 CDT | Sakai Portal link added to footer |
 | Tailwind theme (`js/theme.js`) | Completed in Session 2026-03-14 13:23 CDT | Teal/indigo palette |
@@ -41,13 +41,13 @@
 | `data/publications.json` | Completed in Session 2026-03-14 16:30 CDT | 170 peer-reviewed (59 with PMCID), 9 under review, 5 in prep, 34 talks, 190 posters |
 | `data/grants.json` | Completed in Session 2026-03-25 14:39 CDT | 5 current with NIH Reporter/ARPA-H URLs, effort % removed |
 | `data/team.json` | Completed in Session 2026-03-14 16:30 CDT | PI + current + alumni + FAC + FAC alumni + visibility settings |
-| `data/tools.json` | Completed in Session 2026-03-25 14:39 CDT | 11 tools with expandable details (longDescription, features, publications, relatedAreas) |
-| `data/research.json` | Completed in Session 2026-03-25 14:39 CDT | 5 areas; Neuro expanded (AD/PD), AI collab updated, Ontology collab updated |
-| `data/collaborators.json` | Completed in Session 2026-03-25 14:39 CDT | 4 categories, 15 collaborators, Lyssenko added |
+| `data/tools.json` | Completed in Session 2026-05-21 CDT | Tools with expandable details; additional tools added 2026-05-21 (commit c0a907a) |
+| `data/research.json` | Completed in Session 2026-05-21 CDT | 6 areas incl. Systems Pharmacology (added 2026-05-21, commit c0a907a); Neuro AD/PD |
+| `data/collaborators.json` | Completed in Session 2026-07-09 23:57 CDT | 7 categories, 24 visible + 5 hidden collaborators, all with web-verified profile URLs |
 | `data/positions.json` | Completed in Session 2026-03-14 16:30 CDT | isHiring=false, visiting scholar 6mo–3yr |
 | `data/site.json` | Completed in Session 2026-03-14 16:30 CDT | Lab-wide config |
 | **Admin Panel (port 8180)** | | |
-| Admin server (`scripts/admin_server.py`) | Completed in Session 2026-03-25 14:39 CDT | Team reorder endpoint added |
+| Admin server (`scripts/admin_server.py`) | Completed in Session 2026-05-21 CDT | Team CRUD/reorder; JSON editors (2026-04-08); TOTP 2FA login w/ QR enrollment (2026-05-21, commit c0a907a) |
 | Team drag-and-drop reorder | Completed in Session 2026-03-25 14:39 CDT | Drag rows to reorder within any section |
 | CV upload + symlink management | Completed in Session 2026-03-14 16:30 CDT | Saves as dated file, updates 3 symlinks |
 | CV parser (`scripts/parse_cv.py`) | Completed in Session 2026-03-14 16:30 CDT | Extracts pubs (with PMCID), grants; git auto-commit |
@@ -98,7 +98,7 @@
 
 | Item | Status | Opened | Notes |
 |---|---|---|---|
-| HTTPS unreachable externally | Resolved | 2026-03-14 | Resolved 2026-04-08: port 443 opened, SSL certificate renewed |
+| HTTPS unreachable externally | Resolved | 2026-03-14 | 2026-04-08 port 443 opened/SSL renewed; RECURRED 2026-05-06/07 (iptables/ufw REDIRECT sent :443→plain-HTTP :8080), durably fixed by removing REDIRECT from both /etc/ufw/before.rules and /etc/iptables/rules.v4 (see wiki concept/hurlab-https-outage); app URLs restored to https (commit d1eb197) |
 | Tailwind Play CDN first-load delay | Open | 2026-03-14 | ~200-400ms, acceptable for academic site |
 | Team member photos mostly missing | Open | 2026-03-14 | Only PI and Brett McGregor have photos; admin panel supports upload |
 | Admin server not auto-started | Resolved | 2026-04-08 | systemd user service enabled with lingering |
@@ -128,6 +128,7 @@
 | Input sanitization | Code review by Reviewer agent | APPROVED — HTML tag stripping, generic errors | 2026-04-08 CDT |
 | WEB-INF/web.xml | `curl` HTTP status checks | scripts/→403, tests/→403, public pages→200 | 2026-04-08 CDT |
 | Regression after security | `npx playwright test` (90 tests) | 90 passed, 0 failed (36.5s) | 2026-04-08 CDT |
+| Collaborators reorganization | Headless Chromium render QA + live-URL curl | 7 sections, 24 visible + 5 hidden, all icons render, 0 JS errors; live HTTP 200 confirmed | 2026-07-09 23:57 CDT |
 
 ---
 
@@ -169,9 +170,12 @@ hurlab/           ← webroot (Tomcat webapp)
   v1/             ← legacy site + archived directories
 ```
 
+**Deployment flow** (confirmed 2026-07-09): the deployed webapp dir on hurlab.med.und.edu **is** the git working tree Tomcat serves. Deploy = commit + push to GitHub, then `ssh hurlab@hurlab.med.und.edu` → `cd .../webapps/hurlab && git pull --ff-only origin main`. Static files (HTML/JS/JSON/images) go live immediately; changes to `scripts/admin_server.py` or its templates need `systemctl --user restart hurlab-admin.service`. The server ALSO commits directly to main (admin-panel CV auto-parse + manual edits), so always `git pull --rebase` locally before pushing. Reusable method: wiki `concept/verify-person-profile-url-before-linking`.
+
 **Recommended next actions** (all outstanding items and security findings are resolved):
 1. Upload team member photos via admin panel (most still missing)
 2. Monitor GA4 dashboard for traffic data
 3. Consider Content-Security-Policy header for the admin panel (currently uses Tailwind CDN which requires unsafe-inline)
 4. Consider adding WebP `<picture>` elements to HTML for browsers that support it
-- **Last updated**: 2026-04-08 CDT
+5. Collaborator link follow-ups: Cui Tao uses Google Scholar (swap to Mayo bio if it loads in-browser); Jinho Yoo / YooJinBioSoft is an http:// link (their HTTPS cert is mismatched)
+- **Last updated**: 2026-07-09 23:57 CDT
