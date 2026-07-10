@@ -28,7 +28,7 @@
       ]
     },
     {
-      "title": "Neuroscience / Epigenetics",
+      "title": "Neuroscience",
       "color": "purple",
       "icon": "chip",
       "members": [
@@ -41,17 +41,18 @@
       ]
     },
     {
-      "title": "Geriatrics / Biological Age",
+      "title": "Geriatrics / Biological Age / Digital Health",
       "color": "amber",
       "icon": "clock",
       "members": [
         { "name": "Ramkumar Mathur, Ph.D.", "institution": "University of North Dakota", "url": "https://campus.und.edu/directory/ramkumar.mathur" },
         { "name": "Donald Jurivich, D.O.", "institution": "University of North Dakota", "url": "https://med.und.edu/education-training/geriatrics/chair.html" },
-        { "name": "Jun-Il Yoo, M.D.", "institution": "Inha University", "url": "https://www.inha.com/en/page/department/medicine/dept/OS_EN/doctor/126774" }
+        { "name": "Jun-Il Yoo, M.D.", "institution": "Inha University", "url": "https://www.inha.com/en/page/department/medicine/dept/OS_EN/doctor/126774" },
+        { "name": "Jinho Yoo, Ph.D.", "institution": "YooJinBioSoft, Korea", "url": "http://www.yoojinbiosoft.com" }
       ]
     },
     {
-      "title": "Cancer & Bioinformatics",
+      "title": "Cancer",
       "color": "rose",
       "icon": "chart",
       "members": [
