@@ -1,36 +1,71 @@
 {
   "categories": [
     {
+      "title": "Biomedical Informatics / Ontology",
+      "color": "indigo",
+      "icon": "database",
+      "members": [
+        { "name": "Oliver Yongqun He, Ph.D.", "institution": "University of Michigan", "url": "https://hegroup.org/" },
+        { "name": "Arzucan Ozgur, Ph.D.", "institution": "Bogazici University", "url": "https://cmpe.boun.edu.tr/~ozgur/" },
+        { "name": "Alexander D. Diehl, Ph.D.", "institution": "University at Buffalo", "url": "https://medicine.buffalo.edu/faculty/profile.html?ubit=addiehl" },
+        { "name": "Bill Duncan, Ph.D.", "institution": "University of Florida", "url": "https://dental.ufl.edu/profile/duncan-bill/" },
+        { "name": "Guanming Wu, Ph.D.", "institution": "Oregon Health & Science University", "url": "https://www.ohsu.edu/people/guanming-wu-phd" },
+        { "name": "Cui Tao, Ph.D.", "institution": "Mayo Clinic", "url": "https://scholar.google.com/citations?user=M-GwHLcAAAAJ" }
+      ]
+    },
+    {
       "title": "Diabetes / Diabetic Complications / Epidemiology",
       "color": "teal",
       "icon": "dna",
       "members": [
         { "name": "Eva L. Feldman, M.D., Ph.D.", "institution": "University of Michigan", "url": "https://medschool.umich.edu/profile/4807/eva-l-feldman" },
         { "name": "Matthias Kretzler, M.D.", "institution": "University of Michigan", "url": "https://medschool.umich.edu/profile/2128/matthias-kretzler" },
-        { "name": "Frank Chip Brosius III, M.D.", "institution": "University of Arizona", "url": "https://medicine.arizona.edu/person/frank-c-chip-brosius-iii-md" },
-        { "name": "Eun-Hee Cho, M.D.", "institution": "Kangwon National University", "url": "https://cms.kangwon.ac.kr/smed_en/research/lab01.do" },
-        { "name": "Kyung Ju Lee, M.D., Ph.D.", "institution": "Korean National Rehabilitation Center", "url": "https://orcid.org/0000-0003-4655-1521" }
+        { "name": "Stephanie Eid, Ph.D.", "institution": "American University of Beirut", "url": "https://www.aub.edu.lb/Pages/Profile.aspx?MemberId=se149" },
+        { "name": "Amy Rumora, Ph.D.", "institution": "Columbia University", "url": "https://www.neurology.columbia.edu/profile/amy-rumora-phd" },
+        { "name": "Frank Chip Brosius III, M.D.", "institution": "University of Arizona", "url": "https://medicine.arizona.edu/person/frank-c-chip-brosius-iii-md", "hidden": true },
+        { "name": "Eun-Hee Cho, M.D.", "institution": "Kangwon National University", "url": "https://cms.kangwon.ac.kr/smed_en/research/lab01.do", "hidden": true },
+        { "name": "Kyung Ju Lee, M.D., Ph.D.", "institution": "Korean National Rehabilitation Center", "url": "https://orcid.org/0000-0003-4655-1521", "hidden": true }
       ]
     },
     {
-      "title": "Literature Mining / Ontology",
-      "color": "indigo",
-      "icon": "database",
-      "members": [
-        { "name": "Oliver Yongqun He, Ph.D.", "institution": "University of Michigan", "url": "https://hegroup.org/" },
-        { "name": "Arzucan Ozgur, Ph.D.", "institution": "Bogazici University", "url": "https://cmpe.boun.edu.tr/~ozgur/" }
-      ]
-    },
-    {
-      "title": "Epigenetics in NeuroSciences",
+      "title": "Neuroscience / Epigenetics",
       "color": "purple",
       "icon": "chip",
       "members": [
-        { "name": "Joyce Ohm, Ph.D.", "institution": "Roswell Park Cancer Research Center", "url": "https://www.roswellpark.org/joyce-ohm" },
-        { "name": "Detlev Boison, Ph.D.", "institution": "Rutgers", "url": "https://sites.rutgers.edu/neurological-surgery/people/detlev-boison-phd-2/" },
-        { "name": "Susan Masino, Ph.D.", "institution": "Trinity College", "url": "https://commons.trincoll.edu/smasino/" },
-        { "name": "Archana Dhasarathy, Ph.D.", "institution": "University of North Dakota", "url": "https://med.und.edu/research/labs/dhasarathy/" },
-        { "name": "Nicholas Lyssenko, Ph.D.", "institution": "Temple University", "url": "https://medicine.temple.edu/directory/nicholas-lyssenko" }
+        { "name": "Detlev Boison, Ph.D.", "institution": "Rutgers University", "url": "https://sites.rutgers.edu/neurological-surgery/people/detlev-boison-phd-2/" },
+        { "name": "Nicholas Lyssenko, Ph.D.", "institution": "Temple University", "url": "https://medicine.temple.edu/directory/nicholas-lyssenko" },
+        { "name": "Yong Kim, Ph.D.", "institution": "Rutgers University", "url": "https://sites.rutgers.edu/neurological-surgery/people/yong-kim-phd-2/" },
+        { "name": "Mi-Hyeon Jang, Ph.D.", "institution": "Rutgers University", "url": "https://sites.rutgers.edu/neurological-surgery/people/mi-hyeon-jang-phd/" },
+        { "name": "Joyce Ohm, Ph.D.", "institution": "Roswell Park Cancer Research Center", "url": "https://www.roswellpark.org/joyce-ohm", "hidden": true },
+        { "name": "Susan Masino, Ph.D.", "institution": "Trinity College", "url": "https://commons.trincoll.edu/smasino/", "hidden": true }
+      ]
+    },
+    {
+      "title": "Geriatrics / Biological Age",
+      "color": "amber",
+      "icon": "clock",
+      "members": [
+        { "name": "Ramkumar Mathur, Ph.D.", "institution": "University of North Dakota", "url": "https://campus.und.edu/directory/ramkumar.mathur" },
+        { "name": "Donald Jurivich, D.O.", "institution": "University of North Dakota", "url": "https://med.und.edu/education-training/geriatrics/chair.html" },
+        { "name": "Jun-Il Yoo, M.D.", "institution": "Inha University", "url": "https://www.inha.com/en/page/department/medicine/dept/OS_EN/doctor/126774" }
+      ]
+    },
+    {
+      "title": "Cancer & Bioinformatics",
+      "color": "rose",
+      "icon": "chart",
+      "members": [
+        { "name": "Motoki Takaku, Ph.D.", "institution": "University of North Dakota", "url": "https://med.und.edu/research/labs/takaku/index.html" },
+        { "name": "Archana Dhasarathy, Ph.D.", "institution": "University of North Dakota", "url": "https://med.und.edu/research/labs/dhasarathy/" }
+      ]
+    },
+    {
+      "title": "Immunology / Infectious Disease",
+      "color": "blue",
+      "icon": "shield",
+      "members": [
+        { "name": "Nadeem Khan, Ph.D.", "institution": "University of Florida", "url": "https://dental.ufl.edu/profile/khan-m-nadeem/" },
+        { "name": "Kumi Nagamoto-Combs, Ph.D.", "institution": "University of North Dakota", "url": "https://campus.und.edu/directory/kumi.combs" }
       ]
     },
     {
@@ -43,5 +78,5 @@
       ]
     }
   ],
-  "lastUpdated": "2026-03-14"
+  "lastUpdated": "2026-07-09"
 }
