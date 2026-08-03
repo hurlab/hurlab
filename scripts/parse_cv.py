@@ -325,13 +325,6 @@ def parse_grants(text):
         if first_line.lower() in ("n/a", "none", ""):
             continue
 
-        # Check if this is an "In preparation" subsection within pending
-        # Some pending grants have "In preparation" entries
-        has_in_prep = False
-        in_prep_idx = subsection_text.find("In preparation")
-        if in_prep_idx != -1 and key.startswith("pending"):
-            has_in_prep = True
-
         grants = parse_grant_entries(subsection_text, category)
         result[category].extend(grants)
 
@@ -737,6 +730,36 @@ def main():
     posters = parse_posters(text, sections)
     print(f"  Found {len(posters)} posters")
     print()
+
+    # Step 3b: Preserve manually-curated 'date' fields (ISO YYYY-MM-DD) across re-parse.
+    # The CV supplies only publication year, but the website's rolling-6-month "Recent"
+    # badge needs an exact date. Carry forward any 'date' already recorded in the previous
+    # publications.json, matched by PMID then DOI, so those dates survive a CV re-parse.
+    existing_path = os.path.join(DATA_DIR, "publications.json")
+    if os.path.isfile(existing_path):
+        try:
+            with open(existing_path, encoding="utf-8") as f:
+                prev = json.load(f)
+            by_pmid, by_doi = {}, {}
+            for e in prev.get("peerReviewed", []):
+                if e.get("date"):
+                    if e.get("pmid"):
+                        by_pmid[str(e["pmid"])] = e["date"]
+                    if e.get("doi"):
+                        by_doi[str(e["doi"]).lower()] = e["date"]
+            for e in peer_reviewed:
+                d = None
+                if e.get("pmid") and str(e["pmid"]) in by_pmid:
+                    d = by_pmid[str(e["pmid"])]
+                elif e.get("doi") and str(e["doi"]).lower() in by_doi:
+                    d = by_doi[str(e["doi"]).lower()]
+                if d:
+                    e["date"] = d
+            preserved = sum(1 for e in peer_reviewed if e.get("date"))
+            print(f"  Preserved {preserved} publication date(s) from previous publications.json")
+        except Exception as exc:  # never let date-preservation break a CV parse
+            print(f"  Warning: could not preserve dates from previous publications.json: {exc}",
+                  file=sys.stderr)
 
     # Step 4: Build publications.json
     publications = {

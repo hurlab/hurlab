@@ -1255,7 +1255,8 @@
       "doi": null,
       "year": 2026,
       "isPreprint": false,
-      "category": "originalPaper"
+      "category": "originalPaper",
+      "date": "2026-03-01"
     },
     {
       "number": 126,
@@ -1265,7 +1266,8 @@
       "doi": null,
       "year": 2026,
       "isPreprint": false,
-      "category": "originalPaper"
+      "category": "originalPaper",
+      "date": "2026-01-14"
     },
     {
       "number": 127,
@@ -1275,7 +1277,8 @@
       "doi": null,
       "year": 2026,
       "isPreprint": false,
-      "category": "originalPaper"
+      "category": "originalPaper",
+      "date": "2026-01-13"
     },
     {
       "number": 128,
@@ -1285,27 +1288,30 @@
       "doi": null,
       "year": 2026,
       "isPreprint": false,
-      "category": "originalPaper"
+      "category": "originalPaper",
+      "date": "2026-07-01"
     },
     {
       "number": 129,
       "text": "Eid SA, Jaisil P, Guo K, Hayes JM, Pacut C, Rigan DM, Carter A, Teener SJ, Kiriluk C, Miller CM, WebberDavis I, McQuown H, Jang D-G, Patterson A, Koubek EJ, Bridges D, Hur J, Meyer JD, and Feldman EL. Ketogenic diet and exercise improve nerve function in a metabolic syndrome mouse model. Diabetes (Initial submission on 11/7/2025; Another revision submitted on 1/5/2026; Accepted on 2/13/2026)",
-      "pmid": null,
+      "pmid": "41861283",
       "pmcid": null,
-      "doi": null,
+      "doi": "10.2337/db25-1015",
       "year": 2026,
       "isPreprint": false,
-      "category": "originalPaper"
+      "category": "originalPaper",
+      "date": "2026-06-01"
     },
     {
       "number": 130,
       "text": "He A*, Hur KN*, Li X, Zheng J, Hur J$, and He Y$. Updated Profiling of COVID-19 Vaccine Adverse Events Using VAERS Case Reports. Frontiers in Pharmacology – Pharmacoepidemiology. (Accepted in March 2026; In press)",
-      "pmid": null,
+      "pmid": "41971073",
       "pmcid": null,
-      "doi": null,
+      "doi": "10.3389/fphar.2026.1741967",
       "year": 2026,
       "isPreprint": false,
-      "category": "originalPaper"
+      "category": "originalPaper",
+      "date": "2026-03-26"
     },
     {
       "number": 131,
@@ -1706,6 +1712,39 @@
       "year": 2025,
       "isPreprint": true,
       "category": "preprints"
+    },
+    {
+      "number": 171,
+      "text": "Monickaraj J*, Rehana H*, Bernardi A, Zheng Y, Lin T, Liu L, Madireddi A, Yeh L, Zheng J$, Hur J$, and He Y$. Vaxjo 2.0: An ontology- and large language model-powered knowledge base of vaccine adjuvants and mechanisms. Frontiers in Cellular and Infection Microbiology. 16:1763384, 2026.",
+      "pmid": "42328180",
+      "pmcid": null,
+      "doi": "10.3389/fcimb.2026.1763384",
+      "year": 2026,
+      "isPreprint": false,
+      "category": "originalPaper",
+      "date": "2026-06-05"
+    },
+    {
+      "number": 172,
+      "text": "Zheng J, Lin AY, Huffman A, Masci AM, Racz R, Wu G, Roan K, Ong E, Sarntivijai S, Hu J, Asfaw E, Kahn H, Li X, Zhang X, Monickaraj J, Kosar N, Li J, Manuel W, Abeysinghe R, Rehana H, Bansal B, Pan Y, Guo J, He V, Song J, Seleznev AI, Hur K, He A, Davydov A, Yang Q, Ostropolets A, Vita R, Peters B, Ruttenberg A, Diehl AD, Hoyt CT, Roncaglia P, Huntley RP, Scheuermann RH, Courtot M, Todd T, Sayers S, Chen F, Li X, Yeh FY, Xiang Z, Ozgur A, Whetzel PL, Musen MA, Mungall CJ, Leitner WW, Cui L, Colby LA, Mobley HLT, Athey BD, Omenn GS, Cowell LG, Tao C, Hur J, Smith B, and He Y. VO: The Vaccine Ontology. Scientific Data. 13(1), 2026.",
+      "pmid": "42062309",
+      "pmcid": null,
+      "doi": "10.1038/s41597-026-07298-w",
+      "year": 2026,
+      "isPreprint": false,
+      "category": "originalPaper",
+      "date": "2026-04-30"
+    },
+    {
+      "number": 173,
+      "text": "Asaduzzaman S, Bansal B, Combs P, Zhang J, Rehana H, McGregor B, He Y, and Hur J. Ignet 2.0 and Vignet: An Ontology-Driven Web Platform for Biomedical Gene Interaction Discovery and Visualization. bioRxiv. 2026.",
+      "pmid": null,
+      "pmcid": null,
+      "doi": "10.64898/2026.06.02.729682",
+      "year": 2026,
+      "isPreprint": true,
+      "category": "preprints",
+      "date": "2026-06-02"
     }
   ],
   "underReview": [
@@ -1729,36 +1768,18 @@
     },
     {
       "number": 4,
-      "text": "Zheng J, Lin AY, Huffman A, Masci AM, Racz R, Roan K, Ong E, Sarntivijai S, Hu J, Asfaw E, Kahn H, Li X, Zhang X, Kosar N, Li J, Manuel W, Abeysinghe R, Rehana H, Bansal B, Pan Y, Guo J, He V, Song J, Seleznev AI, Hur K, He A, Davydov A, Ostropolets A, Yang Q, Vita R, Peters B, Ruttenberg A, Diehl AD, Hoyt CT, Roncaglia P, Scheuermann RH, Courtot M, Todd T, Sayers S, Chen F, Li X, Yeh FY, Xiang Z, Ozgur A, Whetzel PL, Musen MA, Mungall C, Leitner W, Cui L, Colby LA, Mobley H, Athey BD, Omenn GS, Cowell LG, Tao C, Hur J, Smith B, and He Y. Vaccine Ontology (VO): a biomedical ontology for unifying vaccine knowledge and data analysis. Scientific Data. (Submitted on 7/22/2025; Revision requested on 1/21/2026)",
-      "year": 2026,
-      "status": "Revision requested on 1/21/2026"
-    },
-    {
-      "number": 5,
       "text": "Cheng C, McGregor BA, Hur J, and Combs CK. Macrophage and Triple-Negative Breast Cancer Cell Phenotype Changes in a 3D Co-Culture Model. Scientific Reports (Submitted on 11/13/2025; initially submitted to International Immunopharmacology on 9/26/25)",
       "year": 2025,
       "status": "Submitted on 11/13/2025; initially submitted to International Immunopharmacology on 9/26/25"
     },
     {
-      "number": 6,
-      "text": "He A*, Hur K*, Li X, Zheng J, Hur J$, and He Y$. Updated Profiling of COVID-19 Vaccine Adverse Events Using VAERS Case Reports. Submitted to Frontiers in Pharmacology on 11/08/2025. (Revision requested 12/24/2025; In Revision)",
-      "year": 2025,
-      "status": "Revision requested 12/24/2025"
-    },
-    {
-      "number": 7,
-      "text": "Monickaraj J*, Rehana H*, Bernardi A, Zheng Y, Lin T, Liu L, Madireddi A, Yeh L, Zheng J$, Hur J$, and He Y$. Vaxjo 2.0: A Web-based Vaccine Adjuvant and Adjuvant Mechanism Knowledgebase Powered by Ontology and Large Language Model. Frontiers in Cellular and Infection Microbiology. (Submitted on 12/8/2025; Revision on going since 1/14/2026)",
-      "year": 2026,
-      "status": "Revision on going since 1/14/2026"
-    },
-    {
-      "number": 8,
+      "number": 5,
       "text": "Navaeiseddighi Z*, Wang Z*, Guo K, Hasan SS, Ahsan J, Tripathi JK, Schmit T, Mathur R, Hur J, Khan N. NF-κB driven inflammation mediates loss of upper airway epithelial tolerance to Streptococcus pneumoniae during influenza co-infection. PLOS Pathogens (Submitted on 11/19/2025; Rejected on 2/9/2026; In preparation for resubmission).",
       "year": 2026,
       "status": "Rejected on 2/9/2026"
     },
     {
-      "number": 9,
+      "number": 6,
       "text": "Navaeiseddighi Z*, Guo K*, Wang Z*, Hasan SS*, Mishra R, Schmit T, Ahsan J, Hur J, Zhou L, Mathur R, Khan N. Reduced expression of mitochondrial transcription factor A (TFAM) in CD8⁺ T cells drives senescence-associated inflammatory lung injury during respiratory viral infection. Proceedings of the National Academy of Sciences of the United States of America (Submitted in 2/2026; Under review). Manuscript in preparation",
       "year": 2026,
       "status": "Under review"
@@ -2764,5 +2785,5 @@
     "year": 2002,
     "country": "Republic of Korea"
   },
-  "lastUpdated": "2026-04-17"
+  "lastUpdated": "2026-07-10"
 }

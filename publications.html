@@ -176,7 +176,7 @@
             <div class="flex items-start justify-between gap-3 mb-2">
               <span class="text-xs text-gray-400 font-mono shrink-0" x-text="'#' + pub.number"></span>
               <div class="flex items-center gap-2 shrink-0">
-                <template x-if="isRecent(pub.year)">
+                <template x-if="isRecent(pub)">
                   <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800">Recent</span>
                 </template>
                 <template x-if="pub.isPreprint">
@@ -229,7 +229,7 @@
             <div class="flex items-start justify-between gap-3 mb-2">
               <span class="text-xs text-gray-400 font-mono shrink-0" x-text="'#' + pub.number"></span>
               <div class="flex items-center gap-2 shrink-0">
-                <template x-if="isRecent(pub.year)">
+                <template x-if="isRecent(pub)">
                   <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800">Recent</span>
                 </template>
                 <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">Preprint</span>
@@ -447,10 +447,17 @@
           return text.replace(/(Hur\s*J\b|Hur\s*J$|Hur\s*JU?\b)/gi, '<strong class="text-teal-700">$1</strong>');
         },
 
-        isRecent(year) {
-          if (!year) return false;
-          const currentYear = new Date().getFullYear();
-          return (currentYear - parseInt(year)) <= 2;
+        isRecent(pub) {
+          // "Recent" = published/submitted within the last 6 months, by exact date.
+          // Dynamic: recomputed from today's date on every visit, so the badge
+          // auto-expires. Requires a pub.date (ISO YYYY-MM-DD); entries without a
+          // date (the CV supplies only year) are simply not flagged.
+          if (!pub || !pub.date) return false;
+          const d = new Date(pub.date);
+          if (isNaN(d.getTime())) return false;
+          const cutoff = new Date();
+          cutoff.setMonth(cutoff.getMonth() - 6);
+          return d >= cutoff;
         },
 
         sortPubs(pubs) {
