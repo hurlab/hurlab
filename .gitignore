@@ -355,3 +355,62 @@ test-results/
 playwright-report/
 1
 *.zip
+
+# ==== Restored verbatim: this project's full pre-sync .gitignore (6178001^) — clobbered by the v3.1.3 template sync on 2026-09-30; appended so project-specific rules regain last-match precedence ====
+# Large data directories
+Files/
+Temp/
+BACKUPS/
+Projects/
+Supplemental/
+Indiana/
+Michigan/
+miRNA/
+Admissions/
+Jumgim/
+Study/
+Publications/
+cgi-bin/
+
+# Legacy site backup
+v1/
+
+# Personal data (exclude all PDFs except the CV symlink)
+Personal/*.pdf
+Personal/*.doc
+Personal/*.gif
+!Personal/JungukHur_CV.pdf
+
+# Admin credentials and runtime (contain password hash, TOTP secret, backup-code hashes)
+scripts/.admin_credentials
+scripts/.admin_credentials.*
+scripts/.admin_trusted_devices.json
+scripts/.admin_server.pid
+scripts/admin_server.log
+scripts/__pycache__/
+
+# SSL
+ssl_fullchain.crt
+
+# Node modules (Playwright)
+node_modules/
+
+# Test artifacts
+tests/screenshots/
+test-results/
+playwright-report/
+
+# Misc
+1
+
+# Archives
+*.zip
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
