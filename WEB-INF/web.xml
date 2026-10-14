@@ -21,6 +21,20 @@
         <web-resource-collection>
             <web-resource-name>Hidden Files</web-resource-name>
             <url-pattern>/.*</url-pattern>
+            <!-- Servlet patterns have no wildcard-dot form; each dot dir/file must be listed -->
+            <url-pattern>/.git/*</url-pattern>
+            <url-pattern>/.claude/*</url-pattern>
+            <url-pattern>/.moai/*</url-pattern>
+            <url-pattern>/.agents/*</url-pattern>
+            <url-pattern>/.codex/*</url-pattern>
+            <url-pattern>/.github/*</url-pattern>
+            <url-pattern>/.git_hooks/*</url-pattern>
+            <url-pattern>/.playwright-mcp/*</url-pattern>
+            <url-pattern>/.mcp.json</url-pattern>
+            <url-pattern>/.claudeignore</url-pattern>
+            <url-pattern>/.worktreeinclude</url-pattern>
+            <url-pattern>/AGENTS.md</url-pattern>
+            <url-pattern>/AGENTS.local.md</url-pattern>
         </web-resource-collection>
         <auth-constraint/>
     </security-constraint>
