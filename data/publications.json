@@ -1777,7 +1777,7 @@
     },
     {
       "number": 177,
-      "text": "Asaduzzaman S, Bansal B, Combs P, Zhang J, Rehana H, McGregor B, He Y, and Hur J. Ignet 2.0 and Vignet: An Ontology-Driven Web Platform for Biomedical Gene Interaction Discovery and Visualization. bioRxiv. 2026 Jun 6. doi: https://doi.org/10.64898/2026.06.02.729682 Manuscripts currently under peer review or in revision",
+      "text": "Asaduzzaman S, Bansal B, Combs P, Zhang J, Rehana H, McGregor B, He Y, and Hur J. Ignet 2.0 and Vignet: An Ontology-Driven Web Platform for Biomedical Gene Interaction Discovery and Visualization. bioRxiv. 2026 Jun 6. doi: https://doi.org/10.64898/2026.06.02.729682",
       "pmid": null,
       "pmcid": null,
       "doi": "https://doi.org/10.64898/2026.06.02.729682",
@@ -1807,7 +1807,7 @@
     },
     {
       "number": 4,
-      "text": "Navaeiseddighi Z*, Guo K*, Hasan SS*, Wang Z*, Mishra R, Schmit T, Ahsan J, Moser E, Hur J, Yount J, Mathur R, Zhou L, Khan N. TFAM Dependent Mitochondrial Fitness Limits CD8⁺ T Cell Immunopathology and Sustains Protective Immunity during Viral Pneumonia. Science Advances (Submitted; manuscript ID aen2097). Presentations Invited or contributed talks (Oral)",
+      "text": "Navaeiseddighi Z*, Guo K*, Hasan SS*, Wang Z*, Mishra R, Schmit T, Ahsan J, Moser E, Hur J, Yount J, Mathur R, Zhou L, Khan N. TFAM Dependent Mitochondrial Fitness Limits CD8⁺ T Cell Immunopathology and Sustains Protective Immunity during Viral Pneumonia. Science Advances (Submitted; manuscript ID aen2097).",
       "year": null,
       "status": "Submitted; manuscript ID aen2097"
     }
@@ -2028,359 +2028,537 @@
   "posters": [
     {
       "number": 1,
-      "text": "Henn R, Elzinga S, Guo K, Hur J, Feldman EL. Examining the role of obesity in hippocampal activation using single-cell RNA sequencing. American Neurology Association Conference. Oct 17-19, 2021. (Virtual; presented by Henn)"
+      "text": "Henn R, Elzinga S, Guo K, Hur J, Feldman EL. Examining the role of obesity in hippocampal activation using single-cell RNA sequencing. American Neurology Association Conference. Oct 17-19, 2021. (Virtual; presented by Henn)",
+      "year": 2021,
+      "type": "poster"
     },
     {
       "number": 2,
-      "text": "Figueroa-Romero C, Guo K, Noureldein M, Murdock BJ, Goutman SA, Hur J, Batterman S, Feldman EL. The gut microbiome: modulator of environmental insults in Amyotrophic Lateral Sclerosis. American Neurology Association Conference. Oct 17-19, 2021. (Virtual; presented by Figueroa-Romero)"
+      "text": "Figueroa-Romero C, Guo K, Noureldein M, Murdock BJ, Goutman SA, Hur J, Batterman S, Feldman EL. The gut microbiome: modulator of environmental insults in Amyotrophic Lateral Sclerosis. American Neurology Association Conference. Oct 17-19, 2021. (Virtual; presented by Figueroa-Romero)",
+      "year": 2021,
+      "type": "poster"
     },
     {
       "number": 3,
-      "text": "Adeluwa T, Kim E, Hur J. GBMPSO: Hybrid Gradient Boosting Machines with Particle Swarm Optimization in Cell Segmentation Data. IEEE Symposium Series on Computational Intelligence (SSCI) (SSCI 2021). Dec 5-7, 2021. Orlando Florida USA. (Full oral presentation by Mr. Adeluwa, a graduate student in the lab)"
+      "text": "Adeluwa T, Kim E, Hur J. GBMPSO: Hybrid Gradient Boosting Machines with Particle Swarm Optimization in Cell Segmentation Data. IEEE Symposium Series on Computational Intelligence (SSCI) (SSCI 2021). Dec 5-7, 2021. Orlando Florida USA. (Full oral presentation by Mr. Adeluwa, a graduate student in the lab)",
+      "year": 2021,
+      "type": "oral"
     },
     {
       "number": 4,
-      "text": "Raihan MO, McGregor BA, Hur J, and Porter JE. Alpha-Synucleinopathy-Related Transcriptomic Changes in Microglia. 7th Epigenetics Symposium, March 15-16, 2022, Grand Forks, ND (Poster presented by Raihan)"
+      "text": "Raihan MO, McGregor BA, Hur J, and Porter JE. Alpha-Synucleinopathy-Related Transcriptomic Changes in Microglia. 7th Epigenetics Symposium, March 15-16, 2022, Grand Forks, ND (Poster presented by Raihan)",
+      "year": 2022,
+      "type": "poster"
     },
     {
       "number": 5,
-      "text": "McGregor BA, Raihan MO, Porter JE, and Hur J. Nanopore Methylation analysis of microglia isolated from a murine model of α-synucleinopathy. The 7th Epigenetics Symposium, March 15-16, 2022, Grand Forks, ND (Poster presented by McGregor)"
+      "text": "McGregor BA, Raihan MO, Porter JE, and Hur J. Nanopore Methylation analysis of microglia isolated from a murine model of α-synucleinopathy. The 7th Epigenetics Symposium, March 15-16, 2022, Grand Forks, ND (Poster presented by McGregor)",
+      "year": 2022,
+      "type": "poster"
     },
     {
       "number": 6,
-      "text": "Raihan MO, McGregor BA, Hur J, and Porter JE. Alpha-Synucleinopathy-Related Transcriptomic Changes in Microglia. The 42nd Frank Low Research Day, April 21, 2022, Grand Forks, ND (Poster presented by Raihan)"
+      "text": "Raihan MO, McGregor BA, Hur J, and Porter JE. Alpha-Synucleinopathy-Related Transcriptomic Changes in Microglia. The 42nd Frank Low Research Day, April 21, 2022, Grand Forks, ND (Poster presented by Raihan)",
+      "year": 2022,
+      "type": "poster"
     },
     {
       "number": 7,
-      "text": "Guo K, Noureldein M, Elzinga S, Kim B, Savelieff M, Jacoby S, Hur J*, and Feldman EL*. Metabolic syndrome produces insulin resistance in the brain and impairs oligodendrocyte metabolic support of neurons: a novel mechanism for dementia. 2022 Caswell Diabetes Institute – metabolism, Obesity & Diabetes (CDI-MOD) Symposium with Frontiers in Diabetes Complications. May 11-12, 2022. Ann Arbor, MI (Poster presented by Hur)"
+      "text": "Guo K, Noureldein M, Elzinga S, Kim B, Savelieff M, Jacoby S, Hur J*, and Feldman EL*. Metabolic syndrome produces insulin resistance in the brain and impairs oligodendrocyte metabolic support of neurons: a novel mechanism for dementia. 2022 Caswell Diabetes Institute – metabolism, Obesity & Diabetes (CDI-MOD) Symposium with Frontiers in Diabetes Complications. May 11-12, 2022. Ann Arbor, MI (Poster presented by Hur)",
+      "year": 2022,
+      "type": "poster"
     },
     {
       "number": 8,
-      "text": "McGregor BA, Hur J, and Roiko M. SARS-CoV-2 Whole Genome Sequencing and Microbiome Analysis. DaCCoTA Annual Conference. Aug 2022. (Poster presented by Roiko)"
+      "text": "McGregor BA, Hur J, and Roiko M. SARS-CoV-2 Whole Genome Sequencing and Microbiome Analysis. DaCCoTA Annual Conference. Aug 2022. (Poster presented by Roiko)",
+      "year": 2022,
+      "type": "poster"
     },
     {
       "number": 9,
-      "text": ""
+      "text": "Raihan MO, McGregor BA, Hur J*, and Porter JE*. Exploring the Role of Microglia in α-Synucleinopathy phenotypes. Seminar for the Epigenetics COBRE group. September 21, 2021. (Oral presented by Raihan and McGregor)",
+      "year": 2021,
+      "type": "oral"
     },
     {
       "number": 10,
-      "text": ""
+      "text": "McGregor BA and Hur J. The University of North Dakota Computational Data Analysis Core. The 7th annual Host-Pathogen Symposium. October 3-4, 2022. Grand Forks, ND (Poster presented by McGregor)",
+      "year": 2022,
+      "type": "poster"
     },
     {
       "number": 11,
-      "text": ""
+      "text": "McGregor BA, Tyagi A, Hill M, Nausheen S, DeKumar B, Nechaev S, Parrello D, Hur J, and Roiko M. SARS-CoV-2 Whole Genome Sequencing and Metagenomic Analysis. The 7th annual Host-Pathogen Symposium. October 3-4, 2022. Grand Forks, ND (Poster presented by McGregor)",
+      "year": 2022,
+      "type": "poster"
     },
     {
       "number": 12,
-      "text": ""
+      "text": "McGregor BA, Tyagi A, Hill M, Nausheen S, De Kumar B, Nechaev S, Parrello D, Hur J, and Roiko M. SARS-CoV-2 Whole Genome Sequencing and Metagenomic Analysis. American Society for Microbiology (ASM). June 15 - 19, 2023 | Houston, TX",
+      "year": 2023,
+      "type": "poster"
     },
     {
       "number": 13,
-      "text": ""
+      "text": "Rehana H, Cam NB, Basmaci M, Ozgur A, He Y, and Hur J. Evaluation of Generative Pre-Trained Transformer 3 (GPT-3) on identifying protein-protein interactions from biomedical text. University of North Dakota Graduate Research Achievement Day (GRAD), March 2-3, 2023. Grand Forks, ND (Poster presented by Rehana)",
+      "year": 2023,
+      "type": "poster"
     },
     {
       "number": 14,
-      "text": ""
+      "text": "Aminu O, de Kumar B, and Hur J. Understanding Nanog’s role in cell differentiation. University of North Dakota Graduate Research Achievement Day (GRAD), March 2-3, 2023. Grand Forks, ND (Poster presented by Aminu; 2nd base presentation award)",
+      "year": 2023,
+      "type": "poster"
     },
     {
       "number": 15,
-      "text": ""
+      "text": "Aminu O, de Kumar B, and Hur J. Understanding Nanog’s role in cell differentiation. University of North Dakota Frank Low Research Day, April 13, 2023. Grand Forks, ND (Poster presented by Aminu)",
+      "year": 2023,
+      "type": "poster"
     },
     {
       "number": 16,
-      "text": ""
+      "text": "Amith M, Hur J, Komalsari R, Roberts K, and Tao C. Preliminary Word-Embedding Experiment to Explore Network Structures of Alzheimer’s Medications from PubMed Literature. Computational Intelligence Methods for Bioinformatics and Biostatistics (CIBB) 2023. (Poster presented by Amith)",
+      "year": 2023,
+      "type": "poster"
     },
     {
       "number": 17,
-      "text": ""
+      "text": "McGregor BA and Hur J. Computational Data Analysis Core (CDAC) at the University of North Dakota. University of North Dakota Host Pathogen Interaction COBRE Symposium. September 18-19, 2023. Grand Forks, North Dakota. (Poster presented by McGregor).",
+      "year": 2023,
+      "type": "poster"
     },
     {
       "number": 18,
-      "text": ""
+      "text": "McGregor BA and Hur J. Computational Data Analysis Core (CDAC) at the University of North Dakota. University of North Dakota Biomedical Sciences Departmental Retreat. October 21, 2023. Grand Forks, North Dakota. (Poster presented by Hur J).",
+      "year": 2023,
+      "type": "poster"
     },
     {
       "number": 19,
-      "text": ""
+      "text": "Rehana H, Zheng J, He Y, and Hur J. ChatGPT to identify drug-drug interactions from texts. The 12th Vaccines and Drug Ontology Studies (VDOS) workshop. Aug. 29th, 2023. University of Brasilia, Brasilia, DF, Brazil. (Oral presentation by Rehana)",
+      "year": 2023,
+      "type": "oral"
     },
     {
       "number": 20,
-      "text": ""
+      "text": "Rehana H, Cam NB, Basmaci M, Ozgur A, He Y, and Hur J. Identifying Protein-Protein Interaction from Biomedical Text Using Generative Pre-trained Transformer. University of North Dakota Cybersecurity Awareness & Research Symposium (CARS) 2023. October 30-31, 2023. Grand Forks, ND (Poster presented by Rehana, 1st place award)",
+      "year": 2023,
+      "type": "poster"
     },
     {
       "number": 21,
-      "text": ""
+      "text": "Jemiyo C, Afghah Z, Dawn D, Glenda L, Jurivich D, Johnson M, and Hur J. Analyzing Elderly Falls Risk Factors, with a Focus on Polypharmacy. 2023 University of North Dakota International Education Week. November 16, 2023. Grand Forks, North Dakota. (Poster presented by Jemiyo)",
+      "year": 2023,
+      "type": "poster"
     },
     {
       "number": 22,
-      "text": ""
+      "text": "Guo K, Eid S, Feldman EL, and Hur J. Dietary Reversal and/or Exercise Correct Peripheral Neuropathy in Diet-Induced Obesity Mouse Model. Northern Plains Biological Symposium 2024. March 28, 2024. Grand Forks, North Dakota. (Poster presented by Guo)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 23,
-      "text": ""
+      "text": "Jemiyo C, Afghah Z, Dawn D, Glenda L, Jurivich D, Johnson M, and Hur J. Analyzing Elderly Falls Risk Factors, with a Focus on Polypharmacy. Northern Plains Biological Symposium 2024. March 28, 2024. Grand Forks, North Dakota. (Oral presentation by Jemiyo)",
+      "year": 2024,
+      "type": "oral"
     },
     {
       "number": 24,
-      "text": ""
+      "text": "Huang F, Guo K, Baird L, Feldman EL, Goutman S, Ben M, and Hur J. Transcriptomics analysis with various tofacitinib dose treatments of amyotrophic lateral sclerosis mice. Northern Plains Biological Symposium 2024. March 28, 2024. (Poster presented by Huang)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 25,
-      "text": "Raihan MO, McGregor BA, Hur J*, and Porter JE*. Exploring the Role of Microglia in α-Synucleinopathy phenotypes. Seminar for the Epigenetics COBRE group. September 21, 2021. (Oral presented by Raihan and McGregor) McGregor BA and Hur J. The University of North Dakota Computational Data Analysis Core. The 7th annual Host-Pathogen Symposium. October 3-4, 2022. Grand Forks, ND (Poster presented by McGregor) McGregor BA, Tyagi A, Hill M, Nausheen S, DeKumar B, Nechaev S, Parrello D, Hur J, and Roiko M. SARS-CoV-2 Whole Genome Sequencing and Metagenomic Analysis. The 7th annual Host-Pathogen Symposium. October 3-4, 2022. Grand Forks, ND (Poster presented by McGregor) McGregor BA, Tyagi A, Hill M, Nausheen S, De Kumar B, Nechaev S, Parrello D, Hur J, and Roiko M. SARS-CoV-2 Whole Genome Sequencing and Metagenomic Analysis. American Society for Microbiology (ASM). June 15 - 19, 2023 | Houston, TX Rehana H, Cam NB, Basmaci M, Ozgur A, He Y, and Hur J. Evaluation of Generative Pre-Trained Transformer 3 (GPT-3) on identifying protein-protein interactions from biomedical text. University of North Dakota Graduate Research Achievement Day (GRAD), March 2-3, 2023. Grand Forks, ND (Poster presented by Rehana) Aminu O, de Kumar B, and Hur J. Understanding Nanog’s role in cell differentiation. University of North Dakota Graduate Research Achievement Day (GRAD), March 2-3, 2023. Grand Forks, ND (Poster presented by Aminu; 2nd base presentation award) Aminu O, de Kumar B, and Hur J. Understanding Nanog’s role in cell differentiation. University of North Dakota Frank Low Research Day, April 13, 2023. Grand Forks, ND (Poster presented by Aminu) Amith M, Hur J, Komalsari R, Roberts K, and Tao C. Preliminary Word-Embedding Experiment to Explore Network Structures of Alzheimer’s Medications from PubMed Literature. Computational Intelligence Methods for Bioinformatics and Biostatistics (CIBB) 2023. (Poster presented by Amith) McGregor BA and Hur J. Computational Data Analysis Core (CDAC) at the University of North Dakota. University of North Dakota Host Pathogen Interaction COBRE Symposium. September 18-19, 2023. Grand Forks, North Dakota. (Poster presented by McGregor). McGregor BA and Hur J. Computational Data Analysis Core (CDAC) at the University of North Dakota. University of North Dakota Biomedical Sciences Departmental Retreat. October 21, 2023. Grand Forks, North Dakota. (Poster presented by Hur J). Rehana H, Zheng J, He Y, and Hur J. ChatGPT to identify drug-drug interactions from texts. The 12th Vaccines and Drug Ontology Studies (VDOS) workshop. Aug. 29th, 2023. University of Brasilia, Brasilia, DF, Brazil. (Oral presentation by Rehana) Rehana H, Cam NB, Basmaci M, Ozgur A, He Y, and Hur J. Identifying Protein-Protein Interaction from Biomedical Text Using Generative Pre-trained Transformer. University of North Dakota Cybersecurity Awareness & Research Symposium (CARS) 2023. October 30-31, 2023. Grand Forks, ND (Poster presented by Rehana, 1st place award) Jemiyo C, Afghah Z, Dawn D, Glenda L, Jurivich D, Johnson M, and Hur J. Analyzing Elderly Falls Risk Factors, with a Focus on Polypharmacy. 2023 University of North Dakota International Education Week. November 16, 2023. Grand Forks, North Dakota. (Poster presented by Jemiyo) Guo K, Eid S, Feldman EL, and Hur J. Dietary Reversal and/or Exercise Correct Peripheral Neuropathy in Diet-Induced Obesity Mouse Model. Northern Plains Biological Symposium 2024. March 28, 2024. Grand Forks, North Dakota. (Poster presented by Guo) Jemiyo C, Afghah Z, Dawn D, Glenda L, Jurivich D, Johnson M, and Hur J. Analyzing Elderly Falls Risk Factors, with a Focus on Polypharmacy. Northern Plains Biological Symposium 2024. March 28, 2024. Grand Forks, North Dakota. (Oral presentation by Jemiyo) Huang F, Guo K, Baird L, Feldman EL, Goutman S, Ben M, and Hur J. Transcriptomics analysis with various tofacitinib dose treatments of amyotrophic lateral sclerosis mice. Northern Plains Biological Symposium 2024. March 28, 2024. (Poster presented by Huang) Rehana H, Zheng J, He Y, and Hur J. Identifying Drug-Drug Interactions from Biomedical Texts using Large Language Models. Northern Plains Biological Symposium 2024. March 28, 2024. (Poster presented by Rehana)"
+      "text": "Rehana H, Zheng J, He Y, and Hur J. Identifying Drug-Drug Interactions from Biomedical Texts using Large Language Models. Northern Plains Biological Symposium 2024. March 28, 2024. (Poster presented by Rehana)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 26,
-      "text": ""
+      "text": "Jemiyo C, Afghah Z, Dawn D, Glenda L, Jurivich D, Johnson M, and Hur J. Analyzing Elderly Falls Risk Factors, with a Focus on Polypharmacy. 44th Annual Frank Low Research Day 2024. April 11, 2024. Grand Forks, North Dakota. (Poster presented by Jemiyo)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 27,
-      "text": ""
+      "text": "Rehana H, Zheng J, He Y, and Hur J. Identifying Drug-Drug Interactions from Biomedical Texts using Large Language Models. University of North Dakota 2024 Frank Low Research Day. April 11, 2024. Grand Forks, North Dakota. (Poster presented by Rehana).",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 28,
-      "text": ""
+      "text": "Guo K, Eid S, Feldman EL, and Hur J. Dietary Reversal and/or Exercise Correct Peripheral Neuropathy in Diet-Induced Obesity Mouse Model. 44th Annual Frank N. Low Research Day. April 11, 2024. Grand Forks, ND. (Poster presented by Guo)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 29,
-      "text": ""
+      "text": "Huang F, Guo K, Baird L, Feldman EL, Goutman S, Ben M, and Hur J. Transcriptomics analysis with various tofacitinib dose treatments of amyotrophic lateral sclerosis mice. 44th Annual Frank N. Low Research Day. April 11, 2024. Grand Forks, ND. (Poster presented by Huang)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 30,
-      "text": ""
+      "text": "Rehana H, Zheng J, He Y, and Hur J. Identifying Drug-Drug Interactions from Biomedical Texts using Large Language Models. 44th Annual Frank N. Low Research Day. April 11, 2024. Grand Forks, ND. (Poster presented by Rehana)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 31,
-      "text": ""
+      "text": "McGregor BA and Hur J. Capabilities of the Computational Data Analysis Core (CDAC) at the University of North Dakota. University of North Dakota Epigenetics COBRE Symposium. May 13-14, 2024. Grand Forks, North Dakota. (Poster presented by McGregor).",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 32,
-      "text": ""
+      "text": "Huffman A, Hur J, Tao C, and He Y. VIOLIN In 2024: 15 Years of Vaccine Resource Development. AMIA 2024 Informatics Summit, March 2024. (Poster presented by Huffman)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 33,
-      "text": ""
+      "text": "Rehana H, Çam NB, Basmaci M, Özgür A, He Y, and Hur J. Leveraging Large Language Models for Extracting Protein-Protein Interactions from Biomedical Corpora. South Dakota State University 2024 Data Science Symposium. February 5-6, 2024. Sioux Falls, South Dakota. (Poster presented by Rehana; Travel award)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 34,
-      "text": ""
+      "text": "Rehana H, Çam NB, Basmaci M, Zheng J, Jemiyo C, He Y, Özgür A, and Hur J. Extracting Protein-Protein Interactions from Biomedical Literature using Large Language Models. University of North Dakota Graduate Research Achievement Day (GRAD), February 28-29, 2024. Grand Forks, ND (Poster presented by Rehana)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 35,
-      "text": ""
+      "text": "He Y, Huffman A, Zheng J, Tao C, and Hur J. VIOLIN in 2024: Comprehensive Vaccine Knowledgebase and Vaccine Data Standardization, Integration, and Analysis. American Society for Microbiology (ASM) MICROBE 2024. June 13-17, 2024, Atlanta (Poster presented by He)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 36,
-      "text": ""
+      "text": "Eid S, Guo K, Hur J, and Feldman EL. Single-cell RNA-sequencing deconvolutes cellular and molecular responses to diet and exercise interventions in prediabetic neuropathy. September 5-8, 2024. Rome, Italy. (Oral presentation by Feldman)",
+      "year": 2024,
+      "type": "oral"
     },
     {
       "number": 37,
-      "text": ""
+      "text": "Rehana H, He Y, and Hur J. Cancer Vaccine Adjuvant Name Recognition from Clinical Trial Data using Large Language Models. The 13th Vaccines and Drug Ontology Studies (VDOS) workshop. Jul. 22, 2024. University Twente, Enschede, The Netherlands. (Oral presentation by Rehana)",
+      "year": 2024,
+      "type": "oral"
     },
     {
       "number": 38,
-      "text": ""
+      "text": "Huffman A, Zheng J, Masci AM, Hur J, Tao C, and He Y. VS-MIS: A vaccine study minimal information standard and its ontological representation and applications. The 13th Vaccines and Drug Ontology Studies (VDOS) workshop. Jul. 22, 2024. University Twente, Enschede, The Netherlands. (Oral presentation by Huffman)",
+      "year": 2024,
+      "type": "oral"
     },
     {
       "number": 39,
-      "text": ""
+      "text": "Çam NB, Rehana H, Zheng J, Bansal B, He Y, Hur J$ and Özgür A$. Ontology-based protein-protein interaction explanation using large language models. The 13th Vaccines and Drug Ontology Studies (VDOS) workshop. Jul. 22, 2024. University Twente, Enschede, The Netherlands. (Oral presentation by Çam)",
+      "year": 2024,
+      "type": "oral"
     },
     {
       "number": 40,
-      "text": ""
+      "text": "Rehana H*, Bansal B*, Çam NB, Zheng J, He Y, Özgür A, and Hur J. Nested Named Entity Recognition using Multilayer BERT-based Model. Conference and Labs of the Evaluation Forum (CLEF) 2024. September 9-12, 2024, Grenoble, France. (Presented by Bansal)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 41,
-      "text": "Jemiyo C, Afghah Z, Dawn D, Glenda L, Jurivich D, Johnson M, and Hur J. Analyzing Elderly Falls Risk Factors, with a Focus on Polypharmacy. 44th Annual Frank Low Research Day 2024. April 11, 2024. Grand Forks, North Dakota. (Poster presented by Jemiyo) Rehana H, Zheng J, He Y, and Hur J. Identifying Drug-Drug Interactions from Biomedical Texts using Large Language Models. University of North Dakota 2024 Frank Low Research Day. April 11, 2024. Grand Forks, North Dakota. (Poster presented by Rehana). Guo K, Eid S, Feldman EL, and Hur J. Dietary Reversal and/or Exercise Correct Peripheral Neuropathy in Diet-Induced Obesity Mouse Model. 44th Annual Frank N. Low Research Day. April 11, 2024. Grand Forks, ND. (Poster presented by Guo) Huang F, Guo K, Baird L, Feldman EL, Goutman S, Ben M, and Hur J. Transcriptomics analysis with various tofacitinib dose treatments of amyotrophic lateral sclerosis mice. 44th Annual Frank N. Low Research Day. April 11, 2024. Grand Forks, ND. (Poster presented by Huang) Rehana H, Zheng J, He Y, and Hur J. Identifying Drug-Drug Interactions from Biomedical Texts using Large Language Models. 44th Annual Frank N. Low Research Day. April 11, 2024. Grand Forks, ND. (Poster presented by Rehana) McGregor BA and Hur J. Capabilities of the Computational Data Analysis Core (CDAC) at the University of North Dakota. University of North Dakota Epigenetics COBRE Symposium. May 13-14, 2024. Grand Forks, North Dakota. (Poster presented by McGregor). Huffman A, Hur J, Tao C, and He Y. VIOLIN In 2024: 15 Years of Vaccine Resource Development. AMIA 2024 Informatics Summit, March 2024. (Poster presented by Huffman) Rehana H, Çam NB, Basmaci M, Özgür A, He Y, and Hur J. Leveraging Large Language Models for Extracting Protein-Protein Interactions from Biomedical Corpora. South Dakota State University 2024 Data Science Symposium. February 5-6, 2024. Sioux Falls, South Dakota. (Poster presented by Rehana; Travel award) Rehana H, Çam NB, Basmaci M, Zheng J, Jemiyo C, He Y, Özgür A, and Hur J. Extracting Protein-Protein Interactions from Biomedical Literature using Large Language Models. University of North Dakota Graduate Research Achievement Day (GRAD), February 28-29, 2024. Grand Forks, ND (Poster presented by Rehana) He Y, Huffman A, Zheng J, Tao C, and Hur J. VIOLIN in 2024: Comprehensive Vaccine Knowledgebase and Vaccine Data Standardization, Integration, and Analysis. American Society for Microbiology (ASM) MICROBE 2024. June 13-17, 2024, Atlanta (Poster presented by He) Eid S, Guo K, Hur J, and Feldman EL. Single-cell RNA-sequencing deconvolutes cellular and molecular responses to diet and exercise interventions in prediabetic neuropathy. September 5-8, 2024. Rome, Italy. (Oral presentation by Feldman) Rehana H, He Y, and Hur J. Cancer Vaccine Adjuvant Name Recognition from Clinical Trial Data using Large Language Models. The 13th Vaccines and Drug Ontology Studies (VDOS) workshop. Jul. 22, 2024. University Twente, Enschede, The Netherlands. (Oral presentation by Rehana) Huffman A, Zheng J, Masci AM, Hur J, Tao C, and He Y. VS-MIS: A vaccine study minimal information standard and its ontological representation and applications. The 13th Vaccines and Drug Ontology Studies (VDOS) workshop. Jul. 22, 2024. University Twente, Enschede, The Netherlands. (Oral presentation by Huffman) Çam NB, Rehana H, Zheng J, Bansal B, He Y, Hur J$ and Özgür A$. Ontology-based protein-protein interaction explanation using large language models. The 13th Vaccines and Drug Ontology Studies (VDOS) workshop. Jul. 22, 2024. University Twente, Enschede, The Netherlands. (Oral presentation by Çam) Rehana H*, Bansal B*, Çam NB, Zheng J, He Y, Özgür A, and Hur J. Nested Named Entity Recognition using Multilayer BERT-based Model. Conference and Labs of the Evaluation Forum (CLEF) 2024. September 9-12, 2024, Grenoble, France. (Presented by Bansal) Elzinga S, Noureldein M, Guo K, Jang DG, Hayes J, Henn R, Webber-Davis I, Mendelson F, Parent R, Rigan D, Allouch A, Turfah A, Zhao L, Murphy G, Hur J, Feldman EL. Long-term high-fat feeding:"
+      "text": "Elzinga S, Noureldein M, Guo K, Jang DG, Hayes J, Henn R, Webber-Davis I, Mendelson F, Parent R, Rigan D, Allouch A, Turfah A, Zhao L, Murphy G, Hur J, Feldman EL. Long-term high-fat feeding: Connecting metabolism, cognitive impairment, and altered microglial morphology. American Neurology Association Conference, Sept 14-17, 2024. Orlando, Florida (Poster presented by Elzinga)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 42,
-      "text": ""
+      "text": "McGregor BA and Hur J. Computational Data Analysis Core (CDAC) at the University of North Dakota. Host-Pathogen Interactions CoBRE Symposium. October 1, 2024. Grand Forks, ND. (Presented by McGregor)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 43,
-      "text": ""
+      "text": "Kim M, Lee S, Hur J$, and Shin D$. Integrating DNA methylation and nutrition to predict metabolic syndrome: insights from the KoGES cohort. 2024 Korean Nutrition Society Annual Meeting. October 18, 2024. Seoul, Korea. (Poster by Kim; awarded the 3rd best poster presentation)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 44,
-      "text": ""
+      "text": "Lee S, Kim M, Hur J, and Shin D. Metabolomics identifies nutritional pathways associated with metabolic syndrome. 2024 Korean Nutrition Society Annual Meeting. October 18, 2024. Seoul, Korea. (Poster by Lee)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 45,
-      "text": ""
+      "text": "Rehana H, McGregor B, He Y, and Hur J. Cancer Vaccine Adjuvant Name Recognition from Clinical Trial Data using Large Language Models. The 2024 International Society for Vaccines (ISV) Annual Congress. October 21-23, 2024. Seoul, Korea. (Poster presentation by Hur)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 46,
-      "text": ""
+      "text": "Rehana H*, Bansal B*, Çam NB, Zheng J, He Y, Özgür A, and Hur J. Nested Named Entity Recognition using Multilayer BERT-based Model. ND EPSCoR State Conference. November 21, 2024. Grand Forks, ND. (Presented by Bansal)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 47,
-      "text": ""
+      "text": "Jemiyo C, Afghah Z, Dawn D, Glenda L, Jurivich D, Johnson M, and Hur J. Analyzing Elderly Falls Risk Factors, with a Focus on Polypharmacy. ND EPSCoR State Conference, November 21, 2024. Grand Forks, North Dakota. (Poster presented by Jemiyo)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 48,
-      "text": ""
+      "text": "Guo K, Elzinga S,Turfah A, Henn R, Webber-Davis I, Hayes J, Pacut C, Teener S, Carter A, Tigan D, Allouch A, Jang DG, Parent R, Glass E, Murphy G, Lentz S, Chen K, Zhao L, Hur J, Feldman E. Metabolic stress and age drive inflammation and cognitive decline in mice and humans. ND EPSCoR State Conference, Bio & Biomedical Computation Networking Seminar. November 20, 2024. Grand Forks, ND. (Presented by Guo)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 49,
-      "text": ""
+      "text": "Huang F, Guo K, Baird L, Feldman EL, Goutman S, Ben M, and Hur J. Transcriptomics analysis with various tofacitinib dose treatments of amyotrophic lateral sclerosis mice. ND EPSCoR State Conference, Bio & Biomedical Computation Networking Seminar. November 20, 2024. Grand Forks, ND. (Poster presented by Huang)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 50,
-      "text": ""
+      "text": "Bansal B, Combs P, Basmaci M, Ozgur A, He Y, Mathur R, Hur J. Ignet: A Web-Based Literature Mining System for Gene Interaction Networks. ND EPSCoR State Conference, Bio & Biomedical Computation Networking Seminar. November 20, 2024. Grand Forks, ND. (Presented by Bansal)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 51,
-      "text": ""
+      "text": "McGregor BA, Raihan MO, Brishti A, Hur J, Porter JE. Deciphering Motor Dysfunction and Microglial Activation in mThy1-α-Synuclein Mice: A Comprehensive Study of Behavioral, Gene Expression, and Methylation Changes. ND EPSCoR State Conference, Bio & Biomedical Computation Networking Seminar. November 21, 2024. Grand Forks, ND. (Presented by McGregor)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 52,
-      "text": ""
+      "text": "Rehana H, McGregor B, He Y, and Hur J. Recognizing Cancer Vaccine Adjuvant Names from Clinical Trial Data with Large Language Models. ND EPSCoR State Conference, Bio & Biomedical Computation Networking Seminar. November 21, 2024. Grand Forks, ND. (Presented by Rehana)",
+      "year": 2024,
+      "type": "poster"
     },
     {
       "number": 53,
-      "text": ""
+      "text": "Elzinga S, Guo K, Hayes J, Pacut C, Rigan D, Teener S, Carter A, Jang DG, Park J, Hur J, Feldman E. Midlife Obesity and Prediabetes: Influence of cGAS/STING on Later Life Cognitive Impairment. American Physiology Summit 2025; April 24-27, 2025; Baltimore, MD. (Poster presentation by Elzinga)",
+      "year": 2025,
+      "type": "poster"
     },
     {
       "number": 54,
-      "text": ""
+      "text": "Elzinga S, Guo K, Hayes J, Pacut C, Rigan D, Teener S, Webber-Davis I, Carter A, Park J, Jang D, Hur J, Feldman E. Sexually Dimorphic Microglial Senescence and Inflammatory Mechanisms in Obesity- and Prediabetes-Induced Cognitive Impairment. American Diabetes Association 85th Scientific Sessions; June 20-23, 2025; Chicago, IL. (Poster presentation by Elzinga)",
+      "year": 2025,
+      "type": "poster"
     },
     {
       "number": 55,
-      "text": "Connecting metabolism, cognitive impairment, and altered microglial morphology. American Neurology Association Conference, Sept 14-17, 2024. Orlando, Florida (Poster presented by Elzinga) McGregor BA and Hur J. Computational Data Analysis Core (CDAC) at the University of North Dakota. Host-Pathogen Interactions CoBRE Symposium. October 1, 2024. Grand Forks, ND. (Presented by McGregor) Kim M, Lee S, Hur J$, and Shin D$. Integrating DNA methylation and nutrition to predict metabolic syndrome: insights from the KoGES cohort. 2024 Korean Nutrition Society Annual Meeting. October 18, 2024. Seoul, Korea. (Poster by Kim; awarded the 3rd best poster presentation) Lee S, Kim M, Hur J, and Shin D. Metabolomics identifies nutritional pathways associated with metabolic syndrome. 2024 Korean Nutrition Society Annual Meeting. October 18, 2024. Seoul, Korea. (Poster by Lee) Rehana H, McGregor B, He Y, and Hur J. Cancer Vaccine Adjuvant Name Recognition from Clinical Trial Data using Large Language Models. The 2024 International Society for Vaccines (ISV) Annual Congress. October 21-23, 2024. Seoul, Korea. (Poster presentation by Hur) Rehana H*, Bansal B*, Çam NB, Zheng J, He Y, Özgür A, and Hur J. Nested Named Entity Recognition using Multilayer BERT-based Model. ND EPSCoR State Conference. November 21, 2024. Grand Forks, ND. (Presented by Bansal) Jemiyo C, Afghah Z, Dawn D, Glenda L, Jurivich D, Johnson M, and Hur J. Analyzing Elderly Falls Risk Factors, with a Focus on Polypharmacy. ND EPSCoR State Conference, November 21, 2024. Grand Forks, North Dakota. (Poster presented by Jemiyo) Guo K, Elzinga S,Turfah A, Henn R, Webber-Davis I, Hayes J, Pacut C, Teener S, Carter A, Tigan D, Allouch A, Jang DG, Parent R, Glass E, Murphy G, Lentz S, Chen K, Zhao L, Hur J, Feldman E. Metabolic stress and age drive inflammation and cognitive decline in mice and humans. ND EPSCoR State Conference, Bio & Biomedical Computation Networking Seminar. November 20, 2024. Grand Forks, ND. (Presented by Guo) Huang F, Guo K, Baird L, Feldman EL, Goutman S, Ben M, and Hur J. Transcriptomics analysis with various tofacitinib dose treatments of amyotrophic lateral sclerosis mice. ND EPSCoR State Conference, Bio & Biomedical Computation Networking Seminar. November 20, 2024. Grand Forks, ND. (Poster presented by Huang) Bansal B, Combs P, Basmaci M, Ozgur A, He Y, Mathur R, Hur J. Ignet: A Web-Based Literature Mining System for Gene Interaction Networks. ND EPSCoR State Conference, Bio & Biomedical Computation Networking Seminar. November 20, 2024. Grand Forks, ND. (Presented by Bansal) McGregor BA, Raihan MO, Brishti A, Hur J, Porter JE. Deciphering Motor Dysfunction and Microglial Activation in mThy1-α-Synuclein Mice: A Comprehensive Study of Behavioral, Gene Expression, and Methylation Changes. ND EPSCoR State Conference, Bio & Biomedical Computation Networking Seminar. November 21, 2024. Grand Forks, ND. (Presented by McGregor) Rehana H, McGregor B, He Y, and Hur J. Recognizing Cancer Vaccine Adjuvant Names from Clinical Trial Data with Large Language Models. ND EPSCoR State Conference, Bio & Biomedical Computation Networking Seminar. November 21, 2024. Grand Forks, ND. (Presented by Rehana) Elzinga S, Guo K, Hayes J, Pacut C, Rigan D, Teener S, Carter A, Jang DG, Park J, Hur J, Feldman E. Midlife Obesity and Prediabetes: Influence of cGAS/STING on Later Life Cognitive Impairment. American Physiology Summit 2025; April 24-27, 2025; Baltimore, MD. (Poster presentation by Elzinga) Elzinga S, Guo K, Hayes J, Pacut C, Rigan D, Teener S, Webber-Davis I, Carter A, Park J, Jang D, Hur J, Feldman E. Sexually Dimorphic Microglial Senescence and Inflammatory Mechanisms in Obesity- and Prediabetes-Induced Cognitive Impairment. American Diabetes Association 85th Scientific Sessions; June 20-23, 2025; Chicago, IL. (Poster presentation by Elzinga) Huffman A, Zheng J, Wu G, Cui L, Athey B, Hur J, Tao C, He Y. SEA-CDM: An Ontology-Based StudyExperiment-Assay Common Data Model for Interoperable Biomedical Experimental Data Standardization and Integration and Its Application in Vaccine Studies. NIH Data Repository & Knowledgebase Program Network Meeting; March 5-6, 2025; Rockville, MD. (Poster presentation by He, Hur)"
+      "text": "Huffman A, Zheng J, Wu G, Cui L, Athey B, Hur J, Tao C, He Y. SEA-CDM: An Ontology-Based Study-Experiment-Assay Common Data Model for Interoperable Biomedical Experimental Data Standardization and Integration and Its Application in Vaccine Studies. NIH Data Repository & Knowledgebase Program Network Meeting; March 5-6, 2025; Rockville, MD. (Poster presentation by He, Hur)",
+      "year": 2025,
+      "type": "poster"
     },
     {
       "number": 56,
-      "text": ""
+      "text": "He Y, Hur J, Tao C, Zheng J, Cui L, Wu G, Athey B, Huffman A. SEA-CDM: An Ontology-Based Study-Experiment-Assay Common Data Model for Standardizing and Integrating Biomedical Experimental Data with Application in Vaccine Studies. ISMB/ECCB 2025, BioData Resources Track (Evolution and Innovation); July 20-24, 2025; Liverpool, United Kingdom. (Oral presentation by He)",
+      "year": 2025,
+      "type": "oral"
     },
     {
       "number": 57,
-      "text": ""
+      "text": "Rehana H, Zheng J, Yeh L, Bansal B, Cam NB, Jemiyo C, McGregor BA, Özgür A, He Y, Hur J. Identifying Cancer Vaccine Adjuvants in Biomedical Literature Using Large Language Models. Great Lakes Bioinformatics Conference (GLBIO 2025); May 12-15, 2025; Minneapolis, MN. (Oral presentation by Rehana)",
+      "year": 2025,
+      "type": "oral"
     },
     {
       "number": 58,
-      "text": ""
+      "text": "Huang F, Hu D, Guan R, Quan H, McGregor BA, Hur J$, Zhang J$, Guo K$. scGEN: Adaptive Weighting Strategy for Challenging Cell Clustering in Single-Cell RNA-seq. Great Lakes Bioinformatics Conference (GLBIO 2025); May 12-15, 2025; Minneapolis, MN. (Oral presentation by Huang)",
+      "year": 2025,
+      "type": "oral"
     },
     {
       "number": 59,
-      "text": ""
+      "text": "Bansal B, Guo K, Hur J, Mathur R. Mitochondrial TFAM Maintains Microglia-Neuron Crosstalk via CX3CR1 Signaling and Prevents Motor Neuron Degeneration. Frank Low Research Day 2025; April 22-23, 2025; Grand Forks, ND. (Poster presentation by Bansal)",
+      "year": 2025,
+      "type": "poster"
     },
     {
       "number": 60,
-      "text": ""
+      "text": "Rehana H, Zheng J, Yeh L, Bansal B, Çam NB, Jemiyo C, McGregor BA, Özgür A, He Y, Hur J. Leveraging Large Language Models to Identify Vaccine Adjuvants from Biomedical Literature. Frank Low Research Day 2025; April 22-23, 2025; Grand Forks, ND. (Poster presentation by Rehana)",
+      "year": 2025,
+      "type": "poster"
     },
     {
       "number": 61,
-      "text": ""
+      "text": "Jemiyo C, McGregor BA, Rehana H, Hur J. Racial and Geographic Disparities in the Health Impact of Adverse Childhood Experiences: Evidence from 33 U.S. States. Frank Low Research Day 2025; April 22-23, 2025; Grand Forks, ND. (Poster presentation by Jemiyo)",
+      "year": 2025,
+      "type": "poster"
     },
     {
       "number": 62,
-      "text": ""
+      "text": "Hong S, Guo K, Kim J, Hur J. richCluster: An R Package for Cross-Dataset Clustering of Gene Enrichment Analyses. Frank Low Research Day 2025; April 22-23, 2025; Grand Forks, ND. (Poster presentation by Hong)",
+      "year": 2025,
+      "type": "poster"
     },
     {
       "number": 63,
-      "text": ""
+      "text": "Huang F, Hu D, Guan R, Quan H, McGregor BA, Khan N, Feldman E, Hur J, Zhang J, Guo K. scGEN: Leveraging Adaptive Weighting Strategy for Challenging Cell Clustering in Single-Cell RNA-seq. Frank Low Research Day 2025; April 22-23, 2025; Grand Forks, ND. (Poster presentation by Huang)",
+      "year": 2025,
+      "type": "poster"
     },
     {
       "number": 64,
-      "text": ""
+      "text": "Karimi B, Chen YL, Suzuki A, Hur J, Takaku M. Chromatin Structure and Transcriptional Program Across the Cell Cycle: Insights into Mitotic Bookmarking. Epigenetic Society Conference; October 2025; Chicago, IL. (Poster presentation by Karimi)",
+      "year": 2025,
+      "type": "poster"
     },
     {
       "number": 65,
-      "text": ""
+      "text": "Karimi B, Suzuki A, Hur J, Takaku M. Dynamics of Gene Transcription and Chromatin Accessibility Across the Cell Cycle. Frank Low Research Day 2025; April 22-23, 2025; Grand Forks, ND. (Poster presentation by Karimi; Best poster presentation award)",
+      "year": 2025,
+      "type": "poster"
     },
     {
       "number": 66,
-      "text": ""
+      "text": "Karimi B, Suzuki A, Hur J, Takaku M. Dynamics of Gene Transcription and Chromatin Accessibility Across the Cell Cycle. Epigenetics COBRE Annual Symposium; May 2025; Grand Forks, ND. (Poster presentation by Karimi)",
+      "year": 2025,
+      "type": "poster"
     },
     {
       "number": 67,
-      "text": ""
+      "text": "McGregor BA, Raihan O, Guo K, Porter JE, Hur J. Midbrain Spatial Gene Expression in the Thy1-α-synuclein Mouse Model of Parkinson’s Disease. Epigenetics COBRE Annual Symposium; May 2025; Grand Forks, ND. (Oral presentation by McGregor)",
+      "year": 2025,
+      "type": "oral"
     },
     {
       "number": 68,
-      "text": ""
+      "text": "McGregor BA, Raihan O, Guo K, Porter JE, Hur J. Midbrain Spatial Gene Expression in the Thy1-α-synuclein Mouse Model of Parkinson’s Disease. Host-Pathogen Interaction Research Meeting, University of North Dakota School of Medicine and Health Sciences; July 2025; Grand Forks, ND. (Poster presentation by McGregor)",
+      "year": 2025,
+      "type": "poster"
     },
     {
       "number": 69,
-      "text": ""
+      "text": "Shabb JB, Hur J. Undergraduate Biochemistry Course Outcomes as Predictors of Medical College Admissions Test Performance. ASBMB Transforming Undergraduate Education in the Molecular Life Sciences (TUEMLS); July 24-27, 2025; St. Paul, MN. (Poster presentation by Shabb)",
+      "year": 2025,
+      "type": "poster"
     },
     {
       "number": 70,
-      "text": "He Y, Hur J, Tao C, Zheng J, Cui L, Wu G, Athey B, Huffman A. SEA-CDM: An Ontology-Based StudyExperiment-Assay Common Data Model for Standardizing and Integrating Biomedical Experimental Data with Application in Vaccine Studies. ISMB/ECCB 2025, BioData Resources Track (Evolution and Innovation); July 20-24, 2025; Liverpool, United Kingdom. (Oral presentation by He) Rehana H, Zheng J, Yeh L, Bansal B, Cam NB, Jemiyo C, McGregor BA, Özgür A, He Y, Hur J. Identifying Cancer Vaccine Adjuvants in Biomedical Literature Using Large Language Models. Great Lakes Bioinformatics Conference (GLBIO 2025); May 12-15, 2025; Minneapolis, MN. (Oral presentation by Rehana) Huang F, Hu D, Guan R, Quan H, McGregor BA, Hur J$, Zhang J$, Guo K$. scGEN: Adaptive Weighting Strategy for Challenging Cell Clustering in Single-Cell RNA-seq. Great Lakes Bioinformatics Conference (GLBIO 2025); May 12-15, 2025; Minneapolis, MN. (Oral presentation by Huang) Bansal B, Guo K, Hur J, Mathur R. Mitochondrial TFAM Maintains Microglia-Neuron Crosstalk via CX3CR1 Signaling and Prevents Motor Neuron Degeneration. Frank Low Research Day 2025; April 22-23, 2025; Grand Forks, ND. (Poster presentation by Bansal) Rehana H, Zheng J, Yeh L, Bansal B, Çam NB, Jemiyo C, McGregor BA, Özgür A, He Y, Hur J. Leveraging Large Language Models to Identify Vaccine Adjuvants from Biomedical Literature. Frank Low Research Day 2025; April 22-23, 2025; Grand Forks, ND. (Poster presentation by Rehana) Jemiyo C, McGregor BA, Rehana H, Hur J. Racial and Geographic Disparities in the Health Impact of Adverse Childhood Experiences: Evidence from 33 U.S. States. Frank Low Research Day 2025; April 2223, 2025; Grand Forks, ND. (Poster presentation by Jemiyo) Hong S, Guo K, Kim J, Hur J. richCluster: An R Package for Cross-Dataset Clustering of Gene Enrichment Analyses. Frank Low Research Day 2025; April 22-23, 2025; Grand Forks, ND. (Poster presentation by Hong) Huang F, Hu D, Guan R, Quan H, McGregor BA, Khan N, Feldman E, Hur J, Zhang J, Guo K. scGEN: Leveraging Adaptive Weighting Strategy for Challenging Cell Clustering in Single-Cell RNA-seq. Frank Low Research Day 2025; April 22-23, 2025; Grand Forks, ND. (Poster presentation by Huang) Karimi B, Chen YL, Suzuki A, Hur J, Takaku M. Chromatin Structure and Transcriptional Program Across the Cell Cycle: Insights into Mitotic Bookmarking. Epigenetic Society Conference; October 2025; Chicago, IL. (Poster presentation by Karimi) Karimi B, Suzuki A, Hur J, Takaku M. Dynamics of Gene Transcription and Chromatin Accessibility Across the Cell Cycle. Frank Low Research Day 2025; April 22-23, 2025; Grand Forks, ND. (Poster presentation by Karimi; Best poster presentation award) Karimi B, Suzuki A, Hur J, Takaku M. Dynamics of Gene Transcription and Chromatin Accessibility Across the Cell Cycle. Epigenetics COBRE Annual Symposium; May 2025; Grand Forks, ND. (Poster presentation by Karimi) McGregor BA, Raihan O, Guo K, Porter JE, Hur J. Midbrain Spatial Gene Expression in the Thy1-αsynuclein Mouse Model of Parkinson’s Disease. Epigenetics COBRE Annual Symposium; May 2025; Grand Forks, ND. (Oral presentation by McGregor) McGregor BA, Raihan O, Guo K, Porter JE, Hur J. Midbrain Spatial Gene Expression in the Thy1-αsynuclein Mouse Model of Parkinson’s Disease. Host-Pathogen Interaction Research Meeting, University of North Dakota School of Medicine and Health Sciences; July 2025; Grand Forks, ND. (Poster presentation by McGregor) Shabb JB, Hur J. Undergraduate Biochemistry Course Outcomes as Predictors of Medical College Admissions Test Performance. ASBMB Transforming Undergraduate Education in the Molecular Life Sciences (TUEMLS); July 24-27, 2025; St. Paul, MN. (Poster presentation by Shabb) Zheng J, Davydov A, Qi Y, Li X, Zhang X, Manuel W, Lin T, Liu L, Abeysinghe R, Hu J, Zheng Y, Hur K, He A, Pan Y, Khan A, Ostropolets A, Masci AM, Hur J, Cui L, Smith B, He Y. Improvement of Vaccine Representation in OHDSI Standardized Vocabularies Using Vaccine Ontology. International Conference on Biological and Biomedical Ontology (ICBO 2025); November 9-11, 2025; Virtual. (Oral presentation by Zheng)"
+      "text": "Zheng J, Davydov A, Qi Y, Li X, Zhang X, Manuel W, Lin T, Liu L, Abeysinghe R, Hu J, Zheng Y, Hur K, He A, Pan Y, Khan A, Ostropolets A, Masci AM, Hur J, Cui L, Smith B, He Y. Improvement of Vaccine Representation in OHDSI Standardized Vocabularies Using Vaccine Ontology. International Conference on Biological and Biomedical Ontology (ICBO 2025); November 9-11, 2025; Virtual. (Oral presentation by Zheng)",
+      "year": 2025,
+      "type": "oral"
     },
     {
       "number": 71,
-      "text": "Huffman A, Zheng J, Masci AM, Hur J, Cui T, He Y. Ontological Modeling of the SEA-CDM and Its Applications for the Vaccine Domain. International Conference on Biological and Biomedical Ontology (ICBO 2025), Short Talks; November 9-11, 2025; Virtual. (Oral presentation by Huffman)"
+      "text": "Huffman A, Zheng J, Masci AM, Hur J, Cui T, He Y. Ontological Modeling of the SEA-CDM and Its Applications for the Vaccine Domain. International Conference on Biological and Biomedical Ontology (ICBO 2025), Short Talks; November 9-11, 2025; Virtual. (Oral presentation by Huffman)",
+      "year": 2025,
+      "type": "oral"
     },
     {
       "number": 72,
-      "text": "Rehana H, Zheng J, Hur J$, He Y$. PICO/PECO-Guided Large Language Model Extraction and Ontological Modeling of Structured Occupational Safety and Health Evidence from Biomedical Literature. International Conference on Biological and Biomedical Ontology (ICBO 2025); November 9-11, 2025; Virtual. (Oral presentation by Rehana)"
+      "text": "Rehana H, Zheng J, Hur J$, He Y$. PICO/PECO-Guided Large Language Model Extraction and Ontological Modeling of Structured Occupational Safety and Health Evidence from Biomedical Literature. International Conference on Biological and Biomedical Ontology (ICBO 2025); November 9-11, 2025; Virtual. (Oral presentation by Rehana)",
+      "year": 2025,
+      "type": "oral"
     },
     {
       "number": 73,
-      "text": "He A*, Hur K*, Li X, Zheng J, Hur J$, He Y$. Updated Profiling of COVID-19 Vaccine Adverse Events Using VAERS Case Reports. International Conference on Biological and Biomedical Ontology (ICBO 2025); November 9-11, 2025; Virtual. (Oral presentation by He, Hur)"
+      "text": "He A*, Hur K*, Li X, Zheng J, Hur J$, He Y$. Updated Profiling of COVID-19 Vaccine Adverse Events Using VAERS Case Reports. International Conference on Biological and Biomedical Ontology (ICBO 2025); November 9-11, 2025; Virtual. (Oral presentation by He, Hur)",
+      "year": 2025,
+      "type": "oral"
     },
     {
       "number": 74,
-      "text": "McGregor BA, Raihan MD, Guo K, Porter JE, Hur J. Midbrain Spatial Gene Expression in the Thy1-αsynuclein Mouse Model of Parkinson’s Disease. Neuroscience 2025 (SfN25); November 15-19, 2025; San Diego, CA. (Poster presentation by McGregor)"
+      "text": "McGregor BA, Raihan MD, Guo K, Porter JE, Hur J. Midbrain Spatial Gene Expression in the Thy1-α-synuclein Mouse Model of Parkinson’s Disease. Neuroscience 2025 (SfN25); November 15-19, 2025; San Diego, CA. (Poster presentation by McGregor)",
+      "year": 2025,
+      "type": "poster"
     },
     {
       "number": 75,
-      "text": "Rehana H, Zheng J, Yeh L, Oğuzoğlu B, Özgür A, He Y, Hur J. Automated Extraction and Classification of Vaccine Adjuvant Mechanisms Using Large Language Models. Vaccine and Drug Ontology Studies (VDOS) Workshop 2025; November 7, 2025; Virtual. (Oral presentation by Rehana)"
+      "text": "Rehana H, Zheng J, Yeh L, Oğuzoğlu B, Özgür A, He Y, Hur J. Automated Extraction and Classification of Vaccine Adjuvant Mechanisms Using Large Language Models. Vaccine and Drug Ontology Studies (VDOS) Workshop 2025; November 7, 2025; Virtual. (Oral presentation by Rehana)",
+      "year": 2025,
+      "type": "oral"
     },
     {
       "number": 76,
-      "text": "Rehana H, Zheng J, Yeh L, Bansal B, Çam NB, Jemiyo C, McGregor BA, Özgür A, He Y, Hur J. Cancer Vaccine Adjuvant Name Recognition from Biomedical Literature Using Large Language Models. AMIA 2025 Annual Symposium Proceedings; November 15-19, 2025; Atlanta, GA. (Oral presentation by Rehana)"
+      "text": "Rehana H, Zheng J, Yeh L, Bansal B, Çam NB, Jemiyo C, McGregor BA, Özgür A, He Y, Hur J. Cancer Vaccine Adjuvant Name Recognition from Biomedical Literature Using Large Language Models. AMIA 2025 Annual Symposium Proceedings; November 15-19, 2025; Atlanta, GA. (Oral presentation by Rehana)",
+      "year": 2025,
+      "type": "oral"
     },
     {
       "number": 77,
-      "text": "Shabb JB and Hur J. Undergraduate Premedical Course Outcomes as Predictors of Medical College Admissions Test Performance. Academic Medicine (AAMC) (submitted in 12/2025)"
+      "text": "Shabb JB and Hur J. Undergraduate Premedical Course Outcomes as Predictors of Medical College Admissions Test Performance. Academic Medicine (AAMC) (submitted in 12/2025)",
+      "year": 2025,
+      "type": "poster"
     },
     {
       "number": 78,
-      "text": "Rehana H, He Y, and Hur J. Evidence-linked Extraction of Vaccine Adjuvants from Infectious Disease Literature Using Finetuned Large Language Models. American Society of Microbiology (ASM) Microbe 2026; June 4-7, 2026; Washington, D.C. (Poster presented by Hur)"
+      "text": "Rehana H, He Y, and Hur J. Evidence-linked Extraction of Vaccine Adjuvants from Infectious Disease Literature Using Finetuned Large Language Models. American Society of Microbiology (ASM) Microbe 2026; June 4-7, 2026; Washington, D.C. (Poster presented by Hur)",
+      "year": 2026,
+      "type": "poster"
     },
     {
       "number": 79,
-      "text": "Monickaraj J, Rehana H, Bernardi A, Zheng Y, Lin T, Liu L, Madireddi A, Yeh L, Zheng J, Hur J, and He Y. Vaxjo 2.0: A Web-based Vaccine Adjuvant and Adjuvant Mechanism Knowledgebase Powered by Ontology and Large Language Model. American Society of Microbiology (ASM) Microbe 2026; June 4–7, 2026; Washington, D.C. (Poster presentation by He)"
+      "text": "Monickaraj J, Rehana H, Bernardi A, Zheng Y, Lin T, Liu L, Madireddi A, Yeh L, Zheng J, Hur J, and He Y. Vaxjo 2.0: A Web-based Vaccine Adjuvant and Adjuvant Mechanism Knowledgebase Powered by Ontology and Large Language Model. American Society of Microbiology (ASM) Microbe 2026; June 4–7, 2026; Washington, D.C. (Poster presentation by He)",
+      "year": 2026,
+      "type": "poster"
     },
     {
       "number": 80,
-      "text": "Oğuzoğlu B, Rehana H, Zheng J, Asaduzzaman S, Yeh L, He Y$, Özgür A$, and Hur J$. Enhancing Annotation Reliability for Protein-Protein Interactions: An Iterative Human and AI Validation Study on BioInfer. The 15th International Workshop on Vaccine and Drug Ontology Studies (VDOS-2026), colocated with ICBO 2026 and ISMB 2026. July 16, 2026. Washington Hilton, Washington, D.C. (Short paper; Oral presentation by Oğuzoğlu)"
+      "text": "Oğuzoğlu B, Rehana H, Zheng J, Asaduzzaman S, Yeh L, He Y$, Özgür A$, and Hur J$. Enhancing Annotation Reliability for Protein-Protein Interactions: An Iterative Human and AI Validation Study on BioInfer. The 15th International Workshop on Vaccine and Drug Ontology Studies (VDOS-2026), co-located with ICBO 2026 and ISMB 2026. July 16, 2026. Washington Hilton, Washington, D.C. (Short paper; Oral presentation by Oğuzoğlu)",
+      "year": 2026,
+      "type": "oral"
     },
     {
       "number": 81,
-      "text": "Asaduzzaman S, Bansal B, Combs P, Zhang J, Rehana H, McGregor B, He Y$, and Hur J$. Ignet 2.0 and Vignet: An Ontology-Driven Web Platform for Biomedical Gene Interaction Discovery and Visualization. The 15th International Workshop on Vaccine and Drug Ontology Studies (VDOS-2026), co-located with ICBO 2026 and ISMB 2026. July 16, 2026. Washington Hilton, Washington, D.C. (Full paper; Oral presentation by Asaduzzaman)"
+      "text": "Asaduzzaman S, Bansal B, Combs P, Zhang J, Rehana H, McGregor B, He Y$, and Hur J$. Ignet 2.0 and Vignet: An Ontology-Driven Web Platform for Biomedical Gene Interaction Discovery and Visualization. The 15th International Workshop on Vaccine and Drug Ontology Studies (VDOS-2026), co-located with ICBO 2026 and ISMB 2026. July 16, 2026. Washington Hilton, Washington, D.C. (Full paper; Oral presentation by Asaduzzaman)",
+      "year": 2026,
+      "type": "oral"
     },
     {
       "number": 82,
-      "text": "Rehana H and Hur J$. Schema-Grounded Multitask Instruction Fine-tuning for Joint Biomedical Named Entity Recognition and Relation Extraction in Pharmacovigilance. The 15th International Workshop on Vaccine and Drug Ontology Studies (VDOS-2026), co-located with ICBO 2026 and ISMB 2026. July 16, 2026. Washington Hilton, Washington, D.C. (Full paper; Oral presentation by Rehana)"
+      "text": "Rehana H and Hur J$. Schema-Grounded Multitask Instruction Fine-tuning for Joint Biomedical Named Entity Recognition and Relation Extraction in Pharmacovigilance. The 15th International Workshop on Vaccine and Drug Ontology Studies (VDOS-2026), co-located with ICBO 2026 and ISMB 2026. July 16, 2026. Washington Hilton, Washington, D.C. (Full paper; Oral presentation by Rehana)",
+      "year": 2026,
+      "type": "oral"
     },
     {
       "number": 83,
-      "text": "He Y, Zheng J, Huffman A, Yeh FY, Li J, Wu G, Masci AM, Smith B, Hur J, and Tao C. RECIVax: Response Evaluation Criteria for Infectious Disease Vaccines and their Ontological Representation. The 15th International Workshop on Vaccine and Drug Ontology Studies (VDOS-2026), co-located with ICBO 2026 and ISMB 2026. July 16, 2026. Washington Hilton, Washington, D.C. (Abstract; Oral presentation by He)"
+      "text": "He Y, Zheng J, Huffman A, Yeh FY, Li J, Wu G, Masci AM, Smith B, Hur J, and Tao C. RECIVax: Response Evaluation Criteria for Infectious Disease Vaccines and their Ontological Representation. The 15th International Workshop on Vaccine and Drug Ontology Studies (VDOS-2026), co-located with ICBO 2026 and ISMB 2026. July 16, 2026. Washington Hilton, Washington, D.C. (Abstract; Oral presentation by He)",
+      "year": 2026,
+      "type": "oral"
     },
     {
       "number": 84,
-      "text": "Rehana H and Hur J. A Multimodal Artificial Intelligence Framework for Literature-Grounded Vascular Access Complication Prediction in Transcatheter Aortic Valve Replacement. TRANSCEND Annual Symposium 2026; May 20, 2026; Grand Forks, ND. (Poster presentation by Rehana)"
+      "text": "Rehana H and Hur J. A Multimodal Artificial Intelligence Framework for Literature-Grounded Vascular Access Complication Prediction in Transcatheter Aortic Valve Replacement. TRANSCEND Annual Symposium 2026; May 20, 2026; Grand Forks, ND. (Poster presentation by Rehana)",
+      "year": 2026,
+      "type": "poster"
     },
     {
       "number": 85,
-      "text": "Rehana H and Hur J. CO-PICO/PECO Framework for Occupational Safety and Health Evidence Extraction. Frank Low Research Day 2026; April 13-14, 2026; Grand Forks, ND. (Poster presentation by Rehana)"
+      "text": "Rehana H and Hur J. CO-PICO/PECO Framework for Occupational Safety and Health Evidence Extraction. Frank Low Research Day 2026; April 13-14, 2026; Grand Forks, ND. (Poster presentation by Rehana)",
+      "year": 2026,
+      "type": "poster"
     },
     {
       "number": 86,
-      "text": "Asaduzzaman S, Rehana H, McGregor BA, Hur J. Morphology-Guided Spatial Transcriptomic Upscaling via Pathway-Encoded Intermediate Representations in Colorectal Cancer. Intelligent Systems for Molecular Biology (ISMB) 2026; July 2026. (Late-breaking poster presentation by Asaduzzaman)"
+      "text": "Asaduzzaman S, Rehana H, McGregor BA, Hur J. Morphology-Guided Spatial Transcriptomic Upscaling via Pathway-Encoded Intermediate Representations in Colorectal Cancer. Intelligent Systems for Molecular Biology (ISMB) 2026; July 2026. (Late-breaking poster presentation by Asaduzzaman)",
+      "year": 2026,
+      "type": "poster"
     },
     {
       "number": 87,
-      "text": "Rehana H, Zheng J, He Y, Hur J. CO-PICO/PECO: An Occupational Condition-based PICO/PECO Framework for Structuring Occupational Safety and Health Evidence using Generative Pretrained Transformers. International Conference on Intelligent Biology and Medicine (ICIBM) 2026; August 1-8, 2026. (Oral presentation by Rehana; ICIBM travel award recipient)"
+      "text": "Rehana H, Zheng J, He Y, Hur J. CO-PICO/PECO: An Occupational Condition-based PICO/PECO Framework for Structuring Occupational Safety and Health Evidence using Generative Pretrained Transformers. International Conference on Intelligent Biology and Medicine (ICIBM) 2026; August 1-8, 2026. (Oral presentation by Rehana; ICIBM travel award recipient)",
+      "year": 2026,
+      "type": "oral"
     },
     {
       "number": 88,
-      "text": "Asaduzzaman S, Rehana H, McGregor BA, Hur J. SCALE-ST: Multi-Scale Learning for Histology-Based Prediction of Spatial Gene Expression. International Conference on Intelligent Biology and Medicine (ICIBM) 2026; August 1-8, 2026. (Poster presented by Asaduzzaman)"
+      "text": "Asaduzzaman S, Rehana H, McGregor BA, Hur J. SCALE-ST: Multi-Scale Learning for Histology-Based Prediction of Spatial Gene Expression. International Conference on Intelligent Biology and Medicine (ICIBM) 2026; August 1-8, 2026. (Poster presented by Asaduzzaman)",
+      "year": 2026,
+      "type": "poster"
     },
     {
       "number": 89,
-      "text": "Rehana H, He Y, Hur J. Evidence-Grounded Evaluation of Fine-Tuned Large Language Models for Vaccine Adjuvant Extraction from Infectious Disease Literature. AMIA 2026 Annual Symposium. Dallas, Texas. November 7-11, 2026 (To be presented as a poster by Hur)"
+      "text": "Rehana H, He Y, Hur J. Evidence-Grounded Evaluation of Fine-Tuned Large Language Models for Vaccine Adjuvant Extraction from Infectious Disease Literature. AMIA 2026 Annual Symposium. Dallas, Texas. November 7-11, 2026 (To be presented as a poster by Hur)",
+      "year": 2026,
+      "type": "poster"
     }
   ],
   "patent": {

@@ -160,3 +160,23 @@ a:focus-visible, button:focus-visible {
     align-items: center;
   }
 }
+
+/* Featured Tools auto-scrolling strip (index.html) */
+.tool-marquee__track {
+  animation: tool-marquee var(--marquee-duration, 80s) linear infinite;
+}
+.tool-marquee:hover .tool-marquee__track,
+.tool-marquee:focus-within .tool-marquee__track,
+.tool-marquee.is-paused .tool-marquee__track {
+  animation-play-state: paused;
+}
+@keyframes tool-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tool-marquee { overflow-x: auto !important; } /* beats Tailwind overflow-hidden */
+  .tool-marquee__track { animation: none; }
+  .tool-marquee__dup,
+  .tool-marquee__controls { display: none; }
+}

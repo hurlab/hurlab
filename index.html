@@ -410,77 +410,44 @@
             <div class="text-center mb-8" data-aos="fade-up">
                 <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Featured Tools</h2>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Open-source software developed by our lab for the research community
+                    Software developed by our lab for the research community
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                <!-- richR -->
-                <div class="bg-white rounded-xl p-6 shadow-sm card-hover border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay="0">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-xl font-bold font-mono text-gray-900">richR</h3>
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800">Latest</span>
+            <!-- Auto-scrolling strip of every tool (from data/tools.json); pauses on hover/focus or via the button;
+                 under prefers-reduced-motion it does not move and scrolls by hand instead -->
+            <div x-data="toolMarquee()" x-init="load()">
+                <div class="tool-marquee relative overflow-hidden" :class="paused && 'is-paused'" x-show="tools.length > 0" x-cloak
+                     role="region" aria-label="All Hur Lab tools">
+                    <div class="tool-marquee__track flex gap-4 pr-4 w-max py-2" :style="'--marquee-duration: ' + (tools.length * 4) + 's'">
+                        <template x-for="(tool, i) in loop" :key="i">
+                            <a href="tools.html" :aria-hidden="i >= tools.length ? 'true' : null" :tabindex="i >= tools.length ? -1 : null"
+                               :class="i >= tools.length && 'tool-marquee__dup'"
+                               class="w-64 shrink-0 bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden hover:shadow-md hover:border-teal-300 transition">
+                                <div class="h-28 overflow-hidden border-b border-gray-200 bg-gradient-to-br from-teal-50 to-indigo-50">
+                                    <template x-if="tool.images && tool.images.length > 0">
+                                        <img :src="tool.images[0].src" :alt="tool.images[0].caption" loading="lazy" class="w-full h-full object-cover object-top">
+                                    </template>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex items-center justify-between gap-2 mb-1">
+                                        <h3 class="font-mono font-bold text-gray-900 truncate" x-text="tool.name"></h3>
+                                        <span class="flex items-center gap-1 text-xs font-medium shrink-0" :class="status(tool).text">
+                                            <span class="h-2 w-2 rounded-full" :class="status(tool).dot"></span>
+                                            <span x-text="status(tool).label"></span>
+                                        </span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 line-clamp-2" x-text="tool.description"></p>
+                                </div>
+                            </a>
+                        </template>
                     </div>
-                    <p class="text-gray-600 leading-relaxed mb-6 flex-1">
-                        Functional enrichment and visualization R package for comprehensive pathway analysis with support for multiple annotation databases.
-                    </p>
-                    <div class="flex items-center gap-3 mt-auto">
-                        <a href="https://github.com/hurlab/richR" target="_blank" rel="noopener noreferrer"
-                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
-                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                            GitHub
-                        </a>
-                        <a href="https://hurlab.med.und.edu/richR" target="_blank" rel="noopener noreferrer"
-                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 rounded-lg transition-colors">
-                            Launch
-                            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                            </svg>
-                        </a>
-                    </div>
+                    <div class="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-gray-50"></div>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-gray-50"></div>
                 </div>
-
-                <!-- scGEN -->
-                <div class="bg-white rounded-xl p-6 shadow-sm card-hover border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-xl font-bold font-mono text-gray-900">scGEN</h3>
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">Ongoing</span>
-                    </div>
-                    <p class="text-gray-600 leading-relaxed mb-6 flex-1">
-                        Gene-aware embedding network for single-cell RNA-seq clustering using deep learning for improved cell-type identification.
-                    </p>
-                    <div class="flex items-center gap-3 mt-auto">
-                        <a href="https://github.com/hurlab/scGEN" target="_blank" rel="noopener noreferrer"
-                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
-                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                            GitHub
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Tox21 Enricher -->
-                <div class="bg-white rounded-xl p-6 shadow-sm card-hover border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-xl font-bold font-mono text-gray-900">Tox21 Enricher</h3>
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">v2.4.0</span>
-                    </div>
-                    <p class="text-gray-600 leading-relaxed mb-6 flex-1">
-                        Online enrichment tool for Tox21 chemical screening data with support for toxicity pathway analysis and R integration.
-                    </p>
-                    <div class="flex items-center gap-3 mt-auto">
-                        <a href="https://github.com/hurlab/tox21enricher" target="_blank" rel="noopener noreferrer"
-                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
-                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                            GitHub
-                        </a>
-                        <a href="https://hurlab.med.und.edu/Tox21Enricher" target="_blank" rel="noopener noreferrer"
-                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 rounded-lg transition-colors">
-                            Launch
-                            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                            </svg>
-                        </a>
-                    </div>
+                <div class="tool-marquee__controls text-center mt-3">
+                    <button type="button" @click="paused = !paused" class="text-xs text-gray-500 hover:text-gray-700 underline-offset-2 hover:underline"
+                            x-text="paused ? 'Resume scrolling' : 'Pause scrolling'"></button>
                 </div>
             </div>
 
@@ -532,6 +499,29 @@
 
     <!-- Alpine.js Publications Component -->
     <script>
+        function toolMarquee() {
+            const STATUS = {
+                'available':   { label: 'Available',   text: 'text-green-600', dot: 'bg-green-500' },
+                'beta':        { label: 'Beta',        text: 'text-amber-600', dot: 'bg-amber-500' },
+                'coming-soon': { label: 'Coming soon', text: 'text-gray-500',  dot: 'bg-gray-400' }
+            };
+            return {
+                tools: [],
+                paused: false,
+                get loop() { return [...this.tools, ...this.tools]; },
+                status(tool) { return STATUS[tool.status] || STATUS['coming-soon']; },
+                async load() {
+                    try {
+                        const res = await fetch('data/tools.json');
+                        const data = await res.json();
+                        this.tools = data.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
+                    } catch (e) {
+                        console.error('Failed to fetch tools:', e);
+                    }
+                }
+            };
+        }
+
         function recentPublications() {
             return {
                 publications: [],
@@ -542,9 +532,10 @@
                         const res = await fetch('data/publications.json');
                         const data = await res.json();
                         if (data.peerReviewed && data.peerReviewed.length > 0) {
-                            // Sort by year descending, take top 5
-                            const sorted = [...data.peerReviewed]
-                                .sort((a, b) => (b.year || 0) - (a.year || 0))
+                            // Newest 5 published papers (no preprints); CV number breaks ties within a year
+                            const sorted = data.peerReviewed
+                                .filter(p => !p.isPreprint)
+                                .sort((a, b) => ((b.year || 0) - (a.year || 0)) || ((b.number || 0) - (a.number || 0)))
                                 .slice(0, 5);
                             this.publications = sorted.map(pub => ({
                                 ...pub,

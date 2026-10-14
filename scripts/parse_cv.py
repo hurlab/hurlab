@@ -53,13 +53,29 @@ PATENT = {
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
 
-def extract_text(pdf_path):
-    """Run pdftotext and return the full text, cleaned of page headers/footers."""
-    result = subprocess.run(
-        [PDFTOTEXT, pdf_path, "-"],
-        capture_output=True, text=True, check=True,
-    )
+def extract_text(pdf_path, layout=False):
+    """Run pdftotext and return the full text, cleaned of page headers/footers.
+
+    layout=True keeps each list number on the same line as its entry text.
+    Without it, pdftotext can emit a page's entry numbers as one block ahead of
+    the entry bodies, which merges every entry on that page into the last number.
+    """
+    cmd = [PDFTOTEXT, "-layout", pdf_path, "-"] if layout else [PDFTOTEXT, pdf_path, "-"]
+    result = subprocess.run(cmd, capture_output=True, text=True, check=True)
     text = result.stdout
+    if layout:
+        # Drop page furniture line by line (headers, footers, page numbers, form feeds),
+        # then left-align so numbered entries start at column 0.
+        furniture = re.compile(
+            r"^(\d{1,3}|Junguk Hur, Ph\.D\.?(\s*[–-]\s*C\.V\.)?|Curriculum Vitae)$"
+        )
+        lines = []
+        for line in text.replace("\f", "\n").split("\n"):
+            s = line.strip()
+            if furniture.match(s):
+                continue
+            lines.append(s)
+        return "\n".join(lines)
     # Remove page footers: standalone page numbers on their own line
     text = re.sub(r"\n\d{1,2}\n", "\n", text)
     # Remove page headers like "Junguk Hur, Ph.D.\nCurriculum Vitae"
@@ -193,6 +209,7 @@ def get_section_boundaries(text):
     if idx != -1:
         # Move past the header line to the start of entries
         nl = text.find("\n", idx)
+        sections["_head_peerReviewed"] = idx  # heading start, used as the previous section's end
         sections["peerReviewed"] = nl + 1 if nl != -1 else idx
 
     # Under review
@@ -202,6 +219,7 @@ def get_section_boundaries(text):
     ])
     if idx != -1:
         nl = text.find("\n", idx)
+        sections["_head_underReview"] = idx  # heading start, used as the previous section's end
         sections["underReview"] = nl + 1 if nl != -1 else idx
 
     # In preparation
@@ -211,6 +229,7 @@ def get_section_boundaries(text):
     ])
     if idx != -1:
         nl = text.find("\n", idx)
+        sections["_head_inPreparation"] = idx  # heading start, used as the previous section's end
         sections["inPreparation"] = nl + 1 if nl != -1 else idx
 
     # Talks
@@ -220,6 +239,11 @@ def get_section_boundaries(text):
     ])
     if idx != -1:
         nl = text.find("\n", idx)
+        sections["_head_talks"] = idx  # heading start, used as the previous section's end
+        # Include the parent "Presentations" heading on the line above, if present
+        prev_start = text.rfind("\n", 0, max(idx - 1, 0)) + 1
+        if text[prev_start:idx].strip() == "Presentations":
+            sections["_head_talks"] = prev_start
         sections["talks"] = nl + 1 if nl != -1 else idx
 
     # Panel discussion (marks end of talks if before posters)
@@ -233,6 +257,7 @@ def get_section_boundaries(text):
     ])
     if idx != -1:
         nl = text.find("\n", idx)
+        sections["_head_posters"] = idx  # heading start, used as the previous section's end
         sections["posters"] = nl + 1 if nl != -1 else idx
 
     # Grants
@@ -252,7 +277,9 @@ def extract_section_text(text, sections, section_name, end_sections):
     end = len(text)
     for es in end_sections:
         if es in sections and sections[es] > start:
-            end = min(end, sections[es])
+            # End at the next section's heading, not after it, so the heading
+            # text is not glued onto this section's last entry.
+            end = min(end, sections.get("_head_" + es, sections[es]))
     return text[start:end]
 
 
@@ -647,9 +674,21 @@ def parse_talks(text, sections):
     return talks
 
 
-def parse_posters(text, sections):
-    """Parse poster presentations."""
-    section_text = extract_section_text(text, sections, "posters", [])
+def parse_posters(text, sections, layout_text=None):
+    """Parse poster presentations (and the oral abstracts listed with them).
+
+    Uses the layout-mode text when given: in reading-order text, pdftotext can
+    emit a page's entry numbers as one block before the entry bodies, which
+    leaves those entries empty and merges their text into the last number.
+    """
+    section_text = ""
+    if layout_text:
+        idx = layout_text.find("Abstracts (Poster)")
+        if idx != -1:
+            nl = layout_text.find("\n", idx)
+            section_text = layout_text[nl + 1:] if nl != -1 else ""
+    if not section_text:
+        section_text = extract_section_text(text, sections, "posters", [])
     # The posters section goes to the end of the text (or until a known section)
     # Trim at known end markers
     for end_marker in ["Service", "Patent", "References"]:
@@ -657,13 +696,20 @@ def parse_posters(text, sections):
         if idx != -1:
             section_text = section_text[:idx]
 
+    # A line ending in a hyphen is a compound word broken across lines
+    # ("Study-\nExperiment"), so join it without the space that would follow.
+    section_text = re.sub(r"-\n(?=\S)", "-", section_text)
     entries = split_numbered_entries(section_text)
     posters = []
     for num, raw in entries:
         display_text = raw.strip()
+        is_oral = (re.search(r"\boral\b", raw, re.IGNORECASE)
+                   and not re.search(r"\bposter\b", raw, re.IGNORECASE))
         posters.append({
             "number": num,
             "text": display_text,
+            "year": extract_year(raw),
+            "type": "oral" if is_oral else "poster",
         })
     return posters
 
@@ -701,6 +747,8 @@ def main():
     print("Detecting section boundaries...")
     sections = get_section_boundaries(text)
     for name, pos in sorted(sections.items(), key=lambda x: x[1]):
+        if name.startswith("_head_"):
+            continue
         # Show a snippet of text at that position
         snippet = text[pos:pos + 60].replace("\n", " ").strip()
         print(f"  {name}: pos {pos} -> \"{snippet}...\"")
@@ -728,7 +776,7 @@ def main():
     print(f"  Found {len(talks)} talks")
 
     print("Parsing posters...")
-    posters = parse_posters(text, sections)
+    posters = parse_posters(text, sections, extract_text(pdf_path, layout=True))
     print(f"  Found {len(posters)} posters")
     print()
 
