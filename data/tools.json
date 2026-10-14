@@ -131,7 +131,7 @@
     "description": "Online enrichment tool for Tox21 chemical screening data with R version available.",
     "version": "v2.4.0",
     "updated": "2023-04-25",
-    "category": "Web Tool",
+    "category": ["Web Tool", "R Shiny", "R Package"],
     "status": "available",
     "url": "https://hurlab.med.und.edu/Tox21Enricher",
     "github": "https://github.com/hurlab/tox21enricher",
@@ -250,6 +250,182 @@
       "features": ["Interactive network visualization", "Literature-mined gene interactions", "Hub gene identification", "Ontology-based relationship annotation", "Network export and analysis"],
       "publications": [],
       "relatedAreas": ["Literature Mining / Ontology", "AI & Machine Learning"]
+    }
+  },
+  {
+    "name": "Vignet",
+    "description": "Vaccine-focused integrative gene network: vaccine–gene interaction networks mined from PubMed literature and mapped to the Vaccine Ontology.",
+    "version": "Latest",
+    "updated": "2026-09-29",
+    "category": "Web Tool",
+    "status": "available",
+    "url": "https://ignet.org/vignet/",
+    "github": "https://github.com/hurlab/Vignet",
+    "language": "Web",
+    "images": [{"src": "Images/tools/vignet/vignet.jpg", "caption": "Vignet home page"}],
+    "details": {
+      "longDescription": "Vignet (Vaccine-focused Integrative Gene Network) is the vaccine-first view into the same literature-mining data that powers Ignet. Where Ignet is organized around genes, Vignet is organized around vaccines, using the terms of the Vaccine Ontology (VO). Researchers can build vaccine–gene–drug–disease networks, find the vaccines most associated with a gene list, compare vaccines side by side, and ask vaccine-specific questions with PMID-grounded answers. It currently covers 645 vaccines, 3,242 linked genes, and 253,431 PubMed articles.",
+      "features": [
+        "Browse and profile 600+ vaccines mined from PubMed",
+        "Vaccine–gene pair evidence and co-occurrence sentences",
+        "Interactive vaccine–gene–drug–disease networks",
+        "Vaccine enrichment from a user gene list",
+        "Side-by-side vaccine comparison",
+        "AI literature assistant with PMID-grounded answers",
+        "Vaccine Ontology (VO) explorer"
+      ],
+      "publications": [],
+      "relatedAreas": ["Ontology-Based Knowledge Systems", "Host-Pathogen Interactions"]
+    }
+  },
+  {
+    "name": "AURORA",
+    "description": "NIH-style asynchronous peer review of grant applications: 1–9 criterion scoring, anonymous reviewer discussion, and study-section report export.",
+    "version": "v0.9.0",
+    "updated": "2026-10-13",
+    "category": "Research Support",
+    "status": "beta",
+    "url": "https://ignet.org/AURORA/",
+    "github": null,
+    "language": "PHP",
+    "notice": "Account required",
+    "images": [{"src": "Images/tools/aurora/aurora.jpg", "caption": "AURORA landing page"}],
+    "details": {
+      "longDescription": "AURORA (Asynchronous Unified Review Of Research Applications) is a web platform for NIH-style peer review of grant applications. Administrators organize review cycles, study sections, and reviewer assignments; reviewers score each NIH criterion on the 1–9 scale, write structured strengths and weaknesses, and discuss applications anonymously (as Reviewer A, B, C) without needing a synchronous meeting. Accounts are invite-only through the study-section administrator.",
+      "features": [
+        "Review cycles, study sections, and reviewer assignment",
+        "Structured NIH criteria form with 1–9 scoring",
+        "Anonymous threaded reviewer discussions",
+        "Reviewer and administrator dashboards with progress tracking",
+        "Application statistics by status, study section, and grant type",
+        "Study-section-ready report export"
+      ],
+      "publications": [],
+      "relatedAreas": []
+    }
+  },
+  {
+    "name": "Research PDF Renamer",
+    "description": "Renames research PDFs to Author_Year_Journal_Keywords using LLM-extracted bibliographic metadata.",
+    "version": "v0.4.11",
+    "updated": "2026-09-21",
+    "category": "Research Support",
+    "status": "available",
+    "url": "https://hurlab.med.und.edu/pdf-renamer/",
+    "github": "https://github.com/CTR-TRANSCEND/research-pdf-renamer",
+    "language": "Python",
+    "notice": "UND network; approval needed",
+    "images": [{"src": "Images/tools/pdf-renamer/pdf-renamer.jpg", "caption": "Research PDF Renamer upload page"}],
+    "details": {
+      "longDescription": "Research PDF Renamer replaces unhelpful file names such as document.pdf or 1-s2.0-S0123456789.pdf with consistent, descriptive names. It uses a large language model to extract the author, year, title, journal, and keywords from the first pages of each paper, then renames the files and returns them for download. It supports OpenAI, Ollama, LM Studio, and other OpenAI-compatible servers, so it can run fully locally. The hosted version requires the UND network and an approved account.",
+      "features": [
+        "Drag-and-drop upload with batch processing",
+        "LLM extraction of author, year, title, journal, and keywords",
+        "OpenAI, Ollama, LM Studio, or any OpenAI-compatible server",
+        "Privacy-first: only text from the first 1–2 pages is sent; files deleted after download",
+        "Registration with admin approval and usage tracking",
+        "Docker, systemd + Apache, or standalone Flask deployment"
+      ],
+      "publications": [],
+      "relatedAreas": ["Artificial Intelligence and Machine Learning"]
+    }
+  },
+  {
+    "name": "IRB Assistant",
+    "description": "AI-assisted drafting of HRP-503, HRP-503c, and HRP-398 IRB forms from uploaded study documents.",
+    "version": "v2.0.0",
+    "updated": "2026-07-30",
+    "category": "Research Support",
+    "status": "beta",
+    "url": "https://ignet.org/irb-assistant/",
+    "github": null,
+    "language": "PHP (Laravel)",
+    "notice": "Pilot: UND & Sanford",
+    "images": [{"src": "Images/tools/irb-assistant/irb-assistant.jpg", "caption": "IRB Assistant landing page"}],
+    "details": {
+      "longDescription": "IRB Assistant helps researchers draft three IRB protocol forms from their study documents: HRP-503 (full Human Research Protocol), HRP-503c (Human Research Engagement Determination), and HRP-398 (AI Considerations Worksheet). Creating a Study sets up all three submissions; uploaded documents are shared across them and drive an AI first pass that proposes answers with evidence quotes for the researcher to review before exporting filled DOCX files. It is being piloted at the University of North Dakota with Sanford Health, funded by NIH/NIGMS through TRANSCEND.",
+      "features": [
+        "One Study creates all three form submissions",
+        "Source documents shared across forms",
+        "AI first-pass answers grounded in evidence quotes",
+        "Review and edit every suggested answer",
+        "Export filled DOCX files for IRB submission"
+      ],
+      "publications": [],
+      "relatedAreas": ["Artificial Intelligence and Machine Learning"]
+    }
+  },
+  {
+    "name": "UND Co.AI",
+    "description": "Checks research proposals, grant applications, and project documents against UND, NDUS, state, and federal AI guidelines.",
+    "version": "v0.3.0",
+    "updated": "2026-09-30",
+    "category": "Research Support",
+    "status": "beta",
+    "url": "https://hurlab.med.und.edu/coai/",
+    "github": null,
+    "language": "Python",
+    "notice": "UND internal",
+    "images": [{"src": "Images/tools/coai/coai.jpg", "caption": "UND Co.AI landing page"}],
+    "details": {
+      "longDescription": "UND Co.AI is an AI compliance checker for UND researchers, faculty, and graduate students. Users upload a document such as an IRB proposal, grant application, course redesign, or syllabus and receive an automated analysis of its AI use against federal, research-ethics, North Dakota state, NDUS, UND, and department policies. Each finding comes with a plain-English description, a severity rating, a recommended action, and the relevant UND office to contact; reports can be downloaded as PDF for IRB or grant submissions.",
+      "features": [
+        "Federal guidance: NIST AI RMF, FERPA, HIPAA, OMB M-25-21",
+        "Research ethics and grant rules: NIH, NSF PAPPG, ORI, ICMJE",
+        "North Dakota, NDUS, and UND AI policies",
+        "Plain-English findings with severity and recommended action",
+        "Downloadable PDF compliance report"
+      ],
+      "publications": [],
+      "relatedAreas": ["Artificial Intelligence and Machine Learning"]
+    }
+  },
+  {
+    "name": "SMHS Publication Atlas",
+    "description": "Interactive dashboard of UND School of Medicine & Health Sciences publications, collaborations, and research strengths.",
+    "version": "Latest",
+    "updated": "2026-07-31",
+    "category": "Research Support",
+    "status": "beta",
+    "url": "https://hurlab.med.und.edu/publicationAtlas/",
+    "github": null,
+    "language": "Web",
+    "images": [{"src": "Images/tools/publication-atlas/publication-atlas.jpg", "caption": "Publication Atlas overview"}],
+    "details": {
+      "longDescription": "The SMHS Publication Atlas shows where the UND School of Medicine & Health Sciences' research strengths lie, who is building them together, and who is publishing alone. It currently covers 1,764 publications by 1,052 named SMHS authors across 34 units (2020–2026). Every view responds to the year, department, and topic filters, and each count states its unit.",
+      "features": [
+        "Filters by year, department, topic, and free-text search",
+        "Strength map and teams by research area",
+        "Find a collaborator",
+        "Collaboration network and collaboration gaps",
+        "People, department, and growth views"
+      ],
+      "publications": [],
+      "relatedAreas": []
+    }
+  },
+  {
+    "name": "NDResHub",
+    "description": "Turns a plain-language research idea into ranked North Dakota experts, resources, and potential collaborators.",
+    "version": "Latest",
+    "updated": "2026-10-14",
+    "category": "Research Support",
+    "status": "beta",
+    "url": "https://hurlab.med.und.edu/ndreshub/",
+    "github": null,
+    "language": "Python / React",
+    "images": [{"src": "Images/tools/ndreshub/ndreshub.jpg", "caption": "NDResHub search page"}],
+    "details": {
+      "longDescription": "NDResHub (ND Research Hub) helps researchers find the right experts, resources, and collaborators for a research idea. A plain-language description of the idea is matched against North Dakota publications, grants, and people, and each ranked match shows the reasoning behind it. It currently indexes 43,717 people, 25,023 publications, and 366 grants, serving UND researchers and, on the data side, statewide institutions.",
+      "features": [
+        "Free-text research-idea search",
+        "Semantic researcher–grant matching with visible reasoning",
+        "Publications from OpenAlex and PubMed",
+        "Grants from NIH RePORTER, NSF, and USAspending.gov",
+        "Browsable people, publications, grants, and resources"
+      ],
+      "publications": [],
+      "relatedAreas": []
     }
   }
 ]
