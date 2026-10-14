@@ -214,17 +214,17 @@
       <div>
 
         <!-- Hero Banner -->
-        <section class="bg-gradient-to-br pt-36 pb-16" :class="heroBgClass()">
+        <section class="bg-gradient-to-br py-6" :class="heroBgClass()">
           <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-start gap-6" data-aos="fade-up">
+            <div class="flex flex-col md:flex-row items-start gap-4 md:gap-5" data-aos="fade-up">
               <!-- Icon -->
-              <div class="flex-shrink-0 w-24 h-24 rounded-2xl bg-white/10 backdrop-blur flex items-center justify-center text-white">
+              <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-white/10 backdrop-blur flex items-center justify-center text-white">
                 <div x-html="iconSvg()"></div>
               </div>
               <!-- Title & Description -->
               <div>
-                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4" x-text="area.title"></h1>
-                <p class="text-lg md:text-xl text-white/80 leading-relaxed max-w-3xl" x-text="area.description"></p>
+                <h1 class="text-2xl md:text-3xl font-bold text-white mb-1" x-text="area.title"></h1>
+                <p class="text-base text-white/80 leading-relaxed max-w-3xl" x-text="area.description"></p>
               </div>
             </div>
           </div>

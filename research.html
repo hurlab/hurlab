@@ -177,10 +177,10 @@
   <div x-data="researchData()">
 
     <!-- Hero Banner -->
-    <section class="bg-hero-pattern py-20 text-center pt-36">
-      <div class="max-w-4xl mx-auto px-4">
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4" data-aos="fade-up">Research</h1>
-        <p class="text-lg md:text-xl text-primary-200 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100"
+    <section class="bg-hero-pattern py-5 text-center">
+      <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row md:items-center md:justify-center gap-1 md:gap-5" data-aos="fade-up">
+        <h1 class="text-2xl md:text-3xl font-bold text-white shrink-0">Research</h1>
+        <p class="text-sm md:text-base text-primary-200 max-w-2xl md:text-left md:border-l md:border-white/25 md:pl-5"
            x-text="research ? research.intro : 'Loading...'">
         </p>
       </div>
@@ -190,18 +190,18 @@
     <template x-if="research">
       <div>
         <template x-for="(area, index) in research.areas" :key="index">
-          <section :class="sectionBg(index) + ' py-16 md:py-20'">
+          <section :class="sectionBg(index) + ' py-5 md:py-6'">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div class="flex flex-col md:flex-row items-start gap-8 md:gap-12" data-aos="fade-up">
+              <div class="flex flex-col md:flex-row items-start gap-4 md:gap-6" data-aos="fade-up">
                 <!-- Icon -->
-                <div class="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center"
+                <div class="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center"
                      :class="iconBgClass(area.color)">
                   <div :class="iconColorClass(area.color)" x-html="iconSvg(area.icon)"></div>
                 </div>
                 <!-- Content -->
                 <div>
-                  <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4" x-text="area.title"></h2>
-                  <p class="text-gray-600 text-lg leading-relaxed mb-4" x-text="area.description"></p>
+                  <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-1" x-text="area.title"></h2>
+                  <p class="text-gray-600 leading-relaxed mb-1" x-text="area.description"></p>
                   <a :href="'research-detail.html?area=' + index"
                      class="inline-flex items-center text-sm font-semibold transition-colors"
                      :class="area.color === 'indigo' ? 'text-accent-600 hover:text-accent-700' : 'text-primary-600 hover:text-primary-700'">
@@ -220,18 +220,18 @@
 
     <!-- Funded Grants Section -->
     <template x-if="grants">
-      <section class="bg-surface-dark py-16 md:py-24">
+      <section class="bg-surface-dark py-10 md:py-12">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Funded Grants</h2>
+          <div class="text-center mb-6" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Funded Grants</h2>
             <p class="text-gray-400 text-lg max-w-2xl mx-auto">Active research funding supporting our computational biology and AI initiatives.</p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <template x-for="(grant, index) in grants.current" :key="index">
-              <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-6 card-hover"
+              <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-4 card-hover"
                    data-aos="fade-up" :data-aos-delay="index * 50">
-                <div class="flex items-center gap-3 mb-3">
+                <div class="flex items-center gap-3 mb-2">
                   <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full"
                         :class="grantBadgeClass(index)"
                         x-text="grantBadgeLabel(grant)"></span>
@@ -243,10 +243,7 @@
                 <template x-if="!grant.url">
                   <h3 class="text-lg font-semibold text-white mb-2" x-text="grant.title"></h3>
                 </template>
-                <div class="flex flex-col gap-1">
-                  <p class="text-gray-400 text-sm" x-text="grant.total"></p>
-                  <p class="text-gray-400 text-sm" x-text="grant.period"></p>
-                </div>
+                <p class="text-gray-400 text-sm" x-text="grant.period"></p>
               </div>
             </template>
           </div>
