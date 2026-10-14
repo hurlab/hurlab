@@ -23,6 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="js/theme.js"></script>
+  <script src="js/citations.js"></script>
   <link rel="stylesheet" href="css/custom.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -182,7 +183,7 @@
                 </template>
               </div>
             </div>
-            <p class="text-sm text-gray-700 leading-relaxed mb-2 break-words" x-html="highlightPI(pub.text)"></p>
+            <p class="text-sm text-gray-700 leading-relaxed mb-2 break-words" x-html="highlightPI(formatCitation(pub.text, { journal: true }))"></p>
             <div class="flex flex-wrap items-center gap-2">
               <template x-if="pub.pmid">
                 <a :href="'https://pubmed.ncbi.nlm.nih.gov/' + pub.pmid" target="_blank" rel="noopener noreferrer"
@@ -233,7 +234,7 @@
                 <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">Preprint</span>
               </div>
             </div>
-            <p class="text-sm text-gray-700 leading-relaxed mb-2 break-words" x-html="highlightPI(pub.text)"></p>
+            <p class="text-sm text-gray-700 leading-relaxed mb-2 break-words" x-html="highlightPI(formatCitation(pub.text, { journal: true }))"></p>
             <div class="flex flex-wrap items-center gap-2">
               <template x-if="pub.pmid">
                 <a :href="'https://pubmed.ncbi.nlm.nih.gov/' + pub.pmid" target="_blank" rel="noopener noreferrer"
@@ -277,7 +278,7 @@
                 <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">Under Review</span>
               </div>
             </div>
-            <p class="text-sm text-gray-700 leading-relaxed mb-2 break-words" x-html="highlightPI(pub.text)"></p>
+            <p class="text-sm text-gray-700 leading-relaxed mb-2 break-words" x-html="highlightPI(formatCitation(pub.text, { journal: true }))"></p>
             <div class="flex flex-wrap items-center gap-2">
               <template x-if="pub.year">
                 <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600" x-text="pub.year"></span>
@@ -303,7 +304,7 @@
                 <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">In Preparation</span>
               </div>
             </div>
-            <p class="text-sm text-gray-700 leading-relaxed mb-2 break-words" x-html="highlightPI(pub.text)"></p>
+            <p class="text-sm text-gray-700 leading-relaxed mb-2 break-words" x-html="highlightPI(formatCitation(pub.text, { journal: true }))"></p>
             <div class="flex flex-wrap items-center gap-2">
               <template x-if="pub.year">
                 <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600" x-text="pub.year"></span>
@@ -333,7 +334,7 @@
                     <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Talk</span>
                   </div>
                 </div>
-                <p class="text-sm text-gray-700 leading-relaxed mb-2 break-words" x-html="highlightPI(pub.text)"></p>
+                <p class="text-sm text-gray-700 leading-relaxed mb-2 break-words" x-html="highlightPI(formatCitation(pub.text))"></p>
                 <div class="flex flex-wrap items-center gap-2">
                   <template x-if="pub.year">
                     <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600" x-text="pub.year"></span>
@@ -360,7 +361,7 @@
                           x-text="pub.type === 'oral' ? 'Oral' : 'Poster'"></span>
                   </div>
                 </div>
-                <p class="text-sm text-gray-700 leading-relaxed mb-2 break-words" x-html="highlightPI(pub.text)"></p>
+                <p class="text-sm text-gray-700 leading-relaxed mb-2 break-words" x-html="highlightPI(formatCitation(pub.text))"></p>
                 <div class="flex flex-wrap items-center gap-2">
                   <template x-if="pub.year">
                     <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600" x-text="pub.year"></span>
