@@ -1,1 +1,9 @@
 {"timestamp":"2026-08-03T01:01:15.744633064Z","event_type":"tool_failure","subject":"Bash","context_hash":"UnknownFailure","tier_increment":0,"schema_version":"v2.1"}
+{"timestamp":"2026-10-14T16:31:26.233800772Z","event_type":"tool_failure","subject":"mcp__playwright__browser_take_screenshot","context_hash":"PermissionDenied","tier_increment":0,"schema_version":"v2.1"}
+{"timestamp":"2026-10-14T16:38:25.584654369Z","event_type":"tool_failure","subject":"Bash","context_hash":"UnknownFailure","tier_increment":0,"schema_version":"v2.1"}
+{"timestamp":"2026-10-14T17:25:01.211323513Z","event_type":"tool_failure","subject":"Read","context_hash":"UnknownFailure","tier_increment":0,"schema_version":"v2.1"}
+{"timestamp":"2026-10-14T17:45:10.348479356Z","event_type":"tool_failure","subject":"mcp__playwright__browser_take_screenshot","context_hash":"PermissionDenied","tier_increment":0,"schema_version":"v2.1"}
+{"timestamp":"2026-10-14T17:51:47.936265924Z","event_type":"tool_failure","subject":"mcp__playwright__browser_navigate","context_hash":"TimeoutError","tier_increment":0,"schema_version":"v2.1"}
+{"timestamp":"2026-10-14T18:04:53.476953014Z","event_type":"tool_failure","subject":"Bash","context_hash":"UnknownFailure","tier_increment":0,"schema_version":"v2.1"}
+{"timestamp":"2026-10-14T18:12:03.319250172Z","event_type":"tool_failure","subject":"mcp__playwright__browser_navigate","context_hash":"UnknownFailure","tier_increment":0,"schema_version":"v2.1"}
+{"timestamp":"2026-10-14T18:12:14.003007657Z","event_type":"tool_failure","subject":"mcp__playwright__browser_evaluate","context_hash":"UnknownFailure","tier_increment":0,"schema_version":"v2.1"}
