@@ -129,7 +129,7 @@
     <div id="nav-placeholder"></div>
 
     <!-- ==================== HERO SECTION ==================== -->
-    <section class="hero-pattern relative min-h-[85vh] flex items-center overflow-hidden">
+    <section class="hero-pattern relative min-h-[76vh] flex items-center overflow-hidden">
         <!-- Decorative SVG Background Elements -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
             <svg class="absolute top-20 left-10 opacity-10 float-animation" width="200" height="200" viewBox="0 0 200 200">
@@ -150,7 +150,7 @@
             </svg>
         </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 w-full">
+        <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 w-full">
             <div class="max-w-3xl" data-aos="fade-up" data-aos-duration="1000">
                 <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white mb-4 tracking-tight">
                     <span class="gradient-text">Hur Lab</span>
@@ -161,7 +161,7 @@
                 <p class="text-base sm:text-lg text-teal-300/80 mb-6">
                     University of North Dakota
                 </p>
-                <p class="text-lg sm:text-xl text-gray-300 leading-relaxed mb-10 max-w-2xl">
+                <p class="text-lg sm:text-xl text-gray-300 leading-relaxed mb-8 max-w-2xl">
                     Developing computational methods to understand complex biological systems and human diseases
                 </p>
 
@@ -184,7 +184,7 @@
             </div>
 
             <!-- Stats Row -->
-            <div class="mt-16 pt-10 border-t border-white/10" data-aos="fade-up" data-aos-delay="400"
+            <div class="mt-10 pt-6 border-t border-white/10" data-aos="fade-up" data-aos-delay="400"
                  x-data="{ pubs: 0, grants: 0, tools: 0 }"
                  x-init="
                    fetch('data/publications.json').then(r=>r.json()).then(d=>{ pubs = d.peerReviewed ? d.peerReviewed.length : 0 });
@@ -344,9 +344,9 @@
     </section>
 
     <!-- ==================== RECENT PUBLICATIONS ==================== -->
-    <section class="py-20 lg:py-28 bg-white" x-data="recentPublications()" x-init="fetchPublications()">
+    <section class="py-12 lg:py-14 bg-white" x-data="recentPublications()" x-init="fetchPublications()">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-            <div class="text-center mb-16" data-aos="fade-up">
+            <div class="text-center mb-8" data-aos="fade-up">
                 <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Recent Publications</h2>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                     Latest peer-reviewed research from the Hur Lab
@@ -362,9 +362,9 @@
             </div>
 
             <!-- Publication Cards -->
-            <div x-show="!loading" x-cloak class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+            <div x-show="!loading" x-cloak class="space-y-3" data-aos="fade-up" data-aos-delay="100">
                 <template x-for="pub in publications" :key="pub.number">
-                    <div class="publication-card bg-white rounded-lg p-6 border border-gray-100 shadow-sm">
+                    <div class="publication-card bg-white rounded-lg p-5 border border-gray-100 shadow-sm">
                         <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
                             <div class="flex items-center gap-2 flex-shrink-0">
                                 <template x-if="pub.isRecent">
@@ -392,7 +392,7 @@
             </div>
 
             <!-- View All Button -->
-            <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="200">
+            <div class="text-center mt-8" data-aos="fade-up" data-aos-delay="200">
                 <a href="publications.html"
                    class="inline-flex items-center px-8 py-3.5 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg">
                     View All Publications
@@ -405,18 +405,18 @@
     </section>
 
     <!-- ==================== FEATURED TOOLS ==================== -->
-    <section class="py-20 lg:py-28 bg-gray-50">
+    <section class="py-12 lg:py-14 bg-gray-50">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-            <div class="text-center mb-16" data-aos="fade-up">
+            <div class="text-center mb-8" data-aos="fade-up">
                 <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Featured Tools</h2>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                     Open-source software developed by our lab for the research community
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                 <!-- richR -->
-                <div class="bg-white rounded-xl p-8 shadow-sm card-hover border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay="0">
+                <div class="bg-white rounded-xl p-6 shadow-sm card-hover border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay="0">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-xl font-bold font-mono text-gray-900">richR</h3>
                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800">Latest</span>
@@ -441,7 +441,7 @@
                 </div>
 
                 <!-- scGEN -->
-                <div class="bg-white rounded-xl p-8 shadow-sm card-hover border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white rounded-xl p-6 shadow-sm card-hover border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-xl font-bold font-mono text-gray-900">scGEN</h3>
                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">Ongoing</span>
@@ -459,7 +459,7 @@
                 </div>
 
                 <!-- Tox21 Enricher -->
-                <div class="bg-white rounded-xl p-8 shadow-sm card-hover border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white rounded-xl p-6 shadow-sm card-hover border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-xl font-bold font-mono text-gray-900">Tox21 Enricher</h3>
                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">v2.4.0</span>
@@ -484,7 +484,7 @@
                 </div>
             </div>
 
-            <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="300">
+            <div class="text-center mt-8" data-aos="fade-up" data-aos-delay="300">
                 <a href="tools.html"
                    class="inline-flex items-center px-8 py-3.5 border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-semibold rounded-lg transition-all duration-300 hover:bg-gray-50">
                     See All Tools
@@ -497,11 +497,11 @@
     </section>
 
     <!-- ==================== FUNDING ==================== -->
-    <section class="py-16 bg-white border-t border-b border-gray-100"
+    <section class="py-10 bg-white border-t border-b border-gray-100"
              x-data="{ grants: [] }"
              x-init="fetch('data/grants.json').then(r=>r.json()).then(d => { grants = d.current || []; })">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-            <div class="text-center mb-10" data-aos="fade-up">
+            <div class="text-center mb-6" data-aos="fade-up">
                 <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Funding &amp; Support</h2>
                 <p class="text-gray-500">Current research funding</p>
             </div>
