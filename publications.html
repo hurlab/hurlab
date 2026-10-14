@@ -461,9 +461,9 @@
         sortPubs(pubs) {
           const sorted = [...pubs];
           if (this.sortOrder === 'newest') {
-            sorted.sort((a, b) => (b.year || 0) - (a.year || 0));
+            sorted.sort((a, b) => ((b.year || 0) - (a.year || 0)) || ((b.number || 0) - (a.number || 0)));
           } else if (this.sortOrder === 'oldest') {
-            sorted.sort((a, b) => (a.year || 0) - (b.year || 0));
+            sorted.sort((a, b) => ((a.year || 0) - (b.year || 0)) || ((a.number || 0) - (b.number || 0)));
           }
           // 'original' keeps the CV order (no sort)
           return sorted;

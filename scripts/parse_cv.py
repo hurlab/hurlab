@@ -164,7 +164,8 @@ def extract_doi(text):
 def extract_year(text):
     """Extract the most likely publication year (4-digit year near end)."""
     # Find all 4-digit years
-    years = re.findall(r"\b((?:19|20)\d{2})\b", text)
+    # Skip numbers inside hyphenated ranges (page ranges like 1984-1990, title spans like 2005-2014)
+    years = re.findall(r"(?<![-–\d])\b((?:19|20)\d{2})\b(?![-–]\d)", text)
     if not years:
         return None
     # Return the last year found (usually the publication year at the end)
