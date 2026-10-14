@@ -24,9 +24,11 @@
     "updated": "2026-05-09",
     "category": "Python",
     "status": "development",
-    "url": "https://github.com/hurlab/PubChemSR",
-    "github": "https://github.com/hurlab/PubChemSR",
+    "url": "https://sourceforge.net/projects/pubchemsr/",
+    "urlLabel": "SourceForge",
+    "github": null,
     "language": "Python",
+    "images": [{"src": "Images/tools/pubchemsr/web-explorer.jpg", "caption": "Compound Explorer (web dashboard)"}, {"src": "Images/tools/pubchemsr/ai-search.jpg", "caption": "Smart Search with property lookup (AI module)"}, {"src": "Images/tools/pubchemsr/ai-admet.jpg", "caption": "ADMET predictor with radar chart (AI module)"}],
     "details": {
       "longDescription": "PubChemSR is an open-source cheminformatics toolkit for searching, retrieving, and analyzing compound data from NCBI PubChem. The current generation ships three coordinated interfaces: a scriptable Python library plus CLI (pubchemsr) for batch workflows, an interactive web dashboard (pubchemsr-web) for point-and-click exploration, and an AI-augmented discovery platform (pubchemsr-ai) that layers ADMET prediction, SAR analysis, and chemical-space visualization on top of the core search engine.",
       "features": [
@@ -49,9 +51,11 @@
     "updated": "2026-05-09",
     "category": "Python",
     "status": "development",
-    "url": "https://github.com/hurlab/chemfuse",
-    "github": "https://github.com/hurlab/chemfuse",
+    "url": null,
+    "github": null,
+    "notice": "Not yet public",
     "language": "Python / R",
+    "images": [{"src": "Images/tools/chemfuse/architecture.jpg", "caption": "ChemFuse system architecture"}],
     "details": {
       "longDescription": "ChemFuse unifies compound search, ADMET prediction, and cross-database identifier mapping into a single coherent API. A single function call searches PubChem, ChEMBL, UniChem, BindingDB, Open Targets, and SureChEMBL in parallel, merges the results by structure, and returns a unified compound collection. From there, ChemFuse computes 200+ molecular descriptors, applies drug-likeness filters, predicts ADMET properties via ML models, clusters compounds in chemical space, and exports the merged dataset — all from Python, R, the command line, or a Streamlit dashboard.",
       "features": [
@@ -185,6 +189,7 @@
     "url": null,
     "github": "https://github.com/hurlab/scGEN",
     "language": "Python",
+    "images": [{"src": "Images/tools/scgen/framework.jpg", "caption": "scGEN framework overview (Figure 1 of the scGEN paper, Advanced Science)"}],
     "details": {
       "longDescription": "scGEN (single-cell Gene-aware Embedding Network) is a deep learning framework for single-cell RNA-seq analysis. It uses gene-aware neural network architectures to learn biologically meaningful cell embeddings, enabling improved cell type clustering, trajectory inference, and batch effect correction compared to traditional dimensionality reduction methods.",
       "features": ["Gene-aware neural network architecture", "Improved cell type clustering", "Batch effect correction", "Trajectory inference support", "Integration with Scanpy/AnnData workflows"],
