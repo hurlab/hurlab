@@ -5,183 +5,170 @@
       "funder": "NIH/NIAID U24 1U24AI171008",
       "pis": "Tao, He, Hur",
       "role": "MPI",
-      "total": "$3,839,270 (7/1/2022-6/30/2027)",
-      "period": "7/1/2022-6/30/2027",
+      "total": "$706,101 (UND)",
+      "period": "7/1/2022-5/31/2027",
       "title": "VIOLIN 2.0: Vaccine Information and Ontology LInked kNowledgebase",
-      "note": "15% efforts."
+      "note": "Development of literature mining and natural language processing platform for vaccine information research platform."
     },
     {
       "number": 2,
-      "funder": "NIH/NIDDK R01 R01DK130913",
+      "funder": "NIH/NIAID U24 3U24AI171008-05S1",
+      "pis": "Tao, He, Hur",
+      "role": "MPI",
+      "total": "$119,864 (UND)",
+      "period": "7/1/2026-5/31/2027",
+      "title": "Administrative Supplement: VIOLIN 2.0: Vaccine Information and Ontology LInked kNowledgebase",
+      "note": "Administrative supplement to the VIOLIN 2.0 U24 award."
+    },
+    {
+      "number": 1,
+      "funder": "NIH/NIDDK R01 2R01DK130913-05",
       "pis": "Feldman, Hur",
       "role": "MPI",
-      "total": "$2,555,612 (8/23/2022-6/30/2026)",
-      "period": "8/23/2022-6/30/2026",
-      "title": "Metabolic coupling between Schwann cells and axons is functionally distinct from myelination and is disrupted in obesity, prediabetes, and diabetes",
-      "note": "17.5% efforts."
+      "total": "$1,309,079 (UND)",
+      "period": "9/1/2026-5/31/2031",
+      "title": "Schwann Cell Senescence and the Secretome Provide a Unifying Mechanism for the Onset and Progression of Diabetic Neuropathy",
+      "note": "Renewal awarded 9/2026; first budget period 9/1/2026-5/31/2027. 15% effort."
     },
     {
       "number": 3,
-      "funder": "NIGMS P20 5P20GM113123 COBRE",
-      "pis": "Bradley & Brissette",
-      "role": "Core Director",
-      "total": "$778,850 (Core)",
-      "period": "7/1/2021-6/30/2026",
-      "title": "Center for Excellence in Host Pathogen Interactions (HPI COBRE)",
-      "note": "Establishment of Computational Data Analysis Core (CDAC). 10% efforts."
+      "funder": "ARPA-H",
+      "pis": "Tavakolian",
+      "role": "Co-Investigator",
+      "total": "$19,954,800 (8/22/2025-8/21/2028)",
+      "period": "8/22/2025-8/21/2028",
+      "title": "Decentralized Diabetes Data Platform for Senior Health Management",
+      "note": "Lead the analytics team for data analysis and predictive modeling."
     },
     {
       "number": 4,
+      "funder": "NIH/NIDDK R01 1R01DK149012-01",
+      "pis": "Rumora; Columbia University",
+      "role": "Co-Investigator (Site PI)",
+      "total": "$154,979 (UND)",
+      "period": "7/1/2026-6/30/2028",
+      "title": "Lipids and inflammation in peripheral neuropathy and metabolic syndrome",
+      "note": "Awarded 9/2026. 5% effort."
+    },
+    {
+      "number": 5,
+      "funder": "NIH/NIGMS P30 1P30GM165332-01",
+      "pis": "Bradley & Brissette",
+      "role": "Core Director",
+      "total": "$5,287,500 (UND)",
+      "period": "7/1/2026-6/30/2031",
+      "title": "Center for Excellence in Host Pathogen Interactions (HPI COBRE) Phase 3",
+      "note": "Director of the Computational Data Analysis Core (CDAC)."
+    },
+    {
+      "number": 6,
       "funder": "NIH/NIGMS 5P20GM155890 CTR",
       "pis": "Schwartz",
       "role": "Core Lead",
       "total": "$10,774,235 (7/1/2024-6/30/2029)",
       "period": "7/1/2024-6/30/2029",
       "title": "Translational Science Engaging North Dakota (TRANSCEND)",
-      "note": "Research Design, Compliance & Data Management Core. 10% efforts."
-    },
-    {
-      "number": 5,
-      "funder": "ARPA-H",
-      "pis": "Tavakolian",
-      "role": "Co-PI",
-      "total": "$19,954,800 (8/22/2025-8/21/2028)",
-      "period": "8/22/2025-8/21/2028",
-      "title": "Decentralized Diabetes Data Platform for Senior Health Management",
-      "note": "Lead the analytics team for data analysis and predictive modeling. 5% efforts."
+      "note": "Lead, Research Design, Compliance & Data Management Core (RDCDC)."
     }
   ],
   "pending": [
     {
-      "number": 1,
-      "funder": "NIH R01",
-      "pis": "Nicholas Lyssenko Temple University",
+      "number": 2,
+      "funder": "NIH/NIA R01 1R01AG098572-01A1",
+      "pis": "Lyssenko; Temple University",
       "role": "Co-Investigator",
-      "total": "$352,500 (UND)",
+      "total": "$420,080 (UND)",
       "period": "12/1/2026-11/30/2031",
       "title": "Omics signatures and Abeta/tau stage of low ABCA7 in Alzheimer's",
-      "note": "",
+      "note": "Reapplication. 11th percentile. Just-in-Time information submitted in 8/2026.",
       "submitted": "submitted in 3/2026"
-    },
-    {
-      "number": 2,
-      "funder": "NIH R24",
-      "pis": "He, Diehl, Duncan, Hur",
-      "role": "MPI",
-      "total": "$1,115,350 (UND)",
-      "period": "12/1/2026-11/30/2030",
-      "title": "HPI-AI: AI-Powered Host-Pathogen Interaction Data Standardization, Integration, and Analysis",
-      "note": "",
-      "submitted": "Submitted in 2/2026"
     },
     {
       "number": 3,
       "funder": "NIH R01",
-      "pis": "Picking, Picking, Lu; University of Missouri",
-      "role": "Co-Investigator (Site PI)",
-      "total": "$239,263 (UND)",
-      "period": "7/1/2026-6/30/2031",
-      "title": "ET: a wild mouse habitat mimic for assessment of vaccine efficacy",
+      "pis": "He, Wu, Hur",
+      "role": "MPI",
+      "total": "$1,115,350 (UND)",
+      "period": "4/1/2027-3/31/2032",
+      "title": "HPI-AI: AI-Powered Host-Pathogen Interaction Data Standardization, Integration, and Analysis",
       "note": "",
-      "submitted": "Submitted in 12/2025"
+      "submitted": "submitted in 6/2026"
     },
     {
       "number": 4,
-      "funder": "American Cancer Society",
-      "pis": "Mathur",
-      "role": "Co-Investigator",
-      "total": "$946,000 (7/1/2026-6/30/2030)",
-      "period": "7/1/2026-6/30/2030",
-      "title": "Glycan-Based Approaches to Modulate Tumor Immunity and Apoptotic Signaling",
-      "note": "",
-      "submitted": "submitted in 11/2025"
+      "funder": "NIH R01",
+      "pis": "Boison, Kim, Jang, Hur; Rutgers University",
+      "role": "MPI",
+      "total": "$885,351 (UND)",
+      "period": "4/1/2027-3/31/2032",
+      "title": "Common Pathways of Brain Injury-Induced Pathology",
+      "note": "UND team leads integrative multi-omics bioinformatics and cross-injury meta-analyses.",
+      "submitted": "submitted in 6/2026"
     },
     {
       "number": 5,
-      "funder": "NIH R01",
-      "pis": "Khan; University of Florida",
+      "funder": "NIH/NIMH R01",
+      "pis": "Yong Kim; Rutgers University",
       "role": "Co-Investigator (Site PI)",
-      "total": "$239,263 (UND)",
-      "period": "7/1/2026-6/30/2031",
-      "title": "Pathogenic role of IL-17 response in Streptococcus pneumoniae nasopharyngeal pathogenesis during an influenza virus co-infection",
-      "note": "Renewal application",
-      "submitted": "Submitted in 11/2025"
+      "total": "$196,263 (UND)",
+      "period": "4/1/2029-3/31/2032",
+      "title": "A Novel Autism Gene Governing Key Molecular Networks in Neurodevelopment",
+      "note": "",
+      "submitted": "submitted in 6/2026"
     },
     {
       "number": 6,
       "funder": "NIH R01",
-      "pis": "Feldman, Hur",
-      "role": "MPI",
-      "total": "$1,309,079 (UND)",
-      "period": "7/1/2026-6/30/2031",
-      "title": "Schwann Cell Senescence and the Secretome Provide a Unifying Mechanism for the Onset and Progression of Diabetic Neuropathy",
-      "note": "Renewal application",
-      "submitted": "Submitted in 11/2025"
+      "pis": "Mathur",
+      "role": "Co-Investigator",
+      "total": "$3,381,085 (4/1/2027-3/31/2032)",
+      "period": "4/1/2027-3/31/2032",
+      "title": "Microglial Mitochondrial Stress Signaling as a Driver of Inflammaging and Neurodegeneration",
+      "note": "",
+      "submitted": "submitted in 6/2026"
     },
     {
       "number": 7,
       "funder": "NIH R01",
-      "pis": "He; University of Michigan",
-      "role": "Co-Investigator (Site PI)",
-      "total": "$440,097 (UND)",
-      "period": "7/1/2026-6/30/2030",
-      "title": "Ontology-supported Occupational Safety and Health Data Standardization, Integration, and Analysis",
+      "pis": "Mathur",
+      "role": "Co-Investigator",
+      "total": "$3,434,246 (4/1/2027-3/31/2032)",
+      "period": "4/1/2027-3/31/2032",
+      "title": "Receptor Glycosylation as a Determinant of Signal Interpretation and Cell Fate in Aging and Colon Cancer",
       "note": "",
-      "submitted": "submitted in 10/2025"
+      "submitted": "submitted in 6/2026"
     },
     {
       "number": 8,
-      "funder": "NIH R01",
-      "pis": "Rumora; Columbia University",
+      "funder": "NIH R21",
+      "pis": "Ti Lu; University of Missouri",
       "role": "Co-Investigator (Site PI)",
-      "total": "$154,979 (UND)",
-      "period": "7/1/2026-6/30/2028",
-      "title": "Lipids and inflammation in peripheral neuropathy and metabolic syndrome",
+      "total": "$50,531 (UND)",
+      "period": "4/1/2027-3/31/2029",
+      "title": "Early-life Diet Shapes the Gut Microbiome and Vaccine Responsiveness",
       "note": "",
-      "submitted": "submitted in 10/2025"
+      "submitted": "submitted in 7/2026"
     },
     {
       "number": 9,
-      "funder": "NIH R01",
-      "pis": "Mathur",
-      "role": "Co-Investigator",
-      "total": "$4,026,438 (7/1/2026-6/30/2028)",
-      "period": "7/1/2026-6/30/2028",
-      "title": "Modulating HSF1 Post-Translational Regulation to Restore Proteostasis in Neurodegeneration",
-      "note": "",
-      "submitted": "submitted in 10/2025"
+      "funder": "CDMRP ERP EP260072P1",
+      "pis": "Boison, Hur; Rutgers University",
+      "role": "Partnering PI",
+      "total": "$585,683 (UND)",
+      "period": "10/1/2027-9/30/2030",
+      "title": "Convergent mechanisms of post-traumatic epilepsy",
+      "note": "DoD CDMRP Epilepsy Research Program Research Partnership Award.",
+      "submitted": "submitted in 8/2026"
     },
     {
       "number": 10,
-      "funder": "NIH R21",
-      "pis": "Mathur, Hur",
-      "role": "MPI",
-      "total": "$387,750 (7/1/2026-6/30/2028)",
-      "period": "7/1/2026-6/30/2028",
-      "title": "Age-Stratified Glycosylation Signatures Define Predictive and Therapeutic Determinants of Immune Resistance in Colorectal Cancer",
-      "note": "",
-      "submitted": "submitted on 9/24/2025"
-    },
-    {
-      "number": 11,
-      "funder": "NIGMS P20 5P20GM113123 COBRE",
-      "pis": "Bradley & Brissette",
-      "role": "Core Director",
-      "total": "$5,287,500 (7/1/2026-6/30/2031)",
-      "period": "7/1/2026-6/30/2031",
-      "title": "Center for Excellence in Host Pathogen Interactions (HPI COBRE) Phase 3",
-      "note": "Computational Data Analysis Core (CDAC) In preparation"
-    },
-    {
-      "number": 1,
-      "funder": "NIH R01",
-      "pis": "Hur, Porter, Raihan",
-      "role": "MPI (Contact)",
-      "total": "$3,094,063 (4/1/2027-3/31/2032)",
+      "funder": "NIH/NIAID R01 2R01AI143741",
+      "pis": "Khan; University of Florida",
+      "role": "Co-Investigator (Site PI)",
+      "total": "$250,247 (UND)",
       "period": "4/1/2027-3/31/2032",
-      "title": "From Map to Mechanism: Spatial Profiling and Targeted Perturbations of Microglia-α-Synuclein Axes in Parkinsons Disease",
-      "note": "",
-      "submitted": "for submission in 06/2026"
+      "title": "Pathogenic Role of IL-17 Response in S. pneumoniae Nasopharyngeal Pathogenesis During Influenza Co-infection",
+      "note": "Renewal resubmission. Direct costs $177,480. 5% effort. ERAC0021433."
     }
   ],
   "previous": [
@@ -234,6 +221,26 @@
       "period": "6/2018-6/2024",
       "title": "Ketogenic diet and adenosine: epigenetics and antiepileptogenesis",
       "note": "10% effort. My role focuses on bioinformatics analyses of the high-throughput next-generation sequencing data (transcriptomics and methylomics) from animal models of epileptogenesis with/without two treatments."
+    },
+    {
+      "number": 6,
+      "funder": "NIGMS P20 5P20GM113123 COBRE",
+      "pis": "Bradley & Brissette",
+      "role": "Core Director",
+      "total": "$778,850 (Core)",
+      "period": "7/1/2021-6/30/2026",
+      "title": "Center for Excellence in Host Pathogen Interactions (HPI COBRE)",
+      "note": "Established and directed the Computational Data Analysis Core (CDAC). 10% efforts."
+    },
+    {
+      "number": 7,
+      "funder": "NIH/NIDDK R01 R01DK130913",
+      "pis": "Feldman, Hur",
+      "role": "MPI",
+      "total": "$986,024 (UND)",
+      "period": "8/23/2022-9/30/2026",
+      "title": "Metabolic coupling between Schwann cells and axons is functionally distinct from myelination and is disrupted in obesity, prediabetes, and diabetes",
+      "note": "Ended 9/2026; UND subaward replaced by renewal 2R01DK130913-05."
     },
     {
       "number": 1,
@@ -366,5 +373,5 @@
       "note": ""
     }
   ],
-  "lastUpdated": "2026-04-17"
+  "lastUpdated": "2026-10-14"
 }
