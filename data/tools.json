@@ -76,7 +76,7 @@
     "description": "Repository and analysis portal for diabetic neuropathy transcriptomics data with 140 DEG sets.",
     "version": "v2.1",
     "updated": "2018-10-21",
-    "category": "Web Tool",
+    "category": ["Web Tool", "Knowledgebase"],
     "status": "available",
     "url": "https://hurlab.med.und.edu/DNMKB2/",
     "github": null,

@@ -144,6 +144,13 @@ function injectFooter() {
             <li><a href="https://med.und.edu/biomedical-sciences/" target="_blank" class="hover:text-primary-400 transition-colors">Dept. of Biomedical Sciences</a></li>
             <li><a href="https://med.und.edu/" target="_blank" class="hover:text-primary-400 transition-colors">UND School of Medicine & Health Sciences</a></li>
             <li><a href="https://und.edu/" target="_blank" class="hover:text-primary-400 transition-colors">University of North Dakota</a></li>
+            <li class="text-xs"><a href="https://med.und.edu/research/computational-data/index.html" target="_blank" class="hover:text-primary-400 transition-colors">Director, Computational Data Analysis Core</a></li>
+            <li class="text-xs"><a href="https://med.und.edu/research/transcend/research-design-compliance-data-management-core.html" target="_blank" class="hover:text-primary-400 transition-colors">Lead, Research Design, Compliance &amp; Data Management Core</a></li>
+          </ul>
+          <p class="mt-5 mb-2 text-[11px] font-semibold uppercase tracking-wider text-gray-500">Also affiliated with</p>
+          <ul class="space-y-2 text-sm">
+            <li><a href="https://umich.edu/" target="_blank" class="hover:text-primary-400 transition-colors">University of Michigan</a><span class="block text-xs text-gray-500">Adjunct Research Assistant Professor</span></li>
+            <li><a href="https://www.va.gov/fargo-health-care/" target="_blank" class="hover:text-primary-400 transition-colors">VA Fargo Health Care System</a><span class="block text-xs text-gray-500">Research (Without Compensation)</span></li>
           </ul>
           <div class="mt-4 flex items-center gap-3">
             <a href="https://orcid.org/0000-0002-0736-2149" target="_blank" class="text-xs bg-white/10 px-2 py-1 rounded hover:bg-white/20 transition-colors">
