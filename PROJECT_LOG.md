@@ -3,23 +3,66 @@
 Bounded active log. Newest first. Older sessions are archived under `logs/` when over budget (>10 sessions / ~1000 lines).
 
 ## Archives
-- (none yet)
+- logs/PROJECT_LOG_2026-H1.md — 1 sessions (2026-03 … 2026-03)
 
 ## Session Index (active, newest first)
-- 2026-10-14 13:32 CDT — Tools page: card images, 7:3 expanded view, Available/Beta/Coming soon labels, borders, A–Z sort; SciMiner 1.1 & 2.0; earlier same-day layout session folded in; all deployed live
-- 2026-07-09 23:57 CDT — Collaborators page reorganized (7 sections, 2-col grid, 5 hidden, 14 added w/ verified URLs); deployed live
-- 2026-04-08 CDT (code review pass 2) — CV artifact cleanup, error handling, data consistency
-- 2026-04-08 CDT (code review) — 13 bug fixes (http→https, admin panel, frontend consistency)
-- 2026-04-08 CDT (security completion) — CSRF, WEB-INF/web.xml, input sanitization
-- 2026-04-08 CDT (implementation) — image opt, mobile QA, admin JSON editors, auto-start, security, E2E
-- 2026-04-08 CDT (early) — doc updates (HTTPS resolved marker)
-- 2026-03-25 14:39 CDT — SEO/analytics, tools expandable cards, admin drag-reorder
-- 2026-03-14 16:30 CDT — JSON-as-DB migration, admin panel, v2→root cutover
-- 2026-03-14 13:23 CDT — Foundation, initial v2 build
-
-> Note: three commits between 2026-04-08 and this session were made directly on the server (admin-panel auto-parse + manual edits) and were not logged at the time — fef9c27 (CV auto-update, 2026-04-17), c0a907a (Systems Pharmacology research area + new tools + 2FA admin, 2026-05-21), d1eb197 (https:// URL restore after firewall fix, 2026-05-28). Their effects are now reflected in PROJECT_HANDOFF.md. Sessions below this note remain in their original oldest-first order (legacy tail).
+- 2026-10-14 16:11 CDT
+- 2026-10-14 13:32 CDT
+- 2026-07-09 23:57 CDT
+- 2026-03-14 16:30 CDT
+- 2026-03-25 14:39 CDT
+- 2026-04-08 CDT (early)
+- 2026-04-08 CDT (implementation)
+- 2026-04-08 CDT (security completion)
+- 2026-04-08 CDT (code review)
+- 2026-04-08 CDT (code review pass 2)
 
 ---
+
+## Session 2026-10-14 16:11 CDT
+- **Coding CLI used**: Claude Code CLI (Claude Opus 5.5; Sonnet 5.5 for the close). Same Claude session 352d0464 as the 13:32 entry, continued after it.
+
+### Phase(s) worked on
+- Tools page content, home page, Publications/Presentations page, admin panel, footer — content maintenance and UX, each change deployed live (worktree `site-tool-images` → `origin/main` → server ff-only pull).
+
+### Concrete changes implemented (commits in order)
+1. f3897dd — committed the two tracked MoAI log files after fast-forwarding the primary checkout (user-approved).
+2. 6d943e5 — DNMKB2 card gets the note "Replaced by DPNKB"; DPNKB described as "Revamped successor to DNMKB2", updated 2026-06-08 (last feature commit in ~/PROJECTS/10_apps/dpnkb; the server copy has no git history to confirm).
+3. ee502ff — 7 new tools with live-site screenshots (`Images/tools/<slug>/`): Vignet (Web Tool) + six under a new **Research Support** filter: AURORA, IRB Assistant, NDResHub, Research PDF Renamer, SMHS Publication Atlas, UND Co.AI. Statuses/notes chosen by the user: Vignet and PDF Renamer Available; others Beta; notes "Account required", "UND network; approval needed", "Pilot: UND & Sanford", "UND internal". Tox21 Enricher tagged Web Tool + R Shiny + R Package (category may now be a list). Filter buttons toggle off on a second click. Tagline now "Bioinformatics and research-support tools…".
+4. 036e0ce — footer "Affiliations": CDAC director + RDCD lead roles (links verified), "Also affiliated with" U. Michigan (Adjunct Research Assistant Professor) and VA Fargo Health Care System (Research WOC), titles from the CV; DNMKB2 also tagged Knowledgebase.
+5. 5039126 — **poster parsing bug**: default pdftotext put a page's list numbers in one block before the bodies, so 58 of 89 posters were empty and 4 held ~4,000 chars. `scripts/parse_cv.py` now uses `pdftotext -layout` for the poster section (falls back to the old text), adds `year` and `type` (oral/poster), ends each section at the next heading's start (fixes "Manuscripts currently under peer review…" glued to preprint #177 and under-review #4), joins hyphenated line breaks. Presentations tab: "Poster & Oral Abstracts", newest first, Oral/Poster badge, `*`/`$` legend. Home Recent Publications: newest non-preprints, tie-break by CV number. (The parser file is CRLF; an early edit converted it to LF — restored before commit.)
+6. c9e1a04 — Featured Tools strip: the user reported it "not moving". It did move on the live site with a cleared cache; causes addressed: removed pause-on-hover (then), reduced-motion now half speed instead of stop, and the strip's CSS moved inline into index.html (so a stale cached custom.css cannot stop it). custom.css restored to its pre-strip content. The exact cause on the user's machine was never established.
+7. ea15589 — Recent Publications as a scrolling strip (10 papers), long author lists (≥10) shortened to first 3 … Hur J … last (never hides the PI; 44 of 163 papers shortened). Count and threshold stored in `data/site.json` → `homePage`, editable in a new admin **Home Page** tab (`/api/home-settings`, auth + CSRF, ranges 1–30 / 3–100). Admin service restarted on the server.
+8. e9a6194 — footer shows an automatic per-page "Last updated" (newest `Last-Modified` of the page and the data JSON it loaded, via HEAD requests); the stale research.json date line removed from the Research page.
+9. 9b79cf2 — home strips pause on mouse hover (`@media (hover: hover)` only).
+10. b184e3c — home page 3,558 → 3,119 px at 1366 px: hero no longer min-height 76vh, tighter section headings, compact research cards (icon beside title). Option C (buttons into the heading row) left out by the user.
+11. b2bba51 — Publications: `*`/`$` after author initials as superscripts, journal names bold-italic (`js/citations.js`, shared with the home strip; finds the journal as the sentence after the title; 177 of 181 found).
+
+### Files touched
+`tools.html`, `index.html`, `publications.html`, `research.html`, `js/components.js`, `js/citations.js` (new), `css/custom.css` (net unchanged), `data/tools.json`, `data/site.json`, `data/publications.json`, `scripts/parse_cv.py`, `scripts/admin_server.py`, `scripts/templates/admin.html`, `Images/tools/**`, `.gitignore`, `PROJECT_HANDOFF.md`, `PROJECT_LOG.md`.
+
+### Key decisions and rationale
+- Research-support apps get their own filter rather than "Web Tool" (user choice) so bioinformatics visitors can tell them apart.
+- Author shortening keeps first 3, the PI, and the last author; it returns the text unchanged whenever the author list or the PI cannot be read.
+- "Last updated" computed from server file dates, not typed by hand.
+- Strip CSS kept inline in index.html; hover pause limited to mouse devices so a tap cannot freeze it on a phone.
+
+### Problems encountered and resolutions
+- `AskUserQuestion` answers sometimes answered a different question (e.g. "I did hard refresh, but it still doesn't scroll") — handled by re-asking with the corrected hypothesis.
+- First home-compaction estimate (~630 px) was wrong because the hero's stats row was missed; real saving 439 px, reported honestly.
+- Port 8765 was held by an unrelated uvicorn → local test servers use 879x/880x ports; `pkill -f` must use the bracket form `[h]ttp.server` or it kills its own shell.
+- The Write tool is blocked outside the project tree (`~/PROJECTS/wiki`); wiki pages are written via shell heredoc.
+- A wrong `Task` "failed" notification appears for every intentionally stopped test server — expected.
+- `irb-assistant` README still links the dead `transcendrdcdc.org` (other project, untouched).
+
+### Items explicitly completed / resolved / superseded this session
+- Completed: all 11 changes above. Superseded: the 13:32 "Open" item "Primary checkout behind" (re-measured: 10 commits behind at 16:11).
+
+### Verification performed
+- Each change checked in a real browser (Playwright, local server) and again on the live site with the cache cleared; counts and timings are in PROJECT_HANDOFF §6. Server = GitHub HEAD after every pull; the server's uncommitted `Personal/JungukHur_CV.pdf` and `data/team.json` never touched.
+- Poster parser: regenerated into a scratch directory, diffed against live JSON (only posters, #177, under-review #4 changed; grants identical), run read-only on the server.
+- Admin save handler: 9 unit cases (valid, out of range, bool, float, string, missing key, no CSRF) + unauthenticated GET/POST → 401 on the server.
+- NOT verified: Playwright E2E suite (90 tests); admin Home Page form logged in; home strips at phone width.
 
 ## Session 2026-10-14 13:32 CDT
 - **Coding CLI used**: Claude Code CLI (Claude Opus 5.5, then Sonnet 5.5 for the close)
@@ -111,73 +154,6 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - Headless Chromium render QA: 7 sections, 24 visible + 5 hidden, all icons resolved, 0 JS errors.
 - Live URL curl after each deploy: HTTP 200, correct titles/members.
 - git: clean tree; local HEAD == origin/main == server HEAD (e581475).
-
----
-
-## Session 2026-03-14 13:23 CDT
-
-- **Coding CLI used**: Claude Code CLI (Claude Opus 4.6, 1M context)
-
-### Phase(s) worked on
-- Phase 1: Foundation (directory structure, theme, shared components, home page)
-- Phase 2: Data extraction (JSON data files from legacy HTML)
-- Phase 3: Content pages (publications, research, tools)
-- Phase 4: Secondary pages (people, positions, collaborators)
-- Phase 5: Polish (partial — animations done, image/SEO/favicon remaining)
-
-### Concrete changes implemented
-1. Created `CLAUDE.md` at project root (initial creation, then updated to reflect v2 architecture)
-2. Created complete `v2/` directory structure with 15 files:
-   - 7 HTML pages: `index.html`, `research.html`, `publications.html`, `tools.html`, `people.html`, `positions.html`, `collaborators.html`
-   - 4 JS files: `theme.js`, `components.js`, `publications.js`, `animations.js`
-   - 1 CSS file: `custom.css`
-   - 3 JSON data files: `tools.json`, `team.json`, `publications.json`
-3. Fixed `components.js` from `DOMContentLoaded` listener to IIFE for proper Alpine.js compatibility
-
-### Files/modules/functions touched
-- `CLAUDE.md` — created then rewritten
-- `v2/index.html` — home page with hero, research highlights, recent publications (Alpine.js PubMed fetch), featured tools, funding
-- `v2/research.html` — 5 research areas with SVG icons, funded grants cards
-- `v2/publications.html` — Alpine.js app with PubMed API, tabs, search, year filter, PI highlighting
-- `v2/tools.html` — Alpine.js fetches tools.json, category filter, tool cards with launch/GitHub buttons
-- `v2/people.html` — PI featured card, team grid with initials placeholders, collapsible alumni
-- `v2/positions.html` — 3 position type cards, research areas, application instructions
-- `v2/collaborators.html` — 4 category sections with colored borders, external links
-- `v2/js/theme.js` — Tailwind Play CDN config (primary teal, accent indigo, surface colors, fonts)
-- `v2/js/components.js` — Shared nav (glassmorphism, mobile hamburger) + footer injection as IIFE
-- `v2/js/publications.js` — PubMed E-utilities API (esearch + esummary), sessionStorage cache (24h), PI name highlighting, recency detection
-- `v2/js/animations.js` — AOS init, animated counter with IntersectionObserver
-- `v2/css/custom.css` — x-cloak, float/pulse animations, hero-pattern, card-hover, gradient-text, gradient-border, pub-card, scrollbar, badges, focus styles
-- `v2/data/tools.json` — 9 bioinformatics tools with metadata
-- `v2/data/team.json` — PI + 9 current members + 2 alumni
-- `v2/data/publications.json` — Profile links, 7 under-review papers, 1 patent
-
-### Key technical decisions and rationale
-- **Tailwind Play CDN** over compiled CSS: No build step needed, custom config inline, acceptable ~300ms overhead for academic site
-- **Alpine.js over React/Vue**: Lightweight (15KB), declarative reactivity in HTML, no build pipeline, perfect for filtering/tabs/search
-- **Multi-page over SPA**: Better for SEO, bookmarkable URLs, simpler maintenance, avoids routing complexity
-- **IIFE for components.js**: Must execute before Alpine.js `defer` processes DOM; DOMContentLoaded had race condition
-- **PubMed E-utilities direct fetch**: CORS-supported, no API key needed at low traffic, sessionStorage cache prevents redundant calls
-- **JSON data files**: Content updates only require editing JSON, not HTML structure
-- **v2/ subdirectory**: Allows parallel development without breaking live site
-
-### Problems encountered and resolutions
-1. **Playwright Chrome not found**: Playwright MCP server hardcodes `/opt/google/chrome/chrome`. Installed Chromium at `~/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome` but cannot symlink to `/opt/google/chrome/` without root. **Unresolved** — visual testing blocked.
-2. **Alpine.js + components.js race condition**: Nav HTML injected on DOMContentLoaded could fire after Alpine init. **Resolved** by changing to IIFE (synchronous execution during parse, before `defer` scripts).
-
-### Items completed
-- All Phase 1-4 deliverables (15 files)
-- CLAUDE.md (created and updated)
-- components.js race condition fix
-
-### Items not completed
-- Image optimization, OG meta tags, favicon, mobile testing, visual QA, root redirect
-
-### Verification performed
-- HTTP 200 status confirmed for all 7 HTML pages via curl
-- File existence verified for all 15 v2/ files
-- Script load order reviewed and confirmed correct across all pages
-- No browser-based visual testing performed (Playwright blocked)
 
 ---
 
