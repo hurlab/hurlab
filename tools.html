@@ -78,6 +78,14 @@
                };
                return colors[cat] || 'bg-gray-100 text-gray-600';
              },
+             statuses: {
+               'available':   { label: 'Available',   desc: 'released; anyone can use or download it', text: 'text-green-600', ping: 'bg-green-400 animate-ping', dot: 'bg-green-500' },
+               'beta':        { label: 'Beta',        desc: 'public and usable, still changing',       text: 'text-amber-600', ping: 'bg-amber-400 animate-ping', dot: 'bg-amber-500' },
+               'coming-soon': { label: 'Coming soon', desc: 'not released yet; no public link',        text: 'text-gray-500',  ping: 'hidden',                    dot: 'bg-gray-400' }
+             },
+             statusInfo(s) {
+               return this.statuses[s] || this.statuses['coming-soon'];
+             },
              filterBtnClass(cat) {
                return this.activeFilter === cat
                  ? 'bg-teal-600 text-white shadow-lg shadow-teal-600/25'
@@ -94,6 +102,17 @@
                 class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300">
           <span x-text="cat"></span>
         </button>
+      </template>
+    </div>
+
+    <!-- Status legend -->
+    <div class="flex flex-wrap justify-center gap-x-5 gap-y-1 -mt-3 mb-6 text-xs text-gray-500">
+      <template x-for="(s, key) in statuses" :key="key">
+        <span class="flex items-center gap-1.5">
+          <span class="inline-flex h-2 w-2 rounded-full" :class="s.dot"></span>
+          <span class="font-medium" :class="s.text" x-text="s.label"></span>
+          <span x-text="'— ' + s.desc"></span>
+        </span>
       </template>
     </div>
 
@@ -128,14 +147,14 @@
               <div class="flex items-center gap-3 shrink-0 ml-2">
                 <!-- Status indicator -->
                 <span class="flex items-center gap-1.5 text-xs font-medium"
-                      :class="tool.status === 'active' ? 'text-green-600' : 'text-amber-600'">
+                      :class="statusInfo(tool.status).text">
                   <span class="relative flex h-2 w-2">
-                    <span class="absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping"
-                          :class="tool.status === 'active' ? 'bg-green-400' : 'bg-amber-400'"></span>
+                    <span class="absolute inline-flex h-full w-full rounded-full opacity-75"
+                          :class="statusInfo(tool.status).ping"></span>
                     <span class="relative inline-flex h-2 w-2 rounded-full"
-                          :class="tool.status === 'active' ? 'bg-green-500' : 'bg-amber-500'"></span>
+                          :class="statusInfo(tool.status).dot"></span>
                   </span>
-                  <span x-text="tool.status === 'active' ? 'Active' : 'In Development'"></span>
+                  <span x-text="statusInfo(tool.status).label"></span>
                 </span>
                 <!-- Expand/collapse chevron -->
                 <svg class="w-5 h-5 text-gray-400 transition-transform duration-300"
@@ -268,8 +287,8 @@
               </a>
             </template>
             <template x-if="tool.notice">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 text-gray-500 text-sm font-medium rounded-lg border border-gray-200">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 text-gray-500 text-sm font-medium rounded-lg border border-gray-200 whitespace-nowrap">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 <span x-text="tool.notice"></span>
               </span>
             </template>
