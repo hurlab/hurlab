@@ -3,6 +3,7 @@
 (function() {
   injectNav();
   injectFooter();
+  window.addEventListener('load', () => setTimeout(updateFooterDate, 1500));
 })();
 
 function injectNav() {
@@ -164,7 +165,7 @@ function injectFooter() {
       </div>
 
       <div class="border-t border-white/10 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-        <p>&copy; ${new Date().getFullYear()} Hur Lab, University of North Dakota. All rights reserved.</p>
+        <p>&copy; ${new Date().getFullYear()} Hur Lab, University of North Dakota. All rights reserved.<span id="footer-updated" class="hidden"> &middot; Last updated: <span id="footer-updated-date"></span></span></p>
         <p>Dept. of Biomedical Sciences, School of Medicine & Health Sciences · <a href="https://hurlab.med.und.edu:8443/" class="hover:text-primary-400 transition-colors">Admin</a></p>
       </div>
     </div>
@@ -172,4 +173,24 @@ function injectFooter() {
   `;
 
   document.body.insertAdjacentHTML('beforeend', footerHTML);
+}
+
+// Footer "Last updated": the newest server Last-Modified date among this page and the
+// data/*.json files it loaded, so it moves on every deploy or admin edit without a manual step.
+async function updateFooterDate() {
+  const urls = new Set([location.pathname]);
+  performance.getEntriesByType('resource').forEach(e => {
+    const u = new URL(e.name, location.href);
+    if (u.origin === location.origin && /\/data\/[^/]+\.json$/.test(u.pathname)) urls.add(u.pathname);
+  });
+  const stamps = await Promise.all([...urls].map(u =>
+    fetch(u, { method: 'HEAD', cache: 'no-cache' })
+      .then(r => Date.parse(r.headers.get('Last-Modified') || ''))
+      .catch(() => NaN)));
+  const newest = Math.max(...stamps.filter(Number.isFinite));
+  if (!Number.isFinite(newest)) return;
+  const d = new Date(newest);
+  const pad = n => String(n).padStart(2, '0');
+  document.getElementById('footer-updated-date').textContent = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  document.getElementById('footer-updated').classList.remove('hidden');
 }
