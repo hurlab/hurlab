@@ -80,6 +80,7 @@
     "status": "available",
     "url": "https://hurlab.med.und.edu/DNMKB2/",
     "github": null,
+    "notice": "Replaced by DPNKB",
     "language": "Web",
     "images": [{"src": "Images/tools/dnmkb2/dnmkb2.jpg", "caption": "DNMKB landing page"}],
     "details": {
@@ -199,9 +200,9 @@
   },
   {
     "name": "DPNKB",
-    "description": "Comprehensive knowledgebase integrating genomic, transcriptomic, and clinical data for diabetic peripheral neuropathy research.",
+    "description": "Revamped successor to DNMKB2: a comprehensive knowledgebase integrating genomic, transcriptomic, and clinical data for diabetic peripheral neuropathy research.",
     "version": "Latest",
-    "updated": "2025-01-01",
+    "updated": "2026-06-08",
     "category": "Knowledgebase",
     "status": "available",
     "url": "https://hurlab.med.und.edu/DPNKB/",
