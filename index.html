@@ -123,14 +123,14 @@
     }
     </script>
     <style>
-      /* Featured Tools auto-scrolling strip. Kept inline so a stale cached custom.css cannot stop it.
+      /* Auto-scrolling strips (Recent Publications, Featured Tools). Kept inline so a stale cached custom.css cannot stop it.
          Pauses only via the button or keyboard focus; reduced-motion visitors get half speed, not a stop. */
-      .tool-marquee__track { animation: tool-marquee var(--marquee-duration, 80s) linear infinite; }
-      .tool-marquee:focus-within .tool-marquee__track,
-      .tool-marquee.is-paused .tool-marquee__track { animation-play-state: paused; }
-      @keyframes tool-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+      .marquee__track { animation: marquee var(--marquee-duration, 80s) linear infinite; }
+      .marquee:focus-within .marquee__track,
+      .marquee.is-paused .marquee__track { animation-play-state: paused; }
+      @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
       @media (prefers-reduced-motion: reduce) {
-        .tool-marquee__track { animation-duration: calc(var(--marquee-duration, 80s) * 2); }
+        .marquee__track { animation-duration: calc(var(--marquee-duration, 80s) * 2); }
       }
     </style>
 </head>
@@ -372,29 +372,40 @@
                 </div>
             </div>
 
-            <!-- Publication Cards -->
-            <div x-show="!loading" x-cloak class="space-y-3" data-aos="fade-up" data-aos-delay="100">
-                <template x-for="pub in publications" :key="pub.number">
-                    <div class="publication-card bg-white rounded-lg p-5 border border-gray-100 shadow-sm">
-                        <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
-                            <div class="flex items-center gap-2 flex-shrink-0">
-                                <template x-if="pub.isRecent">
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800">
-                                        Recent
-                                    </span>
-                                </template>
-                                <template x-if="pub.pmid">
-                                    <a :href="'https://pubmed.ncbi.nlm.nih.gov/' + pub.pmid + '/'"
-                                       target="_blank" rel="noopener noreferrer"
-                                       class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-700 hover:bg-indigo-200 transition-colors">
-                                        PMID: <span x-text="pub.pmid" class="ml-1"></span>
-                                    </a>
-                                </template>
+            <!-- Publication strip: newest published papers, scrolling like Featured Tools.
+                 Count and author-shortening threshold come from data/site.json (homePage), editable in the admin panel. -->
+            <div x-show="!loading" x-cloak>
+                <div class="marquee relative overflow-hidden" :class="paused && 'is-paused'" role="region" aria-label="Recent publications">
+                    <div class="marquee__track flex gap-4 pr-4 w-max py-2" :style="'--marquee-duration: ' + (publications.length * 6) + 's'">
+                        <template x-for="(pub, i) in loop" :key="i">
+                            <div :aria-hidden="i >= publications.length ? 'true' : null"
+                                 class="publication-card w-96 shrink-0 bg-white rounded-lg p-5 border border-gray-200 shadow-sm flex flex-col">
+                                <div class="flex flex-wrap items-center gap-2 mb-3">
+                                    <template x-if="pub.isRecent">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800">Recent</span>
+                                    </template>
+                                    <template x-if="pub.year">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600" x-text="pub.year"></span>
+                                    </template>
+                                    <template x-if="pub.pmid">
+                                        <a :href="'https://pubmed.ncbi.nlm.nih.gov/' + pub.pmid + '/'" :tabindex="i >= publications.length ? -1 : null"
+                                           target="_blank" rel="noopener noreferrer"
+                                           class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-700 hover:bg-indigo-200 transition-colors">
+                                            PMID: <span x-text="pub.pmid" class="ml-1"></span>
+                                        </a>
+                                    </template>
+                                </div>
+                                <p class="text-sm text-gray-700 leading-relaxed line-clamp-6" x-html="pub.textHtml"></p>
                             </div>
-                        </div>
-                        <p class="text-sm text-gray-700 leading-relaxed" x-html="pub.textHtml"></p>
+                        </template>
                     </div>
-                </template>
+                    <div class="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-white"></div>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white"></div>
+                </div>
+                <div class="text-center mt-3">
+                    <button type="button" @click="paused = !paused" class="text-xs text-gray-500 hover:text-gray-700 underline-offset-2 hover:underline"
+                            x-text="paused ? 'Resume scrolling' : 'Pause scrolling'"></button>
+                </div>
             </div>
 
             <!-- Error State -->
@@ -428,12 +439,12 @@
             <!-- Auto-scrolling strip of every tool (from data/tools.json); pauses on hover/focus or via the button;
                  under prefers-reduced-motion it does not move and scrolls by hand instead -->
             <div x-data="toolMarquee()" x-init="load()">
-                <div class="tool-marquee relative overflow-hidden" :class="paused && 'is-paused'" x-show="tools.length > 0" x-cloak
+                <div class="marquee relative overflow-hidden" :class="paused && 'is-paused'" x-show="tools.length > 0" x-cloak
                      role="region" aria-label="All Hur Lab tools">
-                    <div class="tool-marquee__track flex gap-4 pr-4 w-max py-2" :style="'--marquee-duration: ' + (tools.length * 4) + 's'">
+                    <div class="marquee__track flex gap-4 pr-4 w-max py-2" :style="'--marquee-duration: ' + (tools.length * 4) + 's'">
                         <template x-for="(tool, i) in loop" :key="i">
                             <a href="tools.html" :aria-hidden="i >= tools.length ? 'true' : null" :tabindex="i >= tools.length ? -1 : null"
-                               :class="i >= tools.length && 'tool-marquee__dup'"
+                               :class="i >= tools.length && 'marquee__dup'"
                                class="w-64 shrink-0 bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden hover:shadow-md hover:border-teal-300 transition">
                                 <div class="h-28 overflow-hidden border-b border-gray-200 bg-gradient-to-br from-teal-50 to-indigo-50">
                                     <template x-if="tool.images && tool.images.length > 0">
@@ -456,7 +467,7 @@
                     <div class="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-gray-50"></div>
                     <div class="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-gray-50"></div>
                 </div>
-                <div class="tool-marquee__controls text-center mt-3">
+                <div class="marquee__controls text-center mt-3">
                     <button type="button" @click="paused = !paused" class="text-xs text-gray-500 hover:text-gray-700 underline-offset-2 hover:underline"
                             x-text="paused ? 'Resume scrolling' : 'Pause scrolling'"></button>
                 </div>
@@ -533,24 +544,64 @@
             };
         }
 
+        // Shorten long author lists to "first 3, …, Hur J, …, last". Returns the text unchanged when unsure.
+        function shortenAuthors(text, threshold) {
+            const NAME = /^(?:(?:de|van|von|der|den|la|da|di|du|le|dos)\s+)*\p{Lu}[\p{L}'’\-]*(?:[ \-]\p{Lu}[\p{L}'’\-]*)*\s+\p{Lu}(?:[.\-]?\p{Lu}){0,3}[*$†]*/u;
+            const NEXT_NAME = /^\s*(?:,|\s+and\s)/;               // a name is followed by "," or " and "
+            const authors = [];
+            let pos = 0, end = -1;
+            while (pos < text.length) {
+                const rest = text.slice(pos).replace(/^and\s+/, '');
+                const m = rest.match(NAME);
+                if (!m) break;
+                const after = rest.slice(m[0].length);
+                const sep = after.match(/^(?:\s*\.?\s*,\s*(?:and\s+)?|\s+and\s+|\s*\.\s+)/);
+                if (!sep) break;
+                authors.push(m[0].trim());
+                pos += (text.length - pos - rest.length) + m[0].length + sep[0].length;
+                if (!sep[0].includes(',') && sep[0].includes('.')) {
+                    // A period ends the list, unless another name follows (CV typo such as "Eid SA. Hinder LM,")
+                    const peek = text.slice(pos), pm = peek.match(NAME);
+                    if (!(pm && NEXT_NAME.test(peek.slice(pm[0].length)))) { end = pos; break; }
+                }
+            }
+            if (end < 0 || authors.length < threshold) return text;
+            const pi = authors.findIndex(a => /^Hur\s+JU?[*$†]*$/.test(a));
+            if (pi < 0) return text;                                  // never hide the PI
+            const keep = [...new Set([0, 1, 2, pi, authors.length - 1])].sort((a, b) => a - b);
+            const out = [];
+            keep.forEach((k, i) => { if (i > 0 && k - keep[i - 1] > 1) out.push('…'); out.push(authors[k]); });
+            return out.join(', ') + '. ' + text.slice(end);
+        }
+
         function recentPublications() {
             return {
                 publications: [],
                 loading: true,
                 error: false,
+                paused: false,
+                get loop() { return [...this.publications, ...this.publications]; },
                 async fetchPublications() {
                     try {
+                        // Settings from data/site.json (admin panel > Home page); defaults if missing
+                        let count = 10, threshold = 10;
+                        try {
+                            const site = await (await fetch('data/site.json', { cache: 'no-cache' })).json();
+                            const hp = site.homePage || {};
+                            if (Number.isInteger(hp.recentPublicationsCount)) count = hp.recentPublicationsCount;
+                            if (Number.isInteger(hp.authorShortenThreshold)) threshold = hp.authorShortenThreshold;
+                        } catch (e) { /* keep defaults */ }
                         const res = await fetch('data/publications.json');
                         const data = await res.json();
                         if (data.peerReviewed && data.peerReviewed.length > 0) {
-                            // Newest 5 published papers (no preprints); CV number breaks ties within a year
+                            // Newest published papers (no preprints); CV number breaks ties within a year
                             const sorted = data.peerReviewed
                                 .filter(p => !p.isPreprint)
                                 .sort((a, b) => ((b.year || 0) - (a.year || 0)) || ((b.number || 0) - (a.number || 0)))
-                                .slice(0, 5);
+                                .slice(0, count);
                             this.publications = sorted.map(pub => ({
                                 ...pub,
-                                textHtml: this.highlightPI(pub.text),
+                                textHtml: this.highlightPI(shortenAuthors(pub.text, threshold)),
                                 isRecent: this.isRecentPub(pub.year)
                             }));
                         }
@@ -572,6 +623,7 @@
                 }
             };
         }
+
     </script>
 
 </body>

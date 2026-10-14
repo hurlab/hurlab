@@ -18,5 +18,9 @@
   "smhsUrl": "https://med.und.edu/",
   "deptUrl": "https://med.und.edu/biomedical-sciences/",
   "labUrl": "https://med.und.edu/research/labs/hur/index.html",
+  "homePage": {
+    "recentPublicationsCount": 10,
+    "authorShortenThreshold": 10
+  },
   "lastUpdated": "2026-03-14"
 }

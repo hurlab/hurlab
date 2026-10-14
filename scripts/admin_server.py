@@ -375,6 +375,20 @@ def save_json_data(filename: str, data: dict, commit_msg: str = None):
         subprocess.run(["git", "commit", "-m", commit_msg], cwd=str(BASE_DIR))
 
 
+# Home page settings stored in data/site.json under "homePage": key -> (min, max)
+HOME_SETTING_LIMITS = {
+    "recentPublicationsCount": (1, 30),
+    "authorShortenThreshold": (3, 100),
+}
+HOME_SETTING_DEFAULTS = {"recentPublicationsCount": 10, "authorShortenThreshold": 10}
+
+
+def load_home_settings() -> dict:
+    """Return home-page settings from site.json, filling in defaults."""
+    stored = load_json_data("site.json").get("homePage", {})
+    return {k: stored.get(k, v) for k, v in HOME_SETTING_DEFAULTS.items()}
+
+
 def load_team_data() -> dict:
     """Load team.json, returning empty structure if missing."""
     if not TEAM_FILE.exists():
@@ -731,6 +745,12 @@ class AdminHandler(BaseHTTPRequestHandler):
             self._send_json(load_json_data("positions.json"))
             return
 
+        if self.path == "/api/home-settings":
+            if not self._require_auth():
+                return
+            self._send_json(load_home_settings())
+            return
+
         self.send_error(404, "Not Found")
 
     # -- POST ---------------------------------------------------------------
@@ -768,6 +788,8 @@ class AdminHandler(BaseHTTPRequestHandler):
             self._handle_save_json("research.json", "research areas")
         elif self.path == "/api/positions":
             self._handle_save_json("positions.json", "positions")
+        elif self.path == "/api/home-settings":
+            self._handle_home_settings()
         else:
             self.send_error(404, "Not Found")
 
@@ -1070,6 +1092,34 @@ class AdminHandler(BaseHTTPRequestHandler):
         status["user"] = self._get_username()
 
         self._send_json(status)
+
+    def _handle_home_settings(self):
+        """Save home-page display settings (data/site.json -> homePage)."""
+        if not self._require_auth():
+            return
+        if not self._validate_csrf():
+            return
+        try:
+            body = self._read_json_body()
+        except (json.JSONDecodeError, ValueError) as e:
+            self._send_json({"error": f"Invalid JSON: {e}"}, status=400)
+            return
+        settings = {}
+        for key, (low, high) in HOME_SETTING_LIMITS.items():
+            value = body.get(key)
+            # bool is a subclass of int; reject it explicitly
+            if not isinstance(value, int) or isinstance(value, bool) or not low <= value <= high:
+                self._send_json({"error": f"{key} must be a whole number from {low} to {high}"}, status=400)
+                return
+            settings[key] = value
+        try:
+            site = load_json_data("site.json")
+            site["homePage"] = settings
+            save_json_data("site.json", site, "Admin: update home page settings")
+            self._send_json({"success": True, **settings})
+        except Exception as e:
+            print(f"[ERROR] {self.path}: {e}", file=sys.stderr)
+            self._send_json({"error": "Internal server error"}, status=500)
 
     def _read_json_body(self) -> dict:
         """Read and parse a JSON request body."""

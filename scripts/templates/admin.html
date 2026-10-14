@@ -58,6 +58,10 @@
                     class="tab-btn px-6 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 bg-white rounded-t-lg">
                     Positions
                 </button>
+                <button onclick="switchTab('home')" id="tab-home"
+                    class="tab-btn px-6 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 bg-white rounded-t-lg">
+                    Home Page
+                </button>
             </nav>
         </div>
     </div>
@@ -409,6 +413,27 @@
         <div id="positionTypes" class="space-y-6"></div>
     </div><!-- end panel-positions -->
 
+    <!-- Home Page Tab -->
+    <div id="panel-home" class="tab-panel hidden space-y-8">
+        <div class="flex items-center justify-between">
+            <h2 class="text-lg font-semibold text-gray-800">Home Page &mdash; Recent Publications</h2>
+            <button onclick="saveHomeSettings()" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-4 py-2 rounded-lg transition">Save</button>
+        </div>
+        <div id="homeMsg" class="hidden p-3 rounded-lg text-sm"></div>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 space-y-4">
+            <div>
+                <label for="homePubCount" class="block text-sm font-medium text-gray-600 mb-1">Number of papers in the scrolling strip (1&ndash;30)</label>
+                <input type="number" id="homePubCount" min="1" max="30" step="1" class="w-40 border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                <p class="text-xs text-gray-400 mt-1">Newest published papers (preprints excluded).</p>
+            </div>
+            <div>
+                <label for="homeAuthorThreshold" class="block text-sm font-medium text-gray-600 mb-1">Shorten author lists with at least this many authors (3&ndash;100)</label>
+                <input type="number" id="homeAuthorThreshold" min="3" max="100" step="1" class="w-40 border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                <p class="text-xs text-gray-400 mt-1">Shortened lists show the first 3 authors, Hur J, and the last author.</p>
+            </div>
+        </div>
+    </div><!-- end panel-home -->
+
     </main>
 
     <script>
@@ -632,6 +657,7 @@
             if (tabName === 'collaborators') fetchCollaborators();
             if (tabName === 'research') fetchResearch();
             if (tabName === 'positions') fetchPositions();
+            if (tabName === 'home') fetchHomeSettings();
         }
 
         // --- Team Management ---
@@ -1330,6 +1356,40 @@
                 }
             } catch (e) {
                 showTeamMsg('positionsMsg', 'Error: ' + e.message, false);
+            }
+        }
+
+        // --- Home Page Settings ---
+        async function fetchHomeSettings() {
+            try {
+                const res = await apiFetch('/api/home-settings');
+                const data = await res.json();
+                document.getElementById('homePubCount').value = data.recentPublicationsCount;
+                document.getElementById('homeAuthorThreshold').value = data.authorShortenThreshold;
+            } catch (e) {
+                showTeamMsg('homeMsg', 'Error loading settings: ' + e.message, false);
+            }
+        }
+
+        async function saveHomeSettings() {
+            const body = {
+                recentPublicationsCount: parseInt(document.getElementById('homePubCount').value, 10),
+                authorShortenThreshold: parseInt(document.getElementById('homeAuthorThreshold').value, 10)
+            };
+            try {
+                const res = await apiFetch('/api/home-settings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    showTeamMsg('homeMsg', 'Saved. The home page uses the new settings on its next load.', true);
+                } else {
+                    showTeamMsg('homeMsg', data.error || 'Save failed.', false);
+                }
+            } catch (e) {
+                showTeamMsg('homeMsg', 'Error: ' + e.message, false);
             }
         }
 
