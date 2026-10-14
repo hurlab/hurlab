@@ -6,6 +6,7 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - logs/PROJECT_LOG_2026-H1.md — 1 sessions (2026-03 … 2026-03)
 
 ## Session Index (active, newest first)
+- 2026-10-14 17:00 CDT — Removed the six merged worktrees (verified merged + clean first); handoff/resume updated
 - 2026-10-14 16:11 CDT
 - 2026-10-14 13:32 CDT
 - 2026-07-09 23:57 CDT
@@ -16,6 +17,26 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - 2026-04-08 CDT (security completion)
 - 2026-04-08 CDT (code review)
 - 2026-04-08 CDT (code review pass 2)
+
+---
+
+## Session 2026-10-14 17:00 CDT
+- **Coding CLI used**: Claude Code CLI (Opus 5.5; Sonnet 5.5 for the close). Short follow-up to the 16:11 entry, same Claude session 352d0464.
+
+### Concrete changes implemented
+- At the user's request, removed all six merged worktrees (`site-compact`, `site-detail-cols`, `site-home-compact`, `site-prev-grants`, `site-spacing-2`, `site-tool-images`). Before removing: each HEAD was an ancestor of origin/main, `git status` showed no tracked changes, and `moai worktree hoist` found no `.moai/reports` content. Lost with them: untracked `.codex/` (all six) and `site-tool-images/.shots/` (original full-size screenshots; resized copies are committed under `Images/tools/`).
+- Updated PROJECT_HANDOFF (item Completed, next actions) and NEXT_SESSION.md (precondition 3 expects 0 worktrees). The edit was made in a throw-away worktree `close-docs` (branch `WT-close-docs`) because the primary checkout is 11 commits behind and branch changes there are not allowed; it is removed after the push.
+
+### Problems and resolutions
+- `moai worktree new` created the tree at the old primary HEAD (f3897dd), not origin/main — fast-forwarded inside the (empty) tree before editing.
+- The log-rotation script rewrote the Session Index to dates only (headlines dropped); left as the script produced it. The rotated archive `logs/PROJECT_LOG_2026-H1.md` is gitignored (`logs/*`), kept as a machine-local copy in the primary checkout.
+- Six merged local `WT-*` branches remain; deletion left for user approval.
+
+### Items completed
+- "Remove 6 merged worktrees" — Completed.
+
+### Verification performed
+- `git worktree list` showed only the primary checkout afterwards; `.moai/worktrees/` was empty.
 
 ---
 

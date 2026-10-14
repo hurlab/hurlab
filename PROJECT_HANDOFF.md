@@ -6,7 +6,7 @@
 
 **Scope**: 9 HTML pages (8 public + 1 research detail), admin server (port 8180), CV parser script, 8 JSON data files. Deployed on Apache Tomcat 9.0.37 with nginx reverse proxy.
 
-- **Last updated**: 2026-10-14 16:11 CDT
+- **Last updated**: 2026-10-14 17:00 CDT
 - **Last coding CLI used**: Claude Code CLI (Claude Opus 5.5 / Sonnet 5.5)
 - **Git repo**: https://github.com/hurlab/hurlab.git (branch: main)
 
@@ -95,7 +95,7 @@
 | SciMiner card version tag still reads "System migration" (stale next to new name) | Open — ask user what to show | 2026-10-14 13:32 CDT | PROJECT_LOG 2026-10-14 13:32 |
 | scGEN card: add paper PMID to `publications`; figure reuse license (Advanced Science) not checked | Open | 2026-10-14 13:32 CDT | PROJECT_LOG 2026-10-14 13:32 |
 | When PubChemSR 2.0 / ChemFuse go public: set `status` to `available`, drop PubChemSR `notice`, restore GitHub links | Open (waiting on release) | 2026-10-14 13:32 CDT | PROJECT_LOG 2026-10-14 13:32 |
-| Remove 6 merged worktrees under `.moai/worktrees/` (site-compact, site-spacing-2, site-home-compact, site-prev-grants, site-detail-cols, site-tool-images — keep its untracked `.shots/` originals if wanted) | Open | 2026-10-14 13:32 CDT | all branches are on origin/main |
+| Remove 6 merged worktrees under `.moai/worktrees/` | Completed | 2026-10-14 17:00 CDT | All six were verified merged into origin/main with no tracked changes and removed (their untracked `.codex/` and the original `.shots/` screenshots went with them; resized images are committed). The six local `WT-*` branches still exist — delete with `git branch -d` after user OK (branch change in the shared checkout) |
 | Primary checkout `main` is behind origin/main (10 commits at 16:11 CDT; fast-forward only) | Open | 2026-10-14 16:11 CDT | `git pull --ff-only` when no other session is using it |
 | CV data gaps: publications #95, #96, #112, #143 have no year in the CV text | Open | 2026-10-14 CDT (earlier session) | PROJECT_LOG 2026-10-14 13:32 |
 | `data/grants.json` still holds dollar totals (pages no longer display them) | Open — decide whether to strip | 2026-10-14 CDT (earlier session) | PROJECT_LOG 2026-10-14 13:32 |
@@ -200,8 +200,8 @@ hurlab/           ← webroot (Tomcat webapp)
 **Next session**: just say **"resume"** — the saved prompt in the project-root `NEXT_SESSION.md` (pointed to by the ⭐ line in Claude Code auto-memory) drives the restart.
 
 **Recommended next actions**:
-1. Clean-up: remove the 6 merged worktrees; fast-forward the primary checkout; add `.playwright-mcp/` to `.gitignore`
+1. Clean-up: fast-forward the primary checkout; delete the 6 leftover local `WT-*` branches (ask first); add `.playwright-mcp/` to `.gitignore`
 2. Ask the user: HTTP caching fix (yes/no), SciMiner's "System migration" version tag, the empty Desktop filter; add scGEN paper PMID
 3. Re-run the Playwright E2E suite after the 2026-10-14 changes; try the admin Home Page tab logged in
 4. Older carry-overs: upload team photos via admin panel; CSP header for admin panel; WebP `<picture>` elements; collaborator link follow-ups (Cui Tao → Mayo bio; Jinho Yoo http:// link)
-- **Last updated**: 2026-10-14 16:11 CDT
+- **Last updated**: 2026-10-14 17:00 CDT
