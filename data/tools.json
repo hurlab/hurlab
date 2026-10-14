@@ -9,6 +9,7 @@
     "url": "https://hurlab.med.und.edu/SciMiner/",
     "github": null,
     "language": "Web",
+    "images": [{"src": "Images/tools/sciminer/sciminer.jpg", "caption": "SciMiner home page"}],
     "details": {
       "longDescription": "SciMiner is a web-based literature mining and functional analysis tool that automatically identifies genes and proteins mentioned in biomedical text. It processes PubMed abstracts or user-supplied text to extract gene/protein mentions using dictionary-based and rule-based NLP approaches, then performs functional enrichment analysis (Gene Ontology, KEGG pathways) on the extracted targets.",
       "features": ["Automated gene/protein extraction from PubMed abstracts", "Dictionary-based and rule-based NLP", "Functional enrichment analysis (GO, KEGG)", "Batch processing of multiple PMIDs", "Export results in multiple formats"],
@@ -76,6 +77,7 @@
     "url": "https://hurlab.med.und.edu/DNMKB2/",
     "github": null,
     "language": "Web",
+    "images": [{"src": "Images/tools/dnmkb2/dnmkb2.jpg", "caption": "DNMKB landing page"}],
     "details": {
       "longDescription": "DNMKB2 (Diabetic Neuropathy Molecular Knowledge Base v2) is a comprehensive repository and analysis portal for diabetic peripheral neuropathy transcriptomics data. It integrates 140 differentially expressed gene (DEG) sets from multiple DPN studies, enabling cross-study comparison, meta-analysis, and pathway enrichment across mouse and human models.",
       "features": ["140 DEG sets from DPN studies", "Cross-study meta-analysis", "Mouse and human model comparison", "Pathway enrichment analysis", "Interactive data visualization"],
@@ -93,6 +95,7 @@
     "url": "https://hurlab.med.und.edu/VennDetail",
     "github": "https://github.com/hurlab/VennDetail",
     "language": "R",
+    "images": [{"src": "Images/tools/venndetail/venndetail-gh.jpg", "caption": "Venn-Pie and bar-plot views of overlapping gene sets"}, {"src": "Images/tools/venndetail/venndetail.jpg", "caption": "VennDetail Shiny app"}],
     "details": {
       "longDescription": "VennDetail is a Bioconductor R package that provides comprehensive Venn diagram analysis with Pie chart overlays. Unlike traditional Venn diagrams limited to 3-4 sets, VennDetail supports up to 8 sets and provides detailed subset extraction, making it ideal for comparing gene lists from multiple omics experiments.",
       "features": ["Support for up to 8 comparison sets", "Venn-Pie hybrid visualization", "Detailed subset extraction and annotation", "Integration with Bioconductor workflows", "Publication-ready figures"],
@@ -110,6 +113,7 @@
     "url": "https://hurlab.med.und.edu/richR",
     "github": "https://github.com/hurlab/richR",
     "language": "R",
+    "images": [{"src": "Images/tools/richr/richr-dot.jpg", "caption": "Enrichment dot plot"}, {"src": "Images/tools/richr/richr-bar.jpg", "caption": "Enrichment bar plot"}],
     "details": {
       "longDescription": "richR is a comprehensive R package for functional enrichment analysis supporting GO, KEGG, Reactome, and custom gene sets. It provides advanced visualization including dot plots, bar plots, network plots, and enrichment maps, with built-in support for multiple species and gene ID conversion.",
       "features": ["GO, KEGG, Reactome enrichment", "Multiple visualization types (dot, bar, network, enrichment map)", "Multi-species support", "Gene ID auto-conversion", "Customizable color palettes and themes"],
@@ -127,6 +131,7 @@
     "url": "https://hurlab.med.und.edu/Tox21Enricher",
     "github": "https://github.com/hurlab/tox21enricher",
     "language": "R/Web",
+    "images": [{"src": "Images/tools/tox21-enricher/tox21-enricher.jpg", "caption": "Tox21 Enricher input page"}],
     "details": {
       "longDescription": "Tox21 Enricher is an online tool for performing enrichment analysis on Tox21 chemical screening data from the NIH Tox21 program. It allows researchers to identify overrepresented biological pathways and toxicity endpoints among sets of chemical compounds, supporting both web-based and R package interfaces.",
       "features": ["Enrichment analysis for Tox21 chemical data", "Web interface and R package", "Pathway and toxicity endpoint analysis", "Chemical set comparison", "FDA collaboration for drug safety"],
@@ -144,6 +149,7 @@
     "url": "https://hurlab.med.und.edu/richStudio/",
     "github": "https://github.com/hurlab/richStudio",
     "language": "R",
+    "images": [{"src": "Images/tools/richstudio/richstudio.jpg", "caption": "richStudio home page"}],
     "details": {
       "longDescription": "richStudio is an interactive R Shiny web application that provides a GUI for performing enrichment analysis and hierarchical clustering without writing code. It wraps richR and richCluster functionality in an accessible web interface for researchers with limited programming experience.",
       "features": ["No-code enrichment analysis GUI", "Interactive clustering visualization", "Drag-and-drop data upload", "Real-time parameter adjustment", "Export publication-ready figures"],
@@ -161,6 +167,7 @@
     "url": null,
     "github": "https://github.com/hurlab/richCluster",
     "language": "R/C++",
+    "images": [{"src": "Images/tools/richcluster/richcluster-heatmap.jpg", "caption": "Cluster heatmap across enrichment results"}, {"src": "Images/tools/richcluster/richcluster-flow.jpg", "caption": "richCluster workflow"}],
     "details": {
       "longDescription": "richCluster is an R package with a C++ backend that provides high-performance hierarchical clustering for large-scale biological data. It implements optimized algorithms for gene expression clustering, pathway grouping, and enrichment result organization, significantly outperforming pure R implementations.",
       "features": ["C++ optimized clustering engine", "Hierarchical and k-means clustering", "Large dataset support", "Integration with richR ecosystem", "Customizable distance metrics"],
@@ -195,6 +202,7 @@
     "url": "https://hurlab.med.und.edu/DPNKB/",
     "github": null,
     "language": "Web",
+    "images": [{"src": "Images/tools/dpnkb/dpnkb.jpg", "caption": "DPNKB home page"}],
     "details": {
       "longDescription": "DPNKB (Diabetic Peripheral Neuropathy Knowledge Base) is a comprehensive web-based knowledgebase that integrates genomic, transcriptomic, and clinical data for the study of diabetic peripheral neuropathy (DPN). It serves as an exploration and analysis platform for DPN gene expression data, enabling researchers to query and analyze differentially expressed genes across multiple DPN studies and models.",
       "features": ["Integrated DPN gene expression data", "Cross-study gene expression comparison", "Mouse and human model data", "Interactive data exploration and analysis", "Pathway and functional annotation"],
@@ -212,6 +220,7 @@
     "url": "https://violinet.org/",
     "github": null,
     "language": "Web",
+    "images": [{"src": "Images/tools/violin/violin.jpg", "caption": "VIOLIN home page"}],
     "details": {
       "longDescription": "VIOLIN (Vaccine Investigation and Online Information Network) is a comprehensive web-based vaccine knowledgebase that integrates AI-driven literature analysis with ontology-based data annotation. VIOLIN 2.0 includes curated data on vaccine components, host responses, and protection mechanisms across hundreds of licensed and experimental vaccines, supported by the Vaccine Ontology (VO) for standardized representation.",
       "features": ["Comprehensive vaccine knowledge repository", "AI-driven literature mining and curation", "Vaccine Ontology (VO) integration", "Host response and protection mechanism data", "Cross-species vaccine comparison"],
@@ -229,6 +238,7 @@
     "url": "https://ignet.org/",
     "github": null,
     "language": "Web",
+    "images": [{"src": "Images/tools/ignet/ignet.jpg", "caption": "Ignet home page"}],
     "details": {
       "longDescription": "Ignet is an interactive web-based system for visualizing and analyzing gene-gene interaction networks derived from ontology-based literature mining. It displays networks extracted by SciMiner and other NLP tools, allowing researchers to explore gene relationships, identify hub genes, and discover novel biological connections in the published literature.",
       "features": ["Interactive network visualization", "Literature-mined gene interactions", "Hub gene identification", "Ontology-based relationship annotation", "Network export and analysis"],

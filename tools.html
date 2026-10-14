@@ -106,7 +106,22 @@
              data-aos="fade-up"
              :data-aos-delay="(idx % 3) * 100">
 
-          <div class="p-5 pb-3 flex-1 flex flex-col">
+          <!-- Preview strip (collapsed cards only) -->
+          <div x-show="expandedTool !== tool.name"
+               class="h-[120px] overflow-hidden border-b border-gray-100 bg-gradient-to-br from-teal-50 to-indigo-50">
+            <template x-if="tool.images && tool.images.length > 0">
+              <img :src="tool.images[0].src" :alt="tool.images[0].caption" loading="lazy"
+                   class="w-full h-full object-cover object-top">
+            </template>
+            <template x-if="!(tool.images && tool.images.length > 0)">
+              <div class="w-full h-full flex items-center justify-center text-teal-200">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+              </div>
+            </template>
+          </div>
+
+          <div class="p-5 pb-3 flex-1 flex flex-col md:flex-row md:gap-6">
+          <div class="flex-1 min-w-0 flex flex-col">
             <!-- Header row: name + status + expand indicator -->
             <div class="flex items-start justify-between mb-2">
               <h3 class="font-mono font-bold text-lg text-gray-900" x-text="tool.name"></h3>
@@ -218,6 +233,22 @@
                 <span x-text="tool.language"></span>
               </span>
             </div>
+          </div>
+
+          <!-- Image column (expanded card only): 7:3 split with the details -->
+          <template x-if="expandedTool === tool.name && tool.images && tool.images.length > 0">
+            <div class="mt-4 md:mt-1 md:w-[30%] shrink-0 flex flex-col gap-3" @click.stop>
+              <template x-for="img in tool.images" :key="img.src">
+                <figure>
+                  <a :href="img.src" target="_blank" rel="noopener"
+                     class="block rounded-lg overflow-hidden border border-gray-200 hover:border-teal-300 hover:shadow-md transition">
+                    <img :src="img.src" :alt="img.caption" loading="lazy" class="w-full h-auto">
+                  </a>
+                  <figcaption class="text-xs text-gray-500 mt-1" x-text="img.caption"></figcaption>
+                </figure>
+              </template>
+            </div>
+          </template>
           </div>
 
           <!-- Action buttons -->
