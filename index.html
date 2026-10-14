@@ -124,10 +124,12 @@
     </script>
     <style>
       /* Auto-scrolling strips (Recent Publications, Featured Tools). Kept inline so a stale cached custom.css cannot stop it.
-         Pauses only via the button or keyboard focus; reduced-motion visitors get half speed, not a stop. */
+         Pauses on mouse hover, keyboard focus, or the button; reduced-motion visitors get half speed, not a stop. */
       .marquee__track { animation: marquee var(--marquee-duration, 80s) linear infinite; }
       .marquee:focus-within .marquee__track,
       .marquee.is-paused .marquee__track { animation-play-state: paused; }
+      /* Pause while the mouse is over a strip; mouse devices only, so a tap on a phone does not leave it stuck */
+      @media (hover: hover) { .marquee:hover .marquee__track { animation-play-state: paused; } }
       @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
       @media (prefers-reduced-motion: reduce) {
         .marquee__track { animation-duration: calc(var(--marquee-duration, 80s) * 2); }
