@@ -142,7 +142,7 @@
     <div id="nav-placeholder"></div>
 
     <!-- ==================== HERO SECTION ==================== -->
-    <section class="hero-pattern relative min-h-[76vh] flex items-center overflow-hidden">
+    <section class="hero-pattern relative flex items-center overflow-hidden">
         <!-- Decorative SVG Background Elements -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
             <svg class="absolute top-20 left-10 opacity-10 float-animation" width="200" height="200" viewBox="0 0 200 200">
@@ -163,7 +163,7 @@
             </svg>
         </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 w-full">
+        <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-14 lg:py-16 w-full">
             <div class="max-w-3xl" data-aos="fade-up" data-aos-duration="1000">
                 <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white mb-4 tracking-tight">
                     <span class="gradient-text">Hur Lab</span>
@@ -223,11 +223,11 @@
     </section>
 
     <!-- ==================== RESEARCH HIGHLIGHTS ==================== -->
-    <section class="py-12 lg:py-14 bg-gray-50">
+    <section class="py-8 lg:py-10 bg-gray-50">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-            <div class="text-center mb-8" data-aos="fade-up">
-                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Research Highlights</h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Research Highlights</h2>
+                <p class="text-base text-gray-600 max-w-3xl mx-auto">
                     Our interdisciplinary research spans computational biology, AI, and biomedical informatics
                 </p>
             </div>
@@ -235,14 +235,16 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 <!-- Card 1: Bioinformatics & Systems Biology -->
                 <div class="bg-white rounded-xl p-5 shadow-sm card-hover border border-gray-100" data-aos="fade-up" data-aos-delay="0">
-                    <div class="w-11 h-11 rounded-lg bg-teal-50 flex items-center justify-center mb-3">
-                        <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                  d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714a2.25 2.25 0 00.659 1.591L19 14.5M14.25 3.104c.251.023.501.05.75.082M19 14.5l-2.47 2.47a2.25 2.25 0 01-1.59.659H9.06a2.25 2.25 0 01-1.591-.659L5 14.5m14 0V5.846a2.25 2.25 0 00-1.28-2.033 23.916 23.916 0 00-3.47-1.206M5 14.5V5.846a2.25 2.25 0 011.28-2.033 23.916 23.916 0 013.47-1.206"/>
-                        </svg>
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-9 h-9 shrink-0 rounded-lg bg-teal-50 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                      d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714a2.25 2.25 0 00.659 1.591L19 14.5M14.25 3.104c.251.023.501.05.75.082M19 14.5l-2.47 2.47a2.25 2.25 0 01-1.59.659H9.06a2.25 2.25 0 01-1.591-.659L5 14.5m14 0V5.846a2.25 2.25 0 00-1.28-2.033 23.916 23.916 0 00-3.47-1.206M5 14.5V5.846a2.25 2.25 0 011.28-2.033 23.916 23.916 0 013.47-1.206"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 leading-snug">Bioinformatics &amp; Systems Biology</h3>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Bioinformatics &amp; Systems Biology</h3>
-                    <p class="text-gray-600 leading-relaxed mb-3">
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">
                         Integrative multi-omics analysis and network-based approaches to uncover molecular mechanisms in complex diseases.
                     </p>
                     <a href="research-detail.html?area=0" class="inline-flex items-center text-teal-600 font-semibold hover:text-teal-700 transition-colors text-sm">
@@ -255,14 +257,16 @@
 
                 <!-- Card 2: Ontology-Based Knowledge Systems -->
                 <div class="bg-white rounded-xl p-5 shadow-sm card-hover border border-gray-100" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-11 h-11 rounded-lg bg-indigo-50 flex items-center justify-center mb-3">
-                        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                  d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/>
-                        </svg>
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-9 h-9 shrink-0 rounded-lg bg-indigo-50 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                      d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 leading-snug">Ontology-Based Knowledge Systems</h3>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Ontology-Based Knowledge Systems</h3>
-                    <p class="text-gray-600 leading-relaxed mb-3">
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">
                         Biomedical ontology development and knowledge representation for standardized data integration and analysis.
                     </p>
                     <a href="research-detail.html?area=1" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-700 transition-colors text-sm">
@@ -275,14 +279,16 @@
 
                 <!-- Card 3: AI & Machine Learning -->
                 <div class="bg-white rounded-xl p-5 shadow-sm card-hover border border-gray-100" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-11 h-11 rounded-lg bg-purple-50 flex items-center justify-center mb-3">
-                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                  d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z"/>
-                        </svg>
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-9 h-9 shrink-0 rounded-lg bg-purple-50 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                      d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 leading-snug">AI &amp; Machine Learning</h3>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">AI &amp; Machine Learning</h3>
-                    <p class="text-gray-600 leading-relaxed mb-3">
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">
                         Deep learning and machine learning models for biomarker discovery, drug response prediction, and single-cell analysis.
                     </p>
                     <a href="research-detail.html?area=2" class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-700 transition-colors text-sm">
@@ -295,14 +301,16 @@
 
                 <!-- Card 4: Neurological Disorders -->
                 <div class="bg-white rounded-xl p-5 shadow-sm card-hover border border-gray-100" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-11 h-11 rounded-lg bg-rose-50 flex items-center justify-center mb-3">
-                        <svg class="w-6 h-6 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                  d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3zm-4.5-3a4.5 4.5 0 009 0M9.348 3.168A3.75 3.75 0 0112 1.5a3.75 3.75 0 012.652 1.668"/>
-                        </svg>
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-9 h-9 shrink-0 rounded-lg bg-rose-50 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                      d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3zm-4.5-3a4.5 4.5 0 009 0M9.348 3.168A3.75 3.75 0 0112 1.5a3.75 3.75 0 012.652 1.668"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 leading-snug">Neurological Disorders</h3>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Neurological Disorders</h3>
-                    <p class="text-gray-600 leading-relaxed mb-3">
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">
                         Computational analysis of diabetic neuropathy, ALS, and other neurological conditions through transcriptomic profiling.
                     </p>
                     <a href="research-detail.html?area=3" class="inline-flex items-center text-rose-600 font-semibold hover:text-rose-700 transition-colors text-sm">
@@ -315,14 +323,16 @@
 
                 <!-- Card 5: Host-Pathogen Interactions -->
                 <div class="bg-white rounded-xl p-5 shadow-sm card-hover border border-gray-100" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-11 h-11 rounded-lg bg-amber-50 flex items-center justify-center mb-3">
-                        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                  d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
-                        </svg>
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-9 h-9 shrink-0 rounded-lg bg-amber-50 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                      d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 leading-snug">Host-Pathogen Interactions</h3>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Host-Pathogen Interactions</h3>
-                    <p class="text-gray-600 leading-relaxed mb-3">
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">
                         Literature mining and ontology-driven analysis of host-pathogen molecular interactions and immune response networks.
                     </p>
                     <a href="research-detail.html?area=4" class="inline-flex items-center text-amber-600 font-semibold hover:text-amber-700 transition-colors text-sm">
@@ -335,14 +345,16 @@
 
                 <!-- Card 6: Systems Pharmacology -->
                 <div class="bg-white rounded-xl p-5 shadow-sm card-hover border border-gray-100" data-aos="fade-up" data-aos-delay="500">
-                    <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-3">
-                        <svg class="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                  d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/>
-                        </svg>
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-9 h-9 shrink-0 rounded-lg bg-cyan-50 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                      d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 leading-snug">Systems Pharmacology</h3>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Systems Pharmacology</h3>
-                    <p class="text-gray-600 leading-relaxed mb-3">
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">
                         Network and cheminformatics modeling of drug-induced adverse events, polypharmacy risk, and drug repurposing.
                     </p>
                     <a href="research-detail.html?area=5" class="inline-flex items-center text-cyan-600 font-semibold hover:text-cyan-700 transition-colors text-sm">
@@ -357,11 +369,11 @@
     </section>
 
     <!-- ==================== RECENT PUBLICATIONS ==================== -->
-    <section class="py-12 lg:py-14 bg-white" x-data="recentPublications()" x-init="fetchPublications()">
+    <section class="py-8 lg:py-10 bg-white" x-data="recentPublications()" x-init="fetchPublications()">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-            <div class="text-center mb-8" data-aos="fade-up">
-                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Recent Publications</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Recent Publications</h2>
+                <p class="text-base text-gray-600 max-w-2xl mx-auto">
                     Latest peer-reviewed research from the Hur Lab
                 </p>
             </div>
@@ -429,11 +441,11 @@
     </section>
 
     <!-- ==================== FEATURED TOOLS ==================== -->
-    <section class="py-12 lg:py-14 bg-gray-50">
+    <section class="py-8 lg:py-10 bg-gray-50">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-            <div class="text-center mb-8" data-aos="fade-up">
-                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Featured Tools</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Featured Tools</h2>
+                <p class="text-base text-gray-600 max-w-2xl mx-auto">
                     Software developed by our lab for the research community
                 </p>
             </div>
