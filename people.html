@@ -44,9 +44,9 @@
   <div x-data="teamPage()" x-init="init()">
 
     <!-- Principal Investigator Section -->
-    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16" x-show="pi.name" x-cloak>
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8" x-show="pi.name" x-cloak>
       <div class="bg-white rounded-2xl shadow-lg gradient-border overflow-hidden" data-aos="fade-up">
-        <div class="flex flex-col md:flex-row gap-8 p-8 pt-10">
+        <div class="flex flex-col md:flex-row gap-6 p-6 pt-7">
           <div class="flex-shrink-0 flex justify-center md:justify-start">
             <template x-if="pi.photo">
               <img :src="pi.photo" :alt="pi.name" class="w-56 h-56 object-cover rounded-xl shadow-md">
@@ -129,23 +129,23 @@
     </section>
 
     <!-- Current Team Section -->
-    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16" x-show="current.length > 0" x-cloak>
-      <div class="flex items-center gap-3 mb-10" data-aos="fade-up">
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8" x-show="current.length > 0" x-cloak>
+      <div class="flex items-center gap-3 mb-5" data-aos="fade-up">
         <h2 class="text-3xl font-bold text-gray-900">Current Members</h2>
         <span class="inline-flex items-center justify-center px-3 py-1 bg-teal-100 text-teal-800 text-sm font-semibold rounded-full" x-text="current.length"></span>
       </div>
 
       <!-- Group by category -->
       <template x-for="group in groupedCurrent" :key="group.label">
-        <div class="mb-12" data-aos="fade-up">
-          <h3 class="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
+        <div class="mb-6" data-aos="fade-up">
+          <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center gap-2">
             <span class="w-1.5 h-6 rounded-full" :class="group.color"></span>
             <span x-text="group.label"></span>
           </h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <template x-for="member in group.members" :key="member.name">
-              <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 card-hover">
-                <div class="flex items-center gap-4 mb-3">
+              <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 card-hover">
+                <div class="flex items-center gap-3 mb-2">
                   <template x-if="member.photo">
                     <img :src="member.photo" :alt="member.name" class="w-14 h-14 rounded-full object-cover flex-shrink-0">
                   </template>
@@ -170,8 +170,8 @@
     </section>
 
     <!-- Alumni Section -->
-    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20" x-show="alumni.length > 0" x-cloak x-data="{ showAlumni: false }" data-aos="fade-up">
-      <div class="flex items-center justify-between mb-6">
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8" x-show="alumni.length > 0" x-cloak x-data="{ showAlumni: false }" data-aos="fade-up">
+      <div class="flex items-center justify-between mb-4">
         <div class="flex items-center gap-3">
           <h2 class="text-3xl font-bold text-gray-900">Alumni</h2>
           <span class="inline-flex items-center justify-center px-3 py-1 bg-gray-200 text-gray-700 text-sm font-semibold rounded-full" x-text="alumni.length"></span>
@@ -186,10 +186,10 @@
       </div>
 
       <div x-show="showAlumni" x-transition>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <template x-for="member in alumni" :key="member.name">
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-              <div class="flex items-center gap-4 mb-3">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+              <div class="flex items-center gap-3 mb-2">
                 <div class="w-14 h-14 rounded-full bg-gradient-to-br from-gray-400 to-slate-500 flex items-center justify-center text-white font-bold text-lg flex-shrink-0"
                      x-text="getInitials(member.name)"></div>
                 <div>
@@ -216,16 +216,16 @@
     </section>
 
     <!-- FAC (Current) Section -->
-    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16" x-show="fac.length > 0" x-cloak>
-      <div class="flex items-center gap-3 mb-10" data-aos="fade-up">
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8" x-show="fac.length > 0" x-cloak>
+      <div class="flex items-center gap-3 mb-5" data-aos="fade-up">
         <h2 class="text-3xl font-bold text-gray-900">Faculty Advisory Committee</h2>
         <span class="inline-flex items-center justify-center px-3 py-1 bg-purple-100 text-purple-800 text-sm font-semibold rounded-full" x-text="fac.length"></span>
       </div>
-      <p class="text-sm text-gray-500 mb-6">Dissertation committee members where Dr. Hur serves as a committee member</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <p class="text-sm text-gray-500 mb-4">Dissertation committee members where Dr. Hur serves as a committee member</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <template x-for="member in fac" :key="member.name">
-          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-            <div class="flex items-center gap-4 mb-3">
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+            <div class="flex items-center gap-3 mb-2">
               <div class="w-14 h-14 rounded-full bg-gradient-to-br from-purple-400 to-indigo-500 flex items-center justify-center text-white font-bold text-lg flex-shrink-0"
                    x-text="getInitials(member.name)"></div>
               <div>
@@ -242,8 +242,8 @@
     </section>
 
     <!-- FAC (Previous) Section -->
-    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20" x-show="facAlumni.length > 0" x-cloak x-data="{ showFacAlumni: false }" data-aos="fade-up">
-      <div class="flex items-center justify-between mb-6">
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8" x-show="facAlumni.length > 0" x-cloak x-data="{ showFacAlumni: false }" data-aos="fade-up">
+      <div class="flex items-center justify-between mb-4">
         <div class="flex items-center gap-3">
           <h2 class="text-3xl font-bold text-gray-900">Previous FAC</h2>
           <span class="inline-flex items-center justify-center px-3 py-1 bg-gray-200 text-gray-700 text-sm font-semibold rounded-full" x-text="facAlumni.length"></span>
@@ -257,10 +257,10 @@
         </button>
       </div>
       <div x-show="showFacAlumni" x-transition>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <template x-for="member in facAlumni" :key="member.name">
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-              <div class="flex items-center gap-4 mb-3">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+              <div class="flex items-center gap-3 mb-2">
                 <div class="w-14 h-14 rounded-full bg-gradient-to-br from-gray-400 to-slate-500 flex items-center justify-center text-white font-bold text-lg flex-shrink-0"
                      x-text="getInitials(member.name)"></div>
                 <div>
