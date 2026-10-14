@@ -6,6 +6,7 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - (none yet)
 
 ## Session Index (active, newest first)
+- 2026-10-14 13:32 CDT — Tools page: card images, 7:3 expanded view, Available/Beta/Coming soon labels, borders, A–Z sort; SciMiner 1.1 & 2.0; earlier same-day layout session folded in; all deployed live
 - 2026-07-09 23:57 CDT — Collaborators page reorganized (7 sections, 2-col grid, 5 hidden, 14 added w/ verified URLs); deployed live
 - 2026-04-08 CDT (code review pass 2) — CV artifact cleanup, error handling, data consistency
 - 2026-04-08 CDT (code review) — 13 bug fixes (http→https, admin panel, frontend consistency)
@@ -17,6 +18,50 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - 2026-03-14 13:23 CDT — Foundation, initial v2 build
 
 > Note: three commits between 2026-04-08 and this session were made directly on the server (admin-panel auto-parse + manual edits) and were not logged at the time — fef9c27 (CV auto-update, 2026-04-17), c0a907a (Systems Pharmacology research area + new tools + 2FA admin, 2026-05-21), d1eb197 (https:// URL restore after firewall fix, 2026-05-28). Their effects are now reflected in PROJECT_HANDOFF.md. Sessions below this note remain in their original oldest-first order (legacy tail).
+
+---
+
+## Session 2026-10-14 13:32 CDT
+- **Coding CLI used**: Claude Code CLI (Claude Opus 5.5, then Sonnet 5.5 for the close)
+
+### Phase(s) worked on
+- Content/UX refinement of the Tools & Software page (this session, 352d0464)
+- Folded in: the earlier same-day session (455f03ad) and the unlogged commits since 2026-07-09 — **reconstructed from commit messages only**, not re-verified:
+  - Gap commits: 9cb954d (Publications: 3 recent papers; rolling 6-month Recent badge), 7332751 (in-press → published citations), 3173575 (BIMD514 Zoom auto-redirect page), 6178001 + 1553737 (MoAI ADK template sync; .gitignore project rules restored)
+  - Session 455f03ad: a1ec5fd (server CV auto-update) merged as 297e82b; 09d9cbc (hide grant dollar amounts, compact banners); a059e3b (web.xml blocks dot-directories / agent tooling); e45daaf (People/Positions/Collaborators spacing); ea32045 (Home hero ~10% smaller); 9ee94da (publication sort ties, CV year parsing, Home topic links); fa9f318 (Research collapsible Previous Grants); 464f580 (topic pages two-column, tighter Tools cards, long-citation wrap)
+
+### Concrete changes implemented (this session)
+1. **Tool images** (5428e47, 7a0693c): 18 images in `Images/tools/<slug>/` (≤1200 px JPEG q80, ~1.6 MB total, lazy-loaded); `images: [{src, caption}]` per tool in `data/tools.json`. Collapsed cards: 120 px preview strip (`object-cover object-top`); tools without images get a gradient placeholder. Expanded card: 7:3 flex split (details left, image column `md:w-[30%]` right, each image opens full size). Sources: live-site screenshots, public GitHub README figures, PubChemSR app screenshots and ChemFuse architecture figure from the private repos (user approved), scGEN Figure 1 from the published paper.
+2. **PubChemSR / ChemFuse links** (7a0693c): both GitHub repos are private (unauthenticated `curl` → 404). PubChemSR now links to SourceForge (`urlLabel: "SourceForge"`), GitHub removed. ChemFuse links removed. New optional fields `urlLabel` (button text) and `notice` (gray badge).
+3. **SciMiner** (66be5d2): card renamed "SciMiner 1.1 & 2.0"; `updated` 2026-09-15 = latest code commit across the server's `SciMiner1.1/` (2026-08-23) and `SciMiner2.0/` (2026-09-15) apps.
+4. **Status labels** (b3b5c66): "Active / In Development" replaced by visitor-access labels **Available / Beta / Coming soon** (`status`: available | beta | coming-soon), defined once in a `statuses` map in `tools.html` that also renders a one-line legend under the filter buttons. richStudio = beta, ChemFuse = coming-soon, all others available; PubChemSR keeps Available + `notice: "v2.0 coming soon"`.
+5. **Borders + order** (c6ccbe2): card outline `border-gray-200`, image divider `border-gray-300`; tools sorted case-insensitively by name at load (`localeCompare`, sensitivity base), so JSON order no longer matters.
+
+### Files touched
+- `tools.html`, `data/tools.json`, `Images/tools/**` (new); `PROJECT_HANDOFF.md`, `PROJECT_LOG.md`
+- `css/custom.css` deliberately NOT changed (`gradient-border` is shared with `people.html`)
+
+### Key decisions and rationale
+- Status labels defined by what a visitor can do (user decision after review showed "In Development" mixed private, beta and published tools).
+- ChemFuse workflow figure (fig2) dropped: its SVG rendered with overlapping labels in the browser.
+- Sorting done in the page, not the JSON, so new tools land in place automatically.
+
+### Problems and resolutions
+- Port 8765 held by an unrelated `uvicorn` → local test server moved to 879x ports.
+- Playwright screenshots can only be written under the project root (`.playwright-mcp/`) — temp images saved there and deleted after review.
+- No SVG converter installed → SVGs rendered via the browser and screenshotted.
+- `pkill -f "http.server 8791"` matched its own shell (exit 144) → use the bracket form `[h]ttp.server`.
+- A Python one-liner `open(f,'w').write(open(f).read()…)` truncated `MEMORY.md` before reading it → rewritten in full.
+
+### Completed / resolved this session
+- Tools-card images (the task carried over from 455f03ad) — Completed.
+- Private-repo 404 buttons (PubChemSR, ChemFuse) — Resolved.
+- scGEN "no images" — Resolved (paper Figure 1).
+
+### Verification performed
+- Playwright on a local server at 1366 px and 390 px: all 18 images load (`naturalWidth` > 0), 0 page errors, expanded image column = 353 px of a 1216 px card, label + color correct on all 13 cards, alphabetical order correct (also within the R Package filter), PubChemSR note fits on one line.
+- Live: `curl` 200 for `tools.html`, `data/tools.json` and sample images; live JSON shows 18 images / 13 tools, 11 available / 1 beta / 1 coming-soon, "SciMiner 1.1 & 2.0". Server = GitHub = c6ccbe2 after each ff-only pull; server's uncommitted `team.json` / CV PDF untouched.
+- Not run: the 90-test Playwright E2E suite.
 
 ---
 

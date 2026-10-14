@@ -414,3 +414,6 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# No-paste resume prompt (machine-local, per-session)
+/NEXT_SESSION.md
