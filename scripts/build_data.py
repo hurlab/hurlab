@@ -33,6 +33,9 @@ import sys
 from datetime import date
 from pathlib import Path
 
+from cvlib import (authorship, cv_paragraphs, merge_supplements, no_em_dash, norm,
+                   parse_cv_publications, parse_grants, ym)
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 OUT_PUBS = DATA / "publications.json"
@@ -85,17 +88,6 @@ TITLE_RULES = [
 ]
 AI_RULE = dict(TITLE_RULES)[AI]
 
-# CV grant subsections; None = never published (pending proposals)
-GRANT_SECTIONS = {
-    "Current - External": ("external", "active"),
-    "Current - Internal": ("internal", "active"),
-    "Completed - External": ("external", "completed"),
-    "Completed - Internal": ("internal", "completed"),
-    "Pending - External": None,
-    "Pending - Internal": None,
-}
-GRANT_STOP = {"Academic Consultant role", "Paid Consulting Activity", "Computational Tools and Databases"}
-
 report = []  # lines for the end-of-run review list
 
 
@@ -113,10 +105,6 @@ def clean(value):
     if text in ("", "None", "nan", "NaN", "-"):
         return None
     return no_em_dash(text)
-
-
-def no_em_dash(text):
-    return text.replace(" — ", ", ").replace("—", "-") if text else text
 
 
 # ---------------------------------------------------------------- freshness check
@@ -156,33 +144,6 @@ def classify(title, folder):
     return hits[0][0], "title", detail
 
 
-def norm(text):
-    return re.sub(r"[^a-z0-9]", "", (text or "").lower())
-
-
-def parse_cv_publications(paras):
-    """Numbered entries of the CV's Publications section, with their subsection heading.
-    Manuscripts under review are skipped: they never reach the public site."""
-    entries, section, started = [], None, False
-    for text, numbered in paras:
-        t = text.strip()
-        if t == "Publications":
-            started = True
-            continue
-        if not started or not t:
-            continue
-        if t == "Presentations":
-            break
-        if not numbered:
-            section = t
-            continue
-        if section and section.startswith("Manuscripts currently"):
-            continue
-        entries.append({"section": section or "", "text": no_em_dash(t), "used": False,
-                        "peerReviewed": "– Peer-reviewed" in (section or "") or "- Peer-reviewed" in (section or "")})
-    return entries
-
-
 def match_cv_entry(entries, pmid, doi, title, is_preprint):
     """The CV entry for a tracker row: by PMID, then DOI, then title text. A title shared by a
     preprint and its published version is resolved by the CV subsection (Preprint or not)."""
@@ -204,22 +165,6 @@ def match_cv_entry(entries, pmid, doi, title, is_preprint):
             hits[0]["used"] = True
             return hits[0]
     return None
-
-
-def authorship(text, category):
-    """first | corresponding | coauthor from the CV marks (* equal contribution, $ corresponding).
-    First = Hur J listed first, or Hur J* with every preceding author also starred.
-    Corresponding = Hur J$ when not first. Left out (None): edited books, and records whose byline
-    does not name Hur J (group authorship as a challenge participant)."""
-    if category == "Book":
-        return None
-    m = re.search(r"Hur J([*$]*)(?=[\s,.;]|$)", text or "")
-    if not m:
-        return None
-    before = [t.strip() for t in re.split(r",|\band\b", text[:m.start()]) if t.strip()]
-    if not before or ("*" in m.group(1) and all("*" in t for t in before)):
-        return "first"
-    return "corresponding" if "$" in m.group(1) else "coauthor"
 
 
 def build_publications(rows, area_titles, overrides, cv_entries):
@@ -307,114 +252,6 @@ def pick_highlights(pubs, area_titles, overrides):
 
 
 # ---------------------------------------------------------------- CV
-
-def cv_paragraphs(path):
-    """Yield (text, numbered) for every body paragraph, in document order."""
-    import docx
-    from docx.oxml.ns import qn
-    from docx.text.paragraph import Paragraph
-    doc = docx.Document(path)
-    for el in doc.element.body.iterchildren():
-        if el.tag.endswith("}p"):
-            yield Paragraph(el, doc).text, el.find(".//" + qn("w:numPr")) is not None
-
-
-MONTHS = {m: i for i, m in enumerate(
-    ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"], 1)}
-
-
-def ym(text):
-    """'7/1/2022' | '10/2015' | 'Jan. 2015' | '2016' -> 'YYYY-MM' (or None)."""
-    text = text.strip().rstrip(".")
-    m = re.match(r"(\d{1,2})/(?:\d{1,2}/)?(\d{4})$", text)
-    if m:
-        return f"{m.group(2)}-{int(m.group(1)):02d}"
-    m = re.match(r"([A-Za-z]{3})[a-z]*\.?\s*(\d{4})$", text)
-    if m and m.group(1).lower() in MONTHS:
-        return f"{m.group(2)}-{MONTHS[m.group(1).lower()]:02d}"
-    m = re.match(r"(\d{4})$", text)
-    return f"{m.group(1)}-01" if m else None
-
-
-def parse_grants(paras):
-    records, section, current, started = [], None, None, False
-    for text, numbered in paras:
-        t = text.strip()
-        if t == "Grant":
-            started = True
-            continue
-        if not started or not t:
-            continue
-        if t in GRANT_STOP:
-            break
-        if t in GRANT_SECTIONS:
-            section, current = t, None
-            continue
-        if section is None or GRANT_SECTIONS[section] is None:
-            continue
-        if numbered or current is None:
-            current = {"section": section, "raw": t}
-            records.append(current)
-        else:
-            current["raw"] += "\n" + t
-    return [g for g in (parse_grant(r) for r in records) if g]
-
-
-def parse_grant(rec):
-    raw = re.sub(r"\s+(Note|Title|Role):", r"\n\1:", rec["raw"])
-    kind, status = GRANT_SECTIONS[rec["section"]]
-    header = raw.split("\nRole:")[0].split("\n")[0]
-    header = re.sub(r"\(submitted[^)]*\)", "", header)
-    pis = re.search(r"\((?:MPIs?|PIs?):\s*([^)]*)\)", header)
-    period = re.search(r"\((\d{1,2}/(?:\d{1,2}/)?\d{4})\s*-\s*(\d{1,2}/(?:\d{1,2}/)?\d{4})[^)]*\)", raw)
-    role = re.search(r"Role:\s*([^\t\n]+?)\s*(?:\t|Total:|$)", raw, re.M)
-    title = re.search(r"Title:\s*(.+)", raw)
-    funder = re.sub(r"\([^)]*\)", "", header)
-    funder = re.sub(r"\s+", " ", funder.replace("\t", " ")).strip(" ,")
-    g = {
-        "funder": no_em_dash(funder),
-        "pis": no_em_dash(pis.group(1).strip()) if pis else "",
-        "role": no_em_dash(role.group(1).strip()) if role else "",
-        "title": no_em_dash(title.group(1).strip().rstrip(". ")) if title else "",
-        "period": f"{period.group(1)}-{period.group(2)}" if period else "",
-        "start": ym(period.group(1)) if period else None,
-        "end": ym(period.group(2)) if period else None,
-        "type": kind,
-        "status": status,
-        "note": "",
-    }
-    if not (g["title"] and g["start"] and g["end"] and g["role"]):
-        note(f"GRANT INCOMPLETE ({rec['section']}): {g['funder']!r} title={g['title']!r} "
-             f"period={g['period']!r} role={g['role']!r}")
-    if kind == "internal" and not g["funder"].startswith("UND"):
-        g["type"] = "external"
-        note(f"GRANT TYPE: CV lists {g['funder']!r} under {rec['section']}; the funder is not UND, "
-             f"so it is counted as external")
-    if g["end"]:
-        by_date = "active" if g["end"] >= TODAY.strftime("%Y-%m") else "completed"
-        if by_date != status:
-            note(f"GRANT STATUS: CV lists {g['title']!r} under {rec['section']} but its end date "
-                 f"{g['end']} reads as {by_date}; kept the CV section")
-    return g
-
-
-def merge_supplements(grants):
-    """Fold 'Administrative Supplement: <parent title>' entries into their parent award as a note."""
-    out = []
-    for g in grants:
-        if g["title"].lower().startswith("administrative supplement"):
-            core = re.search(r"[A-Z]\d{2}[A-Z]{2}\d{6}", g["funder"])
-            parent = next((p for p in grants if p is not g and core and core.group(0) in p["funder"]
-                           and not p["title"].lower().startswith("administrative supplement")), None)
-            if parent:
-                years = f"{g['start'][:4]}-{g['end'][:4]}" if g["start"] and g["end"] else ""
-                parent["note"] = f"Includes {years} administrative supplement".replace("  ", " ")
-                note(f"MERGED supplement {g['funder']!r} into {parent['funder']!r}")
-                continue
-            note(f"SUPPLEMENT WITHOUT PARENT kept separate: {g['funder']!r}")
-        out.append(g)
-    return out
-
 
 def parse_profile(paras):
     """Education + appointments + professional positions -> entries with start/end, and research interests."""
@@ -565,7 +402,9 @@ def main():
 
     paras = list(cv_paragraphs(args.cv))
     pubs = build_publications(load_tracker(args.tracker), area_titles, overrides, parse_cv_publications(paras))
-    grants = merge_supplements(parse_grants(paras))
+    grants = merge_supplements(parse_grants(paras, note, TODAY), note)
+    for g in grants:
+        g.pop("cvSection", None)
     # Keep hand-added links (e.g. NIH RePORTER) from the previous file, matched by title
     old_urls = {g.get("title", "").lower(): g["url"] for k in ("current", "previous")
                 for g in old_grants.get(k, []) if g.get("url")}
