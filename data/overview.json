@@ -1,0 +1,187 @@
+{
+  "researchInterests": [
+    "Bioinformatics and systems biology",
+    "Ontology-based literature mining",
+    "Artificial intelligence and machine learning in biomedical research",
+    "Neurological disorders, including diabetic neuropathy and ALS"
+  ],
+  "eras": [
+    {
+      "label": "M.S., Indiana University",
+      "start": "2004-01",
+      "end": "2006-12",
+      "pubYears": [
+        2004,
+        2005
+      ],
+      "publications": 1,
+      "themes": [
+        "Ontology-Based Knowledge Systems"
+      ],
+      "areaCounts": {
+        "Ontology-Based Knowledge Systems": 1
+      }
+    },
+    {
+      "label": "Ph.D., University of Michigan",
+      "start": "2006-01",
+      "end": "2010-12",
+      "pubYears": [
+        2006,
+        2009
+      ],
+      "publications": 3,
+      "themes": [
+        "Ontology-Based Knowledge Systems",
+        "Population and Clinical Health"
+      ],
+      "areaCounts": {
+        "Ontology-Based Knowledge Systems": 2,
+        "Population and Clinical Health": 1
+      }
+    },
+    {
+      "label": "Postdoc, University of Michigan",
+      "start": "2010-01",
+      "end": "2015-12",
+      "pubYears": [
+        2010,
+        2014
+      ],
+      "publications": 21,
+      "themes": [
+        "Neurological Disorders",
+        "Bioinformatics and Systems Biology",
+        "Ontology-Based Knowledge Systems"
+      ],
+      "areaCounts": {
+        "Systems Pharmacology": 2,
+        "Bioinformatics and Systems Biology": 4,
+        "Neurological Disorders": 9,
+        "Ontology-Based Knowledge Systems": 4,
+        "Population and Clinical Health": 2
+      }
+    },
+    {
+      "label": "Assistant Professor, UND",
+      "start": "2015-01",
+      "end": "2021-06",
+      "pubYears": [
+        2015,
+        2020
+      ],
+      "publications": 63,
+      "themes": [
+        "Neurological Disorders",
+        "Ontology-Based Knowledge Systems",
+        "Systems Pharmacology"
+      ],
+      "areaCounts": {
+        "Ontology-Based Knowledge Systems": 17,
+        "Host-Pathogen Interactions": 3,
+        "Neurological Disorders": 18,
+        "Population and Clinical Health": 9,
+        "Systems Pharmacology": 13,
+        "Artificial Intelligence and Machine Learning": 3
+      }
+    },
+    {
+      "label": "Associate Professor, UND",
+      "start": "2021-07",
+      "end": null,
+      "pubYears": [
+        2021,
+        2026
+      ],
+      "publications": 94,
+      "themes": [
+        "Neurological Disorders",
+        "Host-Pathogen Interactions",
+        "Artificial Intelligence and Machine Learning"
+      ],
+      "areaCounts": {
+        "Host-Pathogen Interactions": 23,
+        "Ontology-Based Knowledge Systems": 9,
+        "Artificial Intelligence and Machine Learning": 13,
+        "Bioinformatics and Systems Biology": 6,
+        "Systems Pharmacology": 5,
+        "Neurological Disorders": 31,
+        "Population and Clinical Health": 7
+      }
+    }
+  ],
+  "milestones": [
+    {
+      "start": "2018-03",
+      "end": null,
+      "what": "Adjunct Research Assistant Professor, University of Michigan, Ann Arbor"
+    },
+    {
+      "start": "2013-02",
+      "end": "2013-04",
+      "what": "ORISE Visiting Research Fellow, US Food and Drug Administration (FDA)"
+    },
+    {
+      "start": "2017-04",
+      "end": null,
+      "what": "Research Without Compensation (WOC), U.S. Department of Veterans Affairs, Fargo Hospital"
+    },
+    {
+      "start": "2021-08",
+      "end": null,
+      "what": "Director, UND Computational Data Analysis Core (CDAC)"
+    },
+    {
+      "start": "2024-08",
+      "end": null,
+      "what": "Lead, UND Research Design, Compliance, and Data Management Core (RDCD)"
+    }
+  ],
+  "areas": [
+    "Bioinformatics and Systems Biology",
+    "Ontology-Based Knowledge Systems",
+    "Artificial Intelligence and Machine Learning",
+    "Neurological Disorders",
+    "Host-Pathogen Interactions",
+    "Systems Pharmacology",
+    "Population and Clinical Health"
+  ],
+  "highlights": {
+    "Bioinformatics and Systems Biology": [
+      "134",
+      "82",
+      "133"
+    ],
+    "Ontology-Based Knowledge Systems": [
+      "46",
+      "39",
+      "31"
+    ],
+    "Artificial Intelligence and Machine Learning": [
+      "131",
+      "111",
+      "62"
+    ],
+    "Neurological Disorders": [
+      "116",
+      "109",
+      "101"
+    ],
+    "Host-Pathogen Interactions": [
+      "114",
+      "91",
+      "120"
+    ],
+    "Systems Pharmacology": [
+      "130",
+      "102",
+      "79"
+    ],
+    "Population and Clinical Health": [
+      "118",
+      "68",
+      "44"
+    ]
+  },
+  "lastUpdated": "2026-10-30"
+}

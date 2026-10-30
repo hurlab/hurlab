@@ -4,7 +4,7 @@ export default defineConfig({
   timeout: 30000,
   expect: { timeout: 10000 },
   use: {
-    baseURL: 'https://hurlab.med.und.edu/hurlab/',
+    baseURL: process.env.BASE_URL || 'https://hurlab.med.und.edu/hurlab/',
     ignoreHTTPSErrors: true,
   },
   projects: [

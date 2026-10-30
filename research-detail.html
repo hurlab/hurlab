@@ -59,8 +59,14 @@
 
             this.publications = pubData.peerReviewed || [];
 
-            // Filter related publications by keywords
-            if (this.area.details && this.area.details.keywords) {
+            // Publications whose primary area (scripts/build_data.py) is this area;
+            // older data without an area field falls back to keyword matching
+            if (this.publications.some(p => Number.isInteger(p.areaIndex))) {
+              this.relatedPubs = this.publications
+                .filter(p => p.areaIndex === this.areaIndex)
+                .sort((a, b) => ((b.year || 0) - (a.year || 0)) || ((b.number || 0) - (a.number || 0)))
+                .slice(0, 20);
+            } else if (this.area.details && this.area.details.keywords) {
               const keywords = this.area.details.keywords.map(k => k.toLowerCase());
               this.relatedPubs = this.publications
                 .filter(pub => {
@@ -122,6 +128,13 @@
         iconSvg() {
           if (!this.area) return '';
           const icons = {
+            globe: `<svg class="w-12 h-12" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="24" cy="24" r="18" fill="currentColor" opacity="0.12"/>
+              <circle cx="24" cy="24" r="18"/>
+              <ellipse cx="24" cy="24" rx="8" ry="18"/>
+              <line x1="6" y1="24" x2="42" y2="24"/>
+              <path d="M9 15H39M9 33H39"/>
+            </svg>`,
             dna: `<svg class="w-12 h-12" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
               <path d="M16 4C16 4 12 12 12 16C12 20 16 24 16 24C16 24 20 20 20 16C20 12 16 4 16 4Z" fill="currentColor" opacity="0.2"/>
               <path d="M32 4C32 4 28 12 28 16C28 20 32 24 32 24C32 24 36 20 36 16C36 12 32 4 32 4Z" fill="currentColor" opacity="0.2"/>

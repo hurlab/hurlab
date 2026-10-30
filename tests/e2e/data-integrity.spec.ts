@@ -32,12 +32,30 @@ test.describe('Data integrity — JSON files', () => {
     expect(Array.isArray(data.current)).toBe(true);
   });
 
-  test('research.json has areas array with 5 items', async ({ request }) => {
+  test('public JSON carries no dollar amounts, pending proposals, or manuscripts under review', async ({ request }) => {
+    const grants = await (await request.get('data/grants.json')).text();
+    expect(grants).not.toMatch(/\$\s?\d/);
+    expect(JSON.parse(grants).pending).toBeUndefined();
+    expect(grants.toLowerCase()).not.toContain('submitted');
+    const pubs = await (await request.get('data/publications.json')).json();
+    expect(pubs.underReview).toBeUndefined();
+    expect(pubs.inPreparation).toBeUndefined();
+  });
+
+  test('overview.json has career eras and research interests', async ({ request }) => {
+    const response = await request.get('data/overview.json');
+    expect(response.status()).toBe(200);
+    const data = await response.json();
+    expect(data.eras.length).toBeGreaterThan(2);
+    expect(data.researchInterests.length).toBeGreaterThan(0);
+  });
+
+  test('research.json has areas array with 7 items', async ({ request }) => {
     const response = await request.get('data/research.json');
     expect(response.status()).toBe(200);
     const data = await response.json();
     expect(Array.isArray(data.areas)).toBe(true);
-    expect(data.areas.length).toBe(5);
+    expect(data.areas.length).toBe(7);
   });
 
   test('collaborators.json has categories array', async ({ request }) => {

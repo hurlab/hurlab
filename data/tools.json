@@ -19,7 +19,7 @@
   },
   {
     "name": "PubChemSR",
-    "description": "PubChem Search Refined — Python cheminformatics toolkit with CLI, web dashboard, and AI-augmented ADMET prediction.",
+    "description": "PubChem Search Refined: Python cheminformatics toolkit with CLI, web dashboard, and AI-augmented ADMET prediction.",
     "version": "2.x",
     "updated": "2026-05-09",
     "category": "Python",
@@ -57,7 +57,7 @@
     "language": "Python / R",
     "images": [{"src": "Images/tools/chemfuse/architecture.jpg", "caption": "ChemFuse system architecture"}],
     "details": {
-      "longDescription": "ChemFuse unifies compound search, ADMET prediction, and cross-database identifier mapping into a single coherent API. A single function call searches PubChem, ChEMBL, UniChem, BindingDB, Open Targets, and SureChEMBL in parallel, merges the results by structure, and returns a unified compound collection. From there, ChemFuse computes 200+ molecular descriptors, applies drug-likeness filters, predicts ADMET properties via ML models, clusters compounds in chemical space, and exports the merged dataset — all from Python, R, the command line, or a Streamlit dashboard.",
+      "longDescription": "ChemFuse unifies compound search, ADMET prediction, and cross-database identifier mapping into a single coherent API. A single function call searches PubChem, ChEMBL, UniChem, BindingDB, Open Targets, and SureChEMBL in parallel, merges the results by structure, and returns a unified compound collection. From there, ChemFuse computes 200+ molecular descriptors, applies drug-likeness filters, predicts ADMET properties via ML models, clusters compounds in chemical space, and exports the merged dataset, all from Python, R, the command line, or a Streamlit dashboard.",
       "features": [
         "Parallel async queries across 6 public chemistry databases",
         "No API keys required for any integrated source",
@@ -218,7 +218,7 @@
   },
   {
     "name": "VIOLIN",
-    "description": "Vaccine Investigation and Online Information Network — a comprehensive vaccine knowledgebase integrating AI-driven literature analysis with ontology annotation.",
+    "description": "Vaccine Investigation and Online Information Network, a comprehensive vaccine knowledgebase integrating AI-driven literature analysis with ontology annotation.",
     "version": "2.0",
     "updated": "2025-01-01",
     "category": "Knowledgebase",

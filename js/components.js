@@ -12,6 +12,7 @@ function injectNav() {
   const navLinks = [
     { href: 'index.html', label: 'Home' },
     { href: 'research.html', label: 'Research' },
+    { href: 'research-overview.html', label: 'Overview' },
     { href: 'publications.html', label: 'Publications' },
     { href: 'tools.html', label: 'Tools' },
     { href: 'people.html', label: 'People' },
@@ -130,6 +131,7 @@ function injectFooter() {
           <h3 class="text-white font-semibold text-lg mb-4">Quick Links</h3>
           <ul class="space-y-2 text-sm">
             <li><a href="research.html" class="hover:text-primary-400 transition-colors">Research</a></li>
+            <li><a href="research-overview.html" class="hover:text-primary-400 transition-colors">Research at a Glance</a></li>
             <li><a href="publications.html" class="hover:text-primary-400 transition-colors">Publications</a></li>
             <li><a href="tools.html" class="hover:text-primary-400 transition-colors">Tools & Software</a></li>
             <li><a href="positions.html" class="hover:text-primary-400 transition-colors">Open Positions</a></li>

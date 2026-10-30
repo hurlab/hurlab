@@ -41,8 +41,12 @@
     <!-- Local Styles -->
     <link rel="stylesheet" href="css/custom.css">
 
+    <!-- Static copies (scripts/build_data.py) show only without JavaScript; the live Alpine views replace them -->
+    <script>document.documentElement.classList.add('js');</script>
     <style>
         [x-cloak] { display: none !important; }
+        .js .nojs-fallback { display: none !important; }
+        html:not(.js) .js-only { display: none !important; }
 
         .gradient-text {
             background: linear-gradient(135deg, #14B8A6 0%, #818CF8 100%);
@@ -207,15 +211,15 @@
                  ">
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 max-w-2xl">
                     <div class="text-center sm:text-left">
-                        <div class="text-3xl sm:text-4xl font-bold text-white stat-counter" x-text="grants">...</div>
+                        <div class="text-3xl sm:text-4xl font-bold text-white stat-counter" x-text="grants"><!-- BUILD:active-grants -->6<!-- /BUILD:active-grants --></div>
                         <div class="text-sm text-teal-300/70 mt-1 font-medium">Active Grants</div>
                     </div>
                     <div class="text-center sm:text-left">
-                        <div class="text-3xl sm:text-4xl font-bold text-white stat-counter" x-text="tools">...</div>
+                        <div class="text-3xl sm:text-4xl font-bold text-white stat-counter" x-text="tools"><!-- BUILD:tool-count -->20<!-- /BUILD:tool-count --></div>
                         <div class="text-sm text-teal-300/70 mt-1 font-medium">Software Tools</div>
                     </div>
                     <div class="text-center sm:text-left col-span-2 sm:col-span-1">
-                        <div class="text-3xl sm:text-4xl font-bold text-white stat-counter" x-text="pubs">...</div>
+                        <div class="text-3xl sm:text-4xl font-bold text-white stat-counter" x-text="pubs"><!-- BUILD:publication-count -->182<!-- /BUILD:publication-count --></div>
                         <div class="text-sm text-teal-300/70 mt-1 font-medium">Publications</div>
                     </div>
                 </div>
@@ -233,7 +237,8 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <!-- 4 x 2 on desktop (7 areas + the overview card), 2 columns on tablet, 1 on phone -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 <!-- Card 1: Bioinformatics & Systems Biology -->
                 <div class="bg-white rounded-xl p-5 shadow-sm card-hover border border-gray-100" data-aos="fade-up" data-aos-delay="0">
                     <div class="flex items-center gap-3 mb-2">
@@ -365,6 +370,52 @@
                         </svg>
                     </a>
                 </div>
+
+                <!-- Card 7: Population & Clinical Health -->
+                <div class="bg-white rounded-xl p-5 shadow-sm card-hover border border-gray-100" data-aos="fade-up" data-aos-delay="600">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-9 h-9 shrink-0 rounded-lg bg-lime-50 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-lime-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                      d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 leading-snug">Population &amp; Clinical Health</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">
+                        Epidemiological and clinical studies of pregnancy outcomes, sleep, metabolic syndrome, biological aging, and long COVID using national surveys and cohorts.
+                    </p>
+                    <a href="research-detail.html?area=6" class="inline-flex items-center text-lime-700 font-semibold hover:text-lime-800 transition-colors text-sm">
+                        Learn more
+                        <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Card 8: link to the research overview page -->
+                <a href="research-overview.html" class="group rounded-xl p-5 shadow-sm card-hover flex flex-col justify-between text-white bg-gradient-to-br from-teal-600 to-indigo-700" data-aos="fade-up" data-aos-delay="700">
+                    <div>
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-9 h-9 shrink-0 rounded-lg bg-white/15 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                          d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold leading-snug">Research at a Glance</h3>
+                        </div>
+                        <p class="text-sm text-white/85 leading-relaxed mb-2">
+                            Publications by year and area, papers led by Dr. Hur, career stages, and funded grants in one view.
+                        </p>
+                    </div>
+                    <span class="inline-flex items-center font-semibold text-sm">
+                        See the overview
+                        <svg class="ml-1 w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
             </div>
         </div>
     </section>
@@ -379,8 +430,18 @@
                 </p>
             </div>
 
+            <!-- BUILD:recent-publications -->
+            <ol class="nojs-fallback max-w-3xl mx-auto list-decimal pl-6 space-y-2">
+                    <li class="text-sm text-gray-700">Huang F*, Hu D*, Dai Y*, Geng A, Guan R, Quan H, McGregor BA, Wang Z, Khan N, Zhang H, Zhang J$, Xia M, Gu X, Che D, <strong>Hur J</strong>$, Cui X, and Guo K$. scGEN: Leveraging an Adaptive Weighting Strategy for Challenging Cell Clustering in Single-Cell RNA-seq. Advanced Science. 2026 Oct 11:e77746. doi: 10.1002/advs.77746. Online ahead of print. [PMID: 42860543] [PMCID: PMC13655258] <a class="text-indigo-700 underline" href="https://pubmed.ncbi.nlm.nih.gov/42860543/">PubMed</a></li>
+                    <li class="text-sm text-gray-700">Cheng C, McGregor BA, <strong>Hur J</strong>, and Combs CK. Bidirectional phenotypic transition in macrophages influences triple-negative breast cancer cell immune evasive patterns and response to chemotherapies in a co-culture spheroid model. PLOS One. 2026 Aug;21(8):e0356198. [PMID: 42599981] <a class="text-indigo-700 underline" href="https://pubmed.ncbi.nlm.nih.gov/42599981/">PubMed</a></li>
+                    <li class="text-sm text-gray-700">Zheng J, Lin AY, Huffman A, Masci AM, Racz R, Wu G, Roan K, Ong E, Sarntivijai S, Hu J, Asfaw E, Kahn H, Li X, Zhang X, Monickaraj J, Kosar N, Li J, Manuel W, Abeysinghe R, Rehana H, Bansal B, Pan Y, Guo J, He V, Song J, Seleznev AI, Hur K, He A, Davydov A, Yang Q, Ostropolets A, Vita R, Peters B, Ruttenberg A, Diehl AD, Hoyt CT, Roncaglia P, Huntley RP, Scheuermann RH, Courtot M, Todd T, Sayers S, Chen F, Li X, Yeh FY, Xiang Z, Ozgur A, Whetzel PL, Musen MA, Mungall CJ, Leitner WW, Cui L, Colby LA, Mobley HLT, Athey BD, Omenn GS, Cowell LG, Tao C, <strong>Hur J</strong>, Smith B, and He Y. VO: The Vaccine Ontology. Scientific Data. 2026 Apr 30;13(1). [PMID: 42062309] <a class="text-indigo-700 underline" href="https://pubmed.ncbi.nlm.nih.gov/42062309/">PubMed</a></li>
+                    <li class="text-sm text-gray-700">Monickaraj J*, Rehana H*, Bernardi A, Zheng Y, Lin T, Liu L, Madireddi A, Yeh L, Zheng J$, <strong>Hur J</strong>$, and He Y$. Vaxjo 2.0: An Ontology- and Large Language Model-Powered Knowledge Base of Vaccine Adjuvants and Mechanisms. Frontiers in Cellular and Infection Microbiology. 2026;16:1763384. [PMID: 42328180] <a class="text-indigo-700 underline" href="https://pubmed.ncbi.nlm.nih.gov/42328180/">PubMed</a></li>
+                    <li class="text-sm text-gray-700">He A*, Hur KN*, Li X, Zheng J, <strong>Hur J</strong>$, and He Y$. Updated Profiling of COVID-19 Vaccine Adverse Events Using VAERS Case Reports. Frontiers in Pharmacology – Pharmacoepidemiology. 2026 Mar 26:17:1741967. [PMID: 41971073] <a class="text-indigo-700 underline" href="https://pubmed.ncbi.nlm.nih.gov/41971073/">PubMed</a></li>
+            </ol>
+            <!-- /BUILD:recent-publications -->
+
             <!-- Loading Spinner -->
-            <div x-show="loading" class="flex justify-center items-center py-20">
+            <div x-show="loading" class="js-only flex justify-center items-center py-20">
                 <div class="relative">
                     <div class="w-12 h-12 border-4 border-teal-200 rounded-full animate-spin border-t-teal-600"></div>
                     <span class="sr-only">Loading publications...</span>
@@ -510,6 +571,16 @@
                 <p class="text-gray-500">Current research funding</p>
             </div>
 
+            <!-- BUILD:funding -->
+            <ul class="nojs-fallback max-w-3xl mx-auto list-disc pl-6 space-y-1">
+                    <li class="text-sm text-gray-700"><strong>NIH/NIDDK R01 2R01DK130913-05</strong>: Schwann Cell Senescence and the Secretome Provide a Unifying Mechanism for the Onset and Progression of Diabetic Neuropathy (MPI, 2026-2031)</li>
+                    <li class="text-sm text-gray-700"><strong>NIH/NIDDK R01 1R01DK149012-01</strong>: Lipids and inflammation in peripheral neuropathy and metabolic syndrome (Co-Investigator (Site PI), 2026-2028)</li>
+                    <li class="text-sm text-gray-700"><strong>NIH/NIGMS P30 1P30GM165332-01</strong>: Center for Excellence in Host Pathogen Interactions (HPI COBRE) Phase 3 (Core Director, 2026-2031)</li>
+                    <li class="text-sm text-gray-700"><strong>ARPA-H</strong>: Decentralized Diabetes Data Platform for Senior Health Management (Co-Investigator, 2025-2028)</li>
+                    <li class="text-sm text-gray-700"><strong>NIH/NIGMS P20GM155890 CTR</strong>: Translational Science Engaging North Dakota (TRANSCEND) (Core Lead, 2024-2029)</li>
+                    <li class="text-sm text-gray-700"><strong>NIH/NIAID U24 U24AI171008</strong>: VIOLIN 2.0: Vaccine Information and Ontology LInked kNowledgebase (MPI, 2022-2027)</li>
+            </ul>
+            <!-- /BUILD:funding -->
             <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="100">
                 <template x-for="(grant, i) in grants" :key="i">
                     <a :href="grant.url || '#'" :target="grant.url ? '_blank' : ''" rel="noopener"
@@ -579,9 +650,10 @@
                         const res = await fetch('data/publications.json');
                         const data = await res.json();
                         if (data.peerReviewed && data.peerReviewed.length > 0) {
-                            // Newest published papers (no preprints); CV number breaks ties within a year
+                            // Newest research papers (Article/Review; no preprints, books or editorials);
+                            // tracker number breaks ties within a year. Same rule as scripts/build_data.py.
                             const sorted = data.peerReviewed
-                                .filter(p => !p.isPreprint)
+                                .filter(p => p.category ? ['Article', 'Review'].includes(p.category) : !p.isPreprint)
                                 .sort((a, b) => ((b.year || 0) - (a.year || 0)) || ((b.number || 0) - (a.number || 0)))
                                 .slice(0, count);
                             this.publications = sorted.map(pub => ({

@@ -17,8 +17,8 @@ test.describe('Publications page', () => {
     await expect(countSpan).toHaveText(/\d+/, { timeout: 15000 });
   });
 
-  test('tab switching works — peer-reviewed tab is active by default', async ({ page }) => {
-    const peerReviewedBtn = page.locator('button').filter({ hasText: 'Peer-Reviewed' }).first();
+  test('tab switching works: Publications tab is active by default', async ({ page }) => {
+    const peerReviewedBtn = page.locator('button').filter({ hasText: /^\s*Publications\s*$/ }).first();
     await expect(peerReviewedBtn).toBeVisible({ timeout: 15000 });
     await expect(peerReviewedBtn).toHaveClass(/bg-teal-600/);
   });
@@ -27,7 +27,7 @@ test.describe('Publications page', () => {
     await expect(page.locator('.pub-card').first()).toBeVisible({ timeout: 15000 });
 
     // Click a different tab
-    const tabs = page.locator('button').filter({ hasText: /Under Review|Preprints|Book Chapters|Talks|All/ });
+    const tabs = page.locator('button').filter({ hasText: /Preprints|Presentations|All/ });
     const secondTab = tabs.first();
     await expect(secondTab).toBeVisible();
     await secondTab.click();

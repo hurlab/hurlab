@@ -7,9 +7,8 @@ Usage:
 
 Default PDF path: ../Personal/JungukHur-CV.pdf (relative to script location)
 
-Outputs updated JSON files in ../data/:
-    - publications.json
-    - grants.json
+Updates ../data/publications.json with the talks and posters from the CV PDF, then runs
+build_data.py --if-available, which owns the publication list and grants.json.
 
 Dependencies: pdftotext (system), Python 3 standard library only.
 """
@@ -763,14 +762,6 @@ def main():
     preprint_count = sum(1 for p in peer_reviewed if p["isPreprint"])
     print(f"  Found {preprint_count} preprints among peer-reviewed entries")
 
-    print("Parsing manuscripts under review...")
-    under_review = parse_under_review(text, sections)
-    print(f"  Found {len(under_review)} manuscripts under review")
-
-    print("Parsing manuscripts in preparation...")
-    in_preparation = parse_in_preparation(text, sections)
-    print(f"  Found {len(in_preparation)} manuscripts in preparation")
-
     print("Parsing talks...")
     talks = parse_talks(text, sections)
     print(f"  Found {len(talks)} talks")
@@ -780,71 +771,43 @@ def main():
     print(f"  Found {len(posters)} posters")
     print()
 
-    # Step 3b: Preserve manually-curated 'date' fields (ISO YYYY-MM-DD) across re-parse.
-    # The CV supplies only publication year, but the website's rolling-6-month "Recent"
-    # badge needs an exact date. Carry forward any 'date' already recorded in the previous
-    # publications.json, matched by PMID then DOI, so those dates survive a CV re-parse.
+    # Step 4: Update publications.json. Only the presentations come from the CV PDF now:
+    # the publication list (peerReviewed), its research areas and grants.json are built by
+    # scripts/build_data.py from the publication tracker and the CV .docx, and nothing
+    # under review, pending, or with a dollar amount may reach these public files.
     existing_path = os.path.join(DATA_DIR, "publications.json")
+    publications = {}
     if os.path.isfile(existing_path):
-        try:
-            with open(existing_path, encoding="utf-8") as f:
-                prev = json.load(f)
-            by_pmid, by_doi = {}, {}
-            for e in prev.get("peerReviewed", []):
-                if e.get("date"):
-                    if e.get("pmid"):
-                        by_pmid[str(e["pmid"])] = e["date"]
-                    if e.get("doi"):
-                        by_doi[str(e["doi"]).lower()] = e["date"]
-            for e in peer_reviewed:
-                d = None
-                if e.get("pmid") and str(e["pmid"]) in by_pmid:
-                    d = by_pmid[str(e["pmid"])]
-                elif e.get("doi") and str(e["doi"]).lower() in by_doi:
-                    d = by_doi[str(e["doi"]).lower()]
-                if d:
-                    e["date"] = d
-            preserved = sum(1 for e in peer_reviewed if e.get("date"))
-            print(f"  Preserved {preserved} publication date(s) from previous publications.json")
-        except Exception as exc:  # never let date-preservation break a CV parse
-            print(f"  Warning: could not preserve dates from previous publications.json: {exc}",
-                  file=sys.stderr)
-
-    # Step 4: Build publications.json
-    publications = {
+        with open(existing_path, encoding="utf-8") as f:
+            publications = json.load(f)
+    if not publications.get("peerReviewed"):
+        publications["peerReviewed"] = peer_reviewed  # first run only; build_data.py replaces it
+    for key in ("underReview", "inPreparation"):
+        publications.pop(key, None)
+    publications.update({
         "profiles": PROFILES,
-        "peerReviewed": peer_reviewed,
-        "underReview": under_review,
-        "inPreparation": in_preparation,
         "talks": talks,
         "posters": posters,
         "patent": PATENT,
         "lastUpdated": TODAY,
-    }
+    })
 
-    print("Writing publications.json...")
+    print("Writing publications.json (talks and posters only)...")
     os.makedirs(DATA_DIR, exist_ok=True)
     write_json_atomic(os.path.join(DATA_DIR, "publications.json"), publications)
 
-    # Step 5: Parse and write grants
-    print("Parsing grants...")
-    grants = parse_grants(text)
-    print(f"  Found {len(grants['current'])} current, "
-          f"{len(grants['pending'])} pending, "
-          f"{len(grants['previous'])} previous grants")
-
-    print("Writing grants.json...")
-    write_json_atomic(os.path.join(DATA_DIR, "grants.json"), grants)
+    # Step 5: Publications and grants from the tracker + CV .docx, when those sources are
+    # reachable from this machine (they are not on the web server; there it is a no-op).
+    print("Running build_data.py --if-available...")
+    build = subprocess.run(
+        [sys.executable, os.path.join(SCRIPT_DIR, "build_data.py"), "--if-available"],
+        capture_output=True, text=True, timeout=300)
+    print("  " + (build.stdout.strip() or build.stderr.strip()).replace("\n", "\n  "))
 
     print()
     print("Done!")
-    print(f"  Publications: {len(peer_reviewed)} peer-reviewed, "
-          f"{len(under_review)} under review, "
-          f"{len(in_preparation)} in preparation")
     print(f"  Talks: {len(talks)}, Posters: {len(posters)}")
-    print(f"  Grants: {len(grants['current'])} current, "
-          f"{len(grants['pending'])} pending, "
-          f"{len(grants['previous'])} previous")
+    print("  Publications and grants are left to build_data.py (grants.json not written here)")
 
 
 def git_auto_commit():

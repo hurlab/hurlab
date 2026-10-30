@@ -129,6 +129,26 @@
           "repurpos"
         ]
       }
+    },
+    {
+      "title": "Population and Clinical Health",
+      "description": "Epidemiological and clinical studies of maternal and pregnancy outcomes, sleep, metabolic syndrome, biological aging, adverse childhood experiences, adolescent depression, and long COVID, using national health surveys, cohorts, and clinical data.",
+      "icon": "globe",
+      "color": "teal",
+      "details": {
+        "overview": "Alongside its molecular work, the lab contributes data analysis to population and clinical health studies. These include maternal weight gain and pregnancy outcomes, sleep trends and biological aging measured from Korean national health screening and survey data, metabolite and nutrient interactions in metabolic syndrome cohorts, adverse childhood experiences and chronic health outcomes across US states, peripheral immune changes in adolescent depression, and machine-learning prediction of long COVID in a national cohort challenge.",
+        "keyTopics": [
+          "Maternal weight gain and pregnancy outcomes",
+          "Sleep, biological aging, and national health screening data",
+          "Metabolic syndrome cohorts",
+          "Adverse childhood experiences and chronic health outcomes",
+          "Adolescent depression",
+          "Long COVID"
+        ],
+        "tools": [],
+        "collaborators": [],
+        "keywords": []
+      }
     }
   ],
   "lastUpdated": "2026-05-21"

@@ -3,6 +3,7 @@ import { test, expect } from '@playwright/test';
 const navLinks = [
   { label: 'Home', href: 'index.html' },
   { label: 'Research', href: 'research.html' },
+  { label: 'Overview', href: 'research-overview.html' },
   { label: 'Publications', href: 'publications.html' },
   { label: 'Tools', href: 'tools.html' },
   { label: 'People', href: 'people.html' },
