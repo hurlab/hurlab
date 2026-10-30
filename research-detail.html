@@ -64,7 +64,7 @@
             if (this.publications.some(p => Number.isInteger(p.areaIndex))) {
               this.relatedPubs = this.publications
                 .filter(p => p.areaIndex === this.areaIndex)
-                .sort((a, b) => ((b.year || 0) - (a.year || 0)) || ((b.number || 0) - (a.number || 0)))
+                .sort((a, b) => this.dateKey(b).localeCompare(this.dateKey(a)))
                 .slice(0, 20);
             } else if (this.area.details && this.area.details.keywords) {
               const keywords = this.area.details.keywords.map(k => k.toLowerCase());
@@ -123,6 +123,12 @@
           return this.area.color === 'indigo'
             ? 'bg-indigo-50 text-indigo-700 border-indigo-200'
             : 'bg-teal-50 text-teal-700 border-teal-200';
+        },
+
+        // Sort key: publication date (scripts/build_data.py, from PubMed/Crossref/DataCite); records with only
+        // a year sort at the end of that year; the tracker number breaks ties
+        dateKey(p) {
+          return (p.date || (p.year ? p.year + '-12-31' : '')) + '|' + String(p.number || 0).padStart(4, '0');
         },
 
         iconSvg() {

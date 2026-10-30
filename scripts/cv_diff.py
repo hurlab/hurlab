@@ -232,7 +232,12 @@ def diff_grants(old, new):
         if o.get("cvSection") and n.get("cvSection") and o["cvSection"] != n["cvSection"]:
             kinds.append("GRANT-SECTION-MOVED")
             details.append(f"CV section {o['cvSection']} -> {n['cvSection']}")
+        for field in ("title", "role", "start", "end"):
+            if norm(o.get(field)) != norm(n.get(field)):
+                kinds.append("GRANT-CHANGED")
+                details.append(f"{field} {o.get(field)!r} -> {n.get(field)!r}")
         if kinds and n["status"] != "pending":
+            kinds = sorted(set(kinds))
             items.append({"kinds": kinds, "old": {f: o.get(f) for f in public}, "new": public,
                           "details": details, "preAccepted": False, "flags": []})
     for k, o in old_by.items():

@@ -10,19 +10,27 @@
       "end": "2031-05",
       "type": "external",
       "status": "active",
-      "note": ""
+      "note": "",
+      "award": "2R01DK130913-05",
+      "agency": "NIH/NIDDK R01",
+      "url": "https://reporter.nih.gov/project-details/11447445",
+      "linkLabel": "NIH RePORTER"
     },
     {
       "funder": "NIH/NIDDK R01 1R01DK149012-01",
       "pis": "Rumora; Columbia University",
       "role": "Co-Investigator (Site PI)",
-      "title": "Lipids and inflammation in peripheral neuropathy and metabolic syndrome",
+      "title": "The impact of dietary fatty acids and TNF-alpha on neuropathy associated with metabolic syndrome",
       "period": "7/1/2026-6/30/2028",
       "start": "2026-07",
       "end": "2028-06",
       "type": "external",
       "status": "active",
-      "note": ""
+      "note": "",
+      "award": "1R01DK149012-01",
+      "agency": "NIH/NIDDK R01",
+      "url": "https://reporter.nih.gov/project-details/11434702",
+      "linkLabel": "NIH RePORTER"
     },
     {
       "funder": "NIH/NIGMS P30 1P30GM165332-01",
@@ -34,7 +42,11 @@
       "end": "2031-06",
       "type": "external",
       "status": "active",
-      "note": ""
+      "note": "",
+      "award": "1P30GM165332-01",
+      "agency": "NIH/NIGMS P30",
+      "url": "https://med.und.edu/research/host-pathogen/index.html",
+      "linkLabel": "Host-Pathogen Interactions COBRE website"
     },
     {
       "funder": "ARPA-H",
@@ -46,7 +58,9 @@
       "end": "2028-08",
       "type": "external",
       "status": "active",
-      "note": ""
+      "note": "",
+      "award": null,
+      "agency": "ARPA-H"
     },
     {
       "funder": "NIH/NIGMS P20GM155890 CTR",
@@ -58,7 +72,11 @@
       "end": "2029-06",
       "type": "external",
       "status": "active",
-      "note": ""
+      "note": "",
+      "award": "P20GM155890",
+      "agency": "NIH/NIGMS P20 CTR",
+      "url": "https://med.und.edu/research/transcend/index.html",
+      "linkLabel": "TRANSCEND website"
     },
     {
       "funder": "NIH/NIAID U24 U24AI171008",
@@ -70,7 +88,11 @@
       "end": "2027-05",
       "type": "external",
       "status": "active",
-      "note": "Includes 2026-2027 administrative supplement"
+      "note": "Includes 2026-2027 administrative supplement",
+      "award": "U24AI171008",
+      "agency": "NIH/NIAID U24",
+      "url": "https://reporter.nih.gov/project-details/11369644",
+      "linkLabel": "NIH RePORTER"
     }
   ],
   "previous": [
@@ -84,7 +106,11 @@
       "end": "2026-09",
       "type": "external",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": "R01DK130913",
+      "agency": "NIH/NIDDK R01",
+      "url": "https://reporter.nih.gov/project-details/11118802",
+      "linkLabel": "NIH RePORTER"
     },
     {
       "funder": "NIGMS P20 5P20GM113123 COBRE",
@@ -96,7 +122,11 @@
       "end": "2026-06",
       "type": "external",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": "5P20GM113123",
+      "agency": "NIGMS P20 COBRE",
+      "url": "https://med.und.edu/research/host-pathogen/index.html",
+      "linkLabel": "Host-Pathogen Interactions COBRE website"
     },
     {
       "funder": "UND SMHS Pilot Grant",
@@ -108,7 +138,9 @@
       "end": "2025-07",
       "type": "internal",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": null,
+      "agency": "UND SMHS Pilot Grant"
     },
     {
       "funder": "UND Epigenomics COBRE Pilot",
@@ -120,7 +152,11 @@
       "end": "2025-06",
       "type": "internal",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": null,
+      "agency": "UND Epigenomics COBRE Pilot",
+      "url": "https://med.und.edu/research/epigenetics/history.html",
+      "linkLabel": "Epigenetics COBRE website"
     },
     {
       "funder": "NINDS R01 5R01NS065957",
@@ -132,7 +168,11 @@
       "end": "2024-06",
       "type": "external",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": "5R01NS065957",
+      "agency": "NINDS R01",
+      "url": "https://reporter.nih.gov/project-details/10161864",
+      "linkLabel": "NIH RePORTER"
     },
     {
       "funder": "NINDS R01 5R01NS120926",
@@ -144,7 +184,11 @@
       "end": "2024-03",
       "type": "external",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": "5R01NS120926",
+      "agency": "NINDS R01",
+      "url": "https://reporter.nih.gov/project-details/10783060",
+      "linkLabel": "NIH RePORTER"
     },
     {
       "funder": "UND COBRE Epigenetics Pilot Grant",
@@ -156,7 +200,11 @@
       "end": "2022-05",
       "type": "internal",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": null,
+      "agency": "UND COBRE Epigenetics Pilot Grant",
+      "url": "https://med.und.edu/research/epigenetics/history.html",
+      "linkLabel": "Epigenetics COBRE website"
     },
     {
       "funder": "NIAID R01 1R01AI143741",
@@ -168,7 +216,11 @@
       "end": "2021-12",
       "type": "external",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": "1R01AI143741",
+      "agency": "NIAID R01",
+      "url": "https://reporter.nih.gov/project-details/10064127",
+      "linkLabel": "NIH RePORTER"
     },
     {
       "funder": "UND Post-doctoral Pilot Funding Program",
@@ -180,7 +232,9 @@
       "end": "2021-12",
       "type": "internal",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": null,
+      "agency": "UND Post-doctoral Pilot Funding Program"
     },
     {
       "funder": "NIDDK 1R24DK082841",
@@ -192,7 +246,11 @@
       "end": "2021-07",
       "type": "external",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": "1R24DK082841",
+      "agency": "NIDDK R24",
+      "url": "https://reporter.nih.gov/project-details/9990761",
+      "linkLabel": "NIH RePORTER"
     },
     {
       "funder": "UND Post-doctoral Pilot Funding Program",
@@ -204,7 +262,9 @@
       "end": "2020-06",
       "type": "internal",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": null,
+      "agency": "UND Post-doctoral Pilot Funding Program"
     },
     {
       "funder": "UND Epigenetics COBRE Pilot",
@@ -216,7 +276,11 @@
       "end": "2020-05",
       "type": "internal",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": null,
+      "agency": "UND Epigenetics COBRE Pilot",
+      "url": "https://med.und.edu/research/epigenetics/history.html",
+      "linkLabel": "Epigenetics COBRE website"
     },
     {
       "funder": "UND COBRE Host-Pathogen Interaction, Pilot Grant",
@@ -228,7 +292,11 @@
       "end": "2020-04",
       "type": "internal",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": null,
+      "agency": "UND COBRE Host-Pathogen Interaction, Pilot Grant",
+      "url": "https://med.und.edu/research/host-pathogen/index.html",
+      "linkLabel": "Host-Pathogen Interactions COBRE website"
     },
     {
       "funder": "UND COBRE Epigenomics and Development and Disease, Pilot Grant",
@@ -240,7 +308,11 @@
       "end": "2019-05",
       "type": "internal",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": null,
+      "agency": "UND COBRE Epigenomics and Development and Disease, Pilot Grant",
+      "url": "https://med.und.edu/research/epigenetics/history.html",
+      "linkLabel": "Epigenetics COBRE website"
     },
     {
       "funder": "UND Post-doctoral Pilot Funding Program",
@@ -252,7 +324,9 @@
       "end": "2018-06",
       "type": "internal",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": null,
+      "agency": "UND Post-doctoral Pilot Funding Program"
     },
     {
       "funder": "UND Health Challenge Seed Program",
@@ -264,7 +338,9 @@
       "end": "2018-05",
       "type": "internal",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": null,
+      "agency": "UND Health Challenge Seed Program"
     },
     {
       "funder": "UND Neuroscience COBRE Pilot Grant",
@@ -276,7 +352,9 @@
       "end": "2017-05",
       "type": "internal",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": null,
+      "agency": "UND Neuroscience COBRE Pilot Grant"
     },
     {
       "funder": "Diabetic Complication Consortium, Pilot & Feasibility Grant",
@@ -288,7 +366,9 @@
       "end": "2017-01",
       "type": "external",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": null,
+      "agency": "Diabetic Complication Consortium, Pilot & Feasibility Grant"
     },
     {
       "funder": "UND COBRE Epigenomics and Development and Disease, Pilot Grant",
@@ -300,7 +380,11 @@
       "end": "2016-05",
       "type": "internal",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": null,
+      "agency": "UND COBRE Epigenomics and Development and Disease, Pilot Grant",
+      "url": "https://med.und.edu/research/epigenetics/history.html",
+      "linkLabel": "Epigenetics COBRE website"
     },
     {
       "funder": "Juvenile Diabetes Research Foundation, Postdoctoral Research Fellowship Grant",
@@ -312,7 +396,9 @@
       "end": "2014-06",
       "type": "external",
       "status": "completed",
-      "note": ""
+      "note": "",
+      "award": null,
+      "agency": "Juvenile Diabetes Research Foundation, Postdoctoral Research Fellowship Grant"
     }
   ],
   "lastUpdated": "2026-10-30",

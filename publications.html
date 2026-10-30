@@ -86,12 +86,12 @@
         <div class="flex flex-wrap gap-2">
           <template x-for="tab in tabs" :key="tab.key">
             <button
-              x-on:click="activeTab = tab.key; yearFilter = ''"
+              x-on:click="activeTab = tab.key; yearFilter = ''; categoryFilter = ''"
               :class="activeTab === tab.key
                 ? 'bg-teal-600 text-white shadow-sm'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'"
               class="px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200"
-              x-text="tab.label">
+              x-text="tab.label + tabCount(tab.key)">
             </button>
           </template>
         </div>
@@ -166,10 +166,13 @@
         </div>
       </div>
 
+      <!-- Totals, with the same definitions as research-overview.html -->
+      <p class="mb-1 text-sm text-gray-600" x-show="!loading && peerReviewed.length" x-text="breakdown"></p>
+
       <!-- Publication Count -->
       <div class="mb-1 text-sm text-gray-500" x-show="!loading && activeTab !== 'presentations'">
         Showing <span class="font-semibold text-gray-700" x-text="filteredCount"></span>
-        of <span class="font-semibold text-gray-700" x-text="totalCount"></span> publications
+        of <span class="font-semibold text-gray-700" x-text="totalCount"></span> in this tab
       </div>
 
       <!-- Last Updated -->
@@ -194,63 +197,62 @@
 
       <!-- ===== PEER-REVIEWED PUBLICATIONS ===== -->
       <div x-show="activeTab === 'peer-reviewed' || activeTab === 'all'" x-cloak class="space-y-2">
-        <h2 x-show="activeTab === 'all'" class="text-xl font-bold text-gray-900 mb-4">Publications</h2>
         <template x-for="(pub, index) in filteredPeerReviewed" :key="'pr-' + index">
           <div class="pub-card bg-white rounded-lg p-4 border border-gray-100 shadow-sm"
                x-transition:enter="transition ease-out duration-200"
                x-transition:enter-start="opacity-0 translate-y-2"
                x-transition:enter-end="opacity-100 translate-y-0">
-            <div class="flex items-start justify-between gap-3 mb-1">
-              <span class="text-xs text-gray-400 font-mono shrink-0" x-text="'#' + pub.number"></span>
-              <div class="flex items-center gap-2 shrink-0">
-                <template x-if="isRecent(pub)">
-                  <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800">Recent</span>
+            <p class="text-sm text-gray-700 leading-relaxed mb-2 break-words" x-html="highlightPI(formatCitation(pub.text, { journal: true }))"></p>
+            <!-- links on the left, status badges on the right -->
+            <div class="flex flex-wrap items-center gap-2">
+              <div class="flex flex-wrap items-center gap-2">
+                <template x-if="pub.pmid">
+                  <a :href="'https://pubmed.ncbi.nlm.nih.gov/' + pub.pmid" target="_blank" rel="noopener noreferrer"
+                     class="px-2.5 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-700 hover:bg-indigo-200 transition-colors">
+                    PMID: <span x-text="pub.pmid"></span>
+                  </a>
                 </template>
-                <template x-if="pub.category && !pub.isPreprint && pub.category !== 'Article'">
-                  <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-700" x-text="pub.category"></span>
+                <template x-if="pub.pmcid">
+                  <a :href="(pub.links && pub.links.pmc) || ('https://pmc.ncbi.nlm.nih.gov/articles/' + pub.pmcid + '/')" target="_blank" rel="noopener noreferrer"
+                     class="px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700 hover:bg-blue-200 transition-colors">
+                    <span x-text="pub.pmcid"></span>
+                  </a>
                 </template>
-                <template x-if="pub.isPeerReviewed === false && !pub.isPreprint && !/not peer-reviewed/i.test(pub.category || '') && !(pub.category || '').startsWith('Book')">
-                  <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-500">Not peer-reviewed</span>
+                <template x-if="pub.doi">
+                  <a :href="(pub.links && pub.links.doi) || (pub.doi.startsWith('http') ? pub.doi : 'https://doi.org/' + pub.doi)" target="_blank" rel="noopener noreferrer"
+                     class="px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700 hover:bg-green-200 transition-colors">
+                    DOI
+                  </a>
                 </template>
-                <template x-if="pub.isPreprint">
-                  <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">Preprint</span>
+                <template x-if="pub.year">
+                  <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600" x-text="pub.year"></span>
+                </template>
+                <template x-if="pub.area">
+                  <a :href="'research-detail.html?area=' + pub.areaIndex" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-white border border-gray-200 text-gray-700 hover:border-gray-400">
+                    <span class="h-2 w-2 rounded-full" :style="'background:' + areaColor(pub.areaIndex)"></span><span x-text="pub.area"></span>
+                  </a>
                 </template>
               </div>
-            </div>
-            <p class="text-sm text-gray-700 leading-relaxed mb-2 break-words" x-html="highlightPI(formatCitation(pub.text, { journal: true }))"></p>
-            <div class="flex flex-wrap items-center gap-2">
-              <template x-if="pub.pmid">
-                <a :href="'https://pubmed.ncbi.nlm.nih.gov/' + pub.pmid" target="_blank" rel="noopener noreferrer"
-                   class="px-2.5 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-700 hover:bg-indigo-200 transition-colors">
-                  PMID: <span x-text="pub.pmid"></span>
-                </a>
-              </template>
-              <template x-if="pub.pmcid">
-                <a :href="(pub.links && pub.links.pmc) || ('https://pmc.ncbi.nlm.nih.gov/articles/' + pub.pmcid + '/')" target="_blank" rel="noopener noreferrer"
-                   class="px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700 hover:bg-blue-200 transition-colors">
-                  <span x-text="pub.pmcid"></span>
-                </a>
-              </template>
-              <template x-if="pub.doi">
-                <a :href="(pub.links && pub.links.doi) || (pub.doi.startsWith('http') ? pub.doi : 'https://doi.org/' + pub.doi)" target="_blank" rel="noopener noreferrer"
-                   class="px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700 hover:bg-green-200 transition-colors">
-                  DOI
-                </a>
-              </template>
-              <template x-if="pub.year">
-                <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600" x-text="pub.year"></span>
-              </template>
-              <template x-if="pub.area">
-                <a :href="'research-detail.html?area=' + pub.areaIndex" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-white border border-gray-200 text-gray-700 hover:border-gray-400">
-                  <span class="h-2 w-2 rounded-full" :style="'background:' + areaColor(pub.areaIndex)"></span><span x-text="pub.area"></span>
-                </a>
-              </template>
+              <div class="flex flex-wrap items-center gap-2 ml-auto">
+                <template x-if="isRecent(pub)">
+                  <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-teal-100 text-teal-800">Recent</span>
+                </template>
+                <template x-if="pub.category && !pub.isPreprint && pub.category !== 'Article'">
+                  <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700" x-text="pub.category"></span>
+                </template>
+                <template x-if="pub.isPeerReviewed === false && !pub.isPreprint && !/not peer-reviewed/i.test(pub.category || '') && !(pub.category || '').startsWith('Book')">
+                  <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-500">Not peer-reviewed</span>
+                </template>
+                <template x-if="pub.isPreprint">
+                  <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800">Preprint</span>
+                </template>
+              </div>
             </div>
           </div>
         </template>
 
         <!-- No results message -->
-        <div x-show="!loading && filteredPeerReviewed.length === 0 && activeTab === 'peer-reviewed'"
+        <div x-show="!loading && filteredPeerReviewed.length === 0 && (activeTab === 'peer-reviewed' || activeTab === 'all')"
              class="text-center py-12 text-gray-500">
           <svg class="w-12 h-12 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
@@ -260,47 +262,46 @@
       </div>
 
       <!-- ===== PREPRINTS ===== -->
-      <div x-show="activeTab === 'preprints' || activeTab === 'all'" x-cloak class="space-y-2">
-        <h2 x-show="activeTab === 'all'" class="text-xl font-bold text-gray-900 mb-4 pt-6 border-t border-gray-200">Preprints</h2>
+      <div x-show="activeTab === 'preprints'" x-cloak class="space-y-2">
         <template x-for="(pub, index) in filteredPreprints" :key="'pp-' + index">
           <div class="pub-card bg-white rounded-lg p-4 border border-gray-100 shadow-sm">
-            <div class="flex items-start justify-between gap-3 mb-1">
-              <span class="text-xs text-gray-400 font-mono shrink-0" x-text="'#' + pub.number"></span>
-              <div class="flex items-center gap-2 shrink-0">
-                <template x-if="isRecent(pub)">
-                  <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800">Recent</span>
-                </template>
-                <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">Preprint</span>
-              </div>
-            </div>
             <p class="text-sm text-gray-700 leading-relaxed mb-2 break-words" x-html="highlightPI(formatCitation(pub.text, { journal: true }))"></p>
+            <!-- links on the left, status badges on the right -->
             <div class="flex flex-wrap items-center gap-2">
-              <template x-if="pub.pmid">
-                <a :href="'https://pubmed.ncbi.nlm.nih.gov/' + pub.pmid" target="_blank" rel="noopener noreferrer"
-                   class="px-2.5 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-700 hover:bg-indigo-200 transition-colors">
-                  PMID: <span x-text="pub.pmid"></span>
-                </a>
-              </template>
-              <template x-if="pub.pmcid">
-                <a :href="(pub.links && pub.links.pmc) || ('https://pmc.ncbi.nlm.nih.gov/articles/' + pub.pmcid + '/')" target="_blank" rel="noopener noreferrer"
-                   class="px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700 hover:bg-blue-200 transition-colors">
-                  <span x-text="pub.pmcid"></span>
-                </a>
-              </template>
-              <template x-if="pub.doi">
-                <a :href="(pub.links && pub.links.doi) || (pub.doi.startsWith('http') ? pub.doi : 'https://doi.org/' + pub.doi)" target="_blank" rel="noopener noreferrer"
-                   class="px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700 hover:bg-green-200 transition-colors">
-                  DOI
-                </a>
-              </template>
-              <template x-if="pub.year">
-                <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600" x-text="pub.year"></span>
-              </template>
-              <template x-if="pub.area">
-                <a :href="'research-detail.html?area=' + pub.areaIndex" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-white border border-gray-200 text-gray-700 hover:border-gray-400">
-                  <span class="h-2 w-2 rounded-full" :style="'background:' + areaColor(pub.areaIndex)"></span><span x-text="pub.area"></span>
-                </a>
-              </template>
+              <div class="flex flex-wrap items-center gap-2">
+                <template x-if="pub.pmid">
+                  <a :href="'https://pubmed.ncbi.nlm.nih.gov/' + pub.pmid" target="_blank" rel="noopener noreferrer"
+                     class="px-2.5 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-700 hover:bg-indigo-200 transition-colors">
+                    PMID: <span x-text="pub.pmid"></span>
+                  </a>
+                </template>
+                <template x-if="pub.pmcid">
+                  <a :href="(pub.links && pub.links.pmc) || ('https://pmc.ncbi.nlm.nih.gov/articles/' + pub.pmcid + '/')" target="_blank" rel="noopener noreferrer"
+                     class="px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700 hover:bg-blue-200 transition-colors">
+                    <span x-text="pub.pmcid"></span>
+                  </a>
+                </template>
+                <template x-if="pub.doi">
+                  <a :href="(pub.links && pub.links.doi) || (pub.doi.startsWith('http') ? pub.doi : 'https://doi.org/' + pub.doi)" target="_blank" rel="noopener noreferrer"
+                     class="px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700 hover:bg-green-200 transition-colors">
+                    DOI
+                  </a>
+                </template>
+                <template x-if="pub.year">
+                  <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600" x-text="pub.year"></span>
+                </template>
+                <template x-if="pub.area">
+                  <a :href="'research-detail.html?area=' + pub.areaIndex" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-white border border-gray-200 text-gray-700 hover:border-gray-400">
+                    <span class="h-2 w-2 rounded-full" :style="'background:' + areaColor(pub.areaIndex)"></span><span x-text="pub.area"></span>
+                  </a>
+                </template>
+              </div>
+              <div class="flex flex-wrap items-center gap-2 ml-auto">
+                <template x-if="isRecent(pub)">
+                  <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-teal-100 text-teal-800">Recent</span>
+                </template>
+                <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800">Preprint</span>
+              </div>
             </div>
           </div>
         </template>
@@ -320,17 +321,17 @@
           <div class="space-y-2">
             <template x-for="(pub, index) in talks" :key="'talk-' + index">
               <div class="pub-card bg-white rounded-lg p-4 border border-gray-100 shadow-sm">
-                <div class="flex items-start justify-between gap-3 mb-1">
-                  <span class="text-xs text-gray-400 font-mono shrink-0" x-text="'#' + pub.number"></span>
-                  <div class="flex items-center gap-2 shrink-0">
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Talk</span>
-                  </div>
-                </div>
                 <p class="text-sm text-gray-700 leading-relaxed mb-2 break-words" x-html="highlightPI(formatCitation(pub.text))"></p>
+                <!-- links on the left, status badges on the right -->
                 <div class="flex flex-wrap items-center gap-2">
-                  <template x-if="pub.year">
-                    <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600" x-text="pub.year"></span>
-                  </template>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <template x-if="pub.year">
+                      <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600" x-text="pub.year"></span>
+                    </template>
+                  </div>
+                  <div class="flex flex-wrap items-center gap-2 ml-auto">
+                    <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Talk</span>
+                  </div>
                 </div>
               </div>
             </template>
@@ -345,19 +346,19 @@
           <div class="space-y-2">
             <template x-for="(pub, index) in posters" :key="'poster-' + index">
               <div class="pub-card bg-white rounded-lg p-4 border border-gray-100 shadow-sm">
-                <div class="flex items-start justify-between gap-3 mb-1">
-                  <span class="text-xs text-gray-400 font-mono shrink-0" x-text="'#' + pub.number"></span>
-                  <div class="flex items-center gap-2 shrink-0">
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-medium"
+                <p class="text-sm text-gray-700 leading-relaxed mb-2 break-words" x-html="highlightPI(formatCitation(pub.text))"></p>
+                <!-- links on the left, status badges on the right -->
+                <div class="flex flex-wrap items-center gap-2">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <template x-if="pub.year">
+                      <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600" x-text="pub.year"></span>
+                    </template>
+                  </div>
+                  <div class="flex flex-wrap items-center gap-2 ml-auto">
+                    <span class="px-2.5 py-1 rounded-full text-xs font-medium"
                           :class="pub.type === 'oral' ? 'bg-amber-100 text-amber-800' : 'bg-cyan-100 text-cyan-800'"
                           x-text="pub.type === 'oral' ? 'Oral' : 'Poster'"></span>
                   </div>
-                </div>
-                <p class="text-sm text-gray-700 leading-relaxed mb-2 break-words" x-html="highlightPI(formatCitation(pub.text))"></p>
-                <div class="flex flex-wrap items-center gap-2">
-                  <template x-if="pub.year">
-                    <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600" x-text="pub.year"></span>
-                  </template>
                 </div>
               </div>
             </template>
@@ -395,7 +396,7 @@
         lastUpdated: '',
         loading: true,
         error: false,
-        activeTab: 'peer-reviewed',
+        activeTab: 'all',
         searchQuery: '',
         yearFilter: '',
         areaFilter: new URLSearchParams(location.search).get('area') || '',
@@ -403,10 +404,10 @@
         sortOrder: 'newest',
 
         tabs: [
-          { key: 'peer-reviewed', label: 'Publications' },
+          { key: 'all', label: 'All' },
+          { key: 'peer-reviewed', label: 'Papers & Books' },
           { key: 'preprints', label: 'Preprints' },
-          { key: 'presentations', label: 'Presentations' },
-          { key: 'all', label: 'All' }
+          { key: 'presentations', label: 'Presentations' }
         ],
 
         async init() {
@@ -435,13 +436,31 @@
           });
         },
 
+        tabCount(key) {
+          if (this.loading || !this.peerReviewed.length) return '';
+          if (key === 'peer-reviewed') return ' (' + this.peerReviewed.filter(p => !p.isPreprint).length + ')';
+          if (key === 'preprints') return ' (' + this.peerReviewed.filter(p => p.isPreprint).length + ')';
+          if (key === 'all') return ' (' + this.peerReviewed.length + ')';
+          return '';
+        },
+
+        get breakdown() {
+          const n = cats => this.peerReviewed.filter(p => cats.includes(p.category)).length;
+          const papers = this.peerReviewed.filter(p => !['Preprint', 'Book', 'Book chapter'].includes(p.category)).length;
+          const plural = (k, one, many) => k + ' ' + (k === 1 ? one : many);
+          return this.peerReviewed.length + ' publications in total: ' + plural(papers, 'journal or conference paper', 'journal and conference papers')
+            + ', ' + plural(n(['Preprint']), 'preprint', 'preprints') + ', ' + plural(n(['Book']), 'edited book', 'edited books')
+            + ', ' + plural(n(['Book chapter']), 'book chapter', 'book chapters') + '.';
+        },
+
         // Same palette as research-overview.html, in data/research.json area order
         areaColor(i) {
           return ['#0d9488', '#4f46e5', '#9333ea', '#e11d48', '#d97706', '#0284c7', '#65a30d'][i] || '#6b7280';
         },
 
         get categories() {
-          return [...new Set(this.peerReviewed.filter(p => !p.isPreprint).map(p => p.category).filter(Boolean))].sort();
+          const pool = this.activeTab === 'all' ? this.peerReviewed : this.peerReviewed.filter(p => !p.isPreprint);
+          return [...new Set(pool.map(p => p.category).filter(Boolean))].sort();
         },
 
         highlightPI(text) {
@@ -449,12 +468,18 @@
           return text.replace(/(Hur\s*J\b|Hur\s*J$|Hur\s*JU?\b)/gi, '<strong class="text-teal-700">$1</strong>');
         },
 
+        // Sort key: publication date (scripts/build_data.py, from PubMed/Crossref/DataCite); records with only
+        // a year sort at the end of that year; the tracker number breaks ties
+        dateKey(p) {
+          return (p.date || (p.year ? p.year + '-12-31' : '')) + '|' + String(p.number || 0).padStart(4, '0');
+        },
+
         isRecent(pub) {
           // "Recent" = published/submitted within the last 6 months, by exact date.
           // Dynamic: recomputed from today's date on every visit, so the badge
           // auto-expires. Requires a pub.date (ISO YYYY-MM-DD); entries without a
           // date (the CV supplies only year) are simply not flagged.
-          if (!pub || !pub.date) return false;
+          if (!pub || !pub.date || pub.datePrecision === 'year') return false;
           const d = new Date(pub.date);
           if (isNaN(d.getTime())) return false;
           const cutoff = new Date();
@@ -465,9 +490,9 @@
         sortPubs(pubs) {
           const sorted = [...pubs];
           if (this.sortOrder === 'newest') {
-            sorted.sort((a, b) => ((b.year || 0) - (a.year || 0)) || ((b.number || 0) - (a.number || 0)));
+            sorted.sort((a, b) => this.dateKey(b).localeCompare(this.dateKey(a)));
           } else if (this.sortOrder === 'oldest') {
-            sorted.sort((a, b) => ((a.year || 0) - (b.year || 0)) || ((a.number || 0) - (b.number || 0)));
+            sorted.sort((a, b) => this.dateKey(a).localeCompare(this.dateKey(b)));
           }
           // 'original' keeps the CV order (no sort)
           return sorted;
@@ -480,13 +505,13 @@
           }
           if (this.yearFilter && pub.year != this.yearFilter) return false;
           if (this.areaFilter !== '' && String(pub.areaIndex) !== String(this.areaFilter)) return false;
-          if (this.categoryFilter && !pub.isPreprint && pub.category !== this.categoryFilter) return false;
+          if (this.categoryFilter && pub.category !== this.categoryFilter) return false;
           return true;
         },
 
-        // Peer-reviewed excluding preprints
+        // Papers & Books tab: everything but preprints; All tab: everything, preprints badged
         get filteredPeerReviewed() {
-          return this.sortPubs(this.peerReviewed.filter(pub => !pub.isPreprint && this.matchesFilters(pub)));
+          return this.sortPubs(this.peerReviewed.filter(pub => (this.activeTab === 'all' || !pub.isPreprint) && this.matchesFilters(pub)));
         },
 
         // Preprints only
@@ -498,8 +523,7 @@
           switch (this.activeTab) {
             case 'peer-reviewed': return this.filteredPeerReviewed.length;
             case 'preprints': return this.filteredPreprints.length;
-            case 'all':
-              return this.filteredPeerReviewed.length + this.filteredPreprints.length;
+            case 'all': return this.filteredPeerReviewed.length;
             default: return 0;
           }
         },

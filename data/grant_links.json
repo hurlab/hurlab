@@ -1,0 +1,11 @@
+{
+  "_help": "Links for grant titles, used by scripts/build_data.py. 'programs' are checked first: the first entry whose 'match' text appears in the grant's funder line wins (case-insensitive). Other NIH awards link to their NIH RePORTER project page, looked up at build time. 'manual' maps an exact grant title to a URL and overrides both. URLs were checked to open (HTTP 200) on 2026-10-30.",
+  "programs": [
+    {"match": "P20GM155890", "label": "TRANSCEND website", "url": "https://med.und.edu/research/transcend/index.html"},
+    {"match": "P30GM165332", "label": "Host-Pathogen Interactions COBRE website", "url": "https://med.und.edu/research/host-pathogen/index.html"},
+    {"match": "P20GM113123", "label": "Host-Pathogen Interactions COBRE website", "url": "https://med.und.edu/research/host-pathogen/index.html"},
+    {"match": "COBRE Host-Pathogen", "label": "Host-Pathogen Interactions COBRE website", "url": "https://med.und.edu/research/host-pathogen/index.html"},
+    {"match": "Epigen", "label": "Epigenetics COBRE website", "url": "https://med.und.edu/research/epigenetics/history.html"}
+  ],
+  "manual": {}
+}

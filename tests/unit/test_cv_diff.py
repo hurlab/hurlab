@@ -17,7 +17,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
 import cv_diff  # noqa: E402
 from cvlib import cv_record  # noqa: E402
 
-CV_DIR = "/mnt/c/JHCloud/Dropbox (Personal)/PERSONAL/Career/Career Development/2_Curriculum Vitae"
+# Frozen copies of the dated CVs, kept outside the repo because they hold dollar amounts and pending
+# proposals. Frozen because a dated CV file can be edited in place later (the 2026-10-30 file was,
+# for the Rumora R01 title), which silently moves the ground truth.
+CV_DIR = os.environ.get("CV_FIXTURE_DIR", os.path.expanduser("~/.local/share/hurlab-cv-fixtures"))
 CV = {tag: os.environ.get(f"CV_{tag.replace('-', '_')}", f"{CV_DIR}/{tag}_JungukHur-CV.docx")
       for tag in ("2026-10-15", "2026-10-21", "2026-10-29", "2026-10-30")}
 
@@ -39,14 +42,20 @@ def title(it):
 
 @unittest.skipUnless(all(os.path.exists(CV[t]) for t in ("2026-10-29", "2026-10-30")), "CV files not reachable")
 class PairA_1029_to_1030(unittest.TestCase):
-    """9 Hur J marks changed, Combs also Auerbach, Nutr J author list, Khan R01 internal -> external."""
+    """9 Hur J marks changed, Combs also Auerbach, Nutr J author list, Khan R01 internal -> external,
+    and the Rumora R01 title (edited in the 10-30 file at 17:33 to match NIH RePORTER)."""
 
     @classmethod
     def setUpClass(cls):
         cls.items = run_pair("2026-10-29", "2026-10-30")
 
     def test_exactly_the_known_items(self):
-        self.assertEqual(len(self.items), 11, [i["kinds"] for i in self.items])
+        self.assertEqual(len(self.items), 12, [i["kinds"] for i in self.items])
+
+    def test_rumora_title(self):
+        changed = by_kind(self.items, "GRANT-CHANGED")
+        self.assertEqual(len(changed), 1)
+        self.assertIn("TNF-alpha", changed[0]["new"]["title"])
 
     def test_nine_authorship_marks(self):
         marks = by_kind(self.items, "AUTHORSHIP-MARK-CHANGED")
@@ -158,6 +167,14 @@ class Synthetic(unittest.TestCase):
         self.assertEqual(changes, ["active -> completed", "pending -> active"])
         for it in items:
             self.assertNotIn("Total", str(it))
+
+    def test_grant_title_change(self):
+        # found by using the tool: the Rumora R01 title was edited in the CV and nothing was reported
+        old = [grant("Lipids and inflammation in peripheral neuropathy", "active", "Current - External")]
+        new = [grant("The impact of dietary fatty acids and TNF-alpha on neuropathy", "active", "Current - External")]
+        items = cv_diff.diff([], old, [], new, 2026)
+        self.assertEqual([i["kinds"] for i in items], [["GRANT-CHANGED"]])
+        self.assertTrue(items[0]["details"][0].startswith("title "))
 
     def test_pending_never_reported_on_its_own(self):
         items = cv_diff.diff([], [], [], [grant("Proposal", "pending", "Pending - External")], 2026)

@@ -33,7 +33,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
-from cvlib import (authorship, cv_paragraphs, merge_supplements, no_em_dash, norm,
+from cvlib import (MONTHS, authorship, cv_paragraphs, merge_supplements, no_em_dash, norm,
                    parse_cv_publications, parse_grants, ym)
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -327,6 +327,217 @@ def build_overview(interests, education, positions, pubs, area_titles):
     return {"researchInterests": interests, "eras": eras, "milestones": milestones, "areas": area_titles}
 
 
+# ---------------------------------------------------------------- publication dates
+
+EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi"
+CROSSREF = "https://api.crossref.org/works/"
+CONTACT = "jung.hur@und.edu"
+
+
+def _get_json(url, data=None):
+    import urllib.request
+    req = urllib.request.Request(url, data=data, headers={"User-Agent": f"hurlab-site-build (mailto:{CONTACT})"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return json.load(resp)
+
+
+def _pubmed_date(text):
+    """'2026 Oct 11' | '2014 Aug' | '2014' | '2014/08/05 06:00' -> (iso, precision) or (None, None)."""
+    text = (text or "").strip()
+    m = re.match(r"(\d{4})/(\d{2})/(\d{2})", text)
+    if m:
+        return f"{m.group(1)}-{m.group(2)}-{m.group(3)}", "day"
+    m = re.match(r"(\d{4})(?:\s+([A-Za-z]{3})[a-z]*)?(?:\s+(\d{1,2}))?", text)
+    if not m:
+        return None, None
+    y, mon, d = m.group(1), m.group(2), m.group(3)
+    if mon and mon.lower() in MONTHS:
+        mm = f"{MONTHS[mon.lower()]:02d}"
+        return (f"{y}-{mm}-{int(d):02d}", "day") if d else (f"{y}-{mm}-01", "month")
+    return f"{y}-01-01", "year"
+
+
+def _date_parts(parts):
+    p = (parts or [[None]])[0]
+    if not p or p[0] is None:
+        return None, None
+    if len(p) >= 3:
+        return f"{p[0]}-{p[1]:02d}-{p[2]:02d}", "day"
+    if len(p) == 2:
+        return f"{p[0]}-{p[1]:02d}-01", "month"
+    return f"{p[0]}-01-01", "year"
+
+
+def pubmed_dates(pmids):
+    """{pmid: (iso, precision)}: e-publication date, else publication date; when PubMed only has a
+    year, the date PubMed added the record stands in if it falls in that year."""
+    out = {}
+    ids = sorted(pmids)
+    for i in range(0, len(ids), 150):
+        body = urllib_parse_encode({"db": "pubmed", "id": ",".join(ids[i:i + 150]), "retmode": "json",
+                                    "tool": "hurlab-site", "email": CONTACT})
+        result = _get_json(EUTILS, body)["result"]
+        for uid in result.get("uids", []):
+            r = result[uid]
+            date, prec = _pubmed_date(r.get("epubdate"))
+            if prec != "day":
+                pdate, pprec = _pubmed_date(r.get("pubdate"))
+                if pprec == "day" or not date:
+                    date, prec = pdate, pprec
+            if prec == "year":
+                entrez = next((h["date"] for h in r.get("history", []) if h.get("pubstatus") == "entrez"), "")
+                if entrez.startswith(date[:4]):
+                    date, prec = _pubmed_date(entrez)
+            if date:
+                out[uid] = (date, prec)
+    return out
+
+
+def urllib_parse_encode(fields):
+    import urllib.parse
+    return urllib.parse.urlencode(fields).encode()
+
+
+def crossref_date(doi):
+    import urllib.parse
+    m = _get_json(CROSSREF + urllib.parse.quote(doi) + f"?mailto={CONTACT}")["message"]
+    for key in ("published-online", "posted", "published-print", "issued"):
+        date, prec = _date_parts((m.get(key) or {}).get("date-parts"))
+        if date:
+            return date, prec
+    return None, None
+
+
+def datacite_date(doi):
+    """arXiv and some repositories register DOIs with DataCite, not Crossref: first-submitted date."""
+    import urllib.parse
+    a = _get_json("https://api.datacite.org/dois/" + urllib.parse.quote(doi))["data"]["attributes"]
+    for d in a.get("dates") or []:
+        if d.get("dateType") in ("Submitted", "Issued") and re.match(r"\d{4}-\d{2}-\d{2}", d.get("date", "")):
+            return d["date"][:10], "day"
+    return (f"{a['publicationYear']}-01-01", "year") if a.get("publicationYear") else (None, None)
+
+
+def add_pub_dates(pubs, old_pubs):
+    """date / datePrecision / dateSource for each record. Dates from the previous build are kept;
+    only records without one are looked up, so a failed lookup never removes a date."""
+    old = {}
+    for p in old_pubs:
+        if p.get("date"):
+            for key in (p.get("pmid"), (p.get("doi") or "").lower()):
+                if key:
+                    old[key] = (p["date"], p.get("datePrecision"), p.get("dateSource"))
+    for p in pubs:
+        hit = old.get(p["pmid"]) or old.get((p["doi"] or "").lower())
+        if hit:
+            p["date"], p["datePrecision"], p["dateSource"] = hit
+    todo = [p for p in pubs if not p.get("date")]
+    try:
+        found = pubmed_dates({p["pmid"] for p in todo if p["pmid"]})
+    except Exception as exc:
+        note(f"PubMed date lookup failed ({exc.__class__.__name__}); those records keep year-only sorting")
+        found = {}
+    for p in todo:
+        if p["pmid"] in found:
+            p["date"], p["datePrecision"] = found[p["pmid"]]
+            p["dateSource"] = "pubmed"
+        elif p["doi"]:
+            for source, lookup in (("crossref", crossref_date), ("datacite", datacite_date)):
+                try:
+                    date, prec = lookup(p["doi"])
+                except Exception:
+                    date, prec = None, None
+                if date:
+                    p["date"], p["datePrecision"], p["dateSource"] = date, prec, source
+                    break
+        if not p.get("date"):
+            note(f"NO PUBLICATION DATE (sorted by year): #{p['number']} {p['title']}")
+
+
+def pub_sort_key(p):
+    """Newest first by publication date; a record with only a year sorts at the end of that year."""
+    date = p.get("date") or (f"{p['year']}-12-31" if p.get("year") else "0000-00-00")
+    return (date, p["number"] if isinstance(p["number"], int) else 0)
+
+
+# ---------------------------------------------------------------- grant links
+
+GRANT_LINKS = DATA / "grant_links.json"
+REPORTER_API = "https://api.reporter.nih.gov/v2/projects/search"
+AWARD_RE = re.compile(r"\b\d?([A-Z]\d{2})\s?([A-Z]{2}\d{6})(?:-[0-9A-Z]+)?")
+
+
+def split_award(funder):
+    """'NIH/NIDDK R01 2R01DK130913-05' -> ('2R01DK130913-05', 'R01DK130913', 'NIH/NIDDK R01')."""
+    m = AWARD_RE.search(funder or "")
+    if not m:
+        return None, None, funder
+    agency = re.sub(r"\s+", " ", (funder[:m.start()] + funder[m.end():])).strip(" ,")
+    if m.group(1) not in agency.split():  # keep the mechanism: 'NIH/NIGMS CTR' -> 'NIH/NIGMS P20 CTR'
+        head, _, tail = agency.partition(" ")
+        agency = " ".join(x for x in (head, m.group(1), tail) if x)
+    return m.group(0), m.group(1) + m.group(2), agency
+
+
+def reporter_records(cores):
+    """{core: [(fiscal_year, project_num, appl_id)]} from one NIH RePORTER query; {} on any failure."""
+    import urllib.request
+    if not cores:
+        return {}
+    body = json.dumps({"criteria": {"project_nums": sorted(cores)}, "limit": 500,
+                       "include_fields": ["ApplId", "ProjectNum", "FiscalYear"]}).encode()
+    req = urllib.request.Request(REPORTER_API, data=body, headers={"Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            results = json.load(resp).get("results", [])
+    except Exception as exc:  # network or API change: keep the previous links
+        note(f"NIH RePORTER lookup failed ({exc.__class__.__name__}); previous grant links kept")
+        return {}
+    out = {}
+    for r in results:
+        m = AWARD_RE.search(r.get("project_num") or "")
+        if m:
+            out.setdefault(m.group(1) + m.group(2), []).append((r["fiscal_year"], r["project_num"], r["appl_id"]))
+    return out
+
+
+def pick_reporter(records, award, start, end):
+    """The RePORTER record for this award: the exact project number when the CV gives one with a
+    type prefix (e.g. a renewal 2R01...-05); otherwise the latest non-renewal, non-supplement year
+    inside the grant period."""
+    exact = [r for r in records if award and award[0].isdigit() and "-" in award and r[1].startswith(award)]
+    if exact:
+        return max(exact)
+    y0, y1 = int((start or "0000")[:4]), int((end or "9999")[:4])
+    plain = [r for r in records if r[1][0] not in "23" and y0 <= r[0] <= y1]
+    return max(plain) if plain else None
+
+
+def add_grant_links(grants, old_links):
+    cfg = json.loads(GRANT_LINKS.read_text()) if GRANT_LINKS.exists() else {}
+    for g in grants:
+        g["award"], g["_core"], g["agency"] = split_award(g["funder"])
+        g["url"], g["linkLabel"] = old_links.get(g["title"].lower(), (None, ""))
+    program = {id(g): next((p for p in cfg.get("programs", []) if p["match"].lower() in g["funder"].lower()), None)
+               for g in grants}
+    cores = {g["_core"] for g in grants if g["_core"] and not program[id(g)]}
+    found = reporter_records(cores)
+    for g in grants:
+        rec = pick_reporter(found.get(g["_core"], []), g["award"], g["start"], g["end"]) if g["_core"] else None
+        if rec and not program[id(g)]:
+            g["url"], g["linkLabel"] = f"https://reporter.nih.gov/project-details/{rec[2]}", "NIH RePORTER"
+        elif g["_core"] and not program[id(g)] and found:
+            note(f"NO RePORTER RECORD for {g['funder']!r} in its grant period")
+        if program[id(g)]:
+            g["url"], g["linkLabel"] = program[id(g)]["url"], program[id(g)]["label"]
+        if g["title"] in cfg.get("manual", {}):
+            g["url"], g["linkLabel"] = cfg["manual"][g["title"]], "Link"
+        if not g["url"]:
+            g.pop("url")
+            g.pop("linkLabel")
+        g.pop("_core")
+
+
 # ---------------------------------------------------------------- home page static fallback
 
 def esc(s):
@@ -402,15 +613,20 @@ def main():
 
     paras = list(cv_paragraphs(args.cv))
     pubs = build_publications(load_tracker(args.tracker), area_titles, overrides, parse_cv_publications(paras))
+    add_pub_dates(pubs, old.get("peerReviewed", []))
+    for p in pubs:  # the shown year follows the publication date (online-first), so labels match the order
+        if p.get("date") and int(p["date"][:4]) != p["year"]:
+            note(f"YEAR FROM PUBLICATION DATE: #{p['number']} tracker {p['year']} -> {p['date'][:4]} "
+                 f"({p['dateSource']} {p['date']})")
+            p["trackerYear"], p["year"] = p["year"], int(p["date"][:4])
+    pubs.sort(key=pub_sort_key, reverse=True)
     grants = merge_supplements(parse_grants(paras, note, TODAY), note)
     for g in grants:
         g.pop("cvSection", None)
-    # Keep hand-added links (e.g. NIH RePORTER) from the previous file, matched by title
-    old_urls = {g.get("title", "").lower(): g["url"] for k in ("current", "previous")
-                for g in old_grants.get(k, []) if g.get("url")}
-    for g in grants:
-        if g["title"].lower() in old_urls:
-            g["url"] = old_urls[g["title"].lower()]
+    # Links: the previous file's link is the fallback, then RePORTER, then program pages, then manual
+    old_links = {g.get("title", "").lower(): (g["url"], g.get("linkLabel", "")) for k in ("current", "previous")
+                 for g in old_grants.get(k, []) if g.get("url")}
+    add_grant_links(grants, old_links)
     grants_out = {
         "current": sorted([g for g in grants if g["status"] == "active"], key=lambda g: g["start"] or "", reverse=True),
         "previous": sorted([g for g in grants if g["status"] == "completed"], key=lambda g: g["end"] or "", reverse=True),

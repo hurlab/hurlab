@@ -48,16 +48,16 @@
         2010,
         2014
       ],
-      "publications": 21,
+      "publications": 22,
       "themes": [
         "Neurological Disorders",
         "Bioinformatics and Systems Biology",
         "Ontology-Based Knowledge Systems"
       ],
       "areaCounts": {
+        "Neurological Disorders": 10,
         "Systems Pharmacology": 2,
         "Bioinformatics and Systems Biology": 4,
-        "Neurological Disorders": 9,
         "Ontology-Based Knowledge Systems": 4,
         "Population and Clinical Health": 2
       }
@@ -70,19 +70,19 @@
         2015,
         2020
       ],
-      "publications": 63,
+      "publications": 62,
       "themes": [
-        "Neurological Disorders",
         "Ontology-Based Knowledge Systems",
+        "Neurological Disorders",
         "Systems Pharmacology"
       ],
       "areaCounts": {
-        "Ontology-Based Knowledge Systems": 17,
         "Host-Pathogen Interactions": 3,
-        "Neurological Disorders": 18,
+        "Ontology-Based Knowledge Systems": 17,
+        "Neurological Disorders": 17,
         "Population and Clinical Health": 9,
-        "Systems Pharmacology": 13,
-        "Artificial Intelligence and Machine Learning": 3
+        "Artificial Intelligence and Machine Learning": 3,
+        "Systems Pharmacology": 13
       }
     },
     {
@@ -100,12 +100,12 @@
         "Artificial Intelligence and Machine Learning"
       ],
       "areaCounts": {
-        "Host-Pathogen Interactions": 23,
-        "Ontology-Based Knowledge Systems": 9,
-        "Artificial Intelligence and Machine Learning": 13,
         "Bioinformatics and Systems Biology": 6,
-        "Systems Pharmacology": 5,
+        "Host-Pathogen Interactions": 23,
+        "Artificial Intelligence and Machine Learning": 13,
+        "Ontology-Based Knowledge Systems": 9,
         "Neurological Disorders": 31,
+        "Systems Pharmacology": 5,
         "Population and Clinical Health": 7
       }
     }
