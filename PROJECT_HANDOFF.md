@@ -4,9 +4,9 @@
 
 **Purpose**: Modern, data-driven academic website for the Hur Lab (Dr. Junguk Hur, UND Biomedical Sciences). Fully redesigned from legacy HTML4 frameset site. All page content driven by JSON data files, with an admin panel for content management and a CV parser for automated publication/grant updates.
 
-**Scope**: 9 HTML pages (8 public + 1 research detail), admin server (port 8180), CV parser script, 8 JSON data files. Deployed on Apache Tomcat 9.0.37 with nginx reverse proxy.
+**Scope**: 10 HTML pages (8 public + Research at a Glance + research detail), admin server (port 8180), data build script (`scripts/build_data.py`, tracker + CV .docx), CV diff engine (`scripts/cv_diff.py`), CV PDF parser (talks/posters), 12 JSON data files. Deployed on Apache Tomcat 9.0.37 with nginx reverse proxy.
 
-- **Last updated**: 2026-10-29 22:44 CDT
+- **Last updated**: 2026-10-30 18:22 CDT
 - **Last coding CLI used**: Claude Code CLI (Claude Opus 5.5 / Sonnet 5.5)
 - **Git repo**: https://github.com/hurlab/hurlab.git (branch: main)
 
@@ -17,17 +17,21 @@
 | Feature / Component | Status | Notes |
 |---|---|---|
 | **Core Website** | | |
-| Home page (`index.html`) | Completed in Session 2026-10-14 16:11 CDT | Recent Publications = auto-scrolling strip of the newest N published papers (N and author-shorten threshold from `data/site.json` homePage, admin "Home Page" tab; long author lists shortened to first 3 … Hur J … last); Featured Tools = auto-scrolling strip of all tools from tools.json; both pause on mouse hover (mouse devices only), the button, or keyboard focus; hero fits its content; compact research cards. Marquee CSS is inline in index.html on purpose. See PROJECT_LOG 2026-10-14 16:11 |
-| Research page (`research.html`) | Completed in Session 2026-03-25 14:39 CDT | Data-driven, Neurological Disorders expanded (AD, PD), updated collaborators |
-| Research detail pages (`research-detail.html`) | Completed in Session 2026-03-25 14:39 CDT | Per-area detail with keyword-filtered pubs, AD/PD keywords added |
-| Publications page (`publications.html`) | Completed in Session 2026-10-14 16:11 CDT | `*`/`$` author markers as superscripts, journal names bold-italic (177 of 181 found; shared `js/citations.js`); Presentations tab = "Poster & Oral Abstracts", newest first, Oral/Poster badge, `*`/`$` legend; poster parse bug fixed in `scripts/parse_cv.py` (layout-mode text) |
+| Home page (`index.html`) | Completed in Session 2026-10-30 18:22 CDT | Research Highlights 4 x 2 (7 area cards + a "Research at a Glance" card; 2 columns tablet, 1 phone); Recent Publications = 5 newest research papers (Article/Review) by publication date; counters and funding from the rebuilt JSON; static no-JavaScript copies between `<!-- BUILD:... -->` markers written by build_data.py; earlier strips/hero from 2026-10-14 unchanged |
+| Research page (`research.html`) | Completed in Session 2026-10-30 18:22 CDT | 7 areas incl. new "Population and Clinical Health" (globe icon); grant titles link to NIH RePORTER or UND program pages via `grants.json` `url` |
+| Research detail pages (`research-detail.html`) | Completed in Session 2026-10-30 18:22 CDT | Papers listed by assigned area (`areaIndex`, not keyword matching), newest first by publication date; `?area=0..6` |
+| Publications page (`publications.html`) | Completed in Session 2026-10-30 18:22 CDT | All (182) default tab = one date-sorted list with preprints badged; tabs Papers & Books (164) / Preprints (18) / Presentations; breakdown line "182 publications in total: 161 journal and conference papers, 18 preprints, 2 edited books, 1 book chapter"; area and type filters (`?area=N` preselects); item numbers removed, status badges (Recent, Preprint, Editorial, Not peer-reviewed) at the right end of the bottom row; Under Review / In Preparation tabs removed; "Recent" badge = last 6 months by date |
+| Research at a Glance (`research-overview.html`, nav "Overview") | Completed in Session 2026-10-30 18:22 CDT | Stats (182 / 161 / 77 led / 2004-2026 / 6 active); publications per year by area with authorship filter (any / led / co-authored) and cumulative toggle; led-by-Dr.-Hur vs co-authored chart (32 / 45 / 102); career timeline from the CV; 7 area cards with 3 highlights each; funded-grants timeline (6 active tinted, 8 completed external, 12 completed internal; award number and PIs on click; title links). Chart.js 4.4.1 from cdnjs |
 | Tools page (`tools.html`) | Completed in Session 2026-10-14 16:11 CDT | 20 tools sorted A–Z at load; filters All/Knowledgebase/Web Tool/Research Support/R Package/R Shiny/Python/Desktop (Desktop is empty); a second click on the active filter returns to All; category may be a list (Tox21 Enricher, DNMKB2); preview strip + 7:3 expanded view; card outline; status labels Available/Beta/Coming soon + legend; optional `urlLabel`/`notice`. See PROJECT_LOG 2026-10-14 13:32 and 16:11 |
 | Site-wide spacing/banner compaction, hidden grant $ amounts, Research "Previous Grants", topic-page 2-col layout | Completed in Session 2026-10-14 (earlier session 455f03ad) | Reconstructed from commits 09d9cbc..464f580; see PROJECT_LOG 2026-10-14 13:32 |
 | People page (`people.html`) | Completed in Session 2026-03-14 16:30 CDT | Data-driven, visibility toggles, FAC sections, GitHub (Personal + Lab) |
-| Positions page (`positions.html`) | Completed in Session 2026-03-14 16:30 CDT | Data-driven, isHiring=false, visiting scholar 6mo–3yr |
+| Positions page (`positions.html`) | Completed in Session 2026-10-30 (commit 7298d41, deployed) | Graduate Student card no longer says "Competitive stipend and tuition support available"; Future Openings text uses the full card width; isHiring=false |
 | Collaborators page (`collaborators.html`) | Completed in Session 2026-07-09 23:57 CDT | 7 sections, responsive 2-column grid, reversible hidden-member flag; see PROJECT_LOG 2026-07-09 |
 | **Infrastructure** | | |
 | Shared nav/footer (`js/components.js`) | Completed in Session 2026-03-25 14:39 CDT | Sakai Portal link added to footer; footer lists the CDAC/RDCD roles + "Also affiliated with" (U. Michigan adjunct, VA Fargo WOC) and an automatic per-page "Last updated" (newest server Last-Modified of the page and its data files), 2026-10-14 |
+| Data build (`scripts/build_data.py`, `scripts/cvlib.py`) | Completed in Session 2026-10-30 18:22 CDT | Builds publications/grants/overview JSON from the tracker (.xlsx) and the CV (.docx); only when a source is newer (`--force`); author strings and marks from the CV; areas (rules + `data/area_overrides.json`); dates from PubMed/Crossref/DataCite; grant links from NIH RePORTER + `data/grant_links.json`; writes the home page static copies. Runs locally only (sources are on /mnt/c) |
+| CV diff engine (`scripts/cv_diff.py`) | Step 1 of 4 Completed in Session 2026-10-30 18:22 CDT | Read-only CLI: new CV vs published data (or vs an older CV); NEW / CHANGED / METADATA / PREPRINT-NOW-PUBLISHED / SAME-PAPER? / CATEGORY-MOVED / AUTHORSHIP-MARK-CHANGED / REMOVED / GRANT-* / FLAG; tests `tests/unit/test_cv_diff.py` (19) on frozen CVs in `~/.local/share/hurlab-cv-fixtures/` |
+| Data fetches revalidate | Completed in Session 2026-10-30 (commit 116bf8d) | Every `fetch('data/*.json')` uses `{ cache: 'no-cache' }` (304 when unchanged) |
 | Tailwind theme (`js/theme.js`) | Completed in Session 2026-03-14 13:23 CDT | Teal/indigo palette |
 | Custom CSS (`css/custom.css`) | Completed in Session 2026-03-14 13:23 CDT | Animations, card hovers, gradient text |
 | Legacy Entrez ID/Symbol converter (server-side, NOT in git) | Completed in Session 2026-10-29 22:44 CDT (work done on the server 2026-10-15) | Revived at `https://hurlab.med.und.edu/cgi-bin/SciMiner/annotation.cgi`; old `/SciMiner/annotation.cgi` returns 301 to it, so the SMHS link works unchanged. Script cut down (MiMI removed, input whitelisted/capped, output HTML-escaped, red "Annotation is outdated" banner). Details in "Server-side changes outside git" below. See PROJECT_LOG 2026-10-29 22:44 |
@@ -41,19 +45,20 @@
 | Schema.org JSON-LD | Completed in Session 2026-03-25 14:39 CDT | ResearchOrganization on index.html |
 | Google Analytics 4 | Completed in Session 2026-03-25 14:39 CDT | G-Z36JMZ1F1K on all 8 pages |
 | **Data Layer (JSON-as-Database)** | | |
-| `data/publications.json` | Completed in Session 2026-03-14 16:30 CDT | 170 peer-reviewed (59 with PMCID), 9 under review, 5 in prep, 34 talks, 190 posters |
-| `data/grants.json` | Completed in Session 2026-03-25 14:39 CDT | 5 current with NIH Reporter/ARPA-H URLs, effort % removed |
+| `data/publications.json` | Completed in Session 2026-10-30 18:22 CDT | 182 records (`peerReviewed` key kept): CV text, tracker title/category/IDs/links, `area`/`areaIndex`/`areaSource`, `authorship`, `isPeerReviewed`, `date`/`datePrecision`/`dateSource` (164 of 182), `year` = publication-date year (`trackerYear` kept for 10); talks/posters carried over; no underReview/inPreparation |
+| `data/grants.json` | Completed in Session 2026-10-30 18:22 CDT | Funded only: 6 current (VIOLIN supplement merged as a note) + 20 previous (8 external, 12 UND internal); no dollar amounts, no pending; `award`, `agency`, `url`, `linkLabel` |
 | `data/team.json` | Completed in Session 2026-03-14 16:30 CDT | PI + current + alumni + FAC + FAC alumni + visibility settings |
 | `data/tools.json` | Completed in Session 2026-10-14 16:11 CDT | 20 tools (7 added this evening: Vignet + 6 research-support apps); `images`, `status` (available/beta/coming-soon), `category` string or list, `urlLabel`, `notice`; DNMKB2 "Replaced by DPNKB" and Web Tool + Knowledgebase; DPNKB described as its revamped successor (updated 2026-06-08) |
-| `data/research.json` | Completed in Session 2026-05-21 CDT | 6 areas incl. Systems Pharmacology (added 2026-05-21, commit c0a907a); Neuro AD/PD |
+| `data/research.json` | Completed in Session 2026-10-30 18:22 CDT | 7 areas: added "Population and Clinical Health" (icon globe, color teal; drafted description, user-approved via merge) |
 | `data/collaborators.json` | Completed in Session 2026-07-09 23:57 CDT | 7 categories, 24 visible + 5 hidden collaborators, all with web-verified profile URLs |
-| `data/positions.json` | Completed in Session 2026-03-14 16:30 CDT | isHiring=false, visiting scholar 6mo–3yr |
-| `data/site.json` | Completed in Session 2026-10-14 16:11 CDT | Lab-wide config + `homePage` {recentPublicationsCount: 10, authorShortenThreshold: 10}, editable in the admin Home Page tab |
+| `data/positions.json` | Completed in Session 2026-10-30 (commit 7298d41) | isHiring=false; Graduate Student requirements without the stipend line |
+| `data/site.json` | Completed in Session 2026-10-30 18:22 CDT | `homePage.recentPublicationsCount` 5 (was 10) |
+| `data/overview.json`, `data/area_overrides.json`, `data/grant_links.json` | Completed in Session 2026-10-30 18:22 CDT | Overview: research interests, 5 career eras, milestones, highlights. Overrides: 49 reviewed area assignments. Grant links: program pages (TRANSCEND, HPI COBRE, Epigenetics COBRE history page) |
 | **Admin Panel (port 8180)** | | |
 | Admin server (`scripts/admin_server.py`) | Completed in Session 2026-10-14 16:11 CDT | Team CRUD/reorder; JSON editors (2026-04-08); TOTP 2FA login w/ QR enrollment (2026-05-21, commit c0a907a); Home Page tab + `/api/home-settings` (auth + CSRF, ranges validated), 2026-10-14 |
 | Team drag-and-drop reorder | Completed in Session 2026-03-25 14:39 CDT | Drag rows to reorder within any section |
 | CV upload + symlink management | Completed in Session 2026-03-14 16:30 CDT | Saves as dated file, updates 3 symlinks |
-| CV parser (`scripts/parse_cv.py`) | Completed in Session 2026-03-14 16:30 CDT | Extracts pubs (with PMCID), grants; git auto-commit |
+| CV parser (`scripts/parse_cv.py`) | Completed in Session 2026-10-30 18:22 CDT | CV PDF upload now updates talks and posters only, then runs `build_data.py --if-available` (a no-op on the server) |
 | Team management (CRUD) | Completed in Session 2026-03-14 16:30 CDT | Current/Alumni/FAC/FAC Alumni sections |
 | Section visibility toggles | Completed in Session 2026-03-14 16:30 CDT | Controls which sections show on People page |
 | Photo upload for members | Completed in Session 2026-03-14 16:30 CDT | Saves to Images/team/, updates team.json |
@@ -94,20 +99,25 @@
 | WEB-INF/web.xml security constraints | Completed | 2026-04-08 CDT | Blocks scripts/, tests/, node_modules/, dot files, project files; 403 on all sensitive paths |
 | Server-side input sanitization | Completed | 2026-04-08 CDT | HTML tag stripping on stored text fields, generic error messages (no path leaks) |
 | Playwright E2E test suite | Completed | 2026-04-08 CDT | 90 tests across 6 spec files, all passing |
+| Deploy `8e091cd` to the server | Open — next action | 2026-10-30 18:22 CDT | GitHub main = 8e091cd; server = 7298d41. User said "commit and push" only. Deploy = `ssh hurlab@100.94.67.89` then `git pull --ff-only origin main` in the webapp dir; verify live (E2E with default baseURL) |
+| CV incremental update, steps 2-4 (decision memory + snapshots + publish/rollback CLI; admin "CV Update" tab; server push with a repo-scoped deploy key; deploy script refuses when origin has unpulled commits) | Open | 2026-10-30 18:22 CDT | Design agreed (memory `project_cv_incremental_update.md`); state outside the web root (`/home/hurlab/hurlab-admin-state/`); .docx upload for the diff |
+| 18 records without a publication date (16 proceedings, preprint #166, article #8: no PMID/DOI) | Open — optional | 2026-10-30 18:22 CDT | Add a DOI in the tracker and rebuild; they sort at the end of their year |
+| Epigenetics COBRE link goes to the History page | Open — optional | 2026-10-30 18:22 CDT | No main COBRE page found by search; edit `data/grant_links.json` if one exists |
+| Worktrees `research-overview`, `positions-stipend`, `cv-diff` (merged into main) and their WT- branches | Open — dispose after user OK | 2026-10-30 18:22 CDT | `.moai/worktrees/projects/hurlab/*` under ~/.moai; local preview servers on 8795-8797 were left running in the session |
 | SciMiner card version tag still reads "System migration" (stale next to new name) | Open — ask user what to show | 2026-10-14 13:32 CDT | PROJECT_LOG 2026-10-14 13:32 |
 | scGEN card: add paper PMID to `publications`; figure reuse license (Advanced Science) not checked | Open | 2026-10-14 13:32 CDT | PROJECT_LOG 2026-10-14 13:32 |
 | When PubChemSR 2.0 / ChemFuse go public: set `status` to `available`, drop PubChemSR `notice`, restore GitHub links | Open (waiting on release) | 2026-10-14 13:32 CDT | PROJECT_LOG 2026-10-14 13:32 |
 | Remove 6 merged worktrees under `.moai/worktrees/` | Completed | 2026-10-14 17:00 CDT | All six were verified merged into origin/main with no tracked changes and removed (their untracked `.codex/` and the original `.shots/` screenshots went with them; resized images are committed). The six local `WT-*` branches still exist — delete with `git branch -d` after user OK (branch change in the shared checkout) |
-| Primary checkout `main` is behind origin/main (12 commits) | Completed | 2026-10-29 22:44 CDT | Checked first: local HEAD was an ancestor of origin/main, 0 local-only commits, no overlap with the local uncommitted `.moai/` files; `git pull --ff-only` → HEAD = origin/main = f4a2f9b (`0 0`) |
+| Primary checkout `main` is behind origin/main | Open | 2026-10-30 18:22 CDT | Primary is at e54bc84; main moved to 8e091cd (+ this docs commit) via worktrees. `git pull --ff-only` when no other session uses it |
 | SMHS site pages (`med.und.edu/research/labs/hur/`) refreshed from the lab site via the Claude-desktop 2-phase prompt | Completed | 2026-10-29 22:44 CDT | User confirmed 2026-10-29: all changes from that work were approved — no further action |
 | SMHS Tools page links (PubChemSR SourceForge 403 to curl) | Superseded | 2026-10-29 22:44 CDT | Covered by the approved SMHS refresh; user said no further SMHS follow-up is needed |
 | Converter page look (external CSS/JS removed from the CGI) never viewed in a real browser | Open | 2026-10-29 22:44 CDT | Open `https://hurlab.med.und.edu/cgi-bin/SciMiner/annotation.cgi`; ask the user if fonts/colors look off |
 | Local `WT-*` branches: 7 now (handoff said 6) | Open — ask before deleting | 2026-10-29 22:44 CDT | `git branch --list 'WT-*'`; branch change in the shared checkout needs user OK |
 | Uncommitted local `.moai/harness/usage-log.jsonl`, `.moai/lessons-inbox.jsonl` (+ untracked `.moai/logs/`, `.moai/reports/`) | Open — harness bookkeeping, left alone | 2026-10-29 22:44 CDT | Last committed as f3897dd; stage by explicit pathspec if committing |
-| CV data gaps: publications #95, #96, #112, #143 have no year in the CV text | Open | 2026-10-14 CDT (earlier session) | PROJECT_LOG 2026-10-14 13:32 |
-| `data/grants.json` still holds dollar totals (pages no longer display them) | Open — decide whether to strip | 2026-10-14 CDT (earlier session) | PROJECT_LOG 2026-10-14 13:32 |
+| CV data gaps: publications #95, #96, #112, #143 have no year in the CV text | Superseded | 2026-10-30 18:22 CDT | Publications now come from the tracker (years) plus publication dates |
+| `data/grants.json` dollar totals | Resolved | 2026-10-30 18:22 CDT | Rebuilt without amounts or pending; E2E test asserts no `$`, no `pending`, no `submitted` (red on the old live file, green on the new) |
 | `.playwright-mcp/` (browser-tool scratch) is not in `.gitignore` | Open | 2026-10-14 13:32 CDT | add below `# User Custom Patterns` at end of file |
-| HTTP caching: Tomcat sends no Cache-Control/Expires, so browsers can keep stale HTML/CSS/JS (a hard refresh is needed after deploys). Offered: ExpiresFilter in WEB-INF/web.xml + version tags on css/js links + no-cache on data fetches | Open — user has not chosen | 2026-10-14 16:11 CDT | PROJECT_LOG 2026-10-14 16:11 |
+| HTTP caching: Tomcat sends no Cache-Control/Expires | Partly mitigated | 2026-10-30 18:22 CDT | Data fetches revalidate (116bf8d) after a returning browser showed the new overview with 2-week-old JSON. HTML/CSS/JS are still heuristically cached; ExpiresFilter in WEB-INF/web.xml or version tags still open. Wiki `concept/no-cache-control-means-the-browser-guesses-freshness` |
 | Four citations get no bold-italic journal (CV punctuation): #47 "Bai J.P.F.,", #113 consortium author, #135/#136 comma-separated format | Open — fix the CV entries or accept | 2026-10-14 16:11 CDT | PROJECT_LOG 2026-10-14 16:11 |
 | Poster list cannot show the CV's bold lab-member names (plain text extraction drops formatting; would need font info from the PDF) | Open — optional | 2026-10-14 16:11 CDT | PROJECT_LOG 2026-10-14 16:11 |
 | "Desktop" filter on the Tools page matches no tool | Open — remove the button or tag a tool | 2026-10-14 16:11 CDT | PROJECT_LOG 2026-10-14 16:11 |
@@ -125,6 +135,8 @@
 | Admin server not auto-started | Resolved | 2026-04-08 | systemd user service enabled with lingering |
 | Server holds uncommitted live edits (`data/team.json`, `Personal/JungukHur_CV.pdf`) | Open | 2026-10-14 | Untouched by all 2026-10-14 deploys (ff-only pulls). After a CV upload, the admin auto-commit stays unpushed on the server — pull it into GitHub before the next deploy (as done with a1ec5fd → 297e82b) |
 | Admin "Home Page" tab not exercised by a logged-in user | Open | 2026-10-14 | Handler unit-tested (9 cases) and unauthenticated GET/POST return 401 on the server; the form itself has not been tried (login needs the PI's 2FA code). Saving commits on the server and that commit stays unpushed, like CV uploads — pull it into GitHub before the next deploy |
+| CV PDF upload on the server no longer refreshes the publication list | Open (by design) | 2026-10-30 18:22 CDT | `build_data.py` needs the tracker and CV .docx, which only exist locally; rebuild locally and deploy. Superseded once the CV Update tab (steps 2-4) lands |
+| Build depends on NIH RePORTER, PubMed, Crossref, DataCite | Mitigated | 2026-10-30 18:22 CDT | Fail-open: previous links and dates are kept; reachable from the server too (verified over Tailscale) |
 | Tool status labels are set by hand | Open (by design) | 2026-10-14 | Assumption: `status` reflects visitor access (available / beta / coming-soon); nothing updates it automatically |
 | Server changes made outside git (nginx conf block, converter CGI, helper script, backups) are not version-controlled | Open — documented only here | 2026-10-15 | If nginx config is regenerated or the box is rebuilt, the block `# ... entrez` after `# END dnmkb2-cgi-allow` and the cut-down `annotation.cgi` must be re-applied: run `/home/hurlab/enable-entrez-id2symbol.sh` (has `--dry-run` / `--revert`). See §7 "Server-side changes outside git" |
 | Legacy sequence-tool CGIs still exist on disk under `webapps/ROOT/WEB-INF/cgi/` and answer on Tomcat localhost:8081 | Open (mitigated by nginx 403) | 2026-10-15 | Not exposed externally. Anyone loosening the `/cgi-bin/` deny rule would expose command-injection code. Consider deleting or moving them out of the CGI dir (user has not asked) |
@@ -161,7 +173,9 @@
 | Entrez converter revival (first verified 2026-10-15 from this machine) | `curl` against the public URLs; conversions 7157→TP53 "tumor protein p53", 672→BRCA1, Trp53→22059; SQL-/XSS-shaped input; neighbour paths | New URL 200 + warning present + no MiMI; old https URL 301 → new; SMHS `http://…/SciMiner/annotation.cgi` ends at 200 after 2 redirects; injection input: no errors, XSS input not echoed raw; still closed: other SciMiner CGI (302), `wz_tooltip.js` (302), `annotation.cgi.backup` (302), 5 sequence tools (403), `/hurlab/cgi-bin/WebTools/` (404), `/SciMiner/index.cgi` (403); hurlab / SciMiner1.1 / DNMKB 200. Server: block present once, conf 761 lines, CGI sha256 `15b6776a…` | 2026-10-15 |
 | Same, re-checked today (status codes only) | `curl -s -o /dev/null -w` on the public URLs | converter 200 with "outdated" banner; old URL 301 → new; `/cgi-bin/SeqAlign/` and `/cgi-bin/RepeatFinder/` 403; `/hurlab/` and `tools.html` 200; `js/citations.js` 200. Conversions and the other neighbour paths were NOT re-run | 2026-10-29 22:44 CDT |
 | Primary checkout sync | `git fetch`; `git rev-list --count --left-right origin/main...HEAD` before and after `git pull --ff-only` | before `12 0` (0 local-only commits, no overlap with local changes); after `0 0`, HEAD f4a2f9b | 2026-10-29 22:44 CDT |
-| Not yet verified | — | Playwright E2E suite (90 tests) not re-run after the 2026-10-14 changes; admin Home Page form not tried logged in; mobile check covered Tools only (home strips checked at 1366 px and in reduced-motion mode, not at phone width) | 2026-10-14 16:11 CDT |
+| Research overview, data rebuild, grant links, publication dates | Playwright (local preview and live), unit tests, JSON checks | E2E 99/99 passed locally (8795/8797) and live after 1e4fe50 and 116bf8d; reference numbers reproduced (182 / 161 / 155 / 132 / 18; 32 + 45 = 77 led; 102 co-authored; grants 6 / 8 / 12); 8 RePORTER links cross-checked (number + PI; 7 titles equal, Rumora title then fixed in the CV); build_data refactor byte-identical before/after; no em dash in site files | 2026-10-30 18:22 CDT |
+| CV diff engine | `python3 -m unittest discover -s tests/unit` | 19 passed; ground truth from a plain difflib comparison of the CV entries; a wrong CV fed in turns 5 tests red; published-vs-current CV = 0 items, vs 10-29 CV = 10 items | 2026-10-30 18:22 CDT |
+| Not yet verified | — | 8e091cd is not deployed (not checked live); Playwright E2E suite (90 tests) not re-run after the 2026-10-14 changes (superseded: 99 run 2026-10-30); admin Home Page form not tried logged in; mobile check covered Tools only (home strips checked at 1366 px and in reduced-motion mode, not at phone width) | 2026-10-14 16:11 CDT |
 
 ---
 
@@ -203,11 +217,13 @@ hurlab/           ← webroot (Tomcat webapp)
   v1/             ← legacy site + archived directories
 ```
 
-**Deployment flow** (confirmed 2026-07-09): the deployed webapp dir on hurlab.med.und.edu **is** the git working tree Tomcat serves. Deploy = commit + push to GitHub, then `ssh hurlab@hurlab.med.und.edu` → `cd .../webapps/hurlab && git pull --ff-only origin main`. Static files (HTML/JS/JSON/images) go live immediately; changes to `scripts/admin_server.py` or its templates need `systemctl --user restart hurlab-admin.service`. The server ALSO commits directly to main (admin-panel CV auto-parse + manual edits), so always `git pull --rebase` locally before pushing. Reusable method: wiki `concept/verify-person-profile-url-before-linking`.
+**Deployment flow** (confirmed 2026-07-09): the deployed webapp dir on hurlab.med.und.edu **is** the git working tree Tomcat serves. Deploy = commit + push to GitHub, then `ssh hurlab@100.94.67.89` (Tailscale; the public hostname port 22 times out off campus) → `cd .../webapps/hurlab && git pull --ff-only origin main`. Static files (HTML/JS/JSON/images) go live immediately; changes to `scripts/admin_server.py` or its templates need `systemctl --user restart hurlab-admin.service`. The server ALSO commits directly to main (admin-panel CV auto-parse + manual edits), so always `git pull --rebase` locally before pushing. Reusable method: wiki `concept/verify-person-profile-url-before-linking`.
 
 **Worktree deploy flow used 2026-10-14**: work in a `.moai/worktrees/<name>` tree (the primary checkout is shared and behind) → commit there → re-read HEAD/branch → `git fetch` + `git rev-list --count --left-right origin/main...HEAD` (expect `0 N`) → check server HEAD over ssh → `git push origin <branch>:main` → ssh `git pull --ff-only origin main` → verify live with `curl`. No AI attribution trailers in commits (user instruction).
 
-**Wiki**: `concept/pdftotext-reading-order-detaches-list-numbers-from-their-entries` (numbered-list parsing) · `concept/a-public-page-is-checked-from-the-visitors-side` — check public links unauthenticated (private repos 404 for visitors); status labels by visitor access.
+**Data rebuild (local only)**: `python3 scripts/build_data.py` (skips when outputs are newer; `--force`), then `python3 scripts/cv_diff.py --new-cv <CV.docx>` should report 0 items. E2E against a local preview: `python3 -m http.server 8795` + `BASE_URL=http://127.0.0.1:8795/ npx playwright test`.
+
+**Wiki**: `concept/no-cache-control-means-the-browser-guesses-freshness` · `concept/a-diff-tool-needs-ground-truth-it-did-not-compute` · `concept/pdftotext-reading-order-detaches-list-numbers-from-their-entries` (numbered-list parsing) · `concept/a-public-page-is-checked-from-the-visitors-side` — check public links unauthenticated (private repos 404 for visitors); status labels by visitor access.
 
 **Server-side changes outside git (done 2026-10-15; the agent has no sudo, the user ran the nginx step)**:
 - `annotation.cgi` (the real script) is `/home/hurlab/apache-tomcat-9.0.37/webapps/ROOT/WEB-INF/cgi/SciMiner/annotation.cgi`; sha256 `15b6776a3ada558acb4efc15e1a76c6e8ae71730164b6f6947ca7d98fa627f13`. The original is backed up at `/home/hurlab/backups/annotation-cgi-20261015/annotation.cgi.orig` (sha256 `90d97d74…c29c23`), deliberately outside the CGI dir. The old 98-byte stub `webapps/SciMiner/annotation.cgi` (redirects to `/cgi-bin/SciMiner/annotation.cgi`) and `annotation.cgi.backup` (2020) were left untouched.
@@ -219,9 +235,9 @@ hurlab/           ← webroot (Tomcat webapp)
 **Next session**: just say **"resume"** — the saved prompt in the project-root `NEXT_SESSION.md` (pointed to by the ⭐ line in Claude Code auto-memory) drives the restart.
 
 **Recommended next actions**:
-1. Clean-up: delete the 7 leftover local `WT-*` branches (ask first); add `.playwright-mcp/` to `.gitignore` (below `# User Custom Patterns`, at the end) — primary checkout is already fast-forwarded (2026-10-29)
-2. Ask the user: HTTP caching fix (yes/no), SciMiner's "System migration" version tag, the empty Desktop filter; add scGEN paper PMID
-3. Browser spot-check by the user: the converter page look
-4. Re-run the Playwright E2E suite after the 2026-10-14 changes; try the admin Home Page tab logged in
-5. Older carry-overs: upload team photos via admin panel; CSP header for admin panel; WebP `<picture>` elements; collaborator link follow-ups (Cui Tao → Mayo bio; Jinho Yoo http:// link)
-- **Last updated**: 2026-10-29 22:44 CDT
+1. Deploy 8e091cd (user OK first): ssh over Tailscale, `git pull --ff-only origin main`, then E2E against the live site
+2. CV incremental update step 2 (decision memory, snapshots, publish/rollback CLI) in a new worktree; then the admin tab
+3. Clean-up (ask first): fast-forward the primary checkout; dispose of the 3 merged worktrees and the WT- branches; add `.playwright-mcp/` and `.preview/` to `.gitignore` (end of file)
+4. Ask the user: HTTP caching (ExpiresFilter), SciMiner "System migration" tag, empty Desktop filter, scGEN PMID on its tool card
+5. Older carry-overs: converter page look, admin Home Page tab logged in, team photos, CSP for admin, WebP `<picture>`
+- **Last updated**: 2026-10-30 18:22 CDT

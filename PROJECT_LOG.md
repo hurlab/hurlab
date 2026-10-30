@@ -3,9 +3,10 @@
 Bounded active log. Newest first. Older sessions are archived under `logs/` when over budget (>10 sessions / ~1000 lines).
 
 ## Archives
-- logs/PROJECT_LOG_2026-H1.md — 3 sessions (2026-03 … 2026-03)
+- logs/PROJECT_LOG_2026-H1.md — 4 sessions (2026-03 … 2026-04)
 
 ## Session Index (active, newest first)
+- 2026-10-30 18:22 CDT
 - 2026-10-29 22:44 CDT
 - 2026-10-14 17:00 CDT
 - 2026-10-14 16:11 CDT
@@ -15,7 +16,52 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - 2026-04-08 CDT (implementation)
 - 2026-04-08 CDT (security completion)
 - 2026-04-08 CDT (code review)
-- 2026-04-08 CDT (code review pass 2)
+
+---
+
+## Session 2026-10-30 18:22 CDT
+- **Coding CLI used**: Claude Code CLI (Claude Opus 5.5, Sonnet 5.5 for parts). Claude session 0d788018, continued from the 2026-10-29 close. Requirements came from the user and from another agent session the user relayed messages from.
+
+### Phase(s) worked on
+- Research overview + data rebuild (worktree `research-overview`, deployed as 1e4fe50 + 116bf8d)
+- Positions page edit (worktree `positions-stipend`, deployed as 7298d41)
+- Grant links, compact grants timeline, publication counts, publication-date sort, card layout (worktree `cv-diff`, pushed as 8e091cd, NOT deployed)
+- CV incremental update: mock-up, agreed design, step 1 diff engine (53b3aba, inside 8e091cd)
+
+### Concrete changes implemented
+1. Live homepage "empty sections" report checked: in a real browser all data loaded; the sections were empty only to readers without JavaScript (and a relayed claim that data/grants.json was 404 checked the domain root, not `/hurlab/data/`). Fixed with static copies written into index.html by the build.
+2. `scripts/build_data.py` (new): tracker .xlsx + CV .docx -> `data/publications.json` (182), `grants.json` (funded only, no amounts/pending, VIOLIN supplement merged), `overview.json` (eras, interests, milestones, highlights); rebuilds only when a source is newer. Author strings and */$ marks from the CV; areas from topic folders + title rules + `data/area_overrides.json` (49 reviewed); 7th area "Population and Clinical Health".
+3. `research-overview.html` (new, nav "Overview"): stats, publications per year by area (authorship filter, cumulative), led vs co-authored (32 / 45 / 102), career timeline, area cards, funded-grants timeline (6 / 8 / 12).
+4. Publications page: All (182) default merged list, tab counts, breakdown line, area/type filters, no Under Review/In Preparation tabs, item numbers removed, status badges bottom-right; research-detail lists papers by area; homepage 4 x 2 highlights with an overview card.
+5. `parse_cv.py`: CV PDF upload now updates talks/posters only, then `build_data.py --if-available`.
+6. Data fetches revalidate (`cache: 'no-cache'`) after a returning browser showed the new page with 2-week-old JSON.
+7. Positions: stipend line removed from the Graduate Student card; Future Openings text no longer capped at 768 px.
+8. Grant title links: NIH RePORTER (looked up by core project number; 8 links cross-checked) and UND program pages (TRANSCEND, HPI COBRE, Epigenetics COBRE history page) via `data/grant_links.json`; grants timeline rows tinted when active, award number/PIs on click, 92 -> 62 px average row height.
+9. Publication dates from PubMed (online-first), Crossref, DataCite for 164 of 182; every list sorts newest first by date; shown year = publication-date year (10 moved; `trackerYear` kept); Recent badge now works.
+10. CV diff engine step 1: `scripts/cvlib.py` (shared CV reader, build output byte-identical after the move), `scripts/cv_diff.py` (read-only CLI), `tests/unit/test_cv_diff.py` (19 tests). Using it on the edited CV found a gap (grant title changes were not reported) -> GRANT-CHANGED added.
+11. No em dashes in site text (tools legend, tools.json, BIMD514 title).
+
+### Files/modules touched
+- New: `research-overview.html`, `scripts/build_data.py`, `scripts/cvlib.py`, `scripts/cv_diff.py`, `tests/unit/test_cv_diff.py`, `data/overview.json`, `data/area_overrides.json`, `data/grant_links.json`
+- Changed: `index.html`, `publications.html`, `research.html`, `research-detail.html`, `positions.html`, `tools.html`, `BIMD514.html`, `js/components.js`, `collaborators.html`, `people.html`, `data/publications.json`, `data/grants.json`, `data/research.json`, `data/site.json`, `data/tools.json`, `data/positions.json`, `scripts/parse_cv.py`, `playwright.config.ts` (BASE_URL), `tests/e2e/*.spec.ts`
+
+### Key technical decisions and rationale
+- Decisions from the user / relayed agent: funded grants only, Khan R01 external, #113 and books excluded from authorship counts, method-first area rule with 15 cross-check overrides, 4 x 2 homepage grid, All tab default, year = publication-date year, Rumora R01 title follows RePORTER (CV edited), review state for the future CV tab outside the web root, .docx upload for diffs, deploy-key push after publish.
+- Static no-JS copies instead of server rendering: keeps the Alpine pages and fixes crawlers/AI readers.
+- Chart.js instances kept outside Alpine state (a reactive proxy broke redraws).
+- CV test fixtures frozen outside the repo (they hold dollar amounts and pending proposals; the dated 10-30 file was edited in place).
+
+### Problems encountered and resolutions
+- Off-campus SSH to hurlab.med.und.edu:22 timed out; the server is reached over Tailscale `ssh hurlab@100.94.67.89` (user correction; memory saved).
+- A first acceptance criterion I wrote ("10-29 -> 10-30 adds 4 preprints") was false; ground truth re-measured with a plain difflib comparison and the memory corrected.
+- Production diff first reported 53 false changes (tracker titles vs CV text); fixed by parsing both sides from the CV text.
+- Worktree guard refuses complex shell; patches were applied through small temp scripts.
+
+### Items completed / resolved / superseded
+- grants.json dollar totals — Resolved. CV year gaps — Superseded. HTTP caching — partly mitigated. SMHS-related items closed earlier.
+
+### Verification performed
+- E2E 99/99 locally and live (after 1e4fe50, 116bf8d); unit tests 19/19; mutant runs red as expected; reference numbers reproduced; RePORTER links cross-checked; positions live checks (7298d41). 8e091cd not verified live (not deployed).
 
 ---
 
@@ -484,43 +530,3 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 
 ---
 
-## Session 2026-04-08 CDT (code review pass 2)
-
-- **Coding CLI used**: Claude Code CLI (Claude Opus 4.6, 1M context)
-- **Harness**: Deep sweep recon + 2 Implementers + QA
-
-### Reconnaissance
-- Second-pass deep sweep covering areas missed by first review
-- 5 new issues found (1 Critical, 1 High, 2 Medium, 1 Known/intentional)
-
-### Concrete changes implemented
-
-**CV parsing artifact cleanup (Critical):**
-1. Cleaned 26 publications in `data/publications.json` — removed "Junguk Hur, Ph.D. Curriculum Vitae" from text fields
-2. Cleaned 3 grant fields in `data/grants.json` — same artifact removed from titles/notes
-3. Fixed `scripts/parse_cv.py` `extract_text()` to strip CV header/footer artifacts during parsing (prevents recurrence)
-
-**Error handling (High):**
-4. Added try/catch to `research.html` init() — graceful fallback on fetch failure
-5. Added try/catch to `collaborators.html` init() — graceful fallback on fetch failure
-
-**Data consistency (Medium):**
-6. Added DPNKB tool entry to `data/tools.json` — matches research.json reference, links to existing webapp
-7. Fixed duplicate PMID in `data/tools.json` — PubChemSR corrected to PMID 18482452, DNMKB2 publications cleared
-
-### Files modified
-- `data/publications.json` — 26 entries cleaned
-- `data/grants.json` — 3 fields cleaned
-- `scripts/parse_cv.py` — CV header/footer stripping added
-- `research.html` — try/catch error handling
-- `collaborators.html` — try/catch error handling
-- `data/tools.json` — DPNKB added, PMIDs corrected
-
-### Verification performed
-- Playwright E2E regression: 90/90 passed (36.2s)
-- Zero CV artifacts in data files (grep verified)
-
-### Harness statistics
-- **Subagent spawns**: 4 (1 Recon, 2 Implementers, 1 QA)
-- **Issues found**: 5 (1 intentional/skipped)
-- **Issues fixed**: 4/4 actionable (100%)
