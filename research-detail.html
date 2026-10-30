@@ -43,8 +43,8 @@
             this.areaIndex = parseInt(params.get('area')) || 0;
 
             const [resRes, pubRes] = await Promise.all([
-              fetch('data/research.json'),
-              fetch('data/publications.json')
+              fetch('data/research.json', { cache: 'no-cache' }),
+              fetch('data/publications.json', { cache: 'no-cache' })
             ]);
             const researchData = await resRes.json();
             const pubData = await pubRes.json();

@@ -63,7 +63,7 @@
             return ['text-teal-600', 'text-indigo-600', 'text-purple-600'][i % 3];
           }
         }"
-        x-init="fetch('data/positions.json').then(r => r.json()).then(d => data = d)">
+        x-init="fetch('data/positions.json', { cache: 'no-cache' }).then(r => r.json()).then(d => data = d)">
 
     <!-- Loading state -->
     <template x-if="!data">

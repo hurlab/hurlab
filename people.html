@@ -293,7 +293,7 @@
 
         async init() {
           try {
-            const res = await fetch('data/team.json');
+            const res = await fetch('data/team.json', { cache: 'no-cache' });
             const data = await res.json();
             this.pi = data.pi || {};
             this.vis = data.visibility || {};

@@ -205,9 +205,9 @@
             <div class="mt-10 pt-6 border-t border-white/10" data-aos="fade-up" data-aos-delay="400"
                  x-data="{ pubs: 0, grants: 0, tools: 0 }"
                  x-init="
-                   fetch('data/publications.json').then(r=>r.json()).then(d=>{ pubs = d.peerReviewed ? d.peerReviewed.length : 0 });
-                   fetch('data/grants.json').then(r=>r.json()).then(d=>{ grants = d.current ? d.current.length : 0 });
-                   fetch('data/tools.json').then(r=>r.json()).then(d=>{ tools = d.length || 0 });
+                   fetch('data/publications.json', { cache: 'no-cache' }).then(r=>r.json()).then(d=>{ pubs = d.peerReviewed ? d.peerReviewed.length : 0 });
+                   fetch('data/grants.json', { cache: 'no-cache' }).then(r=>r.json()).then(d=>{ grants = d.current ? d.current.length : 0 });
+                   fetch('data/tools.json', { cache: 'no-cache' }).then(r=>r.json()).then(d=>{ tools = d.length || 0 });
                  ">
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 max-w-2xl">
                     <div class="text-center sm:text-left">
@@ -564,7 +564,7 @@
     <!-- ==================== FUNDING ==================== -->
     <section class="py-10 bg-white border-t border-b border-gray-100"
              x-data="{ grants: [] }"
-             x-init="fetch('data/grants.json').then(r=>r.json()).then(d => { grants = d.current || []; })">
+             x-init="fetch('data/grants.json', { cache: 'no-cache' }).then(r=>r.json()).then(d => { grants = d.current || []; })">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             <div class="text-center mb-6" data-aos="fade-up">
                 <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Funding &amp; Support</h2>
@@ -620,7 +620,7 @@
                 status(tool) { return STATUS[tool.status] || STATUS['coming-soon']; },
                 async load() {
                     try {
-                        const res = await fetch('data/tools.json');
+                        const res = await fetch('data/tools.json', { cache: 'no-cache' });
                         const data = await res.json();
                         this.tools = data.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
                     } catch (e) {
@@ -647,7 +647,7 @@
                             if (Number.isInteger(hp.recentPublicationsCount)) count = hp.recentPublicationsCount;
                             if (Number.isInteger(hp.authorShortenThreshold)) threshold = hp.authorShortenThreshold;
                         } catch (e) { /* keep defaults */ }
-                        const res = await fetch('data/publications.json');
+                        const res = await fetch('data/publications.json', { cache: 'no-cache' });
                         const data = await res.json();
                         if (data.peerReviewed && data.peerReviewed.length > 0) {
                             // Newest research papers (Article/Review; no preprints, books or editorials);

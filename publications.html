@@ -411,7 +411,7 @@
 
         async init() {
           try {
-            const res = await fetch('data/publications.json');
+            const res = await fetch('data/publications.json', { cache: 'no-cache' });
             const data = await res.json();
             this.peerReviewed = data.peerReviewed || [];
             this.areas = data.areas || [];

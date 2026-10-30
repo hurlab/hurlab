@@ -35,8 +35,8 @@
         async init() {
           try {
             const [resRes, grantsRes] = await Promise.all([
-              fetch('data/research.json'),
-              fetch('data/grants.json')
+              fetch('data/research.json', { cache: 'no-cache' }),
+              fetch('data/grants.json', { cache: 'no-cache' })
             ]);
             this.research = await resRes.json();
             this.grants = await grantsRes.json();

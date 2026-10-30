@@ -67,7 +67,7 @@
           },
           async init() {
             try {
-              const resp = await fetch('data/collaborators.json');
+              const resp = await fetch('data/collaborators.json', { cache: 'no-cache' });
               this.data = await resp.json();
               this.$nextTick(() => AOS.refresh());
             } catch (e) {

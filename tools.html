@@ -93,7 +93,7 @@
                  : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200';
              }
            }"
-           x-init="fetch('data/tools.json').then(r => r.json()).then(d => tools = d.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })))">
+           x-init="fetch('data/tools.json', { cache: 'no-cache' }).then(r => r.json()).then(d => tools = d.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })))">
 
     <!-- Filter Buttons -->
     <div class="flex flex-wrap justify-center gap-2 mb-6" data-aos="fade-up">
