@@ -3,20 +3,63 @@
 Bounded active log. Newest first. Older sessions are archived under `logs/` when over budget (>10 sessions / ~1000 lines).
 
 ## Archives
-- logs/PROJECT_LOG_2026-H1.md — 1 sessions (2026-03 … 2026-03)
+- logs/PROJECT_LOG_2026-H1.md — 3 sessions (2026-03 … 2026-03)
 
 ## Session Index (active, newest first)
-- 2026-10-14 17:00 CDT — Removed the six merged worktrees (verified merged + clean first); handoff/resume updated
+- 2026-10-29 22:44 CDT
+- 2026-10-14 17:00 CDT
 - 2026-10-14 16:11 CDT
 - 2026-10-14 13:32 CDT
 - 2026-07-09 23:57 CDT
-- 2026-03-14 16:30 CDT
-- 2026-03-25 14:39 CDT
 - 2026-04-08 CDT (early)
 - 2026-04-08 CDT (implementation)
 - 2026-04-08 CDT (security completion)
 - 2026-04-08 CDT (code review)
 - 2026-04-08 CDT (code review pass 2)
+
+---
+
+## Session 2026-10-29 22:44 CDT
+- **Coding CLI used**: Claude Code CLI (Claude Opus 5.5; Sonnet 5.5 for part of the close). Claude session 0d788018. The server work below was done on **2026-10-15** (dates in the server's backup names); the session was resumed and closed on 2026-10-29, so this entry covers both.
+
+### Phase(s) worked on
+- Session start (classified C: local `main` 12 commits behind origin) → SMHS-site refresh planning → legacy CGI tool triage → Entrez ID/Symbol converter revival (server side, outside git) → session close with git/doc reconcile.
+
+### Concrete changes implemented
+1. **Decision, old CGI sequence tools**: LOD Score Calculator, Pairwise Protein Sequence Alignment, Simple Sequence Alignment, Sequence Fitting Alignment, Repeat Finder are not listed as lab tools and **stay closed** (user: "시퀀스 도구 5개는 닫아두자"). Findings: live copies sit in `webapps/ROOT/WEB-INF/cgi/<Tool>/`; nginx has `location ^~ /cgi-bin/ { return 403; }`; all five answer 200 only when Tomcat (localhost:8081) is asked directly; `/hurlab/cgi-bin/WebTools/` copies are never executed (404). From code reading (not exploited): three tools pass request parameters into `system()` (command injection); Repeat Finder writes user input into the CGI dir, whose every file Tomcat's CGI servlet executes.
+2. **Entrez ID/Symbol converter revived** (`webapps/ROOT/WEB-INF/cgi/SciMiner/annotation.cgi`): MiMI subs/branches/form/output removed; `CGI::Debug` removed; `use CGI qw(:standard escapeHTML)` with escaped textareas; symbols must match `^[A-Za-z0-9._@-]{1,40}$` (others become blank lines); input capped at 2000 lines; taxonID defaults to 9606; red banner "WARNING: Annotation is outdated … verify results against NCBI Gene"; title "Entrez ID/Symbol converter"; external `mm_health_nutr.css` / `wz_tooltip.js` references removed (no-op `Tip()`/`UnTip()` added). Output identical to the original for normal ID→symbol and symbol→ID input. Original backed up outside the CGI dir (`/home/hurlab/backups/annotation-cgi-20261015/annotation.cgi.orig`, sha256 `90d97d74…c29c23`); final sha256 `15b6776a…f627f13`.
+3. **nginx** (user ran the script with sudo; the agent has none): `/home/hurlab/enable-entrez-id2symbol.sh` (`--dry-run`, `--revert`) inserted a 17-line block after `# END dnmkb2-cgi-allow` in the 443 server block — `location = /cgi-bin/SciMiner/annotation.cgi` (proxy to 8081, `client_max_body_size 1m`) and `location = /SciMiner/annotation.cgi` → 301 to the new URL, so the SMHS link keeps working unchanged. Conf 744 → 761 lines; backup `hurlab.med.und.edu.conf.bak-20261015_111423-entrez`.
+4. **Script review pass** before handover (3 defects fixed): no sanity check of the generated conf (a truncated config could pass `nginx -t`); a failing `curl` would silently abort the checks under `set -e`; `--revert` did not verify the path was closed again. Verified: dry-run adds 17 lines, insert→revert is byte-identical, the guard test fails correctly, no conflicting locations.
+5. **SMHS site refresh prompt** (Claude desktop edits the Modern Campus CMS pages after the user signs in): 2-phase (compare + report only; then edit one page at a time, Save → Preview, stop before publishing/deleting/uploading/new pages). Uses visible pages only (not `data/*.json`, which hold hidden entries); no grant $; no CGI sequence tools; short text + link to hurlab.med.und.edu. Mapping: index→index+people, research→research, tools→tools, openings→positions, collaborators→collaborators; SMHS has no publications page, so a link to `…/hurlab/publications.html` goes on the index. Outcome (user, 2026-10-29): all of it approved.
+6. **SMHS Tools page link check (curl)**: 11 links 200; Entrez converter was 403 (now fixed); 5 sequence tools 404 (to remove); PubChemSR SourceForge 403 to curl (likely bot blocking — needs a browser click).
+7. **Git reconcile at close (2026-10-29)**: `git fetch`; local HEAD f3897dd was an ancestor of origin/main f4a2f9b, 0 local-only commits, `12 0`, no file overlap with the local uncommitted `.moai/` changes → user asked to fix any drift → `git pull --ff-only` → `0 0`, HEAD f4a2f9b. Handoff updated on top of the 10-14 17:00 version (the stale local 13:32 copy was replaced by the pull).
+
+### Files/modules touched
+- Server (outside git): `webapps/ROOT/WEB-INF/cgi/SciMiner/annotation.cgi`, `/etc/nginx/sites-available/hurlab.med.und.edu.conf`, `/home/hurlab/enable-entrez-id2symbol.sh`, `/home/hurlab/backups/annotation-cgi-20261015/`
+- Repo: `PROJECT_HANDOFF.md`, `PROJECT_LOG.md` (docs only); `NEXT_SESSION.md` (untracked, machine-local)
+- Wiki: new `concept/a-legacy-cgi-is-reopened-one-script-at-a-time.md`
+
+### Key decisions and rationale
+- Keep the sequence tools closed: exposing code with command injection to the public internet for 2011-era utilities is not worth it; the lab-tools list should not advertise them.
+- Revive only the converter, and only after cutting it down; exact-match location so siblings stay closed; 301 for the old URL so third-party pages need no edit.
+- Original backed up outside the CGI dir because Tomcat executes every file in that dir.
+- Edit/Write tools are blocked for scratchpad and for paths outside the project, so converter edits used Python scripts and the wiki page was written via the shell.
+
+### Problems encountered and resolutions
+- The agent has no sudo → delivered the nginx change as a reviewed script the user ran.
+- An early verification grep showed only BRCA1 (grep pattern error); re-check confirmed TP53 as well.
+- Local stale handoff (10-14 13:32) vs origin (17:00): resolved by the fast-forward before editing, so no merge conflict on the docs.
+
+### Items completed / resolved / superseded this session
+- Entrez converter revival — Completed (verified from outside, see below).
+- Sequence tools — Decided: stay closed.
+- "Primary checkout behind origin/main" — Completed.
+- SMHS site refresh — Completed: user confirmed at close that all changes from that work were approved.
+
+### Verification performed
+- 2026-10-15, from this machine against the public URLs: new URL 200 with banner and no MiMI; old https URL 301 → new; SMHS http link ends at 200 after 2 redirects; 7157→TP53, 672→BRCA1, Trp53→22059; SQL-/XSS-shaped input gave no errors and no raw echo; other SciMiner CGI, `wz_tooltip.js`, `annotation.cgi.backup` 302; five sequence tools 403; `/hurlab/cgi-bin/WebTools/` 404; `/SciMiner/index.cgi` 403; hurlab / SciMiner1.1 / DNMKB 200; server conf 761 lines, block present once, nginx active.
+- 2026-10-29: status codes re-checked (converter 200 + "outdated" present, old URL 301, `/cgi-bin/SeqAlign/` and `/cgi-bin/RepeatFinder/` 403, `/hurlab/` and `tools.html` 200); conversions and other neighbour paths not re-run.
+- Not verified: the converter page look in a real browser; PubChemSR SourceForge link (moot — SMHS refresh approved); Playwright E2E suite.
 
 ---
 
@@ -175,253 +218,6 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - Headless Chromium render QA: 7 sections, 24 visible + 5 hidden, all icons resolved, 0 JS errors.
 - Live URL curl after each deploy: HTTP 200, correct titles/members.
 - git: clean tree; local HEAD == origin/main == server HEAD (e581475).
-
----
-
-## Session 2026-03-14 16:30 CDT
-
-- **Coding CLI used**: Claude Code CLI (Claude Opus 4.6, 1M context)
-
-### Phase(s) worked on
-- Phase 2 (extended): Full JSON-as-database migration for all pages
-- Phase 5: Admin panel with CV parser, team management, visibility controls
-- Phase 6: Cutover from v2/ to root, directory cleanup, git setup
-- Bug fixing and testing audit
-
-### Concrete changes implemented
-
-**Site cutover & cleanup:**
-1. Moved v2/ contents to root, fixed all `../` paths to direct paths
-2. Fixed broken CV file references (standardized to `JungukHur-CV.pdf`)
-3. Removed v2/ directory (was duplicate after copy)
-4. Moved 14 unused directories to v1/ (Admissions, BACKUPS, Files, icons, Indiana, Jumgim, LabMembers, Michigan, Projects, Publications, Study, Supplemental, Temp, Tools)
-5. Created empty Files/ and Temp/ placeholders
-6. Initialized git repo, pushed to github.com/hurlab/hurlab.git
-7. Created .gitignore (excludes large dirs, *.zip, credentials, runtime files)
-
-**JSON-as-database migration:**
-8. Created `data/research.json` with 5 research areas + detail content (overview, topics, tools, collaborators, keywords)
-9. Created `data/collaborators.json` with 4 categories, 14 collaborators, updated URLs
-10. Created `data/positions.json` with isHiring flag, 3 position types, research areas
-11. Created `data/site.json` with lab-wide configuration
-12. Created `data/grants.json` from CV parser (5 current + 12 pending + 18 previous)
-13. Rewrote research.html, collaborators.html, positions.html to be data-driven (Alpine.js + JSON fetch)
-14. Created `research-detail.html` — per-area detail page with keyword-filtered publications
-
-**CV parser & admin panel:**
-15. Created `scripts/parse_cv.py` — parses CV PDF via pdftotext, extracts 170 publications (with PMID, PMCID, DOI, year), 9 under review, 5 in prep, 34 talks, 190 posters, 35 grants
-16. Created `scripts/admin_server.py` — Python HTTP server on port 8180 with session auth
-17. Created admin templates (dashboard, login, setup) with Tailwind CSS
-18. Added CV upload with dated filename + 3 symlink management
-19. Added team CRUD API (add/edit/delete/move across current/alumni/fac/fac_alumni)
-20. Added PI info editor
-21. Added photo upload (saves to Images/team/, updates team.json)
-22. Added section visibility toggles (current/alumni/fac/fac_alumni)
-23. Added git auto-commit after CV parsing
-
-**Publications page overhaul:**
-24. Replaced PubMed API with CV-parsed data as primary source
-25. Added 6 tabs (peer-reviewed, preprints, under review, in preparation, presentations, all)
-26. Added sort dropdown (newest first default, oldest, CV order)
-27. Added PMCID badges (59 of 170 have PMCID) linking to PubMed Central
-28. Fixed Google Scholar link to correct ID (`Iug5mCsAAAAJ`)
-29. Fixed year filter reset on tab switch
-30. Fixed preprints showing in "all" tab
-
-**People page overhaul:**
-31. Made fully data-driven from team.json
-32. Loaded all CV members: 8 current, 17 alumni, 9 FAC current, 10 FAC previous
-33. Added visibility toggle support (FAC sections hidden by default)
-34. Added GitHub (Personal) + GitHub (Hur Lab) links to PI
-
-**Content fixes:**
-35. Phone number fixed to (701) 777-6814 everywhere
-36. Email corrected: junguk.hur@med.UND.edu + jung.hur@UND.edu
-37. Added GitHub personal link (windysky/)
-38. Removed DaYeon Shin, Farah Lubin from collaborators
-39. Added Arzucan Ozgur to Ontology research collaborators
-40. Added Cornelius Dyke + Marina Kim to AI/ML research collaborators
-41. Updated all collaborator URLs to current pages
-42. Added NIH Reporter + ARPA-H links to active grants
-43. Removed effort percentages from grant notes
-44. Positions page changed to "Future Openings" (no current openings)
-45. Visiting scholar duration changed to 6 months–3 years
-46. Tools page added R Shiny to category filter
-47. Funding section made dynamic (current + previous grants total)
-
-**Performance fix:**
-48. Fixed admin server 56-second delay caused by reverse DNS lookups (override `address_string()`)
-
-**Bug fixes from testing audit:**
-49. Fixed preprints missing from "all" tab
-50. Fixed year filter persisting across tab switches
-51. Removed orphaned js/publications.js
-52. Fixed admin dashboard status cards not populating (wrong file path + response structure mismatch)
-53. Fixed admin parse output not displaying (wrong field name: data.output → data.stdout)
-
-### Files/modules/functions touched
-- `index.html` — dynamic stats, recent pubs from JSON, dynamic funding section
-- `research.html` — data-driven from research.json + grants.json, grant title links
-- `research-detail.html` — NEW: per-area detail with keyword-filtered publications
-- `publications.html` — complete rewrite: CV data source, 6 tabs, sort, PMCID badges
-- `tools.html` — added R Shiny filter
-- `people.html` — complete rewrite: data-driven, visibility, FAC sections, GitHub links
-- `positions.html` — data-driven from positions.json, "Future Openings" mode
-- `collaborators.html` — data-driven from collaborators.json
-- `js/components.js` — phone/email fix, admin link in footer
-- `data/*.json` — all 8 JSON data files created/updated
-- `scripts/parse_cv.py` — CV parser with PMCID extraction, git auto-commit
-- `scripts/admin_server.py` — admin server with team CRUD, visibility, photo upload, DNS fix
-- `scripts/templates/admin.html` — dashboard + team management with FAC sections
-- `.gitignore` — created with exclusions for large dirs, zips, credentials
-- `CLAUDE.md` — updated to reflect final architecture
-
-### Key technical decisions and rationale
-- **JSON-as-database over SQL**: Zero dependencies, human-readable, git-trackable, sufficient for lab website traffic
-- **CV parser as single source of truth**: Publications and grants auto-generated from PDF, reducing manual maintenance
-- **Section visibility in team.json**: Allows admin to control public page display without code changes
-- **FAC split (current/previous)**: Better organization than a single "hidden" bucket
-- **Reverse DNS override**: Python's BaseHTTPRequestHandler does DNS lookups by default, causing 56s delays
-- **Git auto-commit on parse**: Creates version history of every CV update automatically
-
-### Problems encountered and resolutions
-1. **SSL/HTTPS not working externally**: University firewall blocks port 443. Nginx configured correctly but unreachable. Let's Encrypt failed (port 80 also blocked from internet). **Unresolved** — need UND IT.
-2. **Admin server 56s delay**: Reverse DNS lookups on every request. **Resolved** by overriding `address_string()`.
-3. **Admin dashboard blank status**: Backend returned wrong structure + wrong file path. **Resolved** by rewriting `_handle_status()`.
-4. **Admin template `hidden` CSS class corruption**: Bulk sed replaced CSS class `hidden` with `fac`. **Resolved** by targeted fixes to restore CSS classes.
-5. **Publications missing from "all" tab**: Preprints section only showed on preprints tab. **Resolved** by adding `activeTab === 'all'` condition.
-
-### Items explicitly completed
-- All pages data-driven from JSON (no more hardcoded content)
-- Admin panel with CV upload, parsing, team management, visibility toggles
-- v2→root cutover complete
-- Git repository initialized and pushed
-- Directory cleanup (unused dirs → v1/)
-- Google Scholar link corrected
-- All collaborator URLs updated
-- Grant links added (NIH Reporter, ARPA-H)
-- PMCID support added to publications
-- Publication sorting (newest/oldest/CV order)
-
-### Items not completed
-- Image optimization, favicon, OG meta tags, mobile testing
-- HTTPS (blocked by university network)
-- Admin tabs for editing collaborators/research/positions JSON
-- Admin server auto-start on boot
-
-### Verification performed
-- All 8 HTML pages + 8 JSON data files return HTTP 200
-- CV parser produces correct counts: 170 pubs, 59 PMCID, 35 grants
-- Admin server response time: 0.001s (down from 56s)
-- Full code audit by 3 parallel agents: found and fixed 5 bugs
-- Git push successful to github.com/hurlab/hurlab.git
-
----
-
-## Session 2026-03-25 14:39 CDT
-
-- **Coding CLI used**: Claude Code CLI (Claude Opus 4.6, 1M context)
-
-### Phase(s) worked on
-- Phase 7: SEO & Analytics (favicon, sitemap, robots.txt, OG tags, schema.org, GA4)
-- Phase 8: Content refinement (research areas, collaborators, tools expandable cards)
-- Admin panel enhancements (drag-and-drop reorder)
-
-### Concrete changes implemented
-
-**SEO & Analytics:**
-1. Created `favicon.svg` (teal-to-indigo H monogram with DNA dots)
-2. Created `robots.txt` (allows crawling, blocks scripts/v1/cgi-bin)
-3. Created `sitemap.xml` (12 URLs: 7 main + 5 research detail pages)
-4. Added Open Graph meta tags to all 8 HTML pages
-5. Added Twitter Card meta tags to index.html
-6. Added schema.org ResearchOrganization JSON-LD to index.html
-7. Added missing meta descriptions to positions.html and collaborators.html
-8. Added favicon link to all pages
-9. Added Google Analytics 4 (G-Z36JMZ1F1K) tracking to all 8 pages
-
-**Content Updates:**
-10. Expanded Neurological Disorders research area to include Alzheimer's and Parkinson's disease
-11. Added AD/PD overview paragraphs, key topics, keywords, collaborator (James Porter)
-12. Added Dr. Nicholas Lyssenko (Temple University) as AD collaborator in research.json and collaborators.json
-13. Added Arzucan Ozgur to Ontology research collaborators
-14. Added Cornelius Dyke + Marina Kim to AI/ML research collaborators
-15. Added NIH Reporter + ARPA-H URLs to all 5 current grants in grants.json
-16. Removed effort percentages from all grant notes
-17. Added Sakai Portal link to footer (http://hurlab.med.und.edu:8282/portal/)
-18. Added VIOLIN (violinet.org) as Knowledgebase category tool
-19. Added Ignet (ignet.org) as Web Tool
-20. Added "Knowledgebase" filter category to tools page (purple badge)
-
-**Tools Page Expandable Cards:**
-21. Added `details` field to all 11 tools in tools.json (longDescription, features, publications, relatedAreas)
-22. Rewrote tool card template with Alpine.js click-to-expand functionality
-23. Expanded card spans full width (col-span-3), shows detail sections
-24. Added Alpine.js `x-collapse` plugin for smooth expand/collapse animation
-25. Added chevron rotation indicator for expand state
-26. Buttons (Launch/GitHub) and PubMed links use @click.stop to prevent toggle
-27. Fixed collapse on click — removed @click.stop from detail container
-28. Added auto-scroll to expanded card with 80px navbar offset
-29. Limited to single expanded card — opening new card collapses previous
-
-**Admin Panel:**
-30. Added drag-and-drop reorder for team members (HTML5 Drag and Drop API)
-31. Added POST /api/team/reorder endpoint (section, from, to)
-32. Visual feedback: drag handle icon, dragged row fades, target row teal border
-33. Reorder works for all 4 sections (current, alumni, fac, fac_alumni)
-
-**External Review Assessment (HURLAB_IMPROVEMENT_PLAN.md):**
-34. Reviewed all items from external agent's report
-35. Most items were false positives (server-side fetch without JS execution)
-36. Implemented genuine SEO items (favicon, sitemap, robots, OG, schema.org)
-
-### Files/modules/functions touched
-- `favicon.svg` — NEW: teal-to-indigo H monogram
-- `robots.txt` — NEW: crawling rules
-- `sitemap.xml` — NEW: 12 URLs
-- `index.html` — GA4, OG tags, Twitter Card, schema.org JSON-LD
-- `research.html` — GA4, OG tags
-- `research-detail.html` — GA4, OG tags, PMCID badges
-- `publications.html` — GA4, OG tags, PMCID badges
-- `tools.html` — GA4, OG tags, expandable cards, x-collapse plugin, Knowledgebase filter, single-expand, auto-scroll
-- `people.html` — GA4, OG tags, GitHub (Hur Lab) link on PI
-- `positions.html` — GA4, OG tags, meta description added
-- `collaborators.html` — GA4, OG tags, meta description added
-- `js/components.js` — Sakai Portal link in footer
-- `data/tools.json` — 11 tools (added VIOLIN, Ignet) with details field
-- `data/research.json` — Neuro expanded (AD/PD), collaborators updated
-- `data/collaborators.json` — Lyssenko added, URLs updated
-- `data/grants.json` — NIH Reporter/ARPA-H URLs, effort % removed
-- `scripts/admin_server.py` — POST /api/team/reorder endpoint
-- `scripts/templates/admin.html` — drag-and-drop reorder UI
-
-### Key technical decisions and rationale
-- **Alpine.js x-collapse plugin**: Provides smooth expand/collapse animation without custom CSS transitions
-- **Single-expand pattern**: `expandedTool` state lifted to parent component rather than per-card x-data — cleaner UX, prevents multiple open cards
-- **Auto-scroll with offset**: `getBoundingClientRect().top + scrollY - 80` accounts for fixed navbar height
-- **@click.stop selective**: Only on interactive elements (links, buttons), not on the detail container — so clicking the expanded card collapses it
-- **External review triage**: Most findings were false positives from server-side fetch without JS execution. Only SEO items (genuinely missing files) were acted on.
-
-### Problems encountered and resolutions
-1. **Tool card collapse not working**: `@click.stop` on detail div blocked event propagation. **Resolved** by removing it, keeping @click.stop only on interactive elements.
-2. **Expanded card scroll hiding title**: `scrollIntoView({block:'start'})` scrolled to exact top, hidden by fixed navbar. **Resolved** by using manual scroll with 80px offset.
-3. **GA4 insertion via sed failed**: Escaping issues with shell heredoc. **Resolved** by using Python script for insertion.
-
-### Items explicitly completed
-- SEO: favicon, sitemap, robots.txt, OG tags, schema.org, GA4
-- Tools: expandable detail cards with single-expand and auto-scroll
-- Research: Neurological Disorders expanded with AD/PD
-- Collaborators: Lyssenko, Dyke, Kim added
-- Admin: drag-and-drop team member reorder
-- VIOLIN and Ignet tools added
-- Sakai Portal link restored
-
-### Verification performed
-- All pages return HTTP 200
-- GA4 tag confirmed on all 8 pages (grep count)
-- SEO files (robots.txt, sitemap.xml, favicon.svg) return HTTP 200
-- Tool card expand/collapse/scroll tested by user
-- Git push successful for all commits
 
 ---
 

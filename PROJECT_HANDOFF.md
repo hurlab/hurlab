@@ -6,7 +6,7 @@
 
 **Scope**: 9 HTML pages (8 public + 1 research detail), admin server (port 8180), CV parser script, 8 JSON data files. Deployed on Apache Tomcat 9.0.37 with nginx reverse proxy.
 
-- **Last updated**: 2026-10-14 17:00 CDT
+- **Last updated**: 2026-10-29 22:44 CDT
 - **Last coding CLI used**: Claude Code CLI (Claude Opus 5.5 / Sonnet 5.5)
 - **Git repo**: https://github.com/hurlab/hurlab.git (branch: main)
 
@@ -30,6 +30,8 @@
 | Shared nav/footer (`js/components.js`) | Completed in Session 2026-03-25 14:39 CDT | Sakai Portal link added to footer; footer lists the CDAC/RDCD roles + "Also affiliated with" (U. Michigan adjunct, VA Fargo WOC) and an automatic per-page "Last updated" (newest server Last-Modified of the page and its data files), 2026-10-14 |
 | Tailwind theme (`js/theme.js`) | Completed in Session 2026-03-14 13:23 CDT | Teal/indigo palette |
 | Custom CSS (`css/custom.css`) | Completed in Session 2026-03-14 13:23 CDT | Animations, card hovers, gradient text |
+| Legacy Entrez ID/Symbol converter (server-side, NOT in git) | Completed in Session 2026-10-29 22:44 CDT (work done on the server 2026-10-15) | Revived at `https://hurlab.med.und.edu/cgi-bin/SciMiner/annotation.cgi`; old `/SciMiner/annotation.cgi` returns 301 to it, so the SMHS link works unchanged. Script cut down (MiMI removed, input whitelisted/capped, output HTML-escaped, red "Annotation is outdated" banner). Details in "Server-side changes outside git" below. See PROJECT_LOG 2026-10-29 22:44 |
+| Legacy sequence tools (LOD Score, Pairwise Protein Alignment, Simple Sequence Alignment, Sequence Fitting, Repeat Finder) | Decided: stay closed, not listed | 2026-10-29 22:44 CDT | nginx 403 on `/cgi-bin/`; user decision 2026-10-15. Code reading showed `system()` command injection and a user-input file written into the executed CGI dir. Handled on the SMHS side as part of the approved SMHS refresh |
 | **SEO** | | |
 | Favicon (`favicon.svg`) | Completed in Session 2026-03-25 14:39 CDT | Teal-to-indigo H monogram with DNA dots |
 | `robots.txt` | Completed in Session 2026-03-25 14:39 CDT | Allows crawling, blocks scripts/v1/cgi-bin |
@@ -96,7 +98,12 @@
 | scGEN card: add paper PMID to `publications`; figure reuse license (Advanced Science) not checked | Open | 2026-10-14 13:32 CDT | PROJECT_LOG 2026-10-14 13:32 |
 | When PubChemSR 2.0 / ChemFuse go public: set `status` to `available`, drop PubChemSR `notice`, restore GitHub links | Open (waiting on release) | 2026-10-14 13:32 CDT | PROJECT_LOG 2026-10-14 13:32 |
 | Remove 6 merged worktrees under `.moai/worktrees/` | Completed | 2026-10-14 17:00 CDT | All six were verified merged into origin/main with no tracked changes and removed (their untracked `.codex/` and the original `.shots/` screenshots went with them; resized images are committed). The six local `WT-*` branches still exist — delete with `git branch -d` after user OK (branch change in the shared checkout) |
-| Primary checkout `main` is behind origin/main (10 commits at 16:11 CDT; fast-forward only) | Open | 2026-10-14 16:11 CDT | `git pull --ff-only` when no other session is using it |
+| Primary checkout `main` is behind origin/main (12 commits) | Completed | 2026-10-29 22:44 CDT | Checked first: local HEAD was an ancestor of origin/main, 0 local-only commits, no overlap with the local uncommitted `.moai/` files; `git pull --ff-only` → HEAD = origin/main = f4a2f9b (`0 0`) |
+| SMHS site pages (`med.und.edu/research/labs/hur/`) refreshed from the lab site via the Claude-desktop 2-phase prompt | Completed | 2026-10-29 22:44 CDT | User confirmed 2026-10-29: all changes from that work were approved — no further action |
+| SMHS Tools page links (PubChemSR SourceForge 403 to curl) | Superseded | 2026-10-29 22:44 CDT | Covered by the approved SMHS refresh; user said no further SMHS follow-up is needed |
+| Converter page look (external CSS/JS removed from the CGI) never viewed in a real browser | Open | 2026-10-29 22:44 CDT | Open `https://hurlab.med.und.edu/cgi-bin/SciMiner/annotation.cgi`; ask the user if fonts/colors look off |
+| Local `WT-*` branches: 7 now (handoff said 6) | Open — ask before deleting | 2026-10-29 22:44 CDT | `git branch --list 'WT-*'`; branch change in the shared checkout needs user OK |
+| Uncommitted local `.moai/harness/usage-log.jsonl`, `.moai/lessons-inbox.jsonl` (+ untracked `.moai/logs/`, `.moai/reports/`) | Open — harness bookkeeping, left alone | 2026-10-29 22:44 CDT | Last committed as f3897dd; stage by explicit pathspec if committing |
 | CV data gaps: publications #95, #96, #112, #143 have no year in the CV text | Open | 2026-10-14 CDT (earlier session) | PROJECT_LOG 2026-10-14 13:32 |
 | `data/grants.json` still holds dollar totals (pages no longer display them) | Open — decide whether to strip | 2026-10-14 CDT (earlier session) | PROJECT_LOG 2026-10-14 13:32 |
 | `.playwright-mcp/` (browser-tool scratch) is not in `.gitignore` | Open | 2026-10-14 13:32 CDT | add below `# User Custom Patterns` at end of file |
@@ -119,6 +126,8 @@
 | Server holds uncommitted live edits (`data/team.json`, `Personal/JungukHur_CV.pdf`) | Open | 2026-10-14 | Untouched by all 2026-10-14 deploys (ff-only pulls). After a CV upload, the admin auto-commit stays unpushed on the server — pull it into GitHub before the next deploy (as done with a1ec5fd → 297e82b) |
 | Admin "Home Page" tab not exercised by a logged-in user | Open | 2026-10-14 | Handler unit-tested (9 cases) and unauthenticated GET/POST return 401 on the server; the form itself has not been tried (login needs the PI's 2FA code). Saving commits on the server and that commit stays unpushed, like CV uploads — pull it into GitHub before the next deploy |
 | Tool status labels are set by hand | Open (by design) | 2026-10-14 | Assumption: `status` reflects visitor access (available / beta / coming-soon); nothing updates it automatically |
+| Server changes made outside git (nginx conf block, converter CGI, helper script, backups) are not version-controlled | Open — documented only here | 2026-10-15 | If nginx config is regenerated or the box is rebuilt, the block `# ... entrez` after `# END dnmkb2-cgi-allow` and the cut-down `annotation.cgi` must be re-applied: run `/home/hurlab/enable-entrez-id2symbol.sh` (has `--dry-run` / `--revert`). See §7 "Server-side changes outside git" |
+| Legacy sequence-tool CGIs still exist on disk under `webapps/ROOT/WEB-INF/cgi/` and answer on Tomcat localhost:8081 | Open (mitigated by nginx 403) | 2026-10-15 | Not exposed externally. Anyone loosening the `/cgi-bin/` deny rule would expose command-injection code. Consider deleting or moving them out of the CGI dir (user has not asked) |
 
 ---
 
@@ -149,6 +158,9 @@
 | Tools images / labels / borders / sort | Playwright (local server) at 1366 px and 390 px: image load check, label+color per card, alphabetical order, filter order; live `curl` of page, JSON, images | 18 images load, 0 page errors; 11 Available / 1 Beta / 1 Coming soon; order ChemFuse→VIOLIN; live HTTP 200, server = GitHub = c6ccbe2 | 2026-10-14 13:32 CDT |
 | Poster parser fix | Regenerated from the live CV into a scratch dir and diffed against the live JSON; ran the parser read-only on the server | 89 posters, 0 empty, 0 without year, 23 oral; only posters + #177 + under-review #4 changed; grants identical | 2026-10-14 15:30 CDT |
 | Home strips, hover pause, footer date, home compaction, citation formatting | Playwright on a local server and on the live site (cache cleared): movement px/2 s, hover/leave, reduced-motion, page heights, journal/superscript counts | Strips move (≈135 px/2 s) and pause on hover; home page 3,558 → 3,119 px; 159/164 peer-reviewed cards show a bold-italic journal; 0 console errors | 2026-10-14 16:05 CDT |
+| Entrez converter revival (first verified 2026-10-15 from this machine) | `curl` against the public URLs; conversions 7157→TP53 "tumor protein p53", 672→BRCA1, Trp53→22059; SQL-/XSS-shaped input; neighbour paths | New URL 200 + warning present + no MiMI; old https URL 301 → new; SMHS `http://…/SciMiner/annotation.cgi` ends at 200 after 2 redirects; injection input: no errors, XSS input not echoed raw; still closed: other SciMiner CGI (302), `wz_tooltip.js` (302), `annotation.cgi.backup` (302), 5 sequence tools (403), `/hurlab/cgi-bin/WebTools/` (404), `/SciMiner/index.cgi` (403); hurlab / SciMiner1.1 / DNMKB 200. Server: block present once, conf 761 lines, CGI sha256 `15b6776a…` | 2026-10-15 |
+| Same, re-checked today (status codes only) | `curl -s -o /dev/null -w` on the public URLs | converter 200 with "outdated" banner; old URL 301 → new; `/cgi-bin/SeqAlign/` and `/cgi-bin/RepeatFinder/` 403; `/hurlab/` and `tools.html` 200; `js/citations.js` 200. Conversions and the other neighbour paths were NOT re-run | 2026-10-29 22:44 CDT |
+| Primary checkout sync | `git fetch`; `git rev-list --count --left-right origin/main...HEAD` before and after `git pull --ff-only` | before `12 0` (0 local-only commits, no overlap with local changes); after `0 0`, HEAD f4a2f9b | 2026-10-29 22:44 CDT |
 | Not yet verified | — | Playwright E2E suite (90 tests) not re-run after the 2026-10-14 changes; admin Home Page form not tried logged in; mobile check covered Tools only (home strips checked at 1366 px and in reduced-motion mode, not at phone width) | 2026-10-14 16:11 CDT |
 
 ---
@@ -197,11 +209,19 @@ hurlab/           ← webroot (Tomcat webapp)
 
 **Wiki**: `concept/pdftotext-reading-order-detaches-list-numbers-from-their-entries` (numbered-list parsing) · `concept/a-public-page-is-checked-from-the-visitors-side` — check public links unauthenticated (private repos 404 for visitors); status labels by visitor access.
 
+**Server-side changes outside git (done 2026-10-15; the agent has no sudo, the user ran the nginx step)**:
+- `annotation.cgi` (the real script) is `/home/hurlab/apache-tomcat-9.0.37/webapps/ROOT/WEB-INF/cgi/SciMiner/annotation.cgi`; sha256 `15b6776a3ada558acb4efc15e1a76c6e8ae71730164b6f6947ca7d98fa627f13`. The original is backed up at `/home/hurlab/backups/annotation-cgi-20261015/annotation.cgi.orig` (sha256 `90d97d74…c29c23`), deliberately outside the CGI dir. The old 98-byte stub `webapps/SciMiner/annotation.cgi` (redirects to `/cgi-bin/SciMiner/annotation.cgi`) and `annotation.cgi.backup` (2020) were left untouched.
+- nginx: `/etc/nginx/sites-available/hurlab.med.und.edu.conf` (443 server block) got a 17-line block after `# END dnmkb2-cgi-allow`: `location = /cgi-bin/SciMiner/annotation.cgi` (proxy to localhost:8081, `client_max_body_size 1m`) and `location = /SciMiner/annotation.cgi { return 301 https://hurlab.med.und.edu/cgi-bin/SciMiner/annotation.cgi; }`. Config went from 744 to 761 lines. Backup: `hurlab.med.und.edu.conf.bak-20261015_111423-entrez` (same directory).
+- Helper: `/home/hurlab/enable-entrez-id2symbol.sh` (`--dry-run`, `--revert`; checks the CGI sha, line-count guard, `nginx -t` with auto-restore, reload, 7 checks).
+- Local working copies of the converter are in that session's scratchpad only (gone); the server copy and the backup are the sources of truth.
+- Wiki: `concept/a-legacy-cgi-is-reopened-one-script-at-a-time`.
+
 **Next session**: just say **"resume"** — the saved prompt in the project-root `NEXT_SESSION.md` (pointed to by the ⭐ line in Claude Code auto-memory) drives the restart.
 
 **Recommended next actions**:
-1. Clean-up: fast-forward the primary checkout; delete the 6 leftover local `WT-*` branches (ask first); add `.playwright-mcp/` to `.gitignore`
+1. Clean-up: delete the 7 leftover local `WT-*` branches (ask first); add `.playwright-mcp/` to `.gitignore` (below `# User Custom Patterns`, at the end) — primary checkout is already fast-forwarded (2026-10-29)
 2. Ask the user: HTTP caching fix (yes/no), SciMiner's "System migration" version tag, the empty Desktop filter; add scGEN paper PMID
-3. Re-run the Playwright E2E suite after the 2026-10-14 changes; try the admin Home Page tab logged in
-4. Older carry-overs: upload team photos via admin panel; CSP header for admin panel; WebP `<picture>` elements; collaborator link follow-ups (Cui Tao → Mayo bio; Jinho Yoo http:// link)
-- **Last updated**: 2026-10-14 17:00 CDT
+3. Browser spot-check by the user: the converter page look
+4. Re-run the Playwright E2E suite after the 2026-10-14 changes; try the admin Home Page tab logged in
+5. Older carry-overs: upload team photos via admin panel; CSP header for admin panel; WebP `<picture>` elements; collaborator link follow-ups (Cui Tao → Mayo bio; Jinho Yoo http:// link)
+- **Last updated**: 2026-10-29 22:44 CDT
