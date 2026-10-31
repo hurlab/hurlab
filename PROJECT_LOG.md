@@ -3,9 +3,10 @@
 Bounded active log. Newest first. Older sessions are archived under `logs/` when over budget (>10 sessions / ~1000 lines).
 
 ## Archives
-- logs/PROJECT_LOG_2026-H1.md — 8 sessions (2026-03 … 2026-04)
+- logs/PROJECT_LOG_2026-H2.md — 1 sessions (2026-07 … 2026-07)
 
 ## Session Index (active, newest first)
+- 2026-10-31 10:22 CDT
 - 2026-10-31 07:58 CDT
 - 2026-10-30 21:55 CDT
 - 2026-10-30 21:41 CDT
@@ -15,9 +16,48 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - 2026-10-14 17:00 CDT
 - 2026-10-14 16:11 CDT
 - 2026-10-14 13:32 CDT
-- 2026-07-09 23:57 CDT
 
 ---
+
+## Session 2026-10-31 10:22 CDT
+- **Coding CLI used**: Claude Code CLI (GLM 5.3 backend, MoAI-Easy output style), session 1e6e3188. Opened with "resume" on the 2026-10-30 18:22 `NEXT_SESSION.md`.
+
+### Phase(s) worked on
+- CV incremental update steps 2 AND 3 (implementation → push → deploy → verification), plus primary-checkout reconciliation
+
+### Concrete changes implemented
+1. **Resume drift check**: the saved prompt's deploy step (8e091cd) was already done — the server sat at e0d5c8d with only docs-only commits above it; the real remaining work was CV step 2.
+2. **Primary checkout reconciled with origin**: the primary had diverged (12 behind, 1 local-only commit `0196686`, the morning's rm/chmod/chown ask-rule cleanup). A direct push would be refused, so the commit was cherry-picked onto origin/main in a throwaway worktree (`land-settings`) and pushed as `eb0a358`; the temp worktree and branch were disposed; the user ran `git reset --hard origin/main` themselves (Claude's `git reset --hard` in the primary checkout is permission-denied by design). Verified: origin↔main `0 0`; settings change preserved (diff vs 0196686 empty).
+3. **CV step 2 shipped (commit 065f53a)**: `scripts/cv_publish.py` (review/decide/publish/rollback/history; decision memory keyed by content-hash item ids; byte-for-byte snapshot/rollback; index.html + overview.json refresh; `WEB-INF/cv-updates/applied.jsonl` log), `build_data.py` re-apply hook `apply_cv_updates()` (idempotent, rollback-aware, never overwrites tracker-owned fields) + `pubmed_meta`/`crossref_meta` journal lookups, `cv_diff.label()` carries cvSection/peerReviewed (§11). Worktree branch renamed `WT-cv-publish`, ff-merged to origin/main, rebased over eb0a358 before push. Deployed e0d5c8d → 065f53a (`~/deploy.sh`, admin restarted, 21 health checks OK). Server-verified on a COPY: review with the current CV → 0 items; the 10-29 CV as "new" → 11 items → decide-all-accept → `publish --dry-run` → "11 changes would be applied — nothing written". **python-docx installed `--user --break-system-packages` for /usr/bin/python3.12 (the server never had it).**
+4. **CV step 3 shipped (commit 0c9aa2b)**: admin "CV Update" tab. `admin_server.py`: `/api/cv-review/{upload,latest,decide,publish,rollback,history}` behind the existing session+CSRF+2FA guards, fixed-argv subprocess, state in `/home/hurlab/hurlab-admin-state`; `_save_cv_pdf()` factored out and shared with `/upload`. `templates/admin.html`: two-file upload (.docx required for the review — the PDF loses the */$ marks; .pdf optional for the download link; the user chose "both in one tab"), kind-badged cards with accept/reject/hold, dry-run preview, publish, rollback, history; decisions saved server-side per click. Design doc `scripts/CV_UPDATE_STEP3.md`. Pushed, deployed 065f53a → 0c9aa2b (admin restarted, 21 checks OK), server checks: admin panel 200, tab in template, new endpoints 401 unauthenticated, cv_publish imports, checkout clean.
+5. **§12 decisions confirmed with the user (all five defaults)**, recorded in `scripts/CV_UPDATE_STEP2.md`; **mock-up copied out** of the research-overview worktree into `cv-publish/.preview/` before that worktree gets disposed, next to the E2E harness scripts (`e2e-setup.py`, `e2e-drive.py`).
+
+### Files/modules/functions touched
+- New: `scripts/cv_publish.py`, `scripts/CV_UPDATE_STEP3.md`, `tests/unit/test_cv_publish.py` (17 tests)
+- Changed: `scripts/cv_diff.py` (label), `scripts/build_data.py` (pubmed_meta/crossref_meta/apply_cv_updates + import), `scripts/admin_server.py`, `scripts/templates/admin.html`, `scripts/CV_UPDATE_STEP2.md` (§12 confirmed)
+- Server-side (outside git): `python-docx` installed for python3.12 via pip `--user`
+
+### Key technical decisions and rationale
+- §12 all defaults: keep date-derived year; new number = max+1; removal only on explicit accept; rebuild overview.json on publish; server git identity, message `CV update: N changes (run <run-id>)`.
+- Review input stays the .docx: the PDF loses the */$ marks — 9 of today's 11 real review items were exactly those mark changes.
+- Rollback does NOT restore `applied.jsonl`; it appends a rollback marker that cancels the publish's records (§10) — so build_data's local rebuild stays consistent.
+- Review-vs-published ground truth is 11 items in the reverse direction (the Khan internal→external move is invisible against published data: the build already normalizes type and published grants carry no cvSection).
+
+### Problems encountered and resolutions
+- `git push` of the diverged primary was refused (non-fast-forward) → cherry-pick route via a temp worktree; `git reset --hard` in the primary is permission-denied to Claude → the user ran the one command via `!`.
+- The server's python3 (3.12) had no python-docx → installed `--user`.
+- E2E harness lessons: `pkill -f` self-matches the invoking compound command (use pid/`fuser -k` instead); the Write tool refuses paths outside the project (harness scripts live in the worktree `.preview/`); a first rollback check compared POST-publish bytes — the test, not the tool, was wrong.
+
+### Items explicitly completed this session
+- CV incremental update steps 2 and 3 (implemented, pushed, deployed, verified)
+- Primary checkout ↔ origin divergence (the agents' complaint)
+- The saved prompt's obsolete deploy step (documented as already done)
+
+### Verification performed
+- Unit suite 36/36 OK (19 step-1 + 17 new); demonstrated failing (6 red) on a deliberately wrong CV pair (`CV_2026_10_29` override)
+- Local E2E harness: 34/34 checks ALL PASS (setup → computed TOTP → upload/review 11 items → decide → dry-run writes nothing → publish applies exactly the accepted records → rollback byte-identical → history; 401/403/400 refusals)
+- Two deploys: `~/deploy.sh` health checks 21/21 both times; step-2 server trial on a copy left no writes; post-step-3 server checks green (admin 200, 401 guards, template, imports)
+
 
 ## Session 2026-10-31 07:58 CDT
 - **Coding CLI used**: Claude Code CLI (Claude Opus 5.5; Sonnet 5.5 for the close). Same Claude session 184288b1 (fourth close; folds in the `/save-for-resume` checkpoint written after 21:55). No code or server changes.
@@ -345,55 +385,6 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - Playwright on a local server at 1366 px and 390 px: all 18 images load (`naturalWidth` > 0), 0 page errors, expanded image column = 353 px of a 1216 px card, label + color correct on all 13 cards, alphabetical order correct (also within the R Package filter), PubChemSR note fits on one line.
 - Live: `curl` 200 for `tools.html`, `data/tools.json` and sample images; live JSON shows 18 images / 13 tools, 11 available / 1 beta / 1 coming-soon, "SciMiner 1.1 & 2.0". Server = GitHub = c6ccbe2 after each ff-only pull; server's uncommitted `team.json` / CV PDF untouched.
 - Not run: the 90-test Playwright E2E suite.
-
----
-
-## Session 2026-07-09 23:57 CDT
-- **Coding CLI used**: Claude Code CLI (Claude Opus 4.8)
-
-### Phase(s) worked on
-- Session start (startsession reconcile): classified project state; found handoff/git drift (3 commits post-dating the docs)
-- Deployment verification: confirmed live server ↔ GitHub ↔ local fully synced
-- Content maintenance: collaborators page reorganization + live deploy
-
-### Concrete changes implemented
-1. Verified the deployed webapp dir on hurlab.med.und.edu **is** the git working tree Tomcat serves; all three copies (local, GitHub, server) at the same HEAD. Deploy path = commit/push + `git pull` on server.
-2. Reorganized `data/collaborators.json` from 4 → 7 sections:
-   - Hid 5 collaborators via a reversible `"hidden": true` flag (Brosius, Eun-Hee Cho, Kyung Ju Lee, Joyce Ohm, Susan Masino) — retained in JSON, filtered out on the page.
-   - Added 14 collaborators, each with an individually web-verified profile URL: Stephanie Eid (AUB), Amy Rumora (Columbia), Yong Kim & Mi-Hyeon Jang (Rutgers), Alexander Diehl (UB), Bill Duncan (UF), Guanming Wu (OHSU), Cui Tao (Mayo), Ramkumar Mathur & Donald Jurivich (UND), Jun-Il Yoo (Inha), Motoki Takaku (UND), Nadeem Khan (UF), Kumi Nagamoto-Combs (UND), Jinho Yoo (YooJinBioSoft, Korea).
-   - New sections: Geriatrics / Biological Age / Digital Health, Cancer, Immunology / Infectious Disease.
-   - Renamed: "Epigenetics in NeuroSciences" → Neuroscience; "Literature Mining / Ontology" → Biomedical Informatics / Ontology (moved to first). Moved Archana Dhasarathy → Cancer. Title separators normalized to "/" (no "&").
-3. `collaborators.html`: reversible hidden filter in the member `x-for`; added amber/rose/blue colors + clock/chart/shield icons; two-column responsive grid per section (`grid-cols-1 sm:grid-cols-2`).
-4. `scripts/templates/admin.html`: added amber/rose colors + clock/chart icons to the admin panel color/icon dropdowns.
-
-### Files/modules/functions touched
-- `data/collaborators.json` — 4→7 sections, 24 visible + 5 hidden members
-- `collaborators.html` — hidden filter, colorMap +3, icons +3, 2-column grid
-- `scripts/templates/admin.html` — colorOptions/iconOptions extended
-- `PROJECT_HANDOFF.md`, `PROJECT_LOG.md` — this endsession reconcile
-
-### Key technical decisions and rationale
-- Reversible `hidden` flag over deletion: keeps the data; the admin save round-trips it (whole-object JSON serialization preserves unknown fields).
-- No-fabrication URL verification: every new link fetched and identity-confirmed. Caught a search-surfaced ORCID that belonged to a DIFFERENT person (jiyeon jo, not Jinho Yoo); used YooJinBioSoft's http site (its HTTPS cert is mismatched — shared hosting).
-- Two-column grid to cut vertical page length.
-
-### Problems encountered and resolutions
-- Local clone had no node_modules (gitignored) → installed `@playwright/test` (browsers already cached) to run headless render QA with Chromium.
-- AOS opacity hid below-fold sections in static screenshots → forced `aos-animate` for the QA capture.
-- Cui Tao's Mayo bio bot-blocks (HTTP 403) and Stephanie Eid's AUB profile is a JS SPA → used verified Google Scholar / AUB registry cross-check; flagged for a browser spot-check.
-
-### Deployment (3 commits, pushed + pulled to server + live-verified)
-- `c3f1df5` reorg → `b3b8a36` two-column → `e581475` Jinho Yoo + title tidy.
-- Each: `git pull --ff-only` on server (admin service restart for the admin.html change); live `https://hurlab.med.und.edu/hurlab/` returned HTTP 200 with updated content.
-
-### Items explicitly completed / resolved this session
-- Collaborators reorganization deployed live and verified.
-- Handoff/log drift reconciled: 3 previously-undocumented commits (fef9c27, c0a907a, d1eb197) now reflected in PROJECT_HANDOFF.md; HTTPS risk row corrected for the 2026-05 recurrence.
-
-### Verification performed
-- Headless Chromium render QA: 7 sections, 24 visible + 5 hidden, all icons resolved, 0 JS errors.
-- Live URL curl after each deploy: HTTP 200, correct titles/members.
-- git: clean tree; local HEAD == origin/main == server HEAD (e581475).
 
 ---
 
