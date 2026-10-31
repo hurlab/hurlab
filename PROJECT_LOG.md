@@ -3,9 +3,10 @@
 Bounded active log. Newest first. Older sessions are archived under `logs/` when over budget (>10 sessions / ~1000 lines).
 
 ## Archives
-- logs/PROJECT_LOG_2026-H1.md — 5 sessions (2026-03 … 2026-04)
+- logs/PROJECT_LOG_2026-H1.md — 6 sessions (2026-03 … 2026-04)
 
 ## Session Index (active, newest first)
+- 2026-10-30 21:41 CDT
 - 2026-10-30 20:24 CDT
 - 2026-10-30 18:22 CDT
 - 2026-10-29 22:44 CDT
@@ -15,7 +16,48 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - 2026-07-09 23:57 CDT
 - 2026-04-08 CDT (early)
 - 2026-04-08 CDT (implementation)
-- 2026-04-08 CDT (security completion)
+
+---
+
+## Session 2026-10-30 21:41 CDT
+- **Coding CLI used**: Claude Code CLI (Claude Opus 5.5; Sonnet 5.5 for the close). Same Claude session 184288b1 as the 20:24 entry (a second close). Worktree `cv-diff`, its branch renamed to `WT-site-review-fixes`.
+
+### Phase(s) worked on
+- Commit and push of the 20:24 close work (c57055d)
+- Site review fixes 1-6 sent by the user: preview, commit e257434, deploy
+- CV PDF swap and removal of the old CV PDFs on the server
+
+### Concrete changes implemented
+1. On "commit/push": c57055d (`scripts/deploy.sh`, `scripts/CV_UPDATE_STEP2.md`, HANDOFF, LOG). The design doc was copied from the `cv-publish` worktree into this one for the commit and the `cv-publish` copy deleted, so a fast-forward there will not collide. `logs/PROJECT_LOG_2026-H1.md` is git-ignored (`logs/*`), so the log archive exists only in this worktree.
+2. Site review fixes (the user's list of 6; "show me the preview before committing", "no em dashes"). Measured first: the stipend line was already gone (7298d41) but the OLAS/MILAM/LAM-AI line was live, and the "new Positions content" the user mentioned was not in this session. The live `team.json` on the server differed from git (Ayeni already under current members, Babru Samal only on the server), so edits started from the server copy (the user's choice). Changes: `data/positions.json` (OLAS line removed); `data/team.json` (Ayeni "Primary advisee of Dr. Hur", Samal "Visiting Research Scientist", Rehana "Computer Science"); `pubBreakdown()` in `js/components.js` feeding the home stat, the Publications page line and the Research at a Glance stat, with `pub_breakdown()` in `build_data.py` mirroring it into the static `index.html` block (no-break space between each count and its word so lines wrap only after commas); "1 publication" in the singular on the era cards and on research-detail; the new AI/ML description in `data/research.json` and on the home card (the user chose to replace it); 3 new E2E tests that compute the breakdown from `publications.json`.
+3. Review loop: local preview on 127.0.0.1:8798, screenshots, text read from the rendered pages. The user chose "Commit, push and deploy": commit e257434, pushed to main; on the server the sha256 of `data/team.json` was re-checked (`deee353b…`), the file backed up, `git checkout -- data/team.json`, then `~/deploy.sh` (be67bcb → e257434, admin panel restarted); live E2E 102 passed.
+4. CV PDF (item 6): the user's Windows path was mapped to `/mnt/c/JHCloud/Dropbox …`; its header read "Updated 10/30/2026" before upload (the file on the server read "Updated 09/11/2026"). Uploaded as `Personal/2026-10-30_JungukHur-CV.pdf` (sha256 equal), the 3 links repointed, served with the new header locally and publicly. On the user's "replace the old CV file" the previous dated PDF was moved to a backup folder; then, after the user asked whether the old ones could be deleted ("지우면 안되나?"), all 7 old PDFs were deleted, each only after checking that no link pointed at it and that an identical copy existed in the Dropbox CV folder (the 3 oldest had none, so they were copied there first, checksums equal).
+5. Mid-turn user messages: "Item1; please double-check. I think you already fixed it" (verified: stipend line already gone, OLAS line still live) and "Item 6: double-check this again. you may want to upload the latest CV PDF to the server" (done, item 4).
+
+### Files/modules touched
+- Repo (e257434): `data/positions.json`, `data/research.json`, `data/team.json`, `index.html`, `js/components.js`, `publications.html`, `research-detail.html`, `research-overview.html`, `scripts/build_data.py`, `tests/e2e/publications.spec.ts`. Repo (c57055d): `scripts/deploy.sh`, `scripts/CV_UPDATE_STEP2.md`, `PROJECT_HANDOFF.md`, `PROJECT_LOG.md`.
+- Server: site checkout be67bcb → e257434; `data/team.json` replaced by the committed file (backup `/home/hurlab/backups/team-json-20261030-211709/team.json`); `Personal/`: new CV, 3 links repointed, 7 old PDFs deleted; more test logs in `~/deploy-logs/`.
+- Dropbox CV folder: the 3 oldest CVs added. Memory: `feedback_deploy_is_mine_no_sudo.md` (procedure for server-edited files and CV swaps).
+
+### Key technical decisions and rationale
+- `data/team.json` is edited by the admin panel on the server, so the server copy is the authority: edit from it and check its sha256 at deploy.
+- The breakdown is one shared function, never typed in; "other" = neither peer-reviewed nor a preprint.
+- CV PDFs are not in git (dated files are git-ignored): a CV swap is upload + repoint the 3 links.
+- Old CV files were deleted only after each was proven to have an identical copy elsewhere.
+
+### Problems encountered and resolutions
+- The worktree guard refused a loop and compound commands (e.g. copying the 3 CVs); done one plain command at a time.
+- A ruff hook reported `pub_breakdown` undefined between two sequential edits; transient, `ruff check` passed afterwards.
+- A first screenshot showed "other" alone on a line; fixed with no-break spaces.
+- Git's tracked symlink `Personal/JungukHur_CV.pdf` named the deleted `2026-04-17_JungukHur-CV.pdf`. After the close, on the user's "fix the link. and commit / push all if needed": retargeted in git (1d310e9, pushed), on the server `git checkout -- Personal/JungukHur_CV.pdf` + `~/deploy.sh` (e257434 → 1d310e9, health checks OK); the server's git now has no local changes and all 3 CV links answer 200 locally and publicly. These docs were then committed and pushed.
+- Left open: talks and posters were not refreshed from the new PDF (`scripts/parse_cv.py` not run).
+
+### Items completed / resolved / superseded this session
+- Site review fixes 1-6 — Completed (live). Old CV PDFs on the server — Completed (deleted). c57055d — Completed (pushed).
+- Git's CV symlink — Completed (1d310e9). Open: talks/posters refresh (needs the user's OK).
+
+### Verification performed
+- Local preview: Playwright 102 passed (99 + 3 new), 19 unit tests, rendered text and screenshots at 1366 px, no page errors. The 3 new tests failed on the old live site. Live after deploy: E2E 102 passed (37.3 s); CV link 200 with "Updated 10/30/2026"; old CV addresses 404. Not verified: phone-width rendering of the new home line, the taller home AI card and the People changes; talks/posters from the new CV.
 
 ---
 
@@ -441,71 +483,6 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 
 ### Remaining outstanding work
 - None from original backlog. Future improvements noted in PROJECT_HANDOFF.md §7.
-
----
-
-## Session 2026-04-08 CDT (security completion)
-
-- **Coding CLI used**: Claude Code CLI (Claude Opus 4.6, 1M context)
-- **Harness**: 4-agent team (Orchestrator + Implementer + Reviewer + QA)
-
-### Phase(s) worked on
-- Remaining security hardening items from previous session's recommendations
-
-### Concrete changes implemented
-
-**CSRF Token Protection:**
-1. `create_session()` generates 256-bit CSRF token via `secrets.token_hex(32)`
-2. Token injected into admin template via `{{CSRF_TOKEN}}` meta tag
-3. `_validate_csrf()` method validates `X-CSRF-Token` header with timing-safe comparison
-4. All 10 POST endpoints protected (upload, parse, team/member, team/pi, team/photo, team/visibility, team/reorder, collaborators, research, positions)
-5. Login, setup, logout correctly excluded
-6. Frontend `apiFetch()` helper auto-attaches header on all API calls
-7. XHR file upload also sends CSRF header
-
-**WEB-INF/web.xml Security Constraints:**
-8. Created `WEB-INF/web.xml` with Tomcat 4.0 servlet spec
-9. Blocks: `/scripts/*`, `/tests/*`, `/node_modules/*`, dot files, project management files
-10. Custom error pages: 403/404 redirect to `/index.html`
-11. Tomcat auto-reloaded — all sensitive paths return 403
-
-**Server-Side Input Sanitization:**
-12. Added `sanitize_text()` — strips HTML tags via regex
-13. Added `sanitize_dict()` — recursive sanitization of string fields in dicts/lists
-14. Applied to: team member add/edit, PI info edit, generic JSON save (collaborators/research/positions)
-15. Text fields sanitized: name, title, description, institution, url, headline, overview, contactEmail, intro
-
-**Generic Error Messages:**
-16. Updated 8 `except Exception` handlers to log real error to stderr, return "Internal server error" to client
-17. Fixed one remaining path leak in status endpoint (`f"Error: {e}"` → `"Error reading publications"`)
-
-### Files/modules/functions touched
-- `scripts/admin_server.py` — CSRF methods, sanitize helpers, generic error handlers, status fix
-- `scripts/templates/admin.html` — CSRF meta tag, `apiFetch()` helper, XHR header
-- `WEB-INF/web.xml` — new Tomcat security constraints
-- `PROJECT_HANDOFF.md` — updated outstanding items and verification
-- `PROJECT_LOG.md` — this entry
-
-### Verification performed
-- Code review by Reviewer agent: APPROVED (1 minor issue found and fixed)
-- Playwright E2E regression: 90/90 passed (36.5s)
-- web.xml security: all sensitive paths → 403, all public paths → 200
-- Admin server compile + restart: OK, HTTP 200
-
-### Harness statistics
-- **Subagent spawns**: 5 total (3 Implementers, 1 Reviewer, 1 QA)
-- **Task briefs issued**: 5
-- **Review verdict**: APPROVED with 1 minor issue (fixed)
-- **E2E regression**: 90 passed, 0 failed
-
-### Items explicitly completed
-- CSRF token protection (Security finding #5 - Medium → resolved)
-- WEB-INF/web.xml (Security finding #13 - Low → resolved)
-- Input sanitization (Security finding #10 - Medium → resolved)
-- Generic error messages (Security finding #15 - Low → resolved)
-
-### Remaining outstanding work
-- None. All security findings from audit now resolved or documented as acceptable risk.
 
 ---
 
