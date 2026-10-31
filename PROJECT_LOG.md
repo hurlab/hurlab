@@ -3,9 +3,10 @@
 Bounded active log. Newest first. Older sessions are archived under `logs/` when over budget (>10 sessions / ~1000 lines).
 
 ## Archives
-- logs/PROJECT_LOG_2026-H1.md — 6 sessions (2026-03 … 2026-04)
+- logs/PROJECT_LOG_2026-H1.md — 7 sessions (2026-03 … 2026-04)
 
 ## Session Index (active, newest first)
+- 2026-10-30 21:55 CDT
 - 2026-10-30 21:41 CDT
 - 2026-10-30 20:24 CDT
 - 2026-10-30 18:22 CDT
@@ -15,7 +16,26 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - 2026-10-14 13:32 CDT
 - 2026-07-09 23:57 CDT
 - 2026-04-08 CDT (early)
-- 2026-04-08 CDT (implementation)
+
+---
+
+## Session 2026-10-30 21:55 CDT
+- **Coding CLI used**: Claude Code CLI (Claude Opus 5.5; Sonnet 5.5 for the close). Same Claude session 184288b1 (third close). No code or server changes.
+
+### Phase(s) worked on
+- Positions page full rewrite request (checked, deferred)
+
+### Concrete changes implemented
+- None to the site. The user forwarded a request to replace the Positions content with "the full draft I gave earlier" ("What every applicant needs" incl. agentic AI coding tools such as Claude Code, Codex, GitHub Copilot, Cursor; "Strong pluses"; "Probably not a fit"; 3 role cards; 5 project areas; new "How to get in touch") and asked me to check it, without changing anything unconditionally.
+
+### Problems encountered and resolutions
+- The draft text is not on this machine: searched every worktree and the primary checkout (md/json/html/txt), every Claude session transcript under ~/.claude/projects, and ~/.codex; the phrases appear only in this session's own copy of the request. The message the user then pointed to (the site-review list) only refers to the draft ("apply the new Positions content I gave earlier"); from it only the stipend and OLAS lines were actionable, both done. The user said to move on.
+
+### Items completed / resolved / superseded this session
+- Positions full rewrite — Deferred (waits for the draft text).
+
+### Verification performed
+- `git fetch` + `git log -1 origin/main` = e0d5c8d; the server at e0d5c8d with no local changes.
 
 ---
 
@@ -369,120 +389,6 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 ### Items explicitly completed
 - HTTPS/SSL resolution recorded
 - CLAUDE.md corrected to reflect root-level deployment (v2→root cutover happened in Session 2026-03-14 16:30 CDT)
-
----
-
-## Session 2026-04-08 CDT (implementation)
-
-- **Coding CLI used**: Claude Code CLI (Claude Opus 4.6, 1M context)
-- **Harness**: 4-agent team (Orchestrator + Implementer + Reviewer + QA + Security Auditor)
-
-### Phase(s) worked on
-- Phase A: Image optimization
-- Phase B: Mobile responsiveness QA and fixes
-- Phase C: Admin panel JSON editors (collaborators, research, positions)
-- Phase D: Admin server auto-start
-- Security hardening
-- Playwright E2E test suite
-
-### Concrete changes implemented
-
-**Phase A — Image Optimization:**
-1. Compressed 9 JPGs using Pillow (quality=85): 2.76MB → 1.11MB (59.6% reduction)
-2. Generated 6 WebP alternatives for largest images (additional 47-70% smaller)
-3. Backed up originals to `Images/originals/`
-4. No filename changes — all HTML/JSON references intact
-
-**Phase B — Mobile Responsiveness:**
-5. Created Playwright QA scripts (`tests/mobile-qa.mjs`, `tests/touch-targets-audit.mjs`)
-6. Tested all 8 pages at 375px, 768px, 1280px — no horizontal overflow
-7. Fixed small touch targets on mobile via CSS media query (`css/custom.css` lines 104-160)
-8. Verified hamburger menu visible and functional on all pages
-
-**Phase C — Admin Panel Editors:**
-9. Added generic `load_json_data()` / `save_json_data()` helpers to `admin_server.py`
-10. Added 6 API endpoints: GET/POST for `/api/collaborators`, `/api/research`, `/api/positions`
-11. Each POST saves JSON atomically, sets `lastUpdated`, and git auto-commits
-12. Added `_handle_save_json()` generic handler with auth + JSON parsing + dict validation
-13. Added Collaborators tab: category CRUD, member CRUD, color/icon dropdowns
-14. Added Research Areas tab: intro editor, area CRUD, collapsible details editor
-15. Added Positions tab: isHiring toggle, position type CRUD, research areas, contact email
-16. Updated `switchTab()` for 5 tabs, each fetches data on activate
-17. Fixed `teamMemberAction()` to also re-render `fac_alumni` section (reviewer finding)
-
-**Phase D — Admin Auto-Start:**
-18. Created systemd user service at `~/.config/systemd/user/hurlab-admin.service`
-19. Enabled and started service, verified active (running) with HTTP 200
-20. Enabled user lingering (`loginctl enable-linger hurlab`) for boot persistence
-
-**Security Hardening:**
-21. Upgraded password hashing from unsalted SHA-256 to PBKDF2-SHA256 (600K iterations, random salt)
-22. Added auto-migration: legacy hashes upgraded on next successful login
-23. Added brute force protection: 5 attempts per IP, then 5-minute lockout
-24. Added `Secure; SameSite=Strict` to session cookies
-25. Added security headers: `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: same-origin`
-26. Added upload size limits: 50MB for CVs, 10MB for photos
-27. Added photo extension validation against allowlist (jpg, jpeg, png, gif, webp)
-28. Changed server binding from `0.0.0.0` to `127.0.0.1` (configurable via `ADMIN_BIND_ADDR` env)
-29. Set credentials file permissions to 600
-30. Added `data/` disallow to `robots.txt`; fixed sitemap URL to HTTPS
-
-**Playwright E2E Test Suite:**
-31. Installed `@playwright/test`, created `playwright.config.ts`
-32. Created 6 test files with 90 tests total:
-    - `smoke.spec.ts` (40 tests): HTTP 200, title, nav, footer, GA tag for all 8 pages
-    - `navigation.spec.ts` (20 tests): desktop nav links, mobile hamburger, footer sections
-    - `publications.spec.ts` (6 tests): data load, tabs, search, year filter
-    - `tools.spec.ts` (5 tests): card load, expand, single-expand, details
-    - `responsive.spec.ts` (12 tests): overflow check, hamburger visibility at 375/1280px
-    - `data-integrity.spec.ts` (7 tests): validates all 7 JSON data files
-
-### Files/modules/functions touched
-- `Images/*.jpg` — 9 JPGs compressed in place
-- `Images/*.webp` — 6 new WebP alternatives
-- `Images/originals/` — backup of original JPGs
-- `css/custom.css` — mobile touch target improvements (lines 104-160)
-- `robots.txt` — added `data/` disallow, fixed sitemap URL to HTTPS
-- `scripts/admin_server.py` — 6 new endpoints, security hardening, generic JSON helpers
-- `scripts/templates/admin.html` — 3 new tabs (Collaborators, Research, Positions), fac_alumni render fix
-- `~/.config/systemd/user/hurlab-admin.service` — new systemd user service
-- `playwright.config.ts` — new Playwright config
-- `package.json` — new (for @playwright/test dependency)
-- `tests/e2e/*.spec.ts` — 6 new E2E test files
-- `tests/mobile-qa.mjs` — mobile QA screenshot script
-- `tests/touch-targets-audit.mjs` — touch target detail audit
-- `tests/screenshots/` — QA screenshots at 3 viewports
-- `PROJECT_HANDOFF.md` — updated all outstanding items to Completed
-- `PROJECT_LOG.md` — this entry
-
-### Key technical decisions and rationale
-- **PBKDF2 over bcrypt**: Uses only Python stdlib (no pip install needed), 600K iterations meets OWASP 2024 recommendations
-- **Legacy hash auto-migration**: Existing credentials work immediately; upgraded transparently on next login
-- **127.0.0.1 binding with env override**: Secure by default, but `ADMIN_BIND_ADDR=0.0.0.0` available for SSH tunnel scenarios
-- **systemd user service over cron**: Better process management, auto-restart on failure, proper logging via journald
-- **Generic JSON helpers**: `load_json_data()`/`save_json_data()` reduce code duplication for all data file operations
-- **Mobile CSS media query**: Touch target fix scoped to `@media (max-width: 767px)` to avoid affecting desktop
-
-### Problems encountered and resolutions
-1. **Playwright baseURL**: Needed trailing slash (`/hurlab/` not `/hurlab`) for correct relative path resolution. **Resolved** by updating config.
-2. **Mobile hamburger locator**: Alpine.js `x-show` menu panel needed specific `nav div[x-show="open"]` selector. **Resolved** in navigation tests.
-3. **Publications count text split across spans**: `filteredCount` in separate `x-text` span, not in parent text. **Resolved** by targeting specific span locator.
-
-### Harness statistics
-- **Subagent spawns**: 7 total (3 Implementers, 1 QA-Mobile, 1 QA-E2E, 1 Reviewer, 1 Security Auditor)
-- **SPECs created**: 0 (all work scoped via detailed task briefs)
-- **Task briefs issued**: 7
-- **Security findings**: 17 total (0 Critical, 3 High → fixed, 7 Medium → 6 fixed, 5 Low, 2 Info)
-- **Review verdict**: APPROVED with 5 minor non-blocking issues (2 fixed)
-- **E2E tests**: 90 passed, 0 failed (34.5s)
-
-### Items explicitly completed
-- All 4 original outstanding items from PROJECT_HANDOFF.md
-- Security hardening (not originally planned, added during session)
-- Playwright E2E test suite (not originally planned, added during session)
-
-### Remaining outstanding work
-- None from original backlog. Future improvements noted in PROJECT_HANDOFF.md §7.
 
 ---
 
