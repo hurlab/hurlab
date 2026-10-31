@@ -35,6 +35,7 @@ import shutil
 import sys
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
@@ -495,6 +496,104 @@ class Reapply(Base):
         grants = self.grants()
         out2 = self.run_apply(pubs, grants)
         self.assertNotIn("RE-", out2, json.loads(self.webinf.read_text().splitlines()[-1]))
+
+
+# ---------------------------------------------------------------- step 4: push to GitHub
+
+class GitPushUnit(Base):
+    """_git_push() in isolation: subprocess faked, no CV fixtures needed."""
+
+    def _fake_run(self, calls, result_code=0, stderr="", timeout=False):
+        import subprocess as subprocess_mod
+
+        def run(argv, **kwargs):
+            calls.append(list(argv))
+            if timeout:
+                raise subprocess_mod.TimeoutExpired(argv[0], kwargs.get("timeout", 60))
+            return subprocess_mod.CompletedProcess(argv, result_code, "", stderr)
+
+        return run
+
+    def test_push_ok(self):
+        calls = []
+        with mock.patch("subprocess.run", self._fake_run(calls)):
+            self.assertTrue(cv_publish._git_push())
+        self.assertEqual(calls, [["git", "push", "origin", "main"]])
+
+    def test_push_nonzero_returns_false_and_shows_stderr(self):
+        calls = []
+        fake = self._fake_run(calls, result_code=128, stderr="remote: permission denied")
+        with mock.patch("subprocess.run", fake), contextlib.redirect_stdout(io.StringIO()) as out:
+            self.assertFalse(cv_publish._git_push())
+        self.assertIn("permission denied", out.getvalue())
+
+    def test_push_timeout_returns_false(self):
+        calls = []
+        with mock.patch("subprocess.run", self._fake_run(calls, timeout=True)):
+            self.assertFalse(cv_publish._git_push())
+
+    def test_push_without_repo_is_false(self):
+        fake_root = self.tmp / "not-a-repo"
+        fake_root.mkdir()
+        self._patch(cv_publish, "ROOT", fake_root)
+        self.assertFalse(cv_publish._git_push())
+
+
+@unittest.skipUnless(all(os.path.exists(CV[t]) for t in FIX), "CV files not reachable")
+class PushHook(Base):
+    """Step 4: publish and rollback push to GitHub; a failed push is non-fatal.
+
+    Same fixtures as PublishRollback. Where the hook itself is under test, _git_commit is faked
+    to True — the real one skips in unit tests (the written files live outside the repo) and its
+    own behavior is covered by PublishRollback."""
+
+    def setUp(self):
+        super().setUp()
+        self.build_base("2026-10-29")
+        self.run_id, self.doc = self.review("2026-10-30")
+
+    def test_publish_pushes_once(self):
+        calls = []
+        self._patch(cv_publish, "_git_commit", lambda *a: True)
+        self._patch(cv_publish, "_git_push", lambda: calls.append(1) or True)
+        self.accept_all(self.run_id)
+        code, out = self.cli("publish", self.run_id)
+        self.assertEqual(code, 0, out)
+        self.assertEqual(len(calls), 1)
+        self.assertIn("committed, pushed", out)
+
+    def test_publish_push_failure_is_non_fatal(self):
+        self._patch(cv_publish, "_git_commit", lambda *a: True)
+        self._patch(cv_publish, "_git_push", lambda: False)
+        self.accept_all(self.run_id)
+        code, out = self.cli("publish", self.run_id)
+        self.assertEqual(code, 0, out)  # the site data is already live — push failure must not fail
+        self.assertIn("PUSH FAILED (GitHub behind)", out)
+        self.assertIn("WARNING", out)
+        items = cv_diff.diff(*cv_diff.load_published(self.data), *cv_diff.load_cv(CV["2026-10-30"]),
+                             this_year=2026)
+        self.assertEqual(items, [], "the accepted changes must still be applied")
+
+    def test_skipped_commit_attempts_no_push(self):
+        calls = []
+        self._patch(cv_publish, "_git_push", lambda: calls.append(1) or True)
+        self.accept_all(self.run_id)
+        code, out = self.cli("publish", self.run_id)  # real _git_commit: skip (no repo path)
+        self.assertEqual(code, 0, out)
+        self.assertIn("git skipped", out)
+        self.assertEqual(calls, [], "no repo — no push may be attempted")
+
+    def test_rollback_pushes(self):
+        calls = []
+        self._patch(cv_publish, "_git_commit", lambda *a: True)
+        self._patch(cv_publish, "_git_push", lambda: calls.append(1) or True)
+        self.accept_all(self.run_id)
+        code, out = self.cli("publish", self.run_id)
+        self.assertEqual(code, 0, out)
+        code, out = self.cli("rollback")
+        self.assertEqual(code, 0, out)
+        self.assertEqual(len(calls), 2, "publish and rollback each push once")
+        self.assertIn("rolled back, committed, pushed", out)
 
 
 if __name__ == "__main__":

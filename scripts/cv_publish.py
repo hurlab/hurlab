@@ -10,6 +10,12 @@ rebuild. Design and field-ownership rules: scripts/CV_UPDATE_STEP2.md (§12 deci
 the user on 2026-10-31: keep date-derived years; new numbers = max + 1; removals only on explicit
 accept; rebuild overview.json on publish; server git identity and "CV update: N changes" message).
 
+Step 4 (2026-10-31): a successful publish or rollback now also pushes main to origin, so the
+server's commit reaches GitHub at once (the server's existing HTTPS git credentials; the user's
+decision — no deploy key). Push failure is non-fatal: the site is already updated, and the push
+can be retried by hand before the next ~/deploy.sh (which stops until the commit is pushed).
+Design: scripts/CV_UPDATE_STEP4.md.
+
 Usage:
   python3 scripts/cv_publish.py review --new-cv CV.docx [--year N]
   python3 scripts/cv_publish.py decide <run-id> <item-id>... accept|reject|hold
@@ -362,6 +368,29 @@ def _git_commit(paths, message):
     return True
 
 
+def _git_push():
+    """Step 4: push main to origin so the server's commit reaches GitHub at once. Returns True
+    (pushed) or False (failed — non-fatal: the site is already updated, and ~/deploy.sh stops on
+    its "server has commits GitHub lacks" guard until the commit is pushed)."""
+    if not (ROOT / ".git").exists():
+        return False
+    import subprocess
+    try:
+        push = subprocess.run(["git", "push", "origin", "main"], cwd=ROOT, capture_output=True,
+                              text=True, timeout=60, env=dict(os.environ, GIT_TERMINAL_PROMPT="0"))
+    except subprocess.TimeoutExpired:
+        print("    git push timed out after 60 s (network or GitHub unreachable; "
+              "the commit is safe on the server)")
+        return False
+    except OSError as exc:  # fork failure etc. — still must not break the publish
+        print(f"    git push could not start ({exc.__class__.__name__}: {exc})")
+        return False
+    if push.returncode != 0:
+        print("    git push failed: " + push.stderr.strip()[:200])
+        return False
+    return True
+
+
 # ---------------------------------------------------------------- commands
 
 def cmd_review(args, state, data_dir):
@@ -498,8 +527,15 @@ def cmd_publish(args, state, data_dir):
         _restore_snapshot(snap, manifest, targets)
         print("cv_publish: git commit failed — snapshot restored")
         return 1
+    pushed = _git_push() if result is True else None
+    if pushed is False:
+        print("cv_publish: WARNING — git push failed; GitHub is behind the server "
+              "(~/deploy.sh stops until the commit is pushed; retry by hand with "
+              "git -C " + str(ROOT) + " push origin main)")
+    git_note = (f", committed, {'pushed' if pushed else 'PUSH FAILED (GitHub behind)'}"
+                if result is True else ", git skipped")
     print(f"cv_publish: published {len(records)} changes (run {doc['run']}, "
-          f"snapshot {snapshot_id}{', committed' if result is True else ', git skipped'})")
+          f"snapshot {snapshot_id}{git_note})")
     return 0
 
 
@@ -545,8 +581,14 @@ def cmd_rollback(args, state, data_dir):
                                              "snapshot": manifest["snapshot"]}])
     result = _git_commit(restored + [WEBINF_LOG],
                          f"CV rollback: run {manifest['run']} (snapshot {manifest['snapshot']})")
+    pushed = _git_push() if result is True else None
+    if pushed is False:
+        print("cv_publish: WARNING — git push failed; GitHub is behind the server "
+              "(~/deploy.sh stops until the commit is pushed)")
+    git_note = (f", committed, {'pushed' if pushed else 'PUSH FAILED (GitHub behind)'}"
+                if result is True else "")
     print(f"cv_publish: restored {len(restored)} files from snapshot {manifest['snapshot']} "
-          f"(run {manifest['run']} rolled back{', committed' if result is True else ''})")
+          f"(run {manifest['run']} rolled back{git_note})")
     return 0
 
 
