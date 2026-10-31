@@ -48,6 +48,13 @@ ALLOWED_PHOTO_EXTENSIONS = {".jpg", ".jpeg", ".png", ".gif", ".webp"}
 LOGIN_MAX_ATTEMPTS = 5
 LOGIN_LOCKOUT_SECONDS = 300  # 5 minutes
 
+# CV incremental update (step 3): the review engine lives in scripts/cv_publish.py; its state
+# stays OUTSIDE the web root (step-2 decision A). See scripts/CV_UPDATE_STEP3.md.
+ADMIN_STATE = Path("/home/hurlab/hurlab-admin-state")
+CV_REVIEW_TIMEOUT = 300  # publish may wait on PubMed/Crossref for NEW records
+RUN_ID_RE = re.compile(r"^\d{8}-\d{6}$")
+ITEM_ID_RE = re.compile(r"^[0-9a-f]{12}$")
+
 # Two-factor authentication (TOTP / RFC 6238)
 TOTP_ISSUER = "Hur Lab Admin"
 TOTP_DIGITS = 6
@@ -373,6 +380,17 @@ def save_json_data(filename: str, data: dict, commit_msg: str = None):
     if commit_msg:
         subprocess.run(["git", "add", str(path)], cwd=str(BASE_DIR))
         subprocess.run(["git", "commit", "-m", commit_msg], cwd=str(BASE_DIR))
+
+
+def run_cv_publish(args, timeout=120):
+    """Run scripts/cv_publish.py against ADMIN_STATE and return the CompletedProcess.
+    Fixed argv, no shell; the tool itself enforces its own safety refusals (stale run,
+    nothing accepted)."""
+    return subprocess.run(
+        [PYTHON_BIN, str(SCRIPTS_DIR / "cv_publish.py"),
+         "--state", str(ADMIN_STATE), "--data", str(DATA_DIR), *args],
+        cwd=str(SCRIPTS_DIR), capture_output=True, text=True, timeout=timeout,
+    )
 
 
 # Home page settings stored in data/site.json under "homePage": key -> (min, max)
@@ -751,6 +769,14 @@ class AdminHandler(BaseHTTPRequestHandler):
             self._send_json(load_home_settings())
             return
 
+        if self.path == "/api/cv-review/latest":
+            self._handle_cv_latest()
+            return
+
+        if self.path == "/api/cv-review/history":
+            self._handle_cv_history()
+            return
+
         self.send_error(404, "Not Found")
 
     # -- POST ---------------------------------------------------------------
@@ -790,6 +816,14 @@ class AdminHandler(BaseHTTPRequestHandler):
             self._handle_save_json("positions.json", "positions")
         elif self.path == "/api/home-settings":
             self._handle_home_settings()
+        elif self.path == "/api/cv-review/upload":
+            self._handle_cv_upload()
+        elif self.path == "/api/cv-review/decide":
+            self._handle_cv_decide()
+        elif self.path == "/api/cv-review/publish":
+            self._handle_cv_publish_endpoint()
+        elif self.path == "/api/cv-review/rollback":
+            self._handle_cv_rollback()
         else:
             self.send_error(404, "Not Found")
 
@@ -942,22 +976,8 @@ class AdminHandler(BaseHTTPRequestHandler):
                 self._send_json({"success": False, "error": "Only PDF files are accepted"}, status=400)
                 return
 
-            # Save file
-            PERSONAL_DIR.mkdir(parents=True, exist_ok=True)
-            today = datetime.now().strftime("%Y-%m-%d")
-            target_name = f"{today}_JungukHur-CV.pdf"
-            target_path = PERSONAL_DIR / target_name
-
-            with open(target_path, "wb") as f:
-                f.write(data)
-
-            # Update symlinks
-            symlink_names = ["JungukHur-CV.pdf", "JungukHur_CV.pdf", "JungukHur.pdf"]
-            for sname in symlink_names:
-                link_path = PERSONAL_DIR / sname
-                if link_path.exists() or link_path.is_symlink():
-                    link_path.unlink()
-                link_path.symlink_to(target_name)
+            # Save file + update the public symlinks (shared with the CV Update tab)
+            target_name = self._save_cv_pdf(data)
 
             size_kb = len(data) / 1024
             self._send_json({
@@ -1010,6 +1030,55 @@ class AdminHandler(BaseHTTPRequestHandler):
             return (filename, file_body)
 
         return None
+
+    def _parse_multipart_all(self, body: bytes, boundary: str) -> list[tuple[str, str | None, bytes]]:
+        """All multipart parts as (field_name, filename_or_None, data) — the review upload
+        carries two files, so the single-file variant above is not enough."""
+        boundary_bytes = boundary.encode("utf-8")
+        delimiter = b"--" + boundary_bytes
+        out = []
+        for part in body.split(delimiter):
+            if part in (b"", b"--\r\n", b"--\n", b"--"):
+                continue
+            if b"\r\n\r\n" in part:
+                header_section, part_body = part.split(b"\r\n\r\n", 1)
+            elif b"\n\n" in part:
+                header_section, part_body = part.split(b"\n\n", 1)
+            else:
+                continue
+            header_text = header_section.decode("utf-8", errors="replace")
+
+            if part_body.endswith(b"\r\n"):
+                part_body = part_body[:-2]
+            elif part_body.endswith(b"\n"):
+                part_body = part_body[:-1]
+
+            name_m = re.search(r'name="([^"]*)"', header_text)
+            field_name = name_m.group(1) if name_m else ""
+            filename = None
+            if 'filename="' in header_text:
+                fname_start = header_text.index('filename="') + len('filename="')
+                fname_end = header_text.index('"', fname_start)
+                filename = header_text[fname_start:fname_end]
+            out.append((field_name, filename, part_body))
+        return out
+
+    def _save_cv_pdf(self, data: bytes) -> str:
+        """Store an uploaded CV PDF under Personal/ and refresh the public symlinks.
+        Shared by the dashboard upload and the CV Update tab. Returns the stored name."""
+        PERSONAL_DIR.mkdir(parents=True, exist_ok=True)
+        today = datetime.now().strftime("%Y-%m-%d")
+        target_name = f"{today}_JungukHur-CV.pdf"
+        target_path = PERSONAL_DIR / target_name
+        with open(target_path, "wb") as f:
+            f.write(data)
+        symlink_names = ["JungukHur-CV.pdf", "JungukHur_CV.pdf", "JungukHur.pdf"]
+        for sname in symlink_names:
+            link_path = PERSONAL_DIR / sname
+            if link_path.exists() or link_path.is_symlink():
+                link_path.unlink()
+            link_path.symlink_to(target_name)
+        return target_name
 
     def _handle_parse(self):
         if not self._require_auth():
@@ -1092,6 +1161,227 @@ class AdminHandler(BaseHTTPRequestHandler):
         status["user"] = self._get_username()
 
         self._send_json(status)
+
+    # -- CV Update tab (step 3, scripts/CV_UPDATE_STEP3.md) -------------------
+
+    def _cv_latest_run(self) -> str | None:
+        runs_dir = ADMIN_STATE / "runs"
+        if not runs_dir.is_dir():
+            return None
+        runs = sorted(d.name for d in runs_dir.iterdir()
+                      if d.is_dir() and RUN_ID_RE.match(d.name))
+        return runs[-1] if runs else None
+
+    def _cv_join_decisions(self, items: list) -> list:
+        """Attach the effective decision to each item: METADATA is pre-accepted (locked);
+        everything else reads ADMIN_STATE/decisions.json — step 2's decision memory."""
+        decisions = {}
+        decisions_path = ADMIN_STATE / "decisions.json"
+        if decisions_path.exists():
+            try:
+                decisions = json.loads(decisions_path.read_text(encoding="utf-8"))
+            except (json.JSONDecodeError, OSError):
+                decisions = {}
+        for it in items:
+            if it.get("preAccepted"):
+                it["decision"] = "accept"
+                it["locked"] = True
+            else:
+                it["decision"] = decisions.get(it.get("id"), {}).get("decision", "hold")
+                it["locked"] = False
+        return items
+
+    def _handle_cv_upload(self):
+        if not self._require_auth():
+            return
+        if not self._validate_csrf():
+            return
+        content_type = self.headers.get("Content-Type", "")
+        if "multipart/form-data" not in content_type:
+            self._send_json({"success": False, "error": "Expected multipart/form-data"}, status=400)
+            return
+        try:
+            content_length = int(self.headers.get("Content-Length", 0))
+            if content_length > MAX_UPLOAD_SIZE:
+                self._send_json({"success": False,
+                                 "error": f"Upload too large (max {MAX_UPLOAD_SIZE // 1024 // 1024}MB)"},
+                                status=413)
+                return
+            body_bytes = self.rfile.read(content_length)
+            boundary = None
+            for part in content_type.split(";"):
+                part = part.strip()
+                if part.startswith("boundary="):
+                    boundary = part[len("boundary="):]
+                    break
+            if not boundary:
+                self._send_json({"success": False, "error": "No boundary in multipart data"}, status=400)
+                return
+            parts = self._parse_multipart_all(body_bytes, boundary)
+            docx = next(((fn, data) for name, fn, data in parts if name == "docx" and fn), None)
+            pdf = next(((fn, data) for name, fn, data in parts if name == "pdf" and fn), None)
+            if docx is None or not docx[0].lower().endswith(".docx"):
+                self._send_json({"success": False,
+                                 "error": "A .docx CV file is required — the review reads the "
+                                          "authorship marks (*/$) that a PDF loses"},
+                                status=400)
+                return
+            if pdf is not None and not pdf[0].lower().endswith(".pdf"):
+                self._send_json({"success": False, "error": "The PDF field accepts .pdf files only"},
+                                status=400)
+                return
+
+            # The PDF rides along for the public download link (same handling as /upload)
+            pdf_name = self._save_cv_pdf(pdf[1]) if pdf is not None else None
+
+            tmp_dir = ADMIN_STATE / "tmp"
+            tmp_dir.mkdir(parents=True, exist_ok=True)
+            tmp_docx = tmp_dir / f"review-{int(time.time())}.docx"
+            tmp_docx.write_bytes(docx[1])
+            try:
+                result = run_cv_publish(["review", "--new-cv", str(tmp_docx)])
+            finally:
+                tmp_docx.unlink(missing_ok=True)
+            if result.returncode != 0:
+                detail = (result.stderr.strip() or result.stdout.strip())[-400:]
+                self._send_json({"success": False, "error": "review failed: " + detail}, status=500)
+                return
+            run_id = self._cv_latest_run()
+            items_doc = {}
+            if run_id:
+                items_doc = json.loads((ADMIN_STATE / "runs" / run_id / "items.json").read_text(encoding="utf-8"))
+            items = self._cv_join_decisions(items_doc.get("items", []))
+            counts = {}
+            for it in items:
+                for k in it["kinds"]:
+                    counts[k] = counts.get(k, 0) + 1
+                if it["flags"]:
+                    counts["FLAG"] = counts.get("FLAG", 0) + 1
+            self._send_json({"success": True, "run": run_id, "cv": items_doc.get("cv"),
+                             "items": items, "counts": counts, "pdf": pdf_name})
+        except subprocess.TimeoutExpired:
+            self._send_json({"success": False, "error": "Review timed out"}, status=504)
+        except Exception as e:
+            print(f"[ERROR] {self.path}: {e}", file=sys.stderr)
+            self._send_json({"success": False, "error": "Internal server error"}, status=500)
+
+    def _handle_cv_latest(self):
+        if not self._require_auth():
+            return
+        run_id = self._cv_latest_run()
+        if not run_id:
+            self._send_json({"run": None})
+            return
+        try:
+            doc = json.loads((ADMIN_STATE / "runs" / run_id / "items.json").read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            self._send_json({"run": None})
+            return
+        items = self._cv_join_decisions(doc.get("items", []))
+        self._send_json({"run": run_id, "cv": doc.get("cv"), "items": items})
+
+    def _handle_cv_decide(self):
+        if not self._require_auth():
+            return
+        if not self._validate_csrf():
+            return
+        try:
+            body = self._read_json_body()
+        except (json.JSONDecodeError, ValueError) as e:
+            self._send_json({"success": False, "error": f"Invalid JSON: {e}"}, status=400)
+            return
+        run = str(body.get("run", ""))
+        decision = body.get("decision", "")
+        ids = body.get("ids", [])
+        if not RUN_ID_RE.match(run):
+            self._send_json({"success": False, "error": "Invalid run id"}, status=400)
+            return
+        if decision not in ("accept", "reject", "hold"):
+            self._send_json({"success": False, "error": "decision must be accept, reject or hold"},
+                            status=400)
+            return
+        if not isinstance(ids, list) or not ids \
+                or not all(isinstance(i, str) and ITEM_ID_RE.match(i) for i in ids):
+            self._send_json({"success": False, "error": "ids must be a non-empty list of item ids"},
+                            status=400)
+            return
+        try:
+            result = run_cv_publish(["decide", run, *ids, decision])
+        except subprocess.TimeoutExpired:
+            self._send_json({"success": False, "error": "decide timed out"}, status=504)
+            return
+        if result.returncode != 0:
+            self._send_json({"success": False,
+                             "error": (result.stdout + result.stderr).strip()[-400:]}, status=400)
+            return
+        self._send_json({"success": True})
+
+    def _handle_cv_publish_endpoint(self):
+        if not self._require_auth():
+            return
+        if not self._validate_csrf():
+            return
+        try:
+            body = self._read_json_body()
+        except (json.JSONDecodeError, ValueError) as e:
+            self._send_json({"success": False, "error": f"Invalid JSON: {e}"}, status=400)
+            return
+        run = str(body.get("run", ""))
+        if not RUN_ID_RE.match(run):
+            self._send_json({"success": False, "error": "Invalid run id"}, status=400)
+            return
+        dry_run = body.get("dry_run") is True
+        args = ["publish", run] + (["--dry-run"] if dry_run else [])
+        try:
+            result = run_cv_publish(args, timeout=CV_REVIEW_TIMEOUT)
+        except subprocess.TimeoutExpired:
+            self._send_json({"success": False, "error": "publish timed out"}, status=504)
+            return
+        output = (result.stdout + ("\n" + result.stderr if result.stderr.strip() else "")).strip()[-4000:]
+        self._send_json({"success": result.returncode == 0,
+                         "returncode": result.returncode, "output": output})
+
+    def _handle_cv_rollback(self):
+        if not self._require_auth():
+            return
+        if not self._validate_csrf():
+            return
+        try:
+            body = self._read_json_body()
+        except (json.JSONDecodeError, ValueError) as e:
+            self._send_json({"success": False, "error": f"Invalid JSON: {e}"}, status=400)
+            return
+        snapshot_id = str(body.get("snapshot_id", "") or "")
+        if snapshot_id and not RUN_ID_RE.match(snapshot_id):
+            self._send_json({"success": False, "error": "Invalid snapshot id"}, status=400)
+            return
+        args = ["rollback"] + ([snapshot_id] if snapshot_id else [])
+        try:
+            result = run_cv_publish(args, timeout=CV_REVIEW_TIMEOUT)
+        except subprocess.TimeoutExpired:
+            self._send_json({"success": False, "error": "rollback timed out"}, status=504)
+            return
+        output = (result.stdout + ("\n" + result.stderr if result.stderr.strip() else "")).strip()[-4000:]
+        self._send_json({"success": result.returncode == 0,
+                         "returncode": result.returncode, "output": output})
+
+    def _handle_cv_history(self):
+        if not self._require_auth():
+            return
+        history = []
+        path = ADMIN_STATE / "history.jsonl"
+        if path.exists():
+            try:
+                history = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()
+                           if line.strip()]
+            except (OSError, json.JSONDecodeError):
+                history = []
+        snapshots = []
+        snaps_dir = ADMIN_STATE / "snapshots"
+        if snaps_dir.is_dir():
+            snapshots = sorted(d.name for d in snaps_dir.iterdir()
+                               if d.is_dir() and RUN_ID_RE.match(d.name))
+        self._send_json({"history": history, "snapshots": snapshots})
 
     def _handle_home_settings(self):
         """Save home-page display settings (data/site.json -> homePage)."""
