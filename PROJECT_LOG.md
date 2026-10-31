@@ -3,9 +3,10 @@
 Bounded active log. Newest first. Older sessions are archived under `logs/` when over budget (>10 sessions / ~1000 lines).
 
 ## Archives
-- logs/PROJECT_LOG_2026-H2.md — 1 sessions (2026-07 … 2026-07)
+- logs/PROJECT_LOG_2026-H2.md — 2 sessions (2026-07 … 2026-10)
 
 ## Session Index (active, newest first)
+- 2026-10-31 11:05 CDT
 - 2026-10-31 10:22 CDT
 - 2026-10-31 07:58 CDT
 - 2026-10-30 21:55 CDT
@@ -15,7 +16,28 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - 2026-10-29 22:44 CDT
 - 2026-10-14 17:00 CDT
 - 2026-10-14 16:11 CDT
-- 2026-10-14 13:32 CDT
+
+---
+
+## Session 2026-10-31 11:05 CDT
+- **Coding CLI used**: Claude Code CLI (GLM 5.3 backend, MoAI-Easy output style). Second close of session 1e6e3188 — questions only, no code or server changes after a48b0d6.
+
+### Phase(s) worked on
+- Post-close Q&A on step 4 (the server→GitHub auto-push) with the user, in Korean
+
+### Concrete changes implemented
+1. Explained what step 4 is and why it exists (a publish's server commit otherwise lives only on the server; `~/deploy.sh` then deliberately stops).
+2. **Verified the repo is PUBLIC** (`gh repo view hurlab/hurlab` → `visibility: PUBLIC`): step 4 needs one repo-scoped read-write deploy key; nothing new is exposed — private material (CV .docx/PDF, dollar amounts, review state) stays outside git by design.
+3. **Verified the CV dollar amounts are public-by-design**: the public "Download CV" PDF, fetched anonymously, shows 75 dollar-amount lines (and the CV text itself has them — 74/762 paragraphs). The pipeline drops them mechanically: parsed grant records have no amount field (27/27 records, 0 `$` matches), published `grants.json` 0/26, guarded by `test_written_files_have_no_dollar_amount_em_dash_or_pending`. The user explicitly confirmed this is fine — the amounts are in the public CV on purpose. Pending proposals: only 1 "Pending" line visible in the public PDF.
+4. Folded both facts into the project-root `NEXT_SESSION.md` as a step-4 design precondition.
+
+### Key technical decisions and rationale
+- "No dollar amounts in grants.json" is a display/data-hygiene decision (single source of truth, compact timeline), NOT secrecy — recorded so no future session mistakes it for a security boundary.
+- If the user ever wants amounts out of the downloadable PDF too, the fix is a separate public-CV document, not a pipeline change.
+
+### Verification performed
+- `gh repo view hurlab/hurlab --json visibility` → PUBLIC
+- Anonymous `curl` of `https://hurlab.med.und.edu/hurlab/Personal/JungukHur-CV.pdf` + `pdftotext` → 75 `$`-amount lines, 1 "Pending" line (values never printed in the transcript)
 
 ---
 
@@ -343,48 +365,4 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - Poster parser: regenerated into a scratch directory, diffed against live JSON (only posters, #177, under-review #4 changed; grants identical), run read-only on the server.
 - Admin save handler: 9 unit cases (valid, out of range, bool, float, string, missing key, no CSRF) + unauthenticated GET/POST → 401 on the server.
 - NOT verified: Playwright E2E suite (90 tests); admin Home Page form logged in; home strips at phone width.
-
-## Session 2026-10-14 13:32 CDT
-- **Coding CLI used**: Claude Code CLI (Claude Opus 5.5, then Sonnet 5.5 for the close)
-
-### Phase(s) worked on
-- Content/UX refinement of the Tools & Software page (this session, 352d0464)
-- Folded in: the earlier same-day session (455f03ad) and the unlogged commits since 2026-07-09 — **reconstructed from commit messages only**, not re-verified:
-  - Gap commits: 9cb954d (Publications: 3 recent papers; rolling 6-month Recent badge), 7332751 (in-press → published citations), 3173575 (BIMD514 Zoom auto-redirect page), 6178001 + 1553737 (MoAI ADK template sync; .gitignore project rules restored)
-  - Session 455f03ad: a1ec5fd (server CV auto-update) merged as 297e82b; 09d9cbc (hide grant dollar amounts, compact banners); a059e3b (web.xml blocks dot-directories / agent tooling); e45daaf (People/Positions/Collaborators spacing); ea32045 (Home hero ~10% smaller); 9ee94da (publication sort ties, CV year parsing, Home topic links); fa9f318 (Research collapsible Previous Grants); 464f580 (topic pages two-column, tighter Tools cards, long-citation wrap)
-
-### Concrete changes implemented (this session)
-1. **Tool images** (5428e47, 7a0693c): 18 images in `Images/tools/<slug>/` (≤1200 px JPEG q80, ~1.6 MB total, lazy-loaded); `images: [{src, caption}]` per tool in `data/tools.json`. Collapsed cards: 120 px preview strip (`object-cover object-top`); tools without images get a gradient placeholder. Expanded card: 7:3 flex split (details left, image column `md:w-[30%]` right, each image opens full size). Sources: live-site screenshots, public GitHub README figures, PubChemSR app screenshots and ChemFuse architecture figure from the private repos (user approved), scGEN Figure 1 from the published paper.
-2. **PubChemSR / ChemFuse links** (7a0693c): both GitHub repos are private (unauthenticated `curl` → 404). PubChemSR now links to SourceForge (`urlLabel: "SourceForge"`), GitHub removed. ChemFuse links removed. New optional fields `urlLabel` (button text) and `notice` (gray badge).
-3. **SciMiner** (66be5d2): card renamed "SciMiner 1.1 & 2.0"; `updated` 2026-09-15 = latest code commit across the server's `SciMiner1.1/` (2026-08-23) and `SciMiner2.0/` (2026-09-15) apps.
-4. **Status labels** (b3b5c66): "Active / In Development" replaced by visitor-access labels **Available / Beta / Coming soon** (`status`: available | beta | coming-soon), defined once in a `statuses` map in `tools.html` that also renders a one-line legend under the filter buttons. richStudio = beta, ChemFuse = coming-soon, all others available; PubChemSR keeps Available + `notice: "v2.0 coming soon"`.
-5. **Borders + order** (c6ccbe2): card outline `border-gray-200`, image divider `border-gray-300`; tools sorted case-insensitively by name at load (`localeCompare`, sensitivity base), so JSON order no longer matters.
-
-### Files touched
-- `tools.html`, `data/tools.json`, `Images/tools/**` (new); `PROJECT_HANDOFF.md`, `PROJECT_LOG.md`
-- `css/custom.css` deliberately NOT changed (`gradient-border` is shared with `people.html`)
-
-### Key decisions and rationale
-- Status labels defined by what a visitor can do (user decision after review showed "In Development" mixed private, beta and published tools).
-- ChemFuse workflow figure (fig2) dropped: its SVG rendered with overlapping labels in the browser.
-- Sorting done in the page, not the JSON, so new tools land in place automatically.
-
-### Problems and resolutions
-- Port 8765 held by an unrelated `uvicorn` → local test server moved to 879x ports.
-- Playwright screenshots can only be written under the project root (`.playwright-mcp/`) — temp images saved there and deleted after review.
-- No SVG converter installed → SVGs rendered via the browser and screenshotted.
-- `pkill -f "http.server 8791"` matched its own shell (exit 144) → use the bracket form `[h]ttp.server`.
-- A Python one-liner `open(f,'w').write(open(f).read()…)` truncated `MEMORY.md` before reading it → rewritten in full.
-
-### Completed / resolved this session
-- Tools-card images (the task carried over from 455f03ad) — Completed.
-- Private-repo 404 buttons (PubChemSR, ChemFuse) — Resolved.
-- scGEN "no images" — Resolved (paper Figure 1).
-
-### Verification performed
-- Playwright on a local server at 1366 px and 390 px: all 18 images load (`naturalWidth` > 0), 0 page errors, expanded image column = 353 px of a 1216 px card, label + color correct on all 13 cards, alphabetical order correct (also within the R Package filter), PubChemSR note fits on one line.
-- Live: `curl` 200 for `tools.html`, `data/tools.json` and sample images; live JSON shows 18 images / 13 tools, 11 available / 1 beta / 1 coming-soon, "SciMiner 1.1 & 2.0". Server = GitHub = c6ccbe2 after each ff-only pull; server's uncommitted `team.json` / CV PDF untouched.
-- Not run: the 90-test Playwright E2E suite.
-
----
 
