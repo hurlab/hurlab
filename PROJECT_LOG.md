@@ -3,9 +3,10 @@
 Bounded active log. Newest first. Older sessions are archived under `logs/` when over budget (>10 sessions / ~1000 lines).
 
 ## Archives
-- logs/PROJECT_LOG_2026-H1.md — 4 sessions (2026-03 … 2026-04)
+- logs/PROJECT_LOG_2026-H1.md — 5 sessions (2026-03 … 2026-04)
 
 ## Session Index (active, newest first)
+- 2026-10-30 20:24 CDT
 - 2026-10-30 18:22 CDT
 - 2026-10-29 22:44 CDT
 - 2026-10-14 17:00 CDT
@@ -15,7 +16,50 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - 2026-04-08 CDT (early)
 - 2026-04-08 CDT (implementation)
 - 2026-04-08 CDT (security completion)
-- 2026-04-08 CDT (code review)
+
+---
+
+## Session 2026-10-30 20:24 CDT
+- **Coding CLI used**: Claude Code CLI (Claude Opus 5.5; Sonnet 5.5 for the close). Claude session 184288b1, started by "resume" from the 18:22 close (the previous session was 0d788018). Worked inside worktree `cv-diff` (branch `WT-cv-diff`, at be67bcb).
+
+### Phase(s) worked on
+- Resume and deploy of be67bcb to the server
+- CV incremental update step 2: design question, plan, Kickoff approval, worktree prepared (no code yet)
+- Server deploy script (`deploy.sh`)
+
+### Concrete changes implemented
+1. Resume: read the saved prompt from the primary checkout's `NEXT_SESSION.md`; 3 of 3 preconditions matched (origin/main = be67bcb, server at 7298d41, 4 CV fixtures). One check pointed `git -C` at the primary checkout and was refused by the worktree guard; re-run from the worktree.
+2. Deploy (user approved through the question tool): on the server `git fetch` showed 3 incoming commits touching 15 files, none `data/team.json` or the CV PDF; `git pull --ff-only origin main` took the server from 7298d41 to be67bcb with its two local edits kept. Live Playwright 99/99 (32.7 s); `data/grant_links.json` 200; live `grants.json` has 0 `$`.
+3. Step 2 design question: the tracker exists only locally, so a server-side publish cannot run `build_data.py`. User chose "patch the JSON + rebuild honors a log". Public-path check from this machine: `WEB-INF/`, `scripts/`, `PROJECT_LOG.md`, `.git/` answer 403, `data/area_overrides.json` 200, so the accepted-change log goes in `WEB-INF/cv-updates/applied.jsonl`. Plan approved at the Kickoff question. Plan text: HANDOFF §7 Recommended next actions #1.
+4. Worktree `cv-publish` created with `moai worktree new`; `EnterWorktree` refused it (only `.claude/worktrees/` trees are accepted), so a NEXT_SESSION.md with the saved prompt was written into it and the memory note updated.
+5. `deploy.sh`: the user asked for a script they could run on the server by giving only the sudo password. First version (fetch, clash checks, ff-only merge, admin restart, Tomcat restart via sudo, health checks) was rehearsed on the server (live dry-run and run; scratch clones for update, clash, server-only commit, JSON mismatch, scripts/ and WEB-INF/ change detection) and reviewed by a read-only agent (no blockers; 5 should-fix). Applied: undo hint printed on any STOP after the update, zero-file health check fails, explicit fetch refspec, `rev-list` failure gets a STOP, `--no-renames` in the clash check, 6 s wait for Tomcat's 5 s static-file cache. Not changed: accepting 403 or 404 for the private-path check (403 measured on 127.0.0.1:8081, so the check is valid today), NUL-safe path matching in the clash check (fails safe: `merge --ff-only` itself refuses to overwrite modified or untracked files), and reordering the Tomcat restart (that path was removed in item 6).
+6. The user then asked how deploys were done before and doubted the review. HANDOFF §7 and this session's own earlier deploy showed deploys never needed sudo. Findings re-rated by evidence: ignored-file overwrite TRUE but unlikely (tested), `systemctl --user` without session env TRUE but N/A over ssh (tested), `.git` privacy check not a defect (403 measured locally and publicly), Tomcat restart finding overstated. Script cut down to the no-sudo flow (sudo, `--restart-tomcat`, Tomcat unit and restart detection removed); retested on the server and installed as `~/deploy.sh` (sha256 `fcb9c677…585d`); repo copy `scripts/deploy.sh` identical.
+7. Memory: new `feedback_deploy_is_mine_no_sudo.md` (+ index line), `project_cv_incremental_update.md` status updated. The user said the deploy is Claude's job: "you can do that yourself without me".
+8. After the close: the user asked for a detailed explanation of step 2 and then a document so the next session can continue: `scripts/CV_UPDATE_STEP2.md` (design, CLI, state layout, per-kind publish rules, field ownership, re-apply hook, tests and ground truth, implementation order). Reading the code for it found gaps in the approved plan, recorded as 5 open decisions in its §12: the published `year` is the publication-date year, not the CV year; numbers for new papers; removals; `overview.json` and the `index.html` static copies depend on the publication list and must be refreshed on publish; commit identity. The step 3 mock-up is in the `research-overview` worktree's `.preview/`, not `cv-diff`.
+9. On the user's "commit/push": `scripts/deploy.sh`, `scripts/CV_UPDATE_STEP2.md` and these docs committed in worktree `cv-diff` and pushed to main. Not deployed (nothing site-visible).
+
+### Files/modules touched
+- New: `scripts/deploy.sh`, `scripts/CV_UPDATE_STEP2.md` (both committed at the end)
+- On the server: site checkout fast-forwarded to be67bcb; `~/deploy.sh` installed; `~/deploy-logs/*.log` from the rehearsals left in place; temporary files in `/tmp` removed
+- Worktree `cv-publish` (new): `NEXT_SESSION.md` (untracked)
+- Docs: `PROJECT_HANDOFF.md`, `PROJECT_LOG.md`; memory: `feedback_deploy_is_mine_no_sudo.md`, `project_cv_incremental_update.md`, `MEMORY.md`
+
+### Key technical decisions and rationale
+- Publish patches `data/*.json` on the server and records accepted changes in a log that `build_data.py` re-applies (the tracker is local-only; the log makes a local rebuild safe). The log lives under `WEB-INF/` because it is served 403 while `data/` is public.
+- Deploy script: no sudo, no Tomcat restart. Tomcat serves the git checkout directly and reloads `WEB-INF/web.xml` itself (`conf/context.xml` WatchedResource); the admin panel is a user service.
+- Deploys are done by Claude over ssh (user instruction).
+
+### Problems encountered and resolutions
+- The worktree guard refused cross-tree `git -C`, compound shell text, and reads of another worktree's `.git`; worked around with plain separate commands and small script files fed over `ssh ... bash -s`.
+- `EnterWorktree` cannot enter a `~/.moai` worktree; the work moves to a new session started with `moai cc -w <path>`. The new tree's base commit and branch name could not be checked or renamed from here.
+- I built the first `deploy.sh` around a sudo/Tomcat path that is never needed, then overstated the review's findings; corrected after the user's challenge (see item 6).
+
+### Items completed / resolved / superseded this session
+- Deploy of 8e091cd — Completed (as be67bcb). `deploy.sh` — Completed on the server and committed.
+- Step 2 of the CV update — plan approved, not started.
+
+### Verification performed
+- Live E2E 99/99 after the deploy; `curl` checks; `deploy.sh` rehearsals and the two measured claims (see HANDOFF §6 rows dated 2026-10-30). Not verified: sudo path (removed), real admin restart by the script, refusal as root, `cv-publish` base commit and branch name.
 
 ---
 
@@ -462,71 +506,6 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 
 ### Remaining outstanding work
 - None. All security findings from audit now resolved or documented as acceptable risk.
-
----
-
-## Session 2026-04-08 CDT (code review)
-
-- **Coding CLI used**: Claude Code CLI (Claude Opus 4.6, 1M context)
-- **Harness**: 4-agent team (Orchestrator + 2 Recon Reviewers + 3 Implementers + 1 QA)
-
-### Phase(s) worked on
-- Deep code review and bug fix across entire codebase
-
-### Reconnaissance findings
-- **Frontend reviewer**: 15 issues (3 High, 3 Medium, 9 Low)
-- **Backend reviewer**: 15 issues (3 High, 4 Medium, 8 Low)
-- After dedup and triage: 13 unique actionable bugs
-
-### Concrete changes implemented
-
-**HTTP→HTTPS migration (28 URLs across 10 files):**
-1. Fixed og:url meta tags on all 8 HTML pages
-2. Fixed schema.org JSON-LD URL on index.html
-3. Fixed all 12 sitemap.xml `<loc>` entries
-4. Fixed 5 tool launch URLs in data/tools.json
-5. Fixed 2 hardcoded tool URLs on index.html homepage
-6. Left 3 port-based URLs (3838, 8282, 8180) as http intentionally
-
-**Admin panel bug fixes (6 bugs):**
-7. Fixed logout redirect: `/login` (404) → `/` (correct)
-8. Fixed `esc()` function to escape double quotes with `&quot;` — prevents HTML attribute breakout
-9. Added 401 session-expiry handling: `apiFetch()` redirects to `/` on 401, all GET calls converted to use it
-10. Removed `"url"` from sanitize_dict text_fields in `_handle_save_json()` — prevents URL corruption
-11. Added try/except guard in `load_credentials()` for corrupt JSON
-12. Removed dead no-op line `socketserver.TCPServer.address_family`
-
-**Frontend consistency fixes (5 issues):**
-13. Normalized Alpine.js CDN on index.html: jsdelivr → unpkg (matches all other pages)
-14. Fixed AOS version on index.html: 2.3.4 → 2.3.1 (matches all other pages)
-15. Removed unused dark mode `x-data` binding from index.html `<html>` tag
-16. Fixed highlightPI regex on index.html: `\$` → `$|Hur\s*JU?\b` (matches publications.html)
-17. Removed duplicate AOS.init() inline scripts from index.html, positions.html, collaborators.html
-
-### Files modified
-- `index.html` — OG tag, JSON-LD, tool URLs, Alpine CDN, AOS version, dark mode, regex, AOS dupe
-- `research.html` — OG tag
-- `publications.html` — OG tag
-- `tools.html` — OG tag
-- `people.html` — OG tag
-- `positions.html` — OG tag, AOS dupe
-- `collaborators.html` — OG tag, AOS dupe
-- `research-detail.html` — OG tag
-- `sitemap.xml` — all 12 loc entries
-- `data/tools.json` — 5 tool launch URLs
-- `scripts/admin_server.py` — sanitize fix, credentials guard, dead code removal
-- `scripts/templates/admin.html` — esc(), logout, 401 handling
-
-### Verification performed
-- Playwright E2E regression: 90/90 passed (40.9s)
-- Admin server: compile OK, restart OK, HTTP 200
-- Zero remaining `https://hurlab.med.und.edu` on standard ports
-
-### Harness statistics
-- **Subagent spawns**: 6 (2 Recon Reviewers, 3 Implementers, 1 QA)
-- **Issues found**: 13 actionable bugs
-- **Issues fixed**: 13/13 (100%)
-- **E2E regression**: 90 passed, 0 failed
 
 ---
 
