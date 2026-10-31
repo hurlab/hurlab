@@ -486,8 +486,8 @@
         <div id="cvPublishBar" class="hidden sticky bottom-4 bg-white border border-gray-200 rounded-xl shadow-lg p-4 flex flex-wrap items-center justify-between gap-3">
             <span id="cvDecidedSummary" class="text-sm text-gray-600"></span>
             <div class="flex gap-2">
-                <button onclick="cvPublish(true)" class="px-4 py-2 rounded border text-sm hover:bg-gray-50">Preview (dry-run)</button>
-                <button onclick="cvPublish(false)" class="px-4 py-2 rounded bg-teal-600 hover:bg-teal-700 text-white text-sm">Publish</button>
+                <button id="cvDryRunBtn" onclick="cvPublish(true)" class="px-4 py-2 rounded border text-sm hover:bg-gray-50">Preview (dry-run)</button>
+                <button id="cvPublishBtn" onclick="cvPublish(false)" class="px-4 py-2 rounded bg-teal-600 hover:bg-teal-700 text-white text-sm">Publish</button>
             </div>
         </div>
         <div id="cvPublishOutput" class="hidden p-4 rounded-lg text-sm font-mono whitespace-pre-wrap bg-gray-900 text-gray-300"></div>
@@ -1506,7 +1506,9 @@
                     cvMsg('cvUploadMsg', data.error || 'Upload failed.', false);
                     return;
                 }
-                cvMsg('cvUploadMsg', data.items.length + ' item(s) found — decide each below. Decisions are saved as you click.', true);
+                cvMsg('cvUploadMsg', data.items.length
+                    ? data.items.length + ' item(s) found — decide each below. Decisions are saved as you click.'
+                    : 'No changes found — the uploaded CV matches the live site data. Nothing to review or publish.', true);
                 cvRun = data.run;
                 cvItems = data.items;
                 cvRender();
@@ -1587,16 +1589,27 @@
                 if (it.flags && it.flags.length) counts['FLAG'] = (counts['FLAG'] || 0) + 1;
                 if (it.preAccepted) counts['pre-accepted'] = (counts['pre-accepted'] || 0) + 1;
             });
-            document.getElementById('cvCounts').innerHTML =
-                '<span class="px-2.5 py-1 rounded-full bg-gray-900 text-white">All ' + cvItems.length + '</span>' +
-                Object.entries(counts).map(([k, n]) =>
-                    '<span class="px-2.5 py-1 rounded-full bg-gray-100 text-gray-700">' + cvEsc(k) + ' ' + n + '</span>').join('');
-            document.getElementById('cvItems').innerHTML = cvItems.map(cvItemCard).join('');
+            document.getElementById('cvCounts').innerHTML = cvItems.length
+                ? '<span class="px-2.5 py-1 rounded-full bg-gray-900 text-white">All ' + cvItems.length + '</span>' +
+                  Object.entries(counts).map(([k, n]) =>
+                      '<span class="px-2.5 py-1 rounded-full bg-gray-100 text-gray-700">' + cvEsc(k) + ' ' + n + '</span>').join('')
+                : '<span class="px-2.5 py-1 rounded-full bg-green-100 text-green-800">No changes</span>';
+            document.getElementById('cvItems').innerHTML = cvItems.length
+                ? cvItems.map(cvItemCard).join('')
+                : '<p class="text-sm text-gray-500">Nothing to decide — the uploaded CV matches the published data.</p>';
             const decidable = cvItems.filter(i => !i.locked);
             const decided = decidable.filter(i => i.decision !== 'hold');
             document.getElementById('cvDecidedSummary').textContent =
                 decided.length + ' of ' + decidable.length + ' decided · ' +
                 (cvItems.length - decidable.length) + ' pre-accepted · Preview shows what would change before anything goes live';
+            // Nothing accepted (or nothing decidable) — the engine would refuse, so don't let it be clicked.
+            const publishable = cvItems.some(i => i.preAccepted || i.decision === 'accept');
+            for (const btnId of ['cvDryRunBtn', 'cvPublishBtn']) {
+                const b = document.getElementById(btnId);
+                b.disabled = !publishable;
+                b.classList.toggle('opacity-50', !publishable);
+                b.classList.toggle('cursor-not-allowed', !publishable);
+            }
         }
 
         async function cvDecide(id, decision) {
