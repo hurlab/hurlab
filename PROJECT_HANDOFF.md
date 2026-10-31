@@ -6,7 +6,7 @@
 
 **Scope**: 10 HTML pages (8 public + Research at a Glance + research detail), admin server (port 8180), data build script (`scripts/build_data.py`, tracker + CV .docx), CV diff engine (`scripts/cv_diff.py`), server deploy script (`scripts/deploy.sh`, installed as `~/deploy.sh`) with the local wrapper `scripts/deploy-from-local.sh`, CV PDF parser (talks/posters), 12 JSON data files. Deployed on Apache Tomcat 9.0.37 with nginx reverse proxy.
 
-- **Last updated**: 2026-10-31 13:48 CDT
+- **Last updated**: 2026-10-31 14:04 CDT
 - **Last coding CLI used**: Claude Code CLI (Claude Opus 5.5, MoAI-Easy output style)
 - **Git repo**: https://github.com/hurlab/hurlab.git (branch: main)
 
@@ -263,7 +263,7 @@ hurlab/           ← webroot (Tomcat webapp)
 
 **Data rebuild (local only)**: `python3 scripts/build_data.py` (skips when outputs are newer; `--force`), then `python3 scripts/cv_diff.py --new-cv <CV.docx>` should report 0 items. E2E against a local preview: `python3 -m http.server 8795` + `BASE_URL=http://127.0.0.1:8795/ npx playwright test`.
 
-**Wiki**: `concept/no-cache-control-means-the-browser-guesses-freshness` · `concept/a-diff-tool-needs-ground-truth-it-did-not-compute` · `concept/pdftotext-reading-order-detaches-list-numbers-from-their-entries` (numbered-list parsing) · `concept/a-public-page-is-checked-from-the-visitors-side` — check public links unauthenticated (private repos 404 for visitors); status labels by visitor access.
+**Wiki**: `concept/no-cache-control-means-the-browser-guesses-freshness` · `concept/a-diff-tool-needs-ground-truth-it-did-not-compute` · `concept/pdftotext-reading-order-detaches-list-numbers-from-their-entries` (numbered-list parsing) · `concept/a-public-page-is-checked-from-the-visitors-side` — check public links unauthenticated (private repos 404 for visitors); status labels by visitor access · `concept/an-unquoted-tilde-in-an-ssh-remote-command-expands-locally` · `concept/a-localhost-binding-describes-the-listener-not-the-reachability` (both 2026-10-31)
 
 **Server-side changes outside git (done 2026-10-15; the agent has no sudo, the user ran the nginx step)**:
 - `annotation.cgi` (the real script) is `/home/hurlab/apache-tomcat-9.0.37/webapps/ROOT/WEB-INF/cgi/SciMiner/annotation.cgi`; sha256 `15b6776a3ada558acb4efc15e1a76c6e8ae71730164b6f6947ca7d98fa627f13`. The original is backed up at `/home/hurlab/backups/annotation-cgi-20261015/annotation.cgi.orig` (sha256 `90d97d74…c29c23`), deliberately outside the CGI dir. The old 98-byte stub `webapps/SciMiner/annotation.cgi` (redirects to `/cgi-bin/SciMiner/annotation.cgi`) and `annotation.cgi.backup` (2020) were left untouched.
@@ -282,4 +282,4 @@ hurlab/           ← webroot (Tomcat webapp)
 5. Clean-up (ask first): fast-forward the primary checkout; dispose of the 5 merged worktrees (`research-overview`, `positions-stipend`, `cv-diff`, `cv-publish`, `cv-push` — cv-push holds nothing unique) — `cv-diff` holds the only copy of `logs/PROJECT_LOG_2026-H1.md`, and `cv-publish`'s `.preview/` holds the review mock-up copy plus the E2E harness scripts (`e2e-setup.py`, `e2e-drive.py`) — copy those out first; delete the WT- branches after; add `.playwright-mcp/` and `.preview/` to `.gitignore` (end of file); delete the test logs in `~/deploy-logs/` on the server and, once the People page is trusted, `/home/hurlab/backups/team-json-20261030-211709/`
 6. Ask the user: the "161 journal & conference papers" box on Research at a Glance now sits next to "155 peer-reviewed" (different counts; relabel?), HTTP caching (ExpiresFilter), SciMiner "System migration" tag, empty Desktop filter, scGEN PMID on its tool card
 7. Older carry-overs: converter page look, admin Home Page tab logged in, team photos, CSP for admin, WebP `<picture>`
-- **Last updated**: 2026-10-31 13:48 CDT
+- **Last updated**: 2026-10-31 14:04 CDT

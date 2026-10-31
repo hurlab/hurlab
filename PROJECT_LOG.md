@@ -3,7 +3,7 @@
 Bounded active log. Newest first. Older sessions are archived under `logs/` when over budget (>10 sessions / ~1000 lines).
 
 ## Archives
-- logs/PROJECT_LOG_2026-H2.md — 2 sessions (2026-07 … 2026-10)
+- logs/PROJECT_LOG_2026-H2.md — 4 sessions (2026-07 … 2026-10)
 
 ## Session Index (active, newest first)
 - 2026-10-31 13:48 CDT
@@ -16,8 +16,6 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - 2026-10-30 20:24 CDT
 - 2026-10-30 18:22 CDT
 - 2026-10-29 22:44 CDT
-- 2026-10-14 17:00 CDT
-- 2026-10-14 16:11 CDT
 
 ---
 
@@ -31,6 +29,7 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 1. Drive: upload (.docx + .pdf) → **0 items** (the 10-30 CV matches live data — expected); run 20261031-125757 recorded server-side and verified by me (items count, git state, PDF sha `9f88336b…`). The .pdf upload saved a new dated file and re-pointed the 3 download links.
 2. UI nits fixed + shipped (**3494a37**): empty-state banner ("No changes found — the uploaded CV matches the live site data. Nothing to review or publish."), "No changes" badge instead of "All 0", Preview/Publish disabled (opacity + disabled, ids `cvDryRunBtn`/`cvPublishBtn`) when nothing is accepted; `node --check` on the extracted inline JS before deploy. Deployed 1c424cd → 3494a37 (admin restarted, 21 checks OK).
 3. Symlink bookkeeping (user choice A): docs commit 75c7db1 deployed first (server ↔ origin aligned), the symlink change committed ON the server (**544e26a**), fetched back over ssh and pushed to GitHub; duplicate 10-30 PDF deleted after `cmp` (identical) — one dated CV remains, download link 200; server = GitHub = local at 544e26a (rev-list `0 0`).
+4. Session close (/endsession 14:04 CDT): 2 cross-project wiki lessons authored (unquoted tilde in ssh remote commands; localhost binding vs reachability); PROJECT_LOG rotated with the H2 archive consolidated at the primary checkout's `logs/`; `NEXT_SESSION.md` refreshed for the cleanup session.
 
 ### Key technical decisions and rationale
 - Server-side commit + fetch-back-push used because the change lives in the server's working tree; done AFTER aligning server ↔ origin (docs deploy) so the GitHub push stays a fast-forward.
@@ -356,69 +355,4 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - Not verified: the converter page look in a real browser; PubChemSR SourceForge link (moot — SMHS refresh approved); Playwright E2E suite.
 
 ---
-
-## Session 2026-10-14 17:00 CDT
-- **Coding CLI used**: Claude Code CLI (Opus 5.5; Sonnet 5.5 for the close). Short follow-up to the 16:11 entry, same Claude session 352d0464.
-
-### Concrete changes implemented
-- At the user's request, removed all six merged worktrees (`site-compact`, `site-detail-cols`, `site-home-compact`, `site-prev-grants`, `site-spacing-2`, `site-tool-images`). Before removing: each HEAD was an ancestor of origin/main, `git status` showed no tracked changes, and `moai worktree hoist` found no `.moai/reports` content. Lost with them: untracked `.codex/` (all six) and `site-tool-images/.shots/` (original full-size screenshots; resized copies are committed under `Images/tools/`).
-- Updated PROJECT_HANDOFF (item Completed, next actions) and NEXT_SESSION.md (precondition 3 expects 0 worktrees). The edit was made in a throw-away worktree `close-docs` (branch `WT-close-docs`) because the primary checkout is 11 commits behind and branch changes there are not allowed; it is removed after the push.
-
-### Problems and resolutions
-- `moai worktree new` created the tree at the old primary HEAD (f3897dd), not origin/main — fast-forwarded inside the (empty) tree before editing.
-- The log-rotation script rewrote the Session Index to dates only (headlines dropped); left as the script produced it. The rotated archive `logs/PROJECT_LOG_2026-H1.md` is gitignored (`logs/*`), kept as a machine-local copy in the primary checkout.
-- Six merged local `WT-*` branches remain; deletion left for user approval.
-
-### Items completed
-- "Remove 6 merged worktrees" — Completed.
-
-### Verification performed
-- `git worktree list` showed only the primary checkout afterwards; `.moai/worktrees/` was empty.
-
----
-
-## Session 2026-10-14 16:11 CDT
-- **Coding CLI used**: Claude Code CLI (Claude Opus 5.5; Sonnet 5.5 for the close). Same Claude session 352d0464 as the 13:32 entry, continued after it.
-
-### Phase(s) worked on
-- Tools page content, home page, Publications/Presentations page, admin panel, footer — content maintenance and UX, each change deployed live (worktree `site-tool-images` → `origin/main` → server ff-only pull).
-
-### Concrete changes implemented (commits in order)
-1. f3897dd — committed the two tracked MoAI log files after fast-forwarding the primary checkout (user-approved).
-2. 6d943e5 — DNMKB2 card gets the note "Replaced by DPNKB"; DPNKB described as "Revamped successor to DNMKB2", updated 2026-06-08 (last feature commit in ~/PROJECTS/10_apps/dpnkb; the server copy has no git history to confirm).
-3. ee502ff — 7 new tools with live-site screenshots (`Images/tools/<slug>/`): Vignet (Web Tool) + six under a new **Research Support** filter: AURORA, IRB Assistant, NDResHub, Research PDF Renamer, SMHS Publication Atlas, UND Co.AI. Statuses/notes chosen by the user: Vignet and PDF Renamer Available; others Beta; notes "Account required", "UND network; approval needed", "Pilot: UND & Sanford", "UND internal". Tox21 Enricher tagged Web Tool + R Shiny + R Package (category may now be a list). Filter buttons toggle off on a second click. Tagline now "Bioinformatics and research-support tools…".
-4. 036e0ce — footer "Affiliations": CDAC director + RDCD lead roles (links verified), "Also affiliated with" U. Michigan (Adjunct Research Assistant Professor) and VA Fargo Health Care System (Research WOC), titles from the CV; DNMKB2 also tagged Knowledgebase.
-5. 5039126 — **poster parsing bug**: default pdftotext put a page's list numbers in one block before the bodies, so 58 of 89 posters were empty and 4 held ~4,000 chars. `scripts/parse_cv.py` now uses `pdftotext -layout` for the poster section (falls back to the old text), adds `year` and `type` (oral/poster), ends each section at the next heading's start (fixes "Manuscripts currently under peer review…" glued to preprint #177 and under-review #4), joins hyphenated line breaks. Presentations tab: "Poster & Oral Abstracts", newest first, Oral/Poster badge, `*`/`$` legend. Home Recent Publications: newest non-preprints, tie-break by CV number. (The parser file is CRLF; an early edit converted it to LF — restored before commit.)
-6. c9e1a04 — Featured Tools strip: the user reported it "not moving". It did move on the live site with a cleared cache; causes addressed: removed pause-on-hover (then), reduced-motion now half speed instead of stop, and the strip's CSS moved inline into index.html (so a stale cached custom.css cannot stop it). custom.css restored to its pre-strip content. The exact cause on the user's machine was never established.
-7. ea15589 — Recent Publications as a scrolling strip (10 papers), long author lists (≥10) shortened to first 3 … Hur J … last (never hides the PI; 44 of 163 papers shortened). Count and threshold stored in `data/site.json` → `homePage`, editable in a new admin **Home Page** tab (`/api/home-settings`, auth + CSRF, ranges 1–30 / 3–100). Admin service restarted on the server.
-8. e9a6194 — footer shows an automatic per-page "Last updated" (newest `Last-Modified` of the page and the data JSON it loaded, via HEAD requests); the stale research.json date line removed from the Research page.
-9. 9b79cf2 — home strips pause on mouse hover (`@media (hover: hover)` only).
-10. b184e3c — home page 3,558 → 3,119 px at 1366 px: hero no longer min-height 76vh, tighter section headings, compact research cards (icon beside title). Option C (buttons into the heading row) left out by the user.
-11. b2bba51 — Publications: `*`/`$` after author initials as superscripts, journal names bold-italic (`js/citations.js`, shared with the home strip; finds the journal as the sentence after the title; 177 of 181 found).
-
-### Files touched
-`tools.html`, `index.html`, `publications.html`, `research.html`, `js/components.js`, `js/citations.js` (new), `css/custom.css` (net unchanged), `data/tools.json`, `data/site.json`, `data/publications.json`, `scripts/parse_cv.py`, `scripts/admin_server.py`, `scripts/templates/admin.html`, `Images/tools/**`, `.gitignore`, `PROJECT_HANDOFF.md`, `PROJECT_LOG.md`.
-
-### Key decisions and rationale
-- Research-support apps get their own filter rather than "Web Tool" (user choice) so bioinformatics visitors can tell them apart.
-- Author shortening keeps first 3, the PI, and the last author; it returns the text unchanged whenever the author list or the PI cannot be read.
-- "Last updated" computed from server file dates, not typed by hand.
-- Strip CSS kept inline in index.html; hover pause limited to mouse devices so a tap cannot freeze it on a phone.
-
-### Problems encountered and resolutions
-- `AskUserQuestion` answers sometimes answered a different question (e.g. "I did hard refresh, but it still doesn't scroll") — handled by re-asking with the corrected hypothesis.
-- First home-compaction estimate (~630 px) was wrong because the hero's stats row was missed; real saving 439 px, reported honestly.
-- Port 8765 was held by an unrelated uvicorn → local test servers use 879x/880x ports; `pkill -f` must use the bracket form `[h]ttp.server` or it kills its own shell.
-- The Write tool is blocked outside the project tree (`~/PROJECTS/wiki`); wiki pages are written via shell heredoc.
-- A wrong `Task` "failed" notification appears for every intentionally stopped test server — expected.
-- `irb-assistant` README still links the dead `transcendrdcdc.org` (other project, untouched).
-
-### Items explicitly completed / resolved / superseded this session
-- Completed: all 11 changes above. Superseded: the 13:32 "Open" item "Primary checkout behind" (re-measured: 10 commits behind at 16:11).
-
-### Verification performed
-- Each change checked in a real browser (Playwright, local server) and again on the live site with the cache cleared; counts and timings are in PROJECT_HANDOFF §6. Server = GitHub HEAD after every pull; the server's uncommitted `Personal/JungukHur_CV.pdf` and `data/team.json` never touched.
-- Poster parser: regenerated into a scratch directory, diffed against live JSON (only posters, #177, under-review #4 changed; grants identical), run read-only on the server.
-- Admin save handler: 9 unit cases (valid, out of range, bool, float, string, missing key, no CSRF) + unauthenticated GET/POST → 401 on the server.
-- NOT verified: Playwright E2E suite (90 tests); admin Home Page form logged in; home strips at phone width.
 
