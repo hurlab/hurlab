@@ -6,6 +6,7 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - logs/PROJECT_LOG_2026-H2.md — 2 sessions (2026-07 … 2026-10)
 
 ## Session Index (active, newest first)
+- 2026-10-31 12:20 CDT
 - 2026-10-31 11:05 CDT
 - 2026-10-31 10:22 CDT
 - 2026-10-31 07:58 CDT
@@ -16,6 +17,39 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - 2026-10-29 22:44 CDT
 - 2026-10-14 17:00 CDT
 - 2026-10-14 16:11 CDT
+
+---
+
+## Session 2026-10-31 12:20 CDT
+- **Coding CLI used**: Claude Code CLI (Claude Opus 5.5, MoAI-Easy output style), session fc6ff544. Opened with "resume" on the 2026-10-31 11:05 `NEXT_SESSION.md`.
+
+### Phase(s) worked on
+- CV incremental update step 4 (server push after publish + local deploy guard) — implemented, reviewed, pushed, deployed, verified; the PI's real drive of the CV Update tab still pending (needs 2FA)
+
+### Concrete changes implemented
+1. Resume drift check: 4/4 saved preconditions green (origin/main `2169dbd`, server `0c9aa2b`, `python-docx` OK, repo `PUBLIC`).
+2. Premise corrections after the user's challenge ("서버에서 commit/push 많이 해봤는데"): the server DOES have a working commit identity (resolves via env — `git var GIT_AUTHOR_IDENT` → `hurlab <hurlab@hurlab.med.und.edu>`; history proof a1ec5fd) and a working push credential (gh credential helper, windysky token, `repo` scope, live-validated). The deploy-key plan was dropped on the user's decision ("기존 토큰 사용해") — **server-side setup for step 4: none**.
+3. Commit `1c424cd` (worktree `cv-push`, branch `WT-cv-push`): `scripts/cv_publish.py` — new `_git_push()` (`git push origin main`, `GIT_TERMINAL_PROMPT=0`, 60 s timeout, `TimeoutExpired`+`OSError` caught) called after a successful `_git_commit` in BOTH `cmd_publish` and `cmd_rollback`; push failure non-fatal (exit 0, WARNING + "PUSH FAILED (GitHub behind)" in the output; "skip" attempts no push); `scripts/deploy-from-local.sh` (new) — local deploy wrapper: fetch, refuse while the checkout is behind origin/main, then ssh `~/deploy.sh` (tilde QUOTED — remote expansion); `scripts/CV_UPDATE_STEP4.md` (new design doc); `tests/unit/test_cv_publish.py` +8 (`GitPushUnit` 4, `PushHook` 4).
+4. Deployed with the new wrapper itself (dogfood): guard 0-behind → server 0c9aa2b → 1c424cd, admin restarted, 21 health checks OK. Then `git push --dry-run origin main` ON THE SERVER → "Everything up-to-date", exit 0 — the credential path is proven; the real ref move happens on the first publish.
+
+### Key technical decisions and rationale
+- Auth via the server's existing gh HTTPS credential (user decision 2026-10-31); trade-off accepted: the automation rides the windysky token — if it is ever revoked, push fails non-fatally and `~/deploy.sh` holds the line (new §5 risk row in PROJECT_HANDOFF).
+- Push failure non-fatal by design: the data files are already live when the commit/push step runs; `~/deploy.sh`'s "server ahead of GitHub" STOP is the safety net.
+- Tests fake `_git_commit → True` where the hook itself is under test (the real one returns "skip" for out-of-repo paths in unit runs), so no unit test can reach a real push.
+
+### Problems encountered and resolutions
+- First Agent spawn with a `name` failed ("team file not found"); an unnamed retry worked (feedback drafted).
+- The read-only reviewer agent caught a BLOCKING bug in my wrapper: unquoted `~/deploy.sh` expands against the LOCAL home (`/home/juhur/deploy.sh`) → the server would exit 127 on every deploy. Fixed by quoting ('~/deploy.sh'). Two minors also fixed: OSError catch in `_git_push`, timeout-message wording.
+- My own bash slips: `git rev-list --left-right` without `--count` (printed commit list, gate refused); a parameter-expansion form the safety checker could not parse (rewritten with two plain `--count` calls).
+
+### Items explicitly completed this session
+- CV incremental update step 4 (code + tests + design doc + deploy + verification)
+- The local half of the deploy rule: `scripts/deploy-from-local.sh` (used for today's deploy)
+
+### Verification performed
+- 44/44 unit tests (`python3 -m unittest discover -s tests/unit`; 36 existing + 8 new); independent read-only reviewer pass over the three changed files (1 blocking + 2 minor findings, all fixed and re-tested)
+- Deploy via `deploy-from-local.sh`: wrapper guard OK, server ff 0c9aa2b → 1c424cd, admin restarted, 21/21 health checks
+- Server `git push --dry-run origin main` → exit 0 ("Everything up-to-date")
 
 ---
 
