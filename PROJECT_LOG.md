@@ -6,6 +6,7 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - logs/PROJECT_LOG_2026-H2.md — 2 sessions (2026-07 … 2026-10)
 
 ## Session Index (active, newest first)
+- 2026-10-31 13:48 CDT
 - 2026-10-31 12:20 CDT
 - 2026-10-31 11:05 CDT
 - 2026-10-31 10:22 CDT
@@ -17,6 +18,27 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - 2026-10-29 22:44 CDT
 - 2026-10-14 17:00 CDT
 - 2026-10-14 16:11 CDT
+
+---
+
+## Session 2026-10-31 13:48 CDT
+- **Coding CLI used**: Claude Code CLI (Claude Opus 5.5, MoAI-Easy output style), session fc6ff544 — same session as the 12:20 entry, continued after the user's answers.
+
+### Phase(s) worked on
+- The PI's first real drive of the CV Update tab (office computer, school-network 8443 route) + UI nits + the upload's symlink bookkeeping
+
+### Concrete changes implemented
+1. Drive: upload (.docx + .pdf) → **0 items** (the 10-30 CV matches live data — expected); run 20261031-125757 recorded server-side and verified by me (items count, git state, PDF sha `9f88336b…`). The .pdf upload saved a new dated file and re-pointed the 3 download links.
+2. UI nits fixed + shipped (**3494a37**): empty-state banner ("No changes found — the uploaded CV matches the live site data. Nothing to review or publish."), "No changes" badge instead of "All 0", Preview/Publish disabled (opacity + disabled, ids `cvDryRunBtn`/`cvPublishBtn`) when nothing is accepted; `node --check` on the extracted inline JS before deploy. Deployed 1c424cd → 3494a37 (admin restarted, 21 checks OK).
+3. Symlink bookkeeping (user choice A): docs commit 75c7db1 deployed first (server ↔ origin aligned), the symlink change committed ON the server (**544e26a**), fetched back over ssh and pushed to GitHub; duplicate 10-30 PDF deleted after `cmp` (identical) — one dated CV remains, download link 200; server = GitHub = local at 544e26a (rev-list `0 0`).
+
+### Key technical decisions and rationale
+- Server-side commit + fetch-back-push used because the change lives in the server's working tree; done AFTER aligning server ↔ origin (docs deploy) so the GitHub push stays a fast-forward.
+- Admin access truth corrected and documented: the panel is reachable from UND networks via **https://hurlab.med.und.edu:8443/** (nginx allowlist `10.0.0.0/8` → `127.0.0.1:8180`) — the handoff's "localhost only" note was incomplete (§7 updated).
+
+### Verification performed
+- Server: git status clean after 544e26a; admin 200; download link 200 after the duplicate removal; `cmp` before `rm`.
+- All three repos aligned at 544e26a (`git rev-list --count --left-right` → `0 0`).
 
 ---
 
