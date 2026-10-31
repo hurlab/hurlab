@@ -202,6 +202,11 @@ records of its publish.
 | d | Rebuild `overview.json` on the server from the uploaded CV during publish? | yes (§9) |
 | e | Commit identity and message on the server | the server's existing git identity; `CV update: N changes (run <run-id>)` |
 
+**Confirmed by the user on 2026-10-31 (session 1e6e3188): all five defaults accepted as written** —
+(a) keep the date-derived year, (b) new number = max + 1, (c) removal only on explicit accept,
+(d) rebuild `overview.json` during publish, (e) server git identity with
+`CV update: N changes (run <run-id>)`. Implemented accordingly in this branch.
+
 ## 13. Implementation order (tests first)
 
 1. Tests for the state layout and `review` / `decide` (decision memory), then the code.

@@ -117,7 +117,13 @@ def item_id(*parts):
 
 
 def label(rec):
-    return {k: rec.get(k) for k in ("number", "year", "category", "pmid", "doi", "title", "text", "authorship")}
+    out = {k: rec.get(k) for k in ("number", "year", "category", "pmid", "doi", "title", "text", "authorship")}
+    # Step 2 (cv_publish) also needs the CV section and the peer-reviewed flag. Adding keys
+    # changes every item id, which CV_UPDATE_STEP2.md §11 calls harmless while no decisions
+    # are stored yet; the 19 step-1 tests keep passing (they never assert ids).
+    out["cvSection"] = rec.get("section")
+    out["peerReviewed"] = rec.get("peerReviewed")
+    return out
 
 
 def flags_for(rec, this_year):

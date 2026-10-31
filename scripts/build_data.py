@@ -33,8 +33,8 @@ import sys
 from datetime import date
 from pathlib import Path
 
-from cvlib import (MONTHS, authorship, cv_paragraphs, merge_supplements, no_em_dash, norm,
-                   parse_cv_publications, parse_grants, ym)
+from cvlib import (MONTHS, award_core, authorship, cv_paragraphs, merge_supplements, no_em_dash,
+                   norm, parse_cv_publications, parse_grants, ym)
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -368,9 +368,11 @@ def _date_parts(parts):
     return f"{p[0]}-01-01", "year"
 
 
-def pubmed_dates(pmids):
-    """{pmid: (iso, precision)}: e-publication date, else publication date; when PubMed only has a
-    year, the date PubMed added the record stands in if it falls in that year."""
+def pubmed_meta(pmids):
+    """{pmid: {"date", "precision", "journal"}}: e-publication date, else publication date; when
+    PubMed only has a year, the date PubMed added the record stands in if it falls in that year.
+    The journal is the esummary fulljournalname (source as fallback) — cv_publish uses it for NEW
+    records so the server does not need the tracker to name a journal."""
     out = {}
     ids = sorted(pmids)
     for i in range(0, len(ids), 150):
@@ -389,8 +391,14 @@ def pubmed_dates(pmids):
                 if entrez.startswith(date[:4]):
                     date, prec = _pubmed_date(entrez)
             if date:
-                out[uid] = (date, prec)
+                out[uid] = {"date": date, "precision": prec,
+                            "journal": r.get("fulljournalname") or r.get("source") or None}
     return out
+
+
+def pubmed_dates(pmids):
+    """{pmid: (iso, precision)} — the pubmed_meta date pair, the shape add_pub_dates consumes."""
+    return {uid: (v["date"], v["precision"]) for uid, v in pubmed_meta(pmids).items()}
 
 
 def urllib_parse_encode(fields):
@@ -398,14 +406,21 @@ def urllib_parse_encode(fields):
     return urllib.parse.urlencode(fields).encode()
 
 
-def crossref_date(doi):
+def crossref_meta(doi):
+    """(date, precision, journal) from Crossref; journal = container-title (cv_publish uses it)."""
     import urllib.parse
     m = _get_json(CROSSREF + urllib.parse.quote(doi) + f"?mailto={CONTACT}")["message"]
+    titles = m.get("container-title") or []
+    journal = titles[0] if titles else None
     for key in ("published-online", "posted", "published-print", "issued"):
         date, prec = _date_parts((m.get(key) or {}).get("date-parts"))
         if date:
-            return date, prec
-    return None, None
+            return date, prec, journal
+    return None, None, journal
+
+
+def crossref_date(doi):
+    return crossref_meta(doi)[:2]
 
 
 def datacite_date(doi):
@@ -538,6 +553,108 @@ def add_grant_links(grants, old_links):
         g.pop("_core")
 
 
+# ---------------------------------------------------------------- re-apply server-published CV changes
+
+WEBINF_LOG = ROOT / "WEB-INF" / "cv-updates" / "applied.jsonl"
+# CV-owned fields cv_publish.py may set on an existing record (§8 of scripts/CV_UPDATE_STEP2.md).
+_PUB_CV_OWNED = ("text", "title", "category", "isPreprint", "isPeerReviewed", "cvSection",
+                 "authorship", "pmid", "doi")
+_GRANT_CV_OWNED = ("funder", "pis", "role", "title", "period", "start", "end", "type", "status")
+
+
+def apply_cv_updates(pubs, grants, log_path=WEBINF_LOG):
+    """Re-apply the changes published on the server (§10 of scripts/CV_UPDATE_STEP2.md): walk
+    WEB-INF/cv-updates/applied.jsonl in order; a rollback record cancels every record of its
+    publish. Idempotent: a second run finds every field already equal and prints nothing.
+    Fields a local build owns (number, journal, dates, area, links.pmc, ...) are never written
+    onto an existing record; op=add records carry the full server record and only run when the
+    tracker has not caught up yet."""
+    path = Path(log_path)
+    if not path.exists():
+        return
+    records = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()
+               if line.strip()]
+    cancelled = {r.get("rollbackOf") for r in records if r.get("op") == "rollback"}
+
+    def find_pub(key):
+        for p in pubs:
+            if key.get("pmid") and p.get("pmid") == key["pmid"]:
+                return p
+        for p in pubs:
+            if key.get("doi") and (p.get("doi") or "").lower() == key["doi"]:
+                return p
+        for p in pubs:
+            if key.get("title") and norm(p.get("title") or "") == key["title"]:
+                return p
+        return None
+
+    def find_grant(key):
+        for g in grants:
+            if key.get("award") and award_core(g.get("funder") or "") == key["award"]:
+                return g
+        for g in grants:
+            if key.get("title") and norm(g.get("title") or "") == key["title"]:
+                return g
+        return None
+
+    def set_fields(rec, fields, allowed):
+        allowed = tuple(allowed) + ("year",)  # year is updatable, but only via the date rule below
+        changed = []
+        for k, v in fields.items():
+            base = k.split(".", 1)[0]
+            if base not in allowed and base != "links":
+                continue  # a local-build-owned field: never overwritten (§8)
+            if k == "year" and rec.get("date"):
+                continue  # decision (a): the date-derived year wins once a date exists
+            if k.startswith("links."):
+                rec.setdefault("links", {})[k.split(".", 1)[1]] = v
+                continue
+            if rec.get(k) != v:
+                rec[k] = v
+                changed.append(k)
+        return changed
+
+    for r in records:
+        if r.get("op") == "rollback" or r.get("run") in cancelled:
+            continue
+        key, fields, op, target = r.get("key") or {}, r.get("set") or {}, r.get("op"), r.get("target")
+        if target == "publications":
+            rec = find_pub(key)
+            if op == "add" and rec is None:
+                number = max([p["number"] for p in pubs if isinstance(p["number"], int)] or [0]) + 1
+                new = dict(fields)
+                new["number"] = number  # the server's number may clash locally; renumber (decision b)
+                pubs.append(new)
+                pubs.sort(key=pub_sort_key, reverse=True)
+                print(f"RE-ADDED (add to the tracker): {str(new.get('title'))[:70]}")
+                continue
+            if op == "remove":
+                if rec is not None:
+                    pubs.remove(rec)
+                    print(f"RE-REMOVED: {str(rec.get('title'))[:70]}")
+                continue
+            if rec is not None and set_fields(rec, fields, _PUB_CV_OWNED):
+                print(f"RE-APPLIED: {str(rec.get('title'))[:70]}")
+        elif target == "grants":
+            g = find_grant(key)
+            if op == "add" and g is None:
+                grants.append(dict(fields))
+                print(f"RE-ADDED (add to the tracker): {fields.get('funder', '')} "
+                      f"{str(fields.get('title'))[:60]}")
+                continue
+            if op == "remove":
+                if g is not None:
+                    grants.remove(g)
+                    print(f"RE-REMOVED: {g.get('funder')} {str(g.get('title'))[:60]}")
+                continue
+            if g is not None:
+                changed = set_fields(g, fields, _GRANT_CV_OWNED)
+                if changed:
+                    if "funder" in changed:  # keep award/agency in step with an edited funder
+                        g["award"], g["agency"], _ = split_award(g["funder"])
+                    print(f"RE-APPLIED: {g.get('funder')} {str(g.get('title'))[:60]}")
+
+
 # ---------------------------------------------------------------- home page static fallback
 
 def esc(s):
@@ -637,6 +754,9 @@ def main():
     old_links = {g.get("title", "").lower(): (g["url"], g.get("linkLabel", "")) for k in ("current", "previous")
                  for g in old_grants.get(k, []) if g.get("url")}
     add_grant_links(grants, old_links)
+    # Server-published CV changes (WEB-INF/cv-updates/applied.jsonl) ride on top of the rebuild:
+    # fields the tracker already caught up on are skipped silently; the rest re-applies (§10).
+    apply_cv_updates(pubs, grants, WEBINF_LOG)
     grants_out = {
         "current": sorted([g for g in grants if g["status"] == "active"], key=lambda g: g["start"] or "", reverse=True),
         "previous": sorted([g for g in grants if g["status"] == "completed"], key=lambda g: g["end"] or "", reverse=True),
