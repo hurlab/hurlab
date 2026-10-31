@@ -39,7 +39,7 @@
     },
     {
       "title": "Artificial Intelligence and Machine Learning",
-      "description": "Application of deep learning and natural language processing to biomedical data, focusing on biological age prediction, disease modeling, and knowledge extraction.",
+      "description": "Large language models, natural language processing and deep learning for biomedical data: knowledge extraction from the literature, biological age prediction and disease modeling. We are also building agentic AI workflows in which AI agents carry out bioinformatics and data-science analyses under human review.",
       "icon": "chip",
       "color": "teal",
       "details": {

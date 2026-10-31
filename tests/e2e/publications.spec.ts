@@ -69,3 +69,31 @@ test.describe('Publications page', () => {
     expect(optionCount).toBeGreaterThan(1);
   });
 });
+
+// The publication breakdown is computed from data/publications.json on every page that shows the
+// total (home stat, Publications page, Research at a Glance), never typed in by hand.
+test.describe('Publication breakdown', () => {
+  let expected = '';
+  test.beforeAll(async ({ request }) => {
+    const pubs = (await (await request.get('data/publications.json')).json()).peerReviewed;
+    const preprints = pubs.filter((p: any) => p.isPreprint).length;
+    const reviewed = pubs.filter((p: any) => !p.isPreprint && p.isPeerReviewed === true).length;
+    expect(reviewed).toBeGreaterThan(0);
+    expected = `${pubs.length}|${reviewed} peer-reviewed, ${preprints} preprints, ${pubs.length - reviewed - preprints} other`;
+  });
+  const norm = (s: string) => s.replace(/ /g, ' ').replace(/\s+/g, ' ').trim();
+
+  for (const [url, total, split] of [
+    ['index.html', 'div[x-text="pubs"]', 'div[x-text^="pubSplit"]'],
+    ['publications.html', 'p[x-text="breakdown"]', 'p[x-text="breakdown"]'],
+    ['research-overview.html', 'div[x-text="pubs.length"]', 'div[x-text="pubBreakdown(pubs)"]'],
+  ]) {
+    test(`${url} shows the total and the computed breakdown`, async ({ page }) => {
+      await page.goto(url);
+      const [count, text] = expected.split('|');
+      await expect(page.locator(total).first()).toContainText(count, { timeout: 15000 });
+      await expect.poll(async () => norm(await page.locator(split).first().innerText()), { timeout: 15000 })
+        .toContain(text);
+    });
+  }
+});

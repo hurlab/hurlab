@@ -548,6 +548,15 @@ def bold_hur(citation):
     return re.sub(r"(Hur J)(?=[\s,.*$]|$)", r"<strong>\1</strong>", esc(citation))
 
 
+def pub_breakdown(pubs):
+    """Same text as pubBreakdown() in js/components.js, as HTML: '155&nbsp;peer-reviewed, 18&nbsp;preprints, 9&nbsp;other'."""
+    preprints = sum(1 for p in pubs if p["isPreprint"])
+    reviewed = sum(1 for p in pubs if not p["isPreprint"] and p["isPeerReviewed"] is True)
+    nb = "&nbsp;"  # written into HTML; keeps each count on the same line as its word
+    return (f"{reviewed}{nb}peer-reviewed, {preprints}{nb}{'preprint' if preprints == 1 else 'preprints'}, "
+            f"{len(pubs) - reviewed - preprints}{nb}other")
+
+
 def write_home_fallback(pubs, grants):
     if not INDEX.exists():
         return
@@ -563,6 +572,7 @@ def write_home_fallback(pubs, grants):
     blocks = {
         "active-grants": str(len(grants["current"])),
         "publication-count": str(len(pubs)),
+        "publication-breakdown": pub_breakdown(pubs),
         "tool-count": str(len(json.loads(tools_file.read_text()))) if tools_file.exists() else "...",
         "recent-publications": f'\n            <ol class="nojs-fallback max-w-3xl mx-auto list-decimal pl-6 space-y-2">\n{pub_items}\n            </ol>\n            ',
         "funding": f'\n            <ul class="nojs-fallback max-w-3xl mx-auto list-disc pl-6 space-y-1">\n{grant_items}\n            </ul>\n            ',

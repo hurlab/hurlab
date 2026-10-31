@@ -55,7 +55,7 @@
     },
     {
       "name": "Hasin Rehana, M.S.",
-      "role": "Ph.D. Student, Computer Sciences",
+      "role": "Ph.D. Student, Computer Science",
       "category": "student",
       "description": "Bioinformatics, NLP, and Machine Learning",
       "photo": null
@@ -96,10 +96,20 @@
       "photo": null
     },
     {
-      "name": "Jane Kim",
-      "role": "Former Remote Research Intern",
+      "name": "Timothy Ayeni",
+      "role": "Ph.D. Student, Biomedical Sciences",
       "category": "student",
-      "description": "Research mentee, Chadwick International High School, Korea",
+      "description": "Primary advisee of Dr. Hur",
+      "photo": null,
+      "period": "Oct 2025 \u2013",
+      "advisingRole": "primary advisee",
+      "institution": "UND"
+    },
+    {
+      "name": "Babru Samal",
+      "role": "Visiting Research Scientist",
+      "category": "visiting",
+      "description": "Bioinformatics",
       "photo": null
     }
   ],
@@ -263,6 +273,13 @@
       "period": "Jun 2023 \u2013",
       "advisingRole": "mentor",
       "institution": "Columbia University"
+    },
+    {
+      "name": "Jane Kim",
+      "role": "Former Remote Research Intern",
+      "category": "student",
+      "description": "Research mentee, Chadwick International High School, Korea",
+      "photo": null
     }
   ],
   "fac": [
@@ -343,16 +360,6 @@
       "description": "Member of FAC, UND Biology Ph.D.",
       "photo": null,
       "period": "Feb 2025 \u2013",
-      "advisingRole": "member of FAC",
-      "institution": "UND"
-    },
-    {
-      "name": "Timothy Ayeni",
-      "role": "Ph.D. Student, Biomedical Sciences",
-      "category": "student",
-      "description": "Member of FAC, UND Biomedical Sciences Ph.D.",
-      "photo": null,
-      "period": "Oct 2025 \u2013",
       "advisingRole": "member of FAC",
       "institution": "UND"
     }

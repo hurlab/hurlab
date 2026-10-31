@@ -288,7 +288,7 @@
         <!-- Stats -->
         <section class="bg-white border-b border-gray-100">
           <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
-            <div><div class="text-3xl font-bold text-gray-900" x-text="pubs.length"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Publications in total</div></div>
+            <div><div class="text-3xl font-bold text-gray-900" x-text="pubs.length"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Publications in total</div><div class="text-xs text-gray-500 mt-0.5" x-text="pubBreakdown(pubs)"></div></div>
             <div><div class="text-3xl font-bold text-gray-900" x-text="paperCount"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Journal &amp; conference papers</div></div>
             <div><div class="text-3xl font-bold text-gray-900" x-text="ledCount"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Led by Dr. Hur</div></div>
             <div><div class="text-3xl font-bold text-gray-900" x-text="firstYear + '-' + lastYear"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Publishing since</div></div>
@@ -414,7 +414,7 @@
                 <li class="relative rounded-xl border border-gray-200 bg-white p-4">
                   <p class="text-xs font-mono text-gray-500" x-text="era.start.slice(0,4) + '-' + eraEnd(era)"></p>
                   <h3 class="font-semibold text-gray-900 leading-snug mt-0.5" x-text="era.label"></h3>
-                  <p class="text-sm text-gray-600 mt-1"><span class="font-semibold" x-text="era.publications"></span> publications</p>
+                  <p class="text-sm text-gray-600 mt-1"><span class="font-semibold" x-text="era.publications"></span> <span x-text="era.publications === 1 ? 'publication' : 'publications'">publications</span></p>
                   <ul class="mt-2 space-y-1">
                     <template x-for="t in era.themes" :key="t">
                       <li class="flex items-start gap-2 text-xs text-gray-700">

@@ -333,7 +333,7 @@
                 <div class="lg:sticky lg:top-20 flex flex-col lg:max-h-[calc(100vh-6rem)] bg-gray-50 rounded-xl border border-gray-100 p-4">
                   <div class="flex items-center justify-between mb-3">
                     <h2 class="text-xl md:text-2xl font-bold text-gray-900">Related Publications</h2>
-                    <span class="text-sm text-gray-500 font-medium" x-text="relatedPubs.length + ' publications'"></span>
+                    <span class="text-sm text-gray-500 font-medium" x-text="relatedPubs.length + (relatedPubs.length === 1 ? ' publication' : ' publications')"></span>
                   </div>
                   <div class="space-y-2 min-h-0 lg:overflow-y-auto lg:pr-1">
                     <template x-for="(pub, index) in relatedPubs" :key="'rp-' + index">

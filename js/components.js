@@ -102,6 +102,17 @@ function injectNav() {
   document.body.insertAdjacentHTML('afterbegin', navHTML);
 }
 
+// "155 peer-reviewed, 18 preprints, 9 other" from publications.json peerReviewed[]; "other" = neither
+// peer-reviewed nor a preprint (non-peer-reviewed proceedings, editorials, edited books, chapters).
+// Each count is tied to its word with a no-break space so a narrow box wraps only after a comma.
+// scripts/build_data.py writes the same text into index.html for readers without JavaScript.
+function pubBreakdown(pubs) {
+  const preprints = pubs.filter(p => p.isPreprint).length;
+  const reviewed = pubs.filter(p => !p.isPreprint && p.isPeerReviewed === true).length;
+  return `${reviewed} peer-reviewed, ${preprints} ${preprints === 1 ? 'preprint' : 'preprints'}, `
+    + `${pubs.length - reviewed - preprints} other`;
+}
+
 function injectFooter() {
   const footerHTML = `
   <footer class="bg-surface-dark text-gray-400 mt-10">

@@ -445,12 +445,7 @@
         },
 
         get breakdown() {
-          const n = cats => this.peerReviewed.filter(p => cats.includes(p.category)).length;
-          const papers = this.peerReviewed.filter(p => !['Preprint', 'Book', 'Book chapter'].includes(p.category)).length;
-          const plural = (k, one, many) => k + ' ' + (k === 1 ? one : many);
-          return this.peerReviewed.length + ' publications in total: ' + plural(papers, 'journal or conference paper', 'journal and conference papers')
-            + ', ' + plural(n(['Preprint']), 'preprint', 'preprints') + ', ' + plural(n(['Book']), 'edited book', 'edited books')
-            + ', ' + plural(n(['Book chapter']), 'book chapter', 'book chapters') + '.';
+          return this.peerReviewed.length + ' publications: ' + pubBreakdown(this.peerReviewed) + '.';
         },
 
         // Same palette as research-overview.html, in data/research.json area order
