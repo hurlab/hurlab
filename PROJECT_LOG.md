@@ -3,9 +3,10 @@
 Bounded active log. Newest first. Older sessions are archived under `logs/` when over budget (>10 sessions / ~1000 lines).
 
 ## Archives
-- logs/PROJECT_LOG_2026-H1.md — 7 sessions (2026-03 … 2026-04)
+- logs/PROJECT_LOG_2026-H1.md — 8 sessions (2026-03 … 2026-04)
 
 ## Session Index (active, newest first)
+- 2026-10-31 07:58 CDT
 - 2026-10-30 21:55 CDT
 - 2026-10-30 21:41 CDT
 - 2026-10-30 20:24 CDT
@@ -15,7 +16,30 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - 2026-10-14 16:11 CDT
 - 2026-10-14 13:32 CDT
 - 2026-07-09 23:57 CDT
-- 2026-04-08 CDT (early)
+
+---
+
+## Session 2026-10-31 07:58 CDT
+- **Coding CLI used**: Claude Code CLI (Claude Opus 5.5; Sonnet 5.5 for the close). Same Claude session 184288b1 (fourth close; folds in the `/save-for-resume` checkpoint written after 21:55). No code or server changes.
+
+### Phase(s) worked on
+- Commit of the 21:55 docs (local only) and a cross-project hand-over to NDResHub
+
+### Concrete changes implemented
+1. On the user's "여기서 commit 해": committed the 21:55 docs as 9ee7ffb on `WT-site-review-fixes`; not pushed (commit only was asked).
+2. The user wants the Research at a Glance view per researcher in NDResHub (it has Researcher pages). Sent the page's design to session ndreshub-bf: sections, data inputs, the year/"led"/area/era/grant rules, and lessons. The first send landed in an in-process mailbox (`routing` object in the result) and was re-sent to `ndreshub-bf [34d0aa]`.
+3. User decisions, relayed: drop the "led by" metric (first/corresponding authorship cannot be verified without the papers); use MeSH for areas, major topics only, rolled up to tree level 2, excluding check tags and the B/M/Z/V branches, fractional counting, top 5-7 + Other, an Unclassified bucket for papers without MeSH.
+4. ndreshub-44 (the NDResHub session that picked the task) asked 4 questions; answered from the code: overview.json shape (researchInterests, eras with pubYears/publications/themes/areaCounts, milestones, areas, highlights as publication numbers, lastUpdated; per-year matrices are computed in the browser), the a11y table (same series as the chart, behind a "Show data table" toggle, x-show so display:none until opened), the E2E parity tests (`tests/e2e/publications.spec.ts`, "Publication breakdown"), and scale advice (serve aggregates, paginate the list, lazy charts, cap series). MeSH tree source: no tested preference; suggested a local descYYYY.xml pinned to a recorded year. They adopted all of it.
+5. A `/save-for-resume` checkpoint was written; the worktree guard refused its fact-gathering command, so HEAD/branch were taken from context.
+
+### Problems encountered and resolutions
+- The worktree guard refused compound bash (the checkpoint's facts call); facts were taken from earlier, verified output.
+
+### Items completed / resolved / superseded this session
+- NDResHub hand-over — Completed (NDResHub owns the work). 9ee7ffb — committed, not pushed.
+
+### Verification performed
+- Facts for the NDResHub answers read from `data/overview.json` (keys, an era record, sizes: overview 4.6 KB, publications 279 KB, grants 14 KB) and `research-overview.html` (`tableRows()`, the toggle markup). Each SendMessage result read: delivered to the inbox; ndreshub-bf and ndreshub-44 replied.
 
 ---
 
@@ -370,25 +394,6 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - Headless Chromium render QA: 7 sections, 24 visible + 5 hidden, all icons resolved, 0 JS errors.
 - Live URL curl after each deploy: HTTP 200, correct titles/members.
 - git: clean tree; local HEAD == origin/main == server HEAD (e581475).
-
----
-
-## Session 2026-04-08 CDT (early)
-
-- **Coding CLI used**: Claude Code CLI (Claude Opus 4.6, 1M context)
-
-### Phase(s) worked on
-- Document updates only (no implementation)
-
-### Concrete changes implemented
-1. Marked HTTPS/port 443 issue as Resolved in PROJECT_HANDOFF.md (SSL renewed, port 443 opened by UND IT)
-2. Removed "Contact UND IT about HTTPS/port 443" from recommended next actions
-3. Updated CLAUDE.md to fix stale `v2/` references — site is now at root, not in `v2/` subdirectory
-4. Updated timestamps in PROJECT_HANDOFF.md
-
-### Items explicitly completed
-- HTTPS/SSL resolution recorded
-- CLAUDE.md corrected to reflect root-level deployment (v2→root cutover happened in Session 2026-03-14 16:30 CDT)
 
 ---
 
