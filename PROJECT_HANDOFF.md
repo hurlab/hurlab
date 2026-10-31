@@ -6,7 +6,7 @@
 
 **Scope**: 10 HTML pages (8 public + Research at a Glance + research detail), admin server (port 8180), data build script (`scripts/build_data.py`, tracker + CV .docx), CV diff engine (`scripts/cv_diff.py`), server deploy script (`scripts/deploy.sh`, installed as `~/deploy.sh`) with the local wrapper `scripts/deploy-from-local.sh`, CV PDF parser (talks/posters), 12 JSON data files. Deployed on Apache Tomcat 9.0.37 with nginx reverse proxy.
 
-- **Last updated**: 2026-10-31 14:04 CDT
+- **Last updated**: 2026-10-31 15:24 CDT
 - **Last coding CLI used**: Claude Code CLI (Claude Opus 5.5, MoAI-Easy output style)
 - **Git repo**: https://github.com/hurlab/hurlab.git (branch: main)
 
@@ -125,7 +125,7 @@
 | scGEN card: add paper PMID to `publications`; figure reuse license (Advanced Science) not checked | Open | 2026-10-14 13:32 CDT | PROJECT_LOG 2026-10-14 13:32 |
 | When PubChemSR 2.0 / ChemFuse go public: set `status` to `available`, drop PubChemSR `notice`, restore GitHub links | Open (waiting on release) | 2026-10-14 13:32 CDT | PROJECT_LOG 2026-10-14 13:32 |
 | Remove 6 merged worktrees under `.moai/worktrees/` | Completed | 2026-10-14 17:00 CDT | All six were verified merged into origin/main with no tracked changes and removed (their untracked `.codex/` and the original `.shots/` screenshots went with them; resized images are committed). The six local `WT-*` branches still exist — delete with `git branch -d` after user OK (branch change in the shared checkout) |
-| Primary checkout `main` behind origin/main | Behind; the fast-forward is now the user's single command (worktrees disposed, nothing left to collide) | 2026-10-31 14:55 CDT | The user runs `git -C ~/PROJECTS/10_apps/hurlab pull --ff-only` (guard-forbidden to Claude; the `!` prefix works). Server at 544e26a also fast-forwards on the next `~/deploy.sh` |
+| Primary checkout `main` behind origin/main | Completed 2026-10-31 15:15 CDT — the user ran `git pull --ff-only` (eb0a358 → cc9901e); primary = origin/main, `behind=0 ahead=0` | 2026-10-31 15:24 CDT | Server at 544e26a also fast-forwards on the next `~/deploy.sh`. Deploys now again start from this checkout via `scripts/deploy-from-local.sh` |
 | SMHS site pages (`med.und.edu/research/labs/hur/`) refreshed from the lab site via the Claude-desktop 2-phase prompt | Completed | 2026-10-29 22:44 CDT | User confirmed 2026-10-29: all changes from that work were approved — no further action |
 | SMHS Tools page links (PubChemSR SourceForge 403 to curl) | Superseded | 2026-10-29 22:44 CDT | Covered by the approved SMHS refresh; user said no further SMHS follow-up is needed |
 | Converter page look (external CSS/JS removed from the CGI) never viewed in a real browser | Open | 2026-10-29 22:44 CDT | Open `https://hurlab.med.und.edu/cgi-bin/SciMiner/annotation.cgi`; ask the user if fonts/colors look off |
@@ -279,7 +279,7 @@ hurlab/           ← webroot (Tomcat webapp)
 2. Needs the user first: talks/posters not refreshed from the new CV PDF (§4); the Positions full rewrite waits for the user to paste the draft text (§4; do not invent the wording)
 3. Keep `~/deploy.sh` on the server identical to `scripts/deploy.sh` (sha256 `fcb9c677…585d`); copy it over when the repo copy changes
 4. Deploys: run `scripts/deploy-from-local.sh` from any checkout — it guards, then runs `~/deploy.sh` on the server (no sudo; deploys are Claude's job, no user ask)
-5. Clean-up: DONE 2026-10-31 14:55 — all worktrees disposed, 12 `WT-` branches deleted, harness artifacts at primary `.preview/cv-tab-harness/`, archives consolidated at the primary's `logs/`. Remaining: the user's `git pull --ff-only` in the primary checkout.
+5. Clean-up: DONE 2026-10-31 14:55 — all worktrees disposed, 12 `WT-` branches deleted, harness artifacts at primary `.preview/cv-tab-harness/`, archives consolidated at the primary's `logs/`; the primary fast-forward (user-run `git pull --ff-only`) completed 15:15. Nothing owed.
 6. Ask the user: the "161 journal & conference papers" box on Research at a Glance now sits next to "155 peer-reviewed" (different counts; relabel?), HTTP caching (ExpiresFilter), SciMiner "System migration" tag, empty Desktop filter, scGEN PMID on its tool card
 7. Older carry-overs: converter page look, admin Home Page tab logged in, team photos, CSP for admin, WebP `<picture>`
-- **Last updated**: 2026-10-31 14:04 CDT
+- **Last updated**: 2026-10-31 15:24 CDT

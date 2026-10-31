@@ -3,9 +3,11 @@
 Bounded active log. Newest first. Older sessions are archived under `logs/` when over budget (>10 sessions / ~1000 lines).
 
 ## Archives
-- logs/PROJECT_LOG_2026-H2.md — 4 sessions (2026-07 … 2026-10)
+- logs/PROJECT_LOG_2026-H2.md — 6 sessions (2026-07 … 2026-10)
+- logs/PROJECT_LOG_2026-H1.md — 8 sessions (2026-03 … 2026-04)
 
 ## Session Index (active, newest first)
+- 2026-10-31 15:24 CDT
 - 2026-10-31 13:48 CDT
 - 2026-10-31 12:20 CDT
 - 2026-10-31 11:05 CDT
@@ -15,7 +17,24 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - 2026-10-30 21:41 CDT
 - 2026-10-30 20:24 CDT
 - 2026-10-30 18:22 CDT
-- 2026-10-29 22:44 CDT
+
+---
+
+## Session 2026-10-31 15:24 CDT
+- **Coding CLI used**: Claude Code CLI (MoAI-Easy output style; Claude Opus 5.5, GLM 5.3 for the close). Third close of session fc6ff544 — no new code after cc9901e.
+
+### Phase(s) worked on
+- Post-close cleanup executed immediately on the user's request, then the final close
+
+### Concrete changes implemented
+1. Cleanup (details recorded in the 13:48 entry, item 5): all 5 worktrees disposed, 12 `WT-` branches deleted (last one via a throwaway detached tree after an ancestor check), artifacts preserved at `.preview/cv-tab-harness/` and `logs/`; docs committed as cc9901e.
+2. The user fast-forwarded the primary (`git pull --ff-only`, eb0a358 → cc9901e) — this close ran IN the primary for the first time since the CV arc began.
+
+### Items explicitly completed this session
+- Worktree/branch disposal + primary sync (everything the 14:04 close had queued for "next session")
+
+### Verification performed
+- `git rev-parse HEAD` = cc9901e = origin/main, `behind=0 ahead=0`; `git worktree list` → primary only; `WT-*` branch count 0
 
 ---
 
@@ -310,50 +329,6 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 
 ### Verification performed
 - E2E 99/99 locally and live (after 1e4fe50, 116bf8d); unit tests 19/19; mutant runs red as expected; reference numbers reproduced; RePORTER links cross-checked; positions live checks (7298d41). 8e091cd not verified live (not deployed).
-
----
-
-## Session 2026-10-29 22:44 CDT
-- **Coding CLI used**: Claude Code CLI (Claude Opus 5.5; Sonnet 5.5 for part of the close). Claude session 0d788018. The server work below was done on **2026-10-15** (dates in the server's backup names); the session was resumed and closed on 2026-10-29, so this entry covers both.
-
-### Phase(s) worked on
-- Session start (classified C: local `main` 12 commits behind origin) → SMHS-site refresh planning → legacy CGI tool triage → Entrez ID/Symbol converter revival (server side, outside git) → session close with git/doc reconcile.
-
-### Concrete changes implemented
-1. **Decision, old CGI sequence tools**: LOD Score Calculator, Pairwise Protein Sequence Alignment, Simple Sequence Alignment, Sequence Fitting Alignment, Repeat Finder are not listed as lab tools and **stay closed** (user: "시퀀스 도구 5개는 닫아두자"). Findings: live copies sit in `webapps/ROOT/WEB-INF/cgi/<Tool>/`; nginx has `location ^~ /cgi-bin/ { return 403; }`; all five answer 200 only when Tomcat (localhost:8081) is asked directly; `/hurlab/cgi-bin/WebTools/` copies are never executed (404). From code reading (not exploited): three tools pass request parameters into `system()` (command injection); Repeat Finder writes user input into the CGI dir, whose every file Tomcat's CGI servlet executes.
-2. **Entrez ID/Symbol converter revived** (`webapps/ROOT/WEB-INF/cgi/SciMiner/annotation.cgi`): MiMI subs/branches/form/output removed; `CGI::Debug` removed; `use CGI qw(:standard escapeHTML)` with escaped textareas; symbols must match `^[A-Za-z0-9._@-]{1,40}$` (others become blank lines); input capped at 2000 lines; taxonID defaults to 9606; red banner "WARNING: Annotation is outdated … verify results against NCBI Gene"; title "Entrez ID/Symbol converter"; external `mm_health_nutr.css` / `wz_tooltip.js` references removed (no-op `Tip()`/`UnTip()` added). Output identical to the original for normal ID→symbol and symbol→ID input. Original backed up outside the CGI dir (`/home/hurlab/backups/annotation-cgi-20261015/annotation.cgi.orig`, sha256 `90d97d74…c29c23`); final sha256 `15b6776a…f627f13`.
-3. **nginx** (user ran the script with sudo; the agent has none): `/home/hurlab/enable-entrez-id2symbol.sh` (`--dry-run`, `--revert`) inserted a 17-line block after `# END dnmkb2-cgi-allow` in the 443 server block — `location = /cgi-bin/SciMiner/annotation.cgi` (proxy to 8081, `client_max_body_size 1m`) and `location = /SciMiner/annotation.cgi` → 301 to the new URL, so the SMHS link keeps working unchanged. Conf 744 → 761 lines; backup `hurlab.med.und.edu.conf.bak-20261015_111423-entrez`.
-4. **Script review pass** before handover (3 defects fixed): no sanity check of the generated conf (a truncated config could pass `nginx -t`); a failing `curl` would silently abort the checks under `set -e`; `--revert` did not verify the path was closed again. Verified: dry-run adds 17 lines, insert→revert is byte-identical, the guard test fails correctly, no conflicting locations.
-5. **SMHS site refresh prompt** (Claude desktop edits the Modern Campus CMS pages after the user signs in): 2-phase (compare + report only; then edit one page at a time, Save → Preview, stop before publishing/deleting/uploading/new pages). Uses visible pages only (not `data/*.json`, which hold hidden entries); no grant $; no CGI sequence tools; short text + link to hurlab.med.und.edu. Mapping: index→index+people, research→research, tools→tools, openings→positions, collaborators→collaborators; SMHS has no publications page, so a link to `…/hurlab/publications.html` goes on the index. Outcome (user, 2026-10-29): all of it approved.
-6. **SMHS Tools page link check (curl)**: 11 links 200; Entrez converter was 403 (now fixed); 5 sequence tools 404 (to remove); PubChemSR SourceForge 403 to curl (likely bot blocking — needs a browser click).
-7. **Git reconcile at close (2026-10-29)**: `git fetch`; local HEAD f3897dd was an ancestor of origin/main f4a2f9b, 0 local-only commits, `12 0`, no file overlap with the local uncommitted `.moai/` changes → user asked to fix any drift → `git pull --ff-only` → `0 0`, HEAD f4a2f9b. Handoff updated on top of the 10-14 17:00 version (the stale local 13:32 copy was replaced by the pull).
-
-### Files/modules touched
-- Server (outside git): `webapps/ROOT/WEB-INF/cgi/SciMiner/annotation.cgi`, `/etc/nginx/sites-available/hurlab.med.und.edu.conf`, `/home/hurlab/enable-entrez-id2symbol.sh`, `/home/hurlab/backups/annotation-cgi-20261015/`
-- Repo: `PROJECT_HANDOFF.md`, `PROJECT_LOG.md` (docs only); `NEXT_SESSION.md` (untracked, machine-local)
-- Wiki: new `concept/a-legacy-cgi-is-reopened-one-script-at-a-time.md`
-
-### Key decisions and rationale
-- Keep the sequence tools closed: exposing code with command injection to the public internet for 2011-era utilities is not worth it; the lab-tools list should not advertise them.
-- Revive only the converter, and only after cutting it down; exact-match location so siblings stay closed; 301 for the old URL so third-party pages need no edit.
-- Original backed up outside the CGI dir because Tomcat executes every file in that dir.
-- Edit/Write tools are blocked for scratchpad and for paths outside the project, so converter edits used Python scripts and the wiki page was written via the shell.
-
-### Problems encountered and resolutions
-- The agent has no sudo → delivered the nginx change as a reviewed script the user ran.
-- An early verification grep showed only BRCA1 (grep pattern error); re-check confirmed TP53 as well.
-- Local stale handoff (10-14 13:32) vs origin (17:00): resolved by the fast-forward before editing, so no merge conflict on the docs.
-
-### Items completed / resolved / superseded this session
-- Entrez converter revival — Completed (verified from outside, see below).
-- Sequence tools — Decided: stay closed.
-- "Primary checkout behind origin/main" — Completed.
-- SMHS site refresh — Completed: user confirmed at close that all changes from that work were approved.
-
-### Verification performed
-- 2026-10-15, from this machine against the public URLs: new URL 200 with banner and no MiMI; old https URL 301 → new; SMHS http link ends at 200 after 2 redirects; 7157→TP53, 672→BRCA1, Trp53→22059; SQL-/XSS-shaped input gave no errors and no raw echo; other SciMiner CGI, `wz_tooltip.js`, `annotation.cgi.backup` 302; five sequence tools 403; `/hurlab/cgi-bin/WebTools/` 404; `/SciMiner/index.cgi` 403; hurlab / SciMiner1.1 / DNMKB 200; server conf 761 lines, block present once, nginx active.
-- 2026-10-29: status codes re-checked (converter 200 + "outdated" present, old URL 301, `/cgi-bin/SeqAlign/` and `/cgi-bin/RepeatFinder/` 403, `/hurlab/` and `tools.html` 200); conversions and other neighbour paths not re-run.
-- Not verified: the converter page look in a real browser; PubChemSR SourceForge link (moot — SMHS refresh approved); Playwright E2E suite.
 
 ---
 
