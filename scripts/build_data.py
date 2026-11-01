@@ -33,6 +33,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
+import build_overview as overview_page  # the internal OneDrive page; build_overview() below is overview.json
 from cvlib import (MONTHS, award_core, authorship, cv_paragraphs, merge_supplements, no_em_dash,
                    norm, parse_cv_publications, parse_grants, ym)
 
@@ -731,7 +732,9 @@ def main():
         raise SystemExit(f"build_data: {msg}")
     if not args.force and is_up_to_date(sources):
         print("build_data: outputs are newer than the sources; nothing to do (use --force to rebuild)")
-        return 0
+        # still refresh the internal overview page: a server CV publish pulled in with git
+        # changes data/*.json without touching the sources
+        return overview_page.run()
 
     area_titles = [a["title"] for a in json.loads(RESEARCH.read_text())["areas"]]
     overrides = json.loads(OVERRIDES.read_text()) if OVERRIDES.exists() else {}
@@ -795,7 +798,7 @@ def main():
         print(f"\nREVIEW ({len(report)} items):")
         for line in report:
             print("  - " + line)
-    return 0
+    return overview_page.run()
 
 
 if __name__ == "__main__":

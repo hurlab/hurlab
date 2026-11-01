@@ -1,0 +1,326 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Hur Lab Research Overview</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
+<style>
+/* Layout: one reading column (max 1080px) of stacked sections; charts span the column, cards wrap 3-2-1. */
+:root{
+  --bg:#f5f7f8; --surface:#ffffff; --ink:#15232b; --muted:#566a75; --line:#d9e1e5; --accent:#0d6e7a; --accent-soft:#e1f0f1;
+  --t1:#c2410c; --t2:#7c3aed; --t3:#0f766e; --t4:#2563eb; --t5:#be185d; --t6:#a16207; --t7:#475569;
+  --f-display:"IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --f-body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f171c; --surface:#16222a; --ink:#e4ecef; --muted:#9db0ba; --line:#2a3a44; --accent:#5cc4cf; --accent-soft:#163a40;
+  --t1:#fb923c; --t2:#a78bfa; --t3:#2dd4bf; --t4:#60a5fa; --t5:#f472b6; --t6:#facc15; --t7:#94a3b8; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f171c; --surface:#16222a; --ink:#e4ecef; --muted:#9db0ba; --line:#2a3a44; --accent:#5cc4cf; --accent-soft:#163a40;
+  --t1:#fb923c; --t2:#a78bfa; --t3:#2dd4bf; --t4:#60a5fa; --t5:#f472b6; --t6:#facc15; --t7:#94a3b8; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 64px;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:clamp(28px,4vw,40px);font-weight:600}
+h2{font-size:24px;font-weight:600}
+h3{font-size:17px;font-weight:600}
+p{margin:0;max-width:68ch}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.section{display:flex;flex-direction:column;gap:18px}
+.lede{font-size:17px;color:var(--muted)}
+header{display:flex;flex-direction:column;gap:14px}
+.facts{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+.facts b{font-family:var(--f-body);font-size:20px;color:var(--ink);font-weight:600;margin-right:6px;font-variant-numeric:tabular-nums}
+.chart-box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;overflow-x:auto}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px}
+.legend button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:2px 4px;border-radius:4px}
+.legend button[aria-pressed="false"]{opacity:.35}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{all:unset;cursor:pointer;padding:6px 12px;font-size:13px;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--accent-soft);color:var(--ink);font-weight:600}
+svg text{fill:var(--muted);font-family:var(--f-mono);font-size:11px}
+.eras{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.era{border-top:3px solid var(--accent);padding-top:12px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.era .yrs{font-family:var(--f-mono);font-size:13px;color:var(--accent)}
+.era ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px}
+.themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.theme{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.theme .head{display:flex;gap:10px;align-items:baseline;justify-content:space-between}
+.theme .count{font-family:var(--f-mono);font-size:13px;color:var(--muted);white-space:nowrap}
+.theme ol{margin:0;padding-left:18px;font-size:13.5px;display:flex;flex-direction:column;gap:6px}
+.theme .bar{height:4px;border-radius:2px}
+.theme button.filter{all:unset;cursor:pointer;color:var(--accent);font-size:13px;font-weight:500}
+.gantt-row text.lbl{fill:var(--ink);font-family:var(--f-body);font-size:12px}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:11px;padding:1px 7px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.pill.active{border-color:var(--accent);color:var(--accent)}
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.tool{border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--surface);font-size:13.5px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.tool b{font-size:14px}
+.ideas{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.idea{border-left:3px solid var(--line);padding-left:12px;display:flex;flex-direction:column;gap:6px}
+.idea .from{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:10px}
+.filters input,.filters select{font:inherit;font-size:14px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);min-width:0}
+.filters input{flex:1 1 240px}
+#list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:56px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.row .y{font-family:var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.row .t{font-weight:500}
+.row .m{color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:4px}
+.note{font-size:13px;color:var(--muted)}
+.count-line{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion: no-preference){.legend button,.seg button{transition:opacity .15s,background .15s}}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Hur Lab · University of North Dakota · Department of Biomedical Sciences</div>
+  <h1>Hur Lab Research Overview</h1>
+  <p class="lede">{{YEARS_SPAN}} years of computational biomedicine in one place: what the lab works on, how the focus has moved over time, who funds it, and every paper, preprint and proceedings paper on Dr. Junguk Hur's CV. Start here if you are new to the lab.</p>
+  <div class="facts" id="facts"></div>
+</header>
+
+<section class="section" id="output">
+  <div class="eyebrow">Output over time</div>
+  <h2>Publications per year by research theme</h2>
+  <div class="toolbar">
+    <div class="seg" role="group" aria-label="Chart mode">
+      <button id="m-year" aria-pressed="true">Per year</button>
+      <button id="m-cum" aria-pressed="false">Cumulative</button>
+    </div>
+    <div class="seg" role="group" aria-label="Record types">
+      <button id="k-all" aria-pressed="true">All records</button>
+      <button id="k-peer" aria-pressed="false">Journal and conference papers</button>
+    </div>
+    <div class="seg" role="group" aria-label="Authorship">
+      <button id="au-all" aria-pressed="true">Any authorship</button>
+      <button id="au-led" aria-pressed="false">Led by Dr. Hur</button>
+      <button id="au-co" aria-pressed="false">Co-authored</button>
+    </div>
+  </div>
+  <div class="legend" id="legend"></div>
+  <div class="chart-box"><svg id="chart" role="img" aria-label="Stacked bar chart of publications per year by theme"></svg></div>
+  <p class="note">"Led by Dr. Hur" means first, co-first, corresponding or co-corresponding author; "Co-authored" is every other paper, where he is a middle author (edited books and the group-authorship paper are left out of both). Click a theme in the legend to hide or show it. "Journal and conference papers" counts research articles, reviews, editorials, group-authorship papers and conference proceedings papers; "All records" adds preprints, books and the book chapter.</p>
+</section>
+
+<section class="section" id="authorship">
+  <div class="eyebrow">Lead and collaborative work</div>
+  <h2>Led by Dr. Hur vs. co-authored</h2>
+  <p>Each year split by Dr. Hur’s role: first or co-first author, corresponding or co-corresponding author (as marked in the CV with * and $), or middle co-author on a collaborator’s paper. A paper where he is both first and corresponding counts once, as first author. The two edited books and the group-authorship paper (where he is not in the byline) are left out.</p>
+  <div class="toolbar">
+    <div class="seg" role="group" aria-label="Lead chart mode">
+      <button id="a-year" aria-pressed="true">Per year</button>
+      <button id="a-cum" aria-pressed="false">Cumulative</button>
+    </div>
+    <div class="seg" role="group" aria-label="Lead chart records">
+      <button id="ak-all" aria-pressed="true">All records</button>
+      <button id="ak-peer" aria-pressed="false">Journal and conference papers</button>
+    </div>
+  </div>
+  <div class="legend" id="legend2"></div>
+  <div class="facts" id="facts2"></div>
+  <div class="chart-box"><svg id="chart2" role="img" aria-label="Stacked bar chart of first-author and corresponding-author records per year"></svg></div>
+  <p class="note">Corresponding marks follow the CV as updated on {{CV_DATE}}.</p>
+</section>
+
+<section class="section" id="eras">
+  <div class="eyebrow">How the focus shifted</div>
+  <h2>Research eras</h2>
+  <div class="eras" id="eraGrid"></div>
+</section>
+
+<section class="section" id="themes">
+  <div class="eyebrow">Research areas</div>
+  <h2>What the lab works on</h2>
+  <p>Each card shows the theme's activity by year and a few papers to read first. Use "Show papers" to jump to the full list for that theme.</p>
+  <div class="themes" id="themeGrid"></div>
+</section>
+
+<section class="section" id="funding">
+  <div class="eyebrow">Funding</div>
+  <h2>Funded grants and awards</h2>
+  <p>Every funded award on the CV with Dr. Hur’s role: active external grants, completed external grants, and completed internal UND pilot awards. Pending proposals and consulting roles are not shown.</p>
+  <div class="legend"><span style="display:inline-flex;gap:6px;align-items:center"><span class="sw" style="background:var(--accent)"></span>Active, external</span><span style="display:inline-flex;gap:6px;align-items:center"><span class="sw" style="background:var(--muted)"></span>Completed, external</span><span style="display:inline-flex;gap:6px;align-items:center"><span class="sw" style="background:var(--t6)"></span>Completed, internal UND pilot</span></div>
+  <div class="chart-box"><svg id="gantt" role="img" aria-label="Timeline of funded external grants"></svg></div>
+  <p class="note" id="pilots"></p>
+</section>
+
+<section class="section" id="tools">
+  <div class="eyebrow">Software and databases</div>
+  <h2>Lab tools you will use</h2>
+  <p>The lab maintains {{N_TOOLS}} software tools, knowledgebases and research-support applications. Full details are on the <a href="https://hurlab.med.und.edu/hurlab/tools.html" target="_blank" rel="noopener">lab website Tools page</a>.</p>
+  <div class="tools" id="toolGrid"></div>
+</section>
+
+<section class="section" id="next">
+  <div class="eyebrow">For new lab members</div>
+  <h2>Where a new project could start</h2>
+  <p>These are starting points for a conversation with Dr. Hur, built where two existing lines of work meet. They are suggestions, not assigned projects.</p>
+  <div class="ideas" id="ideaGrid"></div>
+</section>
+
+<section class="section" id="papers">
+  <div class="eyebrow">Every record</div>
+  <h2>Publication list</h2>
+  <div class="filters">
+    <input id="q" type="search" placeholder="Search title, journal or first author" aria-label="Search publications">
+    <select id="fTheme" aria-label="Theme"></select>
+    <select id="fCat" aria-label="Record type"></select>
+  </div>
+  <div class="count-line" id="countLine"></div>
+  <div id="list"></div>
+  <p class="note">Source: Dr. Hur's CV ({{CV_DATE}}) and the lab's publication tracker. PDFs for every record marked available are in the lab OneDrive under Publications, sorted by theme, with preprints and conference papers in their own folders.</p>
+</section>
+</div>
+
+<script>
+/*__OVERVIEW_DATA__*/
+
+
+const PEER=new Set(["Article","Review","Editorial","Group authorship","Proceedings (peer-reviewed)","Proceedings (not peer-reviewed)"]);
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const col=t=>css('--t'+t);
+const byId=Object.fromEntries(PUBS.map(p=>[p.id,p]));
+const years=[];for(let y=2004;y<={{LAST_YEAR}};y++)years.push(y);
+
+
+
+
+
+
+
+
+
+
+/* facts */
+(function(){
+ const n=PUBS.length, art=PUBS.filter(p=>p.cat==="Article").length, pre=PUBS.filter(p=>p.cat==="Preprint").length, papers=PUBS.filter(p=>PEER.has(p.cat)).length;
+ const act=GRANTS.filter(g=>g.a).length;
+ document.getElementById('facts').innerHTML=
+  `<span><b>${papers}</b>journal and conference papers</span><span><b>${art}</b>original research articles</span><span><b>${pre}</b>preprints</span><span><b>${n}</b>records on the CV</span><span><b>${act}</b>active funded awards</span><span><b>${TOOLS.length}</b>lab tools</span>`;
+})();
+
+/* stacked chart */
+const hidden=new Set(); let mode='year', kind='all', auth='all';
+const isLed=p=>p.r==='F'||p.r==='C', isCo=p=>!p.r&&p.cat!=='Book'&&p.cat!=='Group authorship';
+function legend(){
+ const el=document.getElementById('legend'); el.innerHTML='';
+ Object.entries(THEMES).forEach(([k,v])=>{
+  const b=document.createElement('button'); b.setAttribute('aria-pressed',hidden.has(+k)?'false':'true');
+  b.innerHTML=`<span class="sw" style="background:${col(k)}"></span>${v}`;
+  b.onclick=()=>{hidden.has(+k)?hidden.delete(+k):hidden.add(+k);legend();chart();}; el.appendChild(b);
+ });
+}
+function chart(){
+ const svg=document.getElementById('chart'); const W=Math.max(640,svg.parentElement.clientWidth-32),H=310,ml=36,mb=26,mt=24,mr=8;
+ svg.setAttribute('viewBox',`0 0 ${W} ${H}`); svg.setAttribute('width',W); svg.setAttribute('height',H);
+ const pool=PUBS.filter(p=>(kind==='all'||PEER.has(p.cat))&&(auth==='all'||(auth==='led'?isLed(p):isCo(p))));
+ const counts=years.map(y=>{const c={};for(const t in THEMES)c[t]=0;pool.forEach(p=>{if(p.year===y)c[p.theme]++});return c});
+ if(mode==='cum'){for(let i=1;i<counts.length;i++)for(const t in THEMES)counts[i][t]+=counts[i-1][t];}
+ const tots=counts.map(c=>Object.entries(c).filter(([t])=>!hidden.has(+t)).reduce((a,[,v])=>a+v,0));
+ const maxV=Math.max(...tots,1); const step=maxV>100?50:maxV>40?10:5; const top=Math.ceil(maxV/step)*step;
+ const y=v=>H-mb-(v/top)*(H-mb-mt); const bw=(W-ml-mr)/years.length;
+ let s='';
+ for(let v=0;v<=top;v+=step){s+=`<line x1="${ml}" x2="${W-mr}" y1="${y(v)}" y2="${y(v)}" stroke="${css('--line')}" stroke-width="1"/><text x="${ml-6}" y="${y(v)+4}" text-anchor="end">${v}</text>`;}
+ years.forEach((yr,i)=>{let base=0;const x=ml+i*bw+bw*0.15,w=bw*0.7;
+  Object.keys(THEMES).forEach(t=>{if(hidden.has(+t))return;const v=counts[i][t];if(!v)return;
+   s+=`<rect x="${x}" y="${y(base+v)}" width="${w}" height="${y(base)-y(base+v)}" fill="${col(t)}"><title>${yr} · ${THEMES[t]}: ${v}</title></rect>`;base+=v;});
+  if(tots[i])s+=`<text x="${x+w/2}" y="${y(tots[i])-4}" text-anchor="middle">${tots[i]}</text>`;
+  if(i%2===0||years.length<14)s+=`<text x="${x+w/2}" y="${H-8}" text-anchor="middle">${yr}</text>`;});
+ svg.innerHTML=s;
+}
+function setSeg(a,b,on){document.getElementById(a).setAttribute('aria-pressed',on);document.getElementById(b).setAttribute('aria-pressed',!on);}
+document.getElementById('m-year').onclick=()=>{mode='year';setSeg('m-year','m-cum',true);chart();};
+document.getElementById('m-cum').onclick=()=>{mode='cum';setSeg('m-year','m-cum',false);chart();};
+document.getElementById('k-all').onclick=()=>{kind='all';setSeg('k-all','k-peer',true);chart();};
+document.getElementById('k-peer').onclick=()=>{kind='peer';setSeg('k-all','k-peer',false);chart();};
+function setAuth(a){auth=a;['all','led','co'].forEach(k=>document.getElementById('au-'+k).setAttribute('aria-pressed',k===a));chart();}
+['all','led','co'].forEach(k=>document.getElementById('au-'+k).onclick=()=>setAuth(k));
+
+
+/* authorship chart */
+const ROLES={F:["First or co-first author","--accent"],C:["Corresponding or co-corresponding","--t2"],M:["Co-author (middle author)","--t7"]};
+let amode='year',akind='all';
+function chart2(){
+ const svg=document.getElementById('chart2');const W=Math.max(640,svg.parentElement.clientWidth-32),H=280,ml=36,mb=26,mt=24,mr=8;
+ svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('width',W);svg.setAttribute('height',H);
+ const pool=PUBS.filter(p=>p.cat!=='Book'&&p.cat!=='Group authorship'&&(akind==='all'||PEER.has(p.cat))).map(p=>({...p,r:p.r||'M'}));
+ const counts=years.map(y=>{const c={F:0,C:0,M:0};pool.forEach(p=>{if(p.year===y)c[p.r]++});return c});
+ if(amode==='cum'){for(let i=1;i<counts.length;i++)for(const r in ROLES)counts[i][r]+=counts[i-1][r];}
+ const tots=counts.map(c=>c.F+c.C+c.M);const maxV=Math.max(...tots,1);const step=maxV>100?50:maxV>40?10:maxV>20?5:2;const top=Math.ceil(maxV/step)*step;
+ const y=v=>H-mb-(v/top)*(H-mb-mt);const bw=(W-ml-mr)/years.length;let s='';
+ for(let v=0;v<=top;v+=step)s+=`<line x1="${ml}" x2="${W-mr}" y1="${y(v)}" y2="${y(v)}" stroke="${css('--line')}"/><text x="${ml-6}" y="${y(v)+4}" text-anchor="end">${v}</text>`;
+ years.forEach((yr,i)=>{let base=0;const x=ml+i*bw+bw*0.15,w=bw*0.7;
+  ["M","C","F"].forEach(r=>{const v=counts[i][r];if(!v)return;s+=`<rect x="${x}" y="${y(base+v)}" width="${w}" height="${y(base)-y(base+v)}" fill="${css(ROLES[r][1])}"><title>${yr} · ${ROLES[r][0]}: ${v}</title></rect>`;base+=v;});
+  if(tots[i])s+=`<text x="${x+w/2}" y="${y(tots[i])-4}" text-anchor="middle">${tots[i]}</text>`;
+  if(i%2===0)s+=`<text x="${x+w/2}" y="${H-8}" text-anchor="middle">${yr}</text>`;});
+ svg.innerHTML=s;
+ const n=r=>pool.filter(p=>p.r===r).length;
+ document.getElementById('facts2').innerHTML=`<span><b>${n('F')+n('C')}</b>led by Dr. Hur</span><span><b>${n('F')}</b>first or co-first</span><span><b>${n('C')}</b>corresponding (not first)</span><span><b>${n('M')}</b>co-authored</span>`;
+ document.getElementById('legend2').innerHTML=Object.values(ROLES).map(([l,c])=>`<span style="display:inline-flex;gap:6px;align-items:center"><span class="sw" style="background:${css(c)}"></span>${l}</span>`).join('');
+}
+document.getElementById('a-year').onclick=()=>{amode='year';setSeg('a-year','a-cum',true);chart2();};
+document.getElementById('a-cum').onclick=()=>{amode='cum';setSeg('a-year','a-cum',false);chart2();};
+document.getElementById('ak-all').onclick=()=>{akind='all';setSeg('ak-all','ak-peer',true);chart2();};
+document.getElementById('ak-peer').onclick=()=>{akind='peer';setSeg('ak-all','ak-peer',false);chart2();};
+
+/* eras */
+document.getElementById('eraGrid').innerHTML=ERAS.map(e=>{
+ const n=PUBS.filter(p=>p.year>=e.r[0]&&p.year<=e.r[1]).length;
+ return `<div class="era"><div class="yrs">${e.y}</div><h3>${e.h}</h3><p class="note">${e.w}</p><ul>${e.l.map(x=>`<li>${x}</li>`).join('')}</ul><div class="count-line">${n} ${n===1?'record':'records'} published ${e.r[0]} to ${e.r[1]}</div></div>`}).join('');
+
+/* themes */
+function cite(p){return `${p.first}${p.first==='Junguk Hur'?'':' et al.'}, <i>${p.venue}</i> ${p.year}. ${p.title}`;}
+function spark(t){const c=years.map(y=>PUBS.filter(p=>p.theme==t&&p.year===y).length);const m=Math.max(...c,1);
+ return `<svg viewBox="0 0 230 34" width="100%" height="34" aria-hidden="true">${c.map((v,i)=>`<rect x="${i*10}" y="${32-v/m*30}" width="7" height="${v/m*30}" fill="${col(t)}"/>`).join('')}<line x1="0" x2="230" y1="32.5" y2="32.5" stroke="${css('--line')}"/></svg>`;}
+function themes(){
+ document.getElementById('themeGrid').innerHTML=Object.entries(THEMES).map(([t,name])=>{
+  const ps=PUBS.filter(p=>p.theme==t); const ys=ps.map(p=>p.year);
+  return `<div class="theme"><div class="bar" style="background:${col(t)}"></div><div class="head"><h3>${name}</h3><span class="count">${ps.length} · ${Math.min(...ys)} to ${Math.max(...ys)}</span></div>${spark(t)}<div class="eyebrow">Read first</div><ol>${KEY[t].map(i=>byId[i]).filter(Boolean).map(p=>`<li>${link(p,cite(p))}</li>`).join('')}</ol><button class="filter" data-t="${t}">Show all ${ps.length} papers</button></div>`}).join('');
+ document.querySelectorAll('.theme button.filter').forEach(b=>b.onclick=()=>{document.getElementById('fTheme').value=b.dataset.t;render();document.getElementById('papers').scrollIntoView({behavior:'smooth'});});
+}
+function link(p,txt){const u=p.pmid?`https://pubmed.ncbi.nlm.nih.gov/${p.pmid}/`:p.doi?`https://doi.org/${p.doi}`:'';return u?`<a href="${u}" target="_blank" rel="noopener">${txt}</a>`:txt;}
+
+/* gantt */
+function gantt(){
+ const svg=document.getElementById('gantt'); const W=Math.max(760,svg.parentElement.clientWidth-32),rh=26,ml=Math.min(330,W*0.4),mt=22,mr=150;
+ const s0=2011,s1=2032,H=mt+GRANTS.length*rh+10; const x=v=>ml+(v-s0)/(s1-s0)*(W-ml-mr);
+ svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('width',W);svg.setAttribute('height',H);
+ let s='';for(let y=s0;y<=s1;y+=3)s+=`<line x1="${x(y)}" x2="${x(y)}" y1="${mt-4}" y2="${H-6}" stroke="${css('--line')}"/><text x="${x(y)}" y="${mt-8}" text-anchor="middle">${y}</text>`;
+ const now={{NOW_DECIMAL}}; s+=`<line x1="${x(now)}" x2="${x(now)}" y1="${mt-4}" y2="${H-6}" stroke="${css('--accent')}" stroke-dasharray="3 3"/>`;
+ const short=(t,n)=>t.length>n?t.slice(0,n-1)+'…':t;
+ GRANTS.forEach((g,i)=>{const yy=mt+i*rh;
+  s+=`<g class="gantt-row"><text class="lbl" x="0" y="${yy+16}">${short(g.f+': '+g.t,Math.floor(ml/6.4))}</text><rect x="${x(g.s)}" y="${yy+5}" width="${Math.max(3,x(g.e)-x(g.s))}" height="15" rx="3" fill="${g.a?css('--accent'):g.i?css('--t6'):css('--muted')}" opacity="${g.a?1:0.75}"><title>${g.t} (${g.f}) · Role: ${g.r}</title></rect><text x="${x(g.e)+4}" y="${yy+16}">${g.r}</text></g>`;});
+ svg.innerHTML=s; const ne=GRANTS.filter(g=>!g.i).length, ni=GRANTS.filter(g=>g.i).length, na=GRANTS.filter(g=>g.a).length;
+ document.getElementById('pilots').textContent=`${na} active external awards, ${ne-na} completed external awards and ${ni} completed internal pilot awards. The dashed line marks today.`;
+}
+
+/* tools, ideas */
+document.getElementById('toolGrid').innerHTML=TOOLS.map(([n,d,u])=>`<div class="tool"><b><a href="${u}" target="_blank" rel="noopener">${n}</a></b><span class="note">${d}</span></div>`).join('');
+document.getElementById('ideaGrid').innerHTML=IDEAS.map(i=>`<div class="idea"><span class="from">${i.f}</span><h3>${i.h}</h3><p class="note">${i.d}</p></div>`).join('');
+
+/* list */
+const fT=document.getElementById('fTheme'),fC=document.getElementById('fCat'),q=document.getElementById('q');
+fT.innerHTML='<option value="">All themes</option>'+Object.entries(THEMES).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');
+const cats=[...new Set(PUBS.map(p=>p.cat))];
+fC.innerHTML='<option value="">All record types</option>'+cats.map(c=>`<option>${c}</option>`).join('');
+function render(){
+ const s=q.value.trim().toLowerCase();
+ const L=PUBS.filter(p=>(!fT.value||p.theme==fT.value)&&(!fC.value||p.cat===fC.value)&&(!s||(p.title+' '+p.venue+' '+p.first).toLowerCase().includes(s))).sort((a,b)=>b.year-a.year||a.id-b.id);
+ document.getElementById('countLine').textContent=`${L.length} of ${PUBS.length} records`;
+ document.getElementById('list').innerHTML=L.map(p=>`<div class="row"><span class="y">${p.year}</span><div><div class="t">${link(p,p.title)}</div><div class="m"><span><span class="dot" style="background:${col(p.theme)}"></span>${THEMES[p.theme]}</span><span>${p.first}${p.first==='Junguk Hur'?'':' et al.'}</span><span><i>${p.venue}</i></span><span class="pill">${p.cat}</span></div></div></div>`).join('');
+}
+[q,fT,fC].forEach(e=>e.addEventListener('input',render));
+
+function all(){legend();chart();chart2();themes();gantt();render();}
+all();
+let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{chart();chart2();gantt();},150)});
+new MutationObserver(all).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',all);
+</script>
+</body></html>
