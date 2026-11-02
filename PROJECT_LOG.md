@@ -37,7 +37,7 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 
 ### Key technical decisions and rationale
 - A supplement shares its parent's award core, so every matcher that keyed on the bare core would have merged the two once they were separate records; one shared key function fixes all four modules at once (wiki: `concept/an-identity-key-must-tell-a-child-record-from-its-parent`).
-- The internal JSON went to OneDrive, not machine-local state, because the user builds from two computers (wiki: `concept/a-hand-edited-input-in-machine-local-state-is-gone-on-the-other-computer`; memory: project_two_build_computers).
+- The internal JSON went to OneDrive, not machine-local state, because machine-local state went missing on this PC (cause unknown; the user uses one computer) (wiki: `concept/a-hand-edited-input-in-machine-local-state-is-gone-on-the-other-computer`; memory: project_local_state_can_vanish).
 - Live site and data only change through the existing path: worktree `WT-*` branch, `git push origin WT-x:main` after a `0 0` check, `deploy-from-local.sh` from the worktree, then the user's `git pull --ff-only` in the primary. Both worktrees and branches disposed after the push was verified.
 
 ### Problems encountered and resolutions
@@ -48,13 +48,13 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - ruff reports 6 F-findings, all in `scripts/admin_server.py` and already present on origin/main; left alone.
 
 ### Items explicitly completed / resolved / superseded this session
-- Completed: overview generator, template mode fix, server catch-up deploy, grants regroup, supplement row + placement, internal JSON relocation. Superseded: the "local state folder" location for `overview_internal.json`. Opened: stale copy on the other build computer (HANDOFF §4).
+- Completed: overview generator, template mode fix, server catch-up deploy, grants regroup, supplement row + placement, internal JSON relocation. Superseded: the "local state folder" location for `overview_internal.json`. Opened then closed as moot: stale copy on "the other build computer" (HANDOFF §4; the user uses one computer).
 
 ### Verification performed
 - Unit suite 73/73 OK; `cv_diff` of the 2026-10-30 CV: 0 items vs new data, 1 GRANT-NEW vs old data; live site headless check "Active (6)", "Completed (20)", supplement right after VIOLIN 2.0, 0 console errors, home counter 6; deploys c901bbc and e1ab72b with 21 health checks each; primary = origin/main = server = e1ab72b, `0 0`.
 
 ### Not verified
-- Behaviour of the other build computer's stale `overview_internal.json`; `cv_publish`'s real (non-dry-run) push still awaits the first real CV change; no real publish has yet gone through `grant_ident` (applied.jsonl does not exist, so no old records need migrating).
+- Why the machine-local state dirs were missing on this PC (the user later said they never use another computer, so the "two computers" reading in this entry is unconfirmed); `cv_publish`'s real (non-dry-run) push still awaits the first real CV change; no real publish has yet gone through `grant_ident` (applied.jsonl does not exist, so no old records need migrating).
 
 ## Session 2026-10-31 15:24 CDT
 - **Coding CLI used**: Claude Code CLI (MoAI-Easy output style; Claude Opus 5.5, GLM 5.3 for the close). Third close of session fc6ff544 — no new code after cc9901e.
