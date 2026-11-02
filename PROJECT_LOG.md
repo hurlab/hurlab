@@ -7,6 +7,7 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - logs/PROJECT_LOG_2026-H1.md — 8 sessions (2026-03 … 2026-04)
 
 ## Session Index (active, newest first)
+- 2026-11-01 19:35 CST
 - 2026-10-31 15:24 CDT
 - 2026-10-31 13:48 CDT
 - 2026-10-31 12:20 CDT
@@ -16,9 +17,44 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - 2026-10-30 21:55 CDT
 - 2026-10-30 21:41 CDT
 - 2026-10-30 20:24 CDT
-- 2026-10-30 18:22 CDT
 
 ---
+
+## Session 2026-11-01 19:35 CST
+- **Coding CLI used**: Claude Code CLI (MoAI-Easy output style; Claude Opus 5.5 for the work, Sonnet 5.5 for the close). Same session id fc6ff544 as the 2026-10-31 closes. This entry also records the morning's overview-generator work (HANDOFF §2/§4 rows dated 2026-11-01 11:45 CDT), which had no log entry.
+
+### Phase(s) worked on
+- Internal Research Overview generator (morning, home/other computer) and funded-grants display + supplement handling (evening, office PC `UNDMED-CQ9FRT3`)
+
+### Concrete changes implemented
+1. **Morning (95e9538, 9a0e7bc, b68ca57)**: `scripts/build_overview.py` fills `scripts/templates/overview_template.html` (copied from OneDrive `Publications/_overview_build/`; edits: computed year bounds `{{LAST_YEAR}}`/`{{NOW_DECIMAL}}`, tools sentence) from `data/*.json` + `overview_internal.json` and writes `Publications/Hur_Lab_Research_Overview.html` in OneDrive; called at the end of `build_data.py` (also on its "nothing to do" path); CV_DATE = max(filename date of the CV source, last live publish in `applied.jsonl`); em-dash and leftover-placeholder guards; 17 tests; acceptance checks 161/132/18/182/6/20, 77/32/45/102, grants 6/8/12, 0 console errors, 0 em dashes, 0 `$`. Notes file `OVERVIEW_BUILD_NOTES.md` left in the OneDrive folder. Template mode fixed from 100755 to 100644 ("권한 정리").
+2. **Server sync (evening)**: server was 7 commits behind (docs + scripts only, but `cv_publish` does not pull before pushing, so the next real publish would have failed with PUSH FAILED); `deploy-from-local.sh` brought it to b68ca57; server `build_data.py --if-available` still exits 0.
+3. **Funded grants (c901bbc, e1ab72b)**, PI request on https://hurlab.med.und.edu/hurlab/research-overview.html: active awards first, then completed, with "Active (n)" / "Completed (n)" headers and a heavy rule; the U24 administrative supplement (`3U24AI171008-05S1`, 2026-07 to 2027-05) is its own row (own RePORTER link) placed right under VIOLIN 2.0, not counted as an award (user choices: "row only, count stays 6", "CV wording as the title"). Code: `cvlib.merge_supplements` replaced by `is_supplement` + `grant_ident` (award core + S suffix) + `attach_supplements`; `cv_diff`, `cv_publish` and `build_data` matchers use `grant_ident`; `build_overview.build_grants` flags supplements (`x`) and the template excludes them from the counts; `research-overview.html` mirrors the placement in JS; `index.html` and `write_home_fallback` skip supplements in the "Active grants" count.
+4. **Internal JSON moved**: this PC had no `~/.local/share/hurlab-admin-state/overview_internal.json`; recovered from the generated page's `PILOTS`/`ERAS`/`IDEAS` constants into OneDrive `Publications/_overview_build/overview_internal.json`; `build_overview.DEFAULT_INTERNAL` now reads it (user choice "OneDrive folder"). Docs updated (PROJECT_HANDOFF, `CV_UPDATE_STEP2.md` symbol lines, OneDrive notes).
+
+### Files/modules/functions touched
+- `scripts/cvlib.py`, `cv_diff.py`, `cv_publish.py`, `build_data.py`, `build_overview.py`, `scripts/templates/overview_template.html`, `research-overview.html`, `index.html`, `data/grants.json`, `tests/unit/test_grant_supplements.py` (new, 12 tests), `PROJECT_HANDOFF.md`, `scripts/CV_UPDATE_STEP2.md`; OneDrive `_overview_build/OVERVIEW_BUILD_NOTES.md` and `overview_internal.json`.
+
+### Key technical decisions and rationale
+- A supplement shares its parent's award core, so every matcher that keyed on the bare core would have merged the two once they were separate records; one shared key function fixes all four modules at once (wiki: `concept/an-identity-key-must-tell-a-child-record-from-its-parent`).
+- The internal JSON went to OneDrive, not machine-local state, because the user builds from two computers (wiki: `concept/a-hand-edited-input-in-machine-local-state-is-gone-on-the-other-computer`; memory: project_two_build_computers).
+- Live site and data only change through the existing path: worktree `WT-*` branch, `git push origin WT-x:main` after a `0 0` check, `deploy-from-local.sh` from the worktree, then the user's `git pull --ff-only` in the primary. Both worktrees and branches disposed after the push was verified.
+
+### Problems encountered and resolutions
+- Playwright MCP browser missing on this PC (expects chromium-1252): used the cached chromium-1247 headless binary for screenshots and DOM dumps.
+- `build_data.py --force` only moved `lastUpdated` in `publications.json`/`overview.json`; reverted with `git checkout --` inside the worktree.
+- 5 `Reapply` tests errored without CV fixtures on this PC; fixed by `CV_FIXTURE_DIR` pointing at the Dropbox CV folder (73/73 OK).
+- Port 8765 was already taken by another local server (curl returned its pages); used 8791/8792. A `pkill -f` matched its own shell (exit 144); replaced by killing the pid found with `ss`.
+- ruff reports 6 F-findings, all in `scripts/admin_server.py` and already present on origin/main; left alone.
+
+### Items explicitly completed / resolved / superseded this session
+- Completed: overview generator, template mode fix, server catch-up deploy, grants regroup, supplement row + placement, internal JSON relocation. Superseded: the "local state folder" location for `overview_internal.json`. Opened: stale copy on the other build computer (HANDOFF §4).
+
+### Verification performed
+- Unit suite 73/73 OK; `cv_diff` of the 2026-10-30 CV: 0 items vs new data, 1 GRANT-NEW vs old data; live site headless check "Active (6)", "Completed (20)", supplement right after VIOLIN 2.0, 0 console errors, home counter 6; deploys c901bbc and e1ab72b with 21 health checks each; primary = origin/main = server = e1ab72b, `0 0`.
+
+### Not verified
+- Behaviour of the other build computer's stale `overview_internal.json`; `cv_publish`'s real (non-dry-run) push still awaits the first real CV change; no real publish has yet gone through `grant_ident` (applied.jsonl does not exist, so no old records need migrating).
 
 ## Session 2026-10-31 15:24 CDT
 - **Coding CLI used**: Claude Code CLI (MoAI-Easy output style; Claude Opus 5.5, GLM 5.3 for the close). Third close of session fc6ff544 — no new code after cc9901e.
@@ -283,52 +319,6 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 
 ### Verification performed
 - Live E2E 99/99 after the deploy; `curl` checks; `deploy.sh` rehearsals and the two measured claims (see HANDOFF §6 rows dated 2026-10-30). Not verified: sudo path (removed), real admin restart by the script, refusal as root, `cv-publish` base commit and branch name.
-
----
-
-## Session 2026-10-30 18:22 CDT
-- **Coding CLI used**: Claude Code CLI (Claude Opus 5.5, Sonnet 5.5 for parts). Claude session 0d788018, continued from the 2026-10-29 close. Requirements came from the user and from another agent session the user relayed messages from.
-
-### Phase(s) worked on
-- Research overview + data rebuild (worktree `research-overview`, deployed as 1e4fe50 + 116bf8d)
-- Positions page edit (worktree `positions-stipend`, deployed as 7298d41)
-- Grant links, compact grants timeline, publication counts, publication-date sort, card layout (worktree `cv-diff`, pushed as 8e091cd, NOT deployed)
-- CV incremental update: mock-up, agreed design, step 1 diff engine (53b3aba, inside 8e091cd)
-
-### Concrete changes implemented
-1. Live homepage "empty sections" report checked: in a real browser all data loaded; the sections were empty only to readers without JavaScript (and a relayed claim that data/grants.json was 404 checked the domain root, not `/hurlab/data/`). Fixed with static copies written into index.html by the build.
-2. `scripts/build_data.py` (new): tracker .xlsx + CV .docx -> `data/publications.json` (182), `grants.json` (funded only, no amounts/pending, VIOLIN supplement merged), `overview.json` (eras, interests, milestones, highlights); rebuilds only when a source is newer. Author strings and */$ marks from the CV; areas from topic folders + title rules + `data/area_overrides.json` (49 reviewed); 7th area "Population and Clinical Health".
-3. `research-overview.html` (new, nav "Overview"): stats, publications per year by area (authorship filter, cumulative), led vs co-authored (32 / 45 / 102), career timeline, area cards, funded-grants timeline (6 / 8 / 12).
-4. Publications page: All (182) default merged list, tab counts, breakdown line, area/type filters, no Under Review/In Preparation tabs, item numbers removed, status badges bottom-right; research-detail lists papers by area; homepage 4 x 2 highlights with an overview card.
-5. `parse_cv.py`: CV PDF upload now updates talks/posters only, then `build_data.py --if-available`.
-6. Data fetches revalidate (`cache: 'no-cache'`) after a returning browser showed the new page with 2-week-old JSON.
-7. Positions: stipend line removed from the Graduate Student card; Future Openings text no longer capped at 768 px.
-8. Grant title links: NIH RePORTER (looked up by core project number; 8 links cross-checked) and UND program pages (TRANSCEND, HPI COBRE, Epigenetics COBRE history page) via `data/grant_links.json`; grants timeline rows tinted when active, award number/PIs on click, 92 -> 62 px average row height.
-9. Publication dates from PubMed (online-first), Crossref, DataCite for 164 of 182; every list sorts newest first by date; shown year = publication-date year (10 moved; `trackerYear` kept); Recent badge now works.
-10. CV diff engine step 1: `scripts/cvlib.py` (shared CV reader, build output byte-identical after the move), `scripts/cv_diff.py` (read-only CLI), `tests/unit/test_cv_diff.py` (19 tests). Using it on the edited CV found a gap (grant title changes were not reported) -> GRANT-CHANGED added.
-11. No em dashes in site text (tools legend, tools.json, BIMD514 title).
-
-### Files/modules touched
-- New: `research-overview.html`, `scripts/build_data.py`, `scripts/cvlib.py`, `scripts/cv_diff.py`, `tests/unit/test_cv_diff.py`, `data/overview.json`, `data/area_overrides.json`, `data/grant_links.json`
-- Changed: `index.html`, `publications.html`, `research.html`, `research-detail.html`, `positions.html`, `tools.html`, `BIMD514.html`, `js/components.js`, `collaborators.html`, `people.html`, `data/publications.json`, `data/grants.json`, `data/research.json`, `data/site.json`, `data/tools.json`, `data/positions.json`, `scripts/parse_cv.py`, `playwright.config.ts` (BASE_URL), `tests/e2e/*.spec.ts`
-
-### Key technical decisions and rationale
-- Decisions from the user / relayed agent: funded grants only, Khan R01 external, #113 and books excluded from authorship counts, method-first area rule with 15 cross-check overrides, 4 x 2 homepage grid, All tab default, year = publication-date year, Rumora R01 title follows RePORTER (CV edited), review state for the future CV tab outside the web root, .docx upload for diffs, deploy-key push after publish.
-- Static no-JS copies instead of server rendering: keeps the Alpine pages and fixes crawlers/AI readers.
-- Chart.js instances kept outside Alpine state (a reactive proxy broke redraws).
-- CV test fixtures frozen outside the repo (they hold dollar amounts and pending proposals; the dated 10-30 file was edited in place).
-
-### Problems encountered and resolutions
-- Off-campus SSH to hurlab.med.und.edu:22 timed out; the server is reached over Tailscale `ssh hurlab@100.94.67.89` (user correction; memory saved).
-- A first acceptance criterion I wrote ("10-29 -> 10-30 adds 4 preprints") was false; ground truth re-measured with a plain difflib comparison and the memory corrected.
-- Production diff first reported 53 false changes (tracker titles vs CV text); fixed by parsing both sides from the CV text.
-- Worktree guard refuses complex shell; patches were applied through small temp scripts.
-
-### Items completed / resolved / superseded
-- grants.json dollar totals — Resolved. CV year gaps — Superseded. HTTP caching — partly mitigated. SMHS-related items closed earlier.
-
-### Verification performed
-- E2E 99/99 locally and live (after 1e4fe50, 116bf8d); unit tests 19/19; mutant runs red as expected; reference numbers reproduced; RePORTER links cross-checked; positions live checks (7298d41). 8e091cd not verified live (not deployed).
 
 ---
 
