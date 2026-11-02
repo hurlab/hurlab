@@ -37,7 +37,7 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 
 ### Key technical decisions and rationale
 - A supplement shares its parent's award core, so every matcher that keyed on the bare core would have merged the two once they were separate records; one shared key function fixes all four modules at once (wiki: `concept/an-identity-key-must-tell-a-child-record-from-its-parent`).
-- The internal JSON went to OneDrive, not machine-local state, because the user works from several computers synced with smart-rsync and `~/.local/share` does not travel (wiki: `concept/a-hand-edited-input-in-machine-local-state-is-gone-on-the-other-computer`; memory: project_two_build_computers).
+- The internal JSON went to OneDrive, not machine-local state, because the user works from several computers synced with smart-rsync, which only handles `~/PROJECTS`, so `~/.local/share` does not travel (wiki: `concept/a-hand-edited-input-in-machine-local-state-is-gone-on-the-other-computer`; memory: project_two_build_computers).
 - Live site and data only change through the existing path: worktree `WT-*` branch, `git push origin WT-x:main` after a `0 0` check, `deploy-from-local.sh` from the worktree, then the user's `git pull --ff-only` in the primary. Both worktrees and branches disposed after the push was verified.
 
 ### Problems encountered and resolutions
