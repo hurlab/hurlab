@@ -17,6 +17,22 @@
       "linkLabel": "NIH RePORTER"
     },
     {
+      "funder": "NIH/NIAID U24 3U24AI171008-05S1",
+      "pis": "Tao, He, Hur",
+      "role": "MPI",
+      "title": "Administrative Supplement: VIOLIN 2.0: Vaccine Information and Ontology LInked kNowledgebase",
+      "period": "7/1/2026-5/31/2027",
+      "start": "2026-07",
+      "end": "2027-05",
+      "type": "external",
+      "status": "active",
+      "note": "",
+      "award": "3U24AI171008-05S1",
+      "agency": "NIH/NIAID U24",
+      "url": "https://reporter.nih.gov/project-details/11550095",
+      "linkLabel": "NIH RePORTER"
+    },
+    {
       "funder": "NIH/NIDDK R01 1R01DK149012-01",
       "pis": "Rumora; Columbia University",
       "role": "Co-Investigator (Site PI)",
@@ -88,7 +104,7 @@
       "end": "2027-05",
       "type": "external",
       "status": "active",
-      "note": "Includes 2026-2027 administrative supplement",
+      "note": "",
       "award": "U24AI171008",
       "agency": "NIH/NIAID U24",
       "url": "https://reporter.nih.gov/project-details/11369644",
@@ -401,6 +417,6 @@
       "agency": "Juvenile Diabetes Research Foundation, Postdoctoral Research Fellowship Grant"
     }
   ],
-  "lastUpdated": "2026-10-30",
+  "lastUpdated": "2026-11-01",
   "source": "2026-10-30_JungukHur-CV.docx"
 }

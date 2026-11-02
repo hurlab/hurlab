@@ -252,19 +252,19 @@ def award_core(funder):
     return m.group(0) if m else None
 
 
-def merge_supplements(grants, note=_ignore):
-    """Fold 'Administrative Supplement: <parent title>' entries into their parent award as a note."""
-    out = []
-    for g in grants:
-        if g["title"].lower().startswith("administrative supplement"):
-            core = award_core(g["funder"])
-            parent = next((p for p in grants if p is not g and core and core in p["funder"]
-                           and not p["title"].lower().startswith("administrative supplement")), None)
-            if parent:
-                years = f"{g['start'][:4]}-{g['end'][:4]}" if g["start"] and g["end"] else ""
-                parent["note"] = f"Includes {years} administrative supplement".replace("  ", " ")
-                note(f"MERGED supplement {g['funder']!r} into {parent['funder']!r}")
-                continue
-            note(f"SUPPLEMENT WITHOUT PARENT kept separate: {g['funder']!r}")
-        out.append(g)
-    return out
+def is_supplement(grant):
+    """True for an 'Administrative Supplement: <parent title>' entry. It is shown as its own row
+    but not counted as a separate award."""
+    return (grant.get("title") or "").lower().startswith("administrative supplement")
+
+
+def grant_ident(funder, title):
+    """The key that tells grants apart: the award core (U24AI171008), plus the supplement suffix
+    (-05S1) for an administrative supplement, which shares its parent's core."""
+    core = award_core(funder)
+    if not core:
+        return None
+    if not is_supplement({"title": title}):
+        return core
+    m = re.search(re.escape(core) + r"-?(\d{2}S\d+|S\d+)", funder or "")
+    return f"{core}-{m.group(1)}" if m else f"{core}-S"

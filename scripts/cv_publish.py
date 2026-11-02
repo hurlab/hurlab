@@ -39,7 +39,7 @@ from pathlib import Path
 
 import build_data
 import cv_diff
-from cvlib import award_core, cv_paragraphs, norm, parse_grants
+from cvlib import cv_paragraphs, grant_ident, norm, parse_grants
 
 ROOT = Path(__file__).resolve().parent.parent
 INDEX = ROOT / "index.html"
@@ -109,9 +109,9 @@ def _pub_key(rec):
 
 
 def _grant_key(rec):
-    core = award_core(rec.get("funder") or "")
-    if core:
-        return {"award": core}
+    ident = grant_ident(rec.get("funder") or "", rec.get("title"))
+    if ident:
+        return {"award": ident}
     return {"title": norm(rec.get("title") or "")}
 
 
@@ -122,11 +122,11 @@ def _find_pub_by_number(pubs, number):
 
 
 def _find_grant_in(grants, key):
-    """Match by award core (no renewal prefix / year suffix — same rule as build_data's re-apply),
-    then normalized title."""
+    """Match by award core (no renewal prefix / year suffix; a supplement keeps its S suffix —
+    same rule as build_data's re-apply), then normalized title."""
     if key.get("award"):
         for g in grants:
-            if award_core(g.get("funder") or "") == key["award"]:
+            if grant_ident(g.get("funder") or "", g.get("title")) == key["award"]:
                 return g
     for g in grants:
         if norm(g.get("title") or "") == key.get("title"):
@@ -135,9 +135,9 @@ def _find_grant_in(grants, key):
 
 
 def _match_cv_grant(cv_grants, item_new):
-    core = award_core(item_new.get("funder") or "")
+    ident = grant_ident(item_new.get("funder") or "", item_new.get("title"))
     for g in cv_grants:
-        if core and core in (g.get("funder") or ""):
+        if ident and grant_ident(g.get("funder") or "", g.get("title")) == ident:
             return g
     for g in cv_grants:
         if norm(g.get("title") or "") == norm(item_new.get("title") or ""):

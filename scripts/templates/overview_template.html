@@ -200,7 +200,7 @@ const years=[];for(let y=2004;y<={{LAST_YEAR}};y++)years.push(y);
 /* facts */
 (function(){
  const n=PUBS.length, art=PUBS.filter(p=>p.cat==="Article").length, pre=PUBS.filter(p=>p.cat==="Preprint").length, papers=PUBS.filter(p=>PEER.has(p.cat)).length;
- const act=GRANTS.filter(g=>g.a).length;
+ const act=GRANTS.filter(g=>g.a&&!g.x).length;
  document.getElementById('facts').innerHTML=
   `<span><b>${papers}</b>journal and conference papers</span><span><b>${art}</b>original research articles</span><span><b>${pre}</b>preprints</span><span><b>${n}</b>records on the CV</span><span><b>${act}</b>active funded awards</span><span><b>${TOOLS.length}</b>lab tools</span>`;
 })();
@@ -296,7 +296,7 @@ function gantt(){
  const short=(t,n)=>t.length>n?t.slice(0,n-1)+'…':t;
  GRANTS.forEach((g,i)=>{const yy=mt+i*rh;
   s+=`<g class="gantt-row"><text class="lbl" x="0" y="${yy+16}">${short(g.f+': '+g.t,Math.floor(ml/6.4))}</text><rect x="${x(g.s)}" y="${yy+5}" width="${Math.max(3,x(g.e)-x(g.s))}" height="15" rx="3" fill="${g.a?css('--accent'):g.i?css('--t6'):css('--muted')}" opacity="${g.a?1:0.75}"><title>${g.t} (${g.f}) · Role: ${g.r}</title></rect><text x="${x(g.e)+4}" y="${yy+16}">${g.r}</text></g>`;});
- svg.innerHTML=s; const ne=GRANTS.filter(g=>!g.i).length, ni=GRANTS.filter(g=>g.i).length, na=GRANTS.filter(g=>g.a).length;
+ svg.innerHTML=s; const ne=GRANTS.filter(g=>!g.i&&!g.x).length, ni=GRANTS.filter(g=>g.i&&!g.x).length, na=GRANTS.filter(g=>g.a&&!g.x).length;
  document.getElementById('pilots').textContent=`${na} active external awards, ${ne-na} completed external awards and ${ni} completed internal pilot awards. The dashed line marks today.`;
 }
 

@@ -206,7 +206,7 @@
                  x-data="{ pubs: 0, pubSplit: '', grants: 0, tools: 0 }"
                  x-init="
                    fetch('data/publications.json', { cache: 'no-cache' }).then(r=>r.json()).then(d=>{ pubs = d.peerReviewed ? d.peerReviewed.length : 0; pubSplit = d.peerReviewed ? pubBreakdown(d.peerReviewed) : '' });
-                   fetch('data/grants.json', { cache: 'no-cache' }).then(r=>r.json()).then(d=>{ grants = d.current ? d.current.length : 0 });
+                   fetch('data/grants.json', { cache: 'no-cache' }).then(r=>r.json()).then(d=>{ grants = d.current ? d.current.filter(g => !/^administrative supplement/i.test(g.title || '')).length : 0 });
                    fetch('data/tools.json', { cache: 'no-cache' }).then(r=>r.json()).then(d=>{ tools = d.length || 0 });
                  ">
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 max-w-2xl">
@@ -575,6 +575,7 @@
             <!-- BUILD:funding -->
             <ul class="nojs-fallback max-w-3xl mx-auto list-disc pl-6 space-y-1">
                     <li class="text-sm text-gray-700"><strong>NIH/NIDDK R01 2R01DK130913-05</strong>: Schwann Cell Senescence and the Secretome Provide a Unifying Mechanism for the Onset and Progression of Diabetic Neuropathy (MPI, 2026-2031)</li>
+                    <li class="text-sm text-gray-700"><strong>NIH/NIAID U24 3U24AI171008-05S1</strong>: Administrative Supplement: VIOLIN 2.0: Vaccine Information and Ontology LInked kNowledgebase (MPI, 2026-2027)</li>
                     <li class="text-sm text-gray-700"><strong>NIH/NIDDK R01 1R01DK149012-01</strong>: The impact of dietary fatty acids and TNF-alpha on neuropathy associated with metabolic syndrome (Co-Investigator (Site PI), 2026-2028)</li>
                     <li class="text-sm text-gray-700"><strong>NIH/NIGMS P30 1P30GM165332-01</strong>: Center for Excellence in Host Pathogen Interactions (HPI COBRE) Phase 3 (Core Director, 2026-2031)</li>
                     <li class="text-sm text-gray-700"><strong>ARPA-H</strong>: Decentralized Diabetes Data Platform for Senior Health Management (Co-Investigator, 2025-2028)</li>

@@ -233,12 +233,15 @@
           return ((d.getFullYear() + d.getMonth() / 12 - lo) / (hi - lo)) * 100 + '%';
         },
         ganttRows() {
+          // Active awards first, then completed; newest start first inside each group
+          const rank = g => (g.status === 'active' ? 0 : 1);
           const rows = [...this.grants.current, ...this.grants.previous]
             .filter(g => g.start && g.end)
-            .sort((a, b) => b.start.localeCompare(a.start));
+            .sort((a, b) => rank(a) - rank(b) || b.start.localeCompare(a.start));
           const [lo, hi] = this.ganttRange;
-          return rows.map(g => ({
+          return rows.map((g, i) => ({
             ...g,
+            groupLabel: (i === 0 || rank(rows[i - 1]) !== rank(g)) ? (rank(g) === 0 ? 'Active' : 'Completed') : '',
             left: ((this.ym(g.start) - lo) / (hi - lo)) * 100 + '%',
             width: ((this.ym(g.end) + 1 / 12 - this.ym(g.start)) / (hi - lo)) * 100 + '%',
             years: g.start.slice(0, 4) + '-' + g.end.slice(0, 4)
@@ -252,9 +255,11 @@
           if (g.status === 'active') return 'Active';
           return g.type === 'internal' ? 'Completed, UND internal' : 'Completed';
         },
+        // An administrative supplement is its own row but not a separate award
+        isSupplement(g) { return /^administrative supplement/i.test(g.title || ''); },
         grantCount(status, type) {
           const list = status === 'active' ? this.grants.current : this.grants.previous;
-          return list.filter(g => !type || g.type === type).length;
+          return list.filter(g => !this.isSupplement(g) && (!type || g.type === type)).length;
         }
       };
     }
@@ -292,7 +297,7 @@
             <div><div class="text-3xl font-bold text-gray-900" x-text="paperCount"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Journal &amp; conference papers</div></div>
             <div><div class="text-3xl font-bold text-gray-900" x-text="ledCount"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Led by Dr. Hur</div></div>
             <div><div class="text-3xl font-bold text-gray-900" x-text="firstYear + '-' + lastYear"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Publishing since</div></div>
-            <div class="col-span-2 md:col-span-1"><div class="text-3xl font-bold text-gray-900" x-text="grants.current.length"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Active grants</div></div>
+            <div class="col-span-2 md:col-span-1"><div class="text-3xl font-bold text-gray-900" x-text="grantCount('active')"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Active grants</div></div>
           </div>
           <p class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-4 -mt-1 text-xs text-gray-500 text-center">
             Totals include preprints, books and a book chapter. Journal &amp; conference papers are original articles, reviews, editorials,
@@ -485,7 +490,7 @@
             <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-4">
               <div>
                 <h2 id="grants-heading" class="text-2xl font-bold text-gray-900">Funded grants</h2>
-                <p class="text-sm text-gray-600">Awarded grants only, newest first. Role shown for Dr. Hur.</p>
+                <p class="text-sm text-gray-600">Awarded grants only: active first, then completed, newest first within each. Role shown for Dr. Hur. Administrative supplements have their own row but are not counted as separate awards.</p>
               </div>
               <div class="flex flex-wrap items-center gap-4 text-xs text-gray-600">
                 <span class="flex items-center gap-1.5"><span class="h-3 w-5 rounded bg-primary-600"></span><span>Active (<span x-text="grantCount('active')"></span>)</span></span>
@@ -507,7 +512,11 @@
               <ul class="divide-y divide-gray-100">
                 <template x-for="(g, i) in ganttRows()" :key="g.funder + g.start">
                   <!-- Active grants get a light tint; the award number and details open on click -->
-                  <li x-data="{ open: false }" :class="g.status === 'active' ? 'bg-primary-50/70' : ''">
+                  <li x-data="{ open: false }" :class="[g.status === 'active' ? 'bg-primary-50/70' : '', g.groupLabel === 'Completed' ? 'border-t-2 border-gray-300' : ''].join(' ')">
+                    <!-- Group header: separates active awards from completed ones -->
+                    <div x-show="g.groupLabel" class="px-4 pt-3 pb-1 text-xs font-semibold uppercase tracking-wide"
+                         :class="g.groupLabel === 'Active' ? 'text-primary-700' : 'text-gray-500 bg-white'"
+                         x-text="g.groupLabel + ' (' + grantCount(g.status === 'active' ? 'active' : 'completed') + ')'"></div>
                     <div class="md:grid grid-cols-[minmax(0,3fr)_minmax(0,2fr)] items-center cursor-pointer" @click="open = !open">
                       <div class="px-3 pt-2 md:py-2 flex items-start gap-1.5">
                         <button type="button" class="mt-0.5 p-0.5 rounded text-gray-400 hover:text-gray-700 shrink-0"

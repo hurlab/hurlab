@@ -34,7 +34,7 @@ from datetime import date
 from pathlib import Path
 
 import build_overview as overview_page  # the internal OneDrive page; build_overview() below is overview.json
-from cvlib import (MONTHS, award_core, authorship, cv_paragraphs, merge_supplements, no_em_dash,
+from cvlib import (MONTHS, authorship, cv_paragraphs, grant_ident, is_supplement, no_em_dash,
                    norm, parse_cv_publications, parse_grants, ym)
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -591,7 +591,7 @@ def apply_cv_updates(pubs, grants, log_path=WEBINF_LOG):
 
     def find_grant(key):
         for g in grants:
-            if key.get("award") and award_core(g.get("funder") or "") == key["award"]:
+            if key.get("award") and grant_ident(g.get("funder") or "", g.get("title")) == key["award"]:
                 return g
         for g in grants:
             if key.get("title") and norm(g.get("title") or "") == key["title"]:
@@ -688,7 +688,7 @@ def write_home_fallback(pubs, grants):
         f'({esc(g["role"])}, {g["start"][:4]}-{g["end"][:4]})</li>' for g in grants["current"])
     tools_file = DATA / "tools.json"
     blocks = {
-        "active-grants": str(len(grants["current"])),
+        "active-grants": str(sum(1 for g in grants["current"] if not is_supplement(g))),
         "publication-count": str(len(pubs)),
         "publication-breakdown": pub_breakdown(pubs),
         "tool-count": str(len(json.loads(tools_file.read_text()))) if tools_file.exists() else "...",
@@ -750,7 +750,7 @@ def main():
                  f"({p['dateSource']} {p['date']})")
             p["trackerYear"], p["year"] = p["year"], int(p["date"][:4])
     pubs.sort(key=pub_sort_key, reverse=True)
-    grants = merge_supplements(parse_grants(paras, note, TODAY), note)
+    grants = parse_grants(paras, note, TODAY)  # a supplement stays its own row (cvlib.is_supplement)
     for g in grants:
         g.pop("cvSection", None)
     # Links: the previous file's link is the fallback, then RePORTER, then program pages, then manual

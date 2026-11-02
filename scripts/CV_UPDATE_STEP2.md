@@ -266,7 +266,7 @@ python3 -m unittest discover -s tests/unit            → 19 tests, OK
   `diff` 251, `main` 285
 - `scripts/cvlib.py`: `cv_paragraphs` 64, `parse_cv_publications` 77, `section_category` 100,
   `authorship` 107, `cv_record` 154, `parse_grants` 181, `parse_grant` 207, `award_core` 249,
-  `merge_supplements` 255
+  `is_supplement` 255, `grant_ident` 261
 - `scripts/build_data.py`: `classify` 130, `build_publications` 170, `pick_highlights` 237,
   `parse_profile` 256, `build_overview` 294, `pubmed_dates` 371, `crossref_date` 401,
   `add_pub_dates` 421, `split_award` 470, `add_grant_links` 516, `write_home_fallback` 551,

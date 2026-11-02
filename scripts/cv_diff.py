@@ -24,7 +24,7 @@ import sys
 from difflib import SequenceMatcher
 from pathlib import Path
 
-from cvlib import (award_core, cv_paragraphs, cv_record, merge_supplements, norm,
+from cvlib import (cv_paragraphs, cv_record, grant_ident, norm,
                    parse_cv_publications, parse_grants, split_citation)
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -36,7 +36,7 @@ MATCH, MAYBE = 0.90, 0.75
 def load_cv(path):
     paras = list(cv_paragraphs(path))
     pubs = [cv_record(e) for e in parse_cv_publications(paras)]
-    grants = merge_supplements(parse_grants(paras, include_pending=True))
+    grants = parse_grants(paras, include_pending=True)
     return pubs, grants
 
 
@@ -216,7 +216,7 @@ def diff_publications(old, new, this_year):
 
 
 def grant_key(g):
-    return award_core(g["funder"]) or norm(g["title"])[:60]
+    return grant_ident(g["funder"], g["title"]) or norm(g["title"])[:60]
 
 
 def diff_grants(old, new):

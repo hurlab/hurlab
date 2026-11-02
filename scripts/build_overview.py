@@ -9,9 +9,9 @@ folder as Hur_Lab_Research_Overview.html. The page is NOT published under the we
 
 Spec: OVERVIEW_BUILD_SPEC.md in the OneDrive Publications/_overview_build folder.
 
-overview_internal.json lives outside the repo and the web root, in the local state directory
-(default ~/.local/share/hurlab-admin-state/; override with --internal or $HURLAB_OVERVIEW_INTERNAL).
-Dr. Hur edits it by hand.
+overview_internal.json lives outside the repo and the web root, in the OneDrive folder next to the
+spec (Publications/_overview_build/), so every build machine reads the same copy; override with
+--internal or $HURLAB_OVERVIEW_INTERNAL. Dr. Hur edits it by hand.
 
 Called at the end of build_data.py (also when build_data finds nothing to rebuild, so a server
 CV publish pulled in with git is picked up). Runs only on the build machine: when the OneDrive
@@ -30,14 +30,16 @@ import sys
 from datetime import date
 from pathlib import Path
 
+from cvlib import is_supplement
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 TEMPLATE = ROOT / "scripts" / "templates" / "overview_template.html"
 WEBINF_LOG = ROOT / "WEB-INF" / "cv-updates" / "applied.jsonl"  # server CV publishes (cv_publish.py)
-STATE = Path(os.environ.get("HURLAB_LOCAL_STATE", Path.home() / ".local/share/hurlab-admin-state"))
-DEFAULT_INTERNAL = Path(os.environ.get("HURLAB_OVERVIEW_INTERNAL", STATE / "overview_internal.json"))
 DEFAULT_OUT = Path("/mnt/c/JHCloud/OneDrive - North Dakota University System/!HURLAB/"
                    "9_General - UND Hur Lab/Publications/Hur_Lab_Research_Overview.html")
+DEFAULT_INTERNAL = Path(os.environ.get("HURLAB_OVERVIEW_INTERNAL",
+                                       DEFAULT_OUT.parent / "_overview_build" / "overview_internal.json"))
 
 INJECT = "/*__OVERVIEW_DATA__*/"
 FIRST_YEAR = 2004  # first publication year; YEARS_SPAN counts from here
@@ -124,6 +126,8 @@ def build_grants(grants_doc):
                "a": g["status"] == "active"}
         if g.get("type") == "internal":
             rec["i"] = True
+        if is_supplement(g):  # its own row, not counted as a separate award
+            rec["x"] = True
         out.append(rec)
     # grouped as on the reference page: active, completed external, completed internal; newest start first
     out.sort(key=lambda r: (0 if r["a"] else 2 if r.get("i") else 1, -r["s"]))
