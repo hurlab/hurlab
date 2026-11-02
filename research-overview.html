@@ -238,10 +238,12 @@
           const rows = [...this.grants.current, ...this.grants.previous]
             .filter(g => g.start && g.end)
             .sort((a, b) => rank(a) - rank(b) || b.start.localeCompare(a.start));
+          const ordered = this.attachSupplements(rows);
+          const eff = g => rank(g._under || g);  // a supplement stays in its parent's group
           const [lo, hi] = this.ganttRange;
-          return rows.map((g, i) => ({
+          return ordered.map((g, i) => ({
             ...g,
-            groupLabel: (i === 0 || rank(rows[i - 1]) !== rank(g)) ? (rank(g) === 0 ? 'Active' : 'Completed') : '',
+            groupLabel: (i === 0 || eff(ordered[i - 1]) !== eff(g)) ? (eff(g) === 0 ? 'Active' : 'Completed') : '',
             left: ((this.ym(g.start) - lo) / (hi - lo)) * 100 + '%',
             width: ((this.ym(g.end) + 1 / 12 - this.ym(g.start)) / (hi - lo)) * 100 + '%',
             years: g.start.slice(0, 4) + '-' + g.end.slice(0, 4)
@@ -257,6 +259,20 @@
         },
         // An administrative supplement is its own row but not a separate award
         isSupplement(g) { return /^administrative supplement/i.test(g.title || ''); },
+        // Move each supplement right under its parent award (matched by title; same rule as
+        // cvlib.attach_supplements); one whose parent is not listed keeps its place
+        attachSupplements(rows) {
+          const key = t => (t || '').toLowerCase().replace(/^administrative supplement:\s*/, '').replace(/\s+/g, ' ').trim();
+          const sups = rows.filter(g => this.isSupplement(g));
+          const parents = new Set(rows.filter(g => !this.isSupplement(g)).map(g => key(g.title)));
+          const out = [];
+          for (const g of rows) {
+            if (this.isSupplement(g) && parents.has(key(g.title))) continue;
+            out.push(g);
+            if (!this.isSupplement(g)) sups.filter(s => key(s.title) === key(g.title)).forEach(s => out.push({ ...s, _under: g }));
+          }
+          return out;
+        },
         grantCount(status, type) {
           const list = status === 'active' ? this.grants.current : this.grants.previous;
           return list.filter(g => !this.isSupplement(g) && (!type || g.type === type)).length;
@@ -490,7 +506,7 @@
             <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-4">
               <div>
                 <h2 id="grants-heading" class="text-2xl font-bold text-gray-900">Funded grants</h2>
-                <p class="text-sm text-gray-600">Awarded grants only: active first, then completed, newest first within each. Role shown for Dr. Hur. Administrative supplements have their own row but are not counted as separate awards.</p>
+                <p class="text-sm text-gray-600">Awarded grants only: active first, then completed, newest first within each. Role shown for Dr. Hur. Administrative supplements are listed under their parent award and are not counted as separate awards.</p>
               </div>
               <div class="flex flex-wrap items-center gap-4 text-xs text-gray-600">
                 <span class="flex items-center gap-1.5"><span class="h-3 w-5 rounded bg-primary-600"></span><span>Active (<span x-text="grantCount('active')"></span>)</span></span>

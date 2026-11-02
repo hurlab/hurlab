@@ -8,7 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
 import build_overview  # noqa: E402
 import cv_diff  # noqa: E402
 import cv_publish  # noqa: E402
-from cvlib import grant_ident, is_supplement  # noqa: E402
+from cvlib import attach_supplements, grant_ident, is_supplement  # noqa: E402
 
 PARENT = {"funder": "NIH/NIAID U24 U24AI171008", "pis": "Tao, He, Hur", "role": "MPI",
           "title": "VIOLIN 2.0: Vaccine Information and Ontology LInked kNowledgebase",
@@ -57,6 +57,23 @@ class PublishFindsTheRightRow(unittest.TestCase):
     def test_cv_match_keeps_them_apart(self):
         self.assertIs(cv_publish._match_cv_grant([PARENT, SUPP], SUPP), SUPP)
         self.assertIs(cv_publish._match_cv_grant([SUPP, PARENT], PARENT), PARENT)
+
+
+OTHER = dict(PARENT, funder="NIH/NIDDK R01 1R01DK149012-01", title="Another award", start="2026-08")
+
+
+class SupplementFollowsParent(unittest.TestCase):
+    def test_moved_right_after_parent(self):
+        out = attach_supplements([SUPP, OTHER, PARENT])
+        self.assertEqual([g["title"] for g in out],
+                         [OTHER["title"], PARENT["title"], SUPP["title"]])
+
+    def test_orphan_supplement_stays_put(self):
+        self.assertEqual(attach_supplements([SUPP, OTHER]), [SUPP, OTHER])
+
+    def test_overview_rows_keep_it_under_parent(self):
+        rows = build_overview.build_grants({"current": [SUPP, OTHER, PARENT], "previous": []})
+        self.assertEqual([r["t"] for r in rows], [OTHER["title"], PARENT["title"], SUPP["title"]])
 
 
 class OverviewMarksSupplement(unittest.TestCase):

@@ -268,3 +268,23 @@ def grant_ident(funder, title):
         return core
     m = re.search(re.escape(core) + r"-?(\d{2}S\d+|S\d+)", funder or "")
     return f"{core}-{m.group(1)}" if m else f"{core}-S"
+
+
+def attach_supplements(grants, title=lambda g: g["title"]):
+    """Return the list with each administrative supplement moved right after its parent award
+    (matched by title); a supplement whose parent is not in the list keeps its place."""
+    def parent_key(t):
+        return norm(re.sub(r"^administrative supplement:\s*", "", t, flags=re.I))
+    sups = [g for g in grants if is_supplement({"title": title(g)})]
+    by_parent = {}
+    for s in sups:
+        by_parent.setdefault(parent_key(title(s)), []).append(s)
+    parents = {norm(title(g)) for g in grants if g not in sups}
+    out = []
+    for g in grants:
+        if g in sups and parent_key(title(g)) in parents:
+            continue  # placed after its parent below
+        out.append(g)
+        if g not in sups:
+            out.extend(by_parent.get(norm(title(g)), []))
+    return out

@@ -34,8 +34,8 @@ from datetime import date
 from pathlib import Path
 
 import build_overview as overview_page  # the internal OneDrive page; build_overview() below is overview.json
-from cvlib import (MONTHS, authorship, cv_paragraphs, grant_ident, is_supplement, no_em_dash,
-                   norm, parse_cv_publications, parse_grants, ym)
+from cvlib import (MONTHS, attach_supplements, authorship, cv_paragraphs, grant_ident, is_supplement,
+                   no_em_dash, norm, parse_cv_publications, parse_grants, ym)
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -761,7 +761,8 @@ def main():
     # fields the tracker already caught up on are skipped silently; the rest re-applies (§10).
     apply_cv_updates(pubs, grants, WEBINF_LOG)
     grants_out = {
-        "current": sorted([g for g in grants if g["status"] == "active"], key=lambda g: g["start"] or "", reverse=True),
+        "current": attach_supplements(sorted([g for g in grants if g["status"] == "active"],
+                                             key=lambda g: g["start"] or "", reverse=True)),
         "previous": sorted([g for g in grants if g["status"] == "completed"], key=lambda g: g["end"] or "", reverse=True),
         "lastUpdated": TODAY.isoformat(),
         "source": Path(args.cv).name,

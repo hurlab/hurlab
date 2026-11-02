@@ -30,7 +30,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
-from cvlib import is_supplement
+from cvlib import attach_supplements, is_supplement
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -129,9 +129,10 @@ def build_grants(grants_doc):
         if is_supplement(g):  # its own row, not counted as a separate award
             rec["x"] = True
         out.append(rec)
-    # grouped as on the reference page: active, completed external, completed internal; newest start first
+    # grouped as on the reference page: active, completed external, completed internal; newest start
+    # first; a supplement sits right under its parent award
     out.sort(key=lambda r: (0 if r["a"] else 2 if r.get("i") else 1, -r["s"]))
-    return out
+    return attach_supplements(out, title=lambda r: r["t"])
 
 
 def build_tools(tools_doc):
