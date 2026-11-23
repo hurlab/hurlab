@@ -31,6 +31,52 @@
   <style>
     [x-cloak] { display: none !important; }
     .gantt-bar { min-width: 4px; }
+    section[id] { scroll-margin-top: 120px; }
+    /* Section navigator: a sticky strip under the site menu; a left column on wide screens */
+    #sectionnav { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,.96); border-bottom: 1px solid #e5e7eb; }
+    #sectionnav .sn-inner { display: flex; gap: 4px; overflow-x: auto; max-width: 72rem; margin: 0 auto; padding: 6px 16px; scrollbar-width: none; }
+    #sectionnav .sn-title { display: none; }
+    #sectionnav a { white-space: nowrap; font-size: 13px; padding: 4px 10px; border-radius: 9999px; color: #4b5563; }
+    #sectionnav a:hover { color: #0f766e; }
+    #sectionnav a.on { background: #0d9488; color: #fff; }
+    @media (min-width: 1536px) {
+      #sectionnav { position: fixed; top: 88px; left: 16px; width: 172px; background: rgba(255,255,255,.97); border: 1px solid #e5e7eb; border-radius: 12px; box-shadow: 0 4px 16px rgba(15,23,42,.08); }
+      #sectionnav .sn-inner { flex-direction: column; padding: 10px 8px 10px 4px; margin: 0; overflow: visible; gap: 0; }
+      #sectionnav .sn-title { display: block; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: #6b7280; margin: 0 0 6px 12px; }
+      #sectionnav a { border-radius: 0; border-left: 2px solid #e5e7eb; padding: 4px 12px; }
+      #sectionnav a.on { background: transparent; color: #0f766e; border-left-color: #0d9488; font-weight: 600; }
+    }
+    @media print { #sectionnav, #nav-placeholder { display: none; } }
+    /* Citation figures on the research-area cards */
+    .gauge { height: 4px; border-radius: 2px; background: #e5e7eb; margin-top: 4px; position: relative; overflow: hidden; }
+    .gauge i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 2px; }
+    .gauge em { position: absolute; top: -2px; bottom: -2px; width: 2px; background: #111827; opacity: .5; }
+    /* Co-author network */
+    #network [aria-pressed="true"] { background: #0d9488; color: #fff; }
+    .dual-track { position: relative; width: 240px; height: 22px; }
+    .dual-track::before { content: ""; position: absolute; left: 0; right: 0; top: 9px; height: 4px; border-radius: 2px; background: #e5e7eb; }
+    .dual-fill { position: absolute; top: 9px; height: 4px; border-radius: 2px; background: #0d9488; }
+    .dual-track input[type=range] { position: absolute; left: 0; top: 0; width: 100%; height: 22px; margin: 0; -webkit-appearance: none; appearance: none; background: none; pointer-events: none; }
+    .dual-track input[type=range]::-webkit-slider-runnable-track { height: 22px; background: transparent; }
+    .dual-track input[type=range]::-moz-range-track { height: 22px; background: transparent; }
+    .dual-track input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; pointer-events: auto; width: 16px; height: 16px; margin-top: 3px; border-radius: 50%; background: #fff; border: 2px solid #0d9488; box-shadow: 0 1px 3px rgba(0,0,0,.25); cursor: grab; }
+    .dual-track input[type=range]::-moz-range-thumb { pointer-events: auto; width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 2px solid #0d9488; cursor: grab; }
+    .net-box svg { display: block; width: 100%; height: auto; min-width: 640px; }
+    svg.net line { stroke: #111827; stroke-opacity: .14; }
+    svg.net line.sep { stroke-opacity: .3; }
+    svg.net circle { stroke: #fff; stroke-width: 1.5; cursor: pointer; }
+    svg.net circle.hit { stroke: none; }
+    svg.net circle.ring { stroke: #fff; stroke-width: 1; }
+    svg.net path { stroke: #fff; stroke-width: .6; cursor: pointer; }
+    svg.net text { font-family: Inter, system-ui, sans-serif; font-size: 11px; fill: #111827; pointer-events: none; paint-order: stroke; stroke: #fff; stroke-width: 3px; }
+    svg.net text.pi-label { fill: #111; font-weight: 700; font-size: 10.5px; stroke: none; }
+    svg.net text.sep-label { font-size: 10.5px; fill: #6b7280; }
+    svg.net tspan.cnt { fill: #6b7280; font-family: 'JetBrains Mono', monospace; font-size: 9.5px; }
+    svg.net g.n.dim path, svg.net g.n.dim circle.v { opacity: .18; }
+    svg.net g.n.dim text { opacity: .15; }
+    svg.net line.dim { stroke-opacity: .03; }
+    svg.net line.hi { stroke-opacity: .6; stroke: #0d9488; }
+    .net-tip { position: absolute; pointer-events: none; background: #111827; color: #fff; padding: 8px 10px; border-radius: 6px; font-size: 12.5px; line-height: 1.4; max-width: 260px; box-shadow: 0 4px 16px rgba(0,0,0,.18); }
   </style>
   <script>
     // One color per research area, in data/research.json order
@@ -46,6 +92,11 @@
         areas: [],
         grants: { current: [], previous: [] },
         info: { researchInterests: [], eras: [], milestones: [], highlights: {} },
+        honors: [],
+        toolCount: 0,
+        coauthors: {},
+        metrics: {},     // pmid -> {c: citations, rcr, pct: NIH percentile, cpy} from NIH iCite
+        metricsDate: '',
         cumulative: false,
         authorFilter: 'any',      // any | led | coauthor, for the research-area chart
         showTable: false,
@@ -62,13 +113,23 @@
             this.areas = p.areas || [];
             this.grants = g;
             this.info = o;
+            // Optional files: the page works without them (sections hide themselves)
+            const optional = u => fetch(u, { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null);
+            const [h, c, m, t] = await Promise.all(['data/honors.json', 'data/coauthors.json', 'data/metrics.json', 'data/tools.json'].map(optional));
+            this.toolCount = t ? (Array.isArray(t) ? t : (t.tools || [])).length : 0;
+            this.honors = h || [];
+            this.coauthors = c || {};
+            this.metrics = (m && m.by_pmid) || {};
+            this.metricsDate = (m && m.retrieved) || '';
           } catch (e) {
             console.error('Failed to load overview data:', e);
             this.error = true;
           } finally {
             this.loading = false;
           }
-          if (!this.error) this.$nextTick(() => { this.drawChart(); this.drawLeadChart(); AOS.refresh(); });
+          if (!this.error) this.$nextTick(() => {
+            this.drawChart(); this.drawLeadChart(); this.mountNetwork(); this.mountSectionNav(); AOS.refresh();
+          });
         },
 
         color(i) { return AREA_COLORS[i % AREA_COLORS.length]; },
@@ -273,6 +334,81 @@
           }
           return out;
         },
+        // ---- citation figures (NIH iCite; PubMed-indexed records only)
+        withMetrics(list) { return list.filter(p => p.pmid && this.metrics[p.pmid]); },
+        get citations() { return this.withMetrics(this.pubs).reduce((s, p) => s + (this.metrics[p.pmid].c || 0), 0); },
+        get hIndex() {
+          const cs = this.withMetrics(this.pubs).map(p => this.metrics[p.pmid].c || 0).sort((a, b) => b - a);
+          return cs.filter((c, i) => c >= i + 1).length;
+        },
+        fmt(n) { return Number(n).toLocaleString('en-US'); },
+        get metricsDateLong() {
+          if (!this.metricsDate) return '';
+          const [y, m, d] = this.metricsDate.split('-').map(Number);
+          return new Date(y, m - 1, d).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        },
+        impact(i) {   // same figures as the internal overview page
+          const ps = this.areaPubs(i), withM = this.withMetrics(ps);
+          if (!withM.length) return null;
+          const M = this.metrics;
+          const rcrs = withM.map(p => M[p.pmid].rcr).filter(v => v != null).sort((a, b) => a - b);
+          const jp = ps.filter(p => p.category !== 'Book' && p.category !== 'Group authorship');
+          const ledPct = jp.length ? Math.round(100 * jp.filter(p => this.isLed(p)).length / jp.length) : 0;
+          const best = withM.slice().sort((a, b) => (M[b.pmid].c || 0) - (M[a.pmid].c || 0))[0];
+          return {
+            cites: withM.reduce((s, p) => s + (M[p.pmid].c || 0), 0),
+            rcr: rcrs.length ? rcrs[Math.floor(rcrs.length / 2)] : null,
+            top10: withM.filter(p => M[p.pmid].pct != null && M[p.pmid].pct >= 90).length,
+            ledPct,
+            best, bestCites: M[best.pmid].c || 0,
+            bestTitle: best.title.length > 80 ? best.title.slice(0, 78) + '…' : best.title
+          };
+        },
+
+        // ---- co-author network (js/coauthor-network.js)
+        get hasNetwork() { return Object.keys(this.coauthors).length > 0; },
+        mountNetwork() {
+          const root = document.getElementById('netRoot');
+          if (!root || !this.hasNetwork || !window.CoauthorNetwork) return;
+          CoauthorNetwork.mount(root, {
+            pubs: this.pubs.map(p => ({ id: p.number, year: p.year, theme: p.areaIndex + 1, title: p.title,
+                                        venue: p.journal, link: this.bestLink(p) })),
+            coauth: this.coauthors,
+            themes: Object.fromEntries(this.areas.map((a, i) => [i + 1, a])),
+            color: t => this.color(t - 1),
+            piName: 'Dr. Hur'
+          });
+        },
+
+        // ---- section navigator: lists every visible section, marks the current one
+        mountSectionNav() {
+          const nav = document.getElementById('sectionnav');
+          if (!nav) return;
+          const secs = [...document.querySelectorAll('main section[data-nav]')].filter(e => e.offsetParent !== null);
+          nav.querySelector('.sn-inner').innerHTML = '<span class="sn-title">On this page</span>' +
+            secs.map(e => `<a href="#${e.id}" data-id="${e.id}">${e.dataset.nav}</a>`).join('');
+          const links = [...nav.querySelectorAll('a')];
+          const spy = () => {
+            let cur = secs[0].id;
+            for (const e of secs) if (e.getBoundingClientRect().top <= window.innerHeight * 0.3) cur = e.id;
+            if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) cur = secs[secs.length - 1].id;
+            links.forEach(a => {
+              const on = a.dataset.id === cur;
+              a.classList.toggle('on', on);
+              if (on) {
+                a.setAttribute('aria-current', 'true');
+                const strip = a.parentElement;   // keep the current link visible in the narrow strip
+                if (a.offsetLeft < strip.scrollLeft || a.offsetLeft + a.offsetWidth > strip.scrollLeft + strip.clientWidth)
+                  strip.scrollLeft = a.offsetLeft - 16;
+              }
+              else a.removeAttribute('aria-current');
+            });
+          };
+          addEventListener('scroll', spy, { passive: true });
+          addEventListener('resize', spy);
+          spy();
+        },
+
         grantCount(status, type) {
           const list = status === 'active' ? this.grants.current : this.grants.previous;
           return list.filter(g => !this.isSupplement(g) && (!type || g.type === type)).length;
@@ -306,23 +442,35 @@
     <template x-if="!loading && !error">
       <div>
 
+        <nav id="sectionnav" aria-label="Sections on this page"><div class="sn-inner"></div></nav>
+
         <!-- Stats -->
-        <section class="bg-white border-b border-gray-100">
-          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
-            <div><div class="text-3xl font-bold text-gray-900" x-text="pubs.length"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Publications in total</div><div class="text-xs text-gray-500 mt-0.5" x-text="pubBreakdown(pubs)"></div></div>
-            <div><div class="text-3xl font-bold text-gray-900" x-text="paperCount"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Journal &amp; conference papers</div></div>
-            <div><div class="text-3xl font-bold text-gray-900" x-text="ledCount"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Led by Dr. Hur</div></div>
-            <div><div class="text-3xl font-bold text-gray-900" x-text="firstYear + '-' + lastYear"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Publishing since</div></div>
-            <div class="col-span-2 md:col-span-1"><div class="text-3xl font-bold text-gray-900" x-text="grantCount('active')"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Active grants</div></div>
+        <section id="at-a-glance" data-nav="At a glance" class="bg-white border-b border-gray-100" aria-label="At a glance">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-5 text-center">
+            <div class="min-w-0"><div class="text-3xl font-bold text-gray-900" x-text="pubs.length"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Publications in total</div><div class="text-xs text-gray-500 mt-0.5" x-text="pubBreakdown(pubs)"></div></div>
+            <div class="min-w-0"><div class="text-3xl font-bold text-gray-900" x-text="paperCount"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Journal &amp; conference papers</div></div>
+            <div class="min-w-0"><div class="text-3xl font-bold text-gray-900" x-text="ledCount"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Led by Dr. Hur</div></div>
+            <div class="min-w-0"><div class="text-3xl font-bold text-gray-900" x-text="firstYear + '-' + lastYear"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Publishing since</div></div>
+            <div class="min-w-0"><div class="text-3xl font-bold text-gray-900" x-text="grantCount('active')"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Active grants</div></div>
+            <template x-if="citations">
+              <div class="min-w-0"><div class="text-3xl font-bold text-gray-900" x-text="fmt(citations)"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Citations</div><div class="text-xs text-gray-500 mt-0.5">NIH iCite</div></div>
+            </template>
+            <template x-if="citations">
+              <div class="min-w-0"><div class="text-3xl font-bold text-gray-900" x-text="hIndex"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">h-index</div><div class="text-xs text-gray-500 mt-0.5">NIH iCite</div></div>
+            </template>
+            <template x-if="toolCount">
+              <div class="min-w-0"><a href="tools.html" class="block hover:text-primary-700"><div class="text-3xl font-bold text-gray-900" x-text="toolCount"></div><div class="text-xs uppercase tracking-wide text-gray-500 mt-1">Lab tools</div></a></div>
+            </template>
           </div>
           <p class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-4 -mt-1 text-xs text-gray-500 text-center">
             Totals include preprints, books and a book chapter. Journal &amp; conference papers are original articles, reviews, editorials,
             group authorship and conference proceedings. "Led" means first or co-first author, or corresponding author.
+            <span x-show="citations">Citations and h-index are from NIH iCite (retrieved <span x-text="metricsDateLong"></span>) and cover PubMed-indexed papers only, so they are lower than Google Scholar figures.</span>
           </p>
         </section>
 
         <!-- (a) Publications per year -->
-        <section class="py-8 bg-surface" aria-labelledby="pubs-heading">
+        <section id="output" data-nav="Publications per year" class="py-8 bg-surface" aria-labelledby="pubs-heading">
           <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-4">
               <div>
@@ -377,7 +525,7 @@
         </section>
 
         <!-- Led by Dr. Hur vs co-authored -->
-        <section class="py-8 bg-white" aria-labelledby="lead-heading">
+        <section id="authorship" data-nav="Led or co-authored" class="py-8 bg-white" aria-labelledby="lead-heading">
           <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 id="lead-heading" class="text-2xl font-bold text-gray-900">Led by Dr. Hur or co-authored</h2>
             <p class="text-sm text-gray-600 mb-4">
@@ -416,7 +564,7 @@
         </section>
 
         <!-- (b) Career timeline -->
-        <section class="py-8 bg-surface" aria-labelledby="timeline-heading">
+        <section id="eras" data-nav="Career stages" class="py-8 bg-surface" aria-labelledby="timeline-heading">
           <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 id="timeline-heading" class="text-2xl font-bold text-gray-900">How the research has grown</h2>
             <p class="text-sm text-gray-600 mb-5">Career stages from the CV, with the leading research areas of the papers published in each stage.</p>
@@ -462,10 +610,28 @@
           </div>
         </section>
 
+        <!-- Selected honors (CV "Honors and Awards") -->
+        <template x-if="honors.length">
+          <section id="honors" data-nav="Honors" class="py-8 bg-white border-b border-gray-100" aria-labelledby="honors-heading">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 id="honors-heading" class="text-2xl font-bold text-gray-900 mb-4">Selected honors</h2>
+              <ul class="grid gap-x-6 sm:grid-cols-2 lg:grid-cols-3">
+                <template x-for="(h, i) in honors" :key="i">
+                  <li class="flex gap-4 py-3 border-b border-gray-100">
+                    <span class="w-24 shrink-0 text-xs font-mono text-gray-500 pt-0.5" x-text="h.y"></span>
+                    <span class="text-sm text-gray-800" x-text="h.t"></span>
+                  </li>
+                </template>
+              </ul>
+            </div>
+          </section>
+        </template>
+
         <!-- (c) Research area cards -->
-        <section class="py-8 bg-white" aria-labelledby="areas-heading">
+        <section id="areas" data-nav="Research areas" class="py-8 bg-white" aria-labelledby="areas-heading">
           <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="areas-heading" class="text-2xl font-bold text-gray-900 mb-5">Research areas</h2>
+            <h2 id="areas-heading" class="text-2xl font-bold text-gray-900">Research areas</h2>
+            <p class="text-sm text-gray-600 mb-5" x-show="citations">Each card shows citations to date (NIH iCite), the median Relative Citation Ratio (1.0 is the average NIH-funded paper of the same field and year), papers in the top 10 percent of NIH-funded papers, and the share of the area's papers led by Dr. Hur.</p>
             <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               <template x-for="(area, i) in areas" :key="i">
                 <article class="bg-white rounded-xl border border-gray-200 overflow-hidden flex flex-col">
@@ -477,6 +643,21 @@
                       <span class="text-gray-400 mx-1" aria-hidden="true">|</span>
                       <span x-text="areaYears(i)"></span>
                     </p>
+                    <template x-if="impact(i)">
+                      <div class="mt-3">
+                        <div class="grid grid-cols-4 gap-2 py-2 border-y border-gray-100">
+                          <div class="min-w-0"><b class="block text-base font-semibold text-gray-900 tabular-nums" x-text="fmt(impact(i).cites)"></b><span class="block text-[10px] leading-tight text-gray-500">citations</span></div>
+                          <div class="min-w-0"><b class="block text-base font-semibold text-gray-900 tabular-nums" x-text="impact(i).rcr == null ? 'n/a' : impact(i).rcr.toFixed(1)"></b><span class="block text-[10px] leading-tight text-gray-500">median RCR</span>
+                            <div class="gauge" x-show="impact(i).rcr != null"><i :style="'width:' + Math.min(100, impact(i).rcr / 4 * 100) + '%;background:' + color(i)"></i><em style="left:25%"></em></div></div>
+                          <div class="min-w-0"><b class="block text-base font-semibold text-gray-900 tabular-nums" x-text="impact(i).top10"></b><span class="block text-[10px] leading-tight text-gray-500">NIH top 10%</span></div>
+                          <div class="min-w-0"><b class="block text-base font-semibold text-gray-900 tabular-nums" x-text="impact(i).ledPct + '%'"></b><span class="block text-[10px] leading-tight text-gray-500">led by Dr. Hur</span>
+                            <div class="gauge"><i :style="'width:' + impact(i).ledPct + '%;background:' + color(i)"></i></div></div>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2 leading-snug">Most cited:
+                          <a :href="bestLink(impact(i).best)" target="_blank" rel="noopener" class="text-gray-800 hover:text-primary-700 hover:underline" x-text="impact(i).bestTitle"></a>
+                          <span x-text="'(' + impact(i).best.year + ', ' + fmt(impact(i).bestCites) + ' citations)'"></span></p>
+                      </div>
+                    </template>
                     <h4 class="text-xs uppercase tracking-wide text-gray-500 mt-4 mb-2">Highlights</h4>
                     <ul class="space-y-2 flex-1">
                       <template x-for="p in highlights(area)" :key="p.number">
@@ -500,8 +681,45 @@
           </div>
         </section>
 
+        <!-- Co-author network (js/coauthor-network.js; data/coauthors.json) -->
+        <template x-if="hasNetwork">
+          <section id="network" data-nav="Co-author network" class="py-8 bg-white" aria-labelledby="network-heading">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 id="network-heading" class="text-2xl font-bold text-gray-900">Co-author network</h2>
+              <p class="text-sm text-gray-600 mb-4">Co-authors on Dr. Hur's published journal papers, reviews, proceedings papers and books, by period. Preprints are left out, so a study with both a preprint and a journal paper counts once. Dr. Hur is the ringed node with the yellow center; node size and the number after each name give the papers shared with him, and the pie shows how those papers divide among the research areas. Drag the year handles to change the period, drag a node to rearrange the map, hover a name for details, and click a name to list the shared papers. Names are matched by last name and initials (from PubMed, or from the CV for papers not in PubMed), so two people with the same last name and initials can appear as one.</p>
+              <div id="netRoot">
+                <div class="flex flex-wrap items-center gap-3 mb-3 text-sm">
+                  <div class="inline-flex items-center gap-2 font-mono text-xs text-gray-600" aria-label="Year range">
+                    <output class="y0o w-9 text-gray-900"></output>
+                    <div class="dual-track"><div class="dual-fill"></div><input type="range" class="y0" step="1" aria-label="From year"><input type="range" class="y1" step="1" aria-label="To year"></div>
+                    <output class="y1o w-9 text-gray-900"></output>
+                  </div>
+                  <div class="inline-flex rounded-lg border border-gray-300 overflow-hidden bg-white" role="group" aria-label="Number of co-authors">
+                    <button type="button" data-n="30" aria-pressed="false" class="px-3 py-1.5">Top 30</button><button type="button" data-n="50" aria-pressed="true" class="px-3 py-1.5 border-l border-gray-300">Top 50</button><button type="button" data-n="80" aria-pressed="false" class="px-3 py-1.5 border-l border-gray-300">Top 80</button>
+                  </div>
+                  <div class="inline-flex rounded-lg border border-gray-300 overflow-hidden bg-white" role="group" aria-label="Node color">
+                    <button type="button" data-mix="mix" aria-pressed="true" class="px-3 py-1.5">Area mix</button><button type="button" data-mix="main" aria-pressed="false" class="px-3 py-1.5 border-l border-gray-300">Main area</button>
+                  </div>
+                  <div class="inline-flex rounded-lg border border-gray-300 overflow-hidden bg-white" role="group" aria-label="Minimum shared papers for a link">
+                    <button type="button" data-w="1" aria-pressed="false" class="px-3 py-1.5">Links: 1+ papers</button><button type="button" data-w="2" aria-pressed="true" class="px-3 py-1.5 border-l border-gray-300">2+</button><button type="button" data-w="4" aria-pressed="false" class="px-3 py-1.5 border-l border-gray-300">4+</button>
+                  </div>
+                  <button type="button" class="net-pi px-3 py-1.5 rounded-lg border border-gray-300 bg-white" aria-pressed="true">Show Dr. Hur</button>
+                  <button type="button" class="net-reset px-3 py-1.5 rounded-lg border border-gray-300 bg-white text-gray-600 hover:bg-gray-50">Re-layout</button>
+                </div>
+                <div class="net-legend flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-600 mb-3"></div>
+                <div class="net-box relative bg-white rounded-xl border border-gray-200 p-2 overflow-x-auto">
+                  <svg class="net" role="img" aria-label="Co-author network: Dr. Hur at the center, linked to his most frequent co-authors"></svg>
+                  <div class="net-tip" hidden></div>
+                </div>
+                <p class="net-note text-xs text-gray-500 mt-2"></p>
+                <div class="net-shared mt-3 text-sm bg-surface rounded-xl border border-gray-200 p-4" hidden></div>
+              </div>
+            </div>
+          </section>
+        </template>
+
         <!-- (d) Funded grants timeline -->
-        <section class="py-8 bg-surface" aria-labelledby="grants-heading">
+        <section id="funding" data-nav="Funded grants" class="py-8 bg-surface" aria-labelledby="grants-heading">
           <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-4">
               <div>
@@ -585,6 +803,7 @@
 
   <div id="footer-placeholder"></div>
 
+  <script src="js/coauthor-network.js"></script>
   <script src="js/components.js"></script>
   <script src="js/animations.js"></script>
 </body>

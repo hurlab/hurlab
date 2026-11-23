@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Hur Lab Research Overview</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{{PAGE_TITLE}}</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
@@ -24,14 +24,14 @@ h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.2
 h1{font-size:clamp(28px,4vw,40px);font-weight:600}
 h2{font-size:24px;font-weight:600}
 h3{font-size:17px;font-weight:600}
-p{margin:0;max-width:68ch}
+p{margin:0}
 a{color:var(--accent)}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .section{display:flex;flex-direction:column;gap:18px}
 .lede{font-size:17px;color:var(--muted)}
 header{display:flex;flex-direction:column;gap:14px}
-.facts{display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px 24px;font-family:var(--f-mono);font-size:12.5px;color:var(--muted)}.facts span{display:block;line-height:1.35}.facts b{display:block;margin:0 0 2px}@media (max-width:760px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .facts b{font-family:var(--f-body);font-size:20px;color:var(--ink);font-weight:600;margin-right:6px;font-variant-numeric:tabular-nums}
 .chart-box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;overflow-x:auto}
 .legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px}
@@ -60,9 +60,19 @@ svg text{fill:var(--muted);font-family:var(--f-mono);font-size:11px}
 .tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
 .tool{border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--surface);font-size:13.5px;display:flex;flex-direction:column;gap:4px;min-width:0}
 .tool b{font-size:14px}
-.ideas{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
-.idea{border-left:3px solid var(--line);padding-left:12px;display:flex;flex-direction:column;gap:6px}
-.idea .from{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.ideas{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.idea{--ic:var(--accent);background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--ic);border-radius:12px;padding:16px 18px 14px;display:flex;flex-direction:column;gap:8px}
+.idea .from{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);line-height:1.4}
+.idea h3{margin:0}
+.idea-vis{display:flex;gap:14px;align-items:center;background:color-mix(in srgb,var(--ic) 9%,var(--surface));border-radius:10px;padding:12px 14px}
+.idea-ico{flex:none;width:52px;height:52px;border-radius:50%;background:var(--ic);display:grid;place-items:center}
+.idea-ico svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.idea-flow{display:flex;flex-direction:column;gap:5px;min-width:0;flex:1}
+.idea-in{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.idea-chip{font-family:var(--f-mono);font-size:11px;line-height:1.25;padding:3px 8px;border-radius:999px;border:1px solid color-mix(in srgb,var(--ic) 45%,var(--line));background:var(--surface);color:var(--ink)}
+.idea-plus{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.idea-goal{display:flex;gap:6px;align-items:flex-start;font-size:13px;font-weight:600;line-height:1.3;color:var(--ink)}
+.idea-goal i{font-style:normal;color:var(--ic);font-weight:700}
 .filters{display:flex;flex-wrap:wrap;gap:10px}
 .filters input,.filters select{font:inherit;font-size:14px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);min-width:0}
 .filters input{flex:1 1 240px}
@@ -75,13 +85,49 @@ svg text{fill:var(--muted);font-family:var(--f-mono);font-size:11px}
 .note{font-size:13px;color:var(--muted)}
 .count-line{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
 @media (prefers-reduced-motion: no-preference){.legend button,.seg button{transition:opacity .15s,background .15s}}
+.honors{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px 24px;font-size:14.5px}.honors div{display:flex;gap:12px;padding:6px 0;border-bottom:1px solid var(--line)}.honors b{font-family:var(--f-mono);font-weight:500;color:var(--muted);min-width:78px;font-size:12.5px;padding-top:2px}
+.net-tools{align-items:center}.rng{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:12.5px;color:var(--muted)}.rng output{min-width:36px;color:var(--ink)}.dual{gap:10px}.dual-track{position:relative;width:260px;height:22px}.dual-track::before{content:"";position:absolute;left:0;right:0;top:9px;height:4px;border-radius:2px;background:var(--line)}.dual-fill{position:absolute;top:9px;height:4px;border-radius:2px;background:var(--accent)}
+.dual-track input[type=range]{position:absolute;left:0;top:0;width:100%;height:22px;margin:0;-webkit-appearance:none;appearance:none;background:none;pointer-events:none}
+.dual-track input[type=range]::-webkit-slider-runnable-track{height:22px;background:transparent}.dual-track input[type=range]::-moz-range-track{height:22px;background:transparent}
+.dual-track input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;pointer-events:auto;width:16px;height:16px;margin-top:3px;border-radius:50%;background:var(--surface);border:2px solid var(--accent);box-shadow:0 1px 3px rgba(0,0,0,.25);cursor:grab}
+.dual-track input[type=range]::-moz-range-thumb{pointer-events:auto;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent);cursor:grab}
+.net-box{position:relative;padding:8px}.net-box svg{display:block;width:100%;height:auto}
+#net line{stroke:var(--ink);stroke-opacity:.14}#net circle{stroke:var(--surface);stroke-width:1.5;cursor:pointer}#net circle.hit{stroke:none}#net path{stroke:var(--surface);stroke-width:.6;cursor:pointer}#net g.n.dim path{opacity:.18}#net tspan.cnt{fill:var(--muted);font-family:var(--f-mono);font-size:9.5px}#net text{font-family:var(--f-body);font-size:11px;fill:var(--ink);pointer-events:none;paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-linejoin:round}
+#net g.n.dim circle.v{opacity:.18}#net g.n.dim text{opacity:.15}#net line.dim{stroke-opacity:.03}#net line.hi{stroke-opacity:.6;stroke:var(--accent)}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);padding:8px 10px;border-radius:6px;font-size:12.5px;line-height:1.4;max-width:260px;box-shadow:0 4px 16px rgba(0,0,0,.18)}
+.chip{display:inline-flex;align-items:center;gap:8px;margin-left:10px;padding:2px 8px;border:1px solid var(--line);border-radius:999px;font-size:12.5px}.chip button{all:unset;cursor:pointer;color:var(--accent)}
+.impact{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:8px 0 2px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.impact div{min-width:0}.impact b{display:block;font-size:16px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.1}.impact span{display:block;font-family:var(--f-mono);font-size:10px;color:var(--muted);margin-top:2px;white-space:normal;overflow-wrap:anywhere;line-height:1.25;min-height:2.5em}
+.gauge{height:4px;border-radius:2px;background:var(--line);margin-top:5px;position:relative;overflow:hidden}.gauge i{position:absolute;left:0;top:0;bottom:0;border-radius:3px}.gauge em{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--ink);opacity:.6}
+.topcite{font-size:12.5px;color:var(--muted);line-height:1.4}.topcite a{color:var(--ink)}
+
+
+.sidenav{font-family:var(--f-mono);font-size:11.5px;z-index:20}
+.sidenav a{display:block;color:var(--muted);text-decoration:none;padding:5px 10px;border-left:2px solid var(--line);line-height:1.3}
+.sidenav a:hover{color:var(--ink);border-left-color:var(--muted)}
+.sidenav a.on{color:var(--accent);border-left-color:var(--accent);font-weight:600}
+.sidenav .sn-title{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:0 10px 8px}
+html{scroll-behavior:smooth}
+.section,header{scroll-margin-top:56px}
+@media (min-width:1180px){
+ .sidenav{position:fixed;left:max(14px,calc((100vw - 1290px)/2));top:36px;width:172px;max-height:calc(100vh - 60px);overflow:auto}
+ .wrap{margin-left:max(206px,calc((100vw - 1290px)/2 + 196px));margin-right:auto}
+ .section,header{scroll-margin-top:20px}
+}
+@media (max-width:1179.98px){
+ .sidenav{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:2px;overflow-x:auto;padding:8px max(16px,env(safe-area-inset-left,0px));white-space:nowrap}
+ .sidenav .sn-title{display:none}
+ .sidenav a{border-left:0;border-bottom:2px solid transparent;padding:4px 8px}
+ .sidenav a.on{border-bottom-color:var(--accent)}
+}
+@media print{.sidenav{display:none}.wrap{margin-left:auto}}
 </style>
 
+<nav class="sidenav" id="sidenav" aria-label="Sections"></nav>
 <div class="wrap">
-<header>
-  <div class="eyebrow">Hur Lab · University of North Dakota · Department of Biomedical Sciences</div>
-  <h1>Hur Lab Research Overview</h1>
-  <p class="lede">{{YEARS_SPAN}} years of computational biomedicine in one place: what the lab works on, how the focus has moved over time, who funds it, and every paper, preprint and proceedings paper on Dr. Junguk Hur's CV. Start here if you are new to the lab.</p>
+<header id="top">
+  <div class="eyebrow">{{EYEBROW}}</div>
+  <h1>{{PAGE_TITLE}}</h1>
+  <p class="lede">{{LEDE}}</p>
   <div class="facts" id="facts"></div>
 </header>
 
@@ -99,19 +145,19 @@ svg text{fill:var(--muted);font-family:var(--f-mono);font-size:11px}
     </div>
     <div class="seg" role="group" aria-label="Authorship">
       <button id="au-all" aria-pressed="true">Any authorship</button>
-      <button id="au-led" aria-pressed="false">Led by Dr. Hur</button>
+      <button id="au-led" aria-pressed="false">Led by {{PI_SHORT}}</button>
       <button id="au-co" aria-pressed="false">Co-authored</button>
     </div>
   </div>
   <div class="legend" id="legend"></div>
   <div class="chart-box"><svg id="chart" role="img" aria-label="Stacked bar chart of publications per year by theme"></svg></div>
-  <p class="note">"Led by Dr. Hur" means first, co-first, corresponding or co-corresponding author; "Co-authored" is every other paper, where he is a middle author (edited books and the group-authorship paper are left out of both). Click a theme in the legend to hide or show it. "Journal and conference papers" counts research articles, reviews, editorials, group-authorship papers and conference proceedings papers; "All records" adds preprints, books and the book chapter.</p>
+  <p class="note">"Led by {{PI_SHORT}}" means {{LED_DEF}} on a journal paper; "Co-authored" means a middle author position (the edited books and the group-authorship paper are left out of both; the book chapter counts as co-authored). Click a theme in the legend to hide or show it. "Journal and conference papers" counts research articles, reviews, editorials, group-authorship papers and conference proceedings papers; "All records" adds preprints, books and the book chapter.</p>
 </section>
 
 <section class="section" id="authorship">
   <div class="eyebrow">Lead and collaborative work</div>
-  <h2>Led by Dr. Hur vs. co-authored</h2>
-  <p>Each year split by Dr. Hur’s role: first or co-first author, corresponding or co-corresponding author (as marked in the CV with * and $), or middle co-author on a collaborator’s paper. A paper where he is both first and corresponding counts once, as first author. The two edited books and the group-authorship paper (where he is not in the byline) are left out.</p>
+  <h2>Led by {{PI_SHORT}} vs. co-authored</h2>
+  <p>{{LED_PARA}}</p>
   <div class="toolbar">
     <div class="seg" role="group" aria-label="Lead chart mode">
       <button id="a-year" aria-pressed="true">Per year</button>
@@ -125,7 +171,7 @@ svg text{fill:var(--muted);font-family:var(--f-mono);font-size:11px}
   <div class="legend" id="legend2"></div>
   <div class="facts" id="facts2"></div>
   <div class="chart-box"><svg id="chart2" role="img" aria-label="Stacked bar chart of first-author and corresponding-author records per year"></svg></div>
-  <p class="note">Corresponding marks follow the CV as updated on {{CV_DATE}}.</p>
+  <p class="note">{{LED_NOTE}}</p>
 </section>
 
 <section class="section" id="eras">
@@ -134,33 +180,56 @@ svg text{fill:var(--muted);font-family:var(--f-mono);font-size:11px}
   <div class="eras" id="eraGrid"></div>
 </section>
 
+<section class="section" id="honors" data-optional>
+  <div class="eyebrow">Recognition</div>
+  <h2>Selected honors</h2>
+  <div class="honors" id="honorList"></div>
+</section>
+
 <section class="section" id="themes">
   <div class="eyebrow">Research areas</div>
   <h2>What the lab works on</h2>
-  <p>Each card shows the theme's activity by year and a few papers to read first. Use "Show papers" to jump to the full list for that theme.</p>
+  <p>{{THEMES_PARA}}</p>
   <div class="themes" id="themeGrid"></div>
+</section>
+
+<section class="section" id="network" data-optional>
+  <div class="eyebrow">Collaboration</div>
+  <h2>Co-author network</h2>
+  <p>{{NETWORK_PARA}}</p>
+  <div class="toolbar net-tools">
+    <div class="rng dual" aria-label="Year range"><output id="y0o"></output><div class="dual-track"><div class="dual-fill" id="dualFill"></div><input type="range" id="y0" step="1" aria-label="From year"><input type="range" id="y1" step="1" aria-label="To year"></div><output id="y1o"></output></div>
+    <div class="seg" role="group" aria-label="Number of co-authors"><button data-n="30">Top 30</button><button data-n="50" aria-pressed="true">Top 50</button><button data-n="80">Top 80</button></div>
+    <div class="seg" role="group" aria-label="Node color"><button data-mix="mix" aria-pressed="true">Topic mix</button><button data-mix="main" aria-pressed="false">Main topic</button></div>
+    <div class="seg" role="group" aria-label="Show the PI"><button id="netPI" aria-pressed="true">Show {{PI_SHORT}}</button></div>
+    <button class="seg" id="netReset" style="padding:6px 12px;font-size:13px;cursor:pointer;color:var(--muted)">Re-layout</button>
+    <div class="seg" role="group" aria-label="Minimum shared papers for a link"><button data-w="1">Links: 1+ papers</button><button data-w="2" aria-pressed="true">2+</button><button data-w="4">4+</button></div>
+  </div>
+  <div class="legend" id="netLegend"></div>
+  <div class="chart-box net-box"><svg id="net" role="img" aria-label="Co-author network"></svg><div class="tip" id="netTip" hidden></div></div>
+  <p class="note" id="netNote"></p>
 </section>
 
 <section class="section" id="funding">
   <div class="eyebrow">Funding</div>
   <h2>Funded grants and awards</h2>
-  <p>Every funded award on the CV with Dr. Hur’s role: active external grants, completed external grants, and completed internal UND pilot awards. Pending proposals and consulting roles are not shown.</p>
-  <div class="legend"><span style="display:inline-flex;gap:6px;align-items:center"><span class="sw" style="background:var(--accent)"></span>Active, external</span><span style="display:inline-flex;gap:6px;align-items:center"><span class="sw" style="background:var(--muted)"></span>Completed, external</span><span style="display:inline-flex;gap:6px;align-items:center"><span class="sw" style="background:var(--t6)"></span>Completed, internal UND pilot</span></div>
+  <p>{{GRANTS_PARA}}</p>
+  <div class="legend"><span style="display:inline-flex;gap:6px;align-items:center"><span class="sw" style="background:var(--accent)"></span>Active, external</span><span style="display:inline-flex;gap:6px;align-items:center"><span class="sw" style="background:var(--muted)"></span>Completed, external</span><span style="display:inline-flex;gap:6px;align-items:center"><span class="sw" style="background:var(--t6)"></span>{{INTERNAL_LABEL}}</span></div>
   <div class="chart-box"><svg id="gantt" role="img" aria-label="Timeline of funded external grants"></svg></div>
   <p class="note" id="pilots"></p>
 </section>
 
-<section class="section" id="tools">
+<section class="section" id="tools" data-optional>
   <div class="eyebrow">Software and databases</div>
   <h2>Lab tools you will use</h2>
-  <p>The lab maintains {{N_TOOLS}} software tools, knowledgebases and research-support applications. Full details are on the <a href="https://hurlab.med.und.edu/hurlab/tools.html" target="_blank" rel="noopener">lab website Tools page</a>.</p>
+  <p>{{TOOLS_PARA}}</p>
   <div class="tools" id="toolGrid"></div>
 </section>
 
-<section class="section" id="next">
-  <div class="eyebrow">For new lab members</div>
-  <h2>Where a new project could start</h2>
-  <p>These are starting points for a conversation with Dr. Hur, built where two existing lines of work meet. They are suggestions, not assigned projects.</p>
+<section class="section" id="next" data-optional>
+  <div class="eyebrow">{{IDEAS_EYEBROW}}</div>
+  <h2>{{IDEAS_H2}}</h2>
+  <p>{{IDEAS_PARA}}</p>
   <div class="ideas" id="ideaGrid"></div>
 </section>
 
@@ -174,7 +243,7 @@ svg text{fill:var(--muted);font-family:var(--f-mono);font-size:11px}
   </div>
   <div class="count-line" id="countLine"></div>
   <div id="list"></div>
-  <p class="note">Source: Dr. Hur's CV ({{CV_DATE}}) and the lab's publication tracker. PDFs for every record marked available are in the lab OneDrive under Publications, sorted by theme, with preprints and conference papers in their own folders.</p>
+  <p class="note">{{SOURCE_NOTE}}</p>
 </section>
 </div>
 
@@ -182,11 +251,12 @@ svg text{fill:var(--muted);font-family:var(--f-mono);font-size:11px}
 /*__OVERVIEW_DATA__*/
 
 
+const fmtN=n=>n>=1e6?(n/1e6).toFixed(1)+'M':n>=10000?Math.round(n/1000)+'K':n.toLocaleString();
 const PEER=new Set(["Article","Review","Editorial","Group authorship","Proceedings (peer-reviewed)","Proceedings (not peer-reviewed)"]);
 const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 const col=t=>css('--t'+t);
 const byId=Object.fromEntries(PUBS.map(p=>[p.id,p]));
-const years=[];for(let y=2004;y<={{LAST_YEAR}};y++)years.push(y);
+const _ys=PUBS.map(p=>p.year).filter(Boolean);const Y0=Math.min(..._ys),Y1=Math.max(..._ys,new Date().getFullYear());const years=[];for(let y=Y0;y<=Y1;y++)years.push(y);
 
 
 
@@ -200,14 +270,14 @@ const years=[];for(let y=2004;y<={{LAST_YEAR}};y++)years.push(y);
 /* facts */
 (function(){
  const n=PUBS.length, art=PUBS.filter(p=>p.cat==="Article").length, pre=PUBS.filter(p=>p.cat==="Preprint").length, papers=PUBS.filter(p=>PEER.has(p.cat)).length;
- const act=GRANTS.filter(g=>g.a&&!g.x).length;
+ const act=GRANTS.filter(g=>g.a&&!g.i).length;
  document.getElementById('facts').innerHTML=
-  `<span><b>${papers}</b>journal and conference papers</span><span><b>${art}</b>original research articles</span><span><b>${pre}</b>preprints</span><span><b>${n}</b>records on the CV</span><span><b>${act}</b>active funded awards</span><span><b>${TOOLS.length}</b>lab tools</span>`;
+  `<span><b>${papers}</b>journal and conference papers</span><span><b>${art}</b>original research articles</span><span><b>${pre}</b>preprints</span><span><b>${n}</b>bibliography records, ${Y0} to ${Y1}</span><span><b>${act}</b>active funded awards</span>${(()=>{const M=(typeof METRICS!=='undefined')?METRICS:{};const cs=PUBS.filter(p=>p.pmid&&M[p.pmid]).map(p=>M[p.pmid].c||0).sort((a,b)=>b-a);if(!cs.length)return '';const h=cs.filter((c,i)=>c>=i+1).length;return `<span><b>${fmtN(cs.reduce((u,c)=>u+c,0))}</b>citations</span><span><b>${h}</b>h-index</span>`;})()}${(()=>{const s=GRANTS.reduce((u,g)=>u+((g.lead&&g.amt)||0),0);return s?`<span><b>$${(s/1e6).toFixed(1)}M</b>{{FUNDING_LABEL}}</span>`:""})()}${TOOLS.length?`<span><b>${TOOLS.length}</b>lab tools</span>`:''}`;
 })();
 
 /* stacked chart */
 const hidden=new Set(); let mode='year', kind='all', auth='all';
-const isLed=p=>p.r==='F'||p.r==='C', isCo=p=>!p.r&&p.cat!=='Book'&&p.cat!=='Group authorship';
+const isBook=p=>p.cat==='Book',isLed=p=>(p.r==='F'||p.r==='C')&&!isBook(p), isCo=p=>!p.r&&!isBook(p)&&p.cat!=='Group authorship';
 function legend(){
  const el=document.getElementById('legend'); el.innerHTML='';
  Object.entries(THEMES).forEach(([k,v])=>{
@@ -231,7 +301,7 @@ function chart(){
   Object.keys(THEMES).forEach(t=>{if(hidden.has(+t))return;const v=counts[i][t];if(!v)return;
    s+=`<rect x="${x}" y="${y(base+v)}" width="${w}" height="${y(base)-y(base+v)}" fill="${col(t)}"><title>${yr} · ${THEMES[t]}: ${v}</title></rect>`;base+=v;});
   if(tots[i])s+=`<text x="${x+w/2}" y="${y(tots[i])-4}" text-anchor="middle">${tots[i]}</text>`;
-  if(i%2===0||years.length<14)s+=`<text x="${x+w/2}" y="${H-8}" text-anchor="middle">${yr}</text>`;});
+  if(i%(years.length>30?5:2)===0||years.length<14)s+=`<text x="${x+w/2}" y="${H-8}" text-anchor="middle">${yr}</text>`;});
  svg.innerHTML=s;
 }
 function setSeg(a,b,on){document.getElementById(a).setAttribute('aria-pressed',on);document.getElementById(b).setAttribute('aria-pressed',!on);}
@@ -244,7 +314,7 @@ function setAuth(a){auth=a;['all','led','co'].forEach(k=>document.getElementById
 
 
 /* authorship chart */
-const ROLES={F:["First or co-first author","--accent"],C:["Corresponding or co-corresponding","--t2"],M:["Co-author (middle author)","--t7"]};
+const ROLES={F:["{{ROLE_F}}","--accent"],C:["{{ROLE_C}}","--t2"],M:["Co-author (middle author)","--t7"]};
 let amode='year',akind='all';
 function chart2(){
  const svg=document.getElementById('chart2');const W=Math.max(640,svg.parentElement.clientWidth-32),H=280,ml=36,mb=26,mt=24,mr=8;
@@ -258,10 +328,10 @@ function chart2(){
  years.forEach((yr,i)=>{let base=0;const x=ml+i*bw+bw*0.15,w=bw*0.7;
   ["M","C","F"].forEach(r=>{const v=counts[i][r];if(!v)return;s+=`<rect x="${x}" y="${y(base+v)}" width="${w}" height="${y(base)-y(base+v)}" fill="${css(ROLES[r][1])}"><title>${yr} · ${ROLES[r][0]}: ${v}</title></rect>`;base+=v;});
   if(tots[i])s+=`<text x="${x+w/2}" y="${y(tots[i])-4}" text-anchor="middle">${tots[i]}</text>`;
-  if(i%2===0)s+=`<text x="${x+w/2}" y="${H-8}" text-anchor="middle">${yr}</text>`;});
+  if(i%(years.length>30?5:2)===0)s+=`<text x="${x+w/2}" y="${H-8}" text-anchor="middle">${yr}</text>`;});
  svg.innerHTML=s;
  const n=r=>pool.filter(p=>p.r===r).length;
- document.getElementById('facts2').innerHTML=`<span><b>${n('F')+n('C')}</b>led by Dr. Hur</span><span><b>${n('F')}</b>first or co-first</span><span><b>${n('C')}</b>corresponding (not first)</span><span><b>${n('M')}</b>co-authored</span>`;
+ document.getElementById('facts2').innerHTML=`<span><b>${n('F')+n('C')}</b>led by {{PI_SHORT}}</span><span><b>${n('F')}</b>{{ROLE_F_SHORT}}</span><span><b>${n('C')}</b>{{ROLE_C_SHORT}}</span><span><b>${n('M')}</b>co-authored</span>`;
  document.getElementById('legend2').innerHTML=Object.values(ROLES).map(([l,c])=>`<span style="display:inline-flex;gap:6px;align-items:center"><span class="sw" style="background:${css(c)}"></span>${l}</span>`).join('');
 }
 document.getElementById('a-year').onclick=()=>{amode='year';setSeg('a-year','a-cum',true);chart2();};
@@ -275,52 +345,178 @@ document.getElementById('eraGrid').innerHTML=ERAS.map(e=>{
  return `<div class="era"><div class="yrs">${e.y}</div><h3>${e.h}</h3><p class="note">${e.w}</p><ul>${e.l.map(x=>`<li>${x}</li>`).join('')}</ul><div class="count-line">${n} ${n===1?'record':'records'} published ${e.r[0]} to ${e.r[1]}</div></div>`}).join('');
 
 /* themes */
-function cite(p){return `${p.first}${p.first==='Junguk Hur'?'':' et al.'}, <i>${p.venue}</i> ${p.year}. ${p.title}`;}
-function spark(t){const c=years.map(y=>PUBS.filter(p=>p.theme==t&&p.year===y).length);const m=Math.max(...c,1);
- return `<svg viewBox="0 0 230 34" width="100%" height="34" aria-hidden="true">${c.map((v,i)=>`<rect x="${i*10}" y="${32-v/m*30}" width="7" height="${v/m*30}" fill="${col(t)}"/>`).join('')}<line x1="0" x2="230" y1="32.5" y2="32.5" stroke="${css('--line')}"/></svg>`;}
+function cite(p){return `${p.first}${p.solo?'':' et al.'}, <i>${p.venue}</i> ${p.year}. ${p.title}`;}
+function spark(t){const c=years.map(y=>PUBS.filter(p=>p.theme==t&&p.year===y).length);const m=Math.max(...c,1);const W=years.length*10;
+ return `<svg viewBox="0 0 ${W} 46" width="100%" height="46" aria-hidden="true" style="overflow:visible">${c.map((v,i)=>`<rect x="${i*10}" y="${32-v/m*30}" width="7" height="${v/m*30}" fill="${v?col(t):'transparent'}"/>`).join('')}<line x1="0" x2="${W}" y1="32.5" y2="32.5" stroke="${css('--line')}"/><text x="0" y="44" style="font:10px var(--f-mono);fill:var(--muted)">${years[0]}</text><text x="${W-3}" y="44" text-anchor="end" style="font:10px var(--f-mono);fill:var(--muted)">${years[years.length-1]}</text></svg>`;}
+const MET=(typeof METRICS!=='undefined')?METRICS:{};
+function impact(t,ps){
+ if(!Object.keys(MET).length)return '';
+ const withM=ps.filter(p=>p.pmid&&MET[p.pmid]);if(!withM.length)return '';
+ const cites=withM.reduce((u,p)=>u+(MET[p.pmid].c||0),0);
+ const rcrs=withM.map(p=>MET[p.pmid].rcr).filter(v=>v!=null).sort((a,b)=>a-b);const med=rcrs.length?rcrs[Math.floor(rcrs.length/2)]:null;
+ const top10=withM.filter(p=>MET[p.pmid].pct!=null&&MET[p.pmid].pct>=90).length;
+ const jp=ps.filter(p=>p.cat!=='Book'&&p.cat!=='Group authorship');const led=jp.filter(p=>p.r==='F'||p.r==='C').length;const ledPct=jp.length?Math.round(100*led/jp.length):0;
+ const best=withM.slice().sort((a,b)=>(MET[b.pmid].c||0)-(MET[a.pmid].c||0))[0];
+ const g=med==null?'':`<div class="gauge"><i style="width:${Math.min(100,med/4*100)}%;background:${col(t)}"></i><em style="left:25%"></em></div>`;
+ return `<div class="impact">
+  <div><b>${fmtN(cites)}</b><span>citations</span></div>
+  <div><b>${med==null?'n/a':med.toFixed(1)}</b><span>median RCR</span>${g}</div>
+  <div><b>${top10}</b><span>NIH top 10%</span></div>
+  <div><b>${ledPct}%</b><span>led by {{PI_SHORT}}</span><div class="gauge"><i style="width:${ledPct}%;background:${col(t)}"></i></div></div>
+ </div>${best?`<div class="topcite">Most cited: ${link(best,best.title.length>80?best.title.slice(0,78)+'…':best.title)} (${best.year}, ${fmtN(MET[best.pmid].c)})</div>`:''}`;
+}
 function themes(){
  document.getElementById('themeGrid').innerHTML=Object.entries(THEMES).map(([t,name])=>{
   const ps=PUBS.filter(p=>p.theme==t); const ys=ps.map(p=>p.year);
-  return `<div class="theme"><div class="bar" style="background:${col(t)}"></div><div class="head"><h3>${name}</h3><span class="count">${ps.length} · ${Math.min(...ys)} to ${Math.max(...ys)}</span></div>${spark(t)}<div class="eyebrow">Read first</div><ol>${KEY[t].map(i=>byId[i]).filter(Boolean).map(p=>`<li>${link(p,cite(p))}</li>`).join('')}</ol><button class="filter" data-t="${t}">Show all ${ps.length} papers</button></div>`}).join('');
+  return `<div class="theme"><div class="bar" style="background:${col(t)}"></div><div class="head"><h3>${name}</h3><span class="count">${ps.length} · ${Math.min(...ys)} to ${Math.max(...ys)}</span></div>${spark(t)}${impact(t,ps)}<div class="eyebrow">Read first</div><ol>${KEY[t].map(i=>byId[i]).filter(Boolean).map(p=>`<li>${link(p,cite(p))}</li>`).join('')}</ol><button class="filter" data-t="${t}">Show all ${ps.length} papers</button></div>`}).join('');
  document.querySelectorAll('.theme button.filter').forEach(b=>b.onclick=()=>{document.getElementById('fTheme').value=b.dataset.t;render();document.getElementById('papers').scrollIntoView({behavior:'smooth'});});
 }
 function link(p,txt){const u=p.pmid?`https://pubmed.ncbi.nlm.nih.gov/${p.pmid}/`:p.doi?`https://doi.org/${p.doi}`:'';return u?`<a href="${u}" target="_blank" rel="noopener">${txt}</a>`:txt;}
 
 /* gantt */
 function gantt(){
- const svg=document.getElementById('gantt'); const W=Math.max(760,svg.parentElement.clientWidth-32),rh=26,ml=Math.min(330,W*0.4),mt=22,mr=150;
- const s0=2011,s1=2032,H=mt+GRANTS.length*rh+10; const x=v=>ml+(v-s0)/(s1-s0)*(W-ml-mr);
+ const svg=document.getElementById('gantt'); const W=Math.max(760,svg.parentElement.clientWidth-32),rh=26,ml=Math.min(330,W*0.4),mt=22,mr=GRANTS.some(g=>g.m)?210:150;
+ const _g0=Math.floor(Math.min(...GRANTS.map(g=>g.s),new Date().getFullYear()-10)),_g1=Math.ceil(Math.max(...GRANTS.map(g=>g.e),new Date().getFullYear()+1));const s0=_g0,s1=_g1,H=mt+GRANTS.length*rh+10;const _step=(s1-s0)>30?5:3; const x=v=>ml+(v-s0)/(s1-s0)*(W-ml-mr);
  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('width',W);svg.setAttribute('height',H);
- let s='';for(let y=s0;y<=s1;y+=3)s+=`<line x1="${x(y)}" x2="${x(y)}" y1="${mt-4}" y2="${H-6}" stroke="${css('--line')}"/><text x="${x(y)}" y="${mt-8}" text-anchor="middle">${y}</text>`;
- const now={{NOW_DECIMAL}}; s+=`<line x1="${x(now)}" x2="${x(now)}" y1="${mt-4}" y2="${H-6}" stroke="${css('--accent')}" stroke-dasharray="3 3"/>`;
+ let s='';for(let y=Math.ceil(s0/_step)*_step;y<=s1;y+=_step)s+=`<line x1="${x(y)}" x2="${x(y)}" y1="${mt-4}" y2="${H-6}" stroke="${css('--line')}"/><text x="${x(y)}" y="${mt-8}" text-anchor="middle">${y}</text>`;
+ const _d=new Date();const now=_d.getFullYear()+_d.getMonth()/12; s+=`<line x1="${x(now)}" x2="${x(now)}" y1="${mt-4}" y2="${H-6}" stroke="${css('--accent')}" stroke-dasharray="3 3"/>`;
  const short=(t,n)=>t.length>n?t.slice(0,n-1)+'…':t;
  GRANTS.forEach((g,i)=>{const yy=mt+i*rh;
-  s+=`<g class="gantt-row"><text class="lbl" x="0" y="${yy+16}">${short(g.f+': '+g.t,Math.floor(ml/6.4))}</text><rect x="${x(g.s)}" y="${yy+5}" width="${Math.max(3,x(g.e)-x(g.s))}" height="15" rx="3" fill="${g.a?css('--accent'):g.i?css('--t6'):css('--muted')}" opacity="${g.a?1:0.75}"><title>${g.t} (${g.f}) · Role: ${g.r}</title></rect><text x="${x(g.e)+4}" y="${yy+16}">${g.r}</text></g>`;});
- svg.innerHTML=s; const ne=GRANTS.filter(g=>!g.i&&!g.x).length, ni=GRANTS.filter(g=>g.i&&!g.x).length, na=GRANTS.filter(g=>g.a&&!g.x).length;
- document.getElementById('pilots').textContent=`${na} active external awards, ${ne-na} completed external awards and ${ni} completed internal pilot awards. The dashed line marks today.`;
+  s+=`<g class="gantt-row"><text class="lbl" x="0" y="${yy+16}">${short(g.f+': '+g.t,Math.floor(ml/6.4))}</text><rect x="${x(g.s)}" y="${yy+5}" width="${Math.max(3,x(g.e)-x(g.s))}" height="15" rx="3" fill="${g.a?css('--accent'):g.i?css('--t6'):css('--muted')}" opacity="${g.a?1:0.75}"><title>${g.t} (${g.f}) · Role: ${g.r}${g.m?" · "+g.m+" listed on the CV":""}</title></rect><text x="${x(g.e)+4}" y="${yy+16}">${g.r}${g.m?" · "+g.m:""}</text></g>`;});
+ svg.innerHTML=s; const ext=GRANTS.filter(g=>!g.i), ni=GRANTS.filter(g=>g.i).length, na=ext.filter(g=>g.a).length;
+ document.getElementById('pilots').textContent=`${na} active external awards, ${ext.length-na} completed external awards and ${ni} completed internal UND pilot ${ni===1?'award':'awards'}. The dashed line marks today.`;
 }
 
 /* tools, ideas */
-document.getElementById('toolGrid').innerHTML=TOOLS.map(([n,d,u])=>`<div class="tool"><b><a href="${u}" target="_blank" rel="noopener">${n}</a></b><span class="note">${d}</span></div>`).join('');
-document.getElementById('ideaGrid').innerHTML=IDEAS.map(i=>`<div class="idea"><span class="from">${i.f}</span><h3>${i.h}</h3><p class="note">${i.d}</p></div>`).join('');
+if(!(typeof HONORS!=='undefined'&&HONORS.length))document.getElementById('honors').remove();else document.getElementById('honorList').innerHTML=HONORS.map(h=>`<div><b>${h.y}</b><span>${h.t}</span></div>`).join('');
+if(!TOOLS.length)document.getElementById('tools').remove();else document.getElementById('toolGrid').innerHTML=TOOLS.map(([n,d,u])=>`<div class="tool"><b><a href="${u}" target="_blank" rel="noopener">${n}</a></b><span class="note">${d}</span></div>`).join('');
+if(!IDEAS.length)document.getElementById('next').remove();else document.getElementById('ideaGrid').innerHTML=IDEAS.map(i=>{const IC={drop:'<path d="M12 3.5c3 3.8 5.5 6.8 5.5 10a5.5 5.5 0 0 1-11 0c0-3.2 2.5-6.2 5.5-10z"/><path d="M9.2 14.2a2.9 2.9 0 0 0 2.4 2.6"/>',brain:'<path d="M12 5.2v14"/><path d="M12 6.4A3 3 0 0 0 6.6 7.6 3 3 0 0 0 4.6 12a3 3 0 0 0 1.6 4.2A3 3 0 0 0 12 17.6"/><path d="M12 6.4a3 3 0 0 1 5.4 1.2 3 3 0 0 1 2 4.4 3 3 0 0 1-1.6 4.2A3 3 0 0 1 12 17.6"/><path d="M8 11.5h2M14 11.5h2"/>',cell:'<circle cx="8.2" cy="8.4" r="4.2"/><circle cx="16.2" cy="10" r="3.4"/><circle cx="10.6" cy="16.6" r="3.6"/><path d="M8.2 8.4h.01M16.2 10h.01M10.6 16.6h.01"/>',shield:'<path d="M12 3.6l6.6 2.4v5.4c0 4.2-2.8 7.4-6.6 9-3.8-1.6-6.6-4.8-6.6-9V6z"/><path d="M9 12l2.2 2.2L15.2 10"/>',network:'<circle cx="12" cy="5.6" r="2"/><circle cx="5.6" cy="17" r="2"/><circle cx="18.4" cy="17" r="2"/><circle cx="12" cy="12.6" r="2.2"/><path d="M12 7.6v2.8M10.2 13.8l-3.2 2M13.8 13.8l3.2 2"/>',pill:'<rect x="3.6" y="8.2" width="16.8" height="7.6" rx="3.8" transform="rotate(-35 12 12)"/><path d="M9.8 8.9l4.4 6.2"/>',people:'<circle cx="8.6" cy="8.4" r="2.6"/><circle cx="16" cy="9.4" r="2.1"/><path d="M3.8 18.4c.4-3 2.3-4.8 4.8-4.8s4.4 1.8 4.8 4.8"/><path d="M14.6 13.9c2.8-.6 5 1 5.6 4.1"/>'};
+ const parts=i.parts||[];const vis=(i.icon||parts.length||i.g)?`<div class="idea-vis">${IC[i.icon]?`<span class="idea-ico"><svg viewBox="0 0 24 24" aria-hidden="true">${IC[i.icon]}</svg></span>`:''}<div class="idea-flow">${parts.length?`<div class="idea-in">${parts.map(p=>`<span class="idea-chip">${p}</span>`).join('<span class="idea-plus">+</span>')}</div>`:''}${i.g?`<div class="idea-goal"><i>&rarr;</i><span>${i.g}</span></div>`:''}</div></div>`:'';
+ return `<div class="idea" style="${i.c?`--ic:var(--t${i.c})`:''}">${vis}<h3>${i.h}</h3><p class="note">${i.d}</p><span class="from">Based on: ${i.f}</span></div>`}).join('');
 
 /* list */
-const fT=document.getElementById('fTheme'),fC=document.getElementById('fCat'),q=document.getElementById('q');
+const fT=document.getElementById('fTheme'),fC=document.getElementById('fCat'),q=document.getElementById('q');let authFilter=null;
 fT.innerHTML='<option value="">All themes</option>'+Object.entries(THEMES).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');
 const cats=[...new Set(PUBS.map(p=>p.cat))];
 fC.innerHTML='<option value="">All record types</option>'+cats.map(c=>`<option>${c}</option>`).join('');
 function render(){
  const s=q.value.trim().toLowerCase();
- const L=PUBS.filter(p=>(!fT.value||p.theme==fT.value)&&(!fC.value||p.cat===fC.value)&&(!s||(p.title+' '+p.venue+' '+p.first).toLowerCase().includes(s))).sort((a,b)=>b.year-a.year||a.id-b.id);
- document.getElementById('countLine').textContent=`${L.length} of ${PUBS.length} records`;
- document.getElementById('list').innerHTML=L.map(p=>`<div class="row"><span class="y">${p.year}</span><div><div class="t">${link(p,p.title)}</div><div class="m"><span><span class="dot" style="background:${col(p.theme)}"></span>${THEMES[p.theme]}</span><span>${p.first}${p.first==='Junguk Hur'?'':' et al.'}</span><span><i>${p.venue}</i></span><span class="pill">${p.cat}</span></div></div></div>`).join('');
+ const L=PUBS.filter(p=>(!fT.value||p.theme==fT.value)&&(!fC.value||p.cat===fC.value)&&(!authFilter||(COAUTH[p.id]||[]).includes(authFilter))&&(!s||(p.title+' '+p.venue+' '+p.first).toLowerCase().includes(s))).sort((a,b)=>b.year-a.year||a.id-b.id);
+ document.getElementById('countLine').innerHTML=`${L.length} of ${PUBS.length} records`+(authFilter?`<span class="chip">co-author: ${authFilter}<button id="clearAuth">clear</button></span>`:'');
+ if(authFilter)document.getElementById('clearAuth').onclick=()=>{authFilter=null;render();network();};
+ document.getElementById('list').innerHTML=L.map(p=>`<div class="row"><span class="y">${p.year}</span><div><div class="t">${link(p,p.title)}</div><div class="m"><span><span class="dot" style="background:${col(p.theme)}"></span>${THEMES[p.theme]}</span><span>${p.first}${p.solo?'':' et al.'}</span><span><i>${p.venue}</i></span><span class="pill">${p.cat}</span></div></div></div>`).join('');
 }
 [q,fT,fC].forEach(e=>e.addEventListener('input',render));
 
-function all(){legend();chart();chart2();themes();gantt();render();}
+/* co-author network */
+const COAUTH=(typeof COAUTH_DATA!=='undefined')?COAUTH_DATA:{};
+let netN=50,netW=2,netFocus=null,netPI=true,netMix='mix';const PI_NAME='{{PI_SHORT}}';
+(function initNet(){
+ if(!Object.keys(COAUTH).length){document.getElementById('network').remove();return;}
+ const ys=PUBS.filter(p=>COAUTH[p.id]).map(p=>p.year);const a=Math.min(...ys),b=Math.max(...ys);
+ const y0=document.getElementById('y0'),y1=document.getElementById('y1');
+ [y0,y1].forEach(e=>{e.min=a;e.max=b;});y0.value=Math.max(a,b-14);y1.value=b;
+ const fill=()=>{const lo=(+y0.value-a)/(b-a)*100,hi=(+y1.value-a)/(b-a)*100;const f=document.getElementById('dualFill');f.style.left=lo+'%';f.style.width=(hi-lo)+'%';document.getElementById('y0o').value=y0.value;document.getElementById('y1o').value=y1.value;y0.style.zIndex=(+y0.value>=b-1)?3:2;};
+ y0.addEventListener('input',()=>{if(+y0.value>+y1.value)y0.value=y1.value;fill();network();});
+ y1.addEventListener('input',()=>{if(+y1.value<+y0.value)y1.value=y0.value;fill();network();});
+ fill();
+ document.querySelectorAll('.net-tools [data-n]').forEach(bt=>bt.onclick=()=>{netN=+bt.dataset.n;document.querySelectorAll('.net-tools [data-n]').forEach(x=>x.setAttribute('aria-pressed',x===bt));network();});
+ document.getElementById('netReset').onclick=()=>{netCache={key:'',pos:null};network();};
+ document.querySelectorAll('.net-tools [data-mix]').forEach(bt=>bt.onclick=()=>{netMix=bt.dataset.mix;document.querySelectorAll('.net-tools [data-mix]').forEach(x=>x.setAttribute('aria-pressed',x===bt));network(true);});
+ document.getElementById('netPI').onclick=()=>{netPI=!netPI;document.getElementById('netPI').setAttribute('aria-pressed',netPI);network();};
+ document.querySelectorAll('.net-tools [data-w]').forEach(bt=>bt.onclick=()=>{netW=+bt.dataset.w;document.querySelectorAll('.net-tools [data-w]').forEach(x=>x.setAttribute('aria-pressed',x===bt));network();});
+})();
+let netCache={key:'',pos:null};
+function network(keep){
+ const svg=document.getElementById('net');if(!svg)return;
+ const y0=+document.getElementById('y0').value,y1=+document.getElementById('y1').value;
+ const pool=PUBS.filter(p=>COAUTH[p.id]&&p.year>=y0&&p.year<=y1);
+ const A={};
+ pool.forEach(p=>COAUTH[p.id].forEach(n=>{const o=A[n]||(A[n]={n:0,th:{},ids:[],y0:9999,y1:0});o.n++;o.th[p.theme]=(o.th[p.theme]||0)+1;o.ids.push(p.id);o.y0=Math.min(o.y0,p.year);o.y1=Math.max(o.y1,p.year);}));
+ const names=Object.keys(A).sort((x,y)=>A[y].n-A[x].n||x.localeCompare(y)).slice(0,netN);
+ if(netPI&&pool.length){A[PI_NAME]={n:pool.length,th:pool.reduce((o,p)=>(o[p.theme]=(o[p.theme]||0)+1,o),{}),ids:pool.map(p=>p.id),y0:Math.min(...pool.map(p=>p.year)),y1:Math.max(...pool.map(p=>p.year)),pi:true};names.unshift(PI_NAME);}
+ const idx=Object.fromEntries(names.map((n,i)=>[n,i]));
+ const W=Math.max(640,svg.parentElement.clientWidth-16),H=Math.min(620,Math.max(420,W*0.62));
+ const E={};
+ pool.forEach(p=>{const m=[...new Set(COAUTH[p.id])].filter(n=>n in idx);for(let i=0;i<m.length;i++)for(let j=i+1;j<m.length;j++){const k=idx[m[i]]<idx[m[j]]?m[i]+'|'+m[j]:m[j]+'|'+m[i];E[k]=(E[k]||0)+1;}});
+ if(netPI&&PI_NAME in idx)names.forEach(n=>{if(n!==PI_NAME&&A[n].n>=netW)E[PI_NAME+'|'+n]=A[n].n;});
+ const edges=Object.entries(E).filter(([k,w])=>w>=netW).map(([k,w])=>{const [s,d]=k.split('|');return {s:idx[s],d:idx[d],w};});
+ const N=names.length;if(!N){svg.innerHTML='';document.getElementById('netNote').textContent='No co-authored papers in this range.';return;}
+ /* force layout, deterministic */
+ const ckey=[y0,y1,netN,netW,W,netPI].join('|');const reuse=keep&&netCache.key===ckey&&netCache.pos;
+ const nodes=names.map((n,i)=>{if(reuse&&netCache.pos[n])return {...netCache.pos[n],vx:0,vy:0,n:A[n].n};const ang=2*Math.PI*i/N;const r=Math.min(W,H)*0.36;return {x:W/2+r*Math.cos(ang),y:H/2+r*Math.sin(ang),vx:0,vy:0,n:A[n].n};});
+ const k=Math.sqrt(W*H/N)*0.9;let temp=W/10;
+ const deg=new Array(N).fill(0);edges.forEach(e=>{deg[e.s]+=e.w;deg[e.d]+=e.w;});
+ for(let it=0;it<(reuse?0:260);it++){
+  for(let i=0;i<N;i++){nodes[i].vx=0;nodes[i].vy=0;}
+  for(let i=0;i<N;i++)for(let j=i+1;j<N;j++){let dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y;let d=Math.hypot(dx,dy);if(d<0.5){dx=(i-j)*0.37;dy=(j%3-1)*0.21;d=Math.hypot(dx,dy);}if(d>3*k)continue;const f=k*k/d*((deg[i]&&deg[j])?1:0.35);dx/=d;dy/=d;nodes[i].vx+=dx*f;nodes[i].vy+=dy*f;nodes[j].vx-=dx*f;nodes[j].vy-=dy*f;}
+  edges.forEach(e=>{let dx=nodes[e.s].x-nodes[e.d].x,dy=nodes[e.s].y-nodes[e.d].y;let d=Math.hypot(dx,dy)||0.01;const f=d*d/k*Math.log(1+e.w)*0.6;dx/=d;dy/=d;nodes[e.s].vx-=dx*f;nodes[e.s].vy-=dy*f;nodes[e.d].vx+=dx*f;nodes[e.d].vy+=dy*f;});
+  nodes.forEach((nd,i)=>{const gx=W/2-nd.x,gy=H/2-nd.y;const g=deg[i]?0.16:0.3;nd.vx+=gx*g;nd.vy+=gy*g;const v=Math.hypot(nd.vx,nd.vy)||0.01;const s=Math.min(v,temp)/v;nd.x=Math.max(-W,Math.min(2*W,nd.x+nd.vx*s));nd.y=Math.max(-H,Math.min(2*H,nd.y+nd.vy*s));});
+  if(netPI&&PI_NAME in idx){nodes[idx[PI_NAME]].x=W/2;nodes[idx[PI_NAME]].y=H/2;}
+  temp*=0.975;
+ }
+ /* fit connected nodes into the drawing area; park isolated nodes in a strip at the bottom */
+ const par=nodes.map((_,i)=>i);const find=x=>par[x]===x?x:(par[x]=find(par[x]));edges.forEach(e=>{par[find(e.s)]=find(e.d);});
+ const csize={};nodes.forEach((_,i)=>{const r=find(i);csize[r]=(csize[r]||0)+1;});
+ const piI=(netPI&&PI_NAME in idx)?idx[PI_NAME]:-1;
+ const small=i=>csize[find(i)]<3&&i!==piI;
+ const iso=nodes.map((nd,i)=>i).filter(i=>small(i)).sort((x,y)=>find(x)-find(y)||x-y);const con=nodes.map((nd,i)=>i).filter(i=>!small(i)&&i!==piI);
+ const perRow=Math.max(1,Math.floor((W-80)/110));const rows=iso.length?Math.ceil(iso.length/perRow):0;const strip=rows?rows*30+14:0;
+ if(!reuse&&con.length){const xs=con.map(i=>nodes[i].x),ys=con.map(i=>nodes[i].y);const x0=Math.min(...xs),x1=Math.max(...xs),y0b=Math.min(...ys),y1b=Math.max(...ys);
+  const sx=(W-150)/Math.max(1,x1-x0),sy=(H-strip-60)/Math.max(1,y1b-y0b),sc=Math.min(sx,sy,1.6);
+  const ox=(W-110-40-(x1-x0)*sc)/2+40,oy=(H-strip-30-(y1b-y0b)*sc)/2+30;
+  con.forEach(i=>{nodes[i].x=ox+(nodes[i].x-x0)*sc;nodes[i].y=oy+(nodes[i].y-y0b)*sc;});}
+ if(!reuse&&piI>=0){nodes[piI].x=(W-110+40)/2;nodes[piI].y=(H-strip)/2+10;}
+ if(!reuse)iso.forEach((i,j)=>{const r=Math.floor(j/perRow),c=j%perRow,nIn=Math.min(perRow,iso.length-r*perRow);nodes[i].x=40+(c+0.5)*(W-80)/nIn;nodes[i].y=H-strip+22+r*30;});
+ svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('width',W);svg.setAttribute('height',H);
+ const maxCo=Math.max(...names.filter(n=>!A[n].pi).map(n=>A[n].n),1);const rad=n=>4.5+23.5*Math.pow(n/maxCo,0.7);const radOf=n=>A[n].pi?36:rad(A[n].n);const maxN=A[names[0]].n;
+ const dom=n=>Object.entries(A[n].th).sort((a,b)=>b[1]-a[1])[0][0];
+ const focusSet=netFocus!==null&&names.includes(netFocus)?new Set([netFocus,...edges.filter(e=>names[e.s]===netFocus||names[e.d]===netFocus).map(e=>names[e.s]===netFocus?names[e.d]:names[e.s])]):null;
+ let s='';
+ edges.forEach(e=>{const hi=focusSet&&(names[e.s]===netFocus||names[e.d]===netFocus);const dim=focusSet&&!hi;s+=`<line class="${hi?'hi':dim?'dim':''}" data-s="${e.s}" data-d="${e.d}" x1="${nodes[e.s].x.toFixed(1)}" y1="${nodes[e.s].y.toFixed(1)}" x2="${nodes[e.d].x.toFixed(1)}" y2="${nodes[e.d].y.toFixed(1)}" stroke-width="${Math.min(6,0.6+Math.sqrt(e.w))}"/>`;});
+ const labelMin=N>55?A[names[Math.min(N-1,40)]].n:0;
+ const pie=(n,r,force)=>{const e=Object.entries(A[n].th).map(([k,v])=>[+k,v]).sort((a,b)=>a[0]-b[0]);const tot=e.reduce((u,x)=>u+x[1],0);if(!force&&(netMix!=='mix'||e.length<2||r<6.5))return `<circle class="v" r="${r.toFixed(1)}" fill="${col(dom(n))}"/>`;let a0=-Math.PI/2,o='';e.forEach(([k,v])=>{const a1=a0+2*Math.PI*v/tot;const x0=(r*Math.cos(a0)).toFixed(2),y0=(r*Math.sin(a0)).toFixed(2),x1=(r*Math.cos(a1)).toFixed(2),y1=(r*Math.sin(a1)).toFixed(2);o+=`<path d="M0 0L${x0} ${y0}A${r.toFixed(1)} ${r.toFixed(1)} 0 ${(a1-a0)>Math.PI?1:0} 1 ${x1} ${y1}Z" fill="${col(k)}"/>`;a0=a1;});return o+`<circle class="v ring" r="${r.toFixed(1)}" fill="none"/>`;};
+ names.forEach((n,i)=>{const nd=nodes[i];const dim=focusSet&&!focusSet.has(n);const r=radOf(n);s+=`<g class="n ${dim?'dim':''} ${A[n].pi?'pi':''}" data-i="${i}" data-r="${r.toFixed(1)}" transform="translate(${nd.x.toFixed(1)},${nd.y.toFixed(1)})"><circle class="hit" r="${(r+7).toFixed(1)}" fill="transparent" stroke="none"/>${A[n].pi?`${pie(n,r,true)}<circle class="v" r="${(r*0.66).toFixed(1)}" fill="#fde047" stroke="var(--ink)" stroke-width="1.5"/><circle class="v" r="${r.toFixed(1)}" fill="none" stroke="var(--ink)" stroke-width="3"/><text y="4" text-anchor="middle" style="fill:#111;font-weight:700;font-size:10.5px;stroke:none">${n.replace(/^Dr\. /,'')}</text>`:pie(n,r)+((A[n].n>=labelMin||n===netFocus)?`<text x="${(r+3).toFixed(1)}" y="4">${n} <tspan class="cnt">${A[n].n}</tspan></text>`:'')}</g>`;});
+ if(iso.length)s+=`<line x1="20" x2="${W-20}" y1="${H-strip-6}" y2="${H-strip-6}" stroke-dasharray="3 4"/><text x="${W-24}" y="${H-strip+4}" text-anchor="end" style="font-size:10.5px;opacity:.6">isolated or paired at this threshold</text>`;
+ svg.innerHTML=s;
+ netCache={key:ckey,pos:Object.fromEntries(names.map((n,i)=>[n,nodes[i]]))};
+ const tip=document.getElementById('netTip');
+ svg.querySelectorAll('g.n').forEach(g=>{const n=names[+g.dataset.i];const o=A[n];
+  g.addEventListener('mousemove',ev=>{const r=svg.parentElement.getBoundingClientRect();tip.hidden=false;const th=Object.entries(o.th).sort((a,b)=>b[1]-a[1]).map(([t,c])=>`<span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:${col(t)};margin-right:5px"></span>${THEMES[t]} (${c})`).join('<br>');tip.innerHTML=`<b>${n}</b><br>${o.n} ${o.pi?'paper':'shared paper'}${o.n>1?'s':''}, ${o.y0===o.y1?o.y0:o.y0+' to '+o.y1}<br>${th}<br><span style="opacity:.7">click to filter the list; click again to clear</span>`;const tw=tip.offsetWidth,thh=tip.offsetHeight,px=ev.clientX-r.left,py=ev.clientY-r.top;let lx=px+26,ty=py+22;if(lx+tw>r.width-6)lx=px-tw-18;if(lx<6)lx=Math.max(6,Math.min(r.width-tw-6,px-tw/2));if(ty+thh>r.height-6)ty=py-thh-16;if(ty<6)ty=6;tip.style.left=lx+'px';tip.style.top=ty+'px';});
+  g.addEventListener('mouseleave',()=>{tip.hidden=true;});
+  g._toggle=()=>{if(o.pi){netFocus=netFocus===n?null:n;network(true);return;}if(netFocus===n){netFocus=null;authFilter=null;}else{netFocus=n;authFilter=n;}network(true);render();};
+ });
+ /* drag nodes */
+ svg.style.touchAction='none';
+ svg.querySelectorAll('g.n').forEach(g=>{const i=+g.dataset.i;
+  g.addEventListener('pointerdown',ev=>{ev.preventDefault();g.setPointerCapture(ev.pointerId);const pt=svg.createSVGPoint();const toSvg=e=>{pt.x=e.clientX;pt.y=e.clientY;return pt.matrixTransform(svg.getScreenCTM().inverse());};const p0=toSvg(ev);const ox=nodes[i].x-p0.x,oy=nodes[i].y-p0.y;let moved=false;
+   const mv=e=>{const p=toSvg(e);const nx=Math.max(12,Math.min(W-12,p.x+ox)),ny=Math.max(12,Math.min(H-12,p.y+oy));if(Math.hypot(p.x-p0.x,p.y-p0.y)>4)moved=true;if(!moved)return;nodes[i].x=nx;nodes[i].y=ny;g.setAttribute('transform',`translate(${nx.toFixed(1)},${ny.toFixed(1)})`);
+    svg.querySelectorAll(`line[data-s="${i}"]`).forEach(l=>{l.setAttribute('x1',nx.toFixed(1));l.setAttribute('y1',ny.toFixed(1));});svg.querySelectorAll(`line[data-d="${i}"]`).forEach(l=>{l.setAttribute('x2',nx.toFixed(1));l.setAttribute('y2',ny.toFixed(1));});g.parentNode.appendChild(g);};
+   const up=e=>{g.removeEventListener('pointermove',mv);g.removeEventListener('pointerup',up);g.removeEventListener('pointercancel',up);if(!moved&&e.type==='pointerup'&&g._toggle)g._toggle();};
+   g.addEventListener('pointermove',mv);g.addEventListener('pointerup',up);g.addEventListener('pointercancel',up);});
+ });
+ const totalCo=Object.keys(A).length-(netPI&&PI_NAME in A?1:0);
+ document.getElementById('netNote').textContent=`${pool.length} papers from ${y0} to ${y1} with ${totalCo} distinct co-authors; showing the ${N-(netPI&&PI_NAME in idx?1:0)} most frequent${netPI?' plus {{PI_SHORT}}':''}, linked when they share ${netW===1?'a paper':netW+' or more papers'} (${edges.length} links). Node size and the number after each name are the papers shared with {{PI_SHORT}} in this period; ${netMix==='mix'?'pie slices show each co-author\'s papers by theme (small nodes show the main theme only)':'color is the co-author\'s most common theme'}.${netPI?' {{PI_SHORT}} is the yellow node at the center; the links to that node show each co-author\'s paper count.':''}`+(netFocus?` Highlighting ${netFocus}.`:'');
+ document.getElementById('netLegend').innerHTML=Object.keys(THEMES).map(t=>`<span style="display:inline-flex;gap:6px;align-items:center"><span class="sw" style="background:${col(t)}"></span>${THEMES[t]}</span>`).join('');
+}
+let nrt;window.addEventListener('resize',()=>{clearTimeout(nrt);nrt=setTimeout(network,200)});
+function all(){legend();chart();chart2();themes();gantt();network();render();}
 all();
 let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{chart();chart2();gantt();},150)});
 new MutationObserver(all).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',all);
+
+/* section navigator: left column on wide screens, sticky strip on narrow ones */
+(function(){
+ const NAV={top:'Overview',output:'Output over time',authorship:'Authorship',eras:'Research eras',honors:'Honors',themes:'Research areas',network:'Co-author network',funding:'Funding',tools:'Tools',next:'{{NAV_IDEAS}}',papers:'Publication list'};
+ const nav=document.getElementById('sidenav'); if(!nav) return;
+ const secs=[document.getElementById('top'),...document.querySelectorAll('section.section')].filter(e=>e&&!e.hidden&&e.offsetParent!==null&&NAV[e.id]);
+ nav.innerHTML='<div class="sn-title">On this page</div>'+secs.map(e=>`<a href="#${e.id}" data-id="${e.id}">${NAV[e.id]}</a>`).join('');
+ const links=[...nav.querySelectorAll('a')];
+ const spy=()=>{let cur=secs[0].id;const y=window.innerHeight*0.3;for(const e of secs){if(e.getBoundingClientRect().top<=y)cur=e.id}
+  if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-4)cur=secs[secs.length-1].id;
+  links.forEach(a=>{const on=a.dataset.id===cur;a.classList.toggle('on',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')});};
+ addEventListener('scroll',spy,{passive:true});addEventListener('resize',spy);spy();
+})();
 </script>
 </body></html>

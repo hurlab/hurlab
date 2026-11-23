@@ -11,6 +11,8 @@ Outputs (all public, under data/):
                        over from the existing file (scripts/parse_cv.py maintains those)
   - grants.json        funded grants only (current + previous); no dollar amounts, no pending proposals
   - overview.json      research interests, career eras and milestones for research-overview.html
+  - honors.json        the CV "Honors and Awards" entries ({y, t})
+  - coauthors.json, metrics.json  co-author lists and NIH iCite figures (scripts/pubmeta.py, cached)
   - index.html         static (no-JavaScript) copies of the home page counters, recent publications
                        and funding list, written between <!-- BUILD:... --> markers
 
@@ -34,6 +36,7 @@ from datetime import date
 from pathlib import Path
 
 import build_overview as overview_page  # the internal OneDrive page; build_overview() below is overview.json
+import pubmeta  # data/coauthors.json and data/metrics.json (PubMed and iCite, cached)
 from cvlib import (MONTHS, attach_supplements, authorship, cv_paragraphs, grant_ident, is_supplement,
                    no_em_dash, norm, parse_cv_publications, parse_grants, ym)
 
@@ -42,6 +45,7 @@ DATA = ROOT / "data"
 OUT_PUBS = DATA / "publications.json"
 OUT_GRANTS = DATA / "grants.json"
 OUT_OVERVIEW = DATA / "overview.json"
+OUT_HONORS = DATA / "honors.json"
 OVERRIDES = DATA / "area_overrides.json"
 RESEARCH = DATA / "research.json"
 INDEX = ROOT / "index.html"
@@ -290,6 +294,32 @@ def parse_profile(paras):
     for p in positions:
         p["what"] = p["what"].rstrip(",")
     return interests, education, positions
+
+
+def parse_honors(paras):
+    """CV "Honors and Awards" -> [{y: '2006 to 2007', t: 'Rackham Graduate Fellowship, University of Michigan'}].
+    An entry starts with a year or year range and a tab; the next lines continue it. The city and
+    state after the institution and a trailing 'Recipient' are dropped."""
+    lines = [t.strip() for t, _ in paras if t.strip()]
+    if "Honors and Awards" not in lines:
+        note("CV SECTION NOT FOUND: Honors and Awards")
+        return []
+    honors = []
+    for t in lines[lines.index("Honors and Awards") + 1:]:
+        m = re.match(r"(\d{4})(?:\s*[-~]\s*(\d{4}))?\s*\t\s*(.+)", t)
+        if m:
+            years = m.group(1) + (f" to {m.group(2)}" if m.group(2) else "")
+            honors.append({"y": years, "t": m.group(3).strip()})
+        elif honors and not re.match(r"[A-Z][a-z]{2}\.?\s*\d{4}", t) and "membership" not in t.lower():
+            sep = ", " if t.startswith("University") else " "
+            honors[-1]["t"] += sep + t
+        else:
+            break  # the next section heading
+    for h in honors:
+        text = re.sub(r"(?<=[a-z]) (University of )", r", \1", h["t"])
+        text = re.sub(r"(University of [A-Z][\w ]*?), [^,]+, [A-Z][a-z]+$", r"\1", text)
+        h["t"] = no_em_dash(re.sub(r"\s+Recipient$", "", text).strip())
+    return honors
 
 
 def build_overview(interests, education, positions, pubs, area_titles):
@@ -734,6 +764,7 @@ def main():
         print("build_data: outputs are newer than the sources; nothing to do (use --force to rebuild)")
         # still refresh the internal overview page: a server CV publish pulled in with git
         # changes data/*.json without touching the sources
+        pubmeta.update()
         return overview_page.run()
 
     area_titles = [a["title"] for a in json.loads(RESEARCH.read_text())["areas"]]
@@ -785,6 +816,7 @@ def main():
     write_json(OUT_PUBS, pubs_out)
     write_json(OUT_GRANTS, grants_out)
     write_json(OUT_OVERVIEW, overview)
+    write_json(OUT_HONORS, parse_honors(paras))
     write_home_fallback(pubs, grants_out)
 
     by_area = {}
@@ -799,6 +831,7 @@ def main():
         print(f"\nREVIEW ({len(report)} items):")
         for line in report:
             print("  - " + line)
+    pubmeta.update()
     return overview_page.run()
 
 

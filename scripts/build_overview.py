@@ -2,10 +2,16 @@
 """
 Build the internal Hur Lab Research Overview page from the website data.
 
-Fills scripts/templates/overview_template.html with data/publications.json, data/grants.json,
-data/tools.json, data/overview.json and the internal-only overview_internal.json (project ideas,
-era narratives, pilot-award sentence), and writes the result to the lab OneDrive Publications
-folder as Hur_Lab_Research_Overview.html. The page is NOT published under the web root.
+Fills scripts/templates/overview_template.html (version 2 design, November 2026: section navigator,
+co-author network, NIH iCite figures, honors, idea cards) with data/publications.json, grants.json,
+tools.json, overview.json, honors.json, coauthors.json, metrics.json and the internal-only
+overview_internal.json (page wording, project ideas, era narratives, pilot-award sentence), and
+writes the result to the lab OneDrive Publications folder as Hur_Lab_Research_Overview.html. The page
+is NOT published under the web root.
+
+Differences from the public page, by decision of Dr. Hur: the idea cards and the pilot-award sentence
+are internal only, and the VIOLIN 2.0 administrative supplement is merged into its parent award here
+(the public page lists it as its own row under the parent).
 
 Spec: OVERVIEW_BUILD_SPEC.md in the OneDrive Publications/_overview_build folder.
 
@@ -30,7 +36,8 @@ import sys
 from datetime import date
 from pathlib import Path
 
-from cvlib import attach_supplements, is_supplement
+from cvlib import is_supplement, norm
+from pubmeta import CACHE as PUBMED_CACHE, cv_authors
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -78,13 +85,9 @@ def decimal_year(ym):
     return round(year + (month - 1) / 12, 2)
 
 
-def decimal_today(today):
-    """2026-11-01 -> 2026.83 (the "today" line on the grant timeline)."""
-    days = (date(today.year + 1, 1, 1) - date(today.year, 1, 1)).days
-    return today.year + (today.timetuple().tm_yday - 1) / days
-
-
-def build_pubs(pubs_doc):
+def build_pubs(pubs_doc, pubmed=None):
+    """pubmed: {pmid: [authors]} (scripts/cache/pubmed_authors.json); the CV list is the fallback."""
+    pubmed = pubmed or {}
     out = []
     for p in sorted(pubs_doc["peerReviewed"], key=lambda r: r["number"]):
         rec = {
@@ -98,6 +101,7 @@ def build_pubs(pubs_doc):
             "pmid": p.get("pmid") or "",
             "doi": p.get("doi") or "",
             "r": ROLE.get(p.get("authorship"), ""),
+            "solo": len(pubmed.get(p.get("pmid") or "") or cv_authors(p["text"])) == 1,
         }
         if p.get("topicFolder"):
             rec["folder"] = p["topicFolder"]
@@ -119,20 +123,28 @@ def build_key(pubs_doc, overview_doc):
 
 
 def build_grants(grants_doc):
+    grants = grants_doc["current"] + grants_doc["previous"]
+    # a supplement is merged into its parent award: the parent title names it, the row is dropped
+    sup_years = {}
+    for g in grants:
+        if is_supplement(g):
+            parent = norm(re.sub(r"^administrative supplement:\s*", "", g["title"], flags=re.I))
+            sup_years[parent] = f'{g["start"][:4]} to {g["end"][:4]}'
     out = []
-    for g in grants_doc["current"] + grants_doc["previous"]:
-        rec = {"t": g["title"], "f": g["agency"], "r": g["role"],
+    for g in grants:
+        title = g["title"]
+        if norm(title) in sup_years:
+            title += f" (includes the {sup_years[norm(title)]} administrative supplement)"
+        rec = {"t": title, "f": g["agency"], "r": g["role"],
                "s": decimal_year(g["start"]), "e": decimal_year(g["end"]),
                "a": g["status"] == "active"}
         if g.get("type") == "internal":
             rec["i"] = True
-        if is_supplement(g):  # its own row, not counted as a separate award
-            rec["x"] = True
-        out.append(rec)
-    # grouped as on the reference page: active, completed external, completed internal; newest start
-    # first; a supplement sits right under its parent award
-    out.sort(key=lambda r: (0 if r["a"] else 2 if r.get("i") else 1, -r["s"]))
-    return attach_supplements(out, title=lambda r: r["t"])
+        if not is_supplement(g):  # a supplement is merged into its parent award on this page
+            out.append(rec)
+    # active first, then newest start first (the template groups external and internal itself)
+    out.sort(key=lambda r: (not r["a"], -r["s"]))
+    return out
 
 
 def build_tools(tools_doc):
@@ -175,6 +187,14 @@ def cv_date(pubs_doc, grants_doc, log_path=WEBINF_LOG):
     return f"{d.strftime('%B')} {d.day}, {d.year}"
 
 
+def long_date(iso):
+    """'2026-11-22' -> 'November 22, 2026'; '' when unknown."""
+    if not iso:
+        return ""
+    d = date.fromisoformat(iso)
+    return f"{d.strftime('%B')} {d.day}, {d.year}"
+
+
 def js_const(name, value):
     # "</" would end the <script> block early; JSON allows the "\/" escape.
     literal = json.dumps(value, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
@@ -188,10 +208,17 @@ def render(data_dir=DATA, internal_path=DEFAULT_INTERNAL, template_path=TEMPLATE
     grants_doc = load(data_dir / "grants.json")
     tools_doc = load(data_dir / "tools.json")
     overview_doc = load(data_dir / "overview.json")
+
+    def optional(name, default):
+        return load(data_dir / name) if (data_dir / name).exists() else default
+    honors = optional("honors.json", [])
+    coauthors = optional("coauthors.json", {})
+    metrics = optional("metrics.json", {})
     internal = load(internal_path)
     today = today or date.today()
 
-    pubs = build_pubs(pubs_doc)
+    pubmed = load(PUBMED_CACHE) if Path(PUBMED_CACHE).exists() else {}
+    pubs = build_pubs(pubs_doc, pubmed)
     tools = build_tools(tools_doc)
     consts = [
         ("PUBS", pubs),
@@ -202,6 +229,9 @@ def render(data_dir=DATA, internal_path=DEFAULT_INTERNAL, template_path=TEMPLATE
         ("ERAS", internal["eras"]),
         ("TOOLS", tools),
         ("IDEAS", internal["ideas"]),
+        ("HONORS", honors),
+        ("COAUTH_DATA", {int(k): v for k, v in coauthors.items()}),
+        ("METRICS", metrics.get("by_pmid", {})),
     ]
     block = "\n".join(js_const(n, no_em_dash(v)) for n, v in consts)
 
@@ -209,12 +239,12 @@ def render(data_dir=DATA, internal_path=DEFAULT_INTERNAL, template_path=TEMPLATE
     if page.count(INJECT) != 1:
         raise SystemExit(f"build_overview: template must contain {INJECT} exactly once")
     page = page.replace(INJECT, block)
-    last_year = max([today.year] + [p["year"] for p in pubs])
+    for key, text in internal["text"].items():  # page wording first: it carries the computed fields below
+        page = page.replace("{{" + key + "}}", no_em_dash(text))
     page = (page.replace("{{YEARS_SPAN}}", str(today.year - FIRST_YEAR))
                 .replace("{{CV_DATE}}", no_em_dash(cv_date(pubs_doc, grants_doc)))
                 .replace("{{N_TOOLS}}", str(len(tools)))
-                .replace("{{LAST_YEAR}}", str(last_year))
-                .replace("{{NOW_DECIMAL}}", f"{decimal_today(today):.2f}"))
+                .replace("{{METRICS_DATE}}", long_date(metrics.get("retrieved"))))
     leftover = re.findall(r"\{\{[A-Z_]+\}\}", page)
     if leftover:
         raise SystemExit(f"build_overview: unfilled placeholders {sorted(set(leftover))}")

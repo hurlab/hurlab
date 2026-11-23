@@ -20,16 +20,21 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
 import build_overview as bo  # noqa: E402
 
 DATA = Path(__file__).resolve().parents[2] / "data"
+TEMPLATE_KEYS = sorted(set(re.findall(r"\{\{(\w+)\}\}", bo.TEMPLATE.read_text(encoding="utf-8"))))
+TEXT = {k: f"[{k}]" for k in TEMPLATE_KEYS}
+TEXT["LEDE"] = "{{YEARS_SPAN}} years of computational biomedicine"
+TEXT["SOURCE_NOTE"] = "CV of {{CV_DATE}}; iCite retrieved {{METRICS_DATE}}; {{N_TOOLS}} tools"
 INTERNAL = {
+    "text": TEXT,
     "pilotsNote": "Internal pilot awards funded early work.",
     "eras": [{"y": "2004 to 2006", "h": "Start", "w": "Where", "l": ["one"], "r": [2004, 2006]}],
-    "ideas": [{"h": "Idea", "f": "A x B", "d": "Description"}],
+    "ideas": [{"h": "Idea", "f": "A x B", "d": "Description", "icon": "cell", "c": 1, "parts": ["a"], "g": "aim"}],
 }
 
 
 def consts(page):
-    """The eight injected constants, parsed back from the page."""
-    names = "PUBS|THEMES|KEY|GRANTS|PILOTS|ERAS|TOOLS|IDEAS"  # the template has other const names
+    """The injected data constants, parsed back from the page."""
+    names = "PUBS|THEMES|KEY|GRANTS|PILOTS|ERAS|TOOLS|IDEAS|HONORS|COAUTH_DATA|METRICS"
     return {m.group(1): json.loads(m.group(2).replace("<\\/", "</"))
             for m in re.finditer(rf"const ({names})=(.*?);\n", page + "\n")}
 
@@ -75,18 +80,37 @@ class Render(Base):
     def test_all_constants_and_placeholders(self):
         page = self.render()
         c = consts(page)
-        self.assertEqual(list(c), ["PUBS", "THEMES", "KEY", "GRANTS", "PILOTS", "ERAS", "TOOLS", "IDEAS"])
+        self.assertEqual(list(c), ["PUBS", "THEMES", "KEY", "GRANTS", "PILOTS", "ERAS", "TOOLS", "IDEAS",
+                                   "HONORS", "COAUTH_DATA", "METRICS"])
         self.assertNotRegex(page, r"\{\{[A-Z_]+\}\}")
         self.assertIn("22 years of computational biomedicine", page)  # 2026 - 2004
         self.assertNotIn("—", page)
-        self.assertIn("for(let y=2004;y<=2026;y++)", page)  # chart years end at the build year
-        self.assertIn("const now=2026.83;", page)           # 2026-11-01 on the grant timeline
+        tools = len(json.loads((DATA / "tools.json").read_text()))
+        retrieved = date.fromisoformat(json.loads((DATA / "metrics.json").read_text())["retrieved"])
+        self.assertIn(f"iCite retrieved {retrieved.strftime('%B')} {retrieved.day}, {retrieved.year}; "
+                      f"{tools} tools", page)
 
-    def test_chart_years_follow_the_build_year(self):
-        page = self.render(today=date(2027, 3, 1))
-        self.assertIn("for(let y=2004;y<=2027;y++)", page)
-        self.assertIn("const now=2027.16;", page)
-        self.assertIn("23 years of computational biomedicine", page)
+    def test_years_span_follows_the_build_year(self):
+        self.assertIn("23 years of computational biomedicine", self.render(today=date(2027, 3, 1)))
+
+    def test_page_wording_comes_from_the_internal_file(self):
+        page = self.render()
+        for key in ("EYEBROW", "NETWORK_PARA", "IDEAS_PARA", "PI_SHORT"):
+            self.assertIn(f"[{key}]", page)
+
+    def test_network_honors_and_metrics_come_from_the_data_files(self):
+        c = consts(self.render())
+        self.assertEqual(c["HONORS"], json.loads((DATA / "honors.json").read_text()))
+        self.assertEqual(c["COAUTH_DATA"], json.loads((DATA / "coauthors.json").read_text()))
+        self.assertEqual(c["METRICS"], json.loads((DATA / "metrics.json").read_text())["by_pmid"])
+
+    def test_optional_data_files_may_be_missing(self):
+        data = self.tmp / "data"
+        shutil.copytree(DATA, data)
+        for name in ("honors.json", "coauthors.json", "metrics.json"):
+            (data / name).unlink()
+        c = consts(self.render(data_dir=data))
+        self.assertEqual((c["HONORS"], c["COAUTH_DATA"], c["METRICS"]), ([], {}, {}))
 
     def test_field_mapping_matches_the_website_data(self):
         c = consts(self.render())
@@ -100,19 +124,20 @@ class Render(Base):
             self.assertEqual(p["theme"], s["areaIndex"] + 1)
             self.assertEqual(p["r"], {"first": "F", "corresponding": "C"}.get(s["authorship"], ""))
             self.assertEqual(p["pmid"], s["pmid"] or "")
+            self.assertIsInstance(p["solo"], bool)
         self.assertEqual(c["THEMES"], {str(i + 1): a for i, a in enumerate(pubs["areas"])})
         self.assertTrue(all(isinstance(n, int) for ids in c["KEY"].values() for n in ids))
 
     def test_grants_internal_flag_and_order(self):
         c = consts(self.render())
         g = json.loads((DATA / "grants.json").read_text())
-        allg = g["current"] + g["previous"]
-        self.assertEqual(len(c["GRANTS"]), len(allg))
+        allg = [x for x in g["current"] + g["previous"] if not bo.is_supplement(x)]
+        self.assertEqual(len(c["GRANTS"]), len(allg), "a supplement is merged, not its own row")
         self.assertEqual(sum(1 for x in c["GRANTS"] if x.get("i")),
                          sum(1 for x in allg if x["type"] == "internal"))
         self.assertTrue(all(x.get("i") is True for x in c["GRANTS"] if "i" in x))
-        group = [0 if x["a"] else 2 if x.get("i") else 1 for x in c["GRANTS"]]
-        self.assertEqual(group, sorted(group), "active, then completed external, then internal")
+        keys = [(not x["a"], -x["s"]) for x in c["GRANTS"]]
+        self.assertEqual(keys, sorted(keys), "active first, then newest start first")
 
     def test_tools_use_url_then_github(self):
         c = consts(self.render())

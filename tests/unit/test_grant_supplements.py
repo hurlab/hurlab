@@ -71,17 +71,17 @@ class SupplementFollowsParent(unittest.TestCase):
     def test_orphan_supplement_stays_put(self):
         self.assertEqual(attach_supplements([SUPP, OTHER]), [SUPP, OTHER])
 
-    def test_overview_rows_keep_it_under_parent(self):
+class InternalOverviewMergesSupplement(unittest.TestCase):
+    """The internal OneDrive page merges the supplement into its parent (Dr. Hur, 2026-11-22);
+    the public page keeps it as its own row under the parent (attach_supplements above)."""
+
+    def test_supplement_row_is_merged_into_parent(self):
         rows = build_overview.build_grants({"current": [SUPP, OTHER, PARENT], "previous": []})
-        self.assertEqual([r["t"] for r in rows], [OTHER["title"], PARENT["title"], SUPP["title"]])
-
-
-class OverviewMarksSupplement(unittest.TestCase):
-    def test_supplement_flag(self):
-        rows = build_overview.build_grants({"current": [PARENT, SUPP], "previous": []})
-        flags = {r["t"]: r.get("x", False) for r in rows}
-        self.assertTrue(flags[SUPP["title"]])
-        self.assertFalse(flags[PARENT["title"]])
+        self.assertEqual(len(rows), 2)
+        parent = next(r for r in rows if r["t"].startswith(PARENT["title"]))
+        self.assertIn(f"includes the {SUPP['start'][:4]} to {SUPP['end'][:4]} administrative supplement",
+                      parent["t"])
+        self.assertFalse(any(r["t"].startswith("Administrative Supplement") for r in rows))
 
 
 if __name__ == "__main__":
