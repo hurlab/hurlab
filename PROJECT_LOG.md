@@ -3,10 +3,11 @@
 Bounded active log. Newest first. Older sessions are archived under `logs/` when over budget (>10 sessions / ~1000 lines).
 
 ## Archives
-- logs/PROJECT_LOG_2026-H2.md — 6 sessions (2026-07 … 2026-10)
+- logs/PROJECT_LOG_2026-H2.md — 7 sessions (2026-07 … 2026-10)
 - logs/PROJECT_LOG_2026-H1.md — 8 sessions (2026-03 … 2026-04)
 
 ## Session Index (active, newest first)
+- 2026-11-22 20:06 CST
 - 2026-11-01 19:35 CST
 - 2026-10-31 15:24 CDT
 - 2026-10-31 13:48 CDT
@@ -16,9 +17,52 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 - 2026-10-31 07:58 CDT
 - 2026-10-30 21:55 CDT
 - 2026-10-30 21:41 CDT
-- 2026-10-30 20:24 CDT
 
 ---
+
+## Session 2026-11-22 20:06 CST
+- **Coding CLI used**: Claude Code CLI (MoAI-Easy output style; Claude Opus 5.5 for the work, Sonnet 5.5 for the close). Same session id fc6ff544. Computer: `UNDMED-CQ9FRT3`.
+
+### Phase(s) worked on
+- Research Overview version 2: move the internal OneDrive generator to the new template and bring the new features to the public `research-overview.html`. The request came from Dr. Hur's cloud session as `WEBSITE_UPDATE_NOTE.md` (OneDrive `Publications/_overview_v2/`); the user's message only pointed at it.
+
+### Concrete changes implemented
+1. **Decisions (4 questions, all answered)**: keep the site design on the public page (no redesign, no dark mode); idea cards and the internal pilot note stay internal-only; the VIOLIN supplement stays its own row under its parent on the public page and is merged into the parent on the internal page; the book chapter counts as co-authored (102, v2 had 101).
+2. **New `scripts/pubmeta.py`**: `data/coauthors.json` (PubMed efetch author lists cached in `scripts/cache/pubmed_authors.json`, CV text for records without a PMID, variants merged by last name + first initial except `DISTINCT_PEOPLE`, preprints and the group-authorship paper excluded) and `data/metrics.json` (NIH iCite, refreshed after 7 days or for a missing PMID; failures never fatal). First run: 146 PMIDs fetched, 163 network records, 5,902 citations, h-index 38 (equal to the v2 numbers).
+3. **`build_data.py`**: `parse_honors()` writes `data/honors.json` from the CV "Honors and Awards" section (5 entries, equal to v2's list); `pubmeta.update()` runs on both the rebuild and the "nothing to do" path.
+4. **Internal page (`build_overview.py` + template)**: v2 template copied from OneDrive with 3 edits (book chapter counted as co-authored, chart note reworded); the generator injects `HONORS`, `COAUTH_DATA`, `METRICS`, fills page wording from `overview_internal.json` `text`, adds `solo` per record, and merges the supplement into the parent title. `overview_internal.json` in OneDrive gained `text` (22 strings) and the idea-card fields (backup `overview_internal_2026-11-01_backup.json`). The rebuilt `Hur_Lab_Research_Overview.html` equals the approved preview byte for byte.
+5. **Public page (`research-overview.html`, new `js/coauthor-network.js`)**: section navigator, citations / h-index / lab-tools header tiles, citation figures and most cited paper per area card, honors, co-author network with a shared-papers list on click. Optional data files are fetched with failures tolerated. Preview shown to Dr. Hur (local server and an OneDrive preview file) before commit.
+6. **Delivery**: commit 2767c71 pushed from worktree `WT-overview-v2` (`0 0` check first), deployed with `scripts/deploy-from-local.sh` (e1ab72b → 2767c71, 24 health checks OK), live page checked in a browser; the user ran `git pull --ff-only` in the primary. OneDrive notes updated (`WEBSITE_UPDATE_NOTE.md` status block, `_overview_v2/README.md`, `_overview_build/OVERVIEW_BUILD_NOTES.md`).
+
+### Files/modules/functions touched
+- New: `scripts/pubmeta.py`, `scripts/cache/pubmed_authors.json`, `data/coauthors.json`, `data/metrics.json`, `data/honors.json`, `js/coauthor-network.js`, `tests/unit/test_pubmeta.py`
+- Changed: `research-overview.html`, `scripts/build_data.py` (`parse_honors`, pubmeta hook), `scripts/build_overview.py` (v2 constants, `long_date`, `build_grants` merge, `solo`), `scripts/templates/overview_template.html`, `tests/unit/test_build_overview.py`, `tests/unit/test_grant_supplements.py`
+- OneDrive: `_overview_build/overview_internal.json` (+ backup), `Hur_Lab_Research_Overview.html` (rebuilt), the three note files above
+
+### Key technical decisions and rationale
+- The public page keeps Tailwind/Alpine and the site menu; the network is a plain-JS module (no library) ported from the v2 template, with Tailwind-friendly CSS instead of the v2 theme variables.
+- Co-author data is built in the repo (not hand-made) so it updates with each CV upload; PubMed lists are cached in git so builds are reproducible offline.
+- `solo` and the supplement merge live in `build_overview.py` only; the public page keeps `attach_supplements` (11-01 decision).
+- A PubMed collective author (Spanish Neurological Consortium) is not a person and is left out of the network.
+
+### Problems encountered and resolutions
+- This PC's cached Chromium moved to 1254 (1247 gone) and the Python `playwright` module is missing: headless Chromium for screenshots, Node `playwright-core` from the npx cache for clicks and scroll checks.
+- The first click check found no shared-paper list: the node had to be scrolled into view before a real mouse click; the page was fine.
+- 1600 px screenshot: the fixed left navigator was unreadable over the hero; fixed with a card background and a lower offset before committing.
+- A plugin hook refused two shell calls (a privacy rule unrelated to this work); they were re-run split into smaller commands.
+- The first background preview server exited after a port clash with a leftover local server; killed by pid from `ss` and restarted.
+- ruff: one new E731 (lambda) in `build_overview.py` replaced by a `def`; the other finding pre-exists on origin/main.
+
+### Items explicitly completed / resolved / superseded this session
+- Completed: internal generator on the v2 template (the "do not run the build" warning in the OneDrive note is resolved); public page v2 features; honors / co-author / iCite data pipeline; deploy to 2767c71.
+- Superseded: the OneDrive v2 package as a source (the repo is now the source; kept for reference).
+
+### Verification performed
+- Unit suite 87/87 OK with `CV_FIXTURE_DIR` (15 new tests); internal page constants diffed against the v2 page (identical except `folder`; 6 co-author records explained); public page checked at 1280 / 390 / 1600 px locally and live: no overflow, 0 console errors, navigator lists all 8 visible sections, 51 network nodes, a click lists 48 papers; deploy 24 health checks OK; the 3 new data files answer 200 publicly; 0 em dashes in the page, JSON and notes.
+
+### Not verified
+- A full `build_data.py` run against a NEW CV with the pubmeta hook (the 2026-11-22 CV is not yet uploaded); the server's `build_data.py --if-available` after the new import; dark-mode look (none by design).
+- 💡 Idea: none.
 
 ## Session 2026-11-01 19:35 CST
 - **Coding CLI used**: Claude Code CLI (MoAI-Easy output style; Claude Opus 5.5 for the work, Sonnet 5.5 for the close). Same session id fc6ff544 as the 2026-10-31 closes. This entry also records the morning's overview-generator work (HANDOFF §2/§4 rows dated 2026-11-01 11:45 CDT), which had no log entry.
@@ -275,50 +319,6 @@ Bounded active log. Newest first. Older sessions are archived under `logs/` when
 
 ### Verification performed
 - Local preview: Playwright 102 passed (99 + 3 new), 19 unit tests, rendered text and screenshots at 1366 px, no page errors. The 3 new tests failed on the old live site. Live after deploy: E2E 102 passed (37.3 s); CV link 200 with "Updated 10/30/2026"; old CV addresses 404. Not verified: phone-width rendering of the new home line, the taller home AI card and the People changes; talks/posters from the new CV.
-
----
-
-## Session 2026-10-30 20:24 CDT
-- **Coding CLI used**: Claude Code CLI (Claude Opus 5.5; Sonnet 5.5 for the close). Claude session 184288b1, started by "resume" from the 18:22 close (the previous session was 0d788018). Worked inside worktree `cv-diff` (branch `WT-cv-diff`, at be67bcb).
-
-### Phase(s) worked on
-- Resume and deploy of be67bcb to the server
-- CV incremental update step 2: design question, plan, Kickoff approval, worktree prepared (no code yet)
-- Server deploy script (`deploy.sh`)
-
-### Concrete changes implemented
-1. Resume: read the saved prompt from the primary checkout's `NEXT_SESSION.md`; 3 of 3 preconditions matched (origin/main = be67bcb, server at 7298d41, 4 CV fixtures). One check pointed `git -C` at the primary checkout and was refused by the worktree guard; re-run from the worktree.
-2. Deploy (user approved through the question tool): on the server `git fetch` showed 3 incoming commits touching 15 files, none `data/team.json` or the CV PDF; `git pull --ff-only origin main` took the server from 7298d41 to be67bcb with its two local edits kept. Live Playwright 99/99 (32.7 s); `data/grant_links.json` 200; live `grants.json` has 0 `$`.
-3. Step 2 design question: the tracker exists only locally, so a server-side publish cannot run `build_data.py`. User chose "patch the JSON + rebuild honors a log". Public-path check from this machine: `WEB-INF/`, `scripts/`, `PROJECT_LOG.md`, `.git/` answer 403, `data/area_overrides.json` 200, so the accepted-change log goes in `WEB-INF/cv-updates/applied.jsonl`. Plan approved at the Kickoff question. Plan text: HANDOFF §7 Recommended next actions #1.
-4. Worktree `cv-publish` created with `moai worktree new`; `EnterWorktree` refused it (only `.claude/worktrees/` trees are accepted), so a NEXT_SESSION.md with the saved prompt was written into it and the memory note updated.
-5. `deploy.sh`: the user asked for a script they could run on the server by giving only the sudo password. First version (fetch, clash checks, ff-only merge, admin restart, Tomcat restart via sudo, health checks) was rehearsed on the server (live dry-run and run; scratch clones for update, clash, server-only commit, JSON mismatch, scripts/ and WEB-INF/ change detection) and reviewed by a read-only agent (no blockers; 5 should-fix). Applied: undo hint printed on any STOP after the update, zero-file health check fails, explicit fetch refspec, `rev-list` failure gets a STOP, `--no-renames` in the clash check, 6 s wait for Tomcat's 5 s static-file cache. Not changed: accepting 403 or 404 for the private-path check (403 measured on 127.0.0.1:8081, so the check is valid today), NUL-safe path matching in the clash check (fails safe: `merge --ff-only` itself refuses to overwrite modified or untracked files), and reordering the Tomcat restart (that path was removed in item 6).
-6. The user then asked how deploys were done before and doubted the review. HANDOFF §7 and this session's own earlier deploy showed deploys never needed sudo. Findings re-rated by evidence: ignored-file overwrite TRUE but unlikely (tested), `systemctl --user` without session env TRUE but N/A over ssh (tested), `.git` privacy check not a defect (403 measured locally and publicly), Tomcat restart finding overstated. Script cut down to the no-sudo flow (sudo, `--restart-tomcat`, Tomcat unit and restart detection removed); retested on the server and installed as `~/deploy.sh` (sha256 `fcb9c677…585d`); repo copy `scripts/deploy.sh` identical.
-7. Memory: new `feedback_deploy_is_mine_no_sudo.md` (+ index line), `project_cv_incremental_update.md` status updated. The user said the deploy is Claude's job: "you can do that yourself without me".
-8. After the close: the user asked for a detailed explanation of step 2 and then a document so the next session can continue: `scripts/CV_UPDATE_STEP2.md` (design, CLI, state layout, per-kind publish rules, field ownership, re-apply hook, tests and ground truth, implementation order). Reading the code for it found gaps in the approved plan, recorded as 5 open decisions in its §12: the published `year` is the publication-date year, not the CV year; numbers for new papers; removals; `overview.json` and the `index.html` static copies depend on the publication list and must be refreshed on publish; commit identity. The step 3 mock-up is in the `research-overview` worktree's `.preview/`, not `cv-diff`.
-9. On the user's "commit/push": `scripts/deploy.sh`, `scripts/CV_UPDATE_STEP2.md` and these docs committed in worktree `cv-diff` and pushed to main. Not deployed (nothing site-visible).
-
-### Files/modules touched
-- New: `scripts/deploy.sh`, `scripts/CV_UPDATE_STEP2.md` (both committed at the end)
-- On the server: site checkout fast-forwarded to be67bcb; `~/deploy.sh` installed; `~/deploy-logs/*.log` from the rehearsals left in place; temporary files in `/tmp` removed
-- Worktree `cv-publish` (new): `NEXT_SESSION.md` (untracked)
-- Docs: `PROJECT_HANDOFF.md`, `PROJECT_LOG.md`; memory: `feedback_deploy_is_mine_no_sudo.md`, `project_cv_incremental_update.md`, `MEMORY.md`
-
-### Key technical decisions and rationale
-- Publish patches `data/*.json` on the server and records accepted changes in a log that `build_data.py` re-applies (the tracker is local-only; the log makes a local rebuild safe). The log lives under `WEB-INF/` because it is served 403 while `data/` is public.
-- Deploy script: no sudo, no Tomcat restart. Tomcat serves the git checkout directly and reloads `WEB-INF/web.xml` itself (`conf/context.xml` WatchedResource); the admin panel is a user service.
-- Deploys are done by Claude over ssh (user instruction).
-
-### Problems encountered and resolutions
-- The worktree guard refused cross-tree `git -C`, compound shell text, and reads of another worktree's `.git`; worked around with plain separate commands and small script files fed over `ssh ... bash -s`.
-- `EnterWorktree` cannot enter a `~/.moai` worktree; the work moves to a new session started with `moai cc -w <path>`. The new tree's base commit and branch name could not be checked or renamed from here.
-- I built the first `deploy.sh` around a sudo/Tomcat path that is never needed, then overstated the review's findings; corrected after the user's challenge (see item 6).
-
-### Items completed / resolved / superseded this session
-- Deploy of 8e091cd — Completed (as be67bcb). `deploy.sh` — Completed on the server and committed.
-- Step 2 of the CV update — plan approved, not started.
-
-### Verification performed
-- Live E2E 99/99 after the deploy; `curl` checks; `deploy.sh` rehearsals and the two measured claims (see HANDOFF §6 rows dated 2026-10-30). Not verified: sudo path (removed), real admin restart by the script, refusal as root, `cv-publish` base commit and branch name.
 
 ---
 
